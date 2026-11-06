@@ -120,6 +120,26 @@
       },
       "target_mode": "guide",
       "notes": "Web page snapshot."
+    },
+    {
+      "doc_id": "MP.RTIFAR2005@hi@1",
+      "instrument_id": "MP.RTIFAR2005",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2005_0011_Pdf_F35_Hindi.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), General Administration Department rule",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ],
+        "note": "State public authorities in MP; central public authorities follow the central RTI Rules 2012."
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G12"
+      ],
+      "notes": "Original 2005 text as hosted on MP Code."
     }
   ]
 }

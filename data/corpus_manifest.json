@@ -53,6 +53,13 @@
       "jurisdiction": "MP",
       "title_en": "Legal Aid (page of the Madhya Pradesh State Legal Services Authority on madhyapradesh.nalsa.gov.in)",
       "notes": "Official web page; states the s.12(h) income ceiling for MP. Not law: the binding source is MP.SLSAR1996 r.20 as amended by state notification (G13)."
+    },
+    {
+      "instrument_id": "MP.RTIFAR2005",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_hi": "मध्यप्रदेश सूचना का अधिकार (फीस तथा अपील) नियम, 2005",
+      "notes": "Per code.mp.gov.in (checked 2026-11-06): GAD notification F 11-37-05-एक-9 dt 10.10.2005, effective 10.10.2005; no amendments listed there. Parent: RTI Act 2005 (not yet in manifest)."
     }
   ],
   "documents": [
@@ -295,6 +302,52 @@
           "method": "searched the downloaded HTML snapshot",
           "evidence": "https://madhyapradesh.nalsa.gov.in/legal-aid/",
           "note": "Contains: 'The Income Ceiling Limit prescribed u/S 12(h) of the Act for availing free legal services in Madhya Pradesh is Rs. 2,00,000/-'."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.RTIFAR2005@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.RTIFAR2005",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2005_0011_Pdf_F35_Hindi.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), General Administration Department rule",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ],
+        "note": "State public authorities in MP; central public authorities follow the central RTI Rules 2012."
+      },
+      "notes": "Original 2005 text as hosted on MP Code (PDF made 2014 with convertonlinefree.com, 6 pages). Extracted text has a systematic glyph error (ि extracted as ध, e.g. 'अधधधनयम'); W1.1 must OCR or repair before exact-quote use.",
+      "fetched_at": "2026-11-06T10:49:09+00:00",
+      "sha256": "726ae93f7bf2e333db19ad411f152772a93ac1e18c0dd46f5ff091cfe406d995",
+      "bytes": 315987,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.RTIFAR2005/MP.RTIFAR2005_hi_1.pdf",
+      "gate": [
+        "G12"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2005_0011_Pdf_F35_Hindi.pdf",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "searched the extracted text of the official MP Code PDF and compared with the code.mp.gov.in rule page",
+          "note": "Preamble 'क्रं. एफ 11-37-05-एक-9', r.3(1) Rs 10 application fee (non-BPL), r.5(2) inspection Rs 50 first hour + Rs 25 per 15 min, r.8(2) Rs 100 second appeal are present."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "evidence": "https://code.mp.gov.in (rule 'मध्यप्रदेश सूचना का अधिकार (फीस तथा अपील) नियम, 2005')",
+          "what": "consolidation_current",
+          "result": "unclear",
+          "method": "MP Code rule page lists no amendments; web searches (EN + HI)",
+          "note": "No amendment found, but a news report (undated, inkl.com, 403) says GAD proposed a ~10x fee hike; outcome unknown."
         }
       ]
     }
