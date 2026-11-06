@@ -189,6 +189,12 @@ private lawyers (BCI Rule 36, plan §3). Contact details come from `contacts.yam
 ÷ characters in the correct text. Lower is better.
 - Why here: an OCR mistake becomes a wrong quote. The bake-off (DEC-014) measures CER on *our* pages.
 
+**Enacted vs commenced, and amending laws (DEC-044).** A law can be passed, assented and published but not yet in force
+(e.g. commencement "on a date the government notifies"). It gets status `enacted_not_commenced`, which is never "current".
+Each amending law is its own instrument with `amends: [...]`, so a citation points to the exact text that changed the
+Act or its Rules.
+- Interview angle: "time-aware legal data". The model must never call a law "in force" just because it was published.
+
 **Corrupted text layers (seen in W0.4).** A PDF can "have text" that is wrong. Seen so far:
 - a Latin-only OCR layer in a Hindi scan
 - ि extracted as ध by an old font converter

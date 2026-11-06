@@ -94,6 +94,22 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-07
+- Done:
+  - W0.4 findings review with Malik.
+  - Sanhita interim source: official govtpress listing match + PRS copy saved (sha256 44c92bb2…).
+  - DEC-044 schema change (`enacted_not_commenced`, `ordinance`, `amends`) + 4 tests; Lok Seva 2026 amendment split into `MP.LSGRA2026`; Sanhita row added (gated G4).
+  - DEC-045 recorded; CORPUS.md + OPEN_QUESTIONS (group I) updated.
+  - `W0.4_FINDINGS.md` frozen as the v1 record.
+  - New leads: rcms.mp.gov.in (2013 Lok Seva time-limit gazette); bor.mp.gov.in (MPLRC listed, links dead).
+  - Checks: ruff check ✓ · ruff format ✓ (41 files) · mypy ✓ (11 files) · pytest ✓ 119 passed · pre-commit ✓ all 11 hooks.
+- Decisions: DEC-043, DEC-044, DEC-045.
+- Problems:
+  - govtpress gazette PDFs all 404 (incl. Nos. 257, 260, 264).
+  - revenue.mp.gov.in down for Malik too.
+  - The uid has no roman-clause segment yet (U1).
+- Next step: W0.4. U1 (roman clause IDs), then G15/G16, then G8 before the 16 Nov deadline.
+
 ### 2026-11-06 (session close)
 - Done:
   - W0.3 done.
