@@ -336,6 +336,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   - Money ≈ +₹0–50/month; a full judged eval run costs the same (total rows unchanged).
   - G8 (conflicting mutation time limits, demarcation-rules year, unverified 2022/2023 amendments) becomes MVP-blocking for this slice.
 
+## DEC-039 — Fewer permission prompts (Malik's settings edit)
+- Date: 2026-11-06 | Status: accepted | Approved by: Malik (edited `.claude/settings.json` directly) | Amends DEC-034
+- Decision: These moved from `ask` to `allow`:
+  - `uv run pytest -m paid`
+  - `uv add / remove / lock`, `uv pip`, `pip`
+  - `git push`, `git branch`, `git checkout -b`, `git switch -c`, `git rm / reset / rebase`
+  - `gh *`
+  - `rm *`
+
+  Still `ask`: edits to DECISIONS.md and CORPUS.md, terraform init/plan/apply/import/state, all `aws`, PowerShell `Remove-Item` and `git push`. Still `deny`: secrets files, `rm -rf`, force-push, `terraform destroy`, env printing.
+- Why: Fewer interruptions during routine work.
+- Effects: The tool no longer prompts for these. **The CLAUDE.md decision protocol is unchanged**: Claude still asks Malik first before adding/removing dependencies, pushing, deleting files or making paid API calls beyond a tiny test. The guard is now Claude's protocol rather than a prompt.
+
 ---
 
 ## Pending decisions (not yet made)

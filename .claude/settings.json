@@ -15,11 +15,7 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(terraform fmt *)",
-      "Bash(terraform validate *)"
-    ],
-    "ask": [
-      "Edit(/docs/DECISIONS.md)",
-      "Edit(/docs/CORPUS.md)",
+      "Bash(terraform validate *)",
       "Bash(uv run pytest -m paid *)",
       "Bash(uv add *)",
       "Bash(uv remove *)",
@@ -35,7 +31,11 @@
       "Bash(git rebase *)",
       "Bash(gh repo create *)",
       "Bash(gh *)",
-      "Bash(rm *)",
+      "Bash(rm *)"
+    ],
+    "ask": [
+      "Edit(/docs/DECISIONS.md)",
+      "Edit(/docs/CORPUS.md)",
       "Bash(terraform init *)",
       "Bash(terraform plan *)",
       "Bash(terraform apply *)",
