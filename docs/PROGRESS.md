@@ -3,6 +3,56 @@
 Roadmap from `docs/plan.md` §10, adjusted by `docs/DECISIONS.md` (DEC-016: no Marathi/Maharashtra; DEC-020/023: v2 items).
 Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at a time.
 
+## ▶ Handover: start here next session (written 2026-11-06)
+
+**Where we stopped:** W0.4 (corpus download).
+- Step 1 (downloader) is done.
+- Step 2 (gate research) is done as one pass, but **every gate is only partly resolved**.
+- All details, conflicts and evidence are in **`docs/W0.4_FINDINGS.md`** (temporary; review it, then fold it into DECISIONS / OPEN_QUESTIONS / CORPUS and delete it).
+
+**Corpus now:** 12 instruments, 14 documents.
+- index: Code on Wages
+- guide: MPSLSA legal-aid page
+- gated: Oct-2026 wage notification ×2 (L7), MPSLSA Rules (G13), MP RTI fee rules (G12), Lok Seva Rules 2026 amendment (G6)
+- archive: 7 files
+
+**First task next session:** go through `W0.4_FINDINGS.md` with Malik and decide the items below.
+
+**Decisions for Malik / advocate:**
+1. **L7:** are the post-repeal MP VDA wage notifications valid under the Code on Wages (authority, power, procedure)? Until answered, no wage amounts.
+2. **Schema (major):**
+   - add an `ordinance` instrument type
+   - add a status for "enacted, not yet commenced"
+   - model "amends the Act vs amends its Rules"
+3. **G13:** NALSA says ₹1 lakh; MPSLSA says ₹2 lakh; the amending notification is not found. What may the bot say? Can Malik ask MPSLSA/DLSA for the notification number?
+4. **G12:** RTI jurisdiction routing (MP vs central bodies). Is "actual cost decided by the PIO" OK as the copy-fee answer?
+5. **G6:** certificate time limits not found officially (secondary: income 3 / domicile 7 / caste 30 working days). Use the portal pages as an `official_guide`? Caste stays procedure-only.
+6. **G4/G14:** the Shram Shakti Sanhita (Act 7/2026) repeals the S&E Act 1958 only from its commencement, which isn't notified yet. Answer from the 1958 Act with a caveat, or abstain?
+7. **G8 / land slice:** official sources unreachable. If still blocked by ~W1, keep land in the demo?
+8. Wording rules for W2.1: official-guide vs law labelling; wage abstain vs caveat.
+
+**Quick actions for Malik (browser):**
+- Open revenue.mp.gov.in: does it load? (refused from here, T3)
+- Download Sanhita Gazette No. 257 (10.08.2026) from govtpress.mp.gov.in (TLS cert untrusted here; Claude didn't bypass it) into `data/raw/`.
+
+**Claude's to-do after the review:**
+- find the G13/G12 amending notifications, the G6 GAD s.3 time-limit notifications, and the Sanhita commencement notification
+- read Lok Seva releases 2–5
+- fetch the MPLRC + rules (retry India Code)
+- L8 (2024 base wages), L9 (Karnataka HC case)
+- then W0.4 step 3 (central born-digital texts)
+
+**Concerns carried forward:**
+- OCR (W0.5) is critical: most MP files are scans, incl. CCITT G4.
+- Hindi text layers are often corrupt (3 patterns; only 1 auto-detected). W1.1 needs a text-quality gate.
+- Several official portals need special handling or are unreachable.
+- The demo date (~3–5 Dec) is at risk if G8 stays blocked.
+
+**Housekeeping:**
+- Local commits are not pushed yet.
+- `CORPUS.md` item 8 still says "gated: L4" (should be L7, DEC-042); it's protected, so it needs Malik's OK.
+- `AGENTS.md` stays untracked.
+
 ## Setup (kickoff)
 | # | Item | Status | Notes |
 | --- | --- | --- | --- |
