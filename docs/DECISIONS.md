@@ -349,6 +349,27 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: Fewer interruptions during routine work.
 - Effects: The tool no longer prompts for these. **The CLAUDE.md decision protocol is unchanged**: Claude still asks Malik first before adding/removing dependencies, pushing, deleting files or making paid API calls beyond a tiny test. The guard is now Claude's protocol rather than a prompt.
 
+## DEC-040 — `section_uid` scheme and corpus manifest schema
+- Date: 2026-11-06 | Status: accepted ("all as recommended" + Malik's five additions, "finalise as above") | Approved by: Malik
+- Context: W0.3. Every chunk, golden row, citation and law-watch alert refers to law units by one ID, and every downloaded file needs one manifest record. Changing either later means re-labelling everything.
+- Options: uid A) plan style `RTI2005:s8:ss1:cl_j` · **B) jurisdiction prefix `IN.RTI2005:s8:ss1:cl_j`** · C) Akoma Ntoso eIds. Manifest **A) JSON + stdlib validator** · B) JSON + pydantic · C) YAML.
+- Decision:
+  1. **`section_uid` = `<JUR>.<CODE><YEAR>:<segment>:…`**, with JUR `IN` (central) or `MP`. Segments: `s` section, `ss` sub-section, `cl_` clause, `scl_` sub-clause, `prov` proviso, `expl` explanation, `r` rule, `reg` regulation, `para` paragraph, `sch` schedule, `form_` form; inserted units take an uppercase suffix (`s13A`). The uid names the *provision*, not a version of its text.
+  2. **`chunk_id = <section_uid>@<lang>@<valid_from>`**. The citation validator checks `chunk_id`; eval scores on `section_uid`.
+  3. **Hindi uids come from structural alignment with the English text**, never from mapping Devanagari clause letters to Latin ones.
+  4. **Coverage rule:** a retrieved uid covers an expected uid if it is equal to it or an ancestor of it.
+  5. **State amendments to a central Act** keep the central uid and are stored as an MP-only text version.
+  6. **Manifest = `data/corpus_manifest.json`** (`instruments` + `documents`), validated by our own stdlib code. Full field list in `docs/specs/manifest.md`.
+  7. Malik's additions (2026-11-06), as narrowed by Claude's review:
+     - **Parent-child:** provision parents are *computed* from the uid (`parent()` / `ancestors()`); instruments carry `parent_instrument` + `made_under`.
+     - **Amendment history:** per instrument `enacted_on`, `commenced_on` (+ per-provision override), `amendments` list, `supersedes`/`superseded_by`; per document `valid_from`/`valid_to`/`expires_on`. "Current" is computed, never stored. No full point-in-time consolidation.
+     - **Authority level:** only `type` is stored; `authority_rank` and `binding` are derived from a fixed mapping. Rank is **not** a retrieval weight; it drives the law-beats-guide conflict flag and the "rights claims cite binding law" rule (answer wording decided in W2.1).
+     - **Applicability:** `applies_to {level, states, districts, areas, note}` per document with optional per-provision override. State level enforced now; districts/areas stored only (LGD codes, not verified).
+     - **Verification provenance:** a list of records `{what, by (claude|malik|advocate), on, method, evidence, result, note}` plus `last_checked_on` from law-watch. **Index gate:** `mode=index` requires `confirmed` records for both `status` and `commencement`; legal-interpretation checks need `malik` or `advocate`.
+- Why: The jurisdiction in the ID makes state-vs-central visible everywhere and backs the jurisdiction guard. Computing parents, rank and "current" from one source means they cannot drift. The verification gate makes "unverified law never reaches users" a code rule, not a habit. Stdlib validation avoids a new dependency today.
+- Effects: efficiency: no new dependency, uid parsing is O(length) · accuracy: unverified or expired documents can't be indexed or cited as current · application: every later module (chunker, tokeniser, eval, law-watch) uses these IDs · cost ₹0 · time: W0.3 ~1 day, W0.4 +~2–3 h to fill fields.
+- Follow-ups: LGD district codes (OPEN_QUESTIONS); move manifest validation to pydantic if it is added in W2 for LLM JSON output (needs approval); fix the unverified Hindi example in `.claude/rules/retrieval.md`.
+
 ---
 
 ## Pending decisions (not yet made)

@@ -197,14 +197,31 @@ NFC converts to one canonical form; nukta folding treats क़ and क + ़ al
 / Explanation), not every N tokens. Chunk unit = sub-section, with its provisos and explanations attached; 150–450 tokens.
 - Why: a proviso cut away from its sub-section changes the meaning; structural chunks make citations precise.
 
-**section_uid.** A canonical ID per legal unit, e.g., `RTI2005:s8:ss1:cl_j`. Hindi and English chunks of the same
-unit share it.
+**section_uid and chunk_id (DEC-040).** A canonical ID per legal unit, e.g., `IN.RTI2005:s8:ss1:cl_j` (`IN` central,
+`MP` state). Hindi and English chunks of the same unit share it; each stored text version is a `chunk_id`
+(`<uid>@<lang>@<valid_from>`). Spec: `docs/specs/section_uid.md`.
 - Why: links languages, makes eval matching exact ("did we retrieve the expected section?"), and powers caching.
+  The jurisdiction prefix makes state-vs-central visible everywhere.
+- Interview angle: the hierarchy lives *inside* the ID, so parents are computed, not stored; nothing can drift.
+  Coverage = "equal or ancestor" (a sub-section chunk answers a question about one of its clauses).
+
+**Derived vs stored metadata.** Store facts once (type, dates, status); compute the rest (authority rank, binding,
+"is current today", parent uid). A stored copy of a derived value goes stale silently; a computed one can't.
+
+**Verification provenance + index gate (DEC-040).** Each manifest document carries records of *what* was checked
+(status, commencement, text match, interpretation), *by whom* (Claude / Malik / advocate), *how*, and the evidence.
+The validator refuses `mode=index` without confirmed status + commencement checks.
+- Why: "unverified law never reaches users" becomes a rule enforced by code, not a habit.
+
+**Authority level and applicability.** Acts > rules > notifications > scheme guidelines > official guides, but rank
+is *not* a search weight (the notification often holds the number the user wants). It decides conflicts (law beats
+guide) and what may support a rights claim. `applies_to` records national / state / district / area scope; only
+state scope is enforced in v1.
 
 **Parent-child retrieval.** Search over small chunks (precise), but give the LLM the parent section when more context is needed.
 
-**Chunk metadata.** `section_uid, act_id, titles (en/hi), jurisdiction, state, doc_type, status, valid_from/to,
-language, heading, page, source_url, sha256, amended_by` (plan §5).
+**Chunk metadata.** `chunk_id, section_uid, parent_uid, doc_id, instrument_id, language, heading, page` plus fields
+inherited from the manifest (status, validity, applies_to, type). Final chunk schema is decided in W1.1.
 
 ---
 

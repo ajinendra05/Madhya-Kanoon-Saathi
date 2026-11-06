@@ -8,10 +8,11 @@ paths:
 
 # Ingestion rules
 
-- Every downloaded file gets a manifest entry: `source_url, fetched_at, sha256, gazette_ref, valid_from, valid_to,
-  status (in_force|draft|model_law|repealed|sub_judice_flag|passed_awaiting_assent|proposal), expires_on (optional),
-  supersedes, local_path, s3_path` (DEC-033).
-  Changing that schema is a major decision.
+- Every downloaded file gets a manifest entry per `docs/specs/manifest.md` (DEC-040); IDs per
+  `docs/specs/section_uid.md`. Validate with `ingestion/manifest.py` before committing the manifest.
+  Changing either schema is a major decision.
+- `mode=index` needs confirmed `status` + `commencement` verification records (index gate). Claude may confirm
+  text/status against official sources; `interpretation` checks need Malik or an advocate.
 - Download only from official sources (India Code, egazette.gov.in, labour.gov.in, MP Labour DMS, ministry portals).
   Aggregators (e.g., Vaquill) may bootstrap parsing but are never the cited source.
 - Prefer the born-digital text layer; OCR (Bodhan) only when there is none. Record which path produced each page.

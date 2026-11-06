@@ -42,6 +42,7 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | T2 | Telegram bot username availability (must end in "bot") | DEC-017 | M | open |
 | T3 | Do Indian government sites block non-Indian IPs (GitHub runners)? | DEC-013 | C | open |
 | T4 | Lambda behaviour after returning a response (freeze) — confirms DEC-010 option C was unreliable | DEC-010 | C | open |
+| T5 | LGD (Local Government Directory) district codes: official source + format for `applies_to.districts` | DEC-040 | C | open |
 
 ## E. Pending decisions (to discuss later — Malik)
 | ID | Topic | Status |
@@ -57,7 +58,7 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | G2 | MP HC struck down 27% OBC quota on 9 Oct 2026; SLP Diary No. 65767/2026 | MP HC judgment; SC case status | Q1 2027 | open |
 | G3 | MP UCC 2026 passed 21 Jul 2026, awaiting Presidential assent | Rashtrapati Bhavan assent list; MP e-gazette | later | open |
 | G4 | MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita 2026 passed 21 Jul 2026; assent/notification | MP Vidhan Sabha; e-gazette | **MVP (labour)** | open |
-| G5 | Registration (MP Amendment) Act 2025, assent 13 Oct 2026; commencement date | MP e-gazette | **MVP (tenancy)** | open |
+| G5 | Registration (MP Amendment) Act 2025, assent 13 Oct 2026; commencement date | MP e-gazette | Dec (land; moved by DEC-037) | open |
 | G6 | Lok Seva Guarantee: Act 24 of 2010 + amendments; notified service list and time limits (e.g., caste 30 working days; income 3 / domicile 7 per a secondary guide) | lokseva.gov.in/MPL; PRS | **MVP** | open |
 | G7 | 181 in MP = women's helpline **and** CM Helpline? Official numbers for 112, 1098, 1930, 14416, 14447, 14555, 14567, 15100 | Official portals → contacts.yaml | **MVP** | open |
 | G8 | MPLRC 2022 Ordinance + 2023 Second Amendment contents; mutation timelines (s.110: 1 vs 2 months); demarcation rules 2019 vs 2020 | revenue.mp.gov.in; e-gazette | **MVP** (land slice, DEC-038) | open |

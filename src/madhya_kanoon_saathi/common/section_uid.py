@@ -1,0 +1,171 @@
+"""Stable IDs for units of law (DEC-040). Spec: ``docs/specs/section_uid.md``.
+
+A ``section_uid`` names a *provision* (not one language or version of its text)::
+
+    IN.RTI2005:s8:ss1:cl_j      central RTI Act, s.8(1)(j)
+    MP.ACA1961:s12:ss1:cl_a     MP Accommodation Control Act, s.12(1)(a)
+    IN.RTIR2012:r4              a rule in a set of rules
+    IN.RTI2005                  the whole instrument
+
+A ``chunk_id`` names one stored text version: ``<section_uid>@<lang>@<valid_from>``.
+
+Canonical uids are ASCII only. Turning a free-text reference (English or Hindi) into a uid is the
+tokeniser's job (DEC-026), not this module's. Hindi clause letters are aligned structurally with
+the English text, never transliterated (DEC-040 point 3).
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from datetime import date
+
+JURISDICTIONS: frozenset[str] = frozenset({"IN", "MP"})
+CHUNK_LANGUAGES: frozenset[str] = frozenset({"hi", "en"})
+
+# Instrument code: uppercase letters/digits, starting with a letter, ending in a 4-digit year.
+_INSTRUMENT_RE = re.compile(r"^(?P<jur>[A-Z]{2})\.(?P<code>[A-Z][A-Z0-9]*?)(?P<year>[0-9]{4})$")
+
+# Segment kinds -> (regex, level). Level 0 = top-level unit of the instrument; higher = deeper.
+_TOP, _SUB, _CLAUSE, _SUBCLAUSE, _NOTE = 0, 1, 2, 3, 4
+_SEGMENTS: tuple[tuple[str, re.Pattern[str], int], ...] = (
+    ("ss", re.compile(r"^ss[1-9][0-9]*[A-Z]{0,2}$"), _SUB),
+    ("scl", re.compile(r"^scl_[ivxlc]+$"), _SUBCLAUSE),
+    ("cl", re.compile(r"^cl_[a-z]{1,3}$"), _CLAUSE),
+    ("prov", re.compile(r"^prov[1-9][0-9]*$"), _NOTE),
+    ("expl", re.compile(r"^expl[1-9][0-9]*$"), _NOTE),
+    ("reg", re.compile(r"^reg[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
+    ("para", re.compile(r"^para[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
+    ("sch", re.compile(r"^sch[1-9][0-9]*[A-Z]?$"), _TOP),
+    ("form", re.compile(r"^form_[a-z0-9]+$"), _TOP),
+    ("s", re.compile(r"^s[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
+    ("r", re.compile(r"^r[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
+)
+
+_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
+
+
+class InvalidSectionUidError(ValueError):
+    """Raised when a string is not a canonical section_uid or chunk_id."""
+
+
+def _segment_kind(segment: str) -> tuple[str, int]:
+    for kind, pattern, level in _SEGMENTS:
+        if pattern.match(segment):
+            return kind, level
+    raise InvalidSectionUidError(f"unknown segment {segment!r}")
+
+
+@dataclass(frozen=True, slots=True)
+class SectionUid:
+    """A parsed section_uid. Build with :func:`parse`; ``str()`` gives the canonical form."""
+
+    jurisdiction: str
+    instrument_code: str  # code + year, e.g. "RTI2005"
+    segments: tuple[str, ...] = ()
+
+    @property
+    def instrument_id(self) -> str:
+        return f"{self.jurisdiction}.{self.instrument_code}"
+
+    @property
+    def year(self) -> int:
+        return int(self.instrument_code[-4:])
+
+    def __str__(self) -> str:
+        return ":".join((self.instrument_id, *self.segments))
+
+
+def parse(text: str) -> SectionUid:
+    """Parse and validate a canonical section_uid. Raises InvalidSectionUidError."""
+    if not text or not text.isascii() or text != text.strip():
+        raise InvalidSectionUidError(f"not a canonical ASCII uid: {text!r}")
+    head, *segments = text.split(":")
+    match = _INSTRUMENT_RE.match(head)
+    if match is None:
+        raise InvalidSectionUidError(f"bad instrument id {head!r} (want e.g. 'IN.RTI2005')")
+    jurisdiction = match["jur"]
+    if jurisdiction not in JURISDICTIONS:
+        raise InvalidSectionUidError(f"unknown jurisdiction {jurisdiction!r}")
+
+    previous: tuple[str, int] | None = None
+    for segment in segments:
+        kind, level = _segment_kind(segment)
+        if previous is None:
+            if level != _TOP:
+                raise InvalidSectionUidError(f"{segment!r} cannot be the first segment")
+        else:
+            prev_kind, prev_level = previous
+            if prev_level == _NOTE:
+                raise InvalidSectionUidError("a proviso/explanation must be the last segment")
+            # The one top-level-under-top-level case: paragraphs inside a schedule.
+            schedule_paragraph = prev_kind == "sch" and kind == "para"
+            if level <= prev_level and not schedule_paragraph:
+                raise InvalidSectionUidError(f"{segment!r} cannot follow {prev_kind!r}")
+            if level == _SUBCLAUSE and prev_kind != "cl":
+                raise InvalidSectionUidError("a sub-clause must follow a clause")
+        previous = (kind, level)
+
+    return SectionUid(jurisdiction, match["code"] + match["year"], tuple(segments))
+
+
+def is_valid(text: str) -> bool:
+    try:
+        parse(text)
+    except InvalidSectionUidError:
+        return False
+    return True
+
+
+def parent(uid: str) -> str | None:
+    """Parent provision computed from the uid itself (None for a whole instrument)."""
+    parsed = parse(uid)
+    if not parsed.segments:
+        return None
+    return str(SectionUid(parsed.jurisdiction, parsed.instrument_code, parsed.segments[:-1]))
+
+
+def ancestors(uid: str) -> list[str]:
+    """All ancestors, nearest first, ending with the instrument id."""
+    result: list[str] = []
+    current = parent(uid)
+    while current is not None:
+        result.append(current)
+        current = parent(current)
+    return result
+
+
+def covers(retrieved: str, expected: str) -> bool:
+    """Eval rule (DEC-040 point 4): equal to, or an ancestor of, the expected unit."""
+    a, b = parse(retrieved), parse(expected)
+    if a.instrument_id != b.instrument_id:
+        return False
+    return b.segments[: len(a.segments)] == a.segments
+
+
+def belongs_to(uid: str, instrument_id: str) -> bool:
+    return parse(uid).instrument_id == instrument_id
+
+
+def make_chunk_id(uid: str, lang: str, valid_from: date) -> str:
+    """``<section_uid>@<lang>@<YYYY-MM-DD>``. Validates every part."""
+    parse(uid)
+    if lang not in CHUNK_LANGUAGES:
+        raise InvalidSectionUidError(f"unknown chunk language {lang!r}")
+    return f"{uid}@{lang}@{valid_from.isoformat()}"
+
+
+def parse_chunk_id(chunk_id: str) -> tuple[SectionUid, str, date]:
+    parts = chunk_id.split("@")
+    if len(parts) != 3:
+        raise InvalidSectionUidError(f"chunk_id needs uid@lang@date: {chunk_id!r}")
+    uid, lang, day = parts
+    if lang not in CHUNK_LANGUAGES:
+        raise InvalidSectionUidError(f"unknown chunk language {lang!r}")
+    if not _DATE_RE.match(day):
+        raise InvalidSectionUidError(f"bad date {day!r}")
+    try:
+        valid_from = date.fromisoformat(day)
+    except ValueError as exc:
+        raise InvalidSectionUidError(f"bad date {day!r}") from exc
+    return parse(uid), lang, valid_from
