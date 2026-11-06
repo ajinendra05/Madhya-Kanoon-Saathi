@@ -1,0 +1,51 @@
+[project]
+name = "madhya-kanoon-saathi"
+version = "0.1.0"
+description = "Hindi-first, citation-verified legal-information assistant for Madhya Pradesh + central Indian laws."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+# Groups per DEC-030. The Lambda image installs only `serve`.
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.3",
+]
+ingest = []
+eval = []
+serve = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/madhya_kanoon_saathi"]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers -m 'not paid'"
+markers = [
+    "slow: long-running tests (models, full index builds)",
+    "paid: calls a paid API (Sarvam, Bedrock); skipped unless run with -m paid",
+    "golden: checks against golden-set rows",
+]

@@ -1,0 +1,57 @@
+# --- Secrets (never commit) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+secrets*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# --- Data (DEC-011): raw PDFs, OCR output, parsed text and indexes stay out of git ---
+data/raw/
+data/parsed/
+data/ocr/
+data/index/
+*.pdf
+
+# --- Models and large artifacts ---
+models/
+*.onnx
+*.safetensors
+*.bin
+*.pt
+*.faiss
+
+# --- Terraform ---
+infra/terraform/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# --- Office copies / OS / editors ---
+*.doc
+*.docx
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Claude Code local-only files ---
+.claude/settings.local.json
+CLAUDE.local.md

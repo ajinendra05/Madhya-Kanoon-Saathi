@@ -1,0 +1,5 @@
+# Keep LF line endings in the repo and working copy, so scripts and Dockerfiles also work in Linux (Lambda, CI).
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
