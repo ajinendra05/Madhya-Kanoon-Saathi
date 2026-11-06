@@ -19,7 +19,7 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 | W0.1 | Validation posts in 3 groups (Malik) | todo | ≥15 real questions logged (redacted) |
 | W0.2 | AWS account: Paid plan, root MFA, ₹100 alert (Malik, DEC-019) | todo | Alert visible in Budgets |
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
-| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; G13 partly (rule + official page; amending notification missing); next G12 → G12 → G6 → G4/G14 → G8) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
+| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; step-2 research pass done for G13, G12, G6, G4/G14, G8 (all partly; see docs/W0.4_FINDINGS.md); next: review findings with Malik) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
 | W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015) | todo | CER table per tool |
 | W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
 
@@ -87,7 +87,8 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
   - India Code returned 403 for a long User-Agent (shortened to `MadhyaKanoonSaathi/0.1`).
   - All MP labour and SLSA files so far are scans, so OCR (W0.5) is on the critical path.
   - The Karnataka HC case cited in DEC-042 is not found (L9).
-- Next: G12 (MP RTI fee rules) → G6 (Lok Seva) → G4/G14 → G8; then W0.4 step 3 (central born-digital texts). Commits are local; push at /end-session after OK.
+- Later the same evening: research pass on G13 → G12 → G6 → G4/G14 → G8; every finding, conflict and open decision is in `docs/W0.4_FINDINGS.md` (temporary).
+- Next: review `docs/W0.4_FINDINGS.md` with Malik (schema gaps, access problems, L7/G13/G14 answers), then W0.4 step 3. Commits are local; push after OK.
 
 ### 2026-11-06 (afternoon)
 - Done: S3–S5 finished; corpus roadmap (CORPUS.md, DEC-032); safety/schema changes (DEC-033); permissions + hooks
