@@ -60,6 +60,32 @@
       "jurisdiction": "MP",
       "title_hi": "मध्यप्रदेश सूचना का अधिकार (फीस तथा अपील) नियम, 2005",
       "notes": "Per code.mp.gov.in (checked 2026-11-06): GAD notification F 11-37-05-एक-9 dt 10.10.2005, effective 10.10.2005; no amendments listed there. Parent: RTI Act 2005 (not yet in manifest)."
+    },
+    {
+      "instrument_id": "MP.LSG2010",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_hi": "मध्यप्रदेश लोक सेवाओं के प्रदान की गारंटी अधिनियम, 2010",
+      "notes": "मध्यप्रदेश अधिनियम क्रमांक २४ सन् २०१० (11 sections); Governor's assent 17.08.2010; published MP Rajpatra (Asadharan) No. 428 dt 18.08.2010, p.855 (Law and Legislative Affairs Dept, क्र. ४३०३-३०९-इक्कीस-अ-(प्रा.)). enacted_on = assent date. Commencement date (25.09.2010 per news) not verified. Official list of Act/Rules amendment releases on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx.",
+      "enacted_on": "2010-08-17"
+    },
+    {
+      "instrument_id": "MP.LSGSERVICES2026",
+      "type": "official_guide",
+      "jurisdiction": "MP",
+      "title_hi": "अधिसूचित सेवायें (MP-PSGA733NotifiedServicesList)",
+      "notes": "Compiled list of services notified under s.3 of the Lok Seva Act, linked from the MP Lok Seva Guarantee portal. The legal basis is the individual s.3 notifications."
+    },
+    {
+      "instrument_id": "MP.LSGR2010",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_hi": "मध्यप्रदेश लोक सेवाओं के प्रदान की गारंटी (आवेदन, अपील, पुनरीक्षण, शास्ति की वसूली तथा प्रतिकर का भुगतान) नियम, 2010",
+      "parent_instrument": "MP.LSG2010",
+      "made_under": [
+        "MP.LSG2010:s10:ss1"
+      ],
+      "notes": "Title and parent power (s.10(1)) as recited in the 09.07.2026 amendment notification. Original 2010 rules text not yet fetched."
     }
   ],
   "documents": [
@@ -350,6 +376,212 @@
           "note": "No amendment found, but a news report (undated, inkl.com, 403) says GAD proposed a ~10x fee hike; outcome unknown."
         }
       ]
+    },
+    {
+      "doc_id": "MP.LSG2010@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=Ji70uWvZ0Yg%3D",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "4303/309/21-A",
+      "notes": "Act (release dt 15/08/2010). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx. Not yet read: may amend the Act or the 2010 Rules (the portal list mixes both).",
+      "fetched_at": "2026-11-06T11:01:09+00:00",
+      "sha256": "41fc39e7260ca6f44eb48b8c1430c53bcf7923456720ef663c49d33d8457f429",
+      "bytes": 530979,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LSG2010/MP.LSG2010_hi_1.pdf",
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 428, 18 Aug 2010, p.855",
+      "verifications": [
+        {
+          "what": "text_matches_source",
+          "by": "claude",
+          "on": "2026-11-06",
+          "result": "confirmed",
+          "method": "read p.1 of the official scan (CCITT G4, converted)",
+          "evidence": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=Ji70uWvZ0Yg%3D p.1",
+          "note": "Header: क्रमांक 428, भोपाल 18 अगस्त 2010; Act 24 of 2010; contents list ss.1-11. Portal lists the release date as 15/08/2010 (differs)."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.LSG2010@hi@2",
+      "mode": "archive",
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=VwAxYoM3C0Y%3D",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "1965-181-इक्कीस-अ-प्रा.",
+      "notes": "Amendment (release dt 05/05/2011). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx. Not yet read: may amend the Act or the 2010 Rules (the portal list mixes both).",
+      "fetched_at": "2026-11-06T11:01:36+00:00",
+      "sha256": "fe6b0e37d8ec54db3d36aff7fef586e32ada1e8ba2e18b092c3cb935206476e5",
+      "bytes": 174620,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LSG2010/MP.LSG2010_hi_2.pdf"
+    },
+    {
+      "doc_id": "MP.LSG2010@hi@3",
+      "mode": "archive",
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=ZRPAOPO995Y%3D",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "293-19-इक्कीस-अ-प्रा.",
+      "notes": "Second amendment (release dt 09/01/2012). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx. Not yet read: may amend the Act or the 2010 Rules (the portal list mixes both).",
+      "fetched_at": "2026-11-06T11:02:02+00:00",
+      "sha256": "8bf97f592b4fae42868a82f28a35202aa472960534dc60ab199fbaff6a3ed20f",
+      "bytes": 129590,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LSG2010/MP.LSG2010_hi_3.pdf"
+    },
+    {
+      "doc_id": "MP.LSG2010@hi@4",
+      "mode": "archive",
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=wjuMKXgX6lw%3D",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "क्र 9511-148",
+      "notes": "मध्यप्रदेश लोक सेवाओं के प्रदान गारंटी संशोधन अध्यादेश 2020 (release dt 19/08/2020). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx. Not yet read: may amend the Act or the 2010 Rules (the portal list mixes both).",
+      "fetched_at": "2026-11-06T11:02:28+00:00",
+      "sha256": "25ad5f65ca9bc3d5f3b3fa7662760fc1c0e8992946ce511d5de3bab6b9b5908f",
+      "bytes": 209093,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LSG2010/MP.LSG2010_hi_4.pdf"
+    },
+    {
+      "doc_id": "MP.LSG2010@hi@5",
+      "mode": "archive",
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=%2FeAPjDwv%2Fdw%3D",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "5135-176-इक्कीस-अ-प्रा.",
+      "notes": "Amendment - validating approval (release dt 03/04/2021). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx. Not yet read: may amend the Act or the 2010 Rules (the portal list mixes both).",
+      "fetched_at": "2026-11-06T11:02:55+00:00",
+      "sha256": "b6230673d3b4d055c16d5c39dc691afef056314aa1554050c5c7b2eb233fa06d",
+      "bytes": 241830,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LSG2010/MP.LSG2010_hi_5.pdf"
+    },
+    {
+      "doc_id": "MP.LSGR2010@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.LSGR2010",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "क्र. ई. 1284057-2026-लो.से.प्र.-इकसठ-178",
+      "notes": "Lok Seva Prabandhan Vibhag notification dt 09.07.2026 amending r.8 clause (vii) of the 2010 rules: adds a proviso for suo motu cognizance by first/second appeal authorities of cases pending beyond the 16th day after the time limit. In force from publication. Text layer is a CCITT G4 image (2 pages).",
+      "fetched_at": "2026-11-06T11:03:22+00:00",
+      "sha256": "b6dcc854d4967c5fdb25a9614e7b91e91262b990f9f1bbaecc995237b60b0e8d",
+      "bytes": 135372,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LSGR2010/MP.LSGR2010_hi_1.pdf",
+      "gate": [
+        "G6"
+      ],
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 185, 9 July 2026, p.369",
+      "valid_from": "2026-07-09",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read p.1 (gazette p.369) of the official scan, converted from CCITT G4",
+          "evidence": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D p.1",
+          "result": "confirmed",
+          "what": "text_matches_source",
+          "note": "Gazette header क्रमांक 185, भोपाल 9 जुलाई 2026; notification क्र. ई.1284057-2026-लो.से.प्र.-इकसठ-178."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read p.1 (gazette p.369) of the official scan, converted from CCITT G4",
+          "evidence": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D p.1",
+          "result": "confirmed",
+          "what": "status",
+          "note": "Final notification published in the MP Rajpatra (Asadharan)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read p.1 (gazette p.369) of the official scan, converted from CCITT G4",
+          "evidence": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D p.1",
+          "result": "confirmed",
+          "what": "commencement",
+          "note": "Para 2: in force from the date of publication in the MP Rajpatra (9 July 2026)."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.LSGSERVICES2026@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.LSGSERVICES2026",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpedistrict.gov.in/UI/document/MP-PSGA733NotifiedServicesList.pdf",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Linked as 'अधिसूचित सेवायें' on https://mpedistrict.gov.in/MPL/abhikaransanstha.aspx. [pending: target_mode=guide]",
+      "fetched_at": "2026-11-06T11:03:52+00:00",
+      "sha256": "96290c0c964226d8242490250b0dab2b14b7bfe29be520daf9bdd1b3786fbf42",
+      "bytes": 886864,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.LSGSERVICES2026/MP.LSGSERVICES2026_hi_1.pdf"
     }
   ]
 }

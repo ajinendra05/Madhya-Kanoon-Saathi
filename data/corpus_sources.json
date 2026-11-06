@@ -140,6 +140,148 @@
         "G12"
       ],
       "notes": "Original 2005 text as hosted on MP Code."
+    },
+    {
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "direct",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G6"
+      ],
+      "doc_id": "MP.LSG2010@hi@1",
+      "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=Ji70uWvZ0Yg%3D",
+      "notification_no": "4303/309/21-A",
+      "notes": "Act (release dt 15/08/2010). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
+    },
+    {
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "direct",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G6"
+      ],
+      "doc_id": "MP.LSG2010@hi@2",
+      "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=VwAxYoM3C0Y%3D",
+      "notification_no": "1965-181-इक्कीस-अ-प्रा.",
+      "notes": "Amendment (release dt 05/05/2011). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
+    },
+    {
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "direct",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G6"
+      ],
+      "doc_id": "MP.LSG2010@hi@3",
+      "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=ZRPAOPO995Y%3D",
+      "notification_no": "293-19-इक्कीस-अ-प्रा.",
+      "notes": "Second amendment (release dt 09/01/2012). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
+    },
+    {
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "direct",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G6"
+      ],
+      "doc_id": "MP.LSG2010@hi@4",
+      "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=wjuMKXgX6lw%3D",
+      "notification_no": "क्र 9511-148",
+      "notes": "मध्यप्रदेश लोक सेवाओं के प्रदान गारंटी संशोधन अध्यादेश 2020 (release dt 19/08/2020). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
+    },
+    {
+      "instrument_id": "MP.LSG2010",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "direct",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G6"
+      ],
+      "doc_id": "MP.LSG2010@hi@5",
+      "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=%2FeAPjDwv%2Fdw%3D",
+      "notification_no": "5135-176-इक्कीस-अ-प्रा.",
+      "notes": "Amendment - validating approval (release dt 03/04/2021). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
+    },
+    {
+      "instrument_id": "MP.LSGR2010",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "direct",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in), Public Service Management Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G6"
+      ],
+      "doc_id": "MP.LSGR2010@hi@1",
+      "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D",
+      "notification_no": "क्र. ई. 1284057-2026-लो.से.प्र.-इकसठ-178",
+      "notes": "Amendment (release dt 09/07/2026). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
+    },
+    {
+      "doc_id": "MP.LSGSERVICES2026@hi@1",
+      "instrument_id": "MP.LSGSERVICES2026",
+      "url": "https://mpedistrict.gov.in/UI/document/MP-PSGA733NotifiedServicesList.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "MP Lok Seva Guarantee portal (mpedistrict.gov.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "guide",
+      "notes": "Linked as 'अधिसूचित सेवायें' on https://mpedistrict.gov.in/MPL/abhikaransanstha.aspx."
     }
   ]
 }

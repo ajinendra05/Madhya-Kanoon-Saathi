@@ -106,7 +106,7 @@ moves `gated → index`, or stays archived if found invalid.
 | G3 | MP UCC 2026 passed 21 Jul 2026, awaiting Presidential assent | Rashtrapati Bhavan assent list; MP e-gazette | later | open |
 | G4 | MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita 2026 passed 21 Jul 2026; assent/notification | MP Vidhan Sabha; e-gazette | **MVP (labour)** | open |
 | G5 | Registration (MP Amendment) Act 2025, assent 13 Oct 2026; commencement date | MP e-gazette | Dec (land; moved by DEC-037) | open |
-| G6 | Lok Seva Guarantee: Act 24 of 2010 + amendments; notified service list and time limits (e.g., caste 30 working days; income 3 / domicile 7 per a secondary guide) | lokseva.gov.in/MPL; PRS | **MVP** | open |
+| G6 | Lok Seva Guarantee: Act 24 of 2010 + amendments; notified service list and time limits (e.g., caste 30 working days; income 3 / domicile 7 per a secondary guide) | lokseva.gov.in/MPL; PRS | **MVP** | open | → 2026-11-06: Act 24 of 2010 + amendments + services list fetched; certificate time limits still not found officially (see `docs/W0.4_FINDINGS.md` §5)
 | G7 | 181 in MP = women's helpline **and** CM Helpline? Official numbers for 112, 1098, 1930, 14416, 14447, 14555, 14567, 15100 | Official portals → contacts.yaml | **MVP** | open |
 | G8 | MPLRC 2022 Ordinance + 2023 Second Amendment contents; mutation timelines (s.110: 1 vs 2 months); demarcation rules 2019 vs 2020 | revenue.mp.gov.in; e-gazette | **MVP** (land slice, DEC-038) | open |
 | G9 | CM Kisan Kalyan amount (₹6,000 vs ₹4,000); Bhavantar Kharif 2026 dates; stubble-burning disqualification order | Agriculture dept orders | Dec | open |
