@@ -13,32 +13,52 @@ The status column uses our status flags. New flags proposed by [R] are marked *(
 
 ---
 
-## Phase 0 — November 2026 MVP (existing scope)
+## Phase 0 — November 2026 MVP (reviewed 6 Nov 2026, DEC-037)
 
-| # | Instrument | Domain | Status (claimed) | Source portal | OCR? |
-| --- | --- | --- | --- | --- | --- |
-| 1 | RTI Act 2005 (EN + HI) | RTI | in_force; s.8(1)(j) amended by DPDP s.44(3), under SC challenge [P] | India Code; rti.gov.in | no |
-| 2 | RTI Rules 2012 | RTI | in_force [P] | egazette / DoPT | maybe |
-| 3 | DPDP Act 2023: s.44(3) + definitions | RTI/privacy | in_force, phased [P] | India Code / MeitY | no |
-| 4 | Consumer Protection Act 2019 + Jurisdiction Rules 2021 + E-Commerce Rules 2020 + commission regs | Consumer | in_force [P] | India Code; consumeraffairs.nic.in; e-jagriti.gov.in | no |
-| 5 | Code on Wages; IR Code; SS Code; OSH Code | Labour | in_force from 21 Nov 2025 [P] | India Code; labour.gov.in | no |
-| 6 | Central Rules 2026 + Model Standing Orders | Labour | in_force [P] | labour.gov.in | maybe |
-| 7 | MP draft rules under the four codes (5 Jan 2026) | Labour | draft [P] | labour.mponline.gov.in | maybe |
-| 7a | **MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita Bill 2026**, passed 21 Jul 2026 | Labour | passed; assent/notification to verify [R] | MP Vidhan Sabha / e-gazette | maybe |
-| 8 | MP minimum-wage notifications (31 Mar 2026 + any Oct 2026 revision) | Labour | time-bound [P] | MP Labour Commissioner | likely |
-| 9 | MP Accommodation Control Act 1961 (EN + HI) | Tenancy | in_force [P] | India Code; MP gazette | maybe |
-| 10 | MP Parisar Kirayedari Adhiniyam 2010 | Tenancy | status unknown, lawyer to confirm (OPEN_QUESTIONS L1) [P] | MP gazette | likely |
-| 11 | Model Tenancy Act 2021 | Tenancy | model_law, not binding in MP [P] | MoHUA | no |
-| 12 | Transfer of Property Act ss.105–111; Registration Act 1908 s.17 | Tenancy | in_force [P] | India Code | no |
-| 12a | **Registration (MP Amendment) Act 2025**: reconveyance deeds; s.80-C fees | Tenancy/land | assent 13 Oct 2026; commencement to verify [R] | MP e-gazette | maybe |
-| 13 | Legal Services Authorities Act 1987 (s.12) | Legal aid | in_force [P] | India Code; NALSA | no |
-| 14 | 3–5 scheme guidelines (e.g., e-Shram, PM-SVANidhi, one MP worker scheme) | Schemes | time-bound [P] | ministry / MP portals | maybe |
-| 15 | **MP Lok Sewaon ke Pradan ki Guarantee Adhiniyam 2010** + rules + notified service list | Public services | in_force; service list changes by notification [R] | lokseva.gov.in/MPL; PRS copy | some |
-| 16 | **Income / domicile / caste certificate *procedure*** (services under #15; e-District) | Public services | in_force; time limits to verify against the live list [R] | lokseva.gov.in; mpedistrict.gov.in | some |
-| 17 | **Grievance routes:** CM Helpline 181 (MP), CPGRAMS | Public services | — | cmhelpline.mp.gov.in; pgportal.gov.in | no |
+**Ingestion modes:**
+- `index`: ingest and make searchable.
+- `gated`: ingest only after the named check; until then the status decides the caveat or abstention.
+- `archive`: download + checksum, but keep out of the search index.
+- `guide`: an official procedure page (doc_type `official_guide`), not law.
+
+| # | Instrument | Domain | Status (claimed) | Mode | Source portal | OCR? |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | RTI Act 2005 (EN + HI) | RTI | in_force; s.8(1)(j) amended by DPDP s.44(3), under SC challenge [P] | index | India Code; rti.gov.in | no |
+| 2 | RTI Rules 2012 (central public authorities) | RTI | in_force [P] | index | egazette / DoPT | maybe |
+| 2a | **MP RTI fee rules** (state public authorities; exact name TBC) | RTI | to verify (G12) | gated: G12 | MP GAD / e-gazette | maybe |
+| 3 | DPDP Act 2023: **only** s.44(3) + the definitions it needs | RTI/privacy | in_force, phased [P] | index | India Code / MeitY | no |
+| 4 | Consumer Protection Act 2019 + Jurisdiction Rules 2021 + E-Commerce Rules 2020 | Consumer | in_force [P] | index | India Code; consumeraffairs.nic.in | no |
+| 4b | e-Jagriti filing steps (help docs only) | Consumer | — | guide | e-jagriti.gov.in | no |
+| 5 | Code on Wages; IR Code; SS Code; OSH Code (**full text**) | Labour | in_force from 21 Nov 2025 [P] | index | India Code; labour.gov.in | no |
+| 6 | Central Rules 2026 under the four codes | Labour | in_force [P] | index | labour.gov.in | maybe |
+| 7 | MP draft rules under the four codes (5 Jan 2026) | Labour | draft [P] | index | labour.mponline.gov.in | maybe |
+| 7a | MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita 2026 | Labour | in_force if assent + notification confirmed, else passed_awaiting_assent [R] | gated: G4 | MP Vidhan Sabha / e-gazette | maybe |
+| 8 | MP minimum-wage notification **in force now** (the 31 Mar 2026 one expired 30 Sep 2026 [P]) | Labour | time-bound, `expires_on` required | gated: L4 | MP Labour Commissioner | likely |
+| 9 | MP Accommodation Control Act 1961 (EN + HI) | Tenancy | in_force [P] | index | India Code; MP gazette | maybe |
+| 10 | MP Parisar Kirayedari Adhiniyam 2010 | Tenancy | unknown (L1, lawyer) [P] | **archive** until L1 resolved | MP gazette | likely |
+| 11 | Model Tenancy Act 2021 | Tenancy | model_law, not binding in MP [P] | index | MoHUA | no |
+| 12 | Transfer of Property Act **ss.105–111 only**; Registration Act 1908 **s.17 only** | Tenancy | in_force [P] | index | India Code | no |
+| 13 | Legal Services Authorities Act 1987 (s.12) | Legal aid | in_force [P] | index | India Code; NALSA | no |
+| 13a | **MP State Legal Services Authority rules: income limit for free legal aid** (exact name TBC) | Legal aid | to verify (G13) | gated: G13 | MP SLSA / e-gazette | maybe |
+| 14 | Scheme guidelines: **e-Shram + PM-SVANidhi only** | Schemes | time-bound, `expires_on` where stated [P] | index | ministry portals | maybe |
+| 15 | MP Lok Sewaon ke Pradan ki Guarantee Adhiniyam 2010 + rules + notified service list | Public services | in_force; service list changes by notification [R] | gated: G6 | lokseva.gov.in/MPL; PRS copy | some |
+| 16 | Income / domicile / caste certificate *procedure* (services under #15; e-District) | Public services | in_force; time limits from the live list [R] | gated: G6 | lokseva.gov.in; mpedistrict.gov.in | some |
+| 17 | Grievance routes: CM Helpline 181 (MP), CPGRAMS | Public services | — | guide + `contacts.yaml` (DEC-018) | cmhelpline.mp.gov.in; pgportal.gov.in | no |
+| 18 | MP Shops and Establishments Act | Labour | to verify; may be changed by 7a (G14) | **decide after G14** | MP Labour / India Code | maybe |
 
 Items 15–17 are the "Sarkari Seva aur Praman-patra" module. Caste certificates are **procedure only**: the bot never
-decides anyone's caste status. Items 7a and 12a change existing domains.
+decides anyone's caste status (DEC-033 sensitive-data rule).
+
+**Removed from Phase 0 (DEC-037):**
+- Registration (MP Amendment) Act 2025 → Phase 1 (it's about land and mortgages, not tenancy).
+- Model Standing Orders → later (employer/CA phase).
+- Consumer commission procedure regulations → later.
+- MP worker scheme → Phase 1 with the schemes.
+
+**Excluded:** DPDP Rules 2025. They govern our own compliance, not users' questions.
+
+**Golden-set effect (DEC-037):** the schemes slice drops from 10 to ~5 rows. The other ~5 move to public-services and
+state-RTI rows. Total stays 120.
 
 ## Phase 1 — December 2026: land + farmers
 
@@ -46,7 +66,9 @@ decides anyone's caste status. Items 7a and 12a change existing domains.
 | --- | --- | --- | --- |
 | MP Land Revenue Code 1959 (2018, 2021 amendments; 2022 Ordinance + 2023 Second Amendment contents unverified) | in_force | India Code; revenue.mp.gov.in; PRS | some |
 | Rules: Mutation 2018, Demarcation (2019 vs "2020" conflict), Assessment 2018, Survey & Land Records 2020, Restoration of Dispossessed Bhumiswami 2018 | in_force | revenue.mp.gov.in | some |
-| Indian Stamp Act with MP amendments; Sampada 2.0 procedure | in_force; 2025 stamp bill to verify | sampada.mpigr.gov.in | no |
+| Indian Stamp Act with MP amendments (incl. rent-agreement duty); Sampada 2.0 procedure | in_force; 2025 stamp bill to verify | sampada.mpigr.gov.in | no |
+| Registration (MP Amendment) Act 2025: reconveyance deeds, s.80-C fees (moved from Phase 0, DEC-037) | assent 13 Oct 2026; commencement to verify (G5) | MP e-gazette | maybe |
+| One MP worker/farmer scheme (moved from Phase 0, DEC-037) | time-bound | MP portals | likely |
 | SVAMITVA property cards; RFCTLARR Act 2013 | in_force | India Code; ministry | no |
 | MP Nagar Tatha Gram Nivesh (Amendment) 2025: land pooling | to verify | MP e-gazette | maybe |
 | PM-KISAN; PMFBY (helpline 14447); KCC; PM-AASHA | time-bound / seasonal | pmkisan.gov.in; pmfby.gov.in; RBI | no |

@@ -289,6 +289,32 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: A public repo lets interviewers browse it, and GitHub Pages and Actions are free for public repos (not verified). Gitleaks passed and `.env` is ignored.
 - Effects: Everything committed is world-readable, so the no-secrets/no-PII rules and gitleaks matter even more. Raw user questions never go in git; golden rows are stored redacted only.
 
+## DEC-037 — Phase 0 corpus review
+- Date: 2026-11-06 | Status: accepted ("all as recommended") | Approved by: Malik
+- Context: Item-by-item check of the November corpus before W0.4 starts.
+- Decision (details in `docs/CORPUS.md` Phase 0 table):
+  - **Index:** RTI Act; RTI Rules 2012; DPDP s.44(3) + needed definitions only; CPA 2019 + Jurisdiction Rules + E-Commerce Rules; four Labour Codes in full; Central Rules 2026; MP draft labour rules; MP Accommodation Control Act 1961; MTA 2021 (model_law); TPA ss.105–111 + Registration Act s.17; LSA Act s.12; e-Shram + PM-SVANidhi.
+  - **Gated on verification:**
+    - MP Shram Shakti Sanhita (G4)
+    - current MP minimum-wage notification (L4)
+    - Lok Seva Act + certificate procedure (G6)
+    - **added:** MP RTI fee rules (G12), MP SLSA free-legal-aid income limit (G13)
+  - **Archive only (not indexed):** MP Parisar Kirayedari Adhiniyam 2010, until L1 is resolved.
+  - **Official guides, not law:** e-Jagriti filing steps; CM Helpline / CPGRAMS (plus `contacts.yaml`).
+  - **Decide after G14:** MP Shops and Establishments Act.
+  - **Moved out:**
+    - Registration (MP Amendment) 2025 → Dec land phase
+    - one MP scheme → Dec
+    - Model Standing Orders → later
+    - commission procedure regulations → later
+  - **Excluded:** DPDP Rules 2025.
+  - **Golden set:** schemes slice 10 → ~5; ~5 rows move to public-services and state-RTI; total stays 120.
+- Why:
+  - The 31 Mar 2026 MP wage notification expired on 30 Sep 2026 (per plan.md), so the current one is mandatory before wage answers.
+  - Most MP RTI applications go to state authorities, so central rules alone would give state-incorrect fee answers.
+  - Indexing a law of unknown status risks citing non-law.
+- Effects: ~18 indexed or gated instruments · W0.4 starts with the wage notification and the verification items · fewer time-bound scheme documents to maintain.
+
 ---
 
 ## Pending decisions (not yet made)

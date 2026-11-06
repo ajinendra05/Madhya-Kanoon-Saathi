@@ -65,6 +65,16 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | G10 | PM-KISAN instalment dates; RTE MP 2026-27 dates | pmkisan.gov.in; rteportal.mp.gov.in | Dec / Q1 | open |
 | G11 | SC/ST PoA relief schedule (₹85,000–₹8.25 lakh) and task-force proposal status | PoA Rules Annexure I; MoSJE | Q2 2027 | open |
 
+## H. Added by the Phase 0 review (DEC-037)
+| ID | Question | Verify at | Phase | Status |
+| --- | --- | --- | --- | --- |
+| G12 | Exact name, date and content of MP's RTI fee rules for state public authorities (fees, payment mode, BPL exemption) | MP GAD; MP e-gazette | **MVP** | open |
+| G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | open |
+| G14 | Is the MP Shops and Establishments Act still in force, or changed/replaced by the 2026 Sanhita (G4)? | MP Labour; e-gazette | **MVP** (decide include) | open |
+
+L4 (MP minimum wage after 1 Oct 2026) is now **MVP-blocking**: the 31 Mar 2026 notification expired 30 Sep 2026
+(per plan.md). Without the current one, wage-amount answers abstain.
+
 ## F. Environment
 | ID | Question | Owner | Status |
 | --- | --- | --- | --- |
