@@ -16,6 +16,50 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | L5 | Status of SC challenges to DPDP s.44(3) / RTI s.8(1)(j) (no stay as of 3 Nov 2026 per plan) | Sub-judice caveat | C | open |
 | L6 | Official sources for escalation contacts (NALSA 15100, Nyaya Setu 7217711814, e-Jagriti, RCA) | DEC-018 contacts.yaml | C | open |
 
+### L7 in detail: MP wage notifications after the repeal of the Minimum Wages Act (open)
+
+**The question.** MP's VDA wage notifications issued *after* 21.11.2025 still say they are made "under the Minimum
+Wages Act, 1948". That Act was repealed on that date. Are they valid under the Code on Wages, and on what power?
+- Oct 2026: no. 1/11/अन्वे./पांच/2024/22288-337 dt 30.09.2026 (+ Book 22283-337), valid 01.10.2026–31.03.2027
+- Apr 2026: no. 6445-6650 dt 31.03.2026, valid 01.04.2026–30.09.2026 (expired)
+
+**What is decided (DEC-042, Malik, 2026-11-06).**
+- The Code on Wages, 2019 governs.
+- Pre-21.11.2025 notifications may continue under s.69(2) if not contrary to the Code (see L8).
+- Post-21.11.2025 notifications do **not** automatically get s.69(2) protection. A continuity argument exists via
+  the saved CPI-linked structure and s.7(1)–(2).
+
+**What is verified (Claude, 2026-11-06)**, from the official India Code PDF (`IN.COW2019@en@1`):
+- s.69(1)–(3) text (p.30): repeal; savings "to the extent they are not contrary to the provisions of this Code";
+  General Clauses Act s.6.
+- Commencement by S.O. 5322(E) dt 21.11.2025 (p.5 footnote).
+- s.7(1)–(2) cost-of-living allowance (pp.9–10).
+- The Oct 2026 notification's number, date, issuing office and validity, read from p.1 of the official scan.
+- **Not verified:** the Karnataka HC judgment of 3 June 2026 (L9). The Gazette PDF of S.O. 5322(E) is found but not
+  yet read.
+
+**What is still open (needs Malik or an advocate):**
+1. Is the Labour Commissioner validly appointed or notified as the authority for the cost-of-living allowance under
+   Code s.7(2)? (Or is the old appointment saved by s.69(2)?)
+2. Which statutory power supports a post-repeal VDA revision: a saved pre-repeal structure, or a fresh exercise
+   under ss.6–8 of the Code (which needs the s.8 procedure)?
+3. Has MP notified its own Code on Wages rules or a fresh minimum-wage notification under the Code? (Ties to L3.)
+
+**How it is implemented.**
+- Manifest (`data/corpus_manifest.json`):
+  - `MP.MWVDAOCT2026` docs `@hi@1`, `@hi@2`: `mode: gated`, `gate: ["L7"]`. The Code's index gate keeps them out of
+    the search index.
+  - `MP.MWVDAAPR2026@hi@1`: `mode: archive`, expired (`valid_to` 2026-09-30), so `is_current()` is false.
+  - `IN.MWA1948`: instrument only, `superseded_by: ["IN.COW2019"]`, no document, never shown as operative.
+  - `IN.COW2019@en@1`: `mode: index`, with confirmed status / commencement / text checks.
+- No new status flag: "transitional legal review" = `gated` on L7 (DEC-042 mapping, Claude's choice).
+- Bot effect: wage-**amount** answers abstain until L7 is closed, or until a caveat wording is approved in W2.1.
+  The bot may still explain the Code's minimum-wage provisions (ss.5–9) from the indexed Code text.
+
+**What closes L7.** An advocate's (or Malik's) written answer to points 1–3, recorded as a verification record
+(`what: interpretation`, `by: malik|advocate`) on the notification, plus OCR of the scan (W0.5). Then the document
+moves `gated → index`, or stays archived if found invalid.
+
 ## B. Prices, limits and availability (TODO(verify))
 | ID | Question | Used in | Owner | Status |
 | --- | --- | --- | --- | --- |
