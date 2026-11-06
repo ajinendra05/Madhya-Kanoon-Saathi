@@ -75,6 +75,14 @@ W2.1 decision). Scheme guidelines are non-binding here but are the primary sourc
 - **Index gate:** `mode=index` needs `confirmed` records for both `status` and `commencement`, and no `conflict`.
 - `mode=guide` only for `official_guide` / `scheme_guideline`; official guides can't be `index`.
 
+### Sources file and the downloader (DEC-041)
+`data/corpus_sources.json` = `{"schema_version": 1, "sources": [...]}`; each row has `doc_id, instrument_id, url,
+language, status, publisher, applies_to, target_mode, gate` plus optional `gazette_ref, notification_no, valid_from,
+valid_to, expires_on, notes`. `scripts/fetch_corpus.py` fills `fetched_at, sha256, bytes, content_type,
+text_layer, local_path` and writes the row with **`mode=archive`** (note `[pending: target_mode=…]`). Promotion to
+`index`/`gated`/`guide` is a manual edit made together with the verification records. Changed bytes on re-fetch are
+saved as `*.new` and never applied automatically.
+
 ### Computed, never stored
 `Document.is_current(on)`: `status == in_force` and `on` inside `valid_from` … `valid_to` and not after `expires_on`.
 Retrieval filters on this at query time.

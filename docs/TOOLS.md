@@ -52,6 +52,7 @@ check date are given. Verify against the official page before code depends on it
 | Models | Sarvam Document Digitization | OCR comparison in bake-off only (~₹10) | decided (DEC-014) |
 | Library | FAISS | Exact vector search (`IndexFlatIP`) | decided (DEC-003, 025) |
 | Library | bm25s | Keyword (BM25) search | decided (DEC-003) |
+| Library | pypdf | PDF text-layer detection + extraction | decided (DEC-041) |
 | Library | ONNX Runtime | Runs int8/fp32 models on CPU in Lambda | decided (DEC-021) |
 | Library | Ragas, DeepEval | RAG metrics, pytest-style eval assertions | planned |
 | Dev | Terraform | Infrastructure as code | planned |
@@ -261,8 +262,17 @@ check date are given. Verify against the official page before code depends on it
 - **What:** pytest-style assertions for LLM outputs.
 - **How we use it:** CI-friendly eval tests. Our own deterministic scorers matter most and need no LLM.
 
-### PDF text extraction library — to decide (W0)
-- Needed for born-digital PDFs (text layer + page numbers). Choice will be proposed as a decision (new dependency).
+### pypdf — PDF text extraction (DEC-041)
+- **What:** a pure-Python PDF reader (`pypdf==6.21.4`, BSD-3-Clause per its package metadata). `ingest` group only.
+- **How we use it:** the downloader counts extractable characters per page to set `text_layer`
+  (born_digital / scanned / mixed; a page needs ≥ 30 non-space characters). W1.1 uses it for text + page numbers.
+- **Why this one:** no system install (works on the Windows laptop and Colab), no required dependencies.
+- **Limit:** Hindi PDFs with legacy (non-Unicode) fonts can extract as garbage while still counting as text.
+  W1.1 must check extracted Devanagari, not just character counts.
+
+### urllib (stdlib) — corpus downloader
+- **How we use it:** `ingestion/fetch.py` downloads from `data/corpus_sources.json` with retries, a generic
+  project User-Agent, a 3 s delay between requests, atomic writes and sha256-based skip. No dependency needed.
 
 ---
 

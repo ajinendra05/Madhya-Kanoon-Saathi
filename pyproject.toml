@@ -14,7 +14,9 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.17.3",
 ]
-ingest = []
+ingest = [
+    "pypdf>=6.21.4",
+]
 eval = []
 serve = []
 
@@ -26,7 +28,7 @@ build-backend = "hatchling.build"
 packages = ["src/madhya_kanoon_saathi"]
 
 [tool.uv]
-default-groups = ["dev"]
+default-groups = ["dev", "ingest"]
 
 [tool.ruff]
 line-length = 100

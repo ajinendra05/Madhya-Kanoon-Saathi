@@ -370,6 +370,15 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: efficiency: no new dependency, uid parsing is O(length) · accuracy: unverified or expired documents can't be indexed or cited as current · application: every later module (chunker, tokeniser, eval, law-watch) uses these IDs · cost ₹0 · time: W0.3 ~1 day, W0.4 +~2–3 h to fill fields.
 - Follow-ups: LGD district codes (OPEN_QUESTIONS); move manifest validation to pydantic if it is added in W2 for LLM JSON output (needs approval); fix the unverified Hindi example in `.claude/rules/retrieval.md`.
 
+## DEC-041 — W0.4 approach and `pypdf` for text-layer detection
+- Date: 2026-11-06 | Status: accepted ("ok, A") | Approved by: Malik
+- Context: Each manifest document needs `text_layer` (born_digital / scanned / mixed), so the downloader must tell whether a PDF already contains text. W0.4 also needed a work order.
+- Options: **A) add `pypdf` to the `ingest` group** · B) stdlib byte-scan for font markers (unreliable on scanned gazettes) · C) set by hand per file (slow, doesn't scale).
+- Decision: **A.** `pypdf==6.21.4` (pinned in `uv.lock`) in the `ingest` group, which is now also a uv default group for local dev. The Lambda image still installs only `serve`. Licence **BSD-3-Clause** (read from the installed package metadata, `License-Expression`, 2026-11-06); no required dependencies on Python 3.12.
+  W0.4 order: (1) stdlib `urllib` downloader driven by `data/corpus_sources.json`, which writes draft manifest rows; (2) read-only research of gates L4 → G13 → G12 → G6 → G4/G14 → G8; (3) born-digital central texts; (4) MP items as gates clear, then guides.
+- Why: A wrong `text_layer` sends a file down the wrong path (OCR or not), the main source of bad quotes. W1.1 needs a PDF text reader anyway.
+- Effects: ₹0 · ~1 MB pure-Python dependency · W0.4 likely runs past 9 Nov because MP sources are slow to find.
+
 ---
 
 ## Pending decisions (not yet made)
