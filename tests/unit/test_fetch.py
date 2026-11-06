@@ -77,6 +77,14 @@ def test_text_layer_detection() -> None:
     assert detect_text_layer(b"<html>hi</html>", "text/html") == "born_digital"
 
 
+def test_latin_ocr_layer_in_hindi_document_counts_as_scanned() -> None:
+    # Real case: a Hindi scan whose embedded OCR layer is Latin garbage (0% Devanagari).
+    pdf = _text_pdf([LONG])
+    assert detect_text_layer(pdf, "application/pdf", "en") == "born_digital"
+    assert detect_text_layer(pdf, "application/pdf", "hi") == "scanned"
+    assert detect_text_layer(pdf, "application/pdf") == "born_digital"
+
+
 def test_unreadable_pdf_raises() -> None:
     with pytest.raises(ValueError):
         detect_text_layer(b"%PDF-1.4 garbage", "application/pdf")
@@ -267,3 +275,55 @@ def test_http_download_sends_project_user_agent(server: tuple[str, list[str]]) -
 def test_http_download_rejects_other_schemes() -> None:
     with pytest.raises(ValueError):
         http_download("file:///etc/passwd")
+
+
+# --------------------------------------------------------------- MP Labour DMS two-hop (localhost)
+
+
+@pytest.fixture
+def dms_server() -> Iterator[str]:
+    """Fake of the DMS viewer: page links to a token URL that only works with the session cookie."""
+
+    class Handler(http.server.BaseHTTPRequestHandler):
+        def do_GET(self) -> None:
+            if self.path.startswith("/portal/services/ImageShow.aspx"):
+                page = b'<a href="ShowPDF.axd?Path=abc%2b&amp;recID=1" id="PDF">View</a>'
+                self.send_response(200)
+                self.send_header("Set-Cookie", "sess=ok; Path=/")
+                self.send_header("Content-Type", "text/html")
+                self.end_headers()
+                self.wfile.write(page)
+            elif self.path == "/portal/services/ShowPDF.axd?Path=abc%2b&recID=1" and (
+                "sess=ok" in self.headers.get("Cookie", "")
+            ):
+                body = _text_pdf([LONG])
+                self.send_response(200)
+                self.send_header("Content-Type", "application/pdf")
+                self.end_headers()
+                self.wfile.write(body)
+            else:
+                self.send_response(404)
+                self.end_headers()
+
+        def log_message(self, *args: Any) -> None:
+            pass
+
+    httpd = http.server.HTTPServer(("127.0.0.1", 0), Handler)
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    yield f"http://127.0.0.1:{httpd.server_port}/portal/services/ImageShow.aspx?src=eA=="
+    httpd.shutdown()
+
+
+def test_mp_labour_dms_two_hop_download(dms_server: str) -> None:
+    body, content_type = fetch.mp_labour_dms_download(dms_server)
+    assert body.startswith(b"%PDF") and content_type == "application/pdf"
+
+
+def test_mp_labour_dms_url_is_base64_of_path() -> None:
+    url = fetch.mp_labour_dms_url("/QL_Shram/DMS/Document/x.pdf")
+    assert url == fetch.MP_LABOUR_DMS_VIEWER + "L1FMX1NocmFtL0RNUy9Eb2N1bWVudC94LnBkZg=="
+
+
+def test_unknown_resolver_rejected() -> None:
+    errors = validate_sources({"schema_version": 1, "sources": [_source(resolver="magic")]})
+    assert any("unknown resolver" in e for e in errors)

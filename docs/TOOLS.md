@@ -322,7 +322,7 @@ check date are given. Verify against the official page before code depends on it
 | egazette.gov.in | RTI Rules 2012, Central labour Rules 2026, notifications |
 | labour.gov.in | Labour Codes and Central Rules |
 | MP Labour DMS (labour.mponline.gov.in) | MP draft rules under the four codes |
-| MP Labour Commissioner, Indore | MP minimum-wage notifications |
+| MP Labour Commissioner, Indore | MP minimum-wage notifications. DMS listing `labour.mponline.gov.in/.../Display_Documents.aspx?Sid=8`; files open via `ImageShow.aspx?src=<base64 path>` → session-bound `ShowPDF.axd` (resolver `mp_labour_dms`). Files are phone scans: OCR needed |
 | consumeraffairs.nic.in, e-jagriti.gov.in | Consumer Protection Act, rules, procedure |
 | rti.gov.in | RTI Act and Rules |
 | MoHUA | Model Tenancy Act 2021 (model law only) |

@@ -9,7 +9,8 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | L1 | Which MP tenancy law governs: Accommodation Control Act 1961 vs Parisar Kirayedari Adhiniyam 2010? | Tenancy answers are wrong if the wrong Act is cited | M (advocate) | open |
 | L2 | Most recent official list of states adopting the Model Tenancy Act (RS replies conflict) | "Model law" caveat wording | C | open |
 | L3 | Is there a final MP gazette notification of rules under the four Labour Codes (drafts 5 Jan 2026)? Content of the reported Jul 2026 labour bill? | `status=draft` vs `in_force` | C | open |
-| L4 | MP minimum-wage notification after 1 Oct 2026 | Time-versioned wage answers | C | open |
+| L4 | MP minimum-wage notification after 1 Oct 2026 | Time-versioned wage answers | C | resolved 2026-11-06: notification 1/11/अन्वे./पांच/2024/22288-337 dt 30.09.2026, valid 01.10.2026–31.03.2027, from the MP Labour DMS (`MP.MWVDAOCT2026` in the manifest; read from p.1 of the official scan). Scanned, so needs OCR (W0.5) |
+| L7 | The Oct 2026 MP wage notification is issued "under the Minimum Wages Act, 1948", while plan.md says the Code on Wages is in force from 21 Nov 2025. Is it still the operative instrument for MP wage answers (savings/transition clause), and how should answers cite it? | Wage answers cite the right law | M (advocate) | open: gates `MP.MWVDAOCT2026` |
 | L5 | Status of SC challenges to DPDP s.44(3) / RTI s.8(1)(j) (no stay as of 3 Nov 2026 per plan) | Sub-judice caveat | C | open |
 | L6 | Official sources for escalation contacts (NALSA 15100, Nyaya Setu 7217711814, e-Jagriti, RCA) | DEC-018 contacts.yaml | C | open |
 
@@ -73,8 +74,8 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | open |
 | G14 | Is the MP Shops and Establishments Act still in force, or changed/replaced by the 2026 Sanhita (G4)? | MP Labour; e-gazette | **MVP** (decide include) | open |
 
-L4 (MP minimum wage after 1 Oct 2026) is now **MVP-blocking**: the 31 Mar 2026 notification expired 30 Sep 2026
-(per plan.md). Without the current one, wage-amount answers abstain.
+L4 is resolved (current notification found, see group A). Wage-amount answers are now gated on **L7** (which law
+the notification operates under) and on OCR of the scan (W0.5).
 
 ## F. Environment
 | ID | Question | Owner | Status |

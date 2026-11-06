@@ -16,12 +16,17 @@ Safety rules:
 from __future__ import annotations
 
 import argparse
+import base64
 import copy
 import hashlib
+import html
+import http.cookiejar
 import io
 import json
 import os
+import re
 import time
+import urllib.parse
 import urllib.request
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
@@ -43,6 +48,10 @@ TIMEOUT_S = 60.0
 RETRIES = 3
 # A page with at least this many non-space characters of extractable text counts as a text page.
 MIN_TEXT_CHARS_PER_PAGE = 30
+# Scanner apps often embed a Latin-only OCR layer in Hindi scans (seen 2026-11-06 in the MP Labour
+# notification 6445-6650: 0% Devanagari). For Hindi text to count, this share of letters must be
+# Devanagari; otherwise the page is treated as having no usable text.
+MIN_DEVANAGARI_SHARE = {"hi": 0.5, "bi": 0.2}
 
 # Fields a sources row copies into the manifest document as-is.
 _COPIED_FIELDS = (
@@ -59,7 +68,9 @@ _COPIED_FIELDS = (
     "expires_on",
     "notes",
 )
-_SOURCE_FIELDS = {"doc_id", "url", "target_mode", "gate", *_COPIED_FIELDS} - {"source_url"}
+_SOURCE_FIELDS = {"doc_id", "url", "resolver", "target_mode", "gate", *_COPIED_FIELDS} - {
+    "source_url"
+}
 
 Downloader = Callable[[str], tuple[bytes, str]]
 
@@ -78,13 +89,28 @@ def sha256_hex(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def detect_text_layer(data: bytes, content_type: str) -> str:
-    """born_digital / scanned / mixed for PDFs (via pypdf); other content types are born_digital."""
+def _usable_chars(text: str, language: str | None) -> int:
+    chars = "".join(text.split())
+    min_share = MIN_DEVANAGARI_SHARE.get(language or "")
+    if min_share is not None:
+        letters = [c for c in chars if c.isalpha()]
+        devanagari = sum("ऀ" <= c <= "ॿ" for c in letters)
+        if letters and devanagari / len(letters) < min_share:
+            return 0
+    return len(chars)
+
+
+def detect_text_layer(data: bytes, content_type: str, language: str | None = None) -> str:
+    """born_digital / scanned / mixed for PDFs (via pypdf); other content types are born_digital.
+
+    "scanned" means "no *usable* text layer": for Hindi documents, a page whose extracted text is
+    mostly non-Devanagari (a bad embedded OCR layer or legacy font) counts as having no text.
+    """
     if "pdf" not in content_type and not data.startswith(b"%PDF"):
         return "born_digital"
     try:
         reader = PdfReader(io.BytesIO(data))
-        counts = [len("".join((page.extract_text() or "").split())) for page in reader.pages]
+        counts = [_usable_chars(page.extract_text() or "", language) for page in reader.pages]
     except (PdfReadError, ValueError, KeyError) as exc:
         raise ValueError(f"unreadable PDF: {exc}") from exc
     if not counts:
@@ -104,22 +130,77 @@ def local_name(doc_id: str, content_type: str, url: str) -> str:
     return doc_id.replace(":", "_").replace("@", "_") + ext
 
 
-def http_download(url: str) -> tuple[bytes, str]:
-    """GET with retries + backoff. Returns (body, content type without parameters)."""
+def _check_scheme(url: str) -> None:
     if not url.startswith(("https://", "http://")):
         raise ValueError(f"refusing non-http(s) url {url!r}")
+
+
+def _with_retries(fetch_once: Callable[[], tuple[bytes, str]]) -> tuple[bytes, str]:
     last_error: Exception | None = None
     for attempt in range(RETRIES):
         try:
-            request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-            with urllib.request.urlopen(request, timeout=TIMEOUT_S) as response:
-                body: bytes = response.read()
-                content_type = response.headers.get_content_type()
-                return body, str(content_type)
+            return fetch_once()
         except OSError as exc:  # URLError, HTTPError and timeouts are all OSError subclasses
             last_error = exc
             time.sleep(2**attempt)
     raise OSError(f"download failed after {RETRIES} tries: {last_error}")
+
+
+def http_download(url: str) -> tuple[bytes, str]:
+    """GET with retries + backoff. Returns (body, content type without parameters)."""
+    _check_scheme(url)
+
+    def once() -> tuple[bytes, str]:
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(request, timeout=TIMEOUT_S) as response:
+            body: bytes = response.read()
+            return body, str(response.headers.get_content_type())
+
+    return _with_retries(once)
+
+
+# MP Labour DMS (labour.mponline.gov.in), checked 2026-11-06: the listing page's "View" button opens
+# ``/portal/services/ImageShow.aspx?src=<base64 of the file path>``; that page links to a
+# session-bound ``ShowPDF.axd?Path=...&recID=...`` which returns the PDF. The ImageShow URL is the
+# stable, citable source_url; the token link is followed in the same cookie session.
+MP_LABOUR_DMS_VIEWER = "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src="
+_SHOW_PDF_RE = re.compile(r'href="(ShowPDF\.axd\?[^"]+)"')
+
+
+def mp_labour_dms_url(file_path: str) -> str:
+    """Stable viewer URL for a DMS file path such as ``/QL_Shram/DMS/Document/<uuid>.pdf``."""
+    return MP_LABOUR_DMS_VIEWER + base64.b64encode(file_path.encode("ascii")).decode("ascii")
+
+
+def mp_labour_dms_download(url: str) -> tuple[bytes, str]:
+    """Two-hop download: viewer page -> session-bound ShowPDF.axd link -> PDF bytes."""
+    _check_scheme(url)
+
+    def once() -> tuple[bytes, str]:
+        jar = http.cookiejar.CookieJar()
+        opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+        opener.addheaders = [("User-Agent", USER_AGENT)]
+        with opener.open(url, timeout=TIMEOUT_S) as response:
+            page = response.read().decode("utf-8", "replace")
+        match = _SHOW_PDF_RE.search(page)
+        if match is None:
+            raise ValueError("DMS viewer page has no ShowPDF link (portal changed?)")
+        pdf_url = urllib.parse.urljoin(url, html.unescape(match.group(1)))
+        request = urllib.request.Request(pdf_url, headers={"Referer": url})
+        with opener.open(request, timeout=TIMEOUT_S * 3) as response:
+            body: bytes = response.read()
+            content_type = str(response.headers.get_content_type())
+        if content_type != "application/pdf" or not body.startswith(b"%PDF"):
+            raise ValueError(f"DMS returned {content_type}, not a PDF")
+        return body, content_type
+
+    return _with_retries(once)
+
+
+RESOLVERS: dict[str, Downloader] = {
+    "direct": http_download,
+    "mp_labour_dms": mp_labour_dms_download,
+}
 
 
 def build_document(
@@ -137,7 +218,7 @@ def build_document(
         sha256=sha256_hex(body),
         bytes=len(body),
         content_type=content_type,
-        text_layer=detect_text_layer(body, content_type),
+        text_layer=detect_text_layer(body, content_type, source.get("language")),
         local_path=local_path,
     )
     target = source.get("target_mode", "archive")
@@ -164,6 +245,8 @@ def validate_sources(data: object) -> list[str]:
         for key in ("doc_id", "instrument_id", "url", "language", "status", "publisher"):
             if not isinstance(row.get(key), str) or not row[key]:
                 errors.append(f"{where}: missing {key!r}")
+        if row.get("resolver", "direct") not in RESOLVERS:
+            errors.append(f"{where}: unknown resolver {row.get('resolver')!r}")
         if row.get("target_mode", "archive") not in MODES:
             errors.append(f"{where}: bad target_mode {row.get('target_mode')!r}")
         doc_id = row.get("doc_id")
@@ -184,7 +267,7 @@ def fetch_all(
     *,
     only: Sequence[str] = (),
     delay_s: float = DEFAULT_DELAY_S,
-    download: Downloader = http_download,
+    download: Downloader | None = None,
     now: Callable[[], datetime] = lambda: datetime.now(UTC),
 ) -> list[FetchResult]:
     sources_data = json.loads(sources_path.read_text(encoding="utf-8"))
@@ -208,7 +291,8 @@ def fetch_all(
             time.sleep(delay_s)
         first = False
         try:
-            body, content_type = download(source["url"])
+            downloader = download or RESOLVERS[source.get("resolver", "direct")]
+            body, content_type = downloader(source["url"])
             name = local_name(doc_id, content_type, source["url"])
             rel = f"raw/{source['instrument_id']}/{name}"
             if existing is not None and existing.get("sha256") != sha256_hex(body):

@@ -1,5 +1,135 @@
 {
   "schema_version": 1,
-  "instruments": [],
-  "documents": []
+  "instruments": [
+    {
+      "instrument_id": "MP.MWVDAAPR2026",
+      "type": "notification",
+      "jurisdiction": "MP",
+      "title_en": "Revised Minimum Wages Rates including Variable Dearness Allowance for State Workers under Minimum Wages Act, 1948 from 01.04.2026 to 30.09.2026",
+      "notes": "Title from the DMS listing (checked 2026-11-06); scan not yet read."
+    },
+    {
+      "instrument_id": "MP.MWVDAOCT2026",
+      "type": "notification",
+      "jurisdiction": "MP",
+      "title_en": "Revised Minimum Wages Rates including Variable Dearness Allowance for State Workers under Minimum Wages Act, 1948 from 01.10.2026 to 31.03.2027",
+      "title_hi": "न्यूनतम वेतन अधिनियम, 1948 के अंतर्गत राज्य के श्रमिकों के लिए दिनांक 01.10.2026 से परिवर्तनशील मंहगाई भत्ते सहित पुनरीक्षित न्यूनतम वेतन की दरें",
+      "supersedes": [
+        "MP.MWVDAAPR2026"
+      ],
+      "notes": "English title from the DMS listing; Hindi title from p.1 of the scan. P.1 says it continues notification 6445-6650 dt 31.03.2026 and builds on base rates notified in MP Extraordinary Gazette No. 68 dt 04.03.2024 (F.4(B)1/2014/A-16), not yet in the corpus."
+    }
+  ],
+  "documents": [
+    {
+      "doc_id": "MP.MWVDAOCT2026@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.MWVDAOCT2026",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC85ZTcwZDYxMi0xZDBjLTRlZmItOWU0NS1mNzJmNDQzYzdmMzgucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ],
+        "note": "67 scheduled employments (list items 1-36, 39-55, 57-66, 68, 70-72) per p.1 of the Oct 2026 notification; other employments are notified separately."
+      },
+      "notification_no": "1/11/अन्वे./पांच/2024/22288-337",
+      "valid_from": "2026-10-01",
+      "valid_to": "2027-03-31",
+      "expires_on": "2027-03-31",
+      "notes": "Notification dt 30.09.2026, 4 pages, scanned. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 [pending: target_mode=gated]",
+      "fetched_at": "2026-11-06T10:06:38+00:00",
+      "sha256": "9b30baa74dbdca0154576d1d5748ff79f8c5477dd1532efbb48a249f8e6d9ddb",
+      "bytes": 725575,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWVDAOCT2026/MP.MWVDAOCT2026_hi_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read p.1 of the official scan downloaded from the MP Labour DMS",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC85ZTcwZDYxMi0xZDBjLTRlZmItOWU0NS1mNzJmNDQzYzdmMzgucGRm (p.1 of scan, sha256 9b30baa74dbd...)",
+          "result": "confirmed",
+          "what": "status",
+          "note": "Issued as अधिसूचना no. 1/11/अन्वे./पांच/2024/22288-337 dt 30/09/2026 by श्रमायुक्त कार्यालय, मध्यप्रदेश शासन, इन्दौर; listed on the Labour Commissioner's DMS."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read p.1 of the official scan downloaded from the MP Labour DMS",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC85ZTcwZDYxMi0xZDBjLTRlZmItOWU0NS1mNzJmNDQzYzdmMzgucGRm (p.1 of scan, sha256 9b30baa74dbd...)",
+          "result": "confirmed",
+          "what": "commencement",
+          "note": "Rates apply from 01.10.2026 (subject line and body, p.1)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read p.1 of the official scan downloaded from the MP Labour DMS",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC85ZTcwZDYxMi0xZDBjLTRlZmItOWU0NS1mNzJmNDQzYzdmMzgucGRm (p.1 of scan, sha256 9b30baa74dbd...)",
+          "result": "confirmed",
+          "what": "validity",
+          "note": "Rates apply 01.10.2026 to 31.03.2027 (p.1)."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.MWVDAOCT2026@hi@2",
+      "mode": "archive",
+      "instrument_id": "MP.MWVDAOCT2026",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC82ZGM1ZGIxOC0wMTFhLTQxYzAtYTFiZC01NGViNWI2ZjBmYTcucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ],
+        "note": "67 scheduled employments (list items 1-36, 39-55, 57-66, 68, 70-72) per p.1 of the Oct 2026 notification; other employments are notified separately."
+      },
+      "notification_no": "22283-337 (per DMS listing)",
+      "valid_from": "2026-10-01",
+      "valid_to": "2027-03-31",
+      "expires_on": "2027-03-31",
+      "notes": "'Book' version dt 30.09.2026 (47 pages, scanned): rates for all scheduled employments. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 [pending: target_mode=gated]",
+      "fetched_at": "2026-11-06T10:07:47+00:00",
+      "sha256": "25bdcf41a9d40d80c672d14e6868653ca543edc654a95e87ca6e70de07340196",
+      "bytes": 17063951,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWVDAOCT2026/MP.MWVDAOCT2026_hi_2.pdf"
+    },
+    {
+      "doc_id": "MP.MWVDAAPR2026@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.MWVDAAPR2026",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC80NzY4ODQ4OC1iNDFiLTRmYmMtYTE0OC05OTNjNzUxM2FmMTIucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ],
+        "note": "67 scheduled employments (list items 1-36, 39-55, 57-66, 68, 70-72) per p.1 of the Oct 2026 notification; other employments are notified separately."
+      },
+      "notification_no": "6445-6650 (per DMS listing)",
+      "valid_from": "2026-04-01",
+      "valid_to": "2026-09-30",
+      "expires_on": "2026-09-30",
+      "notes": "Expired; kept for history and status-trap golden rows. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Embedded OCR layer is unusable (0% Devanagari); needs OCR.",
+      "fetched_at": "2026-11-06T10:08:04+00:00",
+      "sha256": "73c4c908f24b4c5c292ac0f79f4f990947a8d92d4e520c552b0928af21e598a8",
+      "bytes": 723991,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWVDAAPR2026/MP.MWVDAAPR2026_hi_1.pdf"
+    }
+  ]
 }

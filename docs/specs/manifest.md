@@ -47,7 +47,7 @@ W2.1 decision). Scheme guidelines are non-binding here but are the primary sourc
 | `bytes` | yes | > 0 |
 | `content_type` | yes | |
 | `gazette_ref`, `notification_no` | – | |
-| `text_layer` | yes | `born_digital · scanned · mixed` |
+| `text_layer` | yes | `born_digital · scanned · mixed`. "scanned" = no *usable* text: for `hi` pages ≥ 50% of letters must be Devanagari (`bi` ≥ 20%), else a bad embedded OCR layer counts as no text |
 | `ocr_engine` | – | must be empty for `born_digital` |
 | `local_path` | – | relative to `MKS_DATA_DIR` (e.g. `raw/x.pdf`) |
 | `s3_path` | – | `s3://…` (prod, DEC-011) |
@@ -77,7 +77,8 @@ W2.1 decision). Scheme guidelines are non-binding here but are the primary sourc
 
 ### Sources file and the downloader (DEC-041)
 `data/corpus_sources.json` = `{"schema_version": 1, "sources": [...]}`; each row has `doc_id, instrument_id, url,
-language, status, publisher, applies_to, target_mode, gate` plus optional `gazette_ref, notification_no, valid_from,
+language, status, publisher, applies_to, target_mode, gate` plus optional `resolver` (`direct` default, or
+`mp_labour_dms` for the MP Labour DMS two-hop download) and `gazette_ref, notification_no, valid_from,
 valid_to, expires_on, notes`. `scripts/fetch_corpus.py` fills `fetched_at, sha256, bytes, content_type,
 text_layer, local_path` and writes the row with **`mode=archive`** (note `[pending: target_mode=…]`). Promotion to
 `index`/`gated`/`guide` is a manual edit made together with the verification records. Changed bytes on re-fetch are
