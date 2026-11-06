@@ -3,55 +3,27 @@
 Roadmap from `docs/plan.md` §10, adjusted by `docs/DECISIONS.md` (DEC-016: no Marathi/Maharashtra; DEC-020/023: v2 items).
 Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at a time.
 
-## ▶ Handover: start here next session (written 2026-11-06)
+## ▶ Handover: start here next session (updated 2026-11-07)
 
-**Where we stopped:** W0.4 (corpus download).
-- Step 1 (downloader) is done.
-- Step 2 (gate research) is done as one pass, but **every gate is only partly resolved**.
-- All details, conflicts and evidence are in **`docs/W0.4_FINDINGS.md`** (temporary; review it, then fold it into DECISIONS / OPEN_QUESTIONS / CORPUS and delete it).
+**W0.4 review done** → DEC-043 (interim PRS copy of the Sanhita), DEC-044 (schema: `enacted_not_commenced`, `ordinance`,
+`amends`), DEC-045 (Malik's v1 solution for L7, G13, G12, G6, G14, G8, roman clause IDs, Acts 260/264, plus 4 cross-cutting
+improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
-**Corpus now:** 12 instruments, 14 documents.
-- index: Code on Wages
-- guide: MPSLSA legal-aid page
-- gated: Oct-2026 wage notification ×2 (L7), MPSLSA Rules (G13), MP RTI fee rules (G12), Lok Seva Rules 2026 amendment (G6)
-- archive: 7 files
+**`docs/W0.4_FINDINGS.md` is FROZEN** as Malik's v1 record: never edit, fold or delete it (to be revisited in v2).
 
-**First task next session:** go through `W0.4_FINDINGS.md` with Malik and decide the items below.
+**Next Claude tasks, in order:**
+1. **U1**: roman-numbered clause IDs in `section_uid` (code + tests + spec).
+2. **G15** (MP Repeal Act 2026), then **G16** (Ease of Doing Business Act 2026): find official copies (govtpress PDFs 404).
+3. **G8 land**: official MPLRC + amendments + rules. **Deadline 16 Nov**, else land leaves the Nov demo.
+4. **L8** (Mar 2024 base wages); **G14** fetch the S&E Act 1958 + 2025 amendments; **G6** later s.3 time-limit notifications;
+   **G12** amendment check.
+5. Plans (not code yet) for **X1–X4**: effective-date retrieval, source-quality metadata, legal-impact analysis,
+   golden re-runs after legal changes.
+6. Then W0.4 step 3 (central born-digital texts) and W0.5 OCR (critical: CCITT G4 scans, corrupt Hindi text layers).
 
-**Decisions for Malik / advocate:**
-1. **L7:** are the post-repeal MP VDA wage notifications valid under the Code on Wages (authority, power, procedure)? Until answered, no wage amounts.
-2. **Schema (major):**
-   - add an `ordinance` instrument type
-   - add a status for "enacted, not yet commenced"
-   - model "amends the Act vs amends its Rules"
-3. **G13:** NALSA says ₹1 lakh; MPSLSA says ₹2 lakh; the amending notification is not found. What may the bot say? Can Malik ask MPSLSA/DLSA for the notification number?
-4. **G12:** RTI jurisdiction routing (MP vs central bodies). Is "actual cost decided by the PIO" OK as the copy-fee answer?
-5. **G6:** certificate time limits not found officially (secondary: income 3 / domicile 7 / caste 30 working days). Use the portal pages as an `official_guide`? Caste stays procedure-only.
-6. **G4/G14:** the Shram Shakti Sanhita (Act 7/2026) repeals the S&E Act 1958 only from its commencement, which isn't notified yet. Answer from the 1958 Act with a caveat, or abstain?
-7. **G8 / land slice:** official sources unreachable. If still blocked by ~W1, keep land in the demo?
-8. Wording rules for W2.1: official-guide vs law labelling; wage abstain vs caveat.
-
-**Quick actions for Malik (browser):**
-- Open revenue.mp.gov.in: does it load? (refused from here, T3)
-- Download Sanhita Gazette No. 257 (10.08.2026) from govtpress.mp.gov.in (TLS cert untrusted here; Claude didn't bypass it) into `data/raw/`.
-
-**Claude's to-do after the review:**
-- find the G13/G12 amending notifications, the G6 GAD s.3 time-limit notifications, and the Sanhita commencement notification
-- read Lok Seva releases 2–5
-- fetch the MPLRC + rules (retry India Code)
-- L8 (2024 base wages), L9 (Karnataka HC case)
-- then W0.4 step 3 (central born-digital texts)
-
-**Concerns carried forward:**
-- OCR (W0.5) is critical: most MP files are scans, incl. CCITT G4.
-- Hindi text layers are often corrupt (3 patterns; only 1 auto-detected). W1.1 needs a text-quality gate.
-- Several official portals need special handling or are unreachable.
-- The demo date (~3–5 Dec) is at risk if G8 stays blocked.
-
-**Housekeeping:**
-- Local commits are not pushed yet.
-- `CORPUS.md` item 8 still says "gated: L4" (should be L7, DEC-042); it's protected, so it needs Malik's OK.
-- `AGENTS.md` stays untracked.
+**Malik's open actions:**
+- an advocate on L7
+- the G13 notification number from MPSLSA/DLSA
 
 ## Setup (kickoff)
 | # | Item | Status | Notes |
@@ -69,7 +41,7 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 | W0.1 | Validation posts in 3 groups (Malik) | todo | ≥15 real questions logged (redacted) |
 | W0.2 | AWS account: Paid plan, root MFA, ₹100 alert (Malik, DEC-019) | todo | Alert visible in Budgets |
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
-| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; step-2 research pass done for G13, G12, G6, G4/G14, G8 (all partly; see docs/W0.4_FINDINGS.md); next: review findings with Malik) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
+| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; step-2 research pass done for G13, G12, G6, G4/G14, G8 (all partly; see docs/W0.4_FINDINGS.md); review done 2026-11-07 (DEC-043/044/045); next: U1, G15/G16, G8 by 16 Nov) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
 | W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015) | todo | CER table per tool |
 | W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
 

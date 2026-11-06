@@ -10,8 +10,8 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | L2 | Most recent official list of states adopting the Model Tenancy Act (RS replies conflict) | "Model law" caveat wording | C | open |
 | L3 | Is there a final MP gazette notification of rules under the four Labour Codes (drafts 5 Jan 2026)? Content of the reported Jul 2026 labour bill? | `status=draft` vs `in_force` | C | open |
 | L4 | MP minimum-wage notification after 1 Oct 2026 | Time-versioned wage answers | C | resolved 2026-11-06: notification 1/11/अन्वे./पांच/2024/22288-337 dt 30.09.2026, valid 01.10.2026–31.03.2027, from the MP Labour DMS (`MP.MWVDAOCT2026` in the manifest; read from p.1 of the official scan). Scanned, so needs OCR (W0.5) |
-| L7 | Post-commencement MP VDA notifications (Apr 2026 6445-6650, Oct 2026 22288-337) cite the repealed MW Act 1948. Are they valid under the Code on Wages (competent authority's continuing appointment, statutory power, procedure)? Malik's determination (DEC-042): Code governs; these stay in transitional legal review | Wage-amount answers | M (advocate) | open: gates `MP.MWVDAOCT2026` |
-| L8 | Is the MP base-rate notification F.4(B)1/2014/A-16 (MP Extraordinary Gazette No. 68, 04.03.2024, effective 01.04.2024) saved under Code on Wages s.69(2) (not contrary to the Code)? Fetch it and verify | Base rates the VDA adds to | M (advocate) + C (fetch) | open |
+| L7 | Post-commencement MP VDA notifications (Apr 2026 6445-6650, Oct 2026 22288-337) cite the repealed MW Act 1948. Are they valid under the Code on Wages (competent authority's continuing appointment, statutory power, procedure)? Malik's determination (DEC-042): Code governs; these stay in transitional legal review | Wage-amount answers | M (advocate) | open: gates `MP.MWVDAOCT2026`. DEC-045: no definitive current wage amounts until an advocate verifies post-repeal authority; historical data kept |
+| L8 | Is the MP base-rate notification F.4(B)1/2014/A-16 (MP Extraordinary Gazette No. 68, 04.03.2024, effective 01.04.2024) saved under Code on Wages s.69(2) (not contrary to the Code)? Fetch it and verify | Base rates the VDA adds to | M (advocate) + C (fetch) | open: DEC-045 says fetch it (Claude) then advocate check |
 | L9 | Find and verify *Garment and Textile Workers Union (R) v. Chief Secretary, Govt. of Karnataka*, Karnataka HC, 3 June 2026 (cited in Malik's determination). Searches on 2026-11-06 found only related writ appeals 1684–1685/2026 pending | Persuasive authority for DEC-042 | C | open |
 | L5 | Status of SC challenges to DPDP s.44(3) / RTI s.8(1)(j) (no stay as of 3 Nov 2026 per plan) | Sub-judice caveat | C | open |
 | L6 | Official sources for escalation contacts (NALSA 15100, Nyaya Setu 7217711814, e-Jagriti, RCA) | DEC-018 contacts.yaml | C | open |
@@ -87,7 +87,7 @@ moves `gated → index`, or stays archived if found invalid.
 | --- | --- | --- | --- | --- |
 | T1 | Telegram webhook timeout / retry behaviour; `secret_token` header name | DEC-010 | C | open |
 | T2 | Telegram bot username availability (must end in "bot") | DEC-017 | M | open |
-| T3 | Do Indian government sites block non-Indian IPs (GitHub runners)? | DEC-013 | C | open |
+| T3 | Do Indian government sites block non-Indian IPs (GitHub runners)? | DEC-013 | C | partly answered 2026-11-07: revenue.mp.gov.in is also unreachable for Malik in India, so that site is down, not IP-filtering. India Code 504s were intermittent. Other sites untested from abroad |
 | T4 | Lambda behaviour after returning a response (freeze) — confirms DEC-010 option C was unreliable | DEC-010 | C | open |
 | T5 | LGD (Local Government Directory) district codes: official source + format for `applies_to.districts` | DEC-040 | C | open |
 
@@ -104,11 +104,11 @@ moves `gated → index`, or stays archived if found invalid.
 | G1 | MGNREGA repealed; VB-G RAM G Act 2025 (assent 21 Dec 2025) in force 1 Jul 2026, 125 days | India Code / e-gazette / PRS | Q2 2027 | open |
 | G2 | MP HC struck down 27% OBC quota on 9 Oct 2026; SLP Diary No. 65767/2026 | MP HC judgment; SC case status | Q1 2027 | open |
 | G3 | MP UCC 2026 passed 21 Jul 2026, awaiting Presidential assent | Rashtrapati Bhavan assent list; MP e-gazette | later | open |
-| G4 | MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita 2026 passed 21 Jul 2026; assent/notification | MP Vidhan Sabha; e-gazette | **MVP (labour)** | open (2026-11-06: MP Act 7 of 2026, assent 07.08.2026, Gazette No. 257 dt 10.08.2026 (PRS copy); commencement notification not found (s.1(3)). See `docs/W0.4_FINDINGS.md` §6) |
+| G4 | MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita 2026 passed 21 Jul 2026; assent/notification | MP Vidhan Sabha; e-gazette | **MVP (labour)** | resolved in part (DEC-043/044): MP Act 7/2026, assent 07.08.2026, Gazette No. 257 dt 10.08.2026 (official listing match; PDF 404 so PRS copy used), registered `enacted_not_commenced`. **Open: s.1(3) commencement notification(s)**; monitor (DEC-045) |
 | G5 | Registration (MP Amendment) Act 2025, assent 13 Oct 2026; commencement date | MP e-gazette | Dec (land; moved by DEC-037) | open |
-| G6 | Lok Seva Guarantee: Act 24 of 2010 + amendments; notified service list and time limits (e.g., caste 30 working days; income 3 / domicile 7 per a secondary guide) | lokseva.gov.in/MPL; PRS | **MVP** | open (2026-11-06: Act 24 of 2010 + amendments + services list fetched; certificate time limits still not found officially (see `docs/W0.4_FINDINGS.md` §5)) |
+| G6 | Lok Seva Guarantee: Act 24 of 2010 + amendments; notified service list and time limits (e.g., caste 30 working days; income 3 / domicile 7 per a secondary guide) | lokseva.gov.in/MPL; PRS | **MVP** | open (DEC-045): Act + Rules + amendments + 2025 services list fetched; 2013 gazette time-limit list (rcms.mp.gov.in) = historical official source. **Open: later s.3 notifications for certificate time limits**; unverified deadlines must carry source date + uncertainty |
 | G7 | 181 in MP = women's helpline **and** CM Helpline? Official numbers for 112, 1098, 1930, 14416, 14447, 14555, 14567, 15100 | Official portals → contacts.yaml | **MVP** | open |
-| G8 | MPLRC 2022 Ordinance + 2023 Second Amendment contents; mutation timelines (s.110: 1 vs 2 months); demarcation rules 2019 vs 2020 | revenue.mp.gov.in; e-gazette | **MVP** (land slice, DEC-038) | open (2026-11-06: revenue.mp.gov.in refused and India Code 504, so no official text yet; see `docs/W0.4_FINDINGS.md` §7) |
+| G8 | MPLRC 2022 Ordinance + 2023 Second Amendment contents; mutation timelines (s.110: 1 vs 2 months); demarcation rules 2019 vs 2020 | revenue.mp.gov.in; e-gazette | **MVP** (land slice, DEC-038) | open, **deadline 16 Nov 2026** (DEC-045): no official text yet (revenue.mp.gov.in down; India Code 504; bor.mp.gov.in lists the Code but links are dead). If unresolved by 16 Nov, land leaves the Nov demo → Dec |
 | G9 | CM Kisan Kalyan amount (₹6,000 vs ₹4,000); Bhavantar Kharif 2026 dates; stubble-burning disqualification order | Agriculture dept orders | Dec | open |
 | G10 | PM-KISAN instalment dates; RTE MP 2026-27 dates | pmkisan.gov.in; rteportal.mp.gov.in | Dec / Q1 | open |
 | G11 | SC/ST PoA relief schedule (₹85,000–₹8.25 lakh) and task-force proposal status | PoA Rules Annexure I; MoSJE | Q2 2027 | open |
@@ -116,12 +116,23 @@ moves `gated → index`, or stays archived if found invalid.
 ## H. Added by the Phase 0 review (DEC-037)
 | ID | Question | Verify at | Phase | Status |
 | --- | --- | --- | --- | --- |
-| G12 | Exact name, date and content of MP's RTI fee rules for state public authorities (fees, payment mode, BPL exemption) | MP GAD; MP e-gazette | **MVP** | partly resolved 2026-11-06: MP RTI (Fees and Appeal) Rules 2005, F 11-37-05-एक-9 dt 10.10.2005 (`MP.RTIFAR2005`). Open: any later amendment (reported fee-hike proposal). Details in `docs/W0.4_FINDINGS.md` §4 |
-| G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | partly resolved 2026-11-06: (1) MP SLSA Rules 1996 r.20 (MP Gazette 24.06.1996 p.522(13)) = Rs 12,000 "or such higher amount as may be notified by the State Government" (`MP.SLSAR1996`, gated); (2) MPSLSA's official legal-aid page (updated 14.08.2025) states Rs 2,00,000 (`MP.SLSALAGUIDE2025`, guide); (3) a secondary site shows an amended r.20 at Rs 25,000. **Still open:** the State Government notification(s) that raised the limit to Rs 2,00,000 (number, date, gazette). Also confirm that r.20's 'clause (b) of Section 12' corresponds to today's s.12(h) |
-| G14 | Is the MP Shops and Establishments Act still in force, or changed/replaced by the 2026 Sanhita (G4)? | MP Labour; e-gazette | **MVP** (decide include) | open (2026-11-06: Sanhita s.40(1)(b) repeals the S&E Act 1958 from the Sanhita's commencement (date unknown). See `docs/W0.4_FINDINGS.md` §6) |
+| G12 | Exact name, date and content of MP's RTI fee rules for state public authorities (fees, payment mode, BPL exemption) | MP GAD; MP e-gazette | **MVP** | partly resolved: Rules 2005 found (`MP.RTIFAR2005`). **Open: amendment check (reported fee-hike proposal) + OCR fix**, then index (DEC-045); implement state-vs-central routing |
+| G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | partly resolved (DEC-045): rules gated; ₹2 lakh usable only as qualified official guidance with DLSA referral. **Open: the amending notification number/date (Malik to ask MPSLSA/DLSA)**; confirm r.20 'clause (b)' = today's s.12(h) |
+| G14 | Is the MP Shops and Establishments Act still in force, or changed/replaced by the 2026 Sanhita (G4)? | MP Labour; e-gazette | **MVP** (decide include) | resolved for v1 (DEC-045): the S&E Act 1958 + 2025 amendments stay the applicable framework until the Sanhita commences (s.40(1)(b) repeal). Open: fetch those texts; check MP Acts 260/264 for changes |
 
 L4 is resolved (current notification found, see group A). Wage-amount answers are now gated on **L7** (validity of
 post-repeal notifications, DEC-042) and on OCR of the scan (W0.5).
+
+## I. Added by the W0.4 review (DEC-045, 2026-11-07)
+| ID | Question / task | Owner | Status |
+| --- | --- | --- | --- |
+| G15 | **MP Repeal (निरसन) Act 2026** (Gazette No. 260, 11.08.2026): which corpus instruments does it repeal, from when, with what savings? Priority before G16 | C | open (govtpress PDF 404; find another official copy) |
+| G16 | **MP Ease of Doing Business Act 2026** (Gazette No. 264, 20.08.2026): does it amend corpus laws (S&E Act 1958, Sanhita, others)? | C | open (govtpress PDF 404) |
+| X1 | Effective-date ("as of") legal retrieval design | C (plan) → M | open: plan needed before code |
+| X2 | Separate legal-authority vs source-quality metadata (official file / listing-matched copy / defective scan) | C (plan) → M | open: schema change, plan needed |
+| X3 | Legal-impact analysis for every amendment and repeal (affected instruments, provisions, dates) | C (plan) → M | open |
+| X4 | Re-run affected golden-set rows after every legal change (law-watch flow, DEC-013) | C (plan) → M | open |
+| U1 | `section_uid` support for roman-numbered clauses alongside letters, validated against the hierarchy (DEC-045 item 7) | C | open: implement next |
 
 ## F. Environment
 | ID | Question | Owner | Status |

@@ -435,6 +435,51 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: ₹0 · ~½ day (validator, spec, tests, data migration) · status set grows to 8 flags.
 - Follow-ups: move Lok Seva releases 2–5 to their own instruments once read; add the Sanhita document row as `enacted_not_commenced`.
 
+## DEC-045 — W0.4 findings review: corpus treatment of the open gates (Malik's solution, v1)
+- Date: 2026-11-07 | Status: accepted (v1; Malik may revisit in v2) | Approved by: Malik
+- Context: The review of `docs/W0.4_FINDINGS.md` covered eight items. Malik approved Claude's recommendations with refinements, plus four cross-cutting improvements. `docs/W0.4_FINDINGS.md` is **kept unchanged** as the v1 record (not folded or deleted) so it can be revisited in v2.
+- Decision:
+  1. **L7 wages:**
+     - Notifications stay gated; historical wage data is preserved.
+     - Fetch the March 2024 base-rate notification (L8).
+     - No definitive current wage amounts until an advocate verifies the post-repeal legal authority.
+  2. **G13 legal aid:**
+     - The MPSLSA Rules 1996 stay gated.
+     - The ₹2 lakh figure from the official MPSLSA web page may be given as **qualified official guidance**: say explicitly that the notification reference is unresolved, and direct users to the DLSA.
+     - Answers must also cover the other s.12 eligibility categories (not only income).
+  3. **G12 RTI:**
+     - Index the MP RTI (Fees and Appeal) Rules 2005 only after OCR correction and an amendment check.
+     - Copy fees stay "actual cost, as decided by the PIO".
+     - Implement state-vs-central public-authority routing.
+  4. **G6 Lok Seva:**
+     - The 2013 gazette list (via RCMS) is a **historical official source**; search for later notifications.
+     - Any unverified deadline must state its source date and the uncertainty.
+     - The 2025 services list must not be treated as the statutory time-limit notification.
+  5. **G14 Shops Act / Sanhita:**
+     - The MP Shops and Establishments Act 1958 + its 2025 amendments stay the applicable framework until commencement of the Sanhita is verified.
+     - The Sanhita is registered as `enacted_not_commenced` (done, DEC-044).
+     - Monitor commencement notifications; preserve provision-level commencement dates (`commencement_overrides`).
+  6. **G8 land:**
+     - Retry official sources for the complete Code, amendments and Rules. **Deadline 16 Nov 2026.**
+     - If official texts are still unavailable, remove land-law advice from the November demo and move the module to December.
+     - Never substitute secondary sources for verified legislation.
+  7. **Roman clause IDs:**
+     - Support roman numerals alongside alphabetic clauses, preserving the original numbering system.
+     - Validate identifiers against the provision hierarchy. (Amends DEC-040.)
+  8. **MP Acts 260 and 264 of 2026:**
+     - Obtain and examine both.
+     - First the Repeal Act (No. 260): affected corpus instruments, repeal dates, savings.
+     - Then the Ease of Doing Business Act (No. 264): amendments to corpus laws.
+  9. **Cross-cutting improvements (direction accepted; each gets a plan before implementation):**
+     - (a) effective-date-based legal retrieval (answer "as of" a date)
+     - (b) separate **legal-authority** and **source-quality** metadata (e.g. official file vs official-listing-matched copy vs scan with defects)
+     - (c) a legal-impact analysis for every amendment and repeal (which instruments and provisions change, from when)
+     - (d) re-run the affected golden-set evaluations after every legal change
+  10. Keep unresolved documents gated; preserve original files and their hashes.
+- Why: Each item keeps unverified law out of the index while preserving the evidence trail. The 16 Nov deadline protects the demo date (DEC-038).
+- Effects: CORPUS.md and OPEN_QUESTIONS updated · schema changes in 9(b) and the uid change in 7 are implemented with tests · golden-set re-runs become part of the law-change flow (DEC-013) · cost ₹0.
+- Follow-ups: implement item 7 (section_uid); plan 9(a)–(d); research items 1, 6, 8; the G13 notification number via Malik.
+
 ---
 
 ## Pending decisions (not yet made)
