@@ -86,6 +86,22 @@
         "MP.LSG2010:s10:ss1"
       ],
       "notes": "Title and parent power (s.10(1)) as recited in the 09.07.2026 amendment notification. Original 2010 rules text not yet fetched."
+    },
+    {
+      "instrument_id": "MP.SSS2026",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_hi": "मध्यप्रदेश कार्यस्थल सशक्तिकरण संहिता (श्रम शक्ति संहिता), 2026",
+      "title_en": "The Madhya Pradesh Code on Empowerment Workplace (Shram Shakti Samhita) Act, 2026",
+      "enacted_on": "2026-08-07",
+      "notes": "MP Act 7 of 2026; Governor's assent 07.08.2026; MP Rajpatra (Asadharan) No. 257 dt 10.08.2026, pp.513-514(28), Law Dept क्र. 7635-160-इक्कीस-अ (प्रा.). Read from a PRS copy of the gazette (not yet the official govtpress copy). s.1(3): commences on date(s) notified by the State Government; different dates for different provisions allowed. Commencement notification NOT found (2026-11-06). s.40(1) repeals, from commencement: MP Industrial Workers Debt Act 1936, MP Shops and Establishments Act 1958 (No. 25 of 1958), MP Industrial Relations Act 1960, MP Industrial Employment (Standing Orders) Act 1961. No document ingested yet."
+    },
+    {
+      "instrument_id": "MP.SEA1958",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Shops and Establishments Act, 1958 (No. 25 of 1958)",
+      "notes": "Repealed by MP.SSS2026 s.40(1)(b) on and from that Code's commencement (date not yet notified). Amended in 2025 (amendment listed 11.09.2025 and Second Amendment Act 2025 listed 15.12.2025 on the MP Labour DMS notifications page Sid=18). superseded_by is set only once commencement is confirmed. No document ingested yet."
     }
   ],
   "documents": [
