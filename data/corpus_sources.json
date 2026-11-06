@@ -85,6 +85,41 @@
       "expires_on": "2026-09-30",
       "target_mode": "archive",
       "notes": "Expired; kept for history and status-trap golden rows. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8"
+    },
+    {
+      "doc_id": "MP.SLSAR1996@en@1",
+      "instrument_id": "MP.SLSAR1996",
+      "url": "https://cdnbbsr.s3waas.gov.in/s370bfeb105a2a7019757b543303a2a79c/uploads/2025/06/202506121203141367.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Madhya Pradesh State Legal Services Authority (madhyapradesh.nalsa.gov.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G13"
+      ],
+      "notes": "Linked as 'MPSLSA Rules, 1996' on https://madhyapradesh.nalsa.gov.in/rules/ (checked 2026-11-06). Language to confirm."
+    },
+    {
+      "doc_id": "MP.SLSALAGUIDE2025@en@1",
+      "instrument_id": "MP.SLSALAGUIDE2025",
+      "url": "https://madhyapradesh.nalsa.gov.in/legal-aid/",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Madhya Pradesh State Legal Services Authority (madhyapradesh.nalsa.gov.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "guide",
+      "notes": "Web page snapshot."
     }
   ]
 }

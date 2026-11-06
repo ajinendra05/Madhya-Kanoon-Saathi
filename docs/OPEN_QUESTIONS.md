@@ -117,7 +117,7 @@ moves `gated → index`, or stays archived if found invalid.
 | ID | Question | Verify at | Phase | Status |
 | --- | --- | --- | --- | --- |
 | G12 | Exact name, date and content of MP's RTI fee rules for state public authorities (fees, payment mode, BPL exemption) | MP GAD; MP e-gazette | **MVP** | open |
-| G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | open |
+| G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | partly resolved 2026-11-06: (1) MP SLSA Rules 1996 r.20 (MP Gazette 24.06.1996 p.522(13)) = Rs 12,000 "or such higher amount as may be notified by the State Government" (`MP.SLSAR1996`, gated); (2) MPSLSA's official legal-aid page (updated 14.08.2025) states Rs 2,00,000 (`MP.SLSALAGUIDE2025`, guide); (3) a secondary site shows an amended r.20 at Rs 25,000. **Still open:** the State Government notification(s) that raised the limit to Rs 2,00,000 (number, date, gazette). Also confirm that r.20's 'clause (b) of Section 12' corresponds to today's s.12(h) |
 | G14 | Is the MP Shops and Establishments Act still in force, or changed/replaced by the 2026 Sanhita (G4)? | MP Labour; e-gazette | **MVP** (decide include) | open |
 
 L4 is resolved (current notification found, see group A). Wage-amount answers are now gated on **L7** (validity of

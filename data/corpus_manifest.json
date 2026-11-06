@@ -39,6 +39,20 @@
         "MP.MWVDAAPR2026"
       ],
       "notes": "English title from the DMS listing; Hindi title from p.1 of the scan. P.1 says it continues notification 6445-6650 dt 31.03.2026 and builds on base rates notified in MP Extraordinary Gazette No. 68 dt 04.03.2024 (F.4(B)1/2014/A-16), not yet in the corpus. Post-commencement notification citing the repealed MW Act 1948: transitional legal review (DEC-042, gate L7)."
+    },
+    {
+      "instrument_id": "MP.SLSAR1996",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_en": "Madhya Pradesh State Legal Services Authority Rules, 1996",
+      "notes": "Original text: MP Gazette (Extraordinary) dt 24 June 1996, pp.522(1)-522(13), signed A. K. Awasthi, Addl. Secy. r.20 (p.522(13)) sets the income limit at Rs. 12,000/- 'or such higher amount as may be notified by the State Government from time to time' and refers to clause (b) of s.12 (now numbered differently in the LSA Act; to confirm). Later amendments not yet in the corpus (G13). Parent: Legal Services Authorities Act 1987 (not yet in manifest)."
+    },
+    {
+      "instrument_id": "MP.SLSALAGUIDE2025",
+      "type": "official_guide",
+      "jurisdiction": "MP",
+      "title_en": "Legal Aid (page of the Madhya Pradesh State Legal Services Authority on madhyapradesh.nalsa.gov.in)",
+      "notes": "Official web page; states the s.12(h) income ceiling for MP. Not law: the binding source is MP.SLSAR1996 r.20 as amended by state notification (G13)."
     }
   ],
   "documents": [
@@ -203,6 +217,84 @@
           "evidence": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf",
           "what": "text_matches_source",
           "note": "This file is the official India Code text."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.SLSAR1996@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.SLSAR1996",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://cdnbbsr.s3waas.gov.in/s370bfeb105a2a7019757b543303a2a79c/uploads/2025/06/202506121203141367.pdf",
+      "publisher": "Madhya Pradesh State Legal Services Authority (madhyapradesh.nalsa.gov.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Linked as 'MPSLSA Rules, 1996' on https://madhyapradesh.nalsa.gov.in/rules/ (checked 2026-11-06). Language to confirm. Scan of the original 1996 gazette text (15 pages); unamended.",
+      "fetched_at": "2026-11-06T10:39:43+00:00",
+      "sha256": "3a34c361663de350ad6ce73e20e6598f193f867fc7f8506e0d6c0a3bc72c45d9",
+      "bytes": 2647077,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.SLSAR1996/MP.SLSAR1996_en_1.pdf",
+      "gate": [
+        "G13"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read the page images of the official scan",
+          "evidence": "https://cdnbbsr.s3waas.gov.in/s370bfeb105a2a7019757b543303a2a79c/uploads/2025/06/202506121203141367.pdf",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "note": "Pages carry the header 'मध्यप्रदेश राजपत्र, दिनांक 24 जून 1996' and pages 522(1)-522(13)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "method": "read the page images of the official scan",
+          "evidence": "https://cdnbbsr.s3waas.gov.in/s370bfeb105a2a7019757b543303a2a79c/uploads/2025/06/202506121203141367.pdf p.522(13) vs https://madhyapradesh.nalsa.gov.in/legal-aid/",
+          "what": "consolidation_current",
+          "result": "conflict",
+          "note": "r.20 here says Rs. 12,000/-; MPSLSA's own legal-aid page (updated 14 Aug 2025) says Rs. 2,00,000/-. The amending notification(s) are not in the corpus."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.SLSALAGUIDE2025@en@1",
+      "mode": "guide",
+      "instrument_id": "MP.SLSALAGUIDE2025",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://madhyapradesh.nalsa.gov.in/legal-aid/",
+      "publisher": "Madhya Pradesh State Legal Services Authority (madhyapradesh.nalsa.gov.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Web page snapshot; page footer says 'Last Updated: August 14, 2025'.",
+      "fetched_at": "2026-11-06T10:40:49+00:00",
+      "sha256": "c0a46a703dd056381c4348e089265715330292150fd6c05f622f5ee443a73972",
+      "bytes": 102299,
+      "content_type": "text/html",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.SLSALAGUIDE2025/MP.SLSALAGUIDE2025_en_1.html",
+      "verifications": [
+        {
+          "what": "text_matches_source",
+          "by": "claude",
+          "on": "2026-11-06",
+          "result": "confirmed",
+          "method": "searched the downloaded HTML snapshot",
+          "evidence": "https://madhyapradesh.nalsa.gov.in/legal-aid/",
+          "note": "Contains: 'The Income Ceiling Limit prescribed u/S 12(h) of the Act for availing free legal services in Madhya Pradesh is Rs. 2,00,000/-'."
         }
       ]
     }
