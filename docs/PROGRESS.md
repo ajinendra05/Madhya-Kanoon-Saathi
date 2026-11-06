@@ -72,6 +72,23 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-06 (evening, W0.3 + W0.4 in progress)
+- Done:
+  - S6 push.
+  - W0.3: `section_uid` + manifest schema, specs, validators.
+  - W0.4 step 1: downloader with the `mp_labour_dms` resolver and the Hindi text-layer check.
+  - W0.4 step 2: L4 resolved; L7 ruled; Code on Wages fetched + verified (indexed); G13 partly resolved.
+  - Corpus: 7 documents (1 index, 3 gated, 1 guide, 2 archive).
+  - Checks: ruff ✓, mypy ✓, pytest 115 passed.
+- Decisions: DEC-040 (uid + manifest + Malik's five additions), DEC-041 (pypdf, W0.4 order), DEC-042 (Code on Wages governs; post-repeal MP VDA notifications in legal review).
+- Problems:
+  - The MP Labour DMS hides files behind a 2-hop download.
+  - A Hindi scan carried a Latin OCR layer (now detected).
+  - India Code returned 403 for a long User-Agent (shortened to `MadhyaKanoonSaathi/0.1`).
+  - All MP labour and SLSA files so far are scans, so OCR (W0.5) is on the critical path.
+  - The Karnataka HC case cited in DEC-042 is not found (L9).
+- Next: G12 (MP RTI fee rules) → G6 (Lok Seva) → G4/G14 → G8; then W0.4 step 3 (central born-digital texts). Commits are local; push at /end-session after OK.
+
 ### 2026-11-06 (afternoon)
 - Done: S3–S5 finished; corpus roadmap (CORPUS.md, DEC-032); safety/schema changes (DEC-033); permissions + hooks
   (DEC-034, narrowed by DEC-035); skills /start-session, /end-session, /decision; `git init -b main`; `.gitattributes`
