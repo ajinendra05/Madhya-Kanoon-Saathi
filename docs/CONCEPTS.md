@@ -189,6 +189,20 @@ private lawyers (BCI Rule 36, plan §3). Contact details come from `contacts.yam
 ÷ characters in the correct text. Lower is better.
 - Why here: an OCR mistake becomes a wrong quote. The bake-off (DEC-014) measures CER on *our* pages.
 
+**Corrupted text layers (seen in W0.4).** A PDF can "have text" that is wrong. Seen so far:
+- a Latin-only OCR layer in a Hindi scan
+- ि extracted as ध by an old font converter
+- Latin-extended glyphs from Excel → Print-to-PDF
+
+The downloader rejects the first (Devanagari share < 50% for Hindi); the others need a text-quality check in W1.1
+(e.g. hit-rate on very common Hindi words) or OCR.
+- Why: exact-quote citation is only as good as the text; a corrupt layer means wrong or unmatched quotes.
+
+**Site-specific download resolvers.** Some official portals don't serve files at a stable URL. For example, the MP Labour DMS
+uses a viewer page followed by a session-bound PDF link. The manifest keeps the stable, citable URL; a named resolver knows how to turn it
+into bytes.
+- Why: citations stay stable while download quirks stay in one tested function.
+
 **Unicode normalisation (NFC) and nukta folding.** The same visible Hindi text can be stored as different byte sequences.
 NFC converts to one canonical form; nukta folding treats क़ and क + ़ alike.
 - Why here: exact-quote validation and BM25 both compare text; without normalisation identical-looking text won't match.

@@ -122,6 +122,21 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-06 (session close)
+- Done:
+  - W0.3 done.
+  - W0.4 step 1 done (downloader + resolvers + Hindi text-layer check).
+  - W0.4 step 2: research pass on L4 (resolved), L7 (ruled), G13, G12, G6, G4/G14, G8 (all partly), all logged in `docs/W0.4_FINDINGS.md`.
+  - Handover written at the top of this file.
+- Decisions: DEC-040, DEC-041, DEC-042.
+- Problems:
+  - Most MP sources are scans (incl. CCITT G4).
+  - 3 corrupted Hindi text-layer patterns.
+  - revenue.mp.gov.in refused; India Code 504 for MPLRC; govtpress TLS untrusted.
+  - Schema gaps (ordinance, not-yet-commenced status, amending instruments).
+- Checks: ruff check ✓ · ruff format ✓ (41 files) · mypy ✓ (11 files) · pytest ✓ 115 passed · pre-commit ✓ all 11 hooks.
+- Next step: W0.4. Review `docs/W0.4_FINDINGS.md` with Malik, take the 8 decisions in the handover, then W0.4 step 3.
+
 ### 2026-11-06 (evening, W0.3 + W0.4 in progress)
 - Done:
   - S6 push.
