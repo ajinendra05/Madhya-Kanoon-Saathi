@@ -19,7 +19,7 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 | W0.1 | Validation posts in 3 groups (Malik) | todo | ≥15 real questions logged (redacted) |
 | W0.2 | AWS account: Paid plan, root MFA, ₹100 alert (Malik, DEC-019) | todo | Alert visible in Budgets |
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
-| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved, next G13 → G12 → G6 → G4/G14 → G8) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
+| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; next G13 → G12 → G6 → G4/G14 → G8) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
 | W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015) | todo | CER table per tool |
 | W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
 

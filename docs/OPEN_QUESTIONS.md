@@ -10,7 +10,9 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | L2 | Most recent official list of states adopting the Model Tenancy Act (RS replies conflict) | "Model law" caveat wording | C | open |
 | L3 | Is there a final MP gazette notification of rules under the four Labour Codes (drafts 5 Jan 2026)? Content of the reported Jul 2026 labour bill? | `status=draft` vs `in_force` | C | open |
 | L4 | MP minimum-wage notification after 1 Oct 2026 | Time-versioned wage answers | C | resolved 2026-11-06: notification 1/11/अन्वे./पांच/2024/22288-337 dt 30.09.2026, valid 01.10.2026–31.03.2027, from the MP Labour DMS (`MP.MWVDAOCT2026` in the manifest; read from p.1 of the official scan). Scanned, so needs OCR (W0.5) |
-| L7 | The Oct 2026 MP wage notification is issued "under the Minimum Wages Act, 1948", while plan.md says the Code on Wages is in force from 21 Nov 2025. Is it still the operative instrument for MP wage answers (savings/transition clause), and how should answers cite it? | Wage answers cite the right law | M (advocate) | open: gates `MP.MWVDAOCT2026` |
+| L7 | Post-commencement MP VDA notifications (Apr 2026 6445-6650, Oct 2026 22288-337) cite the repealed MW Act 1948. Are they valid under the Code on Wages (competent authority's continuing appointment, statutory power, procedure)? Malik's determination (DEC-042): Code governs; these stay in transitional legal review | Wage-amount answers | M (advocate) | open: gates `MP.MWVDAOCT2026` |
+| L8 | Is the MP base-rate notification F.4(B)1/2014/A-16 (MP Extraordinary Gazette No. 68, 04.03.2024, effective 01.04.2024) saved under Code on Wages s.69(2) (not contrary to the Code)? Fetch it and verify | Base rates the VDA adds to | M (advocate) + C (fetch) | open |
+| L9 | Find and verify *Garment and Textile Workers Union (R) v. Chief Secretary, Govt. of Karnataka*, Karnataka HC, 3 June 2026 (cited in Malik's determination). Searches on 2026-11-06 found only related writ appeals 1684–1685/2026 pending | Persuasive authority for DEC-042 | C | open |
 | L5 | Status of SC challenges to DPDP s.44(3) / RTI s.8(1)(j) (no stay as of 3 Nov 2026 per plan) | Sub-judice caveat | C | open |
 | L6 | Official sources for escalation contacts (NALSA 15100, Nyaya Setu 7217711814, e-Jagriti, RCA) | DEC-018 contacts.yaml | C | open |
 
@@ -74,8 +76,8 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | G13 | MP SLSA rules / notification setting the income limit for free legal aid under LSA Act s.12(h) | MP SLSA site; e-gazette | **MVP** | open |
 | G14 | Is the MP Shops and Establishments Act still in force, or changed/replaced by the 2026 Sanhita (G4)? | MP Labour; e-gazette | **MVP** (decide include) | open |
 
-L4 is resolved (current notification found, see group A). Wage-amount answers are now gated on **L7** (which law
-the notification operates under) and on OCR of the scan (W0.5).
+L4 is resolved (current notification found, see group A). Wage-amount answers are now gated on **L7** (validity of
+post-repeal notifications, DEC-042) and on OCR of the scan (W0.5).
 
 ## F. Environment
 | ID | Question | Owner | Status |

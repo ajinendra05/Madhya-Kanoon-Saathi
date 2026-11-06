@@ -2,6 +2,19 @@
   "schema_version": 1,
   "sources": [
     {
+      "doc_id": "IN.COW2019@en@1",
+      "instrument_id": "IN.COW2019",
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "Consolidated text as printed on the India Code PDF."
+    },
+    {
       "status": "in_force",
       "publisher": "Labour Commissioner, Madhya Pradesh, Indore",
       "language": "hi",

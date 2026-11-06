@@ -379,6 +379,31 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: A wrong `text_layer` sends a file down the wrong path (OCR or not), the main source of bad quotes. W1.1 needs a PDF text reader anyway.
 - Effects: ₹0 · ~1 MB pure-Python dependency · W0.4 likely runs past 9 Nov because MP sources are slow to find.
 
+## DEC-042 — Minimum wages: Code on Wages governs; MW Act 1948 notifications handled by s.69 savings
+- Date: 2026-11-06 | Status: accepted | Approved by: Malik (legal determination on L7)
+- Context: The current MP wage notification (22288-337, 30.09.2026) says it is issued "under the Minimum Wages Act, 1948", which was repealed when the Code on Wages took effect.
+- Decision (Malik's determination):
+  - **Governing law:** the Code on Wages, 2019 is the current governing statute.
+  - **Before 21.11.2025:** MW Act notifications issued before that date may continue under s.69(2), subject to consistency with the Code.
+  - **After 21.11.2025:** notifications citing the repealed Act do **not** automatically get s.69(2) protection. Their validity needs the competent authority's continuing appointment, the statutory power used, and procedural compliance with the Code to be verified. A continuity argument exists via the saved CPI-linked structure and s.7(1)–(2).
+  - **Corpus treatment:**
+    1. Index the Code on Wages as the governing law.
+    2. Keep pre-commencement wage notifications as *potentially saved*, subject to verification.
+    3. Keep post-commencement notifications that cite the repealed Act in a **transitional legal-review state**.
+    4. Never present the MW Act 1948 as operative.
+    5. Preserve original references, dates, periods, historical rates and supersession links.
+- Claude's verification (2026-11-06, official India Code PDF of the Code, "As on the 21th November, 2025", `IN.COW2019@en@1`):
+  - s.69(1)–(3) text confirmed (p.30).
+  - The S.O. 5322(E) dt 21.11.2025 commencement footnote is confirmed (p.5).
+  - s.7(1)–(2) (cost of living allowance) confirmed (pp.9–10).
+  - **Not verified:** *Garment and Textile Workers Union (R) v. Chief Secretary, Govt. of Karnataka*, 3 June 2026. Searches found only reports of related Karnataka HC writ appeals (1684–1685/2026) pending on s.69. Persuasive authority at most; not relied on until the judgment text is found.
+- How it maps onto the schema (no schema change, chosen by Claude):
+  - "Transitional legal review" = `mode: gated` with gate **L7**, so these notifications are never indexed while under review.
+  - "Potentially saved" pre-commencement notifications = `gated` with gate **L8**.
+  - The MW Act is an instrument with `superseded_by: ["IN.COW2019"]` and no indexed document.
+- Effects: accuracy: the bot can't quote a wage amount from a notification whose legal basis is unsettled · application: wage-amount answers abstain until L7 clears or a W2.1 caveat wording is approved · cost ₹0.
+- Follow-ups: L7 narrowed to the post-commencement MP VDA notifications (authority, power, procedure). L8 covers the 04.03.2024 MP base-rate notification (Extraordinary Gazette No. 68) as potentially saved. Answer wording for wages is decided in W2.1.
+
 ---
 
 ## Pending decisions (not yet made)

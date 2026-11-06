@@ -39,10 +39,9 @@ from pypdf.errors import PdfReadError
 
 from madhya_kanoon_saathi.ingestion.manifest import MODES, parse_manifest
 
-# Generic project identity, never a personal email (.claude/rules/ingestion.md).
-USER_AGENT = (
-    "MadhyaKanoonSaathi-corpus-fetcher/0.1 (+https://github.com/ajinendra05/Madhya-Kanoon-Saathi)"
-)
+# Generic project identity, never a personal email (.claude/rules/ingestion.md). Kept short: on
+# 2026-11-06 India Code returned 403 for UAs containing "fetcher" or a URL, but 200 for this one.
+USER_AGENT = "MadhyaKanoonSaathi/0.1"
 DEFAULT_DELAY_S = 3.0
 TIMEOUT_S = 60.0
 RETRIES = 3

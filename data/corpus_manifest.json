@@ -2,11 +2,32 @@
   "schema_version": 1,
   "instruments": [
     {
+      "instrument_id": "IN.COW2019",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Code on Wages, 2019 (Act No. 29 of 2019)",
+      "notes": "Title as printed on the India Code PDF header (checked 2026-11-06). commenced_on = S.O. 5322(E) dt 21.11.2025 for ss.1-41, s.42(4)-(9), ss.43-66, s.67(1), (2)(a)-(r), (u)-(zc), (3)-(5), s.68, s.69 (India Code p.5 footnote); some parts commenced earlier by S.O. 4604(E) dt 18.12.2020; s.42(1)-(3) and s.67(2)(s),(t) are not listed in that footnote.",
+      "commenced_on": "2025-11-21",
+      "supersedes": [
+        "IN.MWA1948"
+      ]
+    },
+    {
+      "instrument_id": "IN.MWA1948",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Minimum Wages Act, 1948 (11 of 1948)",
+      "superseded_by": [
+        "IN.COW2019"
+      ],
+      "notes": "Repealed by s.69(1) of the Code on Wages, 2019 (IN.COW2019 p.30) w.e.f. 21.11.2025. Never presented as operative (DEC-042). No document is ingested."
+    },
+    {
       "instrument_id": "MP.MWVDAAPR2026",
       "type": "notification",
       "jurisdiction": "MP",
       "title_en": "Revised Minimum Wages Rates including Variable Dearness Allowance for State Workers under Minimum Wages Act, 1948 from 01.04.2026 to 30.09.2026",
-      "notes": "Title from the DMS listing (checked 2026-11-06); scan not yet read."
+      "notes": "Title from the DMS listing (checked 2026-11-06); scan not yet read. Post-commencement notification citing the repealed MW Act 1948: transitional legal review (DEC-042, gate L7)."
     },
     {
       "instrument_id": "MP.MWVDAOCT2026",
@@ -17,13 +38,13 @@
       "supersedes": [
         "MP.MWVDAAPR2026"
       ],
-      "notes": "English title from the DMS listing; Hindi title from p.1 of the scan. P.1 says it continues notification 6445-6650 dt 31.03.2026 and builds on base rates notified in MP Extraordinary Gazette No. 68 dt 04.03.2024 (F.4(B)1/2014/A-16), not yet in the corpus."
+      "notes": "English title from the DMS listing; Hindi title from p.1 of the scan. P.1 says it continues notification 6445-6650 dt 31.03.2026 and builds on base rates notified in MP Extraordinary Gazette No. 68 dt 04.03.2024 (F.4(B)1/2014/A-16), not yet in the corpus. Post-commencement notification citing the repealed MW Act 1948: transitional legal review (DEC-042, gate L7)."
     }
   ],
   "documents": [
     {
       "doc_id": "MP.MWVDAOCT2026@hi@1",
-      "mode": "archive",
+      "mode": "gated",
       "instrument_id": "MP.MWVDAOCT2026",
       "language": "hi",
       "status": "in_force",
@@ -40,7 +61,7 @@
       "valid_from": "2026-10-01",
       "valid_to": "2027-03-31",
       "expires_on": "2027-03-31",
-      "notes": "Notification dt 30.09.2026, 4 pages, scanned. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 [pending: target_mode=gated]",
+      "notes": "Notification dt 30.09.2026, 4 pages, scanned. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Transitional legal review (DEC-042).",
       "fetched_at": "2026-11-06T10:06:38+00:00",
       "sha256": "9b30baa74dbdca0154576d1d5748ff79f8c5477dd1532efbb48a249f8e6d9ddb",
       "bytes": 725575,
@@ -75,11 +96,14 @@
           "what": "validity",
           "note": "Rates apply 01.10.2026 to 31.03.2027 (p.1)."
         }
+      ],
+      "gate": [
+        "L7"
       ]
     },
     {
       "doc_id": "MP.MWVDAOCT2026@hi@2",
-      "mode": "archive",
+      "mode": "gated",
       "instrument_id": "MP.MWVDAOCT2026",
       "language": "hi",
       "status": "in_force",
@@ -96,13 +120,16 @@
       "valid_from": "2026-10-01",
       "valid_to": "2027-03-31",
       "expires_on": "2027-03-31",
-      "notes": "'Book' version dt 30.09.2026 (47 pages, scanned): rates for all scheduled employments. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 [pending: target_mode=gated]",
+      "notes": "'Book' version dt 30.09.2026 (47 pages, scanned): rates for all scheduled employments. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Transitional legal review (DEC-042).",
       "fetched_at": "2026-11-06T10:07:47+00:00",
       "sha256": "25bdcf41a9d40d80c672d14e6868653ca543edc654a95e87ca6e70de07340196",
       "bytes": 17063951,
       "content_type": "application/pdf",
       "text_layer": "scanned",
-      "local_path": "raw/MP.MWVDAOCT2026/MP.MWVDAOCT2026_hi_2.pdf"
+      "local_path": "raw/MP.MWVDAOCT2026/MP.MWVDAOCT2026_hi_2.pdf",
+      "gate": [
+        "L7"
+      ]
     },
     {
       "doc_id": "MP.MWVDAAPR2026@hi@1",
@@ -123,13 +150,61 @@
       "valid_from": "2026-04-01",
       "valid_to": "2026-09-30",
       "expires_on": "2026-09-30",
-      "notes": "Expired; kept for history and status-trap golden rows. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Embedded OCR layer is unusable (0% Devanagari); needs OCR.",
+      "notes": "Expired; kept for history and status-trap golden rows. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Embedded OCR layer is unusable (0% Devanagari); needs OCR. Transitional legal review (DEC-042).",
       "fetched_at": "2026-11-06T10:08:04+00:00",
       "sha256": "73c4c908f24b4c5c292ac0f79f4f990947a8d92d4e520c552b0928af21e598a8",
       "bytes": 723991,
       "content_type": "application/pdf",
       "text_layer": "scanned",
       "local_path": "raw/MP.MWVDAAPR2026/MP.MWVDAAPR2026_hi_1.pdf"
+    },
+    {
+      "doc_id": "IN.COW2019@en@1",
+      "mode": "index",
+      "instrument_id": "IN.COW2019",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "Consolidated text as printed on the India Code PDF.",
+      "fetched_at": "2026-11-06T10:32:20+00:00",
+      "sha256": "846f2e2745d8a9bc6a6503ca13fb3b5ee9a6d74f364b8179547739090c54cf7f",
+      "bytes": 456927,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.COW2019/IN.COW2019_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "result": "confirmed",
+          "method": "read the official India Code consolidated PDF (born-digital)",
+          "evidence": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf p.5 footnote",
+          "what": "status",
+          "note": "In force: S.O. 5322(E) dt 21.11.2025 brought the listed sections into force (p.5 footnote). The Gazette PDF itself not yet read."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "result": "confirmed",
+          "method": "read the official India Code consolidated PDF (born-digital)",
+          "evidence": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf p.5 footnote",
+          "what": "commencement",
+          "note": "21.11.2025 for the sections listed in the p.5 footnote; see instrument notes for exceptions."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-06",
+          "result": "confirmed",
+          "method": "read the official India Code consolidated PDF (born-digital)",
+          "evidence": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf",
+          "what": "text_matches_source",
+          "note": "This file is the official India Code text."
+        }
+      ]
     }
   ]
 }
