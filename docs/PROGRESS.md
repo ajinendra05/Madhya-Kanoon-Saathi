@@ -11,7 +11,7 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 | S3 | Control files (PROGRESS, OPEN_QUESTIONS, ARCHITECTURE, .gitignore, .env.example, README, pre-commit, rules) | done | pre-commit installed; hooks run after `git init` (S6) |
 | S4 | `.claude/settings.json` permissions + hooks | done | DEC-034/035. Hooks tested: protect (DECISIONS/CORPUS → ask), Stop checks pass, compact summary works. Note: auto mode blocks Claude editing `.claude/hooks/*`, so switch modes when hook changes are needed |
 | S5 | Skills: /start-session, /end-session, /decision | done | `.claude/skills/*/SKILL.md`; format checked against official docs; injected commands tested |
-| S6 | `git init` + first commit; GitHub repo + push after OK | in progress | Local repo + first commit done; GitHub repo/push awaiting OK. `AGENTS.md` (Malik's file) left untracked pending his call |
+| S6 | `git init` + first commit; GitHub repo + push after OK | done | Public repo https://github.com/ajinendra05/Madhya-Kanoon-Saathi (DEC-036); `AGENTS.md` stays untracked |
 
 ## W0 — 5–9 Nov: validation + corpus
 | # | Item | Status | Definition of done |

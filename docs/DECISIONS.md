@@ -283,6 +283,12 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: Fewer interruptions for routine changes. The decision log and the corpus scope are the two files whose changes alter what the project is.
 - Effects: The plan.md body staying unchanged (DEC-008) and frozen golden versions never being edited (plan §1) remain **conventions** in CLAUDE.md and `.claude/rules/eval.md`, not hook-enforced. Claude Code may still prompt on some `.claude/` edits by its own built-in rules (not verified).
 
+## DEC-036 — Public GitHub repo; AGENTS.md stays personal
+- Date: 2026-11-06 | Status: accepted | Approved by: Malik
+- Decision: The GitHub repo `Madhya-Kanoon-Saathi` is **public**. `AGENTS.md` (Malik's Codex copy of CLAUDE.md) stays **untracked** as a personal file.
+- Why: A public repo lets interviewers browse it, and GitHub Pages and Actions are free for public repos (not verified). Gitleaks passed and `.env` is ignored.
+- Effects: Everything committed is world-readable, so the no-secrets/no-PII rules and gitleaks matter even more. Raw user questions never go in git; golden rows are stored redacted only.
+
 ---
 
 ## Pending decisions (not yet made)

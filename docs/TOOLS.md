@@ -172,8 +172,10 @@ check date are given. Verify against the official page before code depends on it
 
 ## 2. GitHub
 
-### GitHub repository — decided (DEC-017)
-- Repo name `Madhya-Kanoon-Saathi`. Creation and first push only after Malik's OK.
+### GitHub repository — decided (DEC-017, DEC-036)
+- Public repo https://github.com/ajinendra05/Madhya-Kanoon-Saathi; remote `origin` over SSH; branch `main`.
+- GitHub CLI `gh` 2.103.3 is installed at `C:\Program Files\GitHub CLI\gh.exe` but isn't on the Claude Bash PATH,
+  so call it by full path. `gh` commands always ask for approval (DEC-034).
 
 ### GitHub Actions — decided (DEC-024)
 - **How we use it:**
