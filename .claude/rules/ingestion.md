@@ -13,6 +13,8 @@ paths:
   Changing either schema is a major decision.
 - `mode=index` needs confirmed `status` + `commencement` verification records (index gate). Claude may confirm
   text/status against official sources; `interpretation` checks need Malik or an advocate.
+- Use `enacted_not_commenced` for assented-but-not-commenced laws, `ordinance` for ordinances, and give every amending
+  law its own instrument with `amends: [...]` (DEC-044). Never label a law `in_force` before its commencement is confirmed.
 - Download only from official sources (India Code, egazette.gov.in, labour.gov.in, MP Labour DMS, ministry portals).
   Aggregators (e.g., Vaquill) may bootstrap parsing but are never the cited source.
 - Prefer the born-digital text layer; OCR (Bodhan) only when there is none. Record which path produced each page.

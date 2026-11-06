@@ -417,6 +417,24 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: accuracy: provisions in blank areas abstain · application: G4/G14 analysis can proceed · cost ₹0.
 - Follow-ups: the status flag for "enacted, not yet commenced" (schema decision in the W0.4 review) must be settled before the manifest row is added.
 
+## DEC-044 — Manifest schema: not-yet-commenced status, ordinances, amending instruments
+- Date: 2026-11-07 | Status: accepted ("A" on all three) | Approved by: Malik | Amends DEC-033.2 (status flags) and DEC-040 (manifest)
+- Context: W0.4 found three things the manifest couldn't describe honestly:
+  - an Act that is assented and published but not in force (MP Act 7/2026, s.1(3))
+  - an ordinance (Lok Seva 2020)
+  - amendments that change an Act vs its Rules (Lok Seva 2026 amended the 2010 Rules)
+- Options per gap: A) add a proper field/value · B) reuse an existing value with a note · C) mis-label or leave out.
+- Decision: **A** for all three.
+  1. New document status **`enacted_not_commenced`**.
+     - Never current (`is_current` stays false).
+     - The bot may explain the law only with a "not yet in force" caveat (wording in W2.1).
+     - The validator errors if the instrument has a `commenced_on` while a document still uses this status, which forces a move to `in_force`.
+  2. New instrument type **`ordinance`**: binding, authority rank 1 (same as an Act). Lapse/replacement is recorded via `superseded_by` / `valid_to`.
+  3. New instrument field **`amends`**: a list of instrument ids this instrument changes. Each amending law is its own instrument (e.g. Lok Seva 2026 amendment → `amends: ["MP.LSGR2010"]`); the existing `amendments` list on the amended instrument stays as the per-section summary.
+- Why: false statuses or wrong parents would leak into answers ("in force") and citations (wrong instrument). Later phases will hit all three cases again.
+- Effects: ₹0 · ~½ day (validator, spec, tests, data migration) · status set grows to 8 flags.
+- Follow-ups: move Lok Seva releases 2–5 to their own instruments once read; add the Sanhita document row as `enacted_not_commenced`.
+
 ---
 
 ## Pending decisions (not yet made)

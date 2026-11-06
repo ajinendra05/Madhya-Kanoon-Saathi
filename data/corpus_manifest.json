@@ -85,7 +85,14 @@
       "made_under": [
         "MP.LSG2010:s10:ss1"
       ],
-      "notes": "Title and parent power (s.10(1)) as recited in the 09.07.2026 amendment notification. Original 2010 rules text not yet fetched."
+      "notes": "Title and parent power (s.10(1)) as recited in the 09.07.2026 amendment notification. Original 2010 rules text not yet fetched. Amended by MP.LSGRA2026 (r.8 cl.(सात)); 'affects' left empty because roman-numbered clauses have no uid segment yet (see W0.4_FINDINGS).",
+      "amendments": [
+        {
+          "by": "MP.LSGRA2026",
+          "commenced_on": "2026-07-09",
+          "affects": []
+        }
+      ]
     },
     {
       "instrument_id": "MP.SSS2026",
@@ -102,6 +109,22 @@
       "jurisdiction": "MP",
       "title_en": "The Madhya Pradesh Shops and Establishments Act, 1958 (No. 25 of 1958)",
       "notes": "Repealed by MP.SSS2026 s.40(1)(b) on and from that Code's commencement (date not yet notified). Amended in 2025 (amendment listed 11.09.2025 and Second Amendment Act 2025 listed 15.12.2025 on the MP Labour DMS notifications page Sid=18). superseded_by is set only once commencement is confirmed. No document ingested yet."
+    },
+    {
+      "instrument_id": "MP.LSGRA2026",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_hi": "मध्यप्रदेश लोक सेवाओं के प्रदान की गारंटी (आवेदन, अपील, पुनरीक्षण, शास्ति की वसूली तथा प्रतिकर का भुगतान) नियम, 2010 में संशोधन (अधिसूचना दिनांक 9 जुलाई 2026)",
+      "parent_instrument": "MP.LSG2010",
+      "made_under": [
+        "MP.LSG2010:s10:ss1"
+      ],
+      "amends": [
+        "MP.LSGR2010"
+      ],
+      "enacted_on": "2026-07-09",
+      "commenced_on": "2026-07-09",
+      "notes": "Lok Seva Prabandhan Vibhag notification क्र. ई.1284057-2026-लो.से.प्र.-इकसठ-178 dt 09.07.2026; adds a proviso to r.8 clause (सात) of the 2010 Rules. In force from publication (MP Rajpatra Asadharan No. 185, 09.07.2026). Split from MP.LSGR2010 per DEC-044."
     }
   ],
   "documents": [
@@ -521,9 +544,9 @@
       "local_path": "raw/MP.LSG2010/MP.LSG2010_hi_5.pdf"
     },
     {
-      "doc_id": "MP.LSGR2010@hi@1",
+      "doc_id": "MP.LSGRA2026@hi@1",
       "mode": "gated",
-      "instrument_id": "MP.LSGR2010",
+      "instrument_id": "MP.LSGRA2026",
       "language": "hi",
       "status": "in_force",
       "source_url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D",
@@ -541,7 +564,7 @@
       "bytes": 135372,
       "content_type": "application/pdf",
       "text_layer": "scanned",
-      "local_path": "raw/MP.LSGR2010/MP.LSGR2010_hi_1.pdf",
+      "local_path": "raw/MP.LSGRA2026/MP.LSGRA2026_hi_1.pdf",
       "gate": [
         "G6"
       ],
@@ -598,6 +621,62 @@
       "content_type": "application/pdf",
       "text_layer": "born_digital",
       "local_path": "raw/MP.LSGSERVICES2026/MP.LSGSERVICES2026_hi_1.pdf"
+    },
+    {
+      "doc_id": "MP.SSS2026@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.SSS2026",
+      "language": "bi",
+      "status": "enacted_not_commenced",
+      "source_url": "https://prsindia.org/files/bills_acts/acts_states/madhya-pradesh/2026/Act7of2026MP.pdf",
+      "publisher": "PRS Legislative Research (scan of MP Rajpatra Asadharan No. 257 dt 10.08.2026); interim source per DEC-043",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 257, 10 Aug 2026, pp.513-514(28)",
+      "notification_no": "क्र. 7635-160-इक्कीस-अ (प्रा.)",
+      "notes": "Hindi Act text with Chapter IX onwards printed in English. Scan defects: blank patches in the preamble, s.1(3), s.2(घ), s.2(छ), s.3(2); do not quote those.",
+      "fetched_at": "2026-11-06T16:39:34+00:00",
+      "sha256": "44c92bb2cdb1d6ee6b09844b212eedaf679993e23b2b63046792a0bb2974a53b",
+      "bytes": 2290412,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.SSS2026/MP.SSS2026_hi_1.pdf",
+      "gate": [
+        "G4"
+      ],
+      "verifications": [
+        {
+          "what": "text_matches_source",
+          "by": "malik",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "official listing match (DEC-043): govtpress.mp.gov.in Asadharan Rajpatra 2026 list, row 28",
+          "evidence": "https://govtpress.mp.gov.in/gazette?cat=15 (No. 257, 10-08-2026, विधि और विधायी कार्य, title matches); official PDF link /uploads/gazette/2026-08-10-Ex-257.pdf returns 404",
+          "note": "Claude read the copy's gazette header (p.2: क्रमांक 257, भोपाल 10 अगस्त 2026, क्र. 7635-160-इक्कीस-अ (प्रा.), assent 7 अगस्त 2026)."
+        },
+        {
+          "what": "status",
+          "by": "claude",
+          "on": "2026-11-06",
+          "result": "confirmed",
+          "method": "read pp.2, 4 of the scan",
+          "evidence": "https://prsindia.org/files/bills_acts/acts_states/madhya-pradesh/2026/Act7of2026MP.pdf pp.2,4",
+          "note": "Assented 07.08.2026 and published 10.08.2026; s.1(3) commencement by notification."
+        },
+        {
+          "what": "commencement",
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "unclear",
+          "method": "web search (EN+HI), MP Labour DMS notifications list",
+          "evidence": "https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=18",
+          "note": "No s.1(3) commencement notification found."
+        }
+      ]
     }
   ]
 }

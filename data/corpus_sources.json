@@ -247,7 +247,7 @@
       "notes": "Amendment - validating approval (release dt 03/04/2021). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
     },
     {
-      "instrument_id": "MP.LSGR2010",
+      "instrument_id": "MP.LSGRA2026",
       "language": "hi",
       "status": "in_force",
       "resolver": "direct",
@@ -262,7 +262,7 @@
       "gate": [
         "G6"
       ],
-      "doc_id": "MP.LSGR2010@hi@1",
+      "doc_id": "MP.LSGRA2026@hi@1",
       "url": "https://mpedistrict.gov.in/MPL/getphoto.aspx?ViewAdhiniyam=u4To%2BmMyvXE%3D",
       "notification_no": "क्र. ई. 1284057-2026-लो.से.प्र.-इकसठ-178",
       "notes": "Amendment (release dt 09/07/2026). Listed on https://mpedistrict.gov.in/MPL/Adhiniyam.aspx."
@@ -282,6 +282,27 @@
       },
       "target_mode": "guide",
       "notes": "Linked as 'अधिसूचित सेवायें' on https://mpedistrict.gov.in/MPL/abhikaransanstha.aspx."
+    },
+    {
+      "doc_id": "MP.SSS2026@hi@1",
+      "instrument_id": "MP.SSS2026",
+      "url": "https://prsindia.org/files/bills_acts/acts_states/madhya-pradesh/2026/Act7of2026MP.pdf",
+      "language": "bi",
+      "status": "enacted_not_commenced",
+      "publisher": "PRS Legislative Research (scan of MP Rajpatra Asadharan No. 257 dt 10.08.2026); interim source per DEC-043",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 257, 10 Aug 2026, pp.513-514(28)",
+      "notification_no": "क्र. 7635-160-इक्कीस-अ (प्रा.)",
+      "target_mode": "gated",
+      "gate": [
+        "G4"
+      ],
+      "notes": "Hindi Act text with Chapter IX onwards printed in English. Scan defects: blank patches in the preamble, s.1(3), s.2(घ), s.2(छ), s.3(2); do not quote those."
     }
   ]
 }

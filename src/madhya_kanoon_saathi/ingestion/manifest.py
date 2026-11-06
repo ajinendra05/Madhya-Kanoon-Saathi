@@ -31,6 +31,7 @@ INSTRUMENT_TYPES = frozenset(
         "scheme_guideline",
         "official_guide",
         "bill",
+        "ordinance",
     }
 )
 # Derived authority (DEC-040): lower rank = higher authority. Not a retrieval weight.
@@ -43,8 +44,9 @@ AUTHORITY_RANK: dict[str, int] = {
     "scheme_guideline": 4,
     "official_guide": 5,
     "bill": 6,
+    "ordinance": 1,  # DEC-044: binding like an Act while it lasts
 }
-BINDING_TYPES = frozenset({"act", "rules", "regulations", "notification", "order"})
+BINDING_TYPES = frozenset({"act", "ordinance", "rules", "regulations", "notification", "order"})
 
 STATUSES = frozenset(
     {
@@ -55,6 +57,7 @@ STATUSES = frozenset(
         "sub_judice_flag",
         "passed_awaiting_assent",
         "proposal",
+        "enacted_not_commenced",  # DEC-044
     }
 )
 MODES = frozenset({"index", "gated", "archive", "guide"})
@@ -133,6 +136,7 @@ class Instrument:
     amendments: tuple[Amendment, ...] = ()
     supersedes: tuple[str, ...] = ()
     superseded_by: tuple[str, ...] = ()
+    amends: tuple[str, ...] = ()  # DEC-044: instruments this one changes
     notes: str | None = None
 
     @property
@@ -376,6 +380,9 @@ def _parse_instrument(raw: Mapping[str, Any], idx: int, errors: list[str]) -> In
 
     supersedes = r.strs("supersedes", _is_instrument_id)
     superseded_by = r.strs("superseded_by", _is_instrument_id)
+    amends = r.strs("amends", _is_instrument_id)
+    if instrument_id is not None and instrument_id in amends:
+        r.err("an instrument cannot amend itself")
     notes = r.str_("notes")
     if instrument_id is None or type_ is None or jurisdiction is None:
         return None
@@ -393,6 +400,7 @@ def _parse_instrument(raw: Mapping[str, Any], idx: int, errors: list[str]) -> In
         amendments=tuple(amendments),
         supersedes=supersedes,
         superseded_by=superseded_by,
+        amends=amends,
         notes=notes,
     )
 
@@ -624,6 +632,11 @@ def _check_cross_references(
         if owner is None:
             errors.append(f"{doc.doc_id}: unknown instrument_id {doc.instrument_id!r}")
             continue
+        if doc.status == "enacted_not_commenced" and owner.commenced_on is not None:
+            errors.append(
+                f"{doc.doc_id}: instrument has commenced_on {owner.commenced_on}; "
+                "update status from enacted_not_commenced (DEC-044)"
+            )
         if owner.jurisdiction != "IN" and doc.applies_to.level == "national":
             errors.append(
                 f"{doc.doc_id}: a {owner.jurisdiction} instrument cannot apply nationally"

@@ -290,3 +290,49 @@ def test_repo_manifest_is_valid() -> None:
     if not repo_manifest.exists():
         pytest.skip("no corpus manifest yet (W0.4)")
     load_manifest(repo_manifest)
+
+
+# --------------------------------------------------------------- DEC-044 additions
+
+
+def test_ordinance_type_is_binding_rank_1() -> None:
+    data = _valid()
+    data["instruments"].append(
+        {
+            "instrument_id": "MP.TESTORD2020",
+            "type": "ordinance",
+            "jurisdiction": "MP",
+            "title_hi": "परीक्षण अध्यादेश",
+            "amends": ["MP.TESTGUIDE2026"],
+        }
+    )
+    manifest, errors = parse_manifest(data)
+    assert errors == []
+    assert manifest is not None
+    ordinance = manifest.instruments["MP.TESTORD2020"]
+    assert ordinance.binding and ordinance.authority_rank == 1
+    assert ordinance.amends == ("MP.TESTGUIDE2026",)
+
+
+def test_amends_must_be_ids_and_not_self() -> None:
+    errors = _errors(_mutate([*INST0, "amends"], ["IN.TESTACT2000"]))
+    assert any("cannot amend itself" in e for e in errors), errors
+    errors = _errors(_mutate([*INST0, "amends"], ["not an id"]))
+    assert any("'amends' has invalid value" in e for e in errors), errors
+
+
+def test_enacted_not_commenced_is_never_current() -> None:
+    data = _mutate(["instruments", 0, "commenced_on"], _DELETE)
+    data["documents"][1]["status"] = "enacted_not_commenced"
+    manifest, errors = parse_manifest(data)
+    assert errors == [], errors
+    assert manifest is not None
+    assert not manifest.documents["IN.TESTRULES2001@hi@1"].is_current(date(2030, 1, 1))
+
+
+def test_enacted_not_commenced_conflicts_with_commencement_date() -> None:
+    # documents[0] belongs to IN.TESTACT2000, which has commenced_on set in the fixture.
+    data = _mutate([*DOC0, "status"], "enacted_not_commenced")
+    data["documents"][0]["mode"] = "archive"
+    errors = _errors(data)
+    assert any("update status from enacted_not_commenced" in e for e in errors), errors
