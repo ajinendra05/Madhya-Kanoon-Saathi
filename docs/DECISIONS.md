@@ -404,6 +404,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: accuracy: the bot can't quote a wage amount from a notification whose legal basis is unsettled · application: wage-amount answers abstain until L7 clears or a W2.1 caveat wording is approved · cost ₹0.
 - Follow-ups: L7 narrowed to the post-commencement MP VDA notifications (authority, power, procedure). L8 covers the 04.03.2024 MP base-rate notification (Extraordinary Gazette No. 68) as potentially saved. Answer wording for wages is decided in W2.1.
 
+## DEC-043 — Interim source for the Shram Shakti Sanhita: PRS copy matched to the official gazette listing
+- Date: 2026-11-07 | Status: accepted ("A") | Approved by: Malik
+- Context: The official govtpress.mp.gov.in listing shows MP Rajpatra (Asadharan) No. 257 dt 10-08-2026, "मध्यप्रदेश कार्यस्थल सशक्तिकरण संहिता (श्रम शक्ति संहिता), अधिनियम, २०२६", Law and Legislative Affairs Dept. But its PDF link (`/uploads/gazette/2026-08-10-Ex-257.pdf`) returns 404. Malik confirmed that all the 2026 download links there are broken. PRS hosts a scan of that gazette issue.
+- Options: **A) use the PRS copy, with its number, date, title and department matched to the official listing** · B) get a copy from the Government Press · C) wait for India Code / MP Code.
+- Decision: **A, as an interim exception to the "never cite an aggregator" rule (ingestion rules).**
+  - The manifest records the PRS URL as `source_url`, plus the official listing as evidence.
+  - A `text_matches_source` verification is recorded with `by: malik`, method "official listing match".
+  - Blank patches in the scan (preamble, s.1(3), s.2(घ), s.2(छ), s.3(2)) stay flagged; those provisions can't be quoted until a clean official copy exists.
+  - Replace it with the official file as soon as govtpress, India Code or MP Code serves it (law-watch item).
+- Why: the listing proves the gazette exists with this exact identity. The PRS scan shows the same gazette header and pages, so the risk is limited to the scan defects, which are flagged.
+- Effects: accuracy: provisions in blank areas abstain · application: G4/G14 analysis can proceed · cost ₹0.
+- Follow-ups: the status flag for "enacted, not yet commenced" (schema decision in the W0.4 review) must be settled before the manifest row is added.
+
 ---
 
 ## Pending decisions (not yet made)
