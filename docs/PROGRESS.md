@@ -39,6 +39,7 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 | --- | --- | --- | --- |
 | W2.0 | Crisis router before retrieval (DEC-033.1) | todo | Crisis-trigger recall = 100% on test rows |
 | W2.0b | Sensitive-data redaction: caste/disability/health/religion (DEC-033.4) | todo | Redaction unit tests |
+| W2.0c | Dispute detector + land jurisdiction guard (DEC-038, moved from Dec) | todo | Merits/ownership land questions route to DLSA; no non-MP land code cited |
 | W2.1 | JSON-claims generation + citation validator + abstention (incl. `expires_on` auto-abstain) | todo | Validator tests |
 | W2.2 | Sarvam vs Claude A/B (model IDs verified, DEC-006) | todo | A/B table |
 | W2.3 | Eval harness (Ragas/DeepEval + own scorers), judge cache (DEC-023) | todo | Gates computed per slice |
@@ -47,7 +48,7 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 | W2.6 | Golden set 120 rows frozen v1.0 | todo | Frozen + versioned |
 | W2.7 | CI job green | todo | |
 
-## W3 — 24–30 Nov: deploy + publish
+## W3 — 24 Nov–~5 Dec: deploy + publish (demo target moved from 30 Nov to ~3–5 Dec, DEC-038)
 | # | Item | Status | Definition of done |
 | --- | --- | --- | --- |
 | W3.1 | AWS deploy: Lambdas, Function URL, SQS+DLQ, DynamoDB, EventBridge, SSM, ECR (DEC-010/024) | todo | Bot answers live |
@@ -59,7 +60,8 @@ Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at 
 ## Corpus expansion (DEC-032, details in CORPUS.md)
 | Phase | Areas | Status |
 | --- | --- | --- |
-| Dec 2026 | Land records + farmer schemes; jurisdiction guard + dispute detector (DEC-033.5–6) | todo |
+| Nov 2026 (MVP) | Land-procedure slice: MPLRC ss.109–110, s.129, Mutation Rules 2018, demarcation rules, Bhulekh guide (DEC-038). Demo ~3–5 Dec | todo |
+| Dec 2026 | Rest of land + farmer schemes | todo |
 | Q1 2027 | Students (before March RTE cycle), cyber/FIR, banking/insurance, women's safety, senior citizens | todo |
 | Q2 2027 | Panchayat/PESA/VB-G RAM G, SC/ST + forest rights, disability | todo |
 | H2 2027+ | Family/UCC, RERA, motor accidents, electricity, ration, Ayushman, birth/death | todo |

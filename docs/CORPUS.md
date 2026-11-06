@@ -45,6 +45,14 @@ The status column uses our status flags. New flags proposed by [R] are marked *(
 | 16 | Income / domicile / caste certificate *procedure* (services under #15; e-District) | Public services | in_force; time limits from the live list [R] | gated: G6 | lokseva.gov.in; mpedistrict.gov.in | some |
 | 17 | Grievance routes: CM Helpline 181 (MP), CPGRAMS | Public services | — | guide + `contacts.yaml` (DEC-018) | cmhelpline.mp.gov.in; pgportal.gov.in | no |
 | 18 | MP Shops and Establishments Act | Labour | to verify; may be changed by 7a (G14) | **decide after G14** | MP Labour / India Code | maybe |
+| 19 | **Land procedure slice (DEC-038):** MP Land Revenue Code 1959, **ss.109–110** (mutation) and **s.129** (demarcation), plus the sections they cross-refer to for authorities and appeals | Land | in_force [R]; 2022 Ordinance / 2023 amendment contents unverified (G8) | gated: G8 | revenue.mp.gov.in (Hindi); India Code; PRS | some |
+| 20 | MP Mutation in Land Records Rules 2018 | Land | in_force [R] | gated: G8 | revenue.mp.gov.in | some |
+| 21 | MP demarcation rules (department list shows 2019; a Minister's reply cites "2020"; ingest both and show the department's dated version) | Land | conflict to resolve (G8) | gated: G8 | revenue.mp.gov.in | some |
+| 22 | Getting a khasra / B-1 / Bhulekh copy online; Cyber Tehsil steps | Land | — | guide | MP Bhulekh / revenue portal | no |
+
+**Land slice limits (DEC-038):** procedure only (how to apply, time limits, which authority, appeals). No ownership,
+title, inheritance, encroachment or tribal-land (s.165(6)) merits answers: the dispute detector routes these to DLSA.
+The jurisdiction guard is mandatory: never cite the Chhattisgarh or Maharashtra Land Revenue Codes.
 
 Items 15–17 are the "Sarkari Seva aur Praman-patra" module. Caste certificates are **procedure only**: the bot never
 decides anyone's caste status (DEC-033 sensitive-data rule).
@@ -60,7 +68,11 @@ decides anyone's caste status (DEC-033 sensitive-data rule).
 **Golden-set effect (DEC-037):** the schemes slice drops from 10 to ~5 rows. The other ~5 move to public-services and
 state-RTI rows. Total stays 120.
 
-## Phase 1 — December 2026: land + farmers
+## Phase 1 — December 2026: rest of land + farmers
+
+The mutation and demarcation procedure slice moved to Phase 0 (DEC-038). Phase 1 adds the rest of land: the remaining
+MPLRC sections and rules, diversion, partition, s.165(6), s.250, stamp and registration, SVAMITVA, acquisition.
+It also adds all farmer schemes.
 
 | Instrument / scheme | Status (claimed) [R] | Source portal | OCR? |
 | --- | --- | --- | --- |

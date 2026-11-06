@@ -272,7 +272,7 @@ instrument has expired, the bot abstains instead of quoting stale dates or amoun
 volunteers it, it's used only within that session and redacted from all storage. Caste comes up naturally in
 certificate questions, so this rule needs tests, not just good intentions.
 
-**Jurisdiction guard and dispute detector (DEC-033, Dec).** The jurisdiction guard is a hard filter so that land and
+**Jurisdiction guard and dispute detector (DEC-033; moved to the November MVP with the land slice, DEC-038).** The jurisdiction guard is a hard filter so that land and
 family answers never come from another state's law (e.g., the Chhattisgarh or Maharashtra Land Revenue Codes). The
 dispute detector answers the procedure ("how do I apply for demarcation") but sends merits questions ("is this land
 mine?") to DLSA.

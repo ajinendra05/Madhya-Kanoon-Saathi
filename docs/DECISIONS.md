@@ -315,6 +315,27 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   - Indexing a law of unknown status risks citing non-law.
 - Effects: ~18 indexed or gated instruments · W0.4 starts with the wage notification and the verification items · fewer time-bound scheme documents to maintain.
 
+## DEC-038 — Thin land-procedure slice in the November MVP
+- Date: 2026-11-06 | Status: accepted (option C) | Approved by: Malik | Supersedes part of DEC-032 (land wholly in Dec) and DEC-033.6 (dispute detector in Dec)
+- Context: Malik asked what adding land + farmers to the November phase would cost. Money impact is ~₹0–50/month; the real costs are 2.5–3.5 weeks of work and accuracy risk.
+- Options:
+  - A) keep land + farmers in Dec (demo 30 Nov)
+  - B) add all of land + farmers now (demo ~mid–late Dec, high risk)
+  - C) thin land-procedure slice now (demo ~3–5 Dec, medium risk)
+  - D) farmer schemes only now (demo ~2–3 Dec, high upkeep)
+- Decision: **C.**
+  - Add MPLRC **ss.109–110 (mutation), s.129 (demarcation)** + Mutation Rules 2018 + demarcation rules + a Bhulekh/Cyber Tehsil copy guide (CORPUS.md items 19–22).
+  - **Procedure only.**
+  - **Dispute detector moves to November** (W2) and the **jurisdiction guard** is enforced for land in November.
+  - Farmer schemes and the rest of land stay in Dec.
+- Golden set: ~8–10 land-procedure rows (of which ~3 should-abstain "who owns it" / dispute rows). Default plan keeps v1.0 at 120 by trimming tenancy 35→31, labour 30→28 and consumer 25→23. Final composition is confirmed when the set is built (W2.6).
+- Why: Land is the top rural question in MP. Procedure questions (mutation, demarcation, record copies) are well defined and low-risk when merits questions are routed to DLSA. It's a strong demo and interview story for ~4–5 extra days.
+- Effects:
+  - **Demo date ~3–5 Dec** instead of 30 Nov.
+  - +~3–4 days ingestion/verification, +~1 day dispute detector, +~1 day golden rows.
+  - Money ≈ +₹0–50/month; a full judged eval run costs the same (total rows unchanged).
+  - G8 (conflicting mutation time limits, demarcation-rules year, unverified 2022/2023 amendments) becomes MVP-blocking for this slice.
+
 ---
 
 ## Pending decisions (not yet made)

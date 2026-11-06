@@ -60,7 +60,7 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | G5 | Registration (MP Amendment) Act 2025, assent 13 Oct 2026; commencement date | MP e-gazette | **MVP (tenancy)** | open |
 | G6 | Lok Seva Guarantee: Act 24 of 2010 + amendments; notified service list and time limits (e.g., caste 30 working days; income 3 / domicile 7 per a secondary guide) | lokseva.gov.in/MPL; PRS | **MVP** | open |
 | G7 | 181 in MP = women's helpline **and** CM Helpline? Official numbers for 112, 1098, 1930, 14416, 14447, 14555, 14567, 15100 | Official portals → contacts.yaml | **MVP** | open |
-| G8 | MPLRC 2022 Ordinance + 2023 Second Amendment contents; mutation timelines (s.110: 1 vs 2 months); demarcation rules 2019 vs 2020 | revenue.mp.gov.in; e-gazette | Dec | open |
+| G8 | MPLRC 2022 Ordinance + 2023 Second Amendment contents; mutation timelines (s.110: 1 vs 2 months); demarcation rules 2019 vs 2020 | revenue.mp.gov.in; e-gazette | **MVP** (land slice, DEC-038) | open |
 | G9 | CM Kisan Kalyan amount (₹6,000 vs ₹4,000); Bhavantar Kharif 2026 dates; stubble-burning disqualification order | Agriculture dept orders | Dec | open |
 | G10 | PM-KISAN instalment dates; RTE MP 2026-27 dates | pmkisan.gov.in; rteportal.mp.gov.in | Dec / Q1 | open |
 | G11 | SC/ST PoA relief schedule (₹85,000–₹8.25 lakh) and task-force proposal status | PoA Rules Annexure I; MoSJE | Q2 2027 | open |
