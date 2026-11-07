@@ -136,6 +136,15 @@
       "title_en": "The Madhya Pradesh Nirsan Adhiniyam, 2026 (MP Act No. 8 of 2026)",
       "enacted_on": "2026-08-07",
       "notes": "Assent 07.08.2026; MP Rajpatra (Asadharan) No. 260 dt 11.08.2026, pp.519-520(2), Law Dept क्र. 7656-164-इक्कीस-अ(प्रा.); English translation under Art. 348(3) on pp.520(1)-(2). s.2 + Schedule repeal in whole: Debt Conciliation Act (CP&B) 1933 No.2; Protection of Debtors Act (CP) 1937 No.4; Famine Relief Fund Act (CP&B) 1937 No.3; Relief of Indebtedness Act (CP&B) 1939 No.14; Vidya Mandir Act (CP&B) 1940 No.3; MP Regulation of Couching Act 1944 No.2; Land Survey Act (CP&B) 1947 No.42. s.3 savings. No commencement clause (TODO(verify) MP General Clauses Act rule). Legal-impact check (X3) 2026-11-07: no corpus instrument affected. Gazette discrepancies: item 4 Hindi 'क्रमांक ४ सन् १९३९' vs No. 14; item 6 column No. 3 vs title No. 2 of 1944. Read from a PRS copy (official govtpress PDF 404); file kept at data/raw/MP.NIRSAN2026/MP.NIRSAN2026_bi_prs.pdf, sha256 8bc8037b4b8a9bff479f1b248515def91f551f4b355370c6a361556724759b71. No document row (DEC-043 exception covers only the Sanhita)."
+    },
+    {
+      "instrument_id": "MP.EODB2026",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_hi": "मध्यप्रदेश ईज ऑफ डूइंग बिजनेस अधिनियम, २०२६",
+      "title_en": "The Madhya Pradesh Ease of Doing Business Act, 2026 (MP Act No. 9 of 2026)",
+      "enacted_on": "2026-08-17",
+      "notes": "Assent 17.08.2026; MP Rajpatra (Asadharan) No. 264 dt 20.08.2026, pp.527-528(27+), Law Dept क्र. 8071-171-इक्कीस-अ (प्रा.); English text pp.528(16) ff. s.1(2) extends only to industrial areas as notified; s.1(3) commencement by notification (not found: enacted, not commenced). Legal-impact check (X3) 2026-11-07: no textual amendment of corpus laws. Effects once commenced: Schedule IV item 41 routes 'Registration under Shops and Establishments Act' through the State Nodal Agency single window (notified industrial areas); s.20 penalties for missed clearance time limits under the Lok Seva Act 2010 (MP.LSG2010); s.21 harmonious-construction override of State laws; s.15 conversion of industrial land into Bhumiswami (freehold) rights under the MPLRC (outside the land-procedure slice). s.27 repeals, from commencement, the MP Investment Facilitation Act 2008 (No. 21) and the MP Udyogon Ki Sthapna Evam Parichalan Ka Saralikaran Adhiniyam 2023 (No. 13) (not in corpus). Read from a PRS copy (official govtpress PDF 404); file kept at data/raw/MP.EODB2026/MP.EODB2026_bi_prs.pdf, sha256 1536ee677227d5f7f017caf8e9ca8285e9d60a2c0f2ac73c6ccb56b6272fb5e4. No document row."
     }
   ],
   "documents": [
