@@ -155,7 +155,7 @@
       "amendments": [
         {
           "by": "MP.LRCA2018",
-          "commenced_on": null,
+          "commenced_on": "2018-09-25",
           "affects": [
             "MP.LRC1959:s109",
             "MP.LRC1959:s110",
@@ -214,10 +214,11 @@
       "type": "act",
       "jurisdiction": "MP",
       "title_en": "The Madhya Pradesh Land Revenue Code (Amendment) Act, 2018 (No. 23 of 2018)",
-      "notes": "Substitutes ss.109 (report acquisition within 6 months; penalty up to Rs 5,000), 110 (mutation: patwari intimation 30 days; Tahsildar registers within 15 days; order within 30 days undisputed / 5 months disputed; free certified copy + updated records within 30 days; whole proceeding 2 months undisputed / 6 months disputed) and 129 (demarcation by RI/Nagar Sarvekshak; SDO application within 45 days; no appeal/revision u/ss.44, 50; rules power s.129(9)), plus many other sections. s.1(2): in force on a date notified by the State Government. Commencement notification NOT found (TODO(verify)). Later 2022 Ordinance / 2023 amendment not checked.",
+      "notes": "Substitutes ss.109 (report acquisition within 6 months; penalty up to Rs 5,000), 110 (mutation: patwari intimation 30 days; Tahsildar registers within 15 days; order within 30 days undisputed / 5 months disputed; free certified copy + updated records within 30 days; whole proceeding 2 months undisputed / 6 months disputed) and 129 (demarcation by RI/Nagar Sarvekshak; SDO application within 45 days; no appeal/revision u/ss.44, 50; rules power s.129(9)), plus many other sections. s.1(2): in force on a date notified by the State Government. Commenced 25.09.2018 per the State Government's own recital in MP.LRCNR2018 r.1(2); the s.1(2) commencement notification itself not yet seen. Later 2022 Ordinance / 2023 amendment not checked.",
       "amends": [
         "MP.LRC1959"
-      ]
+      ],
+      "commenced_on": "2018-09-25"
     },
     {
       "instrument_id": "MP.LRCVR2020",
@@ -302,6 +303,15 @@
       "made_under": [
         "IN.COW2019:s67:ss1"
       ]
+    },
+    {
+      "instrument_id": "MP.LRCNR2018",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "parent_instrument": "MP.LRC1959",
+      "title_en": "The Madhya Pradesh Bhu-Rajaswa Sanhita (Bhu-Rajasva Ka Nirdharan Tatha Punarnirdharan) Niyam, 2018",
+      "commenced_on": "2018-09-25",
+      "notes": "Assessment and re-assessment of land revenue. r.1(2): in force on the commencement of MPLRC (Amendment) Act 2018 'that is 25th September, 2018'. Kept as evidence for the 2018 Act's commencement; outside the mutation/demarcation slice."
     }
   ],
   "documents": [
@@ -977,13 +987,13 @@
           "method": "read the official MP Code PDF"
         },
         {
+          "what": "commencement",
           "by": "claude",
           "on": "2026-11-07",
-          "result": "unclear",
-          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2018_0023_Pdf_F1889_English.pdf",
-          "what": "commencement",
-          "method": "s.1(2) read; commencement notification searched on MP Code",
-          "note": "In force on a notified date; notification not found."
+          "result": "confirmed",
+          "method": "official recital in later State rules (MP.LRCNR2018 r.1(2), MP Code copy)",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1127_Pdf_F2068_English1.pdf r.1(2)",
+          "note": "'...on the date of commencement of the Madhya Pradesh Land Revenue Code (Amendment) Act, 2018 (No. 23 of 2018), that is 25th September, 2018.' Commencement notification number not seen."
         }
       ]
     },
@@ -1228,6 +1238,28 @@
           "note": "Draft rules published for objections (45 days); not final."
         }
       ]
+    },
+    {
+      "doc_id": "MP.LRCNR2018@en@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCNR2018",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1127_Pdf_F2068_English1.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Evidence for MP.LRCA2018 commencement (r.1(2)).",
+      "fetched_at": "2026-11-07T05:17:27+00:00",
+      "sha256": "25dc4ac6f58fdcbb98c4c45a7430bd85b234eea7a86b9750f8dce3eae3cb064c",
+      "bytes": 313725,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.LRCNR2018/MP.LRCNR2018_en_1.pdf"
     }
   ]
 }

@@ -512,6 +512,22 @@
         "L3"
       ],
       "notes": "Found via code.mp.gov.in search 2026-11-07; status to verify (status field provisional until read)."
+    },
+    {
+      "doc_id": "MP.LRCNR2018@en@1",
+      "instrument_id": "MP.LRCNR2018",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1127_Pdf_F2068_English1.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "archive",
+      "notes": "Evidence for MP.LRCA2018 commencement (r.1(2))."
     }
   ]
 }
