@@ -20,7 +20,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
    Demarcation stays gated (DEC-046); mutation is backed by official texts.
 2. ~~**L8**~~ fetched 2026-11-07 (stayed 2024, reinstated 2025 except textiles/apparel/footwear; saved status for advocate). ~~**G14**~~ texts fetched 2026-11-07 (gated until base-text overlay). **G6:** later s.3 time-limit notifications. **G12:** amendment check.
-3. **LW1:** periodic manual check for the final MP Code on Wages Rules and the Sanhita/EoDB commencement notifications.
+3. **LW1:** periodic manual check for the final MP Code on Wages Rules and the Sanhita/EoDB commencement notifications. (Checked 2026-11-07: nothing final/commenced; see OPEN_QUESTIONS LW1 log.) Advocate brief for L7/L8: `docs/briefs/advocate_brief_L7_L8.md` (Malik to send).
 4. Plans (not code yet) for **X1–X4**.
 5. W0.4 step 3 (central born-digital texts), then W0.5 OCR (CCITT G4 scans; corrupt Hindi text layers; zero-width joiners).
 
