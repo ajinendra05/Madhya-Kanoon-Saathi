@@ -195,6 +195,11 @@ Each amending law is its own instrument with `amends: [...]`, so a citation poin
 Act or its Rules.
 - Interview angle: "time-aware legal data". The model must never call a law "in force" just because it was published.
 
+**Version chains for drafts (DEC-047/048).** Successive drafts and the final text are separate documents linked by
+`supersedes` / `superseded_by`. A `draft` can be indexed with a confirmed status check alone, but it is never "current",
+so the bot always labels it as a draft.
+- Interview angle: provenance. You can show exactly which version of a rule an answer relied on, and when it changed.
+
 **Corrupted text layers (seen in W0.4).** A PDF can "have text" that is wrong. Seen so far:
 - a Latin-only OCR layer in a Hindi scan
 - ि extracted as ध by an old font converter

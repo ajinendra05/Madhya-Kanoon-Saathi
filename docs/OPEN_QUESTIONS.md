@@ -205,6 +205,7 @@ post-repeal notifications, DEC-042) and on OCR of the scan (W0.5).
 | X4 | Re-run affected golden-set rows after every legal change (law-watch flow, DEC-013) | C (plan) → M | open |
 | U1 | `section_uid` support for roman-numbered clauses alongside letters, validated against the hierarchy (DEC-045 item 7) | C | resolved 2026-11-07: new segments `clr_<roman>` (clause) and `scla_<letters>` (sub-clause); canonical roman 1–3999; spec `docs/specs/section_uid.md`; 23 new tests. First use: `MP.LSGR2010:r8:clr_vii` for the 2026 amendment. **TODO(verify):** the mapping of Hindi clause '(सात)' → (vii) is structural; confirm against the 2010 Rules text once fetched |
 | LW1 | **Law-watch: final MP Code on Wages Rules.** Check periodically (MP Rajpatra, MP Labour DMS Sid=14/24, code.mp.gov.in) for a final notification; on finding it, add it as a new document that `supersedes` the 30.04.2026 draft, keeping the version chain (DEC-047). Also watch the Sanhita (G4) and EoDB (G16) commencement notifications | C (law-watch, W3.3; manual until then) | open |
+| N1 | Hindi normaliser (W1.3, DEC-026) must strip zero-width joiner/non-joiner (U+200D/U+200C) before matching: mpvidhansabha.nic.in embeds them inside words ('राजस्‍व'), which breaks exact search | C | open |
 
 ## F. Environment
 | ID | Question | Owner | Status |

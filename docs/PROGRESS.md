@@ -11,16 +11,18 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
 **`docs/W0.4_FINDINGS.md` is FROZEN** as Malik's v1 record: never edit, fold or delete it (to be revisited in v2).
 
-**Next Claude tasks, in order:**
-1. ~~**U1**: roman-numbered clause IDs~~ done 2026-11-07.
-2. ~~**G15** (MP Repeal Act 2026)~~ done 2026-11-07 (no corpus impact); ~~**G16** (Ease of Doing Business Act 2026)~~ done 2026-11-07 (not commenced; procedural overlay only): find official copies (govtpress PDFs 404).
-3. **G8 land** (partly done 2026-11-07: MPLRC + 2018 Act from code.mp.gov.in; s.110 limits confirmed). Remaining: 2018 commencement notification, Mutation Rules 2018, demarcation rules, 2022/2023 amendments. **Deadline 16 Nov**.
-3b. ~~Read 'MP Wage Code Rules, 2026'~~ done 2026-11-07: revised draft (30.04.2026) = latest; Jan draft archived; S.O. 2451(E) added; L7 stays gated (DEC-047). April draft indexed as a draft (DEC-048). Watch for final rules (LW1).
-4. **L8** (Mar 2024 base wages); **G14** fetch the S&E Act 1958 + 2025 amendments; **G6** later s.3 time-limit notifications;
-   **G12** amendment check.
-5. Plans (not code yet) for **X1–X4**: effective-date retrieval, source-quality metadata, legal-impact analysis,
-   golden re-runs after legal changes.
-6. Then W0.4 step 3 (central born-digital texts) and W0.5 OCR (critical: CCITT G4 scans, corrupt Hindi text layers).
+**Next Claude tasks, in order (updated 2026-11-07, session 2):**
+1. **G8 before 16 Nov:**
+   - G8a: original gazette of the 2018 commencement notification (No. 24-2018-VII-Sec-6)
+   - G8b: official Demarcation Rules copy
+   - G8g: 28.01 vs 01.02.2019 date discrepancy
+   - G8h: Mutation Rules gazette publication date
+
+   Demarcation stays gated (DEC-046); mutation is backed by official texts.
+2. **L8:** the Mar 2024 base-rate notification (MP Extraordinary Gazette No. 68). **G14:** fetch the S&E Act 1958 + 2025 amendments. **G6:** later s.3 time-limit notifications. **G12:** amendment check.
+3. **LW1:** periodic manual check for the final MP Code on Wages Rules and the Sanhita/EoDB commencement notifications.
+4. Plans (not code yet) for **X1–X4**.
+5. W0.4 step 3 (central born-digital texts), then W0.5 OCR (CCITT G4 scans; corrupt Hindi text layers; zero-width joiners).
 
 **Malik's open actions:**
 - an advocate on L7
@@ -95,6 +97,24 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-07 (session 2)
+- Done:
+  - **U1:** roman-clause section IDs (`clr_`, `scla_`).
+  - **G15:** MP Repeal Act 2026 (no corpus impact).
+  - **G16:** MP Ease of Doing Business Act 2026 (not commenced; procedural overlay only).
+  - **G8:** official MPLRC + Acts 23/2018, 2/2022, 20/2022, 1/2023 + Mutation Rules 2018; 2018 Act commenced 25.09.2018; mutation time limits confirmed; Demarcation Rules registered but kept qualified/gated.
+  - **L3/L7:** MP Code on Wages Rules draft chain (Jan → Apr 2026, objection reports Jun 2026); S.O. 2451(E) verified.
+  - Draft index gate (DEC-048); deep-research check recorded under G8.
+  - New official sources: code.mp.gov.in, mpvidhansabha.nic.in, MP Labour DMS Sid=14/24, labour.gov.in.
+  - Checks: ruff check ✓ · ruff format ✓ (41 files) · mypy ✓ (11 files) · pytest ✓ 148 passed · pre-commit ✓ all 11 hooks.
+- Decisions: DEC-046 (demarcation qualified/gated), DEC-047 (wage-rules draft chain; L7 gated), DEC-048 (draft index gate).
+- Problems:
+  - govtpress PDFs 404, India Code 504, revenue.mp.gov.in down.
+  - The Demarcation Rules exist only as an unverified reproduction.
+  - mpvidhansabha pages embed zero-width joiners (normaliser must strip them).
+  - Several scans have blank patches.
+- Next step: W0.4. G8 sub-items before 16 Nov (G8a/b/g), then W0.4 step 3 (central born-digital texts).
+
 ### 2026-11-07
 - Done:
   - W0.4 findings review with Malik.

@@ -322,6 +322,9 @@ check date are given. Verify against the official page before code depends on it
 | egazette.gov.in | RTI Rules 2012, Central labour Rules 2026, notifications |
 | labour.gov.in | Labour Codes and Central Rules |
 | MP Labour DMS (labour.mponline.gov.in) | MP draft rules under the four codes |
+| mpvidhansabha.nic.in (MP Legislative Assembly) | Official copies of Acts/Ordinances by year (bill_YYYY.htm); MPLRC amendment Acts 2022/2023 came from here. Pages embed zero-width joiners in Hindi words |
+| labour.gov.in | Gazette of India copies of central labour notifications (e.g. S.O. 2451(E)) |
+| indiankanoon.org | Reference only, never cited: used to locate the Demarcation Rules 2018 reproduction (itself marked unverified) |
 | govtpress.mp.gov.in (MP Government Press) | Official MP Rajpatra listings; on 2026-11-07 the 2026 PDFs all returned 404 and the TLS chain was untrusted from Claude's tools (DEC-043) |
 | mpedistrict.gov.in/MPL | Lok Seva Act, Rules and amendments (`getphoto.aspx` direct links), notified services list |
 | rcms.mp.gov.in | Revenue Case Management System; hosts a 2013 Lok Seva time-limit gazette (historical source, DEC-045) |
