@@ -16,6 +16,59 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | L5 | Status of SC challenges to DPDP s.44(3) / RTI s.8(1)(j) (no stay as of 3 Nov 2026 per plan) | Sub-judice caveat | C | open |
 | L6 | Official sources for escalation contacts (NALSA 15100, Nyaya Setu 7217711814, e-Jagriti, RCA) | DEC-018 contacts.yaml | C | open |
 
+### G8 in detail: Demarcation Rules 2018 and the deep-research check (2026-11-07, kept GATED)
+
+**Decision (Malik, 2026-11-07):** record these findings here for now; the Demarcation Rules stay **gated** (DEC-046).
+The research's "Level 2: qualified indexing" proposal is **not adopted** (it would be a second aggregator exception after DEC-043).
+
+**Reproduced text checked by Claude:** Indian Kanoon, https://indiankanoon.org/doc/12233550/
+- Copy saved at `data/raw/MP.LRCDR2018/MP.LRCDR2018_en_indiankanoon.html` (git-ignored), sha256 `820eee66c9c7199724cd382c90e5fa941c0ad0d8f29ff89a0818b4924cd82601`.
+- The page itself says: *"The original publication document is not available and this content could not be verified."*
+
+**Matches between the deep research and the reproduction:**
+- Notification F-2-13-2018-7-Se.7, Bhopal, **28.01.2019**.
+- Made under s.258(2)(xxx) + s.129; supersedes notification 187-6477-VII-N-(Rules) dt 06.01.1960.
+- r.1(2): in force from **publication in the MP Gazette**.
+- r.3 Form I (application); r.5 Form II (Tahsildar report, s.129(2)); r.6 Form III (SDO report, s.129(7)).
+- **r.4 fees:**
+  - (1) fixed by the Collector with the Commissioner Land Records' approval
+  - (2) may differ by district (agency charges)
+  - (3) **an applicant who builds the marks pays only the demarcation fee** (missing from the research)
+  - (4) **until the Collector fixes a fee, the fee in force before these rules applies** (missing from the research)
+- r.7 agencies:
+  - (1) authorised by the Collector under the Commissioner's control
+  - (2) engaged by the Tahsildar (s.129(3))
+  - (3) engaged by the SDO (s.129(6))
+- r.8 SDO team (s.129(6)):
+  - Team Leader: Superintendent / Assistant Superintendent of Land Records, a Revenue Inspector or a Nagar Sarvekshak
+  - Member: another Revenue Inspector or Nagar Sarvekshak
+  - optional experts
+- r.9 + Schedule I: property pins (Types 1–3, sizes) and pin caps.
+- r.10: technical instructions by the Commissioner Land Records (s.129(9)).
+- r.11: damage to marks is penalised under s.130.
+
+**Corrections to the research:**
+1. **The 45-day limit is exact, not "normally":** it runs from the date of the Tahsildar's confirmation **or the date of knowledge, whichever is later** (official Act 23/2018 text).
+2. The s.129 text is **already verified layer by layer**: the 2018 substitution (official MP Code) plus the 2023 "or Patwari" amendment (official Assembly copy). No official consolidation exists.
+3. Rules 3–11 have **no headings** in the source; the research's rule titles are descriptive labels, not quotations.
+
+**Bot rules carried forward (DEC-046):**
+- Keep **s.129(5)** separate from **s.129(8)**:
+  - s.129(5): an SDO application on the stated grounds (no notice / no hearing / other sufficient ground)
+  - s.129(8): no appeal or revision
+- **No universal fee.**
+- The procedure under the rules may be described only as "per the Demarcation Rules 2018 (official gazette copy not yet verified)", always alongside s.129.
+
+**Not verifiable today:** the India Code record of commencement notification **No. 24-2018-VII-Sec-6 dt 16.08.2018** (appointing 25.09.2018). India Code returned HTTP 504 on every try. Keep the distinction: **16.08.2018 = notification date; 25.09.2018 = commencement date.**
+
+**G8g hypothesis (unverified):** 28.01.2019 = notification date; **01.02.2019 = gazette publication date**. Because r.1(2) makes publication the commencement event, 01.02.2019 would then be the commencement date. Needs the gazette issue.
+
+**Not adopted from the research's proposals:**
+- Manifest fields `act_id` / `parent_act` / `legal_status` / `retrieval_mode`: equivalents already exist (`instrument_id`, `parent_instrument`, `status`, `mode`).
+- `source_quality`: = X2, needs a plan + decision.
+- ID `MP.LRCSEEM2018`: we keep `MP.LRCDR2018`.
+- "Index mutation now": blocked until W1.1 can overlay the 2018 substituted sections on the 2014 consolidation, and until the Mutation Rules' gazette publication date is known (G8h).
+
 ### L7 in detail: MP wage notifications after the repeal of the Minimum Wages Act (open)
 
 **The question.** MP's VDA wage notifications issued *after* 21.11.2025 still say they are made "under the Minimum
