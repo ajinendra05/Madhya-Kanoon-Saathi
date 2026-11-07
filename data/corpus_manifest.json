@@ -297,9 +297,9 @@
       "instrument_id": "MP.WCR2026",
       "type": "rules",
       "jurisdiction": "MP",
-      "title_en": "Madhya Pradesh Code on Wages Rules, 2026 (draft of 30.04.2026)",
+      "title_en": "Madhya Pradesh Code on Wages Rules, 2026 (DRAFT; not final, not in force)",
       "parent_instrument": "IN.COW2019",
-      "notes": "DRAFT: notification No. 83/2026/A-16, MP Rajpatra 30.04.2026, p.226(73) ff.; proposed under Code on Wages s.67(1), superseding the Minimum Wages (MP) Rules 1958 and MP Payment of Wages Rules 1962; objections within 45 days. Revised draft (an earlier draft dated 05.01.2026 per secondary sources = CORPUS #7). Draft r.4: Technical Committee chaired by the Labour Commissioner (skill categories etc.); draft r.5: cost of living allowance computed once before 1 April and 1 October each year on CPI-IW (s.7(2)); the s.7(2) computing authority is NOT appointed in these rules. No final notification found (2026-11-07).",
+      "notes": "DRAFT ONLY (DEC-047). Version history: (1) 05.01.2026 draft (DMS Sid=14; header date blank) -> archived; (2) 30.04.2026 revised draft No. 83/2026/A-16 (MP Rajpatra 30.04.2026, p.226(73) ff.) = latest draft; (3) objections and action-taken reports dated 24.06.2026 and 25.06.2026 (DMS Sid=24). No final notification found (2026-11-07). Proposed under Code on Wages s.67(1), superseding the Minimum Wages (MP) Rules 1958 and the MP Payment of Wages Rules 1962. Proposed r.5 (both drafts): COLA computed once before 1 April and 1 October on CPI-IW (supports the twice-yearly VDA cycle). Proposed r.4: advisory Technical Committee chaired by the Labour Commissioner; NOT the s.7(2) computation authority. WATCH for a final notification (law-watch).",
       "made_under": [
         "IN.COW2019:s67:ss1"
       ]
@@ -324,6 +324,17 @@
         "MP.LRC1959:s258:ss2"
       ],
       "notes": "DEC-046: QUALIFIED/GATED. Notification No. F-2-13-2018-7-Se.7, recorded date 28.01.2019 (reported in-force date 01.02.2019: discrepancy to investigate). Full reproduced text located by Malik (Rules 3-11, Forms I-III, agency provisions, team composition, fees, boundary-mark specifications); NOT source-verified (original gazette reported unavailable). Rule 4 (reproduced): fees fixed by the Collector with the Commissioner's approval, so they vary by district. No document row until an official copy is obtained. Reproduction checked by Claude 2026-11-07 at https://indiankanoon.org/doc/12233550/ (saved data/raw/MP.LRCDR2018/MP.LRCDR2018_en_indiankanoon.html, sha256 820eee66c9c7199724cd382c90e5fa941c0ad0d8f29ff89a0818b4924cd82601); the page itself states the original publication is unavailable and unverified. Remains GATED (Malik, 2026-11-07)."
+    },
+    {
+      "instrument_id": "IN.SO2451E2026",
+      "type": "notification",
+      "jurisdiction": "IN",
+      "title_en": "S.O. 2451(E) dated 12 May 2026 (Code on Wages s.7(2): authority to compute cost of living allowance)",
+      "parent_instrument": "IN.COW2019",
+      "made_under": [
+        "IN.COW2019:s7:ss2"
+      ],
+      "notes": "Central-sphere s.7(2) appointment (DG, Labour Bureau). Verified 2026-11-07 from the official copy. Does not resolve the MP authority question (L7, DEC-047)."
     }
   ],
   "documents": [
@@ -1221,7 +1232,7 @@
           "MP"
         ]
       },
-      "notes": "Official MP Code copy of the gazette draft; 56 pages, mostly scanned.",
+      "notes": "Latest draft (30.04.2026), official MP Code copy of the gazette; status draft = not in force (DEC-047). Gated until a draft-indexing gate rule is decided.",
       "fetched_at": "2026-11-07T04:57:19+00:00",
       "sha256": "5140d873aa2643049f4fa2eac2e6e3575680457e3b4d83ddeb8e1cd99dee3bff",
       "bytes": 4692042,
@@ -1249,6 +1260,9 @@
           "method": "read the notification preamble",
           "note": "Draft rules published for objections (45 days); not final."
         }
+      ],
+      "supersedes": [
+        "MP.WCR2026@en@draft-2026-01-05"
       ]
     },
     {
@@ -1272,6 +1286,127 @@
       "content_type": "application/pdf",
       "text_layer": "born_digital",
       "local_path": "raw/MP.LRCNR2018/MP.LRCNR2018_en_1.pdf"
+    },
+    {
+      "doc_id": "MP.WCR2026@en@draft-2026-01-05",
+      "mode": "archive",
+      "instrument_id": "MP.WCR2026",
+      "language": "en",
+      "status": "draft",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8wODAwYTU4ZC1iNWQzLTRiMDItYmI4MC1mMzhlODQ4YzM5ZjUucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS (labour.mponline.gov.in))",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "05012026 (DMS doc no.)",
+      "notes": "Historical first draft (05.01.2026), official MP Labour DMS copy; archived (DEC-047). Header reads 'Bhopal, the ………., 2025' (date blank).",
+      "fetched_at": "2026-11-07T05:43:45+00:00",
+      "sha256": "d6ad890c812043f671ac37a18774e3e44490686ab839a22b698cf6d07cdde948",
+      "bytes": 355658,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.WCR2026/MP.WCR2026_en_draft-2026-01-05.pdf",
+      "superseded_by": [
+        "MP.WCR2026@en@1"
+      ],
+      "verifications": [
+        {
+          "what": "text_matches_source",
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the extracted text of the official DMS PDF (preamble, r.5)",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8wODAwYTU4ZC1iNWQzLTRiMDItYmI4MC1mMzhlODQ4YzM5ZjUucGRm"
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.WCR2026@hi@objections-2026-06-24",
+      "mode": "archive",
+      "instrument_id": "MP.WCR2026",
+      "language": "hi",
+      "status": "draft",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hYTY5NTkwNC1jNWMzLTQxYzAtYmRhYy00MTI3NWIyM2FhNmQucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS (labour.mponline.gov.in))",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Objections and suggestions received on the draft and action taken by the Department, dated 24/06/2026; DMS Sid=24. Archived evidence that the draft was still under consideration in June 2026; not read in detail.",
+      "fetched_at": "2026-11-07T05:43:53+00:00",
+      "sha256": "f68ec6a977747c0a9ca519ad25d606f1361b51f2752d526ad68da484bce2b08a",
+      "bytes": 272982,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/MP.WCR2026/MP.WCR2026_hi_objections-2026-06-24.pdf"
+    },
+    {
+      "doc_id": "MP.WCR2026@hi@objections-2026-06-25",
+      "mode": "archive",
+      "instrument_id": "MP.WCR2026",
+      "language": "hi",
+      "status": "draft",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8yN2YwYjM4Ni1mMWVkLTQ2NDAtOGZjZi1lOTRkOTgxNzkxNzMucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS (labour.mponline.gov.in))",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Objections and suggestions received on the draft and action taken by the Department, dated 25/06/2026; DMS Sid=24. Archived evidence that the draft was still under consideration in June 2026; not read in detail.",
+      "fetched_at": "2026-11-07T05:44:01+00:00",
+      "sha256": "b7bda2232fa91fb0cf15cf0f4877ab236646b706d9264d78206d0aeab48fbd03",
+      "bytes": 734751,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.WCR2026/MP.WCR2026_hi_objections-2026-06-25.pdf"
+    },
+    {
+      "doc_id": "IN.SO2451E2026@bi@1",
+      "mode": "archive",
+      "instrument_id": "IN.SO2451E2026",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://www.labour.gov.in/static/uploads/2026/05/92d8e09f3538b8c078f094770d5631f1.pdf",
+      "publisher": "Ministry of Labour and Employment (labour.gov.in), Gazette of India copy",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "Under Code on Wages s.7(2); supersedes S.O. 186(E)-192(E) dt 19.01.2017. Appoints the Director General, Labour Bureau (jurisdiction: whole of India) to compute COLA and the cash value of concessions in establishments where the CENTRAL Government is the appropriate Government. Does NOT cover the MP state sphere (L7). Signed Tejaswi S. Naik, Jt. Secy. Research corpus (DEC-047).",
+      "fetched_at": "2026-11-07T05:44:14+00:00",
+      "sha256": "51a4b9880bbfb3a9061d05d7e6c250b97a63107a095082b217c001fd4e1705a4",
+      "bytes": 592472,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/IN.SO2451E2026/IN.SO2451E2026_bi_1.pdf",
+      "gazette_ref": "Gazette of India, Extraordinary, S.O. 2451(E) dt 12.05.2026",
+      "notification_no": "S.O. 2451(E); F. No. P-11011/02/2026-WC",
+      "valid_from": "2026-05-12",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the extracted English text of the official labour.gov.in gazette copy",
+          "evidence": "https://www.labour.gov.in/static/uploads/2026/05/92d8e09f3538b8c078f094770d5631f1.pdf",
+          "what": "text_matches_source"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the extracted English text of the official labour.gov.in gazette copy",
+          "evidence": "https://www.labour.gov.in/static/uploads/2026/05/92d8e09f3538b8c078f094770d5631f1.pdf",
+          "what": "status",
+          "note": "Final Gazette of India notification."
+        }
+      ]
     }
   ]
 }

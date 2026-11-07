@@ -528,6 +528,71 @@
       },
       "target_mode": "archive",
       "notes": "Evidence for MP.LRCA2018 commencement (r.1(2))."
+    },
+    {
+      "instrument_id": "MP.WCR2026",
+      "status": "draft",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS (labour.mponline.gov.in))",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "archive",
+      "doc_id": "MP.WCR2026@en@draft-2026-01-05",
+      "language": "en",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8wODAwYTU4ZC1iNWQzLTRiMDItYmI4MC1mMzhlODQ4YzM5ZjUucGRm",
+      "notification_no": "05012026 (DMS doc no.)",
+      "notes": "First draft dated 05/01/2026; DMS section Sid=14 (Acts & Rules). Historical version (DEC-047)."
+    },
+    {
+      "instrument_id": "MP.WCR2026",
+      "status": "draft",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS (labour.mponline.gov.in))",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "archive",
+      "doc_id": "MP.WCR2026@hi@objections-2026-06-24",
+      "language": "hi",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hYTY5NTkwNC1jNWMzLTQxYzAtYmRhYy00MTI3NWIyM2FhNmQucGRm",
+      "notes": "Objections and suggestions received on the draft and action taken by the Department, dated 24/06/2026; DMS Sid=24."
+    },
+    {
+      "instrument_id": "MP.WCR2026",
+      "status": "draft",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS (labour.mponline.gov.in))",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "archive",
+      "doc_id": "MP.WCR2026@hi@objections-2026-06-25",
+      "language": "hi",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8yN2YwYjM4Ni1mMWVkLTQ2NDAtOGZjZi1lOTRkOTgxNzkxNzMucGRm",
+      "notes": "Objections and suggestions received on the draft and action taken by the Department, dated 25/06/2026; DMS Sid=24."
+    },
+    {
+      "doc_id": "IN.SO2451E2026@bi@1",
+      "instrument_id": "IN.SO2451E2026",
+      "language": "bi",
+      "status": "in_force",
+      "url": "https://www.labour.gov.in/static/uploads/2026/05/92d8e09f3538b8c078f094770d5631f1.pdf",
+      "publisher": "Ministry of Labour and Employment (labour.gov.in), Gazette of India copy",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "Research corpus for L7 (DEC-047)."
     }
   ]
 }

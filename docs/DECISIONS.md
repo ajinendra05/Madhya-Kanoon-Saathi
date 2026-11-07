@@ -504,6 +504,29 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: the demarcation module is **not production-ready**. Answers come from s.129 only, plus "rules exist; procedure/fees vary by district; contact the Tahsil." · cost ₹0.
 - Follow-ups: G8 sub-items in OPEN_QUESTIONS; the source URL/file of the reproduced copy from Malik (to keep its hash).
 
+## DEC-047 — MP Code on Wages Rules drafts: version history; L7 stays gated
+- Date: 2026-11-07 | Status: accepted | Approved by: Malik
+- Context: MP has published two drafts of its Code on Wages Rules. Neither is final. L7 asks whether the post-repeal MP VDA notifications have a valid basis under the Code.
+- Decision:
+  1. **Draft versions:**
+     - The **30.04.2026 revised draft** (No. 83/2026/A-16) is the **latest draft** in the corpus, labelled `draft` (never current, i.e. not in force).
+     - The **05.01.2026 draft** is kept as an **archived historical version**, linked by `supersedes` / `superseded_by`.
+     - Neither version is treated as final or operative rules.
+  2. **L7 record:**
+     - Proposed **Rule 5** supports the existing twice-yearly CPI-IW-based VDA revision cycle (before 1 April and 1 October).
+     - Proposed **Rule 4** sets up an **advisory Technical Committee**; it is **not** the s.7(2) VDA computation authority.
+  3. **S.O. 2451(E), 12.05.2026** is added to the research corpus. It appoints the **Director General, Labour Bureau** under s.7(2) for establishments where the **Central Government** is the appropriate Government. It does **not** resolve the MP state-sphere authority question.
+  4. **L7 stays gated** until three things are verified:
+     - (a) the MP s.7(2) appointment notification
+     - (b) the 2024 base-rate notification (L8)
+     - (c) the legal basis of the September 2026 VDA revision
+  5. **Watch for a final MP Code on Wages Rules notification** periodically, preserving the draft-to-final version history (law-watch item).
+- Why: Drafts are not law. The central appointment covers only the central sphere. Keeping the version chain preserves provenance for when final rules appear.
+- Effects: no wage-amount answers (unchanged) · version history kept in the manifest · no new dependencies · ₹0.
+- Follow-ups:
+  - **Gate gap:** the DEC-040 index gate requires a confirmed `commencement` check, which a draft cannot have. Indexing drafts (DEC-037 row 7) needs a small schema/gate decision; until then the latest draft stays `gated`.
+  - The official DMS copies of the drafts and the objection/action-taken reports (24–25.06.2026) are archived.
+
 ---
 
 ## Pending decisions (not yet made)

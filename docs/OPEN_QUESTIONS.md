@@ -112,6 +112,21 @@ Wages Act, 1948". That Act was repealed on that date. Are they valid under the C
 - Bot effect: wage-**amount** answers abstain until L7 is closed, or until a caveat wording is approved in W2.1.
   The bot may still explain the Code's minimum-wage provisions (ss.5–9) from the indexed Code text.
 
+**Update 2026-11-07 (DEC-047):**
+- **MP draft rules:**
+  - The **30.04.2026 revised draft** (No. 83/2026/A-16; `MP.WCR2026@en@1`) is the latest draft; the **05.01.2026 draft** is archived as history.
+  - Both are drafts (not in force). Objection / action-taken reports dated 24–25.06.2026 show no final rules as of then.
+- **Proposed r.5** (both drafts): cost-of-living allowance computed once before 1 April and 1 October on CPI-IW. This **supports** the existing twice-yearly VDA cycle, but a draft is not law.
+- **Proposed r.4**: an **advisory Technical Committee** chaired by the Labour Commissioner. It is **not** the s.7(2) computation authority.
+- **S.O. 2451(E), 12.05.2026** (verified, `IN.SO2451E2026`):
+  - appoints the **DG, Labour Bureau** under s.7(2), whole of India, only for establishments where the **Central Government** is the appropriate Government
+  - supersedes S.O. 186(E)–192(E) of 19.01.2017
+  - does **not** resolve the MP state-sphere authority question
+- **L7 stays gated until verified:**
+  - (a) the **MP s.7(2) appointment notification**
+  - (b) the **2024 base-rate notification** (L8)
+  - (c) the **legal basis of the September 2026 VDA revision**
+
 **What closes L7.** An advocate's (or Malik's) written answer to points 1–3, recorded as a verification record
 (`what: interpretation`, `by: malik|advocate`) on the notification, plus OCR of the scan (W0.5). Then the document
 moves `gated → index`, or stays archived if found invalid.
@@ -189,6 +204,7 @@ post-repeal notifications, DEC-042) and on OCR of the scan (W0.5).
 | X3 | Legal-impact analysis for every amendment and repeal (affected instruments, provisions, dates) | C (plan) → M | open |
 | X4 | Re-run affected golden-set rows after every legal change (law-watch flow, DEC-013) | C (plan) → M | open |
 | U1 | `section_uid` support for roman-numbered clauses alongside letters, validated against the hierarchy (DEC-045 item 7) | C | resolved 2026-11-07: new segments `clr_<roman>` (clause) and `scla_<letters>` (sub-clause); canonical roman 1–3999; spec `docs/specs/section_uid.md`; 23 new tests. First use: `MP.LSGR2010:r8:clr_vii` for the 2026 amendment. **TODO(verify):** the mapping of Hindi clause '(सात)' → (vii) is structural; confirm against the 2010 Rules text once fetched |
+| LW1 | **Law-watch: final MP Code on Wages Rules.** Check periodically (MP Rajpatra, MP Labour DMS Sid=14/24, code.mp.gov.in) for a final notification; on finding it, add it as a new document that `supersedes` the 30.04.2026 draft, keeping the version chain (DEC-047). Also watch the Sanhita (G4) and EoDB (G16) commencement notifications | C (law-watch, W3.3; manual until then) | open |
 
 ## F. Environment
 | ID | Question | Owner | Status |

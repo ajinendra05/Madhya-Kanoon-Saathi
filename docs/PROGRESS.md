@@ -15,7 +15,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 1. ~~**U1**: roman-numbered clause IDs~~ done 2026-11-07.
 2. ~~**G15** (MP Repeal Act 2026)~~ done 2026-11-07 (no corpus impact); ~~**G16** (Ease of Doing Business Act 2026)~~ done 2026-11-07 (not commenced; procedural overlay only): find official copies (govtpress PDFs 404).
 3. **G8 land** (partly done 2026-11-07: MPLRC + 2018 Act from code.mp.gov.in; s.110 limits confirmed). Remaining: 2018 commencement notification, Mutation Rules 2018, demarcation rules, 2022/2023 amendments. **Deadline 16 Nov**.
-3b. ~~Read 'MP Wage Code Rules, 2026'~~ done 2026-11-07: it is a **revised draft** (30.04.2026), not final; does not appoint the s.7(2) authority (L3, L7 updated).
+3b. ~~Read 'MP Wage Code Rules, 2026'~~ done 2026-11-07: revised draft (30.04.2026) = latest; Jan draft archived; S.O. 2451(E) added; L7 stays gated (DEC-047). Watch for final rules (LW1).
 4. **L8** (Mar 2024 base wages); **G14** fetch the S&E Act 1958 + 2025 amendments; **G6** later s.3 time-limit notifications;
    **G12** amendment check.
 5. Plans (not code yet) for **X1–X4**: effective-date retrieval, source-quality metadata, legal-impact analysis,
