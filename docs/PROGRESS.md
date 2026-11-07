@@ -97,6 +97,29 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-07 (session 3)
+- Done:
+  - **G8:**
+    - Demarcation Rules + Mutation Rules **gazette copies** from the Revenue Dept's own files via the Internet Archive.
+    - G8b/g/h resolved: Demarcation in force 01.02.2019; Mutation 04.01.2019.
+    - Demarcation Rules indexed (DEC-049); G8c Forms I–III located (caste column = sensitive).
+    - G8d–f parked post-MVP.
+    - Dept consolidated MPLRC to 12.02.2020 added.
+  - **L8:** 2024 base-rate notification + stay/HC disposal history (rates reinstated 28.02.2025 except textiles/apparel/footwear).
+  - **G14:** Shops Act 1958, amendments 2014/2025, Rules 1959 fetched (gated).
+  - **L7/L8:** advocate brief written (`docs/briefs/advocate_brief_L7_L8.md`; private page https://claude.ai/artifact/EcMv1YP5xbwEQKtE7wHDLN).
+  - **LW1:** check: nothing final or commenced.
+  - **Fix:** downloader now retries `IncompleteRead`.
+  - `.gitignore`: `.agents/`, `.codex/`.
+  - Checks: ruff check ✓ · ruff format ✓ (42 files) · mypy ✓ (11 files) · pytest ✓ 149 passed · pre-commit ✓ all 11 hooks.
+- Decisions: DEC-049 (Internet Archive copies of official files count as authoritative); G8d–f parked (Malik).
+- Problems:
+  - India Code 504 and the Internet Archive offline, so G8a stays open.
+  - A 4th corrupt-text pattern (N2).
+  - MP Labour DMS slow (background downloads needed).
+  - Several scans with blank patches (Act 20/2025 s.1).
+- Next step: W0.4. Malik sends the advocate brief. Fetch the MP S&E (Fire and Hazard Prevention) Rules 2026; G8a retry; then W0.4 step 3 (central born-digital texts).
+
 ### 2026-11-07 (session 2)
 - Done:
   - **U1:** roman-clause section IDs (`clr_`, `scla_`).

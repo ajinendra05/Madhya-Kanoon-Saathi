@@ -200,6 +200,11 @@ Act or its Rules.
 so the bot always labels it as a draft.
 - Interview angle: provenance. You can show exactly which version of a rule an answer relied on, and when it changed.
 
+**Recovering official files from a dead site (DEC-049).** When a government site is down, the Internet Archive often holds the
+department's own files. The CDX index lists archived URLs, and an `id_` URL returns the original bytes. We record the original
+URL, the snapshot time and the sha256, so the copy is as traceable as a live download.
+- Interview angle: provenance engineering. Availability problems are solved without lowering the "official source only" bar.
+
 **Corrupted text layers (seen in W0.4).** A PDF can "have text" that is wrong. Seen so far:
 - a Latin-only OCR layer in a Hindi scan
 - ि extracted as ध by an old font converter
