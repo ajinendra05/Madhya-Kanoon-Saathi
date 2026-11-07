@@ -227,7 +227,7 @@ def test_invalid_fields_are_reported(path: list[Any], value: Any, expected: str)
 )
 def test_index_gate_needs_confirmed_status_and_commencement(verifications: list[Any]) -> None:
     errors = _errors(_mutate([*DOC0, "verifications"], verifications))
-    assert any("DEC-040 index gate" in e for e in errors), errors
+    assert any("index gate" in e for e in errors), errors
 
 
 def test_index_gate_blocks_on_conflict() -> None:
@@ -336,3 +336,39 @@ def test_enacted_not_commenced_conflicts_with_commencement_date() -> None:
     data["documents"][0]["mode"] = "archive"
     errors = _errors(data)
     assert any("update status from enacted_not_commenced" in e for e in errors), errors
+
+
+# --------------------------------------------------------------- DEC-048 draft index gate
+
+
+def test_draft_can_be_indexed_with_status_check_only() -> None:
+    data = _mutate([*DOC0, "status"], "draft")
+    data["documents"][0]["verifications"] = [_verification("status")]
+    _, errors = parse_manifest(data)
+    assert errors == [], errors
+
+
+def test_draft_index_still_needs_confirmed_status() -> None:
+    data = _mutate([*DOC0, "status"], "draft")
+    data["documents"][0]["verifications"] = [_verification("text_matches_source")]
+    errors = _errors(data)
+    assert any("index gate" in e and "'status'" in e for e in errors), errors
+
+
+def test_draft_index_blocked_by_conflict() -> None:
+    data = _mutate([*DOC0, "status"], "draft")
+    data["documents"][0]["verifications"] = [
+        _verification("status"),
+        _verification("text_matches_source", result="conflict"),
+    ]
+    assert any("result=conflict" in e for e in _errors(data))
+
+
+@pytest.mark.parametrize("status", ["in_force", "enacted_not_commenced", "proposal"])
+def test_non_draft_index_still_needs_commencement(status: str) -> None:
+    data = _mutate([*DOC0, "status"], status)
+    data["documents"][0]["verifications"] = [_verification("status")]
+    if status == "enacted_not_commenced":
+        data["instruments"][0].pop("commenced_on")
+    errors = _errors(data)
+    assert any("'commencement'" in e for e in errors), errors

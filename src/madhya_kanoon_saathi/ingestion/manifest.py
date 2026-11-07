@@ -82,6 +82,8 @@ VERIFICATION_RESULTS = frozenset({"confirmed", "conflict", "unclear"})
 HUMAN_ONLY_CHECKS = frozenset({"interpretation"})
 # A document in mode=index needs a confirmed record for each of these.
 INDEX_GATE_CHECKS = frozenset({"status", "commencement"})
+# DEC-048: a draft has no commencement; proving it is the published draft is enough.
+DRAFT_INDEX_GATE_CHECKS = frozenset({"status"})
 
 _INSTRUMENT_ID_RE = re.compile(r"^[A-Z]{2}\.[A-Z][A-Z0-9]*[0-9]{4}$")
 _GATE_ID_RE = re.compile(r"^[A-Z][0-9]+$")  # OPEN_QUESTIONS IDs, e.g. L4, G12
@@ -523,9 +525,12 @@ def _parse_document(raw: Mapping[str, Any], idx: int, errors: list[str]) -> Docu
 
     if mode == "index":
         confirmed = {v.what for v in verifications if v.result == "confirmed"}
-        missing = sorted(INDEX_GATE_CHECKS - confirmed)
+        required_checks = DRAFT_INDEX_GATE_CHECKS if status == "draft" else INDEX_GATE_CHECKS
+        missing = sorted(required_checks - confirmed)
         if missing:
-            r.err(f"mode=index needs confirmed verification of {missing} (DEC-040 index gate)")
+            r.err(
+                f"mode=index needs confirmed verification of {missing} (DEC-040/DEC-048 index gate)"
+            )
         if any(v.result == "conflict" for v in verifications):
             r.err("mode=index is not allowed while a verification has result=conflict")
 

@@ -11,7 +11,7 @@ paths:
 - Every downloaded file gets a manifest entry per `docs/specs/manifest.md` (DEC-040); IDs per
   `docs/specs/section_uid.md`. Validate with `ingestion/manifest.py` before committing the manifest.
   Changing either schema is a major decision.
-- `mode=index` needs confirmed `status` + `commencement` verification records (index gate). Claude may confirm
+- `mode=index` needs confirmed `status` + `commencement` verification records (index gate); a `draft` needs only `status` (DEC-048). Claude may confirm
   text/status against official sources; `interpretation` checks need Malik or an advocate.
 - Use `enacted_not_commenced` for assented-but-not-commenced laws, `ordinance` for ordinances, and give every amending
   law its own instrument with `amends: [...]` (DEC-044). Never label a law `in_force` before its commencement is confirmed.

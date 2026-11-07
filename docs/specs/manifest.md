@@ -74,6 +74,7 @@ W2.1 decision). Scheme guidelines are non-binding here but are the primary sourc
 
 ### Gates enforced by the validator
 - **Index gate:** `mode=index` needs `confirmed` records for both `status` and `commencement`, and no `conflict`.
+  **Drafts (DEC-048):** a `status: draft` document needs only a confirmed `status` record (no `conflict`); drafts are never current.
 - `mode=guide` only for `official_guide` / `scheme_guideline`; official guides can't be `index`.
 
 ### Sources file and the downloader (DEC-041)

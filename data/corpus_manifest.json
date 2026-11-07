@@ -1220,7 +1220,7 @@
     },
     {
       "doc_id": "MP.WCR2026@en@1",
-      "mode": "gated",
+      "mode": "index",
       "instrument_id": "MP.WCR2026",
       "language": "en",
       "status": "draft",
@@ -1232,16 +1232,13 @@
           "MP"
         ]
       },
-      "notes": "Latest draft (30.04.2026), official MP Code copy of the gazette; status draft = not in force (DEC-047). Gated until a draft-indexing gate rule is decided.",
+      "notes": "Latest draft (30.04.2026), official MP Code copy of the gazette; status draft = not in force; indexed as a draft per DEC-048 (status check only).",
       "fetched_at": "2026-11-07T04:57:19+00:00",
       "sha256": "5140d873aa2643049f4fa2eac2e6e3575680457e3b4d83ddeb8e1cd99dee3bff",
       "bytes": 4692042,
       "content_type": "application/pdf",
       "text_layer": "mixed",
       "local_path": "raw/MP.WCR2026/MP.WCR2026_en_1.pdf",
-      "gate": [
-        "L3"
-      ],
       "verifications": [
         {
           "by": "claude",

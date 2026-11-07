@@ -527,6 +527,13 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   - **Gate gap:** the DEC-040 index gate requires a confirmed `commencement` check, which a draft cannot have. Indexing drafts (DEC-037 row 7) needs a small schema/gate decision; until then the latest draft stays `gated`.
   - The official DMS copies of the drafts and the objection/action-taken reports (24–25.06.2026) are archived.
 
+## DEC-048 — Index gate for drafts: a confirmed status check is enough
+- Date: 2026-11-07 | Status: accepted | Approved by: Malik | Amends DEC-040 (index gate)
+- Context: The DEC-040 index gate requires confirmed `status` and `commencement` checks. A draft has no commencement, so drafts could never be indexed, contradicting DEC-037 (draft rules are indexed with a `draft` label).
+- Decision: A document with `status: draft` may be `mode: index` with a confirmed **`status`** verification alone. All other statuses keep the `status` + `commencement` requirement. The "no `conflict` verification" rule still applies to everything.
+- Why: For a draft, what matters is proving it *is* the published draft. It is never current (`is_current` is false), so the bot always labels it as a draft and never as operative law.
+- Effects: the 30.04.2026 MP Code on Wages Rules draft (`MP.WCR2026@en@1`) moves `gated → index` · validator + tests + spec updated · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)
