@@ -398,6 +398,101 @@
         "G8"
       ],
       "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify."
+    },
+    {
+      "doc_id": "MP.LRCAJAN2022@hi@1",
+      "instrument_id": "MP.LRCAJAN2022",
+      "url": "https://mpvidhansabha.nic.in/bill2022/ACT%20No%202%20of%202022.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Official Assembly copy; language and content to confirm."
+    },
+    {
+      "doc_id": "MP.LRCO2022@hi@1",
+      "instrument_id": "MP.LRCO2022",
+      "url": "https://mpvidhansabha.nic.in/ord%202022/ord%204%20of%202022.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Official Assembly copy; language and content to confirm."
+    },
+    {
+      "doc_id": "MP.LRCASEP2022@hi@1",
+      "instrument_id": "MP.LRCASEP2022",
+      "url": "https://mpvidhansabha.nic.in/bill2022/ACT%20No%2020%20of%202022.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Official Assembly copy; language and content to confirm."
+    },
+    {
+      "doc_id": "MP.LRCA2023@hi@1",
+      "instrument_id": "MP.LRCA2023",
+      "url": "https://mpvidhansabha.nic.in/Bill%202023/ACT%20No%201%20of%202023.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Official Assembly copy; language and content to confirm."
+    },
+    {
+      "doc_id": "MP.LRCMR2018@en@1",
+      "instrument_id": "MP.LRCMR2018",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1007_Pdf_F1896_English.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07."
     }
   ]
 }

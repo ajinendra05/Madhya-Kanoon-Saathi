@@ -161,6 +161,31 @@
             "MP.LRC1959:s110",
             "MP.LRC1959:s129"
           ]
+        },
+        {
+          "by": "MP.LRCAJAN2022",
+          "commenced_on": null,
+          "affects": [
+            "MP.LRC1959:s13A",
+            "MP.LRC1959:s110:ss8",
+            "MP.LRC1959:s55"
+          ]
+        },
+        {
+          "by": "MP.LRCASEP2022",
+          "commenced_on": null,
+          "affects": [
+            "MP.LRC1959:s9"
+          ]
+        },
+        {
+          "by": "MP.LRCA2023",
+          "commenced_on": null,
+          "affects": [
+            "MP.LRC1959:s129:ss1",
+            "MP.LRC1959:s129:ss2",
+            "MP.LRC1959:s129:ss3"
+          ]
         }
       ]
     },
@@ -203,6 +228,68 @@
       "parent_instrument": "MP.LRC1959",
       "made_under": [
         "MP.LRC1959:s258:ss2"
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCAJAN2022",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Land Revenue Code (Amendment) Act, 2021 (MP Act No. 2 of 2022)",
+      "amends": [
+        "MP.LRC1959"
+      ],
+      "notes": "Assent 03.01.2022; MP Gazette (Extra-ordinary) 06.01.2022, pp.20(1)-20(3); English translation read. s.2 inserts s.13-A Cyber Tahsil (old 13-A renumbered 13-B); s.3 adds s.19(4)-(5) Cyber Tahsildar; s.4 inserts s.55 (appeal/revision of Cyber Tahsildar orders); s.5 adds s.110(8): Tahsildar enters intimations in the khasra within 3 days ((a) partly blank in scan; (b) court charge/penalty/liability or decree/order), Bhumiswami may object; s.6 substitutes s.247(7); s.7 inserts s.258(2)(i-b). No commencement clause (TODO(verify) general rule).",
+      "enacted_on": "2022-01-03"
+    },
+    {
+      "instrument_id": "MP.LRCO2022",
+      "type": "ordinance",
+      "jurisdiction": "MP",
+      "title_en": "MP Land Revenue Code (Amendment) Ordinance (Ordinance No. 4 of 2022)",
+      "amends": [
+        "MP.LRC1959"
+      ],
+      "notes": "Repealed and replaced by MP Act 20 of 2022 s.3 (with savings). Not read.",
+      "superseded_by": [
+        "MP.LRCASEP2022"
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCASEP2022",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "MP Land Revenue Code (Amendment) Act (Act No. 20 of 2022)",
+      "amends": [
+        "MP.LRC1959"
+      ],
+      "notes": "Assent 29.09.2022; MP Gazette (Extra-ordinary) 03.10.2022, p.1096 ff. English translation read. s.2 substitutes s.9 (Board of Revenue: Division Bench / Single Member Bench); s.3 repeals Ordinance 4 of 2022 with savings. Not in the land-procedure slice. Hindi page of the scan is blank.",
+      "enacted_on": "2022-09-29",
+      "supersedes": [
+        "MP.LRCO2022"
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCA2023",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Land Revenue Code (Second Amendment) Act, 2022 (MP Act No. 1 of 2023)",
+      "amends": [
+        "MP.LRC1959"
+      ],
+      "notes": "Assent 23.01.2023; MP Gazette (Extra-ordinary) No. 19, 24.01.2023, pp.37-38, Law Dept क्र. 1377-21-इक्कीस-अ-(प्रा.). s.2 amends s.129(1), (2), (3): inserts 'or Patwari' after 'Revenue Inspector' (Patwari may also demarcate). No commencement clause (TODO(verify)).",
+      "enacted_on": "2023-01-23"
+    },
+    {
+      "instrument_id": "MP.LRCMR2018",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Bhu-Rajasv Sanhita (Bhu-Abhilekhon Mein Namantaran) Niyam, 2018 (Mutation in Land Records Rules)",
+      "parent_instrument": "MP.LRC1959",
+      "notes": "Notification No. F 2-14/2018/VII/Se.6 under s.258(2)(xxiii) read with ss.109, 110; supersedes notification 2498-VII-N-I (MP Rajpatra 02.07.1965). r.1(2): in force from publication in the MP Gazette; publication date not printed in the MP Code copy (MP Code lists 31-12-2018; a secondary source cites a 04.01.2019 corrigendum). Part A report of acquisition + fee; Part B mutation proceedings; Part C mutation + partition; Forms I-XI.",
+      "made_under": [
+        "MP.LRC1959:s258:ss2",
+        "MP.LRC1959:s109",
+        "MP.LRC1959:s110"
       ]
     }
   ],
@@ -910,6 +997,182 @@
       "content_type": "application/pdf",
       "text_layer": "scanned",
       "local_path": "raw/MP.LRCVR2020/MP.LRCVR2020_en_1.pdf"
+    },
+    {
+      "doc_id": "MP.LRCAJAN2022@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.LRCAJAN2022",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://mpvidhansabha.nic.in/bill2022/ACT%20No%202%20of%202022.pdf",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official MP Vidhan Sabha copy of the gazette (Hindi + English translation); scanned.",
+      "fetched_at": "2026-11-07T04:48:24+00:00",
+      "sha256": "50e4cc7e6d70f673198f6e15e4135f01ac7735870b9874372a86d4c1722f667d",
+      "bytes": 257968,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCAJAN2022/MP.LRCAJAN2022_hi_1.pdf",
+      "gate": [
+        "G8"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the English translation pages of the official Assembly scan",
+          "evidence": "https://mpvidhansabha.nic.in/bill2022/ACT%20No%202%20of%202022.pdf",
+          "what": "text_matches_source"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the English translation pages of the official Assembly scan",
+          "evidence": "https://mpvidhansabha.nic.in/bill2022/ACT%20No%202%20of%202022.pdf",
+          "what": "status",
+          "note": "Assented and published in the MP Gazette (Extra-ordinary)."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.LRCO2022@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCO2022",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpvidhansabha.nic.in/ord%202022/ord%204%20of%202022.pdf",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official Assembly copy; language and content to confirm. Outside the land-procedure slice (archive).",
+      "fetched_at": "2026-11-07T04:48:28+00:00",
+      "sha256": "51b815ea2b0c8b8387d358ec5ad53f4fbc560d361728cd18670a423fb7f78ee1",
+      "bytes": 143879,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCO2022/MP.LRCO2022_hi_1.pdf"
+    },
+    {
+      "doc_id": "MP.LRCASEP2022@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCASEP2022",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://mpvidhansabha.nic.in/bill2022/ACT%20No%2020%20of%202022.pdf",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official Assembly copy; language and content to confirm. Outside the land-procedure slice (archive).",
+      "fetched_at": "2026-11-07T04:48:31+00:00",
+      "sha256": "2e672d4e7ca66af10d929f338bdd0926fe8bfbe13bf66841d5c5c3a60734b262",
+      "bytes": 127117,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCASEP2022/MP.LRCASEP2022_hi_1.pdf"
+    },
+    {
+      "doc_id": "MP.LRCA2023@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.LRCA2023",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://mpvidhansabha.nic.in/Bill%202023/ACT%20No%201%20of%202023.pdf",
+      "publisher": "Madhya Pradesh Vidhan Sabha (mpvidhansabha.nic.in)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official MP Vidhan Sabha copy of the gazette (Hindi + English translation); scanned.",
+      "fetched_at": "2026-11-07T04:48:35+00:00",
+      "sha256": "a43dd66aefb16db2906268825708beb539225c13243bdd4c6ca5451540ca81f4",
+      "bytes": 87112,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCA2023/MP.LRCA2023_hi_1.pdf",
+      "gate": [
+        "G8"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the English translation pages of the official Assembly scan",
+          "evidence": "https://mpvidhansabha.nic.in/Bill%202023/ACT%20No%201%20of%202023.pdf",
+          "what": "text_matches_source"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "method": "read the English translation pages of the official Assembly scan",
+          "evidence": "https://mpvidhansabha.nic.in/Bill%202023/ACT%20No%201%20of%202023.pdf",
+          "what": "status",
+          "note": "Assented and published in the MP Gazette (Extra-ordinary)."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.LRCMR2018@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.LRCMR2018",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1007_Pdf_F1896_English.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official MP Code PDF, 28 pages, mostly text (1 near-empty page).",
+      "fetched_at": "2026-11-07T04:53:38+00:00",
+      "sha256": "92cedb0419aa47ed5fcddb48f14de599fc4421ac8e6493a259aedd6840c35853",
+      "bytes": 361654,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/MP.LRCMR2018/MP.LRCMR2018_en_1.pdf",
+      "gate": [
+        "G8"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1007_Pdf_F1896_English.pdf p.2",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the official MP Code PDF (title, notification no., r.1)"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1007_Pdf_F1896_English.pdf p.2",
+          "what": "commencement",
+          "result": "unclear",
+          "method": "r.1(2) read",
+          "note": "From gazette publication; the date is not printed in this copy."
+        }
+      ]
     }
   ]
 }
