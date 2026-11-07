@@ -325,7 +325,7 @@
         "MP.LRC1959:s129:ss9",
         "MP.LRC1959:s258:ss2"
       ],
-      "notes": "Notification एफ 2-13-2018-सात-शा. 7 (Revenue Dept), Bhopal 28.01.2019; under s.129 r/w s.258(2)(तीस); supersedes 187-6477-सात-एन-(नियम) dt 06.01.1960 (MP Rajpatra 22.01.1960). Published as 'अंतिम नियम' in **MP Rajpatra Part 4(ग), 01.02.2019, p.103 ff.**; r.1(2) in force from publication => **01.02.2019** (matches the department listing '01 फरवरी, 2019 से प्रभावशील'). OFFICIAL COPY obtained 2026-11-07: the Revenue Dept's own PDF (revenue.mp.gov.in/upload/files/321953593363.pdf) via an Internet Archive snapshot (20220620). The Indian Kanoon reproduction (saved, unverified) matches on number, date, enabling sections, supersession and r.1. r.4 fees are Collector-fixed with the Commissioner's approval; district fee orders are still needed (G8d). Status per DEC-046: gated pending Malik's review of the official copy.",
+      "notes": "Notification एफ 2-13-2018-सात-शा. 7 (Revenue Dept), Bhopal 28.01.2019; under s.129 r/w s.258(2)(तीस); supersedes 187-6477-सात-एन-(नियम) dt 06.01.1960 (MP Rajpatra 22.01.1960). Published as 'अंतिम नियम' in **MP Rajpatra Part 4(ग), 01.02.2019, p.103 ff.**; r.1(2) in force from publication => **01.02.2019** (matches the department listing '01 फरवरी, 2019 से प्रभावशील'). OFFICIAL COPY obtained 2026-11-07: the Revenue Dept's own PDF (revenue.mp.gov.in/upload/files/321953593363.pdf) via an Internet Archive snapshot (20220620). The Indian Kanoon reproduction (saved, unverified) matches on number, date, enabling sections, supersession and r.1. r.4 fees are Collector-fixed with the Commissioner's approval; district fee orders are still needed (G8d). Indexed per DEC-049 (official copy accepted); fee amounts remain gated (G8d).",
       "enacted_on": "2019-01-28",
       "commenced_on": "2019-02-01"
     },
@@ -1411,7 +1411,7 @@
     },
     {
       "doc_id": "MP.LRCDR2018@bi@1",
-      "mode": "gated",
+      "mode": "index",
       "instrument_id": "MP.LRCDR2018",
       "language": "bi",
       "status": "in_force",
@@ -1426,7 +1426,7 @@
       "gazette_ref": "MP Rajpatra Part 4(ग), 01.02.2019, p.103 ff.",
       "notification_no": "एफ 2-13-2018-सात-शा. 7 dt 28.01.2019",
       "valid_from": "2019-02-01",
-      "notes": "Department compilation: cover 'दिनांक 01 फरवरी, 2019 से प्रभावशील' + gazette scans (Hindi final rules + English text/table). 28 pages, CCITT scan. Original URL: http://revenue.mp.gov.in/upload/files/321953593363.pdf.",
+      "notes": "Department compilation: cover 'दिनांक 01 फरवरी, 2019 से प्रभावशील' + gazette scans (Hindi final rules + English text/table). 28 pages, CCITT scan. Original URL: http://revenue.mp.gov.in/upload/files/321953593363.pdf. DEC-049: indexed 2026-11-07 (Internet Archive snapshot 20220620064713 of the official file; original URL and sha256 recorded). FEE AMOUNTS GATED: answers say fees are fixed by the Collector with the Commissioner's approval and vary by district (r.4), never an amount (G8d).",
       "fetched_at": "2026-11-07T09:52:10+00:00",
       "sha256": "3a8d898406dfa9dbb3de3ee65c28b9128c69607e8964b3f0c9dc906d843f1c83",
       "bytes": 626879,
@@ -1459,9 +1459,6 @@
           "evidence": "https://web.archive.org/web/20220620064713id_/http://revenue.mp.gov.in/upload/files/321953593363.pdf pp.1-2",
           "note": "In force 01.02.2019 (publication); notification signed 28.01.2019."
         }
-      ],
-      "gate": [
-        "G8"
       ]
     },
     {

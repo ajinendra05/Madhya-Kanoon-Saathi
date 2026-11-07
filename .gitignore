@@ -55,3 +55,7 @@ Thumbs.db
 # --- Claude Code local-only files ---
 .claude/settings.local.json
 CLAUDE.local.md
+
+# --- Personal agent tooling (Malik; not project files) ---
+.agents/
+.codex/

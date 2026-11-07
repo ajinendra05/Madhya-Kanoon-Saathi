@@ -534,6 +534,22 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: For a draft, what matters is proving it *is* the published draft. It is never current (`is_current` is false), so the bot always labels it as a draft and never as operative law.
 - Effects: the 30.04.2026 MP Code on Wages Rules draft (`MP.WCR2026@en@1`) moves `gated → index` · validator + tests + spec updated · ₹0.
 
+## DEC-049 — Internet Archive copies of official files count as authoritative government copies
+- Date: 2026-11-07 | Status: accepted ("yes") | Approved by: Malik | Follows up DEC-046
+- Context: revenue.mp.gov.in is down. The Internet Archive holds the Revenue Department's own PDFs. The Demarcation Rules PDF contains the gazette itself (MP Rajpatra Part 4(ग), 01.02.2019).
+- Decision:
+  1. **Which copies count:** an Internet Archive copy of a file served by an **official government domain** counts as an authoritative government copy, under four conditions:
+     - (a) it is fetched with the archive's original-bytes form (`id_` URL)
+     - (b) the manifest records the **original URL**, the **snapshot timestamp** and the **sha256**
+     - (c) the content is read and verified like any other official file
+     - (d) copies of aggregator sites do not qualify
+  2. **Demarcation Rules 2018** (`MP.LRCDR2018@bi@1`) move **gated → index**.
+     - Status and commencement are confirmed: in force 01.02.2019.
+     - **Fee amounts stay gated:** the bot says fees are fixed by the Collector with the Commissioner's approval and vary by district, and never states an amount until Collector fee orders are obtained (G8d).
+- Why: The archive stores the bytes the government server returned. With the original URL, timestamp and hash, the copy is as traceable as a live download.
+- Effects: the demarcation procedure (Forms, team, agencies, boundary marks, SDO route) becomes answerable · fees remain qualified · ₹0.
+- Follow-ups: G8c Forms I–III extraction; G8d–f operational orders; consider re-fetching from the live site when it returns (law-watch).
+
 ---
 
 ## Pending decisions (not yet made)
