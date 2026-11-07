@@ -26,11 +26,22 @@ CHUNK_LANGUAGES: frozenset[str] = frozenset({"hi", "en"})
 # Instrument code: uppercase letters/digits, starting with a letter, ending in a 4-digit year.
 _INSTRUMENT_RE = re.compile(r"^(?P<jur>[A-Z]{2})\.(?P<code>[A-Z][A-Z0-9]*?)(?P<year>[0-9]{4})$")
 
+# Canonical lowercase roman numeral 1-3999 (no "iiii", "vx", "ic" ...). The lookahead forbids "".
+_ROMAN = r"(?=[ivxlcdm])m{0,3}(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
+
 # Segment kinds -> (regex, level). Level 0 = top-level unit of the instrument; higher = deeper.
+# Clauses and sub-clauses keep the numbering system printed in the source (DEC-045 item 7):
+#   cl_<letters>  alphabetic clause (a), (j), (ja)    clr_<roman>  roman clause (vii)
+#   scl_<roman>   roman sub-clause (ii)               scla_<letters> alphabetic sub-clause (b)
+# The kind, not the value, says which system is used, so "(i)" as a letter is cl_i and as a
+# numeral is clr_i; they are different uids.
 _TOP, _SUB, _CLAUSE, _SUBCLAUSE, _NOTE = 0, 1, 2, 3, 4
+_CLAUSE_KINDS = frozenset({"cl", "clr"})
 _SEGMENTS: tuple[tuple[str, re.Pattern[str], int], ...] = (
     ("ss", re.compile(r"^ss[1-9][0-9]*[A-Z]{0,2}$"), _SUB),
-    ("scl", re.compile(r"^scl_[ivxlc]+$"), _SUBCLAUSE),
+    ("scl", re.compile(rf"^scl_{_ROMAN}$"), _SUBCLAUSE),
+    ("scla", re.compile(r"^scla_[a-z]{1,3}$"), _SUBCLAUSE),
+    ("clr", re.compile(rf"^clr_{_ROMAN}$"), _CLAUSE),
     ("cl", re.compile(r"^cl_[a-z]{1,3}$"), _CLAUSE),
     ("prov", re.compile(r"^prov[1-9][0-9]*$"), _NOTE),
     ("expl", re.compile(r"^expl[1-9][0-9]*$"), _NOTE),
@@ -102,7 +113,7 @@ def parse(text: str) -> SectionUid:
             schedule_paragraph = prev_kind == "sch" and kind == "para"
             if level <= prev_level and not schedule_paragraph:
                 raise InvalidSectionUidError(f"{segment!r} cannot follow {prev_kind!r}")
-            if level == _SUBCLAUSE and prev_kind != "cl":
+            if level == _SUBCLAUSE and prev_kind not in _CLAUSE_KINDS:
                 raise InvalidSectionUidError("a sub-clause must follow a clause")
         previous = (kind, level)
 

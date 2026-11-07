@@ -28,10 +28,17 @@ chunk_id    = <section_uid> "@" <lang> "@" <valid_from YYYY-MM-DD>
 | `sch<n>[A]` | schedule | `sch1` | top |
 | `form_<x>` | form | `form_a` | top |
 | `ss<n>[A]` | sub-section / sub-rule | `ss1` | 1 |
-| `cl_<a..zzz>` | clause | `cl_j` | 2 |
-| `scl_<roman>` | sub-clause (must follow a clause) | `scl_ii` | 3 |
+| `cl_<a..zzz>` | clause, **alphabetic** numbering | `cl_j`, `cl_ja` | 2 |
+| `clr_<roman>` | clause, **roman** numbering (DEC-045) | `clr_vii` | 2 |
+| `scl_<roman>` | sub-clause, roman (must follow a clause) | `scl_ii` | 3 |
+| `scla_<a..zzz>` | sub-clause, alphabetic (must follow a clause) | `scla_b` | 3 |
 | `prov<n>` | proviso (n-th, attached to its parent) | `prov2` | last |
 | `expl<n>` | explanation | `expl1` | last |
+
+Numbering systems (DEC-045 item 7, U1): clauses and sub-clauses keep the system printed in the source. The segment
+**kind** records it, so letter "(i)" is `cl_i` and numeral "(i)" is `clr_i`; they are different units. Roman values
+must be canonical lowercase numerals 1–3999 (`iv`, not `iiii`). Hindi sources use Devanagari words or letters (e.g.
+"(सात)"); they are mapped by structural alignment with the English text (rule 2), never written into the uid.
 
 Order rules: the first segment is top-level; each next segment must be deeper; `para` may follow `sch`;
 `prov`/`expl` end the uid. Numbers have no leading zeros and start at 1.

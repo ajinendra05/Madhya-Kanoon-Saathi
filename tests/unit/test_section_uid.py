@@ -138,3 +138,53 @@ def test_bad_chunk_ids(cid: str) -> None:
 def test_make_chunk_id_rejects_bad_language() -> None:
     with pytest.raises(InvalidSectionUidError):
         make_chunk_id("IN.RTI2005:s8", "mr", date(2025, 1, 2))
+
+
+# --------------------------------------------------------------- roman clauses (DEC-045 item 7, U1)
+
+
+@pytest.mark.parametrize(
+    "uid",
+    [
+        "MP.LSGR2010:r8:clr_vii",  # rule 8, clause (vii)
+        "MP.LSGR2010:r8:clr_vii:prov1",  # proviso added to clause (vii)
+        "IN.X2020:s2:clr_iv:scla_b",  # roman clause with alphabetic sub-clause
+        "IN.X2020:s2:clr_xiv:scl_ii",  # roman clause with roman sub-clause
+        "IN.X2020:s2:cl_a:scla_b",  # alphabetic sub-clause under an alphabetic clause
+        "IN.X2020:s2:clr_xlix",
+        "IN.X2020:s2:clr_mmxxvi",
+        "IN.X2020:s2:cl_i",  # letter (i), e.g. after (h)
+        "IN.X2020:s2:clr_i",  # numeral (i)
+    ],
+)
+def test_roman_clause_uids_valid(uid: str) -> None:
+    assert str(parse(uid)) == uid
+
+
+@pytest.mark.parametrize(
+    "uid",
+    [
+        "IN.X2020:s2:clr_iiii",  # not canonical (4 = iv)
+        "IN.X2020:s2:clr_vx",  # not a roman numeral
+        "IN.X2020:s2:clr_ic",  # not canonical (99 = xcix)
+        "IN.X2020:s2:clr_",  # empty
+        "IN.X2020:s2:clr_VII",  # uppercase
+        "IN.X2020:s2:clr_7",  # arabic digits
+        "IN.X2020:s2:clr_vii:clr_i",  # two clause levels
+        "IN.X2020:s2:cl_a:clr_i",  # alphabetic and roman clause at the same level
+        "IN.X2020:s2:scla_b",  # sub-clause without a clause
+        "IN.X2020:s2:ss1:scl_ii",  # sub-clause directly under a sub-section
+        "IN.X2020:s2:clr_ii:scl_iiii",  # bad roman sub-clause
+        "IN.X2020:s2:clr_ii:scla_B",  # uppercase sub-clause
+        "IN.X2020:s2:clr_सात",  # Devanagari numeral word
+    ],
+)
+def test_roman_clause_uids_invalid(uid: str) -> None:
+    with pytest.raises(InvalidSectionUidError):
+        parse(uid)
+
+
+def test_letter_i_and_numeral_i_are_different_uids() -> None:
+    assert not covers("IN.X2020:s2:cl_i", "IN.X2020:s2:clr_i")
+    assert covers("IN.X2020:s2:clr_vii", "IN.X2020:s2:clr_vii:scla_a")
+    assert parent("MP.LSGR2010:r8:clr_vii:prov1") == "MP.LSGR2010:r8:clr_vii"

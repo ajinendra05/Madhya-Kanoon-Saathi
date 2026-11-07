@@ -85,12 +85,14 @@
       "made_under": [
         "MP.LSG2010:s10:ss1"
       ],
-      "notes": "Title and parent power (s.10(1)) as recited in the 09.07.2026 amendment notification. Original 2010 rules text not yet fetched. Amended by MP.LSGRA2026 (r.8 cl.(सात)); 'affects' left empty because roman-numbered clauses have no uid segment yet (see W0.4_FINDINGS).",
+      "notes": "Title and parent power (s.10(1)) as recited in the 09.07.2026 amendment notification. Original 2010 rules text not yet fetched. Amended by MP.LSGRA2026: proviso added to r.8 clause (सात) = `MP.LSGR2010:r8:clr_vii` (U1).",
       "amendments": [
         {
           "by": "MP.LSGRA2026",
           "commenced_on": "2026-07-09",
-          "affects": []
+          "affects": [
+            "MP.LSGR2010:r8:clr_vii"
+          ]
         }
       ]
     },

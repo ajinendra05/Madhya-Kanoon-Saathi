@@ -132,7 +132,7 @@ post-repeal notifications, DEC-042) and on OCR of the scan (W0.5).
 | X2 | Separate legal-authority vs source-quality metadata (official file / listing-matched copy / defective scan) | C (plan) → M | open: schema change, plan needed |
 | X3 | Legal-impact analysis for every amendment and repeal (affected instruments, provisions, dates) | C (plan) → M | open |
 | X4 | Re-run affected golden-set rows after every legal change (law-watch flow, DEC-013) | C (plan) → M | open |
-| U1 | `section_uid` support for roman-numbered clauses alongside letters, validated against the hierarchy (DEC-045 item 7) | C | open: implement next |
+| U1 | `section_uid` support for roman-numbered clauses alongside letters, validated against the hierarchy (DEC-045 item 7) | C | resolved 2026-11-07: new segments `clr_<roman>` (clause) and `scla_<letters>` (sub-clause); canonical roman 1–3999; spec `docs/specs/section_uid.md`; 23 new tests. First use: `MP.LSGR2010:r8:clr_vii` for the 2026 amendment. **TODO(verify):** the mapping of Hindi clause '(सात)' → (vii) is structural; confirm against the 2010 Rules text once fetched |
 
 ## F. Environment
 | ID | Question | Owner | Status |
