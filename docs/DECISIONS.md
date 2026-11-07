@@ -480,6 +480,30 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: CORPUS.md and OPEN_QUESTIONS updated · schema changes in 9(b) and the uid change in 7 are implemented with tests · golden-set re-runs become part of the law-change flow (DEC-013) · cost ₹0.
 - Follow-ups: implement item 7 (section_uid); plan 9(a)–(d); research items 1, 6, 8; the G13 notification number via Malik.
 
+## DEC-046 — G8 demarcation: statute verified, Demarcation Rules 2018 qualified/gated
+- Date: 2026-11-07 | Status: accepted | Approved by: Malik (research update on G8)
+- Context: s.129 (as substituted by MP Act 23/2018 and amended by MP Act 1/2023) is verified from official copies. Malik located a full **reproduced** text of the MP Bhu-Rajasva Sanhita (Seemankan) Niyam, 2018. The original gazette is reported unavailable, and revenue.mp.gov.in is down.
+- Decision:
+  1. **Commencement:** MP Act 23/2018 commenced **25.09.2018**. Evidence: the official recital in the Nirdharan Rules 2018 r.1(2) (MP Code). Malik also reports a separately indexed commencement notification **No. 24-2018-VII-Sec-6 dated 16.08.2018** (not yet seen by Claude). The task to retrieve the original gazette stays open.
+  2. **Demarcation Rules 2018 are registered as a separate instrument** (`MP.LRCDR2018`):
+     - notification **No. F-2-13-2018-7-Se.7**, recorded date **28.01.2019**, parent `MP.LRC1959`
+     - per the reproduced text: Rules 3–11, Forms I–III, agency provisions, team composition, fees and boundary-mark specifications
+  3. **The reproduced text is not treated as source-verified.** The rules stay **qualified/gated** until the original gazette or an authoritative government copy is obtained.
+  4. **The verified s.129 statutory content is not blocked** by the rules' status.
+  5. **The bot must keep two provisions apart:**
+     - **s.129(5):** an application to the **SDO** to set aside the confirmed demarcation, within **45 days** of confirmation or knowledge, whichever is later
+     - **s.129(8):** **no appeal or revision** lies against orders or proceedings under s.129 (notwithstanding ss.44, 50)
+  6. **No universal demarcation fee.** Rule 4 (reproduced) provides for **Collector-fixed fees with Commissioner approval**, so fees vary by district. Answers must not state a single amount.
+  7. **To obtain:**
+     - Forms I–III
+     - current district Collector fee orders
+     - orders authorising agencies
+     - technical instructions under Rule 10
+  8. **To investigate:** the reported in-force date of 01.02.2019 vs the reproduced notification/publication date of 28.01.2019.
+- Why: The statute is verified, but the rules' text is a reproduction of unknown fidelity. Fees are local and changeable, and the SDO route vs the no-appeal bar is a common point of user confusion.
+- Effects: the demarcation module is **not production-ready**. Answers come from s.129 only, plus "rules exist; procedure/fees vary by district; contact the Tahsil." · cost ₹0.
+- Follow-ups: G8 sub-items in OPEN_QUESTIONS; the source URL/file of the reproduced copy from Malik (to keep its hash).
+
 ---
 
 ## Pending decisions (not yet made)
