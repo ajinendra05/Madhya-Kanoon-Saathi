@@ -740,6 +740,103 @@
       "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9jY2Q2NGVkNS02MjM1LTQzMGUtODNmYS05YmIyOGJlYTNiODEucGRm",
       "notification_no": "4157-356 dt 18.02.2026",
       "notes": "Payment of arrears of revised minimum wage rates from 01.04.2024."
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G14"
+      ],
+      "doc_id": "MP.SEA1958@hi@1",
+      "instrument_id": "MP.SEA1958",
+      "language": "hi",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1958_0025_Pdf_F103_Hindi.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "notes": "Consolidation date to verify. Repealed on the Sanhita's commencement (s.40(1)(b))."
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G14"
+      ],
+      "doc_id": "MP.SEAA2014@en@1",
+      "instrument_id": "MP.SEAA2014",
+      "language": "en",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2014_0021_Pdf_F852_English%281%29.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "notes": ""
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G14"
+      ],
+      "doc_id": "MP.SER1959@en@1",
+      "instrument_id": "MP.SER1959",
+      "language": "en",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_1959_0048_Pdf_F120_English.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "notes": "Consolidation date to verify."
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G14"
+      ],
+      "doc_id": "MP.SEAA2025@hi@1",
+      "instrument_id": "MP.SEAA2025",
+      "language": "hi",
+      "resolver": "mp_labour_dms",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9mMDRiM2Y4OC1jZTcyLTQwYTYtYTc2Zi00YjlhNjY5NTgxZTIucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=18)",
+      "notes": "DMS dated 11.09.2025."
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G14"
+      ],
+      "doc_id": "MP.SEASA2025@en@1",
+      "instrument_id": "MP.SEASA2025",
+      "language": "en",
+      "resolver": "mp_labour_dms",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=18)",
+      "notes": "DMS dated 15.12.2025."
     }
   ]
 }

@@ -110,7 +110,42 @@
       "type": "act",
       "jurisdiction": "MP",
       "title_en": "The Madhya Pradesh Shops and Establishments Act, 1958 (No. 25 of 1958)",
-      "notes": "Repealed by MP.SSS2026 s.40(1)(b) on and from that Code's commencement (date not yet notified). Amended in 2025 (amendment listed 11.09.2025 and Second Amendment Act 2025 listed 15.12.2025 on the MP Labour DMS notifications page Sid=18). superseded_by is set only once commencement is confirmed. No document ingested yet."
+      "notes": "Repealed by MP.SSS2026 s.40(1)(b) on and from that Code's commencement (date not yet notified). Amended in 2025 (amendment listed 11.09.2025 and Second Amendment Act 2025 listed 15.12.2025 on the MP Labour DMS notifications page Sid=18). superseded_by is set only once commencement is confirmed. No document ingested yet. MP Code Hindi text = 2014-made consolidation (amendments referenced up to 2011); text layer corrupted (Devanagari mixed with Sundanese/Balinese-block glyphs) - needs OCR/repair before quoting.",
+      "title_hi": "म.प्र. दुकान तथा स्थापना अधिनियम 1958",
+      "amendments": [
+        {
+          "by": "MP.SEAA2014",
+          "commenced_on": null,
+          "affects": [
+            "MP.SEA1958:s6:ss3",
+            "MP.SEA1958:s33",
+            "MP.SEA1958:s41",
+            "MP.SEA1958:s53",
+            "MP.SEA1958:s54",
+            "MP.SEA1958:s59"
+          ]
+        },
+        {
+          "by": "MP.SEAA2025",
+          "commenced_on": null,
+          "affects": [
+            "MP.SEA1958:s11:ss2",
+            "MP.SEA1958:s16:ss2",
+            "MP.SEA1958:s21:ss2"
+          ]
+        },
+        {
+          "by": "MP.SEASA2025",
+          "commenced_on": "2025-12-15",
+          "affects": [
+            "MP.SEA1958:s2",
+            "MP.SEA1958:s6",
+            "MP.SEA1958:s7",
+            "MP.SEA1958:s8",
+            "MP.SEA1958:s41"
+          ]
+        }
+      ]
     },
     {
       "instrument_id": "MP.LSGRA2026",
@@ -347,6 +382,49 @@
       "title_en": "Revised minimum wage rates incl. VDA effective 01.04.2024 under the Minimum Wages Act, 1948 (base-rate revision; DMS No. 68 dt 04.03.2024)",
       "notes": "L8. Notification एफ 4(बी)1/2014/ए-16, MP Rajpatra (Asadharan) No. 68 dt 04.03.2024, under MW Act 1948 s.5(1)(b), revising basic rates for the 67 scheduled employments from 01.04.2024 (draft proposals: MP Rajpatra Part 4(ग) 06.10.2023 and 13.10.2023). LITIGATION (from official DMS circulars): challenged by the MP Textile Mills Association and others (WP 10772/2024, 9401/2024, 11921/2024, 12606/2024, MP HC Indore); interim stay 08.05.2024 (petitioner association) and stay order 21.05.2024 => notification 15817-16066 dt 24.05.2024 applied the 2016 base (F.4(सी)1-2013-अ-16, MP Rajpatra 10.06.2016) + VDA from 01.04.2024 (unskilled Rs 10,175/month). HC disposed of the petitions on 10.02.2025 (paras 15-16 quoted in circular 6891): fresh revision for the employments added 19.01.2025 [sic; notification dt 15.01.2025, Rajpatra 17.01.2025]; petitioner association exempt. Circular 1/आठ/वेतन/भाग-3/2024/6891 dt 28.02.2025 para 03: the 04.03.2024 rates are again effective (+VDA) for all notified employments EXCEPT textiles/made-ups (36(क)), apparel (59(क)) and footwear (73); para 04: those three get pre-revision rates + VDA pending fresh revision. Arrears circular 4157-356 dt 18.02.2026 (from 01.04.2024) archived, not read. Pre-21.11.2025 MW Act notification: potentially saved under Code on Wages s.69(2) (DEC-042) - needs advocate confirmation.",
       "enacted_on": "2024-03-04"
+    },
+    {
+      "instrument_id": "MP.SEAA2014",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Shops and Establishments (Amendment) Act, 2014 (MP Act No. 21 of 2014)",
+      "amends": [
+        "MP.SEA1958"
+      ],
+      "notes": "Assent 29.12.2014; in force from publication in the MP Gazette (s.1(2); date not printed). Amends s.6(3) (deemed registration proviso), substitutes s.33 (fire precautions) and s.53, amends ss.41, 54, 59. s.6 later substituted wholesale by MP Act 25 of 2025.",
+      "enacted_on": "2014-12-29"
+    },
+    {
+      "instrument_id": "MP.SEAA2025",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_hi": "मध्य प्रदेश दुकान एवं प्रतिष्ठान (संशोधन) अधिनियम",
+      "amends": [
+        "MP.SEA1958"
+      ],
+      "notes": "Assent 09.09.2025; MP Rajpatra 11.09.2025, p.507 ff. (Law Dept क्र. 8760-165). Amends ss.11(2), 16(2), 21(2): overtime cap 'six hours in any week' -> '144 hours in any quarter'. s.1 commencement clause blank in the DMS scan (unclear).",
+      "title_en": "The Madhya Pradesh Shops and Establishments (Amendment) Act, 2025 (MP Act No. 20 of 2025)",
+      "enacted_on": "2025-09-09"
+    },
+    {
+      "instrument_id": "MP.SEASA2025",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Shops and Establishments (Second Amendment) Act, 2025 (MP Act No. 25 of 2025)",
+      "amends": [
+        "MP.SEA1958"
+      ],
+      "notes": "Assent 15.12.2025; MP Rajpatra (Asadharan) No. 351 dt 15.12.2025, p.701 ff. (Law Dept क्र. 12132-214). s.1(2): in force from publication. Amends s.2 (central inspection system, portal, establishment register, registration certificate), substitutes s.6 (registration on the portal within 30 days; certificate auto-generated; fee as prescribed, max Rs 2,500 per establishment), ss.7, 8; amends s.41.",
+      "enacted_on": "2025-12-15",
+      "commenced_on": "2025-12-15"
+    },
+    {
+      "instrument_id": "MP.SER1959",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "parent_instrument": "MP.SEA1958",
+      "title_en": "The M.P. Shops and Establishments Rules 1959",
+      "notes": "Listed on code.mp.gov.in."
     }
   ],
   "documents": [
@@ -1683,6 +1761,199 @@
       "content_type": "application/pdf",
       "text_layer": "scanned",
       "local_path": "raw/MP.MWBASE2024/MP.MWBASE2024_hi_arrears-2026-02-18.pdf"
+    },
+    {
+      "doc_id": "MP.SEA1958@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.SEA1958",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1958_0025_Pdf_F103_Hindi.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Consolidation date to verify. Repealed on the Sanhita's commencement (s.40(1)(b)).",
+      "fetched_at": "2026-11-07T17:20:05+00:00",
+      "sha256": "28f0f878cac1d3dae30f1edd981836a9ea34bd7f78293c8dd236cb1d6409ba52",
+      "bytes": 250999,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.SEA1958/MP.SEA1958_hi_1.pdf",
+      "gate": [
+        "G14"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "consolidation_current",
+          "result": "conflict",
+          "method": "years referenced in the text (latest 2011) vs amendments of 2014 and 2025",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1958_0025_Pdf_F103_Hindi.pdf",
+          "note": "Pre-2014 consolidation; 2014 and both 2025 amendments not included. Text layer corrupt."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.SEAA2014@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.SEAA2014",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2014_0021_Pdf_F852_English%281%29.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "[pending: target_mode=gated]",
+      "fetched_at": "2026-11-07T17:20:33+00:00",
+      "sha256": "5538d7d0c282e9d8d4cf8bfe148a50409995e00e7ce5aa383c48a3156ae20889",
+      "bytes": 55755,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.SEAA2014/MP.SEAA2014_en_1.pdf",
+      "gate": [
+        "G14"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the extracted English text of the official MP Code PDF",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2014_0021_Pdf_F852_English%281%29.pdf"
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.SER1959@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.SER1959",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_1959_0048_Pdf_F120_English.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Consolidation date to verify.",
+      "fetched_at": "2026-11-07T17:21:00+00:00",
+      "sha256": "4a7de8e85d86c20a9377da850a86d8e2e0edfe449b9575c180b6800cb8f597ae",
+      "bytes": 123764,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/MP.SER1959/MP.SER1959_en_1.pdf",
+      "gate": [
+        "G14"
+      ]
+    },
+    {
+      "doc_id": "MP.SEAA2025@hi@1",
+      "mode": "gated",
+      "instrument_id": "MP.SEAA2025",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9mMDRiM2Y4OC1jZTcyLTQwYTYtYTc2Zi00YjlhNjY5NTgxZTIucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=18)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "DMS dated 11.09.2025.",
+      "fetched_at": "2026-11-07T17:21:08+00:00",
+      "sha256": "71e6d9178bf8d20d1e543f5fc6427d14bb42e5cb362184b9c83e3dc5cfebf75d",
+      "bytes": 176085,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.SEAA2025/MP.SEAA2025_hi_1.pdf",
+      "gate": [
+        "G14"
+      ],
+      "gazette_ref": "MP Rajpatra 11.09.2025",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read gazette pages 1-2 of the DMS scan",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9mMDRiM2Y4OC1jZTcyLTQwYTYtYTc2Zi00YjlhNjY5NTgxZTIucGRm"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "commencement",
+          "result": "unclear",
+          "method": "s.1 area blank in the scan",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9mMDRiM2Y4OC1jZTcyLTQwYTYtYTc2Zi00YjlhNjY5NTgxZTIucGRm p.1"
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.SEASA2025@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.SEASA2025",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=18)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "DMS dated 15.12.2025.",
+      "fetched_at": "2026-11-07T17:21:21+00:00",
+      "sha256": "aeae304e74d8480e6e6c31f487daf1fdf208f8cc3a91c19d87cc59b6de900a04",
+      "bytes": 847363,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.SEASA2025/MP.SEASA2025_en_1.pdf",
+      "gate": [
+        "G14"
+      ],
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 351, 15.12.2025",
+      "valid_from": "2025-12-15",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read gazette pages 1-3 of the DMS scan",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm pp.1-3"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "status",
+          "result": "confirmed",
+          "method": "assent + gazette publication read",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm p.1"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "s.1(2): from publication in the Rajpatra",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm p.3"
+        }
+      ]
     }
   ]
 }
