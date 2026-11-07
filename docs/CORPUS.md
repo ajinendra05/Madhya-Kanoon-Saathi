@@ -49,7 +49,7 @@ The status column uses our status flags. New flags proposed by [R] are marked *(
 | 20 | MP Mutation in Land Records Rules 2018 | Land | in_force [R] | gated: G8 | revenue.mp.gov.in | some |
 | 21 | MP demarcation rules (department list shows 2019; a Minister's reply cites "2020"; ingest both and show the department's dated version) | Land | conflict to resolve (G8) | gated: G8 | revenue.mp.gov.in | some |
 | 22 | Getting a khasra / B-1 / Bhulekh copy online; Cyber Tehsil steps | Land | — | guide | MP Bhulekh / revenue portal | no |
-| 23 | **MP Repeal (निरसन) Act 2026** (Gazette No. 260 dt 11.08.2026) | All | to examine first: which corpus instruments it repeals, dates, savings (DEC-045) | check | govtpress listing (PDF 404) | ? |
+| 23 | **MP Repeal (निरसन) Act 2026** (MP Act 8/2026, Gazette No. 260 dt 11.08.2026) | All | checked 2026-11-07: repeals 7 CP&Berar-era Acts (1933–1947) in whole; **no corpus instrument affected** (G15) | instrument record only (`MP.NIRSAN2026`); not indexed | PRS copy (govtpress PDF 404) | yes |
 | 24 | **MP Ease of Doing Business Act 2026** (Gazette No. 264 dt 20.08.2026) | Labour / business | to examine: amendments to corpus laws (esp. #18, #7a) (DEC-045) | check | govtpress listing (PDF 404) | ? |
 
 **Land deadline (DEC-045):** retry official sources for the complete MPLRC, amendments and rules (revenue.mp.gov.in is

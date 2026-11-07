@@ -126,7 +126,7 @@ post-repeal notifications, DEC-042) and on OCR of the scan (W0.5).
 ## I. Added by the W0.4 review (DEC-045, 2026-11-07)
 | ID | Question / task | Owner | Status |
 | --- | --- | --- | --- |
-| G15 | **MP Repeal (निरसन) Act 2026** (Gazette No. 260, 11.08.2026): which corpus instruments does it repeal, from when, with what savings? Priority before G16 | C | open (govtpress PDF 404; find another official copy) |
+| G15 | **MP Repeal (निरसन) Act 2026** (Gazette No. 260, 11.08.2026): which corpus instruments does it repeal, from when, with what savings? Priority before G16 | C | resolved 2026-11-07: MP Act 8 of 2026 (assent 07.08.2026, Gazette No. 260 dt 11.08.2026; PRS copy, official PDF 404) repeals 7 CP&Berar-era Acts in whole (debt relief 1933/1937/1939, Famine Relief Fund 1937, Vidya Mandir 1940, Regulation of Couching 1944, Land Survey 1947); s.3 savings. **No corpus instrument affected.** Instrument `MP.NIRSAN2026` recorded. TODO(verify): commencement rule (no commencement clause) |
 | G16 | **MP Ease of Doing Business Act 2026** (Gazette No. 264, 20.08.2026): does it amend corpus laws (S&E Act 1958, Sanhita, others)? | C | open (govtpress PDF 404) |
 | X1 | Effective-date ("as of") legal retrieval design | C (plan) → M | open: plan needed before code |
 | X2 | Separate legal-authority vs source-quality metadata (official file / listing-matched copy / defective scan) | C (plan) → M | open: schema change, plan needed |
