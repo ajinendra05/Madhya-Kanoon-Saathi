@@ -593,6 +593,69 @@
       },
       "target_mode": "archive",
       "notes": "Research corpus for L7 (DEC-047)."
+    },
+    {
+      "doc_id": "MP.LRCDR2018@bi@1",
+      "instrument_id": "MP.LRCDR2018",
+      "url": "https://web.archive.org/web/20220620064713id_/http://revenue.mp.gov.in/upload/files/321953593363.pdf",
+      "language": "bi",
+      "status": "in_force",
+      "publisher": "Revenue Department, Government of Madhya Pradesh (revenue.mp.gov.in file; retrieved from an Internet Archive snapshot because the site is down)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Department compilation: cover 'दिनांक 01 फरवरी, 2019 से प्रभावशील' + gazette scans (Hindi final rules + English text/table). 28 pages, CCITT scan. Original URL: http://revenue.mp.gov.in/upload/files/321953593363.pdf.",
+      "valid_from": "2019-02-01",
+      "gazette_ref": "MP Rajpatra Part 4(ग), 01.02.2019, p.103 ff.",
+      "notification_no": "एफ 2-13-2018-सात-शा. 7 dt 28.01.2019"
+    },
+    {
+      "doc_id": "MP.LRCMR2018@hi@2",
+      "instrument_id": "MP.LRCMR2018",
+      "url": "https://web.archive.org/web/20220620064704id_/http://revenue.mp.gov.in/upload/files/193388191163.pdf",
+      "language": "bi",
+      "status": "in_force",
+      "publisher": "Revenue Department, Government of Madhya Pradesh (revenue.mp.gov.in file; retrieved from an Internet Archive snapshot because the site is down)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Department compilation of the gazette publication (63 pages, scan). Printed sub-heading 'प्रारूप नियम' carries a handwritten mark; handwritten note at foot (possibly a corrigendum dt 15.2.19) not interpreted. Original URL: http://revenue.mp.gov.in/upload/files/193388191163.pdf.",
+      "valid_from": "2019-01-04",
+      "gazette_ref": "MP Rajpatra No. 1, Part 4(ग), 04.01.2019, p.1 ff.",
+      "notification_no": "एफ 2-14/2018/सात/शा.6 dt 31.12.2018"
+    },
+    {
+      "doc_id": "MP.LRC1959@hi@2",
+      "instrument_id": "MP.LRC1959",
+      "url": "https://web.archive.org/web/20220620064619id_/http://revenue.mp.gov.in/upload/files/313237231063.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Revenue Department, Government of Madhya Pradesh (revenue.mp.gov.in file; retrieved from an Internet Archive snapshot because the site is down)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Department's consolidated MPLRC 'as amended up to 12 February 2020' (row 1 of the department LRC page). Does not include Acts 2/2022, 20/2022, 1/2023. Original URL: http://revenue.mp.gov.in/upload/files/313237231063.pdf."
     }
   ]
 }

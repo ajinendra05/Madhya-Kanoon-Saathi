@@ -12,7 +12,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 **`docs/W0.4_FINDINGS.md` is FROZEN** as Malik's v1 record: never edit, fold or delete it (to be revisited in v2).
 
 **Next Claude tasks, in order (updated 2026-11-07, session 2):**
-1. **G8 before 16 Nov:**
+1. **G8 before 16 Nov** (session 3, 2026-11-07: G8b, G8g, G8h resolved via the Internet Archive copies of revenue.mp.gov.in; open G8a, G8c–f):
    - G8a: original gazette of the 2018 commencement notification (No. 24-2018-VII-Sec-6)
    - G8b: official Demarcation Rules copy
    - G8g: 28.01 vs 01.02.2019 date discrepancy

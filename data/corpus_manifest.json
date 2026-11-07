@@ -286,12 +286,14 @@
       "jurisdiction": "MP",
       "title_en": "The Madhya Pradesh Bhu-Rajasv Sanhita (Bhu-Abhilekhon Mein Namantaran) Niyam, 2018 (Mutation in Land Records Rules)",
       "parent_instrument": "MP.LRC1959",
-      "notes": "Notification No. F 2-14/2018/VII/Se.6 under s.258(2)(xxiii) read with ss.109, 110; supersedes notification 2498-VII-N-I (MP Rajpatra 02.07.1965). r.1(2): in force from publication in the MP Gazette; publication date not printed in the MP Code copy (MP Code lists 31-12-2018; a secondary source cites a 04.01.2019 corrigendum). Part A report of acquisition + fee; Part B mutation proceedings; Part C mutation + partition; Forms I-XI.",
+      "notes": "Notification No. F 2-14/2018/VII/Se.6 under s.258(2)(xxiii) read with ss.109, 110; supersedes notification 2498-VII-N-I (MP Rajpatra 02.07.1965). r.1(2): in force from publication in the MP Gazette; publication date not printed in the MP Code copy (MP Code lists 31-12-2018; a secondary source cites a 04.01.2019 corrigendum). Part A report of acquisition + fee; Part B mutation proceedings; Part C mutation + partition; Forms I-XI. Gazette verified 2026-11-07: MP Rajpatra No. 1, Friday 04.01.2019, Part 4(ग); notification dt 31.12.2018 => in force 04.01.2019 (matches the department listing '04 जनवरी, 2019 से प्रभावशील'). Department copy via Internet Archive (193388191163.pdf). The printed sub-heading 'प्रारूप नियम' carries a handwritten mark; a handwritten foot note (possibly a corrigendum dt 15.2.19) is not interpreted.",
       "made_under": [
         "MP.LRC1959:s258:ss2",
         "MP.LRC1959:s109",
         "MP.LRC1959:s110"
-      ]
+      ],
+      "enacted_on": "2018-12-31",
+      "commenced_on": "2019-01-04"
     },
     {
       "instrument_id": "MP.WCR2026",
@@ -311,7 +313,7 @@
       "parent_instrument": "MP.LRC1959",
       "title_en": "The Madhya Pradesh Bhu-Rajaswa Sanhita (Bhu-Rajasva Ka Nirdharan Tatha Punarnirdharan) Niyam, 2018",
       "commenced_on": "2018-09-25",
-      "notes": "Assessment and re-assessment of land revenue. r.1(2): in force on the commencement of MPLRC (Amendment) Act 2018 'that is 25th September, 2018'. Kept as evidence for the 2018 Act's commencement; outside the mutation/demarcation slice."
+      "notes": "Assessment and re-assessment of land revenue. r.1(2): in force on the commencement of MPLRC (Amendment) Act 2018 'that is 25th September, 2018'. Kept as evidence for the 2018 Act's commencement; outside the mutation/demarcation slice. Department listing (archived 2021) says '28 सितम्बर, 2018 से प्रभावशील' while r.1(2) says 25.09.2018: discrepancy noted, r.1(2) text governs for the Act's commencement recital."
     },
     {
       "instrument_id": "MP.LRCDR2018",
@@ -323,7 +325,9 @@
         "MP.LRC1959:s129:ss9",
         "MP.LRC1959:s258:ss2"
       ],
-      "notes": "DEC-046: QUALIFIED/GATED. Notification No. F-2-13-2018-7-Se.7, recorded date 28.01.2019 (reported in-force date 01.02.2019: discrepancy to investigate). Full reproduced text located by Malik (Rules 3-11, Forms I-III, agency provisions, team composition, fees, boundary-mark specifications); NOT source-verified (original gazette reported unavailable). Rule 4 (reproduced): fees fixed by the Collector with the Commissioner's approval, so they vary by district. No document row until an official copy is obtained. Reproduction checked by Claude 2026-11-07 at https://indiankanoon.org/doc/12233550/ (saved data/raw/MP.LRCDR2018/MP.LRCDR2018_en_indiankanoon.html, sha256 820eee66c9c7199724cd382c90e5fa941c0ad0d8f29ff89a0818b4924cd82601); the page itself states the original publication is unavailable and unverified. Remains GATED (Malik, 2026-11-07)."
+      "notes": "Notification एफ 2-13-2018-सात-शा. 7 (Revenue Dept), Bhopal 28.01.2019; under s.129 r/w s.258(2)(तीस); supersedes 187-6477-सात-एन-(नियम) dt 06.01.1960 (MP Rajpatra 22.01.1960). Published as 'अंतिम नियम' in **MP Rajpatra Part 4(ग), 01.02.2019, p.103 ff.**; r.1(2) in force from publication => **01.02.2019** (matches the department listing '01 फरवरी, 2019 से प्रभावशील'). OFFICIAL COPY obtained 2026-11-07: the Revenue Dept's own PDF (revenue.mp.gov.in/upload/files/321953593363.pdf) via an Internet Archive snapshot (20220620). The Indian Kanoon reproduction (saved, unverified) matches on number, date, enabling sections, supersession and r.1. r.4 fees are Collector-fixed with the Commissioner's approval; district fee orders are still needed (G8d). Status per DEC-046: gated pending Malik's review of the official copy.",
+      "enacted_on": "2019-01-28",
+      "commenced_on": "2019-02-01"
     },
     {
       "instrument_id": "IN.SO2451E2026",
@@ -1210,11 +1214,11 @@
         {
           "by": "claude",
           "on": "2026-11-07",
-          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Rule_2018_1007_Pdf_F1896_English.pdf p.2",
           "what": "commencement",
-          "result": "unclear",
-          "method": "r.1(2) read",
-          "note": "From gazette publication; the date is not printed in this copy."
+          "result": "confirmed",
+          "method": "gazette publication date from the department's gazette copy (MP.LRCMR2018@hi@2)",
+          "evidence": "MP Rajpatra No. 1, 04.01.2019",
+          "note": "In force 04.01.2019."
         }
       ]
     },
@@ -1403,6 +1407,143 @@
           "what": "status",
           "note": "Final Gazette of India notification."
         }
+      ]
+    },
+    {
+      "doc_id": "MP.LRCDR2018@bi@1",
+      "mode": "gated",
+      "instrument_id": "MP.LRCDR2018",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20220620064713id_/http://revenue.mp.gov.in/upload/files/321953593363.pdf",
+      "publisher": "Revenue Department, Government of Madhya Pradesh (revenue.mp.gov.in file; retrieved from an Internet Archive snapshot because the site is down)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "gazette_ref": "MP Rajpatra Part 4(ग), 01.02.2019, p.103 ff.",
+      "notification_no": "एफ 2-13-2018-सात-शा. 7 dt 28.01.2019",
+      "valid_from": "2019-02-01",
+      "notes": "Department compilation: cover 'दिनांक 01 फरवरी, 2019 से प्रभावशील' + gazette scans (Hindi final rules + English text/table). 28 pages, CCITT scan. Original URL: http://revenue.mp.gov.in/upload/files/321953593363.pdf.",
+      "fetched_at": "2026-11-07T09:52:10+00:00",
+      "sha256": "3a8d898406dfa9dbb3de3ee65c28b9128c69607e8964b3f0c9dc906d843f1c83",
+      "bytes": 626879,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCDR2018/MP.LRCDR2018_bi_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read gazette page images of the department PDF (Internet Archive copy of revenue.mp.gov.in)",
+          "evidence": "https://web.archive.org/web/20220620064713id_/http://revenue.mp.gov.in/upload/files/321953593363.pdf p.2 (gazette p.103)"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "status",
+          "result": "confirmed",
+          "method": "gazette heading 'अंतिम नियम', Part 4(ग)",
+          "evidence": "https://web.archive.org/web/20220620064713id_/http://revenue.mp.gov.in/upload/files/321953593363.pdf p.2"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "r.1(2) + gazette date header 'मध्यप्रदेश राजपत्र, दिनांक 1 फरवरी 2019'",
+          "evidence": "https://web.archive.org/web/20220620064713id_/http://revenue.mp.gov.in/upload/files/321953593363.pdf pp.1-2",
+          "note": "In force 01.02.2019 (publication); notification signed 28.01.2019."
+        }
+      ],
+      "gate": [
+        "G8"
+      ]
+    },
+    {
+      "doc_id": "MP.LRCMR2018@hi@2",
+      "mode": "gated",
+      "instrument_id": "MP.LRCMR2018",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20220620064704id_/http://revenue.mp.gov.in/upload/files/193388191163.pdf",
+      "publisher": "Revenue Department, Government of Madhya Pradesh (revenue.mp.gov.in file; retrieved from an Internet Archive snapshot because the site is down)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "gazette_ref": "MP Rajpatra No. 1, Part 4(ग), 04.01.2019, p.1 ff.",
+      "notification_no": "एफ 2-14/2018/सात/शा.6 dt 31.12.2018",
+      "valid_from": "2019-01-04",
+      "notes": "Department compilation of the gazette publication (63 pages, scan). Printed sub-heading 'प्रारूप नियम' carries a handwritten mark; handwritten note at foot (possibly a corrigendum dt 15.2.19) not interpreted. Original URL: http://revenue.mp.gov.in/upload/files/193388191163.pdf.",
+      "fetched_at": "2026-11-07T09:52:25+00:00",
+      "sha256": "c7041bcea62b07900f9a6aecfb844ac8359f2e71671faa852a315957efda0c3d",
+      "bytes": 1362780,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCMR2018/MP.LRCMR2018_hi_2.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read gazette page image (p.2) of the department PDF",
+          "evidence": "https://web.archive.org/web/20220620064704id_/http://revenue.mp.gov.in/upload/files/193388191163.pdf p.2"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "gazette date header + r.1(2) (publication)",
+          "evidence": "https://web.archive.org/web/20220620064704id_/http://revenue.mp.gov.in/upload/files/193388191163.pdf p.2",
+          "note": "MP Rajpatra No. 1, 04.01.2019 => in force 04.01.2019."
+        }
+      ],
+      "gate": [
+        "G8"
+      ]
+    },
+    {
+      "doc_id": "MP.LRC1959@hi@2",
+      "mode": "gated",
+      "instrument_id": "MP.LRC1959",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20220620064619id_/http://revenue.mp.gov.in/upload/files/313237231063.pdf",
+      "publisher": "Revenue Department, Government of Madhya Pradesh (revenue.mp.gov.in file; retrieved from an Internet Archive snapshot because the site is down)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Department's consolidated MPLRC 'as amended up to 12 February 2020' (row 1 of the department LRC page). Does not include Acts 2/2022, 20/2022, 1/2023. Original URL: http://revenue.mp.gov.in/upload/files/313237231063.pdf. 256 pages, scanned; bilingual (Hindi + English).",
+      "fetched_at": "2026-11-07T09:54:20+00:00",
+      "sha256": "f920faa090aa4f924262d1da4b9ba9f9287ece9c85e2832f551a97cfb0f8a981",
+      "bytes": 7715360,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRC1959/MP.LRC1959_hi_2.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the contents page image (p.2)",
+          "evidence": "https://web.archive.org/web/20220620064619id_/http://revenue.mp.gov.in/upload/files/313237231063.pdf p.2"
+        }
+      ],
+      "gate": [
+        "G8"
       ]
     }
   ]
