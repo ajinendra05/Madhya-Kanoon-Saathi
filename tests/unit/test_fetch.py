@@ -327,3 +327,28 @@ def test_mp_labour_dms_url_is_base64_of_path() -> None:
 def test_unknown_resolver_rejected() -> None:
     errors = validate_sources({"schema_version": 1, "sources": [_source(resolver="magic")]})
     assert any("unknown resolver" in e for e in errors)
+
+
+def test_incomplete_read_is_retried_then_reported(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import http.client
+
+    monkeypatch.setattr(fetch.time, "sleep", lambda _s: None)
+    calls: list[int] = []
+
+    def flaky_once() -> tuple[bytes, str]:
+        calls.append(1)
+        raise http.client.IncompleteRead(b"partial")
+
+    with pytest.raises(OSError, match="download failed after"):
+        fetch._with_retries(flaky_once)
+    assert len(calls) == fetch.RETRIES
+
+    def broken(url: str) -> tuple[bytes, str]:
+        raise http.client.IncompleteRead(b"partial")
+
+    results = fetch_all(
+        repo / "sources.json", repo / "manifest.json", repo / "data", delay_s=0, download=broken
+    )
+    assert [r.outcome for r in results] == ["error"]

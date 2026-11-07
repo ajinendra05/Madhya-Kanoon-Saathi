@@ -20,6 +20,7 @@ import base64
 import copy
 import hashlib
 import html
+import http.client
 import http.cookiejar
 import io
 import json
@@ -139,7 +140,9 @@ def _with_retries(fetch_once: Callable[[], tuple[bytes, str]]) -> tuple[bytes, s
     for attempt in range(RETRIES):
         try:
             return fetch_once()
-        except OSError as exc:  # URLError, HTTPError and timeouts are all OSError subclasses
+        # URLError, HTTPError and timeouts are OSError subclasses; a server that cuts a
+        # transfer short raises http.client.IncompleteRead (an HTTPException, not OSError).
+        except (OSError, http.client.HTTPException) as exc:
             last_error = exc
             time.sleep(2**attempt)
     raise OSError(f"download failed after {RETRIES} tries: {last_error}")
@@ -300,7 +303,7 @@ def fetch_all(
                 continue
             doc = build_document(source, body, content_type, rel, now())
             _atomic_write(data_dir / rel, body)
-        except (OSError, ValueError) as exc:
+        except (OSError, ValueError, http.client.HTTPException) as exc:
             results.append(FetchResult(doc_id, "error", str(exc)))
             continue
         if existing is not None:  # same bytes, file was missing locally: just restore it
