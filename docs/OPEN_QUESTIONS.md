@@ -8,7 +8,7 @@ and move a decision (if any) into DECISIONS.md. Owner: **M** = Malik, **C** = Cl
 | --- | --- | --- | --- | --- |
 | L1 | Which MP tenancy law governs: Accommodation Control Act 1961 vs Parisar Kirayedari Adhiniyam 2010? | Tenancy answers are wrong if the wrong Act is cited | M (advocate) | open |
 | L2 | Most recent official list of states adopting the Model Tenancy Act (RS replies conflict) | "Model law" caveat wording | C | open |
-| L3 | Is there a final MP gazette notification of rules under the four Labour Codes (drafts 5 Jan 2026)? Content of the reported Jul 2026 labour bill? | `status=draft` vs `in_force` | C | open. **New lead 2026-11-07:** code.mp.gov.in lists 'Madhya Pradesh Wage Code Rules, 2026' (Labour Dept, dated 30-04-2026); not yet read; may answer L3 and L7 point 3 |
+| L3 | Is there a final MP gazette notification of rules under the four Labour Codes (drafts 5 Jan 2026)? Content of the reported Jul 2026 labour bill? | `status=draft` vs `in_force` | C | open (updated 2026-11-07): MP published a **revised draft** 'MP Code on Wages Rules, 2026' (No. 83/2026/A-16, MP Rajpatra 30.04.2026; `MP.WCR2026`, read from code.mp.gov.in); first draft 05.01.2026. **No final notification found.** Labour bill content (Jul 2026) superseded by the Sanhita findings (G4) |
 | L4 | MP minimum-wage notification after 1 Oct 2026 | Time-versioned wage answers | C | resolved 2026-11-06: notification 1/11/अन्वे./पांच/2024/22288-337 dt 30.09.2026, valid 01.10.2026–31.03.2027, from the MP Labour DMS (`MP.MWVDAOCT2026` in the manifest; read from p.1 of the official scan). Scanned, so needs OCR (W0.5) |
 | L7 | Post-commencement MP VDA notifications (Apr 2026 6445-6650, Oct 2026 22288-337) cite the repealed MW Act 1948. Are they valid under the Code on Wages (competent authority's continuing appointment, statutory power, procedure)? Malik's determination (DEC-042): Code governs; these stay in transitional legal review | Wage-amount answers | M (advocate) | open: gates `MP.MWVDAOCT2026`. DEC-045: no definitive current wage amounts until an advocate verifies post-repeal authority; historical data kept |
 | L8 | Is the MP base-rate notification F.4(B)1/2014/A-16 (MP Extraordinary Gazette No. 68, 04.03.2024, effective 01.04.2024) saved under Code on Wages s.69(2) (not contrary to the Code)? Fetch it and verify | Base rates the VDA adds to | M (advocate) + C (fetch) | open: DEC-045 says fetch it (Claude) then advocate check |
@@ -44,6 +44,9 @@ Wages Act, 1948". That Act was repealed on that date. Are they valid under the C
 2. Which statutory power supports a post-repeal VDA revision: a saved pre-repeal structure, or a fresh exercise
    under ss.6–8 of the Code (which needs the s.8 procedure)?
 3. Has MP notified its own Code on Wages rules or a fresh minimum-wage notification under the Code? (Ties to L3.)
+   - 2026-11-07: only **draft** rules exist (revised draft 30.04.2026, `MP.WCR2026`). Draft r.5 sets the April/October cost-of-living
+     revision cycle on CPI-IW under s.7(2), consistent with the VDA notifications, but neither the draft nor anything found
+     appoints the s.7(2) computing authority. A draft is not law, so it can't by itself validate the Oct 2026 notification.
 
 **How it is implemented.**
 - Manifest (`data/corpus_manifest.json`):

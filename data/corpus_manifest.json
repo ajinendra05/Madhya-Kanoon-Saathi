@@ -291,6 +291,17 @@
         "MP.LRC1959:s109",
         "MP.LRC1959:s110"
       ]
+    },
+    {
+      "instrument_id": "MP.WCR2026",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_en": "Madhya Pradesh Code on Wages Rules, 2026 (draft of 30.04.2026)",
+      "parent_instrument": "IN.COW2019",
+      "notes": "DRAFT: notification No. 83/2026/A-16, MP Rajpatra 30.04.2026, p.226(73) ff.; proposed under Code on Wages s.67(1), superseding the Minimum Wages (MP) Rules 1958 and MP Payment of Wages Rules 1962; objections within 45 days. Revised draft (an earlier draft dated 05.01.2026 per secondary sources = CORPUS #7). Draft r.4: Technical Committee chaired by the Labour Commissioner (skill categories etc.); draft r.5: cost of living allowance computed once before 1 April and 1 October each year on CPI-IW (s.7(2)); the s.7(2) computing authority is NOT appointed in these rules. No final notification found (2026-11-07).",
+      "made_under": [
+        "IN.COW2019:s67:ss1"
+      ]
     }
   ],
   "documents": [
@@ -1171,6 +1182,50 @@
           "result": "unclear",
           "method": "r.1(2) read",
           "note": "From gazette publication; the date is not printed in this copy."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.WCR2026@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.WCR2026",
+      "language": "en",
+      "status": "draft",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Madhya%20Pradesh%20Wage%20Code%20Rules%2C%202026%20MP%20Code.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official MP Code copy of the gazette draft; 56 pages, mostly scanned.",
+      "fetched_at": "2026-11-07T04:57:19+00:00",
+      "sha256": "5140d873aa2643049f4fa2eac2e6e3575680457e3b4d83ddeb8e1cd99dee3bff",
+      "bytes": 4692042,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/MP.WCR2026/MP.WCR2026_en_1.pdf",
+      "gate": [
+        "L3"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Madhya%20Pradesh%20Wage%20Code%20Rules%2C%202026%20MP%20Code.pdf pp.1, 7-8 (gazette pp.226(73), (79), (80))",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read page images of the official MP Code PDF"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Madhya%20Pradesh%20Wage%20Code%20Rules%2C%202026%20MP%20Code.pdf pp.1, 7-8 (gazette pp.226(73), (79), (80))",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the notification preamble",
+          "note": "Draft rules published for objections (45 days); not final."
         }
       ]
     }

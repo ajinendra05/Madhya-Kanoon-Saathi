@@ -31,7 +31,7 @@ The status column uses our status flags. New flags proposed by [R] are marked *(
 | 4b | e-Jagriti filing steps (help docs only) | Consumer | — | guide | e-jagriti.gov.in | no |
 | 5 | Code on Wages; IR Code; SS Code; OSH Code (**full text**) | Labour | in_force from 21 Nov 2025 [P] | index | India Code; labour.gov.in | no |
 | 6 | Central Rules 2026 under the four codes | Labour | in_force [P] | index | labour.gov.in | maybe |
-| 7 | MP draft rules under the four codes (5 Jan 2026) | Labour | draft [P] | index | labour.mponline.gov.in | maybe |
+| 7 | MP draft rules under the four codes (5 Jan 2026); **Code on Wages rules re-published as a revised draft on 30 Apr 2026** (No. 83/2026/A-16; `MP.WCR2026`) | Labour | draft [P]; no final rules found (2026-11-07) | index as `draft` per DEC-037 (Wage rules: newer draft held gated: L3 until we confirm it replaces the Jan draft) | labour.mponline.gov.in; code.mp.gov.in | yes (Wage rules draft) |
 | 7a | MP Karyasthal Sashaktikaran (Shram Shakti) Sanhita 2026 (MP Act 7/2026, Gazette No. 257 dt 10.08.2026) | Labour | **enacted_not_commenced** (DEC-044); s.1(3) commencement not notified; repeals #18 on commencement | gated: G4; interim PRS copy (DEC-043); monitor commencement | govtpress listing; PRS copy (`MP.SSS2026`) | yes |
 | 8 | MP minimum-wage notification 22288-337 dt 30.09.2026 (valid 01.10.2026–31.03.2027) + Book; Apr 2026 one archived; Mar 2024 base-rate notification to fetch (L8) | Labour | time-bound; post-repeal legal authority unverified (DEC-042) | gated: **L7**; no current wage amounts until advocate review (DEC-045) | MP Labour DMS (`MP.MWVDAOCT2026`) | yes |
 | 9 | MP Accommodation Control Act 1961 (EN + HI) | Tenancy | in_force [P] | index | India Code; MP gazette | maybe |

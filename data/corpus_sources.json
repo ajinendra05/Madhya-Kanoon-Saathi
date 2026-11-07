@@ -493,6 +493,25 @@
         "G8"
       ],
       "notes": "Found via code.mp.gov.in search 2026-11-07."
+    },
+    {
+      "doc_id": "MP.WCR2026@en@1",
+      "instrument_id": "MP.WCR2026",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Madhya%20Pradesh%20Wage%20Code%20Rules%2C%202026%20MP%20Code.pdf",
+      "language": "en",
+      "status": "draft",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Labour Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L3"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07; status to verify (status field provisional until read)."
     }
   ]
 }
