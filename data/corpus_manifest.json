@@ -339,6 +339,14 @@
         "IN.COW2019:s7:ss2"
       ],
       "notes": "Central-sphere s.7(2) appointment (DG, Labour Bureau). Verified 2026-11-07 from the official copy. Does not resolve the MP authority question (L7, DEC-047)."
+    },
+    {
+      "instrument_id": "MP.MWBASE2024",
+      "type": "notification",
+      "jurisdiction": "MP",
+      "title_en": "Revised minimum wage rates incl. VDA effective 01.04.2024 under the Minimum Wages Act, 1948 (base-rate revision; DMS No. 68 dt 04.03.2024)",
+      "notes": "L8. Notification एफ 4(बी)1/2014/ए-16, MP Rajpatra (Asadharan) No. 68 dt 04.03.2024, under MW Act 1948 s.5(1)(b), revising basic rates for the 67 scheduled employments from 01.04.2024 (draft proposals: MP Rajpatra Part 4(ग) 06.10.2023 and 13.10.2023). LITIGATION (from official DMS circulars): challenged by the MP Textile Mills Association and others (WP 10772/2024, 9401/2024, 11921/2024, 12606/2024, MP HC Indore); interim stay 08.05.2024 (petitioner association) and stay order 21.05.2024 => notification 15817-16066 dt 24.05.2024 applied the 2016 base (F.4(सी)1-2013-अ-16, MP Rajpatra 10.06.2016) + VDA from 01.04.2024 (unskilled Rs 10,175/month). HC disposed of the petitions on 10.02.2025 (paras 15-16 quoted in circular 6891): fresh revision for the employments added 19.01.2025 [sic; notification dt 15.01.2025, Rajpatra 17.01.2025]; petitioner association exempt. Circular 1/आठ/वेतन/भाग-3/2024/6891 dt 28.02.2025 para 03: the 04.03.2024 rates are again effective (+VDA) for all notified employments EXCEPT textiles/made-ups (36(क)), apparel (59(क)) and footwear (73); para 04: those three get pre-revision rates + VDA pending fresh revision. Arrears circular 4157-356 dt 18.02.2026 (from 01.04.2024) archived, not read. Pre-21.11.2025 MW Act notification: potentially saved under Code on Wages s.69(2) (DEC-042) - needs advocate confirmation.",
+      "enacted_on": "2024-03-04"
     }
   ],
   "documents": [
@@ -1542,6 +1550,139 @@
       "gate": [
         "G8"
       ]
+    },
+    {
+      "doc_id": "MP.MWBASE2024@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8xMDRjODRkMS1jYTdkLTRlNjItYTJiOC0yYmJjYjg5OGZhYTYucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "एफ 4(बी)1/2014/ए-16",
+      "notes": "Gazette copy (43 pages, scan) from MP Labour DMS; p.1 read.",
+      "fetched_at": "2026-11-07T17:17:04+00:00",
+      "sha256": "75fc0826ef439cb1680e511ac7675c3a13bea1f54d7dbf0b55a5284ab3785d98",
+      "bytes": 1481404,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWBASE2024/MP.MWBASE2024_hi_1.pdf",
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 68, 04.03.2024",
+      "valid_from": "2024-04-01",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "what": "text_matches_source",
+          "method": "read p.1 of the official DMS scan (gazette header + preamble)",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8xMDRjODRkMS1jYTdkLTRlNjItYTJiOC0yYmJjYjg5OGZhYTYucGRm p.1"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "what": "status",
+          "method": "official circular 6891 dt 28.02.2025 para 01-03 (stayed 2024, reinstated after HC disposal 10.02.2025, except 3 employments)",
+          "evidence": "MP.MWBASE2024@hi@hc-2025-02-28 pp.1-2",
+          "note": "Operative for all notified employments except textiles/made-ups, apparel, footwear."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.MWBASE2024@hi@hc-2024-05-24",
+      "mode": "archive",
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8zODA4ZDEzOC1iZWYwLTQ5MjMtYTg1Ni0zYmQ5ZmQzNGMxMzkucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "15817-16066 dt 24.05.2024",
+      "notes": "Rates notice referring to HC Division Bench Indore order dt 21 May (2024) in WP 10772/2024, WP 9401/2024 etc.",
+      "fetched_at": "2026-11-07T17:17:09+00:00",
+      "sha256": "a871b6f27970a9b4c387a1ef85acceaffb2b4c22c9256210013efdb86ee209f4",
+      "bytes": 467601,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWBASE2024/MP.MWBASE2024_hi_hc-2024-05-24.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "what": "text_matches_source",
+          "method": "read page images of the official DMS scan",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8zODA4ZDEzOC1iZWYwLTQ5MjMtYTg1Ni0zYmQ5ZmQzNGMxMzkucGRm"
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.MWBASE2024@hi@hc-2025-02-28",
+      "mode": "archive",
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC83MzVhYTNjMC04ZTFlLTQzODgtOGRkNy05OGNlYzlhYzE1ZjcucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "6891 dt 28.02.2025",
+      "notes": "Issued in compliance with the HC Division Bench Indore order in WP 10772/2024.",
+      "fetched_at": "2026-11-07T17:17:15+00:00",
+      "sha256": "50b7f246ddda3bf5a3608e09b9d179a436fb120c2f44245f6ac4d2b3ce7c4c9a",
+      "bytes": 442886,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWBASE2024/MP.MWBASE2024_hi_hc-2025-02-28.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "what": "text_matches_source",
+          "method": "read page images of the official DMS scan",
+          "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC83MzVhYTNjMC04ZTFlLTQzODgtOGRkNy05OGNlYzlhYzE1ZjcucGRm"
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.MWBASE2024@hi@arrears-2026-02-18",
+      "mode": "archive",
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9jY2Q2NGVkNS02MjM1LTQzMGUtODNmYS05YmIyOGJlYTNiODEucGRm",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notification_no": "4157-356 dt 18.02.2026",
+      "notes": "Payment of arrears of revised minimum wage rates from 01.04.2024.",
+      "fetched_at": "2026-11-07T17:17:26+00:00",
+      "sha256": "9ef71ace5f6dafeb5a2423bd88c210d73271aafa51b2029b1309a245593d0236",
+      "bytes": 932155,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.MWBASE2024/MP.MWBASE2024_hi_arrears-2026-02-18.pdf"
     }
   ]
 }

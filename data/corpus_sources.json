@@ -656,6 +656,90 @@
         "G8"
       ],
       "notes": "Department's consolidated MPLRC 'as amended up to 12 February 2020' (row 1 of the department LRC page). Does not include Acts 2/2022, 20/2022, 1/2023. Original URL: http://revenue.mp.gov.in/upload/files/313237231063.pdf."
+    },
+    {
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L8"
+      ],
+      "doc_id": "MP.MWBASE2024@hi@1",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8xMDRjODRkMS1jYTdkLTRlNjItYTJiOC0yYmJjYjg5OGZhYTYucGRm",
+      "notification_no": "68 (DMS) dt 04.03.2024",
+      "notes": "Base-rate revision effective 01.04.2024."
+    },
+    {
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L8"
+      ],
+      "doc_id": "MP.MWBASE2024@hi@hc-2024-05-24",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC8zODA4ZDEzOC1iZWYwLTQ5MjMtYTg1Ni0zYmQ5ZmQzNGMxMzkucGRm",
+      "notification_no": "15817-16066 dt 24.05.2024",
+      "notes": "Rates notice referring to HC Division Bench Indore order dt 21 May (2024) in WP 10772/2024, WP 9401/2024 etc."
+    },
+    {
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L8"
+      ],
+      "doc_id": "MP.MWBASE2024@hi@hc-2025-02-28",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC83MzVhYTNjMC04ZTFlLTQzODgtOGRkNy05OGNlYzlhYzE1ZjcucGRm",
+      "notification_no": "6891 dt 28.02.2025",
+      "notes": "Issued in compliance with the HC Division Bench Indore order in WP 10772/2024."
+    },
+    {
+      "instrument_id": "MP.MWBASE2024",
+      "language": "hi",
+      "status": "in_force",
+      "resolver": "mp_labour_dms",
+      "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=8)",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L8"
+      ],
+      "doc_id": "MP.MWBASE2024@hi@arrears-2026-02-18",
+      "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9jY2Q2NGVkNS02MjM1LTQzMGUtODNmYS05YmIyOGJlYTNiODEucGRm",
+      "notification_no": "4157-356 dt 18.02.2026",
+      "notes": "Payment of arrears of revised minimum wage rates from 01.04.2024."
     }
   ]
 }
