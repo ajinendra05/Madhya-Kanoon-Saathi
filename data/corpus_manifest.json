@@ -145,6 +145,65 @@
       "title_en": "The Madhya Pradesh Ease of Doing Business Act, 2026 (MP Act No. 9 of 2026)",
       "enacted_on": "2026-08-17",
       "notes": "Assent 17.08.2026; MP Rajpatra (Asadharan) No. 264 dt 20.08.2026, pp.527-528(27+), Law Dept क्र. 8071-171-इक्कीस-अ (प्रा.); English text pp.528(16) ff. s.1(2) extends only to industrial areas as notified; s.1(3) commencement by notification (not found: enacted, not commenced). Legal-impact check (X3) 2026-11-07: no textual amendment of corpus laws. Effects once commenced: Schedule IV item 41 routes 'Registration under Shops and Establishments Act' through the State Nodal Agency single window (notified industrial areas); s.20 penalties for missed clearance time limits under the Lok Seva Act 2010 (MP.LSG2010); s.21 harmonious-construction override of State laws; s.15 conversion of industrial land into Bhumiswami (freehold) rights under the MPLRC (outside the land-procedure slice). s.27 repeals, from commencement, the MP Investment Facilitation Act 2008 (No. 21) and the MP Udyogon Ki Sthapna Evam Parichalan Ka Saralikaran Adhiniyam 2023 (No. 13) (not in corpus). Read from a PRS copy (official govtpress PDF 404); file kept at data/raw/MP.EODB2026/MP.EODB2026_bi_prs.pdf, sha256 1536ee677227d5f7f017caf8e9ca8285e9d60a2c0f2ac73c6ccb56b6272fb5e4. No document row."
+    },
+    {
+      "instrument_id": "MP.LRC1959",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "M.P. Land Revenue Code 1959 (No. 20 of 1959)",
+      "notes": "M.P. Act No. 20 of 1959. The MP Code PDF is a pre-2018 consolidation (PDF created 01.03.2014; no reference to Act 23 of 2018). ss.109, 110, 129 were substituted by MP.LRCA2018; read those from the amending Act.",
+      "amendments": [
+        {
+          "by": "MP.LRCA2018",
+          "commenced_on": null,
+          "affects": [
+            "MP.LRC1959:s109",
+            "MP.LRC1959:s110",
+            "MP.LRC1959:s129"
+          ]
+        }
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCA2011",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Land Revenue Code (Amendment) Act, 2011",
+      "notes": "Title as listed on code.mp.gov.in search (checked 2026-11-07); to confirm from the PDF.",
+      "amends": [
+        "MP.LRC1959"
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCAV2017",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Land Revenue Code (Amendment and Validation) Act, 2017 (No. 5 of 2018)",
+      "notes": "Title as listed on code.mp.gov.in search (checked 2026-11-07); to confirm from the PDF.",
+      "amends": [
+        "MP.LRC1959"
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCA2018",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Land Revenue Code (Amendment) Act, 2018 (No. 23 of 2018)",
+      "notes": "Substitutes ss.109 (report acquisition within 6 months; penalty up to Rs 5,000), 110 (mutation: patwari intimation 30 days; Tahsildar registers within 15 days; order within 30 days undisputed / 5 months disputed; free certified copy + updated records within 30 days; whole proceeding 2 months undisputed / 6 months disputed) and 129 (demarcation by RI/Nagar Sarvekshak; SDO application within 45 days; no appeal/revision u/ss.44, 50; rules power s.129(9)), plus many other sections. s.1(2): in force on a date notified by the State Government. Commencement notification NOT found (TODO(verify)). Later 2022 Ordinance / 2023 amendment not checked.",
+      "amends": [
+        "MP.LRC1959"
+      ]
+    },
+    {
+      "instrument_id": "MP.LRCVR2020",
+      "type": "rules",
+      "jurisdiction": "MP",
+      "title_en": "Madhya Pradesh Land Revenue Code (Vividh) Rules, 2020",
+      "notes": "Notification No. F-2-6-2020-VII-Se-7 dt 03.11.2020 (previously published in MP Gazette dt 25.09.2020); made under s.258(2) cls. (xxxviii)-(lxvi) read with ss.161, 165, 166, 170, 173, 176, 179, 221-251; supersedes 1960-era rules. Tenure / Bhumiswami-rights rules, NOT the demarcation (s.129) or mutation rules; Phase 1 (Dec).",
+      "parent_instrument": "MP.LRC1959",
+      "made_under": [
+        "MP.LRC1959:s258:ss2"
+      ]
     }
   ],
   "documents": [
@@ -697,6 +756,160 @@
           "note": "No s.1(3) commencement notification found."
         }
       ]
+    },
+    {
+      "doc_id": "MP.LRC1959@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.LRC1959",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1959_0020_Pdf_F95_English.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Pre-2018 consolidation from MP Code (PDF 01.03.2014), born-digital, 182 pages.",
+      "fetched_at": "2026-11-07T04:29:41+00:00",
+      "sha256": "539f0eebb839d2846940e9091d0b4be4c0ee7997425b1e98f4ce03d1c28765d4",
+      "bytes": 766881,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.LRC1959/MP.LRC1959_en_1.pdf",
+      "gate": [
+        "G8"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1959_0020_Pdf_F95_English.pdf",
+          "what": "text_matches_source",
+          "method": "official MP Code PDF; header 'THE M. P. LAND REVENUE CODE, 1959 (M. P. Act No. 20 of 1959)'"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "conflict",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1959_0020_Pdf_F95_English.pdf",
+          "what": "consolidation_current",
+          "method": "compared s.129 with the 2018 substitution",
+          "note": "Contains the pre-2018 ss.109, 110, 129; the current text is in MP.LRCA2018."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.LRCA2011@en@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCA2011",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2011_0020_Pdf_F2374_Engish.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify. Not read in detail; outside the mutation/demarcation slice (archive).",
+      "fetched_at": "2026-11-07T04:30:59+00:00",
+      "sha256": "e5c470177c3d8f20499bcf0b991bd6d52c53c6fbb8ba5a3613bc4f75402a7cff",
+      "bytes": 171775,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.LRCA2011/MP.LRCA2011_en_1.pdf"
+    },
+    {
+      "doc_id": "MP.LRCAV2017@en@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCAV2017",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2017_0005_Pdf_F1642_English.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify. Not read in detail; outside the mutation/demarcation slice (archive).",
+      "fetched_at": "2026-11-07T04:31:27+00:00",
+      "sha256": "0b79c7712da1a28e07098fc9ab1cce1f53a01930176cb13d75fd1cbca4005d3b",
+      "bytes": 79663,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.LRCAV2017/MP.LRCAV2017_en_1.pdf"
+    },
+    {
+      "doc_id": "MP.LRCA2018@en@1",
+      "mode": "gated",
+      "instrument_id": "MP.LRCA2018",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2018_0023_Pdf_F1889_English.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Official MP Code PDF (Word export), born-digital, 38 pages; s.109 substitution p.19, s.110 p.20, s.129 p.23.",
+      "fetched_at": "2026-11-07T04:31:53+00:00",
+      "sha256": "b7f8905c618b9def69dafb9878e10179d0fac8b90e23d6681bd0ff8e27d0a803",
+      "bytes": 414743,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.LRCA2018/MP.LRCA2018_en_1.pdf",
+      "gate": [
+        "G8"
+      ],
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "confirmed",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2018_0023_Pdf_F1889_English.pdf pp.19, 20, 23",
+          "what": "text_matches_source",
+          "method": "read the official MP Code PDF"
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "unclear",
+          "evidence": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2018_0023_Pdf_F1889_English.pdf",
+          "what": "commencement",
+          "method": "s.1(2) read; commencement notification searched on MP Code",
+          "note": "In force on a notified date; notification not found."
+        }
+      ]
+    },
+    {
+      "doc_id": "MP.LRCVR2020@en@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCVR2020",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Madhya%20Pradesh%20Land%20Revenue%20Code%20%28Vividh%29%20Rules%202020.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify. Not read in detail; outside the mutation/demarcation slice (archive).",
+      "fetched_at": "2026-11-07T04:32:42+00:00",
+      "sha256": "29f75705824f946fb06b2f16cb451645544dba02de88803f36fc7c5f8ec6b8e1",
+      "bytes": 4776802,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCVR2020/MP.LRCVR2020_en_1.pdf"
     }
   ]
 }

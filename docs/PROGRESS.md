@@ -14,7 +14,8 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 **Next Claude tasks, in order:**
 1. ~~**U1**: roman-numbered clause IDs~~ done 2026-11-07.
 2. ~~**G15** (MP Repeal Act 2026)~~ done 2026-11-07 (no corpus impact); ~~**G16** (Ease of Doing Business Act 2026)~~ done 2026-11-07 (not commenced; procedural overlay only): find official copies (govtpress PDFs 404).
-3. **G8 land**: official MPLRC + amendments + rules. **Deadline 16 Nov**, else land leaves the Nov demo.
+3. **G8 land** (partly done 2026-11-07: MPLRC + 2018 Act from code.mp.gov.in; s.110 limits confirmed). Remaining: 2018 commencement notification, Mutation Rules 2018, demarcation rules, 2022/2023 amendments. **Deadline 16 Nov**.
+3b. Read 'MP Wage Code Rules, 2026' (code.mp.gov.in, 30-04-2026): may answer L3 / L7.
 4. **L8** (Mar 2024 base wages); **G14** fetch the S&E Act 1958 + 2025 amendments; **G6** later s.3 time-limit notifications;
    **G12** amendment check.
 5. Plans (not code yet) for **X1–X4**: effective-date retrieval, source-quality metadata, legal-impact analysis,
@@ -41,7 +42,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | W0.1 | Validation posts in 3 groups (Malik) | todo | ≥15 real questions logged (redacted) |
 | W0.2 | AWS account: Paid plan, root MFA, ₹100 alert (Malik, DEC-019) | todo | Alert visible in Budgets |
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
-| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; step-2 research pass done for G13, G12, G6, G4/G14, G8 (all partly; see docs/W0.4_FINDINGS.md); review done 2026-11-07 (DEC-043/044/045); U1 + G15 + G16 done 2026-11-07; next: G8 by 16 Nov) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
+| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | in progress (step 1 done: downloader, DEC-041; step 2: L4 resolved; L7 ruled (DEC-042); Code on Wages fetched + verified; step-2 research pass done for G13, G12, G6, G4/G14, G8 (all partly; see docs/W0.4_FINDINGS.md); review done 2026-11-07 (DEC-043/044/045); U1 + G15 + G16 done; G8 partly (MPLRC + 2018 Act from MP Code; rules + commencement pending) 2026-11-07; next: G8 rest, MP Wage Code Rules 2026 lead) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
 | W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015) | todo | CER table per tool |
 | W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
 

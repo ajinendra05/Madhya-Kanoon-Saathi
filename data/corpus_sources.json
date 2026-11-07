@@ -303,6 +303,101 @@
         "G4"
       ],
       "notes": "Hindi Act text with Chapter IX onwards printed in English. Scan defects: blank patches in the preamble, s.1(3), s.2(घ), s.2(छ), s.3(2); do not quote those."
+    },
+    {
+      "doc_id": "MP.LRC1959@en@1",
+      "instrument_id": "MP.LRC1959",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1959_0020_Pdf_F95_English.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify."
+    },
+    {
+      "doc_id": "MP.LRCA2011@en@1",
+      "instrument_id": "MP.LRCA2011",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2011_0020_Pdf_F2374_Engish.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify."
+    },
+    {
+      "doc_id": "MP.LRCAV2017@en@1",
+      "instrument_id": "MP.LRCAV2017",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2017_0005_Pdf_F1642_English.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify."
+    },
+    {
+      "doc_id": "MP.LRCA2018@en@1",
+      "instrument_id": "MP.LRCA2018",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_2018_0023_Pdf_F1889_English.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify."
+    },
+    {
+      "doc_id": "MP.LRCVR2020@en@1",
+      "instrument_id": "MP.LRCVR2020",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Madhya%20Pradesh%20Land%20Revenue%20Code%20%28Vividh%29%20Rules%202020.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Revenue Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "G8"
+      ],
+      "notes": "Found via code.mp.gov.in search 2026-11-07. Status/consolidation date to verify."
     }
   ]
 }
