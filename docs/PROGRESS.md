@@ -3,7 +3,7 @@
 Roadmap from `docs/plan.md` §10, adjusted by `docs/DECISIONS.md` (DEC-016: no Marathi/Maharashtra; DEC-020/023: v2 items).
 Status: `todo` · `in progress` · `done` · `blocked`. One item in progress at a time.
 
-## ▶ Handover: start here next session (updated 2026-11-07)
+## ▶ Handover: start here next session (updated 2026-11-08)
 
 **W0.4 review done** → DEC-043 (interim PRS copy of the Sanhita), DEC-044 (schema: `enacted_not_commenced`, `ordinance`,
 `amends`), DEC-045 (Malik's v1 solution for L7, G13, G12, G6, G14, G8, roman clause IDs, Acts 260/264, plus 4 cross-cutting
@@ -22,7 +22,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 2. ~~**L8**~~ fetched 2026-11-07 (stayed 2024, reinstated 2025 except textiles/apparel/footwear; saved status for advocate). ~~**G14**~~ texts fetched 2026-11-07 (gated until base-text overlay). **G6:** later s.3 time-limit notifications. **G12:** amendment check.
 3. **LW1:** periodic manual check for the final MP Code on Wages Rules and the Sanhita/EoDB commencement notifications. (Checked 2026-11-07: nothing final/commenced; see OPEN_QUESTIONS LW1 log.) Advocate brief for L7/L8: `docs/briefs/advocate_brief_L7_L8.md` (Malik to send).
 4. Plans (not code yet) for **X1–X4**.
-5. W0.4 step 3 (central born-digital texts), then W0.5 OCR (CCITT G4 scans; corrupt Hindi text layers; zero-width joiners).
+5. W0.4 step 3 (central born-digital texts) **mostly done 2026-11-08** (see session log): left are S5 (RTI Rules 2012 status), S3 (CPA amendments since 2021), S2 (Hindi RTI copy), S7 (SVANidhi covering letter + MP Street Vendors notification). Then W0.5 OCR (CCITT G4 scans; corrupt Hindi text layers; zero-width joiners).
 
 **Malik's open actions:**
 - an advocate on L7
@@ -97,6 +97,38 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-08
+- Done:
+  - **L7/L8:** AI research note recorded and checked (not an advocate opinion); Oct 2026 MP wage notification indexed under DEC-050.
+  - **W0.4 step 3 (central texts), mostly done.** Indexed:
+    - RTI Act 2005 (s.8(1)(j) as substituted by DPDP s.44(3))
+    - CPA 2019, plus the Jurisdiction Rules 2021, E-Commerce Rules 2020 and the 2021 amendment
+    - IR, SS and OSH Codes
+    - TPA ss.105–111, Registration Act s.17 and LSA Act s.12 (by `index_scope`)
+    - Model Tenancy Act 2021 EN (as `model_law`)
+    - PM SVANidhi 2025 Scheme + Loan Operational Guidelines (qualified provenance)
+  - Gated, archived or guide:
+    - RTI Rules 2012 EN/HI: gated S5 (scans)
+    - DPDP Act: archive
+    - Hindi RTI and MTA copies: archive (N1 corruption)
+    - E-Commerce corrigendum: archive
+    - e-Shram ex-gratia guidelines 2023: archive (time-bound)
+    - e-Shram FAQ: guide (eligibility: 16+, no income limit, Aadhaar + linked mobile, free; helpdesk 14434)
+    - SVANidhi Credit Card guidelines: archive
+  - Code: `index_scope` (DEC-051) and the `model_law` type (DEC-052) in the validator, spec, rules and tests.
+  - Provenance work: Malik's 9 PDFs were hash-matched against live official URLs. The SVANidhi annexures were traced to CGTMSE Circular 255/2025-26 and the mohua.gov.in copy. Cabinet approval was checked on the PMO page (27.08.2025).
+  - Checks: ruff check ✓ · ruff format ✓ (43 files) · mypy ✓ (11 files) · pytest ✓ 162 passed · pre-commit ✓ all 11 hooks.
+- Decisions:
+  - DEC-050 (wage amounts with a legal qualification), DEC-051 (`index_scope`), DEC-052 (`model_law`).
+  - Malik approved conditional indexing of the SVANidhi guidelines (S7 stays open for the signed covering letter).
+- Problems:
+  - India Code down (504), so Internet Archive copies were used (DEC-049).
+  - pmsvanidhi.mohua.gov.in has a revoked TLS certificate (not bypassed).
+  - consumeraffairs.nic.in refused connections.
+  - mohua.gov.in and eshram.gov.in pages are JS apps with no plain links.
+  - The RTI Rules EN text layer was mis-detected as born_digital (fixed by hand).
+- Next step: W0.4: close S5 (RTI Rules 2012 status, G.S.R. number), then G8a retry and LW1 before 16 Nov; then W0.5 OCR.
+
 ### 2026-11-07 (session 3)
 - Done:
   - **G8:**

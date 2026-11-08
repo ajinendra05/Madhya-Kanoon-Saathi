@@ -179,6 +179,23 @@ private lawyers (BCI Rule 36, plan §3). Contact details come from `contacts.yam
 **Corpus manifest.** One JSON file in git listing every source document: URL, fetch date, sha256, status, storage path.
 - Why: raw PDFs are not in git; the manifest proves exactly which version of each law we used.
 
+**Partial indexing (`index_scope`, DEC-051).** A document can list the provisions that may be indexed (e.g. only
+TPA ss.105–111). Only those provisions and their sub-units are chunked.
+- Why: indexing a whole Act when we only checked one part lets the bot answer from unchecked text. The scope is
+  written in the manifest and checked by code, not left to the chunker's memory.
+
+**Model laws (DEC-052).** A model law (e.g. the Model Tenancy Act 2021) is a template the Centre gives states to adapt.
+It is not law in MP unless MP enacts it. Its own type is non-binding and never "current", and it can be indexed with a
+status check alone.
+- Why: a model law is often asked about, so the bot can explain it, but it must always say "not in force in MP".
+
+**Provenance levels for a source.** The strongest source is a file on the issuing body's own site. Next are an
+Internet Archive copy of that file (DEC-049) and a file on another official body's site (e.g. CGTMSE hosting MoHUA's
+SVANidhi annexures). A file supplied by hand is accepted only once its hash matches one of these. When the issuing
+letter or signature has not been seen, the document is indexed with a qualification note.
+- Interview angle: "hash-matching user-supplied files against live official URLs turned 'someone sent me a PDF'
+  into a verifiable source."
+
 **Checksum (sha256).** A fingerprint of a file's bytes. Any change, even one character, gives a different value.
 - Why here: law-watch detects changes by comparing checksums; it also catches corrupted downloads.
 
