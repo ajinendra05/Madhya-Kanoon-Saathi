@@ -1124,6 +1124,54 @@
       },
       "target_mode": "guide",
       "notes": "HTML FAQ page (40+ Q&As). URL given by Malik 2026-11-08 (tracking parameter removed). Official guide, not law."
+    },
+    {
+      "doc_id": "IN.SVANSG2025@en@1",
+      "instrument_id": "IN.SVANSG2025",
+      "url": "https://www.mohua.gov.in/static/uploads/2026/01/bde957bc3a87fb001c05ddd09484edda.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Ministry of Housing and Urban Affairs (mohua.gov.in)",
+      "applies_to": {
+        "level": "national",
+        "note": "Scheme s.3: covers States/UTs that have notified rules and schemes under the Street Vendors Act 2014; MP's notification TODO(verify) (S7)."
+      },
+      "target_mode": "index",
+      "valid_from": "2025-09-16",
+      "expires_on": "2030-03-31",
+      "notes": "MoHUA's own upload (Jan 2026). Its extracted text is identical, page for page, to the CGTMSE copy https://www.cgtmse.in/Default/ViewFile/?id=1767027747558_PM%20SVANidhi%20Scheme%20Guidelines%20-%2016.9.25(Annexure%20-I).pdf&path=Circular (sha256 ea12dd83...), which is also byte-identical to the file Malik supplied; the MoHUA file is a later PDF export (18.11.2025) of the same text. expires_on = end of the lending period (31.03.2030); servicing/claims run to 31.03.2033, so law-watch must review before expiry."
+    },
+    {
+      "doc_id": "IN.SVANLOG2025@en@1",
+      "instrument_id": "IN.SVANLOG2025",
+      "url": "https://www.cgtmse.in/Default/ViewFile/?id=1767027845598_Loan%20Operational%20Guidelines%20-%2016.09.2025(Annexure%20-II).pdf&path=Circular",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Credit Guarantee Fund Trust for Micro and Small Enterprises (cgtmse.in), Circular No. 255/2025-26",
+      "applies_to": {
+        "level": "national",
+        "note": "Scheme s.3: covers States/UTs that have notified rules and schemes under the Street Vendors Act 2014; MP's notification TODO(verify) (S7)."
+      },
+      "target_mode": "index",
+      "valid_from": "2025-09-16",
+      "expires_on": "2030-03-31",
+      "notes": "Not found on mohua.gov.in (its guidelines page is a JS app). Byte-identical (sha256) to the file Malik supplied. expires_on = end of the lending period (31.03.2030); servicing/claims run to 31.03.2033, so law-watch must review before expiry."
+    },
+    {
+      "doc_id": "IN.SVANCCOG2025@en@1",
+      "instrument_id": "IN.SVANCCOG2025",
+      "url": "https://www.cgtmse.in/Default/ViewFile/?id=1767027921148_Credit%20Card%20Operational%20guidelines%20-%2016.9.25(Annexure%20-III).pdf&path=Circular",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Credit Guarantee Fund Trust for Micro and Small Enterprises (cgtmse.in), Circular No. 255/2025-26",
+      "applies_to": {
+        "level": "national",
+        "note": "Scheme s.3: covers States/UTs that have notified rules and schemes under the Street Vendors Act 2014; MP's notification TODO(verify) (S7)."
+      },
+      "target_mode": "archive",
+      "valid_from": "2025-09-16",
+      "expires_on": "2030-03-31",
+      "notes": "Found with Annexures I-II in the CGTMSE circular listing; not requested for the MVP corpus. expires_on = end of the lending period (31.03.2030); servicing/claims run to 31.03.2033, so law-watch must review before expiry."
     }
   ]
 }
