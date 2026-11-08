@@ -572,6 +572,13 @@
       "title_en": "Guidelines for Accident Claims (ex-gratia) for unorganised workers registered on eShram",
       "title_hi": "ई-श्रम पोर्टल पर पंजीकृत असंगठित कामगारों के लिए दुर्घटना दावों हेतु दिशानिर्देश",
       "notes": "MoLE F. No. M-16011/34/2021-SS-III dt 24.08.2023; claim windows extended by letters of 05.03.2024, 30.08.2024, 30.12.2024 and 16.05.2025 (claims till 30.06.2025; pending/failed claims processed till 31.07.2025). Covers only workers registered on eShram on or before 31.03.2022 and accidents on or before that date. TIME-BOUND: no extension after 16.05.2025 seen (TODO(verify)); kept archive, not a general e-Shram registration guideline."
+    },
+    {
+      "instrument_id": "IN.ESHRAMFAQ2026",
+      "type": "official_guide",
+      "jurisdiction": "IN",
+      "title_en": "eShram FAQs (Ministry of Labour and Employment portal page)",
+      "notes": "Official MoLE web page, undated; the id year is the fetch year (page snapshot 2026-11-08). Q3-Q4 who is an unorganised worker; Q27-Q28 helpdesk 14434 and grievance portal gms.eshram.gov.in; Q29 no income criteria; Q30 age 16 and above; Q31 documents (Aadhaar number, Aadhaar-linked mobile, else CSC/SSK biometric); Q33 how to register; Q34 registration free. Live page that can change: law-watch it (DEC-013)."
     }
   ],
   "documents": [
@@ -2895,6 +2902,36 @@
           "method": "downloaded from eshram.gov.in; sha256 equals the copy Malik supplied",
           "evidence": "https://eshram.gov.in/nduwwsmedia/Hindi%20Guidelines%20Ex%20Gratia%20mechanism%20approved%20by%20HLEM%20doc%20version%20Final.pdf",
           "note": "Official MoLE file. Time-bound: claim window ended 30.06.2025 (processing 31.07.2025) per the 16.05.2025 letter."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.ESHRAMFAQ2026@en@1",
+      "mode": "guide",
+      "instrument_id": "IN.ESHRAMFAQ2026",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://eshram.gov.in/faqs",
+      "publisher": "Ministry of Labour and Employment (eshram.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "HTML FAQ page (40+ Q&As). URL given by Malik 2026-11-08 (tracking parameter removed). Official guide, not law.",
+      "fetched_at": "2026-11-08T06:36:06+00:00",
+      "sha256": "7c0ac8de25b039c93299068bd0b4550773948cbce7e21595ebe5f642e8365541",
+      "bytes": 86508,
+      "content_type": "text/html",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.ESHRAMFAQ2026/IN.ESHRAMFAQ2026_en_1.html",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "downloaded the page from eshram.gov.in and read Q1-Q40",
+          "evidence": "https://eshram.gov.in/faqs Q27-Q34",
+          "note": "Official MoLE page; resolves the S8 eligibility gap (age 16+, no income criteria, Aadhaar + mobile, free)."
         }
       ]
     }

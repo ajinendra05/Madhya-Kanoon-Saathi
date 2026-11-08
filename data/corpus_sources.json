@@ -1111,6 +1111,19 @@
       "notes": "Hindi text of the 2023 guidelines + claim form, 10 pp; text layer has N1-type glyph errors ('कामगारों के ललए', 'िावा'). Supplied by Malik 2026-11-08; bytes match the live URL.",
       "valid_from": "2023-08-24",
       "valid_to": "2025-07-31"
+    },
+    {
+      "doc_id": "IN.ESHRAMFAQ2026@en@1",
+      "instrument_id": "IN.ESHRAMFAQ2026",
+      "url": "https://eshram.gov.in/faqs",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Ministry of Labour and Employment (eshram.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "guide",
+      "notes": "HTML FAQ page (40+ Q&As). URL given by Malik 2026-11-08 (tracking parameter removed). Official guide, not law."
     }
   ]
 }
