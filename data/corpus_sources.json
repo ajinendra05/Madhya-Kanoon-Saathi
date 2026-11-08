@@ -1067,6 +1067,50 @@
       },
       "target_mode": "archive",
       "notes": "Hindi text, 32 pp.; text layer has the N1 glyph corruption ('अधिधियम'), not quotable until W1.1 cleaning or OCR. Original URL: https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-HINDI-02_06_2021(1).pdf; Internet Archive snapshot 20220706003017 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.CPJR2021@bi@1",
+      "instrument_id": "IN.CPJR2021",
+      "url": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
+      "language": "bi",
+      "status": "in_force",
+      "publisher": "Ministry of Consumer Affairs, Food and Public Distribution (Gazette of India, egazette.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "Bilingual gazette, 2 pp. Supplied by Malik 2026-11-08; bytes match the live egazette URL (sha256 checked).",
+      "valid_from": "2021-12-30"
+    },
+    {
+      "doc_id": "IN.ESHRAMEXG2023@en@1",
+      "instrument_id": "IN.ESHRAMEXG2023",
+      "url": "https://eshram.gov.in/nduwwsmedia/Mechanism-16052025.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Ministry of Labour and Employment (eshram.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "Scanned compilation, 14 pp: letter 16.05.2025, letter + guidelines 24.08.2023 with Annexure-I claim form and Annexure-II certificate, letters 05.03.2024, 30.08.2024, 30.12.2024. The form asks for Gender/Sex and Aadhaar (sensitive-data rule DEC-033.4 applies to any answer). Supplied by Malik 2026-11-08; bytes match the live URL.",
+      "valid_from": "2023-08-24",
+      "valid_to": "2025-07-31"
+    },
+    {
+      "doc_id": "IN.ESHRAMEXG2023@hi@1",
+      "instrument_id": "IN.ESHRAMEXG2023",
+      "url": "https://eshram.gov.in/nduwwsmedia/Hindi%20Guidelines%20Ex%20Gratia%20mechanism%20approved%20by%20HLEM%20doc%20version%20Final.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Ministry of Labour and Employment (eshram.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "Hindi text of the 2023 guidelines + claim form, 10 pp; text layer has N1-type glyph errors ('कामगारों के ललए', 'िावा'). Supplied by Malik 2026-11-08; bytes match the live URL.",
+      "valid_from": "2023-08-24",
+      "valid_to": "2025-07-31"
     }
   ]
 }

@@ -552,6 +552,26 @@
       "title_en": "The Model Tenancy Act, 2021",
       "title_hi": "आदर्श किराएदारी अधिनियम, 2021",
       "notes": "Model law (DEC-052): a template for States/UTs, not in force in MP. MoHUA file dated 02.06.2021. The text is a template ('BE it enacted by the (State/Union territory ...)'); s.1(1) prints '(Name of State/Union territory) Tenancy Act, 2020' while the title says 2021 (as printed). MP adoption: none known; MP rent law stays the MP Accommodation Control Act 1961 (TODO(verify) whether MP has enacted an MTA-based law)."
+    },
+    {
+      "instrument_id": "IN.CPJR2021",
+      "type": "rules",
+      "jurisdiction": "IN",
+      "title_en": "The Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+      "parent_instrument": "IN.CPA2019",
+      "made_under": [
+        "IN.CPA2019:s101:ss2"
+      ],
+      "commenced_on": "2021-12-30",
+      "notes": "G.S.R. 912(E) dt 30.12.2021, Gazette of India Extraordinary Part II s.3(i) No. 738 (CG-DL-E-31122021-232278); r.1(2): in force on publication. Pecuniary limits: District Commission up to Rs 50 lakh (r.3); State above Rs 50 lakh up to Rs 2 crore (r.4); National above Rs 2 crore (r.5), by value of goods/services paid as consideration. Later amendment TODO(verify)."
+    },
+    {
+      "instrument_id": "IN.ESHRAMEXG2023",
+      "type": "scheme_guideline",
+      "jurisdiction": "IN",
+      "title_en": "Guidelines for Accident Claims (ex-gratia) for unorganised workers registered on eShram",
+      "title_hi": "ई-श्रम पोर्टल पर पंजीकृत असंगठित कामगारों के लिए दुर्घटना दावों हेतु दिशानिर्देश",
+      "notes": "MoLE F. No. M-16011/34/2021-SS-III dt 24.08.2023; claim windows extended by letters of 05.03.2024, 30.08.2024, 30.12.2024 and 16.05.2025 (claims till 30.06.2025; pending/failed claims processed till 31.07.2025). Covers only workers registered on eShram on or before 31.03.2022 and accidents on or before that date. TIME-BOUND: no extension after 16.05.2025 seen (TODO(verify)); kept archive, not a general e-Shram registration guideline."
     }
   ],
   "documents": [
@@ -2764,6 +2784,119 @@
       "content_type": "application/pdf",
       "text_layer": "mixed",
       "local_path": "raw/IN.MTA2021/IN.MTA2021_hi_1.pdf"
+    },
+    {
+      "doc_id": "IN.CPJR2021@bi@1",
+      "mode": "index",
+      "instrument_id": "IN.CPJR2021",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
+      "publisher": "Ministry of Consumer Affairs, Food and Public Distribution (Gazette of India, egazette.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "valid_from": "2021-12-30",
+      "notes": "Bilingual gazette, 2 pp. Supplied by Malik 2026-11-08; bytes match the live egazette URL (sha256 checked). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T06:12:17+00:00",
+      "sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
+      "bytes": 1182260,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/IN.CPJR2021/IN.CPJR2021_bi_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the gazette PDF downloaded from egazette.gov.in (born-digital)",
+          "evidence": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
+          "note": "Official gazette file; also matches the copy Malik supplied (sha256)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the gazette PDF downloaded from egazette.gov.in (born-digital)",
+          "evidence": "https://egazette.gov.in/WriteReadData/2021/232278.pdf p.2 heading",
+          "note": "Final rules G.S.R. 912(E) dt 30.12.2021; r.1(2) in force on publication."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the gazette PDF downloaded from egazette.gov.in (born-digital)",
+          "evidence": "https://egazette.gov.in/WriteReadData/2021/232278.pdf p.2 r.1(2)",
+          "note": "Final rules G.S.R. 912(E) dt 30.12.2021; r.1(2) in force on publication."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.ESHRAMEXG2023@en@1",
+      "mode": "archive",
+      "instrument_id": "IN.ESHRAMEXG2023",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://eshram.gov.in/nduwwsmedia/Mechanism-16052025.pdf",
+      "publisher": "Ministry of Labour and Employment (eshram.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "valid_from": "2023-08-24",
+      "valid_to": "2025-07-31",
+      "notes": "Scanned compilation, 14 pp: letter 16.05.2025, letter + guidelines 24.08.2023 with Annexure-I claim form and Annexure-II certificate, letters 05.03.2024, 30.08.2024, 30.12.2024. The form asks for Gender/Sex and Aadhaar (sensitive-data rule DEC-033.4 applies to any answer). Supplied by Malik 2026-11-08; bytes match the live URL.",
+      "fetched_at": "2026-11-08T06:12:24+00:00",
+      "sha256": "db54715b2d9873a082d24adf3089a3501605a9e2979c5b2efa93ebaa26de8dc1",
+      "bytes": 809878,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/IN.ESHRAMEXG2023/IN.ESHRAMEXG2023_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "downloaded from eshram.gov.in; sha256 equals the copy Malik supplied",
+          "evidence": "https://eshram.gov.in/nduwwsmedia/Mechanism-16052025.pdf",
+          "note": "Official MoLE file. Time-bound: claim window ended 30.06.2025 (processing 31.07.2025) per the 16.05.2025 letter."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.ESHRAMEXG2023@hi@1",
+      "mode": "archive",
+      "instrument_id": "IN.ESHRAMEXG2023",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://eshram.gov.in/nduwwsmedia/Hindi%20Guidelines%20Ex%20Gratia%20mechanism%20approved%20by%20HLEM%20doc%20version%20Final.pdf",
+      "publisher": "Ministry of Labour and Employment (eshram.gov.in)",
+      "applies_to": {
+        "level": "national"
+      },
+      "valid_from": "2023-08-24",
+      "valid_to": "2025-07-31",
+      "notes": "Hindi text of the 2023 guidelines + claim form, 10 pp; text layer has N1-type glyph errors ('कामगारों के ललए', 'िावा'). Supplied by Malik 2026-11-08; bytes match the live URL.",
+      "fetched_at": "2026-11-08T06:12:30+00:00",
+      "sha256": "0cda06c590c634fa946a58cfad5ee05f7be60754398b42ac93250256ed2ba2fc",
+      "bytes": 237239,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.ESHRAMEXG2023/IN.ESHRAMEXG2023_hi_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "downloaded from eshram.gov.in; sha256 equals the copy Malik supplied",
+          "evidence": "https://eshram.gov.in/nduwwsmedia/Hindi%20Guidelines%20Ex%20Gratia%20mechanism%20approved%20by%20HLEM%20doc%20version%20Final.pdf",
+          "note": "Official MoLE file. Time-bound: claim window ended 30.06.2025 (processing 31.07.2025) per the 16.05.2025 letter."
+        }
+      ]
     }
   ]
 }
