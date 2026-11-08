@@ -550,6 +550,21 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: the demarcation procedure (Forms, team, agencies, boundary marks, SDO route) becomes answerable · fees remain qualified · ₹0.
 - Follow-ups: G8c Forms I–III extraction; G8d–f operational orders; consider re-fetching from the live site when it returns (law-watch).
 
+## DEC-050 — Wage amounts: state official schedule-specific rates with a legal qualification
+- Date: 2026-11-08 | Status: accepted ("B") | Approved by: Malik | Supersedes the "no definitive current wage amounts" parts of DEC-045 item 1 and DEC-047 item 4 (L7 itself stays open)
+- Context: The MP VDA notifications after 21.11.2025 cite the repealed MW Act 1948. An AI research note (not an advocate opinion; `docs/briefs/research_note_L7_L8_2026-11-07.md`) recommends publishing the officially notified rates with a qualification. The Oct 2026 notification's schedules were verified from the official copy.
+- Options: A) keep the gate (no amounts) · **B) state official amounts with a legal qualification** · C) B only after a human advocate confirms.
+- Decision: **B.**
+  1. The bot may state the **officially notified** minimum-wage rates, always:
+     - (a) for the **specific schedule** (67 general employments; the 3 new employments: textiles/made-ups, apparel, footwear; agriculture; beedi; agarbatti; slate pencil; printing press; government daily-wage …) **and skill category** asked about; **never one universal "MP minimum wage"**
+     - (b) with the **notification number, issuing authority and validity period**
+     - (c) with the qualification that the notification is issued under the 1948 Act, that a substantial s.69(2) continuity argument exists, that **its validity under the Code has not been decided by a court**, and that disputes go to the Labour Office, with DLSA for free legal aid
+  2. Final answer wording is set in W2.1 (generation).
+  3. `MP.MWVDAOCT2026@hi@1` moves `gated → index` (status, commencement and validity confirmed). The 47-page Book (`@hi@2`) stays gated until it is read and its number (22283-337) reconciled.
+  4. **L7 stays open** for a human MP labour-law advocate. Their findings may change the qualification or the rates shown.
+- Why: These are the operative, government-enforced figures. Disclosing the unsettled legal basis is more useful to workers than silence. Schedule specificity prevents the most likely user error (applying the general rate to textiles or agriculture).
+- Effects: wage questions become answerable (after OCR of the notification) · law-watch must flag any court ruling or new notification (LW1) · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)

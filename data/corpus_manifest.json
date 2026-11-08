@@ -430,7 +430,7 @@
   "documents": [
     {
       "doc_id": "MP.MWVDAOCT2026@hi@1",
-      "mode": "gated",
+      "mode": "index",
       "instrument_id": "MP.MWVDAOCT2026",
       "language": "hi",
       "status": "in_force",
@@ -447,7 +447,7 @@
       "valid_from": "2026-10-01",
       "valid_to": "2027-03-31",
       "expires_on": "2027-03-31",
-      "notes": "Notification dt 30.09.2026, 4 pages, scanned. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Transitional legal review (DEC-042).",
+      "notes": "Notification dt 30.09.2026, 4 pages, scanned. Found via MP Labour DMS listing https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=8 Transitional legal review (DEC-042). DEC-050: indexed; answers must give the specific schedule + skill category, notification no., authority and validity, plus the qualification that validity under the Code is not judicially decided. Schedules seen on pp.1-4: 67 general employments (Anusuchi-A/B/C), agriculture (D), government daily-wage (K), beedi (E), agarbatti (F), and Khand-A Anusuchi-A for the 3 new employments (textiles/made-ups, apparel, footwear).",
       "fetched_at": "2026-11-06T10:06:38+00:00",
       "sha256": "9b30baa74dbdca0154576d1d5748ff79f8c5477dd1532efbb48a249f8e6d9ddb",
       "bytes": 725575,
@@ -482,9 +482,6 @@
           "what": "validity",
           "note": "Rates apply 01.10.2026 to 31.03.2027 (p.1)."
         }
-      ],
-      "gate": [
-        "L7"
       ]
     },
     {
