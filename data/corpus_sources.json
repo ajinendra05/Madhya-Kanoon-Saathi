@@ -837,6 +837,136 @@
       "url": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm",
       "publisher": "Labour Commissioner, Madhya Pradesh, Indore (MP Labour DMS Sid=18)",
       "notes": "DMS dated 15.12.2025."
+    },
+    {
+      "doc_id": "IN.RTI2005@en@1",
+      "instrument_id": "IN.RTI2005",
+      "url": "https://web.archive.org/web/20260202140124id_/https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "India Code text 'As on the 18th November, 2025' (includes the DPDP s.44(3) substitution of s.8(1)(j)). Index once commenced_on is verified. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf; Internet Archive snapshot 20260202140124 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.RTI2005@hi@1",
+      "instrument_id": "IN.RTI2005",
+      "url": "https://web.archive.org/web/20231121075935id_/https://www.indiacode.nic.in/bitstream/123456789/2065/2/H2005-22.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "Hindi India Code text, snapshot 21.11.2023: PRE-DATES the 13.11.2025 change to s.8(1)(j), and the text layer has the N1 glyph corruption (e.g. 'अधिधनयम'). Not quotable; needs a current Hindi copy. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2065/2/H2005-22.pdf; Internet Archive snapshot 20231121075935 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.DPDP2023@en@1",
+      "instrument_id": "IN.DPDP2023",
+      "url": "https://web.archive.org/web/20260128060603id_/https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "India Code text 'As on the 19th November, 2025'. Evidence for the commencement of s.44(3); the substituted RTI s.8(1)(j) is served from IN.RTI2005@en@1. Partial scope (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf; Internet Archive snapshot 20260128060603 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.CPA2019@en@1",
+      "instrument_id": "IN.CPA2019",
+      "url": "https://web.archive.org/web/20250606201246id_/https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "India Code text 'Last Updated: 17-9-2021'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf; Internet Archive snapshot 20250606201246 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.IRC2020@en@1",
+      "instrument_id": "IN.IRC2020",
+      "url": "https://web.archive.org/web/20260510231052id_/https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "India Code text 'As on the 2nd April, 2026'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf; Internet Archive snapshot 20260510231052 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.SSC2020@en@1",
+      "instrument_id": "IN.SSC2020",
+      "url": "https://web.archive.org/web/20260308141419id_/https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "India Code text 'As on the 21th November, 2025'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf; Internet Archive snapshot 20260308141419 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.OSHC2020@en@1",
+      "instrument_id": "IN.OSHC2020",
+      "url": "https://web.archive.org/web/20260402210021id_/https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "India Code text 'As on the 28th November, 2025'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf; Internet Archive snapshot 20260402210021 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.TPA1882@en@1",
+      "instrument_id": "IN.TPA1882",
+      "url": "https://web.archive.org/web/20260211093104id_/https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "India Code text (no 'as on' date printed). Partial scope ss.105-111 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf; Internet Archive snapshot 20260211093104 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.RA1908@en@1",
+      "instrument_id": "IN.RA1908",
+      "url": "https://web.archive.org/web/20250911112117id_/https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "India Code text with state amendments in boxes. Partial scope s.17 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf; Internet Archive snapshot 20250911112117 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.LSA1987@en@1",
+      "instrument_id": "IN.LSA1987",
+      "url": "https://web.archive.org/web/20201204181454id_/https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope s.12 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049)."
     }
   ]
 }

@@ -425,6 +425,78 @@
       "parent_instrument": "MP.SEA1958",
       "title_en": "The M.P. Shops and Establishments Rules 1959",
       "notes": "Listed on code.mp.gov.in."
+    },
+    {
+      "instrument_id": "IN.RTI2005",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Right to Information Act, 2005 (Act No. 22 of 2005)",
+      "notes": "Enacted 15.06.2005. s.1(3): s.4(1), s.5(1),(2), ss.12, 13, 15, 16, 24, 27, 28 in force at once; the remaining provisions 'on the one hundred and twentieth day of its enactment' (India Code p.5). commenced_on records the first stage. s.8(1)(j) substituted by DPDP Act s.44(3) w.e.f. 13.11.2025 (India Code footnote, p.11).",
+      "commenced_on": "2005-06-15"
+    },
+    {
+      "instrument_id": "IN.DPDP2023",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+      "commenced_on": "2025-11-13",
+      "notes": "Staged commencement, G.S.R. 843(E) dt 13.11.2025 (India Code p.5 footnote): 13.11.2025 = ss.2, 18-26, 35-43, s.44(1),(3); one year later = s.6(9), s.27(1)(d); 18 months later = ss.3-5, s.6(1)-(8),(10), ss.7-17, s.27 (except (1)(d)), ss.28-34, 36, 37, s.44(2). commenced_on records only the first stage; most data-principal rights are NOT yet in force."
+    },
+    {
+      "instrument_id": "IN.CPA2019",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Consumer Protection Act, 2019 (Act No. 35 of 2019)",
+      "commenced_on": "2020-07-20",
+      "notes": "Staged (India Code p.4 footnote): 20.07.2020 by S.O. 2351(E) dt 15.07.2020 (most sections); 24.07.2020 by S.O. 2421(E) dt 23.07.2020 (s.2 cls (4),(13),(14),(16),(40), ss.10-27, s.58(1)(a)(iv) and others). India Code copy 'Last Updated: 17-9-2021'; any later amendment TODO(verify)."
+    },
+    {
+      "instrument_id": "IN.IRC2020",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Industrial Relations Code, 2020 (Act No. 35 of 2020)",
+      "commenced_on": "2025-11-21",
+      "notes": "S.O. 5320(E) dt 21.11.2025 (India Code p.7 footnote). Copy 'As on the 2nd April, 2026'."
+    },
+    {
+      "instrument_id": "IN.SSC2020",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Code on Social Security, 2020 (Act No. 36 of 2020)",
+      "commenced_on": "2025-11-21",
+      "notes": "S.O. 5319(E) dt 21.11.2025 (India Code p.8 footnote): ss.1-14, s.15(1),(2), s.16(1)(c), ss.17-141, s.143 (except item (v) of S.O. 2060(E) dt 03.05.2023), ss.144-163, s.164(1) items 1-2 and 4-9, s.164(2)(a),(c), s.164(3). s.142 earlier: 03.05.2021 (S.O. 1730(E)). Not listed in the footnote: other parts of ss.15-16, s.164(1) item 3, s.164(2)(b). Copy 'As on the 21th November, 2025'."
+    },
+    {
+      "instrument_id": "IN.OSHC2020",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Occupational Safety, Health and Working Conditions Code, 2020 (Act No. 37 of 2020)",
+      "commenced_on": "2025-11-21",
+      "notes": "S.O. 5321(E) dt 21.11.2025 (India Code p.8 footnote). Copy 'As on the 28th November, 2025'."
+    },
+    {
+      "instrument_id": "IN.TPA1882",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Transfer of Property Act, 1882 (Act No. 4 of 1882)",
+      "notes": "Corpus scope per DEC-037: ss.105-111 (leases) only. s.1: in force 1 July 1882 (India Code p.7).",
+      "commenced_on": "1882-07-01"
+    },
+    {
+      "instrument_id": "IN.RA1908",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Registration Act, 1908 (Act No. 16 of 1908)",
+      "notes": "Corpus scope per DEC-037: s.17 only. s.1(3): in force 1 January 1909 (India Code p.4).",
+      "commenced_on": "1909-01-01"
+    },
+    {
+      "instrument_id": "IN.LSA1987",
+      "type": "act",
+      "jurisdiction": "IN",
+      "title_en": "The Legal Services Authorities Act, 1987 (Act No. 39 of 1987)",
+      "notes": "Corpus scope per DEC-037: s.12 (eligibility) only. In force 09.11.1995, S.O. 893(E) dt 09.11.1995 (India Code p.3 footnote 2).",
+      "commenced_on": "1995-11-09"
     }
   ],
   "documents": [
@@ -1949,6 +2021,457 @@
           "result": "confirmed",
           "method": "s.1(2): from publication in the Rajpatra",
           "evidence": "https://labour.mponline.gov.in/portal/services/ImageShow.aspx?src=L1FMX1NocmFtL0RNUy9Eb2N1bWVudC9hNTZlZWVkMS1lMjMwLTQ3M2YtODgyYS01YjU5ZGZhMzU0MzAucGRm p.3"
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.RTI2005@en@1",
+      "mode": "index",
+      "instrument_id": "IN.RTI2005",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20260202140124id_/https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text 'As on the 18th November, 2025' (includes the DPDP s.44(3) substitution of s.8(1)(j)). Index once commenced_on is verified. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf; Internet Archive snapshot 20260202140124 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T04:12:56+00:00",
+      "sha256": "8956eaba5db4079674bc16e50c14b210e8872c28e8a18f458f01a8fbcdde1479",
+      "bytes": 355456,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.RTI2005/IN.RTI2005_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260202140124id_/https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260202140124id_/https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf p.5 s.1(3); p.11 footnote 1",
+          "note": "In force; s.8(1)(j) as substituted w.e.f. 13.11.2025."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260202140124id_/https://www.indiacode.nic.in/bitstream/123456789/2065/1/aa2005.pdf p.5 s.1(3); p.11 footnote 1",
+          "note": "In force; s.8(1)(j) as substituted w.e.f. 13.11.2025."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.RTI2005@hi@1",
+      "mode": "archive",
+      "instrument_id": "IN.RTI2005",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20231121075935id_/https://www.indiacode.nic.in/bitstream/123456789/2065/2/H2005-22.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "Hindi India Code text, snapshot 21.11.2023: PRE-DATES the 13.11.2025 change to s.8(1)(j), and the text layer has the N1 glyph corruption (e.g. 'अधिधनयम'). Not quotable; needs a current Hindi copy. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2065/2/H2005-22.pdf; Internet Archive snapshot 20231121075935 (DEC-049).",
+      "fetched_at": "2026-11-08T04:13:11+00:00",
+      "sha256": "a15363ccb1550a6c8d7bb044ac8e366ccfd8864494adcf06ccdbceec6b20efe1",
+      "bytes": 853471,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.RTI2005/IN.RTI2005_hi_1.pdf"
+    },
+    {
+      "doc_id": "IN.DPDP2023@en@1",
+      "mode": "archive",
+      "instrument_id": "IN.DPDP2023",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20260128060603id_/https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text 'As on the 19th November, 2025'. Evidence for the commencement of s.44(3); the substituted RTI s.8(1)(j) is served from IN.RTI2005@en@1. Partial scope (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf; Internet Archive snapshot 20260128060603 (DEC-049).",
+      "fetched_at": "2026-11-08T04:13:24+00:00",
+      "sha256": "d8d9a3dda426b315a034ac84f4162020bb73520349bd49442d028ce8aef725db",
+      "bytes": 382467,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.DPDP2023/IN.DPDP2023_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260128060603id_/https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260128060603id_/https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf p.5 footnote 1",
+          "note": "Staged; s.44(3) in force 13.11.2025 by G.S.R. 843(E)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260128060603id_/https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf p.5 footnote 1",
+          "note": "Staged; s.44(3) in force 13.11.2025 by G.S.R. 843(E)."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.CPA2019@en@1",
+      "mode": "index",
+      "instrument_id": "IN.CPA2019",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20250606201246id_/https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text 'Last Updated: 17-9-2021'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf; Internet Archive snapshot 20250606201246 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T04:13:35+00:00",
+      "sha256": "414fb1edd9b0f7fbc2839ad92fb2b29ebfa3b557e70e928ab4a535802199e3e7",
+      "bytes": 450383,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.CPA2019/IN.CPA2019_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20250606201246id_/https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20250606201246id_/https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf p.4 footnotes 1-2",
+          "note": "In force in stages from 20.07.2020 and 24.07.2020 (see instrument notes)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20250606201246id_/https://www.indiacode.nic.in/bitstream/123456789/15256/5/A2019-35.pdf p.4 footnotes 1-2",
+          "note": "In force in stages from 20.07.2020 and 24.07.2020 (see instrument notes)."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.IRC2020@en@1",
+      "mode": "index",
+      "instrument_id": "IN.IRC2020",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20260510231052id_/https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text 'As on the 2nd April, 2026'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf; Internet Archive snapshot 20260510231052 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T04:13:49+00:00",
+      "sha256": "aaba0f44807c6aca7b1c8113937755e8efb37087936dcce7bda6574c6007226f",
+      "bytes": 655901,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.IRC2020/IN.IRC2020_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260510231052id_/https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260510231052id_/https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf p.7 footnote 1",
+          "note": "In force 21.11.2025 by S.O. 5320(E)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260510231052id_/https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf p.7 footnote 1",
+          "note": "In force 21.11.2025 by S.O. 5320(E)."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.SSC2020@en@1",
+      "mode": "index",
+      "instrument_id": "IN.SSC2020",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20260308141419id_/https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text 'As on the 21th November, 2025'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf; Internet Archive snapshot 20260308141419 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T04:14:03+00:00",
+      "sha256": "53ad67f75fbc874fd837274e9e887fac7a21cc55c7454398b2cdb96046fd7967",
+      "bytes": 1020695,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.SSC2020/IN.SSC2020_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260308141419id_/https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260308141419id_/https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf p.8 footnote 1",
+          "note": "In force 21.11.2025 by S.O. 5319(E), with listed exceptions (see instrument notes)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260308141419id_/https://www.indiacode.nic.in/bitstream/123456789/16823/1/aA2020-36.pdf p.8 footnote 1",
+          "note": "In force 21.11.2025 by S.O. 5319(E), with listed exceptions (see instrument notes)."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.OSHC2020@en@1",
+      "mode": "index",
+      "instrument_id": "IN.OSHC2020",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20260402210021id_/https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text 'As on the 28th November, 2025'. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf; Internet Archive snapshot 20260402210021 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T04:14:21+00:00",
+      "sha256": "5d521ae6a06654a6e114754a2ebdcf07944fb80e2b98d4c5a29708166c5f9a1d",
+      "bytes": 777450,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.OSHC2020/IN.OSHC2020_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260402210021id_/https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260402210021id_/https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf p.8 footnote 1",
+          "note": "In force 21.11.2025 by S.O. 5321(E)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260402210021id_/https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf p.8 footnote 1",
+          "note": "In force 21.11.2025 by S.O. 5321(E)."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.TPA1882@en@1",
+      "mode": "archive",
+      "instrument_id": "IN.TPA1882",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20260211093104id_/https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text (no 'as on' date printed). Partial scope ss.105-111 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf; Internet Archive snapshot 20260211093104 (DEC-049).",
+      "fetched_at": "2026-11-08T04:14:37+00:00",
+      "sha256": "5223fdf06a0aa3ed14ca62cb2b6b923d42e14a159d7f2c8b8f96cbe1800a7a3a",
+      "bytes": 565764,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.TPA1882/IN.TPA1882_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260211093104id_/https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260211093104id_/https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf p.7 s.1",
+          "note": "In force 01.07.1882."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20260211093104id_/https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf p.7 s.1",
+          "note": "In force 01.07.1882."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.RA1908@en@1",
+      "mode": "archive",
+      "instrument_id": "IN.RA1908",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20250911112117id_/https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text with state amendments in boxes. Partial scope s.17 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf; Internet Archive snapshot 20250911112117 (DEC-049).",
+      "fetched_at": "2026-11-08T04:15:03+00:00",
+      "sha256": "95b81008f2d529cf84da1ed3bc63d5fdb9d4978ee47426d224ec137244ba2494",
+      "bytes": 721071,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.RA1908/IN.RA1908_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20250911112117id_/https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20250911112117id_/https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf p.4 s.1(3)",
+          "note": "In force 01.01.1909."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20250911112117id_/https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf p.4 s.1(3)",
+          "note": "In force 01.01.1909."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.LSA1987@en@1",
+      "mode": "archive",
+      "instrument_id": "IN.LSA1987",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20201204181454id_/https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf",
+      "publisher": "India Code (Legislative Department, Ministry of Law and Justice); retrieved from an Internet Archive snapshot because indiacode.nic.in returned 504/timeouts on 2026-11-08 (DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope s.12 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049).",
+      "fetched_at": "2026-11-08T04:15:16+00:00",
+      "sha256": "3aae5d5c9f8c2ad100c0553c351af559e35fb36c3fc68a921fd1e64dd4a9318f",
+      "bytes": 160490,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.LSA1987/IN.LSA1987_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20201204181454id_/https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf",
+          "note": "Official India Code text; original URL and snapshot in notes."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20201204181454id_/https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf p.3 footnote 2",
+          "note": "In force 09.11.1995 by S.O. 893(E)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the India Code consolidated PDF (born-digital; Internet Archive copy of the official file, DEC-049)",
+          "evidence": "https://web.archive.org/web/20201204181454id_/https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf p.3 footnote 2",
+          "note": "In force 09.11.1995 by S.O. 893(E)."
         }
       ]
     }
