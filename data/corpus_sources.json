@@ -1041,6 +1041,32 @@
       "target_mode": "index",
       "notes": "Bilingual gazette G.S.R. 328(E) dt 17.05.2021 (2 pp). Original URL: https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf; Internet Archive snapshot 20210607162259 (DEC-049).",
       "valid_from": "2021-05-17"
+    },
+    {
+      "doc_id": "IN.MTA2021@en@1",
+      "instrument_id": "IN.MTA2021",
+      "url": "https://web.archive.org/web/20210605092047id_/http://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+      "language": "en",
+      "status": "model_law",
+      "publisher": "Ministry of Housing and Urban Affairs (mohua.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "English text, 28 pp. Original URL: http://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf; Internet Archive snapshot 20210605092047 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.MTA2021@hi@1",
+      "instrument_id": "IN.MTA2021",
+      "url": "https://web.archive.org/web/20220706003017id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-HINDI-02_06_2021(1).pdf",
+      "language": "hi",
+      "status": "model_law",
+      "publisher": "Ministry of Housing and Urban Affairs (mohua.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "Hindi text, 32 pp.; text layer has the N1 glyph corruption ('अधिधियम'), not quotable until W1.1 cleaning or OCR. Original URL: https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-HINDI-02_06_2021(1).pdf; Internet Archive snapshot 20220706003017 (DEC-049)."
     }
   ]
 }

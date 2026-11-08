@@ -13,7 +13,7 @@ timezone offset.
 | Field | Req. | Notes |
 | --- | --- | --- |
 | `instrument_id` | yes | `IN.RTI2005` style; prefix must equal `jurisdiction` |
-| `type` | yes | `act · ordinance · rules · regulations · notification · order · scheme_guideline · official_guide · bill` (`ordinance` added by DEC-044) |
+| `type` | yes | `act · ordinance · rules · regulations · notification · order · scheme_guideline · official_guide · bill · model_law` (`ordinance` added by DEC-044, `model_law` by DEC-052; a `model_law` instrument has no `commenced_on` and all its documents carry `status: model_law`) |
 | `jurisdiction` | yes | `IN` or `MP` |
 | `title_en` / `title_hi` | one of | official titles |
 | `parent_instrument` | – | e.g. rules → their Act; must exist in the manifest |
@@ -26,7 +26,7 @@ timezone offset.
 | `notes` | – | |
 
 **Derived (never stored):** `authority_rank` (act / ordinance 1 · rules/regulations 2 · notification/order 3 ·
-scheme_guideline 4 · official_guide 5 · bill 6) and `binding` (true for act, ordinance, rules, regulations, notification,
+scheme_guideline 4 · official_guide 5 · bill / model_law 6) and `binding` (true for act, ordinance, rules, regulations, notification,
 order). Rank is **not** a retrieval weight; notifications often hold the facts users ask for (amounts, fees). It
 is used for the law-beats-guide conflict flag and the rule that rights claims cite binding law (answer wording:
 W2.1 decision). Scheme guidelines are non-binding here but are the primary source for scheme eligibility.
@@ -76,6 +76,7 @@ W2.1 decision). Scheme guidelines are non-binding here but are the primary sourc
 ### Gates enforced by the validator
 - **Index gate:** `mode=index` needs `confirmed` records for both `status` and `commencement`, and no `conflict`.
   **Drafts (DEC-048):** a `status: draft` document needs only a confirmed `status` record (no `conflict`); drafts are never current.
+  **Model laws (DEC-052):** the same status-only gate applies to `status: model_law` documents; never current.
 - `mode=guide` only for `official_guide` / `scheme_guideline`; official guides can't be `index`.
 
 ### Sources file and the downloader (DEC-041)

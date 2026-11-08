@@ -32,6 +32,7 @@ INSTRUMENT_TYPES = frozenset(
         "official_guide",
         "bill",
         "ordinance",
+        "model_law",  # DEC-052
     }
 )
 # Derived authority (DEC-040): lower rank = higher authority. Not a retrieval weight.
@@ -45,6 +46,7 @@ AUTHORITY_RANK: dict[str, int] = {
     "official_guide": 5,
     "bill": 6,
     "ordinance": 1,  # DEC-044: binding like an Act while it lasts
+    "model_law": 6,  # DEC-052: a template for states, not law anywhere until adopted
 }
 BINDING_TYPES = frozenset({"act", "ordinance", "rules", "regulations", "notification", "order"})
 
@@ -84,6 +86,8 @@ HUMAN_ONLY_CHECKS = frozenset({"interpretation"})
 INDEX_GATE_CHECKS = frozenset({"status", "commencement"})
 # DEC-048: a draft has no commencement; proving it is the published draft is enough.
 DRAFT_INDEX_GATE_CHECKS = frozenset({"status"})
+# DEC-048 / DEC-052: statuses that can never commence, so status alone opens the index gate.
+STATUS_ONLY_GATE_STATUSES = frozenset({"draft", "model_law"})
 
 _INSTRUMENT_ID_RE = re.compile(r"^[A-Z]{2}\.[A-Z][A-Z0-9]*[0-9]{4}$")
 _GATE_ID_RE = re.compile(r"^[A-Z][0-9]+$")  # OPEN_QUESTIONS IDs, e.g. L4, G12
@@ -382,6 +386,8 @@ def _parse_instrument(raw: Mapping[str, Any], idx: int, errors: list[str]) -> In
             amendments.append(Amendment(by, sub.date_("commenced_on"), affects))
 
     enacted_on, commenced_on = r.date_("enacted_on"), r.date_("commenced_on")
+    if type_ == "model_law" and commenced_on is not None:
+        r.err("a model_law instrument cannot have commenced_on (DEC-052)")
     if enacted_on and commenced_on and commenced_on < enacted_on:
         r.err("commenced_on is before enacted_on")
 
@@ -530,7 +536,9 @@ def _parse_document(raw: Mapping[str, Any], idx: int, errors: list[str]) -> Docu
 
     if mode == "index":
         confirmed = {v.what for v in verifications if v.result == "confirmed"}
-        required_checks = DRAFT_INDEX_GATE_CHECKS if status == "draft" else INDEX_GATE_CHECKS
+        required_checks = (
+            DRAFT_INDEX_GATE_CHECKS if status in STATUS_ONLY_GATE_STATUSES else INDEX_GATE_CHECKS
+        )
         missing = sorted(required_checks - confirmed)
         if missing:
             r.err(
@@ -665,6 +673,10 @@ def _check_cross_references(
             errors.append(
                 f"{doc.doc_id}: instrument has commenced_on {owner.commenced_on}; "
                 "update status from enacted_not_commenced (DEC-044)"
+            )
+        if owner.type == "model_law" and doc.status != "model_law":
+            errors.append(
+                f"{doc.doc_id}: documents of a model_law instrument need status model_law"
             )
         if owner.jurisdiction != "IN" and doc.applies_to.level == "national":
             errors.append(

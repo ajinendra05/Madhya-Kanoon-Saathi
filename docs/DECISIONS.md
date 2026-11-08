@@ -577,6 +577,18 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: Scope written in the manifest and checked by code, like every other corpus rule; out-of-scope text never reaches the index.
 - Effects: ₹0 · ~2 h (validator, spec, tests) · W1.2 chunker gains one filter.
 
+## DEC-052 — `model_law` instrument type; status-only index gate for model laws
+- Date: 2026-11-08 | Status: accepted ("A") | Approved by: Malik | Amends DEC-040 (manifest) and DEC-048 (index gate)
+- Context: The Model Tenancy Act 2021 (MoHUA, 02.06.2021) is in the corpus as a model law (DEC-037), but the manifest had no fitting type (`act` = binding, `bill` = wrong) and the index gate required a commencement check a model law can never have.
+- Options: **A) new `model_law` type, non-binding, lowest rank; status-only index gate** · B) register as `official_guide` (mislabel) · C) leave the MTA out.
+- Decision: **A.**
+  1. New instrument type **`model_law`**: not binding, authority rank 6 (with `bill`).
+  2. A document with `status: model_law` may be `mode: index` with a confirmed **`status`** check alone (as drafts, DEC-048). It is never current.
+  3. The validator requires every document of a `model_law` instrument to carry `status: model_law`, and a `model_law` instrument may not have `commenced_on`.
+  4. The bot always labels it "model law; not in force in MP unless the state adopts it" (wording in W2.1).
+- Why: An honest label stops the bot presenting a model law as MP law, while keeping a frequently asked-about text answerable.
+- Effects: ₹0 · ~1 h · MTA EN indexed; the Hindi copy stays archive (N1 glyph corruption).
+
 ---
 
 ## Pending decisions (not yet made)

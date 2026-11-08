@@ -544,6 +544,14 @@
         "IN.CPECR2020"
       ],
       "notes": "G.S.R. 328(E) dt 17.05.2021; r.1(2): in force on publication. Substitutes r.4(1) of the 2020 Rules."
+    },
+    {
+      "instrument_id": "IN.MTA2021",
+      "type": "model_law",
+      "jurisdiction": "IN",
+      "title_en": "The Model Tenancy Act, 2021",
+      "title_hi": "आदर्श किराएदारी अधिनियम, 2021",
+      "notes": "Model law (DEC-052): a template for States/UTs, not in force in MP. MoHUA file dated 02.06.2021. The text is a template ('BE it enacted by the (State/Union territory ...)'); s.1(1) prints '(Name of State/Union territory) Tenancy Act, 2020' while the title says 2021 (as printed). MP adoption: none known; MP rent law stays the MP Accommodation Control Act 1961 (TODO(verify) whether MP has enacted an MTA-based law)."
     }
   ],
   "documents": [
@@ -2698,6 +2706,64 @@
           "note": "Final amendment rules G.S.R. 328(E) dt 17.05.2021; r.1(2) in force on publication."
         }
       ]
+    },
+    {
+      "doc_id": "IN.MTA2021@en@1",
+      "mode": "index",
+      "instrument_id": "IN.MTA2021",
+      "language": "en",
+      "status": "model_law",
+      "source_url": "https://web.archive.org/web/20210605092047id_/http://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+      "publisher": "Ministry of Housing and Urban Affairs (mohua.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "English text, 28 pp. Original URL: http://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf; Internet Archive snapshot 20210605092047 (DEC-049). Indexed 2026-11-08 as model_law (DEC-052).",
+      "fetched_at": "2026-11-08T05:18:49+00:00",
+      "sha256": "e83830bf8826328bb6f421a83b8def8b793d4bc8ab2603932ab179544036982c",
+      "bytes": 1001485,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/IN.MTA2021/IN.MTA2021_en_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the MoHUA PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20210605092047id_/http://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf",
+          "note": "Official MoHUA text."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the MoHUA PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20210605092047id_/http://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-English-02_06_2021.pdf p.4 enacting formula and s.1(1)",
+          "note": "Model law: enacting formula and short title are placeholders for a State/UT; not law in MP."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.MTA2021@hi@1",
+      "mode": "archive",
+      "instrument_id": "IN.MTA2021",
+      "language": "hi",
+      "status": "model_law",
+      "source_url": "https://web.archive.org/web/20220706003017id_/https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-HINDI-02_06_2021(1).pdf",
+      "publisher": "Ministry of Housing and Urban Affairs (mohua.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "Hindi text, 32 pp.; text layer has the N1 glyph corruption ('अधिधियम'), not quotable until W1.1 cleaning or OCR. Original URL: https://mohua.gov.in/upload/uploadfiles/files/Model-Tenancy-Act-HINDI-02_06_2021(1).pdf; Internet Archive snapshot 20220706003017 (DEC-049).",
+      "fetched_at": "2026-11-08T05:18:59+00:00",
+      "sha256": "f3d81642a6f6af142b0f06c532c7a3ed1aed00b3f0c729e42fc1a6e20dc18e94",
+      "bytes": 609573,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/IN.MTA2021/IN.MTA2021_hi_1.pdf"
     }
   ]
 }

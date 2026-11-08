@@ -413,3 +413,47 @@ def test_no_index_scope_means_whole_document() -> None:
 def test_bad_index_scope_is_rejected(scope: Any, expected: str) -> None:
     errors = _errors(_mutate([*DOC0, "index_scope"], scope))
     assert any(expected in e for e in errors), errors
+
+
+# --------------------------------------------------------------- DEC-052 model_law
+
+
+def _model_law() -> dict[str, Any]:
+    data = _valid()
+    data["instruments"][0]["type"] = "model_law"
+    data["instruments"][0].pop("commenced_on")
+    data["instruments"][0].pop("commencement_overrides")
+    data["instruments"][0].pop("amendments")
+    data["documents"][0]["status"] = "model_law"
+    data["documents"][0]["verifications"] = [_verification("status")]
+    return data
+
+
+def test_model_law_indexes_with_status_check_only_and_is_not_binding() -> None:
+    manifest, errors = parse_manifest(_model_law())
+    assert errors == [], errors
+    assert manifest is not None
+    inst = manifest.instruments["IN.TESTACT2000"]
+    assert not inst.binding
+    assert inst.authority_rank == 6
+    doc = next(iter(manifest.documents.values()))
+    assert not doc.is_current(date(2030, 1, 1))
+
+
+def test_model_law_cannot_have_commencement() -> None:
+    data = _model_law()
+    data["instruments"][0]["commenced_on"] = "2021-06-02"
+    assert any("cannot have commenced_on" in e for e in _errors(data))
+
+
+def test_model_law_documents_need_model_law_status() -> None:
+    data = _model_law()
+    data["documents"][0]["status"] = "in_force"
+    data["documents"][0]["verifications"] = [_verification("status"), _verification("commencement")]
+    assert any("need status model_law" in e for e in _errors(data))
+
+
+def test_model_law_index_still_needs_confirmed_status() -> None:
+    data = _model_law()
+    data["documents"][0]["verifications"] = [_verification("text_matches_source")]
+    assert any("index gate" in e and "'status'" in e for e in _errors(data))
