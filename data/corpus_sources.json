@@ -967,6 +967,80 @@
       },
       "target_mode": "index",
       "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope s.12 (DEC-037) set by index_scope in the manifest (DEC-051). Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049)."
+    },
+    {
+      "doc_id": "IN.RTIR2012@en@1",
+      "instrument_id": "IN.RTIR2012",
+      "url": "https://web.archive.org/web/20170703180959id_/http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf",
+      "language": "en",
+      "status": "in_force",
+      "publisher": "Department of Personnel and Training (dopt.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "gated",
+      "notes": "Gazette scan with an old OCR text layer (errors: 'GS.R.603(E)', 'pUblication'); needs Bodhan OCR (W0.5) before quoting. Gate S5 = status vs the 2017 draft. Original URL: http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf; Internet Archive snapshot 20170703180959 (DEC-049).",
+      "gate": [
+        "S5"
+      ]
+    },
+    {
+      "doc_id": "IN.RTIR2012@hi@1",
+      "instrument_id": "IN.RTIR2012",
+      "url": "https://web.archive.org/web/20210427164409id_/https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Department of Personnel and Training (dopt.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "gated",
+      "notes": "Hindi gazette scan; its text layer is Latin OCR noise (N1 pattern). Needs OCR. Original URL: https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf; Internet Archive snapshot 20210427164409 (DEC-049).",
+      "gate": [
+        "S5"
+      ]
+    },
+    {
+      "doc_id": "IN.CPECR2020@bi@1",
+      "instrument_id": "IN.CPECR2020",
+      "url": "https://web.archive.org/web/20211123071738id_/https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf",
+      "language": "bi",
+      "status": "in_force",
+      "publisher": "Department of Consumer Affairs (consumeraffairs.nic.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "Bilingual gazette G.S.R. 462(E) dt 23.07.2020 (11 pp). Hindi half has glyph corruption in the text layer (e.g. 'ऄजमत'); English half is clean. The unsigned pre-gazette copy (ECommerce Rule.pdf) is not used. Original URL: https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf; Internet Archive snapshot 20211123071738 (DEC-049).",
+      "valid_from": "2020-07-23"
+    },
+    {
+      "doc_id": "IN.CPECR2020@bi@2",
+      "instrument_id": "IN.CPECR2020",
+      "url": "https://web.archive.org/web/20200923215958id_/https://consumeraffairs.nic.in/sites/default/files/Corrigendum%20to%20e%20commerce%20rules.pdf",
+      "language": "bi",
+      "status": "in_force",
+      "publisher": "Department of Consumer Affairs (consumeraffairs.nic.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "archive",
+      "notes": "Corrigendum G.S.R. 488(E) dt 04.08.2020 to G.S.R. 462(E): Hindi clause letters on gazette pp.8-10 to be read as (a)-(f). Original URL: https://consumeraffairs.nic.in/sites/default/files/Corrigendum%20to%20e%20commerce%20rules.pdf; Internet Archive snapshot 20200923215958 (DEC-049).",
+      "valid_from": "2020-08-04"
+    },
+    {
+      "doc_id": "IN.CPECRA2021@bi@1",
+      "instrument_id": "IN.CPECRA2021",
+      "url": "https://web.archive.org/web/20210607162259id_/https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf",
+      "language": "bi",
+      "status": "in_force",
+      "publisher": "Department of Consumer Affairs (consumeraffairs.nic.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "target_mode": "index",
+      "notes": "Bilingual gazette G.S.R. 328(E) dt 17.05.2021 (2 pp). Original URL: https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf; Internet Archive snapshot 20210607162259 (DEC-049).",
+      "valid_from": "2021-05-17"
     }
   ]
 }

@@ -497,6 +497,53 @@
       "title_en": "The Legal Services Authorities Act, 1987 (Act No. 39 of 1987)",
       "notes": "Corpus scope per DEC-037: s.12 (eligibility) only. In force 09.11.1995, S.O. 893(E) dt 09.11.1995 (India Code p.3 footnote 2).",
       "commenced_on": "1995-11-09"
+    },
+    {
+      "instrument_id": "IN.RTIR2012",
+      "type": "rules",
+      "jurisdiction": "IN",
+      "title_en": "The Right to Information Rules, 2012",
+      "parent_instrument": "IN.RTI2005",
+      "made_under": [
+        "IN.RTI2005:s27"
+      ],
+      "notes": "G.S.R. 803(E) dt 31.07.2012 (number TODO(verify): the dopt.gov.in OCR layer reads 'GS.R.603(E)'). r.1(2): in force on publication. Supersedes the CIC (Appeal Procedure) Rules 2005 and the RTI (Regulation of Fee and Cost) Rules 2005. Gate S5: DoPT circular No. 1/5/2016 dt 05.04.2017 invited comments on draft RTI Rules 2017 'in supersession of RTI Rules, 2012'; whether they were ever notified is not verified. The RTI Rules 2019 (G.S.R. 810(E)? dt 24.10.2019, s.27(2)(ca),(cb)) cover commissioners' terms/salaries only."
+    },
+    {
+      "instrument_id": "IN.CPECR2020",
+      "type": "rules",
+      "jurisdiction": "IN",
+      "title_en": "The Consumer Protection (E-Commerce) Rules, 2020",
+      "parent_instrument": "IN.CPA2019",
+      "made_under": [
+        "IN.CPA2019:s101:ss1"
+      ],
+      "commenced_on": "2020-07-23",
+      "notes": "G.S.R. 462(E) dt 23.07.2020, Gazette of India Extraordinary Part II s.3(i) No. 358; r.1(2): in force on publication. Corrigendum G.S.R. 488(E) dt 04.08.2020 (Hindi clause letters on pp.8-10 read as (a)-(f)). Amended by G.S.R. 328(E) dt 17.05.2021 (r.4(1) substituted). Later amendments TODO(verify). Power cited: s.101(1)(zg) in 2020, s.101(2)(zg) in the 2021 amendment, as printed.",
+      "amendments": [
+        {
+          "by": "IN.CPECRA2021",
+          "commenced_on": "2021-05-17",
+          "affects": [
+            "IN.CPECR2020:r4:ss1"
+          ]
+        }
+      ]
+    },
+    {
+      "instrument_id": "IN.CPECRA2021",
+      "type": "rules",
+      "jurisdiction": "IN",
+      "title_en": "The Consumer Protection (E-Commerce) (Amendment) Rules, 2021",
+      "parent_instrument": "IN.CPA2019",
+      "made_under": [
+        "IN.CPA2019:s101:ss2"
+      ],
+      "commenced_on": "2021-05-17",
+      "amends": [
+        "IN.CPECR2020"
+      ],
+      "notes": "G.S.R. 328(E) dt 17.05.2021; r.1(2): in force on publication. Substitutes r.4(1) of the 2020 Rules."
     }
   ],
   "documents": [
@@ -2488,6 +2535,168 @@
       ],
       "index_scope": [
         "IN.LSA1987:s12"
+      ]
+    },
+    {
+      "doc_id": "IN.RTIR2012@en@1",
+      "mode": "gated",
+      "instrument_id": "IN.RTIR2012",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20170703180959id_/http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf",
+      "publisher": "Department of Personnel and Training (dopt.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "Gazette scan with an old OCR text layer (errors: 'GS.R.603(E)', 'pUblication'); needs Bodhan OCR (W0.5) before quoting. Gate S5 = status vs the 2017 draft. Original URL: http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf; Internet Archive snapshot 20170703180959 (DEC-049). text_layer set to scanned by hand: the PDF is a scan with an old OCR layer (detector read it as born_digital).",
+      "fetched_at": "2026-11-08T05:03:38+00:00",
+      "sha256": "8d73989088febe131299d4b9a2f17b83002a576fab15084882c8f30d3424bc20",
+      "bytes": 134707,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/IN.RTIR2012/IN.RTIR2012_en_1.pdf",
+      "gate": [
+        "S5"
+      ]
+    },
+    {
+      "doc_id": "IN.RTIR2012@hi@1",
+      "mode": "gated",
+      "instrument_id": "IN.RTIR2012",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20210427164409id_/https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf",
+      "publisher": "Department of Personnel and Training (dopt.gov.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "notes": "Hindi gazette scan; its text layer is Latin OCR noise (N1 pattern). Needs OCR. Original URL: https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf; Internet Archive snapshot 20210427164409 (DEC-049).",
+      "fetched_at": "2026-11-08T05:03:45+00:00",
+      "sha256": "4459acfcf778cc9291ff85a7eaf1e5f69eb642a6a409015515edf89eb20cac3c",
+      "bytes": 190039,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/IN.RTIR2012/IN.RTIR2012_hi_1.pdf",
+      "gate": [
+        "S5"
+      ]
+    },
+    {
+      "doc_id": "IN.CPECR2020@bi@1",
+      "mode": "index",
+      "instrument_id": "IN.CPECR2020",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20211123071738id_/https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf",
+      "publisher": "Department of Consumer Affairs (consumeraffairs.nic.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "valid_from": "2020-07-23",
+      "notes": "Bilingual gazette G.S.R. 462(E) dt 23.07.2020 (11 pp). Hindi half has glyph corruption in the text layer (e.g. 'ऄजमत'); English half is clean. The unsigned pre-gazette copy (ECommerce Rule.pdf) is not used. Original URL: https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf; Internet Archive snapshot 20211123071738 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T05:03:54+00:00",
+      "sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
+      "bytes": 1281359,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/IN.CPECR2020/IN.CPECR2020_bi_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the gazette PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20211123071738id_/https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf ",
+          "note": "Official gazette text."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the gazette PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20211123071738id_/https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf G.S.R. 462(E) header",
+          "note": "Final rules G.S.R. 462(E) dt 23.07.2020; r.1(2) in force on publication (gazette dated 23.07.2020)."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the gazette PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20211123071738id_/https://consumeraffairs.nic.in/sites/default/files/E%20commerce%20rules_0.pdf r.1(2)",
+          "note": "Final rules G.S.R. 462(E) dt 23.07.2020; r.1(2) in force on publication (gazette dated 23.07.2020)."
+        }
+      ]
+    },
+    {
+      "doc_id": "IN.CPECR2020@bi@2",
+      "mode": "archive",
+      "instrument_id": "IN.CPECR2020",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20200923215958id_/https://consumeraffairs.nic.in/sites/default/files/Corrigendum%20to%20e%20commerce%20rules.pdf",
+      "publisher": "Department of Consumer Affairs (consumeraffairs.nic.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "valid_from": "2020-08-04",
+      "notes": "Corrigendum G.S.R. 488(E) dt 04.08.2020 to G.S.R. 462(E): Hindi clause letters on gazette pp.8-10 to be read as (a)-(f). Original URL: https://consumeraffairs.nic.in/sites/default/files/Corrigendum%20to%20e%20commerce%20rules.pdf; Internet Archive snapshot 20200923215958 (DEC-049).",
+      "fetched_at": "2026-11-08T05:04:07+00:00",
+      "sha256": "47f56d66c0df51a58694acb8b2833714bd65a85bd781161535708dfa59fb2086",
+      "bytes": 789211,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/IN.CPECR2020/IN.CPECR2020_bi_2.pdf"
+    },
+    {
+      "doc_id": "IN.CPECRA2021@bi@1",
+      "mode": "index",
+      "instrument_id": "IN.CPECRA2021",
+      "language": "bi",
+      "status": "in_force",
+      "source_url": "https://web.archive.org/web/20210607162259id_/https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf",
+      "publisher": "Department of Consumer Affairs (consumeraffairs.nic.in file; Internet Archive snapshot, DEC-049)",
+      "applies_to": {
+        "level": "national"
+      },
+      "valid_from": "2021-05-17",
+      "notes": "Bilingual gazette G.S.R. 328(E) dt 17.05.2021 (2 pp). Original URL: https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf; Internet Archive snapshot 20210607162259 (DEC-049). Indexed 2026-11-08 (W0.4 step 3).",
+      "fetched_at": "2026-11-08T05:04:29+00:00",
+      "sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
+      "bytes": 1564930,
+      "content_type": "application/pdf",
+      "text_layer": "mixed",
+      "local_path": "raw/IN.CPECRA2021/IN.CPECRA2021_bi_1.pdf",
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "read the gazette PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20210607162259id_/https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf ",
+          "note": "Official gazette text."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "status",
+          "result": "confirmed",
+          "method": "read the gazette PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20210607162259id_/https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf G.S.R. 328(E) header",
+          "note": "Final amendment rules G.S.R. 328(E) dt 17.05.2021; r.1(2) in force on publication."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-08",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read the gazette PDF (official ministry file; Internet Archive copy, DEC-049)",
+          "evidence": "https://web.archive.org/web/20210607162259id_/https://consumeraffairs.nic.in/sites/default/files/Consumer%20Protection%20%28E-Commerce%29%20%28Amendment%29%20Rules%2C%202021.pdf r.1(2)",
+          "note": "Final amendment rules G.S.R. 328(E) dt 17.05.2021; r.1(2) in force on publication."
+        }
       ]
     }
   ]
