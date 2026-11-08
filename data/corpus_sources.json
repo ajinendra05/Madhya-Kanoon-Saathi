@@ -875,7 +875,7 @@
         "level": "national"
       },
       "target_mode": "archive",
-      "notes": "India Code text 'As on the 19th November, 2025'. Evidence for the commencement of s.44(3); the substituted RTI s.8(1)(j) is served from IN.RTI2005@en@1. Partial scope (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf; Internet Archive snapshot 20260128060603 (DEC-049)."
+      "notes": "India Code text 'As on the 19th November, 2025'. Evidence for the commencement of s.44(3); the substituted RTI s.8(1)(j) is served from IN.RTI2005@en@1. Kept archive by DEC-051. Original URL: https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf; Internet Archive snapshot 20260128060603 (DEC-049)."
     },
     {
       "doc_id": "IN.CPA2019@en@1",
@@ -939,8 +939,8 @@
       "applies_to": {
         "level": "national"
       },
-      "target_mode": "archive",
-      "notes": "India Code text (no 'as on' date printed). Partial scope ss.105-111 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf; Internet Archive snapshot 20260211093104 (DEC-049)."
+      "target_mode": "index",
+      "notes": "India Code text (no 'as on' date printed). Partial scope ss.105-111 (DEC-037) set by index_scope in the manifest (DEC-051). Original URL: https://www.indiacode.nic.in/bitstream/123456789/2338/1/A1882-04.pdf; Internet Archive snapshot 20260211093104 (DEC-049)."
     },
     {
       "doc_id": "IN.RA1908@en@1",
@@ -952,8 +952,8 @@
       "applies_to": {
         "level": "national"
       },
-      "target_mode": "archive",
-      "notes": "India Code text with state amendments in boxes. Partial scope s.17 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf; Internet Archive snapshot 20250911112117 (DEC-049)."
+      "target_mode": "index",
+      "notes": "India Code text with state amendments in boxes. Partial scope s.17 (DEC-037) set by index_scope in the manifest (DEC-051). Original URL: https://www.indiacode.nic.in/bitstream/123456789/2190/5/A1908-16.pdf; Internet Archive snapshot 20250911112117 (DEC-049)."
     },
     {
       "doc_id": "IN.LSA1987@en@1",
@@ -965,8 +965,8 @@
       "applies_to": {
         "level": "national"
       },
-      "target_mode": "archive",
-      "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope s.12 (DEC-037) waits for a scope decision. Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049)."
+      "target_mode": "index",
+      "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope s.12 (DEC-037) set by index_scope in the manifest (DEC-051). Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049)."
     }
   ]
 }

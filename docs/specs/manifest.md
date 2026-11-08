@@ -57,6 +57,7 @@ W2.1 decision). Scheme guidelines are non-binding here but are the primary sourc
 | `verifications` | – | list of verification records; see below |
 | `last_checked_on` | – | written by law-watch (DEC-013); "re-checked", not "verified" |
 | `supersedes` / `superseded_by` | – | doc ids in the manifest |
+| `index_scope` | – | DEC-051: non-empty list of `section_uid`s of this instrument; only these provisions and their descendants are chunked/indexed. Absent = whole document. Rejected: other-instrument uids, the instrument itself, duplicates, a uid nested under another listed uid |
 | `notes` | – | |
 
 ### Applicability

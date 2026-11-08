@@ -565,6 +565,18 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: These are the operative, government-enforced figures. Disclosing the unsettled legal basis is more useful to workers than silence. Schedule specificity prevents the most likely user error (applying the general rate to textiles or agriculture).
 - Effects: wage questions become answerable (after OCR of the notification) · law-watch must flag any court ruling or new notification (LW1) · ₹0.
 
+## DEC-051 — `index_scope`: index only listed provisions of a document
+- Date: 2026-11-08 | Status: accepted ("A") | Approved by: Malik | Amends DEC-040 (manifest)
+- Context: DEC-037 indexes only parts of some Acts (TPA ss.105–111, Registration Act s.17, LSA Act s.12, DPDP s.44(3)). The manifest had no way to say so. Indexing the whole file would let the bot answer from out-of-scope text, e.g. DPDP sections not yet in force.
+- Options: **A) optional per-document `index_scope` list of section_uids** · B) index the whole file and filter at answer time · C) keep such documents out of the index.
+- Decision: **A.**
+  1. New optional document field **`index_scope`**: a non-empty list of `section_uid`s. When present, only those provisions **and their descendants** (DEC-040 `covers()`) are chunked and indexed; when absent, the whole document is in scope.
+  2. The validator rejects uids that are malformed, belong to another instrument, are the instrument itself, are duplicated, or are already covered by another listed uid.
+  3. The chunker (W1.2) must apply it; a golden/unit test checks that no out-of-scope chunk is emitted.
+  4. TPA, Registration Act and LSA move `archive → index` with their DEC-037 scopes. DPDP stays `archive`: its only in-scope change (s.44(3)) is already served by the amended RTI s.8(1)(j).
+- Why: Scope written in the manifest and checked by code, like every other corpus rule; out-of-scope text never reaches the index.
+- Effects: ₹0 · ~2 h (validator, spec, tests) · W1.2 chunker gains one filter.
+
 ---
 
 ## Pending decisions (not yet made)

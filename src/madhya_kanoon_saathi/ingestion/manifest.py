@@ -17,7 +17,7 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
-from madhya_kanoon_saathi.common.section_uid import JURISDICTIONS, belongs_to, is_valid
+from madhya_kanoon_saathi.common.section_uid import JURISDICTIONS, belongs_to, covers, is_valid
 
 SCHEMA_VERSION = 1
 
@@ -205,7 +205,12 @@ class Document:
     last_checked_on: date | None = None
     supersedes: tuple[str, ...] = ()
     superseded_by: tuple[str, ...] = ()
+    index_scope: tuple[str, ...] = ()
     notes: str | None = None
+
+    def in_scope(self, uid: str) -> bool:
+        """DEC-051: is this provision indexable? No scope = whole document."""
+        return not self.index_scope or any(covers(s, uid) for s in self.index_scope)
 
     def is_current(self, on: date) -> bool:
         """Computed, never stored (DEC-040): in force and inside every validity window."""
@@ -535,6 +540,7 @@ def _parse_document(raw: Mapping[str, Any], idx: int, errors: list[str]) -> Docu
             r.err("mode=index is not allowed while a verification has result=conflict")
 
     supersedes, superseded_by = r.strs("supersedes"), r.strs("superseded_by")
+    index_scope = _parse_index_scope(r, instrument_id)
     gazette_ref, notification_no = r.str_("gazette_ref"), r.str_("notification_no")
     last_checked_on, notes = r.date_("last_checked_on"), r.str_("notes")
     if (
@@ -581,11 +587,29 @@ def _parse_document(raw: Mapping[str, Any], idx: int, errors: list[str]) -> Docu
         last_checked_on=last_checked_on,
         supersedes=supersedes,
         superseded_by=superseded_by,
+        index_scope=index_scope,
         notes=notes,
     )
 
 
-# --------------------------------------------------------------------------- public API
+def _parse_index_scope(r: _Reader, instrument_id: str | None) -> tuple[str, ...]:
+    """DEC-051: optional list of provisions to index; each must be a distinct, non-nested uid."""
+    if "index_scope" not in r.obj:
+        return ()
+    scope = r.strs("index_scope")
+    if not scope:
+        r.err("index_scope, when present, must be a non-empty list of section_uids")
+        return ()
+    for uid in scope:
+        if instrument_id is not None and not _uid_in(uid, instrument_id):
+            r.err(f"index_scope uid {uid!r} is not a provision of {instrument_id!r}")
+    if len(set(scope)) != len(scope):
+        r.err("index_scope has duplicate uids")
+    for a in scope:
+        for b in scope:
+            if a != b and covers(a, b):
+                r.err(f"index_scope uid {b!r} is already covered by {a!r}")
+    return scope
 
 
 def parse_manifest(data: object) -> tuple[Manifest | None, list[str]]:

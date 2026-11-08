@@ -372,3 +372,44 @@ def test_non_draft_index_still_needs_commencement(status: str) -> None:
         data["instruments"][0].pop("commenced_on")
     errors = _errors(data)
     assert any("'commencement'" in e for e in errors), errors
+
+
+# --------------------------------------------------------------- DEC-051 index_scope
+
+
+def test_index_scope_limits_what_is_in_scope() -> None:
+    data = _mutate([*DOC0, "index_scope"], ["IN.TESTACT2000:s5", "IN.TESTACT2000:s7:ss1"])
+    manifest, errors = parse_manifest(data)
+    assert errors == [], errors
+    assert manifest is not None
+    doc = next(iter(manifest.documents.values()))
+    assert doc.in_scope("IN.TESTACT2000:s5")
+    assert doc.in_scope("IN.TESTACT2000:s5:ss2:cl_a")  # descendants are in scope
+    assert doc.in_scope("IN.TESTACT2000:s7:ss1")
+    assert not doc.in_scope("IN.TESTACT2000:s7")  # the parent of a scoped uid is not
+    assert not doc.in_scope("IN.TESTACT2000:s6")
+
+
+def test_no_index_scope_means_whole_document() -> None:
+    manifest, errors = parse_manifest(_valid())
+    assert errors == [] and manifest is not None
+    doc = next(iter(manifest.documents.values()))
+    assert doc.index_scope == ()
+    assert doc.in_scope("IN.TESTACT2000:s99")
+
+
+@pytest.mark.parametrize(
+    ("scope", "expected"),
+    [
+        ([], "non-empty"),
+        (["IN.OTHER2000:s1"], "not a provision of"),
+        (["IN.TESTACT2000"], "not a provision of"),
+        (["IN.TESTACT2000:x9"], "not a provision of"),
+        (["IN.TESTACT2000:s5", "IN.TESTACT2000:s5"], "duplicate"),
+        (["IN.TESTACT2000:s5", "IN.TESTACT2000:s5:ss1"], "already covered"),
+        ("IN.TESTACT2000:s5", "list of strings"),
+    ],
+)
+def test_bad_index_scope_is_rejected(scope: Any, expected: str) -> None:
+    errors = _errors(_mutate([*DOC0, "index_scope"], scope))
+    assert any(expected in e for e in errors), errors
