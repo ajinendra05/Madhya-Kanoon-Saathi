@@ -1099,7 +1099,7 @@
     },
     {
       "doc_id": "MP.SSS2026@hi@1",
-      "mode": "gated",
+      "mode": "archive",
       "instrument_id": "MP.SSS2026",
       "language": "bi",
       "status": "enacted_not_commenced",
@@ -1113,16 +1113,13 @@
       },
       "gazette_ref": "MP Rajpatra (Asadharan) No. 257, 10 Aug 2026, pp.513-514(28)",
       "notification_no": "क्र. 7635-160-इक्कीस-अ (प्रा.)",
-      "notes": "Hindi Act text with Chapter IX onwards printed in English. Scan defects: blank patches in the preamble, s.1(3), s.2(घ), s.2(छ), s.3(2); do not quote those.",
+      "notes": "Hindi Act text with Chapter IX onwards printed in English. Scan defects: blank patches in the preamble, s.1(3), s.2(घ), s.2(छ), s.3(2); do not quote those. Replaced 2026-11-09 by the official govtpress file MP.SSS2026@bi@1 (identical page images); kept as archive.",
       "fetched_at": "2026-11-06T16:39:34+00:00",
       "sha256": "44c92bb2cdb1d6ee6b09844b212eedaf679993e23b2b63046792a0bb2974a53b",
       "bytes": 2290412,
       "content_type": "application/pdf",
       "text_layer": "scanned",
       "local_path": "raw/MP.SSS2026/MP.SSS2026_hi_1.pdf",
-      "gate": [
-        "G4"
-      ],
       "verifications": [
         {
           "what": "text_matches_source",
@@ -1151,6 +1148,9 @@
           "evidence": "https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=18",
           "note": "No s.1(3) commencement notification found."
         }
+      ],
+      "superseded_by": [
+        "MP.SSS2026@bi@1"
       ]
     },
     {
@@ -3153,6 +3153,65 @@
           "evidence": "https://www.cgtmse.in/Circulars (Circular No. 255/2025-26 dt 26.12.2025, Annexures I-III); https://www.pmindia.gov.in/en/news_updates/cabinet-approves-restructuring-extension-of-lending-period-beyond-31-12-2024-of-pm-street-vendors-atmanirbhar-nidhi-pm-svanidhi-scheme/ (27 Aug 2025)",
           "note": "The guidelines carry no effective-date clause. valid_from 16.09.2025 = the date in the annexure titles/filenames (the covering letter's date, letter not verified)."
         }
+      ]
+    },
+    {
+      "doc_id": "MP.SSS2026@bi@1",
+      "mode": "gated",
+      "instrument_id": "MP.SSS2026",
+      "language": "bi",
+      "status": "enacted_not_commenced",
+      "source_url": "https://govtpress.mp.gov.in/uploads/gazette/2026-08-10-Ex-257.pdf",
+      "publisher": "Government Central Press, Madhya Pradesh (govtpress.mp.gov.in), MP Rajpatra Asadharan No. 257",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 257, 10 Aug 2026, pp.513-514(28)",
+      "notification_no": "क्र. 7635-160-इक्कीस-अ (प्रा.)",
+      "notes": "Hindi Act text with Chapter IX onwards printed in English. The blank patches in the preamble, s.1(3), s.2(घ), s.2(छ), s.3(2) are in the official scan itself (page images identical to the PRS copy); do not quote those.",
+      "fetched_at": "2026-11-09T14:56:34+00:00",
+      "sha256": "7f9607e49616aae7684d80214d06634d3bc2dc5a0d9b81aa526b5538f913b7a2",
+      "bytes": 2210349,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.SSS2026/MP.SSS2026_bi_1.pdf",
+      "verifications": [
+        {
+          "what": "text_matches_source",
+          "by": "claude",
+          "on": "2026-11-09",
+          "result": "confirmed",
+          "method": "downloaded from the official govtpress URL; compared embedded page-image bytes with the PRS copy",
+          "evidence": "https://govtpress.mp.gov.in/uploads/gazette/2026-08-10-Ex-257.pdf",
+          "note": "All 30 page images are byte-identical to PRS pages 2-31 (PRS added a cover page); same scanner and creation time (12.08.2026). Supersedes the DEC-043 interim source."
+        },
+        {
+          "what": "status",
+          "by": "claude",
+          "on": "2026-11-09",
+          "result": "confirmed",
+          "method": "carried over from the identical page images of the PRS copy (read 2026-11-06, pp.2, 4)",
+          "evidence": "https://govtpress.mp.gov.in/uploads/gazette/2026-08-10-Ex-257.pdf pp.1, 3",
+          "note": "Assented 07.08.2026 and published 10.08.2026; s.1(3) commencement by notification."
+        },
+        {
+          "what": "commencement",
+          "by": "claude",
+          "on": "2026-11-07",
+          "result": "unclear",
+          "method": "web search (EN+HI), MP Labour DMS notifications list",
+          "evidence": "https://labour.mponline.gov.in/Portal/Services/Shram/DMS/Citizen/Display_Documents.aspx?Sid=18",
+          "note": "No s.1(3) commencement notification found."
+        }
+      ],
+      "gate": [
+        "G4"
+      ],
+      "supersedes": [
+        "MP.SSS2026@hi@1"
       ]
     }
   ]
