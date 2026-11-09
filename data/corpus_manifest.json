@@ -507,7 +507,8 @@
       "made_under": [
         "IN.RTI2005:s27"
       ],
-      "notes": "G.S.R. 803(E) dt 31.07.2012 (number TODO(verify): the dopt.gov.in OCR layer reads 'GS.R.603(E)'). r.1(2): in force on publication. Supersedes the CIC (Appeal Procedure) Rules 2005 and the RTI (Regulation of Fee and Cost) Rules 2005. Gate S5: DoPT circular No. 1/5/2016 dt 05.04.2017 invited comments on draft RTI Rules 2017 'in supersession of RTI Rules, 2012'; whether they were ever notified is not verified. The RTI Rules 2019 (G.S.R. 810(E)? dt 24.10.2019, s.27(2)(ca),(cb)) cover commissioners' terms/salaries only."
+      "notes": "G.S.R. 603(E) dt 31.07.2012, Gazette of India Extraordinary Part II s.3(i), F. No. 1/35/2009-IR (OCR reads 'I/35/2009-1R'). The number '603(E)' is as read by the OCR layer of the official copies (DoPT, CIC, NITI) and by contemporaneous transcriptions; the earlier '803(E)' came from memory and was wrong. Visual check of the scan at W0.5 OCR. r.1(2): in force on publication; commenced_on = the notification date (masthead publication date not legible in the text layer). Supersedes the CIC (Appeal Procedure) Rules 2005 and the RTI (Regulation of Fee and Cost) Rules 2005. The draft RTI Rules 2017 (DoPT circular No. 1/5/2016-IR, Mar/Apr 2017; exact date not verified) were never notified: as of 2026-11-09 DoPT's RTI Online FAQ still applies the 2012 Rules and CIC lists only the 2012 and 2019 Rules. RTI Rules 2019 (G.S.R. 810(E) dt 24.10.2019, s.27(2)(ca),(cb)) cover commissioners' terms/salaries only (not in corpus). Applies to central public authorities only; MP public authorities follow the MP RTI (Fees and Appeal) Rules 2005 (G12).",
+      "commenced_on": "2012-07-31"
     },
     {
       "instrument_id": "IN.CPECR2020",
@@ -2597,7 +2598,7 @@
     },
     {
       "doc_id": "IN.RTIR2012@en@1",
-      "mode": "gated",
+      "mode": "index",
       "instrument_id": "IN.RTIR2012",
       "language": "en",
       "status": "in_force",
@@ -2606,20 +2607,46 @@
       "applies_to": {
         "level": "national"
       },
-      "notes": "Gazette scan with an old OCR text layer (errors: 'GS.R.603(E)', 'pUblication'); needs Bodhan OCR (W0.5) before quoting. Gate S5 = status vs the 2017 draft. Original URL: http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf; Internet Archive snapshot 20170703180959 (DEC-049). text_layer set to scanned by hand: the PDF is a scan with an old OCR layer (detector read it as born_digital).",
+      "notes": "Gazette scan with an old OCR text layer (errors: 'GS.R.603(E)', 'pUblication'); needs Bodhan OCR (W0.5) before quoting. Original URL: http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf; Internet Archive snapshot 20170703180959 (DEC-049). text_layer set to scanned by hand: the PDF is a scan with an old OCR layer (detector read it as born_digital). Live official copy with identical bytes: https://cic.gov.in/sites/default/files/RTI/RTIRules2012.pdf (checked 2026-11-09). S5 resolved 2026-11-09: gated -> index. Scanned: OCR (W0.5) before chunking/quoting.",
       "fetched_at": "2026-11-08T05:03:38+00:00",
       "sha256": "8d73989088febe131299d4b9a2f17b83002a576fab15084882c8f30d3424bc20",
       "bytes": 134707,
       "content_type": "application/pdf",
       "text_layer": "scanned",
       "local_path": "raw/IN.RTIR2012/IN.RTIR2012_en_1.pdf",
-      "gate": [
-        "S5"
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-09",
+          "what": "status",
+          "result": "confirmed",
+          "method": "checked official current listings and the DoPT RTI Online FAQ for any replacement of the 2012 Rules",
+          "evidence": "https://rtionline.gov.in/faq.php (DoPT RTI Online FAQ, fetched 2026-11-09: BPL fee exemption 'as per RTI Rules, 2012'); https://cic.gov.in/rti-notifications (lists RTIRules2012.pdf and RTI_Rules_2019.pdf only; fetched 2026-11-09); https://niti.gov.in/sites/default/files/2025-07/RTI%20Rules%20Final%20PDF.pdf (NITI Aayog 'Important RTI Rules', Jul 2025)",
+          "note": "In force; the 2017 draft was not notified. Resolves S5."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-09",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read r.1(2) and the notification date in the official copy",
+          "evidence": "https://web.archive.org/web/20170703180959id_/http://dopt.gov.in/sites/default/files/RTIRules_2012_English_0.pdf p.1",
+          "note": "In force on publication in the Gazette Extraordinary; notification dated 31.07.2012."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-09",
+          "what": "text_matches_source",
+          "result": "confirmed",
+          "method": "downloaded the live CIC file and compared sha256",
+          "evidence": "https://cic.gov.in/sites/default/files/RTI/RTIRules2012.pdf",
+          "note": "Byte-identical to the archived dopt.gov.in file (sha256 8d739890...)."
+        }
       ]
     },
     {
       "doc_id": "IN.RTIR2012@hi@1",
-      "mode": "gated",
+      "mode": "index",
       "instrument_id": "IN.RTIR2012",
       "language": "hi",
       "status": "in_force",
@@ -2628,15 +2655,32 @@
       "applies_to": {
         "level": "national"
       },
-      "notes": "Hindi gazette scan; its text layer is Latin OCR noise (N1 pattern). Needs OCR. Original URL: https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf; Internet Archive snapshot 20210427164409 (DEC-049).",
+      "notes": "Hindi gazette scan; its text layer is Latin OCR noise (N1 pattern). Needs OCR. Original URL: https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf; Internet Archive snapshot 20210427164409 (DEC-049). S5 resolved 2026-11-09: gated -> index. Scanned: OCR (W0.5) before chunking/quoting.",
       "fetched_at": "2026-11-08T05:03:45+00:00",
       "sha256": "4459acfcf778cc9291ff85a7eaf1e5f69eb642a6a409015515edf89eb20cac3c",
       "bytes": 190039,
       "content_type": "application/pdf",
       "text_layer": "scanned",
       "local_path": "raw/IN.RTIR2012/IN.RTIR2012_hi_1.pdf",
-      "gate": [
-        "S5"
+      "verifications": [
+        {
+          "by": "claude",
+          "on": "2026-11-09",
+          "what": "status",
+          "result": "confirmed",
+          "method": "checked official current listings and the DoPT RTI Online FAQ for any replacement of the 2012 Rules",
+          "evidence": "https://rtionline.gov.in/faq.php (DoPT RTI Online FAQ, fetched 2026-11-09: BPL fee exemption 'as per RTI Rules, 2012'); https://cic.gov.in/rti-notifications (lists RTIRules2012.pdf and RTI_Rules_2019.pdf only; fetched 2026-11-09); https://niti.gov.in/sites/default/files/2025-07/RTI%20Rules%20Final%20PDF.pdf (NITI Aayog 'Important RTI Rules', Jul 2025)",
+          "note": "In force; the 2017 draft was not notified. Resolves S5."
+        },
+        {
+          "by": "claude",
+          "on": "2026-11-09",
+          "what": "commencement",
+          "result": "confirmed",
+          "method": "read r.1(2) and the notification date in the official copy",
+          "evidence": "https://web.archive.org/web/20210427164409id_/https://dopt.gov.in/sites/default/files/RTIRules_2012_Hindi.pdf p.1",
+          "note": "In force on publication in the Gazette Extraordinary; notification dated 31.07.2012."
+        }
       ]
     },
     {
