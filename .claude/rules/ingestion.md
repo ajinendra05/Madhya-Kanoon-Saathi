@@ -23,7 +23,8 @@ paths:
 - Never machine-translate statute text. Hindi and English official texts are separate chunks sharing a `section_uid`.
 - Chunk unit = sub-section with provisos/explanations attached, 150–450 tokens; keep the parent section reference.
 - Keep page numbers through every step — citations need file + page.
-- All text passes through the shared NFC + nukta-folding normaliser in `common/` before it is stored.
+- Stored text = `common.normalize.normalize(text, fold_nukta=False)` (NFC, invisible characters removed). Nukta folding
+  is applied only to comparison keys (BM25 tokens, quote checks, dedup, OCR metrics), never to stored text (DEC-054).
 - Raw PDFs, OCR output and parsed text stay under git-ignored `data/` folders; never commit them.
 - Scripts must be resumable (Colab sessions time out) and idempotent (re-running skips files whose sha256 matches).
 - Network politeness: identify with a generic project User-Agent (never a personal email), rate-limit requests.

@@ -605,6 +605,14 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: ~₹10 + GST · ~1.5 days Claude + 2–3 h Malik · W1 slips ~1 day · Malik actions: accept the Bodhan licence on Hugging Face, put `SARVAM_API_KEY` (and an HF read token in Colab secrets) in place.
 - Follow-ups: verify pypdfium2/pillow licences from installed metadata; record the Bodhan model revision hash used; licence = Indic Open Model License v1.0 (internal use; credit "Built with IndicOCR from Bodhan AI / AI4Bharat" in the README).
 
+## DEC-054 — Stored text keeps the nukta; folding only for comparison keys
+- Date: 2026-11-10 | Status: accepted ("yes") | Approved by: Malik | Amends the "normalise before storing" line in `.claude/rules/ingestion.md` (OPEN_QUESTIONS S10)
+- Context: The ingestion rule said all text passes through the NFC + nukta-folding normaliser before it is stored. Folding is lossy (ज़ → ज), so stored chunks, and the quotes the bot shows users, would be misspelt.
+- Options: A) fold everything at storage (rule as written) · **B) store NFC text with invisible characters removed; fold only when building comparison keys** · C) store raw text, normalise nothing at storage.
+- Decision: **B.** Stored and displayed text = `normalize(text, fold_nukta=False)` (NFC, zero-width/BOM/soft-hyphen removed). The full fold (`fold_nukta=True`) is applied only to comparison keys: BM25 tokens, the citation validator's quote check (both sides folded), dedup keys and OCR metrics. Embeddings use the stored (unfolded) text.
+- Why: Users see the law spelt as printed. Matching still works when a user or an OCR engine drops the nukta, because both sides are folded the same way before comparing.
+- Effects: `common/normalize.py` already supports both modes · the quote check compares folded forms, so a dropped nukta never fails a correct citation · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)

@@ -10,7 +10,7 @@ paths:
 - Anything that changes what the bot tells users about the law — prompts, disclaimers, refusal/abstention rules,
   escalation text — is a major decision. Propose, don't just edit.
 - Output contract: `{answer_blocks:[{text, citations:[{chunk_id, quote}]}], abstain, abstain_reason, escalation}`.
-- Validator: `chunk_id` must be in the retrieved context; `quote` must be an exact substring after NFC.
+- Validator: `chunk_id` must be in the retrieved context; `quote` must be an exact substring after `normalize()` (NFC + nukta folding) of both sides (DEC-054).
   Retry once → strip unsupported claims → abstain if none remain. Never weaken this to make tests pass.
 - Draft / model_law / sub_judice instruments: answer with an explicit caveat, not a refusal.
 - Every reply: citations, "Law as of <date>", status caveats, "not legal advice" footer, in the user's language.
