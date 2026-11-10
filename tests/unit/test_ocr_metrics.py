@@ -1,6 +1,20 @@
 import pytest
 
-from madhya_kanoon_saathi.eval.ocr_metrics import edit_distance, error_rate, score
+from madhya_kanoon_saathi.eval.ocr_metrics import edit_distance, error_rate, plain_text, score
+
+
+def test_plain_text_markdown_table_and_heading() -> None:
+    md = "# अनुसूची-अ\n\n| श्रेणी | दर |\n|---|:---:|\n| **अकुशल** | 9575 |\n- मद एक"
+    assert plain_text(md) == "अनुसूची-अ\nश्रेणी दर\nअकुशल 9575\nमद एक"
+
+
+def test_plain_text_html_table_and_entities() -> None:
+    h = "<table><tr><th>A</th><th>B &amp; C</th></tr><tr><td>1</td><td>2</td></tr></table>"
+    assert plain_text(h) == "A B & C\n1 2"
+
+
+def test_plain_text_keeps_hyphenated_and_negative_text() -> None:
+    assert plain_text("धारा 2-क\n-5 अंक") == "धारा 2-क\n-5 अंक"
 
 
 @pytest.mark.parametrize(

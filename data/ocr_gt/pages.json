@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "note": "W0.5 OCR bake-off page set (DEC-014, DEC-053). DRAFT for Malik's review. page = 1-based page of the PDF file in the manifest's local_path.",
+  "pages": [
+    {
+      "page_id": "p01",
+      "doc_id": "MP.SSS2026@bi@1",
+      "page": 6,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Sanhita Hindi body text (after the blank-patch pages)"
+    },
+    {
+      "page_id": "p02",
+      "doc_id": "MP.SSS2026@bi@1",
+      "page": 12,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Sanhita Hindi body text"
+    },
+    {
+      "page_id": "p03",
+      "doc_id": "MP.LRCDR2018@bi@1",
+      "page": 3,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Demarcation Rules 2018, Hindi gazette text (indexed)"
+    },
+    {
+      "page_id": "p04",
+      "doc_id": "MP.LRCDR2018@bi@1",
+      "page": 5,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Demarcation Rules 2018, Hindi gazette text"
+    },
+    {
+      "page_id": "p05",
+      "doc_id": "MP.LRCMR2018@hi@2",
+      "page": 5,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Mutation Rules 2018 gazette, dense rules text"
+    },
+    {
+      "page_id": "p06",
+      "doc_id": "MP.LRCMR2018@hi@2",
+      "page": 10,
+      "kind": "hindi_form",
+      "lang": "hi",
+      "why": "Mutation Rules 2018, declaration form (form layout, blanks)"
+    },
+    {
+      "page_id": "p07",
+      "doc_id": "MP.LSGRA2026@hi@1",
+      "page": 1,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Lok Seva amendment 2026 (G6)"
+    },
+    {
+      "page_id": "p08",
+      "doc_id": "IN.RTIR2012@hi@1",
+      "page": 2,
+      "kind": "hindi_act",
+      "lang": "hi",
+      "why": "Central RTI Rules 2012, Hindi (indexed; text layer is noise)"
+    },
+    {
+      "page_id": "p09",
+      "doc_id": "MP.MWVDAOCT2026@hi@1",
+      "page": 1,
+      "kind": "wage_table",
+      "lang": "hi",
+      "why": "Current MP wage notification (indexed, DEC-050)"
+    },
+    {
+      "page_id": "p10",
+      "doc_id": "MP.MWVDAOCT2026@hi@1",
+      "page": 2,
+      "kind": "wage_table",
+      "lang": "hi",
+      "why": "Current MP wage notification"
+    },
+    {
+      "page_id": "p11",
+      "doc_id": "MP.MWVDAOCT2026@hi@1",
+      "page": 3,
+      "kind": "wage_table",
+      "lang": "hi",
+      "why": "Current MP wage notification"
+    },
+    {
+      "page_id": "p12",
+      "doc_id": "MP.MWBASE2024@hi@1",
+      "page": 5,
+      "kind": "wage_table",
+      "lang": "hi",
+      "why": "2024 base-rate schedules (L8)"
+    },
+    {
+      "page_id": "p13",
+      "doc_id": "MP.MWBASE2024@hi@1",
+      "page": 20,
+      "kind": "wage_table",
+      "lang": "hi",
+      "why": "2024 base-rate schedules (L8)"
+    },
+    {
+      "page_id": "p14",
+      "doc_id": "MP.SLSAR1996@en@1",
+      "page": 3,
+      "kind": "degraded_scan",
+      "lang": "hi",
+      "why": "MP SLSA Rules 1996 (G13), faded Hindi page: stress test"
+    },
+    {
+      "page_id": "p15",
+      "doc_id": "MP.SEAA2025@hi@1",
+      "page": 1,
+      "kind": "gazette_notice",
+      "lang": "hi",
+      "why": "Shops Act amendment 2025 (G14)"
+    },
+    {
+      "page_id": "p16",
+      "doc_id": "MP.LRCA2023@hi@1",
+      "page": 1,
+      "kind": "gazette_notice",
+      "lang": "hi",
+      "why": "MPLRC amendment 2023 (G8)"
+    },
+    {
+      "page_id": "p17",
+      "doc_id": "MP.LRCAJAN2022@hi@1",
+      "page": 1,
+      "kind": "gazette_notice",
+      "lang": "hi",
+      "why": "MPLRC amendment Jan 2022 (G8)"
+    },
+    {
+      "page_id": "p18",
+      "doc_id": "IN.RTIR2012@en@1",
+      "page": 2,
+      "kind": "english_scan",
+      "lang": "en",
+      "why": "Central RTI Rules 2012 fees/appeal page (indexed)"
+    },
+    {
+      "page_id": "p19",
+      "doc_id": "MP.SLSAR1996@en@1",
+      "page": 11,
+      "kind": "degraded_scan",
+      "lang": "en",
+      "why": "MP SLSA Rules 1996 (G13), faded English page: stress test"
+    },
+    {
+      "page_id": "p20",
+      "doc_id": "MP.SSS2026@bi@1",
+      "page": 25,
+      "kind": "english_scan",
+      "lang": "en",
+      "why": "Sanhita English part (Chapter IX onwards)"
+    }
+  ]
+}

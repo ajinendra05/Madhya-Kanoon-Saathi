@@ -45,7 +45,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | W0.2 | AWS account: Paid plan, root MFA, ₹100 alert (Malik, DEC-019) | todo | Alert visible in Budgets |
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
 | W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | **done 2026-11-10** (53 instruments, 69 documents; 20 index, 17 gated, 30 archive, 2 guide; validator 0 errors). Remaining gated items wait on others or on OCR: L7 (advocate), G13 (Malik), G12/G8a/S2 (OCR, W0.5), G4/G14/G6 (commencement or notifications), G8d-f (parked post-MVP); law-watch LW1 continues. History: steps 1-3, DEC-041 to DEC-052, docs/W0.4_FINDINGS.md (frozen) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
-| W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015) | todo | CER table per tool |
+| W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015, DEC-053) | in progress (2026-11-10: DEC-053; renderer, normaliser, OCR metrics, page set `data/ocr_gt/pages.json`, Colab notebook `notebooks/ocr_bakeoff_colab.ipynb`, scorer `scripts/ocr_score.py` done and tested. Waiting on Malik: Colab run (HF licence + token), Sarvam opt-in, ground-truth correction) | CER table per tool |
 | W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
 
 ## W1 — 10–16 Nov: parsing + retrieval

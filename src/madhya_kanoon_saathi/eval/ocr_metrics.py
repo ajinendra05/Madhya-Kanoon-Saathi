@@ -12,11 +12,38 @@ folded, invisibles removed).
 
 from __future__ import annotations
 
+import html
+import re
 import unicodedata
 from collections.abc import Sequence
 from dataclasses import dataclass
 
 from madhya_kanoon_saathi.common.normalize import normalize
+
+_TABLE_RULE = re.compile(r"^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$")
+_TAG = re.compile(r"<[^>]+>")
+_MD_PREFIX = re.compile(r"^\s{0,3}(#{1,6}\s+|>\s?|[-*+]\s+(?=\S))")
+_EMPHASIS = re.compile(r"(\*\*|__|\*|`)")
+
+
+def plain_text(markup: str) -> str:
+    """Strip Markdown/HTML markup from engine output so all engines are scored as plain text.
+
+    Ground-truth convention (data/ocr_gt/README.md): reading order, one table row per line,
+    cells separated by spaces. So table pipes and separator rows are dropped, HTML cell/row
+    tags become spaces/newlines, headings/emphasis/list markers are removed, entities decoded.
+    """
+    s = re.sub(r"(?i)<br\s*/?>|</(tr|p|div|h\d|li)>", "\n", markup)
+    s = re.sub(r"(?i)</t[dh]>", " ", s)
+    s = html.unescape(_TAG.sub("", s))
+    lines = []
+    for line in s.splitlines():
+        if _TABLE_RULE.match(line):
+            continue
+        line = _MD_PREFIX.sub("", line)
+        line = _EMPHASIS.sub("", line.replace("|", " "))
+        lines.append(" ".join(line.split()))
+    return "\n".join(x for x in lines if x)
 
 
 def edit_distance(ref: Sequence[str], hyp: Sequence[str]) -> int:
