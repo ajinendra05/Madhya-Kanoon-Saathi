@@ -45,6 +45,11 @@ python_version = "3.12"
 strict = true
 files = ["src"]
 
+[[tool.mypy.overrides]]
+# pypdfium2 ships no type stubs or py.typed marker (checked 2026-11-10, v5.15.2)
+module = ["pypdfium2", "pypdfium2.*"]
+ignore_missing_imports = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers -m 'not paid'"
