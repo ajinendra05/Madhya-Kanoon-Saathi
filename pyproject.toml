@@ -15,7 +15,9 @@ dev = [
     "ruff>=0.17.3",
 ]
 ingest = [
+    "pillow>=13.0.0",
     "pypdf>=6.21.4",
+    "pypdfium2>=5.15.2",
 ]
 eval = []
 serve = []

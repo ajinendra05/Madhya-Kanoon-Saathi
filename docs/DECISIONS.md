@@ -589,6 +589,22 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: An honest label stops the bot presenting a model law as MP law, while keeping a frequently asked-about text answerable.
 - Effects: ₹0 · ~1 h · MTA EN indexed; the Hindi copy stays archive (N1 glyph corruption).
 
+## DEC-053 — W0.5 OCR bake-off setup
+- Date: 2026-11-10 | Status: accepted | Approved by: Malik ("run bodhan on colab directly"; "Tesseract on Colab too"; rest as recommended) | Refines DEC-014/015
+- Context: Bodhan IndicOCR is a 33M layout model + 0.8B OCR model (~1.8 GB, gated on Hugging Face). The laptop GPU (MX450, 2 GB) is too small; Windows support of its installer is unclear. No PDF renderer or Tesseract was installed.
+- Decision:
+  1. **Bodhan runs on Google Colab only** (free GPU); no laptop CPU attempt (supersedes DEC-015's "20-page test on the laptop CPU").
+  2. **Tesseract 5 (`hin` + `eng`) also runs in the same Colab notebook**; nothing is installed on the laptop.
+  3. **`pypdfium2` + `pillow` join the `ingest` group** to render PDF pages to images locally (page selection, visual checks, Sarvam upload).
+  4. Bodhan's own packages (torch etc.) are installed **only in the Colab notebook**, not in `uv.lock`; only text outputs come back to the repo.
+  5. **One paid Sarvam Document Digitization run of the same 20 pages** (₹0.5/page per docs.sarvam.ai pricing, ~₹10 + GST; price re-checked on the live page before the run).
+  6. **Ground truth:** each page is pre-filled from Tesseract and fully corrected by Malik. Uncorrected leftovers can only favour the baseline, so the comparison is conservative for Bodhan; the report states this.
+  7. **Corrected ground-truth texts are committed** under `data/ocr_gt/` (public law text, small) so the CER table is reproducible.
+  8. Metric: CER and WER per engine and per page type, on raw text and after the project's NFC + nukta-folding normaliser.
+- Why: Colab is the only practical GPU; one environment for both free engines keeps the comparison fair; the lockfile stays free of torch/CUDA; committed ground truth makes the eval report checkable.
+- Effects: ~₹10 + GST · ~1.5 days Claude + 2–3 h Malik · W1 slips ~1 day · Malik actions: accept the Bodhan licence on Hugging Face, put `SARVAM_API_KEY` (and an HF read token in Colab secrets) in place.
+- Follow-ups: verify pypdfium2/pillow licences from installed metadata; record the Bodhan model revision hash used; licence = Indic Open Model License v1.0 (internal use; credit "Built with IndicOCR from Bodhan AI / AI4Bharat" in the README).
+
 ---
 
 ## Pending decisions (not yet made)

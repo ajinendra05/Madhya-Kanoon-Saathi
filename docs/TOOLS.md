@@ -53,6 +53,7 @@ check date are given. Verify against the official page before code depends on it
 | Library | FAISS | Exact vector search (`IndexFlatIP`) | decided (DEC-003, 025) |
 | Library | bm25s | Keyword (BM25) search | decided (DEC-003) |
 | Library | pypdf | PDF text-layer detection + extraction | decided (DEC-041) |
+| Library | pypdfium2 + Pillow | Render PDF pages to images (OCR input, visual checks) | decided (DEC-053) |
 | Library | ONNX Runtime | Runs int8/fp32 models on CPU in Lambda | decided (DEC-021) |
 | Library | Ragas, DeepEval | RAG metrics, pytest-style eval assertions | planned |
 | Dev | Terraform | Infrastructure as code | planned |
@@ -269,6 +270,13 @@ check date are given. Verify against the official page before code depends on it
 - **Why this one:** no system install (works on the Windows laptop and Colab), no required dependencies.
 - **Limit:** Hindi PDFs with legacy (non-Unicode) fonts can extract as garbage while still counting as text.
   W1.1 must check extracted Devanagari, not just character counts.
+
+### pypdfium2 + Pillow — page rendering (DEC-053)
+- **What:** `pypdfium2==5.15.2` (Python binding of Google's PDFium; BSD-3-Clause / Apache-2.0 per package metadata)
+  and `pillow==13.0.0` (MIT-CMU). `ingest` group only; wheels for Windows and Colab, no system install.
+- **How we use it:** render scanned pages to PNG for OCR (Bodhan, Tesseract, Sarvam) and for visual checks
+  (e.g. the RTI Rules G.S.R. number, 2026-11-10).
+- **Why this one:** PyMuPDF is AGPL (would bind our public repo); Poppler needs a system binary on Windows.
 
 ### urllib (stdlib) — corpus downloader
 - **How we use it:** `ingestion/fetch.py` downloads from `data/corpus_sources.json` with retries, a generic
