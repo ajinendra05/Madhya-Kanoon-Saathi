@@ -1190,6 +1190,23 @@
       "valid_from": "2025-09-16",
       "expires_on": "2030-03-31",
       "notes": "Found with Annexures I-II in the CGTMSE circular listing; not requested for the MVP corpus. expires_on = end of the lending period (31.03.2030); servicing/claims run to 31.03.2033, so law-watch must review before expiry."
+    },
+    {
+      "doc_id": "MP.LRCA2018@hi@1",
+      "instrument_id": "MP.LRCA2018",
+      "url": "https://govtpress.mp.gov.in/uploads/gazette/Extra_2018-07-27-Ex-406.pdf",
+      "language": "hi",
+      "status": "in_force",
+      "publisher": "Government Central Press, Madhya Pradesh (govtpress.mp.gov.in), MP Rajpatra Asadharan No. 406",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "archive",
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 406, 27.07.2018 (Law and Legislative Affairs Dept)",
+      "notes": "Official gazette publication of MP Act 23 of 2018, listed on govtpress as 'मध्यप्रदेश भू-राजस्व संहिता (संशोधन) अधिनियम, 2018'. 82-page image-only scan (no text layer): content, language mix (Hindi only or with English translation) and page references not yet read; decide language label and mode after OCR (W0.5). Working text remains the born-digital MP Code copy MP.LRCA2018@en@1."
     }
   ]
 }

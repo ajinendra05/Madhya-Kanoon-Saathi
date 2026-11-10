@@ -170,7 +170,7 @@
       "title_hi": "मध्यप्रदेश निरसन अधिनियम, २०२६",
       "title_en": "The Madhya Pradesh Nirsan Adhiniyam, 2026 (MP Act No. 8 of 2026)",
       "enacted_on": "2026-08-07",
-      "notes": "Assent 07.08.2026; MP Rajpatra (Asadharan) No. 260 dt 11.08.2026, pp.519-520(2), Law Dept क्र. 7656-164-इक्कीस-अ(प्रा.); English translation under Art. 348(3) on pp.520(1)-(2). s.2 + Schedule repeal in whole: Debt Conciliation Act (CP&B) 1933 No.2; Protection of Debtors Act (CP) 1937 No.4; Famine Relief Fund Act (CP&B) 1937 No.3; Relief of Indebtedness Act (CP&B) 1939 No.14; Vidya Mandir Act (CP&B) 1940 No.3; MP Regulation of Couching Act 1944 No.2; Land Survey Act (CP&B) 1947 No.42. s.3 savings. No commencement clause (TODO(verify) MP General Clauses Act rule). Legal-impact check (X3) 2026-11-07: no corpus instrument affected. Gazette discrepancies: item 4 Hindi 'क्रमांक ४ सन् १९३९' vs No. 14; item 6 column No. 3 vs title No. 2 of 1944. Read from a PRS copy (official govtpress PDF 404); file kept at data/raw/MP.NIRSAN2026/MP.NIRSAN2026_bi_prs.pdf, sha256 8bc8037b4b8a9bff479f1b248515def91f551f4b355370c6a361556724759b71. No document row (DEC-043 exception covers only the Sanhita)."
+      "notes": "Assent 07.08.2026; MP Rajpatra (Asadharan) No. 260 dt 11.08.2026, pp.519-520(2), Law Dept क्र. 7656-164-इक्कीस-अ(प्रा.); English translation under Art. 348(3) on pp.520(1)-(2). s.2 + Schedule repeal in whole: Debt Conciliation Act (CP&B) 1933 No.2; Protection of Debtors Act (CP) 1937 No.4; Famine Relief Fund Act (CP&B) 1937 No.3; Relief of Indebtedness Act (CP&B) 1939 No.14; Vidya Mandir Act (CP&B) 1940 No.3; MP Regulation of Couching Act 1944 No.2; Land Survey Act (CP&B) 1947 No.42. s.3 savings. No commencement clause (TODO(verify) MP General Clauses Act rule). Legal-impact check (X3) 2026-11-07: no corpus instrument affected. Gazette discrepancies: item 4 Hindi 'क्रमांक ४ सन् १९३९' vs No. 14; item 6 column No. 3 vs title No. 2 of 1944. Official file now served (2026-11-10): https://govtpress.mp.gov.in/uploads/gazette/2026-08-11-Ex-260.pdf (sha256 fb922deef03a4804..., 4 pp.); all 4 page images are byte-identical to the PRS copy (PRS adds a cover page), so the analysis above stands. Originally read from a PRS copy; file kept at data/raw/MP.NIRSAN2026/MP.NIRSAN2026_bi_prs.pdf, sha256 8bc8037b4b8a9bff479f1b248515def91f551f4b355370c6a361556724759b71. No document row (DEC-043 exception covers only the Sanhita)."
     },
     {
       "instrument_id": "MP.EODB2026",
@@ -179,7 +179,7 @@
       "title_hi": "मध्यप्रदेश ईज ऑफ डूइंग बिजनेस अधिनियम, २०२६",
       "title_en": "The Madhya Pradesh Ease of Doing Business Act, 2026 (MP Act No. 9 of 2026)",
       "enacted_on": "2026-08-17",
-      "notes": "Assent 17.08.2026; MP Rajpatra (Asadharan) No. 264 dt 20.08.2026, pp.527-528(27+), Law Dept क्र. 8071-171-इक्कीस-अ (प्रा.); English text pp.528(16) ff. s.1(2) extends only to industrial areas as notified; s.1(3) commencement by notification (not found: enacted, not commenced). Legal-impact check (X3) 2026-11-07: no textual amendment of corpus laws. Effects once commenced: Schedule IV item 41 routes 'Registration under Shops and Establishments Act' through the State Nodal Agency single window (notified industrial areas); s.20 penalties for missed clearance time limits under the Lok Seva Act 2010 (MP.LSG2010); s.21 harmonious-construction override of State laws; s.15 conversion of industrial land into Bhumiswami (freehold) rights under the MPLRC (outside the land-procedure slice). s.27 repeals, from commencement, the MP Investment Facilitation Act 2008 (No. 21) and the MP Udyogon Ki Sthapna Evam Parichalan Ka Saralikaran Adhiniyam 2023 (No. 13) (not in corpus). Read from a PRS copy (official govtpress PDF 404); file kept at data/raw/MP.EODB2026/MP.EODB2026_bi_prs.pdf, sha256 1536ee677227d5f7f017caf8e9ca8285e9d60a2c0f2ac73c6ccb56b6272fb5e4. No document row."
+      "notes": "Assent 17.08.2026; MP Rajpatra (Asadharan) No. 264 dt 20.08.2026, pp.527-528(27+), Law Dept क्र. 8071-171-इक्कीस-अ (प्रा.); English text pp.528(16) ff. s.1(2) extends only to industrial areas as notified; s.1(3) commencement by notification (not found: enacted, not commenced). Legal-impact check (X3) 2026-11-07: no textual amendment of corpus laws. Effects once commenced: Schedule IV item 41 routes 'Registration under Shops and Establishments Act' through the State Nodal Agency single window (notified industrial areas); s.20 penalties for missed clearance time limits under the Lok Seva Act 2010 (MP.LSG2010); s.21 harmonious-construction override of State laws; s.15 conversion of industrial land into Bhumiswami (freehold) rights under the MPLRC (outside the land-procedure slice). s.27 repeals, from commencement, the MP Investment Facilitation Act 2008 (No. 21) and the MP Udyogon Ki Sthapna Evam Parichalan Ka Saralikaran Adhiniyam 2023 (No. 13) (not in corpus). Official file now served (2026-11-10): https://govtpress.mp.gov.in/uploads/gazette/2026-08-20-Ex_264.pdf (sha256 bb9c18aaaa8ac090..., 32 pp.); all 32 page images are byte-identical to the PRS copy (PRS adds a cover page), so the analysis above stands. Originally read from a PRS copy; file kept at data/raw/MP.EODB2026/MP.EODB2026_bi_prs.pdf, sha256 1536ee677227d5f7f017caf8e9ca8285e9d60a2c0f2ac73c6ccb56b6272fb5e4. No document row."
     },
     {
       "instrument_id": "MP.LRC1959",
@@ -3212,6 +3212,40 @@
       ],
       "supersedes": [
         "MP.SSS2026@hi@1"
+      ]
+    },
+    {
+      "doc_id": "MP.LRCA2018@hi@1",
+      "mode": "archive",
+      "instrument_id": "MP.LRCA2018",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://govtpress.mp.gov.in/uploads/gazette/Extra_2018-07-27-Ex-406.pdf",
+      "publisher": "Government Central Press, Madhya Pradesh (govtpress.mp.gov.in), MP Rajpatra Asadharan No. 406",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "gazette_ref": "MP Rajpatra (Asadharan) No. 406, 27.07.2018 (Law and Legislative Affairs Dept)",
+      "notes": "Official gazette publication of MP Act 23 of 2018, listed on govtpress as 'मध्यप्रदेश भू-राजस्व संहिता (संशोधन) अधिनियम, 2018'. 82-page image-only scan (no text layer): content, language mix (Hindi only or with English translation) and page references not yet read; decide language label and mode after OCR (W0.5). Working text remains the born-digital MP Code copy MP.LRCA2018@en@1.",
+      "fetched_at": "2026-11-10T04:52:10+00:00",
+      "sha256": "467ac3a558e214e9216dbd7377eb5dd40822f5bc15e1225296a9c2f2660bb7ea",
+      "bytes": 4397767,
+      "content_type": "application/pdf",
+      "text_layer": "scanned",
+      "local_path": "raw/MP.LRCA2018/MP.LRCA2018_hi_1.pdf",
+      "verifications": [
+        {
+          "what": "text_matches_source",
+          "by": "claude",
+          "on": "2026-11-10",
+          "result": "unclear",
+          "method": "downloaded from the official govtpress URL; listing entry matched (no. 406, date, title, department)",
+          "evidence": "https://govtpress.mp.gov.in/gazette (2018 extraordinary listing, row 406)",
+          "note": "Identity from the official listing only; text not read (image-only scan, OCR pending W0.5)."
+        }
       ]
     }
   ]
