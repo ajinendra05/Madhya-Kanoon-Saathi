@@ -1,0 +1,94 @@
+{
+  "built_at": "2026-11-10T11:47:26+00:00",
+  "git_commit": "9fd662d09ea521cbb3fabccb3877d43cb1ca0ad6",
+  "git_dirty": false,
+  "python": "3.12.0",
+  "libraries": {
+    "pypdfium2": "5.15.2",
+    "pypdf": "6.21.4"
+  },
+  "normaliser_version": "1",
+  "chunker_version": "1",
+  "inputs": [
+    {
+      "doc_id": "IN.COW2019@en@1",
+      "sha256": "846f2e2745d8a9bc6a6503ca13fb3b5ee9a6d74f364b8179547739090c54cf7f",
+      "local_path": "raw/IN.COW2019/IN.COW2019_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.CPA2019@en@1",
+      "sha256": "414fb1edd9b0f7fbc2839ad92fb2b29ebfa3b557e70e928ab4a535802199e3e7",
+      "local_path": "raw/IN.CPA2019/IN.CPA2019_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.IRC2020@en@1",
+      "sha256": "aaba0f44807c6aca7b1c8113937755e8efb37087936dcce7bda6574c6007226f",
+      "local_path": "raw/IN.IRC2020/IN.IRC2020_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.LSA1987@en@1",
+      "sha256": "3aae5d5c9f8c2ad100c0553c351af559e35fb36c3fc68a921fd1e64dd4a9318f",
+      "local_path": "raw/IN.LSA1987/IN.LSA1987_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.OSHC2020@en@1",
+      "sha256": "5d521ae6a06654a6e114754a2ebdcf07944fb80e2b98d4c5a29708166c5f9a1d",
+      "local_path": "raw/IN.OSHC2020/IN.OSHC2020_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.RA1908@en@1",
+      "sha256": "95b81008f2d529cf84da1ed3bc63d5fdb9d4978ee47426d224ec137244ba2494",
+      "local_path": "raw/IN.RA1908/IN.RA1908_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.RTI2005@en@1",
+      "sha256": "8956eaba5db4079674bc16e50c14b210e8872c28e8a18f458f01a8fbcdde1479",
+      "local_path": "raw/IN.RTI2005/IN.RTI2005_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.SSC2020@en@1",
+      "sha256": "53ad67f75fbc874fd837274e9e887fac7a21cc55c7454398b2cdb96046fd7967",
+      "local_path": "raw/IN.SSC2020/IN.SSC2020_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.TPA1882@en@1",
+      "sha256": "5223fdf06a0aa3ed14ca62cb2b6b923d42e14a159d7f2c8b8f96cbe1800a7a3a",
+      "local_path": "raw/IN.TPA1882/IN.TPA1882_en_1.pdf"
+    }
+  ],
+  "output": {
+    "path": "data/parsed/chunks.jsonl",
+    "sha256": "abd113cbc4ce01b4cc892eec4d9e120649c6eb5796c6db596ffeef8aab8bebb7",
+    "chunks": 2859,
+    "by_doc": {
+      "IN.COW2019@en@1": 245,
+      "IN.CPA2019@en@1": 369,
+      "IN.IRC2020@en@1": 467,
+      "IN.LSA1987@en@1": 1,
+      "IN.OSHC2020@en@1": 706,
+      "IN.RA1908@en@1": 17,
+      "IN.RTI2005@en@1": 149,
+      "IN.SSC2020@en@1": 878,
+      "IN.TPA1882@en@1": 27
+    }
+  },
+  "qa": {
+    "errors": 0,
+    "warnings": 13
+  },
+  "unsupported": {
+    "IN.CPECR2020@bi@1": "mixed text layer: needs OCR (W1.1b)",
+    "IN.CPECRA2021@bi@1": "mixed text layer: needs OCR (W1.1b)",
+    "IN.CPJR2021@bi@1": "mixed text layer: needs OCR (W1.1b)",
+    "IN.ESHRAMFAQ2026@en@1": "HTML guide: parser to do (W1.1a remainder)",
+    "IN.MTA2021@en@1": "born-digital layout other than India Code: parser to do (W1.1a remainder)",
+    "IN.RTIR2012@en@1": "scanned text layer: needs OCR (W1.1b)",
+    "IN.RTIR2012@hi@1": "scanned text layer: needs OCR (W1.1b)",
+    "IN.SVANLOG2025@en@1": "mixed text layer: needs OCR (W1.1b)",
+    "IN.SVANSG2025@en@1": "born-digital layout other than India Code: parser to do (W1.1a remainder)",
+    "MP.LRCDR2018@bi@1": "scanned text layer: needs OCR (W1.1b)",
+    "MP.MWVDAOCT2026@hi@1": "scanned text layer: needs OCR (W1.1b)",
+    "MP.SLSALAGUIDE2025@en@1": "HTML guide: parser to do (W1.1a remainder)",
+    "MP.WCR2026@en@1": "mixed text layer: needs OCR (W1.1b)"
+  }
+}
