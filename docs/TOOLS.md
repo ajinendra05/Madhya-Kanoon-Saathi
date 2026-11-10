@@ -228,8 +228,13 @@ check date are given. Verify against the official page before code depends on it
 ### Bodhan IndicOCR — decided (DEC-001)
 - **What:** Open-source OCR from Bodhan AI and AI4Bharat (IIT Madras). Per Malik's note: a 33M layout model + a 0.8B
   recognition model; English + 22 scheduled Indian languages; text in reading order; tables as HTML/Markdown.
-- **How we use it:** Scanned gazettes and Hindi PDFs only. 20-page test on laptop CPU, bulk on Colab GPU (DEC-015).
-- **Verify:** Hugging Face model ID, licence, pinned revision hash. Reported Hindi scores are self-reported.
+- **How we use it:** Scanned gazettes and Hindi PDFs only, on Colab GPU (DEC-053; the laptop MX450 2 GB is too small).
+- **Verified 2026-11-10:** model `bodhan-ai/indic-ocr` (gated; access granted to Malik's account), revision
+  `cd50d301d0e17e8ecb32fc49c8ccbd7914dcfc25`, weights 1.9 GB; licence Indic Open Model License v1.0 (internal use
+  allowed; credit "Built with IndicOCR from Bodhan AI / AI4Bharat" if offered to third parties). API per model card:
+  `IndicOCR.from_pretrained(repo).parse(png)` returns `markdown` + `blocks`.
+- **Known quirk:** its output uses U+2581 (SentencePiece word marker) instead of spaces; convert it to a space
+  before any use (`eval/ocr_metrics.plain_text` does). Merged table header cells come out duplicated.
 
 ### Tesseract (`hin` language pack) — decided (DEC-014)
 - **What:** Classic open-source OCR engine. Free baseline in the bake-off.

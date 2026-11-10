@@ -8,7 +8,8 @@
       "page": 6,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Sanhita Hindi body text (after the blank-patch pages)"
+      "why": "Sanhita Hindi body text (after the blank-patch pages)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p02",
@@ -16,7 +17,8 @@
       "page": 12,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Sanhita Hindi body text"
+      "why": "Sanhita Hindi body text",
+      "gt_status": "draft"
     },
     {
       "page_id": "p03",
@@ -24,7 +26,8 @@
       "page": 3,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Demarcation Rules 2018, Hindi gazette text (indexed)"
+      "why": "Demarcation Rules 2018, Hindi gazette text (indexed)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p04",
@@ -32,7 +35,8 @@
       "page": 5,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Demarcation Rules 2018, Hindi gazette text"
+      "why": "Demarcation Rules 2018, Hindi gazette text",
+      "gt_status": "draft"
     },
     {
       "page_id": "p05",
@@ -40,7 +44,8 @@
       "page": 5,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Mutation Rules 2018 gazette, dense rules text"
+      "why": "Mutation Rules 2018 gazette, dense rules text",
+      "gt_status": "draft"
     },
     {
       "page_id": "p06",
@@ -48,7 +53,8 @@
       "page": 10,
       "kind": "hindi_form",
       "lang": "hi",
-      "why": "Mutation Rules 2018, declaration form (form layout, blanks)"
+      "why": "Mutation Rules 2018, declaration form (form layout, blanks)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p07",
@@ -56,7 +62,8 @@
       "page": 1,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Lok Seva amendment 2026 (G6)"
+      "why": "Lok Seva amendment 2026 (G6)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p08",
@@ -64,7 +71,8 @@
       "page": 2,
       "kind": "hindi_act",
       "lang": "hi",
-      "why": "Central RTI Rules 2012, Hindi (indexed; text layer is noise)"
+      "why": "Central RTI Rules 2012, Hindi (indexed; text layer is noise)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p09",
@@ -72,7 +80,8 @@
       "page": 1,
       "kind": "wage_table",
       "lang": "hi",
-      "why": "Current MP wage notification (indexed, DEC-050)"
+      "why": "Current MP wage notification (indexed, DEC-050)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p10",
@@ -80,7 +89,8 @@
       "page": 2,
       "kind": "wage_table",
       "lang": "hi",
-      "why": "Current MP wage notification"
+      "why": "Current MP wage notification",
+      "gt_status": "draft"
     },
     {
       "page_id": "p11",
@@ -88,7 +98,8 @@
       "page": 3,
       "kind": "wage_table",
       "lang": "hi",
-      "why": "Current MP wage notification"
+      "why": "Current MP wage notification",
+      "gt_status": "draft"
     },
     {
       "page_id": "p12",
@@ -96,7 +107,8 @@
       "page": 5,
       "kind": "wage_table",
       "lang": "hi",
-      "why": "2024 base-rate schedules (L8)"
+      "why": "2024 base-rate schedules (L8)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p13",
@@ -104,7 +116,8 @@
       "page": 20,
       "kind": "wage_table",
       "lang": "hi",
-      "why": "2024 base-rate schedules (L8)"
+      "why": "2024 base-rate schedules (L8)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p14",
@@ -112,7 +125,8 @@
       "page": 3,
       "kind": "degraded_scan",
       "lang": "hi",
-      "why": "MP SLSA Rules 1996 (G13), faded Hindi page: stress test"
+      "why": "MP SLSA Rules 1996 (G13), faded Hindi page: stress test",
+      "gt_status": "draft"
     },
     {
       "page_id": "p15",
@@ -120,7 +134,8 @@
       "page": 1,
       "kind": "gazette_notice",
       "lang": "hi",
-      "why": "Shops Act amendment 2025 (G14)"
+      "why": "Shops Act amendment 2025 (G14)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p16",
@@ -128,7 +143,8 @@
       "page": 1,
       "kind": "gazette_notice",
       "lang": "hi",
-      "why": "MPLRC amendment 2023 (G8)"
+      "why": "MPLRC amendment 2023 (G8)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p17",
@@ -136,7 +152,8 @@
       "page": 1,
       "kind": "gazette_notice",
       "lang": "hi",
-      "why": "MPLRC amendment Jan 2022 (G8)"
+      "why": "MPLRC amendment Jan 2022 (G8)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p18",
@@ -144,7 +161,8 @@
       "page": 2,
       "kind": "english_scan",
       "lang": "en",
-      "why": "Central RTI Rules 2012 fees/appeal page (indexed)"
+      "why": "Central RTI Rules 2012 fees/appeal page (indexed)",
+      "gt_status": "draft"
     },
     {
       "page_id": "p19",
@@ -152,7 +170,8 @@
       "page": 11,
       "kind": "degraded_scan",
       "lang": "en",
-      "why": "MP SLSA Rules 1996 (G13), faded English page: stress test"
+      "why": "MP SLSA Rules 1996 (G13), faded English page: stress test",
+      "gt_status": "draft"
     },
     {
       "page_id": "p20",
@@ -160,7 +179,8 @@
       "page": 25,
       "kind": "english_scan",
       "lang": "en",
-      "why": "Sanhita English part (Chapter IX onwards)"
+      "why": "Sanhita English part (Chapter IX onwards)",
+      "gt_status": "draft"
     }
   ]
 }

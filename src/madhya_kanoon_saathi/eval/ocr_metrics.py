@@ -20,6 +20,7 @@ from dataclasses import dataclass
 
 from madhya_kanoon_saathi.common.normalize import normalize
 
+SP_MARK = "▁"
 _TABLE_RULE = re.compile(r"^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$")
 _TAG = re.compile(r"<[^>]+>")
 _MD_PREFIX = re.compile(r"^\s{0,3}(#{1,6}\s+|>\s?|[-*+]\s+(?=\S))")
@@ -32,8 +33,11 @@ def plain_text(markup: str) -> str:
     Ground-truth convention (data/ocr_gt/README.md): reading order, one table row per line,
     cells separated by spaces. So table pipes and separator rows are dropped, HTML cell/row
     tags become spaces/newlines, headings/emphasis/list markers are removed, entities decoded.
+    U+2581 (the SentencePiece word marker that Bodhan IndicOCR leaves in its output instead of
+    spaces, seen 2026-11-10) becomes a space first.
     """
-    s = re.sub(r"(?i)<br\s*/?>|</(tr|p|div|h\d|li)>", "\n", markup)
+    s = markup.replace(SP_MARK, " ")
+    s = re.sub(r"(?i)<br\s*/?>|</(tr|p|div|h\d|li)>", "\n", s)
     s = re.sub(r"(?i)</t[dh]>", " ", s)
     s = html.unescape(_TAG.sub("", s))
     lines = []

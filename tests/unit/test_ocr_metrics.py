@@ -13,6 +13,11 @@ def test_plain_text_html_table_and_entities() -> None:
     assert plain_text(h) == "A B & C\n1 2"
 
 
+def test_plain_text_sentencepiece_marker_becomes_space() -> None:
+    bodhan = "▁मजदूर▁ | ▁9575▁ |\n▁---▁ | ▁---▁\n(26▁दिन)"
+    assert plain_text(bodhan) == "मजदूर 9575\n(26 दिन)"
+
+
 def test_plain_text_keeps_hyphenated_and_negative_text() -> None:
     assert plain_text("धारा 2-क\n-5 अंक") == "धारा 2-क\n-5 अंक"
 
