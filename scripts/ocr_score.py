@@ -51,7 +51,7 @@ def prefill() -> None:
         p.setdefault("gt_status", "draft")
         print(p["page_id"], "pre-filled", len(text), "chars")
     (GT / "pages.json").write_text(
-        json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
 
 
