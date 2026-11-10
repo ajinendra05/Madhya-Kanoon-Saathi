@@ -613,6 +613,26 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: Users see the law spelt as printed. Matching still works when a user or an OCR engine drops the nukta, because both sides are folded the same way before comparing.
 - Effects: `common/normalize.py` already supports both modes · the quote check compares folded forms, so a dropped nukta never fails a correct citation · ₹0.
 
+## DEC-055 — W1.1 chunk schema, extraction and build QA
+- Date: 2026-11-10 | Status: accepted (6 choices as recommended + Malik's 5 mandatory amendments; 4 details chosen 2026-11-10) | Approved by: Malik | Amends DEC-041 (W1.1 text reader)
+- Context: Every later step (BM25, embeddings, citations, eval) reads chunks, so the chunk fields are a data schema. On the India Code PDFs, pypdf splits words ("reject ion", "sub -section ( 1)"; 7 per sample page) where pypdfium2 gives 0.
+- Decision:
+  1. **Extractor:** pypdfium2 text extraction for born-digital PDFs (replaces pypdf for W1.1; pypdf stays for text-layer detection).
+  2. **Chunk unit:** sub-section with provisos/explanations attached; a section without sub-sections is one chunk; never merge across sections.
+  3. **Long units (> 450 tokens):** split at clause boundaries, each part with its own deeper `section_uid`; only a single over-long clause gets a `~n` suffix on its `chunk_id`.
+  4. **Amendment footnotes:** footnote numerals removed from canonical text, square brackets kept; footnote text attached as metadata.
+  5. **Token count:** estimate now; recalibrate with the BGE-M3 tokenizer in W1.4. 150–450 is a target, not a gate.
+  6. **Output:** `data/parsed/chunks.jsonl` (git-ignored), rebuilt by one script.
+  7. **Malik's amendments:**
+     - (a) **Raw + canonical text:** `raw_text` = the extractor's text for the span unchanged (only page headers/footers removed); `text` = canonical form (DEC-054 normaliser, footnote numerals stripped, line-wraps joined). Quotes are checked against `text`; `text` maps back to `raw_text` for audits.
+     - (b) **`section_uid` is a language-independent legal-provision identity** (as DEC-040): Hindi and English chunks of the same provision share it; `chunk_id` carries the language.
+     - (c) **`jurisdiction`** (`IN`/`MP`, from the instrument) on every chunk, and **source locators**: `{kind: "pdf_page", pages}` or `{kind: "html", url, anchor/selector, heading path}`.
+     - (d) **Version part of `chunk_id`** when the document has no `valid_from`: provision commencement override → instrument `commenced_on` → `enacted_on` → `nd-` + first 8 hex of the document sha256. Never the fetch date.
+     - (e) **Extraction QA + reproducible build manifest.** Build **fails** on: invalid `section_uid`, chunk outside `index_scope`, missing page/locator, raw/canonical mismatch, duplicate `chunk_id`. Build **warns** on: token count outside 150–450, suspected split words, section-number gaps, low text per page. `build_manifest.json` (git commit, code + library versions, input sha256s, normaliser version, output sha256, counts) and `qa_report.md` are **committed**; chunks stay git-ignored.
+  8. **Scope:** W1.1a = born-digital English PDFs + HTML guides now; W1.1b = scanned/Hindi pages from OCR after the W0.5 ground truth.
+- Why: one provision = one citable unit; canonical text keeps quotes exact while raw text keeps an audit trail; hard QA gates turn "no unverified text reaches the index" into code; the committed build record makes every index snapshot traceable.
+- Effects: ₹0 · no new dependency · ~1.5–2 days · full field list in `docs/specs/chunks.md`.
+
 ---
 
 ## Pending decisions (not yet made)

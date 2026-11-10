@@ -9,8 +9,13 @@ It names the **provision** (e.g. "RTI Act s.8(1)(j)"), not one language or versi
 ## Format
 ```
 section_uid = <JUR> "." <CODE><YEAR> { ":" <segment> }
-chunk_id    = <section_uid> "@" <lang> "@" <valid_from YYYY-MM-DD>
+chunk_id    = <section_uid> "@" <lang> "@" <version> [ "~" <part> ]
+version     = <YYYY-MM-DD> | "nd-" <first 8 hex of the document sha256>
 ```
+- **version** (DEC-055 7d): the document's `valid_from`; else the provision's commencement override; else the
+  instrument's `commenced_on`; else `enacted_on`; else `nd-<sha8>`. Never the fetch date.
+- **part** (DEC-055 item 3): only when one clause is too long and is split; the first piece has no suffix, later
+  pieces are `~2`, `~3`, ...
 - `JUR`: `IN` (central) or `MP` (Madhya Pradesh). Visible in every log and citation; backs the jurisdiction guard (DEC-033.5).
 - `CODE`: uppercase letters/digits starting with a letter; `YEAR`: 4 digits. Each instrument is listed once in the
   manifest (`docs/specs/manifest.md`) with its full Hindi/English titles.

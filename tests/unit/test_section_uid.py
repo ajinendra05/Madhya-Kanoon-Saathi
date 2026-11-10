@@ -113,10 +113,27 @@ def test_belongs_to() -> None:
 def test_chunk_id_round_trip() -> None:
     cid = make_chunk_id("IN.RTI2005:s8:ss1:cl_j", "hi", date(2025, 1, 2))
     assert cid == "IN.RTI2005:s8:ss1:cl_j@hi@2025-01-02"
-    uid, lang, valid_from = parse_chunk_id(cid)
-    assert str(uid) == "IN.RTI2005:s8:ss1:cl_j"
-    assert lang == "hi"
-    assert valid_from == date(2025, 1, 2)
+    c = parse_chunk_id(cid)
+    assert str(c.uid) == "IN.RTI2005:s8:ss1:cl_j"
+    assert c.lang == "hi"
+    assert c.version == date(2025, 1, 2)
+    assert c.part is None
+
+
+def test_chunk_id_undated_and_part_suffix() -> None:
+    cid = make_chunk_id("IN.SVANSG2025:para4", "en", "nd-c3e73b71", part=2)
+    assert cid == "IN.SVANSG2025:para4@en@nd-c3e73b71~2"
+    c = parse_chunk_id(cid)
+    assert c.version == "nd-c3e73b71" and c.part == 2
+
+
+@pytest.mark.parametrize(
+    ("version", "part"),
+    [("nd-C3E73B71", None), ("nd-c3e7", None), ("2025-01-02", None), ("nd-c3e73b71", 1)],
+)
+def test_make_chunk_id_rejects_bad_version_or_part(version: str, part: int | None) -> None:
+    with pytest.raises(InvalidSectionUidError):
+        make_chunk_id("IN.RTI2005:s8", "en", version, part=part)
 
 
 @pytest.mark.parametrize(
@@ -128,6 +145,9 @@ def test_chunk_id_round_trip() -> None:
         "IN.RTI2005:s8@hi@2025-1-2",  # not zero-padded
         "IN.RTI2005:s8@hi@२०२५-०१-०२",  # Devanagari digits
         "RTI2005:s8@hi@2025-01-02",  # bad uid
+        "IN.RTI2005:s8@hi@nd-1234567g",  # not hex
+        "IN.RTI2005:s8@hi@2025-01-02~1",  # part starts at 2
+        "IN.RTI2005:s8@hi@2025-01-02~02",  # leading zero
     ],
 )
 def test_bad_chunk_ids(cid: str) -> None:

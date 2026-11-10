@@ -7,7 +7,9 @@ A ``section_uid`` names a *provision* (not one language or version of its text):
     IN.RTIR2012:r4              a rule in a set of rules
     IN.RTI2005                  the whole instrument
 
-A ``chunk_id`` names one stored text version: ``<section_uid>@<lang>@<valid_from>``.
+A ``chunk_id`` names one stored text version: ``<section_uid>@<lang>@<version>[~n]``, where version
+is the legal start date or ``nd-<8 hex of the document sha256>`` when no legal date is known, and
+``~n`` (n >= 2) marks a later piece of one over-long clause (DEC-055).
 
 Canonical uids are ASCII only. Turning a free-text reference (English or Hindi) into a uid is the
 tokeniser's job (DEC-026), not this module's. Hindi clause letters are aligned structurally with
@@ -158,25 +160,62 @@ def belongs_to(uid: str, instrument_id: str) -> bool:
     return parse(uid).instrument_id == instrument_id
 
 
-def make_chunk_id(uid: str, lang: str, valid_from: date) -> str:
-    """``<section_uid>@<lang>@<YYYY-MM-DD>``. Validates every part."""
+_UNDATED_RE = re.compile(r"^nd-[0-9a-f]{8}$")
+_PART_RE = re.compile(r"^[1-9][0-9]*$")
+
+
+@dataclass(frozen=True)
+class ChunkId:
+    """Parsed ``chunk_id`` (DEC-040, DEC-055 item 7d and item 3).
+
+    ``version`` is the legal date the text version starts, or ``"nd-<8 hex>"`` (first 8 hex
+    digits of the document sha256) when no legal date is known. ``part`` is set only when one
+    clause was too long and had to be split (``~n`` suffix).
+    """
+
+    uid: SectionUid
+    lang: str
+    version: date | str
+    part: int | None = None
+
+
+def make_chunk_id(uid: str, lang: str, version: date | str, part: int | None = None) -> str:
+    """``<section_uid>@<lang>@<YYYY-MM-DD | nd-xxxxxxxx>[~n]``. Validates every part."""
     parse(uid)
     if lang not in CHUNK_LANGUAGES:
         raise InvalidSectionUidError(f"unknown chunk language {lang!r}")
-    return f"{uid}@{lang}@{valid_from.isoformat()}"
+    if isinstance(version, date):
+        ver = version.isoformat()
+    elif _UNDATED_RE.match(version):
+        ver = version
+    else:
+        raise InvalidSectionUidError(f"version must be a date or nd-<8 hex>: {version!r}")
+    if part is not None and part < 2:
+        raise InvalidSectionUidError("part suffix starts at 2 (the first piece has none)")
+    return f"{uid}@{lang}@{ver}" + (f"~{part}" if part is not None else "")
 
 
-def parse_chunk_id(chunk_id: str) -> tuple[SectionUid, str, date]:
+def parse_chunk_id(chunk_id: str) -> ChunkId:
     parts = chunk_id.split("@")
     if len(parts) != 3:
-        raise InvalidSectionUidError(f"chunk_id needs uid@lang@date: {chunk_id!r}")
-    uid, lang, day = parts
+        raise InvalidSectionUidError(f"chunk_id needs uid@lang@version: {chunk_id!r}")
+    uid, lang, ver = parts
+    part: int | None = None
+    if "~" in ver:
+        ver, _, n = ver.partition("~")
+        if not _PART_RE.match(n) or int(n) < 2:
+            raise InvalidSectionUidError(f"bad part suffix {n!r}")
+        part = int(n)
     if lang not in CHUNK_LANGUAGES:
         raise InvalidSectionUidError(f"unknown chunk language {lang!r}")
-    if not _DATE_RE.match(day):
-        raise InvalidSectionUidError(f"bad date {day!r}")
-    try:
-        valid_from = date.fromisoformat(day)
-    except ValueError as exc:
-        raise InvalidSectionUidError(f"bad date {day!r}") from exc
-    return parse(uid), lang, valid_from
+    version: date | str
+    if _UNDATED_RE.match(ver):
+        version = ver
+    else:
+        if not _DATE_RE.match(ver):
+            raise InvalidSectionUidError(f"bad version {ver!r}")
+        try:
+            version = date.fromisoformat(ver)
+        except ValueError as exc:
+            raise InvalidSectionUidError(f"bad date {ver!r}") from exc
+    return ChunkId(parse(uid), lang, version, part)
