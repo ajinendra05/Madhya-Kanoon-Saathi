@@ -20,8 +20,10 @@ from __future__ import annotations
 import re
 import unicodedata
 
-NUKTA = "़"
-_INVISIBLE = dict.fromkeys(map(ord, "​‌‍﻿­"))
+# bump when the output of normalize() changes (recorded in build manifests)
+NORMALISER_VERSION = "1"
+NUKTA = "\u093c"
+_INVISIBLE = dict.fromkeys(map(ord, "\u200b\u200c\u200d\ufeff\u00ad"))
 # Letters whose canonical decomposition is <base, NUKTA>.
 _NUKTA_LETTERS = {
     ch: unicodedata.normalize("NFD", ch)[0]

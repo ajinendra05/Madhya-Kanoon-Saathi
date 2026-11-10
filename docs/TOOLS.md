@@ -281,6 +281,9 @@ check date are given. Verify against the official page before code depends on it
   and `pillow==13.0.0` (MIT-CMU). `ingest` group only; wheels for Windows and Colab, no system install.
 - **How we use it:** render scanned pages to PNG for OCR (Bodhan, Tesseract, Sarvam) and for visual checks
   (e.g. the RTI Rules G.S.R. number, 2026-11-10).
+- **Also (DEC-055):** text extraction for born-digital PDFs with per-character font sizes (body / footnote /
+  superscript marker); on India Code PDFs it gives 0 split words per page where pypdf gave 7. pypdf stays for
+  text-layer detection only.
 - **Why this one:** PyMuPDF is AGPL (would bind our public repo); Poppler needs a system binary on Windows.
 
 ### urllib (stdlib) — corpus downloader

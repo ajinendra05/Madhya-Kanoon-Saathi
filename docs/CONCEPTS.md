@@ -272,6 +272,18 @@ inherited from the manifest (status, validity, applies_to, type). Final chunk sc
 
 ---
 
+**Raw vs canonical chunk text (DEC-055).** Every chunk stores the extractor's text unchanged (`raw_text`) and a
+cleaned form (`text`: footnote numbers removed, line wraps joined, Unicode normalised). A small `raw_map` records
+what was removed, so code can recompute `text` from `raw_text` and prove they match.
+- Why: quotes shown to users must be exact, and an auditor must be able to trace every quote back to the PDF.
+
+**Extraction QA gates.** The chunk build stops on hard errors (invalid provision ID, chunk outside the corpus scope,
+missing page number, raw/canonical mismatch, duplicate ID) and only warns on soft ones (chunk size, odd pages).
+- Interview angle: "data quality is enforced like a test suite: a bad build never reaches the index."
+
+**Layout cues beat text patterns.** In India Code PDFs, footnotes look like section starts ("1. Subs. by ...").
+Font size separates them reliably: body 11 pt, footnotes 9 pt, superscript markers 7 pt.
+
 ## 5. Retrieval
 
 **Sparse (keyword) retrieval: BM25.** Scores documents by how often the query's words appear, adjusted for rarity and

@@ -48,6 +48,10 @@ _SCHEDULE = re.compile(
 )
 _REPEALED = re.compile(r"^\[(.+?)\]\.?\s*(Rep\.|Repealed|Omitted)")
 _NO_DASH_SS1 = re.compile(r"\.\s+(?=\(1\)\s)")
+_END_OF_ACT = re.compile(
+    r"^(STATEMENT OF OBJECTS AND REASONS|NOTES ON CLAUSES|FINANCIAL MEMORANDUM|"
+    r"MEMORANDUM REGARDING DELEGATED LEGISLATION)\b"
+)  # Bill material appended after the Act in India Code PDFs (RTI, COW, IRC, SSC, OSHC)
 _STATE_AMEND = re.compile(r"^STATE\s+AMENDMENTS?\.?$")
 _SCHED_PARA = re.compile(r"^(\d{1,3})\.\s+\S")
 _ORDINALS = {
@@ -89,6 +93,7 @@ class Parsed:
     units: list[Unit]
     unassigned: list[Line]  # front matter and anything before the first section
     state_amendments: list[StateAmendment] = field(default_factory=list)
+    trailing: list[Line] = field(default_factory=list)  # appended Bill material: never chunked
 
 
 def visible_text(line: Line) -> str:
@@ -184,6 +189,7 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
     sched: Unit | None = None
     sa: StateAmendment | None = None  # open STATE AMENDMENT block
     state_amendments: list[StateAmendment] = []
+    trailing: list[Line] = []
     last_para = 0
 
     def owner() -> Unit:
@@ -198,6 +204,9 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
     for idx in range(start, len(merged)):
         ln = merged[idx]
         t = _start_text(ln)
+        if _END_OF_ACT.match(t):
+            trailing = list(merged[idx:])
+            break
         if _STATE_AMEND.match(t):
             sa = StateAmendment(after_uid=units[-1].uid if units else instrument_id)
             state_amendments.append(sa)
@@ -318,6 +327,15 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
                 n_prov = n_expl = 0
                 after_clause = []
                 cur = ss
+                m_in = _CLAUSE.match(m_ss.group(3))
+                if m_in and m_in.group(1) in ("a", "i"):
+                    # "(3) (a) The Central Provident Fund Commissioner ..." (IN.SSC2020 s.131(3)):
+                    # the first clause starts on the sub-section's own line
+                    clause_sys = "alpha" if m_in.group(1) == "a" else "roman"
+                    seg = "cl_" if clause_sys == "alpha" else "clr_"
+                    clause = new(f"{ss.uid}:{seg}{m_in.group(1)}", "clause", f"({m_in.group(1)})")
+                    last_clause = m_in.group(1)
+                    cur = clause
                 cur.lines.append(ln)
                 continue
 
@@ -415,4 +433,6 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
         if cur is None:
             cur = sec
         cur.lines.append(ln)
-    return Parsed(units=units, unassigned=unassigned, state_amendments=state_amendments)
+    return Parsed(
+        units=units, unassigned=unassigned, state_amendments=state_amendments, trailing=trailing
+    )
