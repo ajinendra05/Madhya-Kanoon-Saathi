@@ -47,6 +47,7 @@ from madhya_kanoon_saathi.ingestion.structure import Parsed, parse_statute
 DATA = Path("data")
 OUT = DATA / "parsed" / "chunks.jsonl"
 REC = DATA / "parsed_manifest"
+RECORD_EXCLUDE = ":!data/parsed_manifest"  # git pathspec: the record is rewritten by every build
 
 
 def sha256(path: Path) -> str:
@@ -199,7 +200,10 @@ def main() -> int:
     record = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "git_commit": git("rev-parse", "HEAD"),
-        "git_dirty": bool(git("status", "--porcelain", "--untracked-files=no")),
+        # the build record itself is rewritten by every build, so it does not count as a code change
+        "git_dirty": bool(
+            git("status", "--porcelain", "--untracked-files=no", "--", ".", RECORD_EXCLUDE)
+        ),
         "python": platform.python_version(),
         "libraries": {p: md.version(p) for p in ("pypdfium2", "pypdf")},
         "normaliser_version": NORMALISER_VERSION,
