@@ -293,7 +293,7 @@ check date are given. Verify against the official page before code depends on it
 - **How we use it:** one index over all chunks; tokens from our own DEC-026 tokeniser (bm25s's built-in tokeniser and
   stemmer are not used); Okapi BM25 "lucene" variant, k1 = 1.5, b = 0.75; `get_scores` over all chunks, then our
   filters. Unknown query tokens are ignored by bm25s; an empty query returns no hits (guarded in our code).
-- **Measured 2026-11-11:** 3,020 chunks, vocabulary 8,388, build ~1.3 s, query 1-4 ms on the laptop.
+- **Measured 2026-11-11:** 3,020 chunks, vocabulary 10,533 (incl. contained-clause tokens), build ~1.3 s, query 1-4 ms on the laptop.
 
 ### urllib (stdlib) — corpus downloader
 - **How we use it:** `ingestion/fetch.py` downloads from `data/corpus_sources.json` with retries, a generic
