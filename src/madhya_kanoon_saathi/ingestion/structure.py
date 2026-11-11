@@ -32,6 +32,7 @@ from dataclasses import dataclass, field
 from madhya_kanoon_saathi.ingestion.pdf_text import Line
 
 _ENACTED = re.compile(r"^\[\d{1,2}(st|nd|rd|th)\s+[A-Z][a-z]+,?\s+\d{4}\.?\]\.?$")
+_ENACTING = re.compile(r"^BE\s+it\s+enacted\b")  # body start in Bill-layout texts
 _CHAPTER = re.compile(r"^CHAPTER\s+([IVXLC]+[A-Z]?)\s*$")
 _SECTION = re.compile(
     r"^(\d{1,4})([A-Z]{0,3})\s?\.\s*(?=[A-Za-z\[\"“(])(.*)$"
@@ -73,6 +74,7 @@ class Unit:
     heading: str = ""  # section heading (marginal note) without the trailing ".—"
     chapter: str = ""  # "CHAPTER II — TITLE"
     repealed: bool = False  # "[Heading.] Rep. by ..." / "Omitted": no current text, not chunked
+    para_restart: bool = False  # schedule numbering restarts (Part A / Part B): chunk by size only
     lines: list[Line] = field(default_factory=list)
 
 
@@ -97,9 +99,9 @@ class Parsed:
 
 
 def visible_text(line: Line) -> str:
-    """Line text without footnote marker spans (used only for recognising starts)."""
+    """Line text without footnote markers and skip spans (used only for recognising starts)."""
     out, last = [], 0
-    for a, b in line.markers:
+    for a, b in sorted(line.markers + line.skips):
         out.append(line.text[last:a])
         last = b
     out.append(line.text[last:])
@@ -143,7 +145,14 @@ def _next_clause_label(lines: Sequence[Line], i: int, window: int = 80) -> str |
     return None
 
 
-def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
+def parse_statute(
+    instrument_id: str, lines: Sequence[Line], *, margin_headings: bool = False
+) -> Parsed:
+    """Parse body lines into units.
+
+    ``margin_headings=True`` is the Bill layout (IN.MTA2021): sections start "1. (1) text" with
+    the heading printed in the margin; the caller fills ``Unit.heading`` from the contents pages.
+    """
     body = [ln for ln in lines if ln.kind == "body"]
     # merge marker-only lines into the following line ("1" + "[(j) information ...", RTI p.11)
     merged: list[Line] = []
@@ -167,7 +176,14 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
             carry = None
         merged.append(ln)
 
-    start = next((i + 1 for i, ln in enumerate(merged) if _ENACTED.match(visible_text(ln))), 0)
+    start = next(
+        (
+            i + 1
+            for i, ln in enumerate(merged)
+            if _ENACTED.match(visible_text(ln)) or _ENACTING.match(visible_text(ln))
+        ),
+        0,
+    )
     unassigned = list(merged[:start])
     units: list[Unit] = []
     chapter = ""
@@ -241,7 +257,11 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
             continue
         if sched is not None:
             m_p = _SCHED_PARA.match(t)
-            if m_p and int(m_p.group(1)) == last_para + 1:
+            if m_p and int(m_p.group(1)) == 1 and last_para > 1:
+                sched.para_restart = (
+                    True  # IN.MTA2021 Second Schedule: Part A and Part B each from 1
+                )
+            if m_p and int(m_p.group(1)) == last_para + 1 and not sched.para_restart:
                 last_para += 1
                 cur = new(f"{sched.uid}:para{last_para}", "para", m_p.group(1))
             assert cur is not None
@@ -257,8 +277,8 @@ def parse_statute(instrument_id: str, lines: Sequence[Line]) -> Parsed:
                 or (last_sec == 0 and num == 1)
             )
             if plausible:
-                parts = _HEAD_DASH.split(rest, maxsplit=1)
-                m_rep = _REPEALED.match(rest)
+                parts = ["", rest] if margin_headings else _HEAD_DASH.split(rest, maxsplit=1)
+                m_rep = None if margin_headings else _REPEALED.match(rest)
                 if len(parts) < 2 and not m_rep:
                     # "9. Procedure ... etc. (1) A Social ...": dash missing (IN.SSC2020 s.9)
                     parts = _NO_DASH_SS1.split(rest, maxsplit=1)

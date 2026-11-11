@@ -40,7 +40,9 @@ def token_estimate(text: str, lang: str) -> int:
 
 def canonicalise(raw_text: str, raw_map: dict[str, list[Any]]) -> str:
     """Canonical text from raw text + map (pure; the QA check re-runs it on every chunk)."""
-    skip = sorted((int(a), int(b)) for a, b in raw_map.get("markers", []))
+    skip = sorted(
+        (int(a), int(b)) for a, b in [*raw_map.get("markers", []), *raw_map.get("skips", [])]
+    )
     breaks = {int(x) for x in raw_map.get("breaks", [])}
     out: list[str] = []
     i, k = 0, 0
@@ -155,6 +157,7 @@ def _assemble(
     """Join unit lines into raw text; record marker spans and paragraph breaks (new unit starts)."""
     raw: list[str] = []
     markers: list[list[int]] = []
+    skips: list[list[int]] = []
     breaks: list[int] = []
     all_lines: list[Line] = []
     pos = 0
@@ -170,10 +173,14 @@ def _assemble(
                 pos += 1
             first = False
             markers += [[pos + a, pos + b] for a, b in ln.markers]
+            skips += [[pos + a, pos + b] for a, b in ln.skips]
             raw.append(ln.text)
             pos += len(ln.text)
             all_lines.append(ln)
-    return "".join(raw), {"markers": markers, "breaks": breaks}, all_lines
+    rmap: dict[str, list[Any]] = {"markers": markers, "breaks": breaks}
+    if skips:
+        rmap["skips"] = skips
+    return "".join(raw), rmap, all_lines
 
 
 def build_chunks(
@@ -311,6 +318,11 @@ def build_chunks(
     for sec in sections:
         if sec.repealed:
             res.skipped.append(f"{sec.uid} (repealed in text)")
+            continue
+        if sec.kind == "schedule" and sec.para_restart:
+            # numbering restarts inside the schedule (Part A / Part B): one uid, size-split pieces
+            whole = [ln for u in _subtree(units, sec) for ln in u.lines]
+            _emit_long_leaf(Unit(sec.uid, sec.kind, sec.label, lines=whole), sec, ())
             continue
         children = [u for u in units if parent(u.uid) == sec.uid]
         subs = [u for u in children if u.kind == "ss"]

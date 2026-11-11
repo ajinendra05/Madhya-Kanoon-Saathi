@@ -29,6 +29,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from madhya_kanoon_saathi.common.normalize import NORMALISER_VERSION
+from madhya_kanoon_saathi.ingestion.bill_layout import split_margin
 from madhya_kanoon_saathi.ingestion.chunker import (
     CHUNKER_VERSION,
     MAX_TOKENS,
@@ -53,8 +54,14 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+# Documents whose layout is known by inspection (DEC-055); everything else is routed by rule.
+BILL_LAYOUT = {"IN.MTA2021@en@1"}  # margin-note headings, contents pages (bill_layout.py)
+
+
 def route(doc: Document) -> str | None:
     """Return the parser name for a document, or None with the reason recorded by the caller."""
+    if doc.doc_id in BILL_LAYOUT and doc.text_layer == "born_digital":
+        return "bill_layout"
     if (
         doc.content_type == "application/pdf"
         and doc.text_layer == "born_digital"
@@ -115,7 +122,16 @@ def main() -> int:
         inputs.append({"doc_id": doc.doc_id, "sha256": digest, "local_path": doc.local_path})
         inst = manifest.instruments[doc.instrument_id]
         text = extract(path)
-        parsed = parse_statute(doc.instrument_id, text.lines)
+        if kind == "bill_layout":
+            split = split_margin(text.lines)
+            parsed = parse_statute(doc.instrument_id, split.lines, margin_headings=True)
+            for u in parsed.units:
+                if u.kind == "section":
+                    u.heading = split.headings.get(u.label, "")
+            if any(u.kind == "section" and not u.heading for u in parsed.units):
+                errors.append(f"{doc.doc_id}: section without a heading from the contents pages")
+        else:
+            parsed = parse_statute(doc.instrument_id, text.lines)
         res = qa(
             build_chunks(parsed, doc, inst, text.footnotes, f"pdfium-{md.version('pypdfium2')}"),
             text.page_chars,

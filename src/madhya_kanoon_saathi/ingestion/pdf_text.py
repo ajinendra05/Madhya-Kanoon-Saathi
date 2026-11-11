@@ -33,6 +33,12 @@ class Line:
     text: str  # raw, as extracted
     kind: str  # body | footnote | header
     markers: tuple[tuple[int, int], ...] = ()  # spans in `text` of superscript footnote markers
+    small: tuple[
+        tuple[int, int], ...
+    ] = ()  # spans set smaller than body text (margin notes, small caps)
+    skips: tuple[
+        tuple[int, int], ...
+    ] = ()  # spans kept in raw text but dropped from canonical text
 
 
 @dataclass
@@ -83,6 +89,23 @@ def classify_line(
     return "body", _marker_spans(chars, body)
 
 
+def small_spans(chars: Sequence[tuple[str, float]], body: float) -> tuple[tuple[int, int], ...]:
+    """Spans of visible text set smaller than body text but larger than superscript markers
+    (e.g. 10 pt margin notes beside 12 pt body text in IN.MTA2021@en@1). Spaces join a span."""
+    out: list[tuple[int, int]] = []
+    start: int | None = None
+    for i, (c, s) in enumerate(chars):
+        small = (not c.isspace()) and body * MARKER_RATIO < s < body * FOOTNOTE_RATIO
+        if small and start is None:
+            start = i
+        elif not small and not c.isspace() and start is not None:
+            out.append((start, i))
+            start = None
+    if start is not None:
+        out.append((start, len(chars)))
+    return tuple(out)
+
+
 def _marker_spans(chars: Sequence[tuple[str, float]], body: float) -> tuple[tuple[int, int], ...]:
     spans: list[tuple[int, int]] = []
     start = None
@@ -109,22 +132,27 @@ def lines_from_pages(pages: Sequence[Sequence[tuple[str, float]]]) -> DocText:
         texts = ["".join(c for c, _ in chars) for chars in raw_lines]
         kinds: list[str] = []
         spans: list[tuple[tuple[int, int], ...]] = []
+        smalls: list[tuple[tuple[int, int], ...]] = []
         for idx, (chars, text) in enumerate(zip(raw_lines, texts, strict=True)):
             if (idx == 0 and _PAGE_NO.match(text)) or _PAGE_FOOTER.match(text):
                 kinds.append("header")
                 spans.append(())
+                smalls.append(())
                 continue
             kind, markers = classify_line(chars, body)
             kinds.append(kind)
             spans.append(markers)
+            smalls.append(small_spans(chars, body))
         # Footnotes are only the trailing run of small lines at the page bottom; small lines in the
         # middle of a page (e.g. small-caps chapter titles in IN.COW2019@en@1 p.5) are body text.
         last_body = max((i for i, k in enumerate(kinds) if k == "body"), default=-1)
         for i, k in enumerate(kinds):
             if k == "footnote" and i < last_body:
                 kinds[i] = "body"
-        for text, kind, markers in zip(texts, kinds, spans, strict=True):
-            doc.lines.append(Line(pno, text.strip() if kind == "header" else text, kind, markers))
+        for text, kind, markers, small in zip(texts, kinds, spans, smalls, strict=True):
+            doc.lines.append(
+                Line(pno, text.strip() if kind == "header" else text, kind, markers, small)
+            )
             if kind == "footnote":
                 m = _FOOTNOTE_START.match(text.strip())
                 if m:
