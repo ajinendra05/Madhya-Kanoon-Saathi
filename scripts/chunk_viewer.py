@@ -34,13 +34,16 @@ def page(title: str, body: str) -> str:
 def card(c: dict) -> str:
     esc = html.escape
     warn = "" if 150 <= c["token_estimate"] <= 450 else "w"
-    first, last = c["locator"]["pages"]
+    loc = c["locator"]
+    where = (
+        f"pages {loc['pages'][0]}-{loc['pages'][1]}" if "pages" in loc else loc.get("selector", "")
+    )
     fns = "".join(
         f"<div class=fn>[{esc(f['n'])}] p.{f['page']}: {esc(f['text'])}</div>"
         for f in c["footnotes"]
     )
     meta = (
-        f"{esc(c['chunk_id'])} | pages {first}-{last} | "
+        f"{esc(c['chunk_id'])} | {esc(where)} | "
         f"<span class='{warn}'>~{c['token_estimate']} tokens</span> | {esc(SEP.join(c['path']))}"
     )
     raw = f"<details><summary>raw text</summary><pre>{esc(c['raw_text'])}</pre></details>"

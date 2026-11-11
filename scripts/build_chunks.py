@@ -34,13 +34,15 @@ from madhya_kanoon_saathi.ingestion.chunker import (
     CHUNKER_VERSION,
     MAX_TOKENS,
     MIN_TOKENS,
+    BuildResult,
     build_chunks,
     qa,
 )
 from madhya_kanoon_saathi.ingestion.guideline import parse_guideline
+from madhya_kanoon_saathi.ingestion.html_guide import parse_faq, parse_headed
 from madhya_kanoon_saathi.ingestion.manifest import Document, parse_manifest
 from madhya_kanoon_saathi.ingestion.pdf_text import extract
-from madhya_kanoon_saathi.ingestion.structure import parse_statute
+from madhya_kanoon_saathi.ingestion.structure import Parsed, parse_statute
 
 DATA = Path("data")
 OUT = DATA / "parsed" / "chunks.jsonl"
@@ -58,12 +60,18 @@ def sha256(path: Path) -> str:
 # Documents whose layout is known by inspection (DEC-055); everything else is routed by rule.
 BILL_LAYOUT = {"IN.MTA2021@en@1"}  # margin-note headings, contents pages (bill_layout.py)
 GUIDELINE = {"IN.SVANSG2025@en@1", "IN.SVANLOG2025@en@1"}  # decimal-numbered paragraphs (DEC-057)
+HTML_FAQ = {"IN.ESHRAMFAQ2026@en@1"}  # accordion of "Q - n." questions (html_guide.py)
+HTML_HEADED = {"MP.SLSALAGUIDE2025@en@1"}  # h2 "1. ..." with h3 questions (html_guide.py)
 
 
 def route(doc: Document) -> str | None:
     """Return the parser name for a document, or None with the reason recorded by the caller."""
     if doc.doc_id in BILL_LAYOUT and doc.text_layer == "born_digital":
         return "bill_layout"
+    if doc.doc_id in HTML_FAQ:
+        return "html_faq"
+    if doc.doc_id in HTML_HEADED:
+        return "html_headed"
     if doc.doc_id in GUIDELINE and doc.text_layer in ("born_digital", "mixed"):
         return "guideline"  # mixed: image-only annexure pages are reported as low-text pages
     if (
@@ -88,6 +96,27 @@ def git(*args: str) -> str:
     return subprocess.run(
         ["git", *args], capture_output=True, text=True, check=False
     ).stdout.strip()
+
+
+def _summary(kind: str, parsed: Parsed, res: BuildResult, footnotes: int) -> dict:
+    toks = [c.token_estimate for c in res.chunks]
+    return {
+        "parser": kind,
+        "chunks": len(res.chunks),
+        "sections": sum(1 for u in parsed.units if u.kind == "section"),
+        "tokens": {
+            "below_min": sum(t < MIN_TOKENS for t in toks),
+            "in_range": sum(MIN_TOKENS <= t <= MAX_TOKENS for t in toks),
+            "above_max": sum(t > MAX_TOKENS for t in toks),
+        },
+        "warnings": [w for w in res.warnings if "token_estimate" not in w],
+        "skipped": res.skipped,
+        "state_amendment_blocks": len(parsed.state_amendments),
+        "state_amendment_blocks_mp": sum(s.mentions_mp for s in parsed.state_amendments),
+        "unassigned_lines": len(parsed.unassigned),
+        "trailing_lines": len(parsed.trailing),
+        "footnotes": footnotes,
+    }
 
 
 def main() -> int:
@@ -125,6 +154,14 @@ def main() -> int:
             continue
         inputs.append({"doc_id": doc.doc_id, "sha256": digest, "local_path": doc.local_path})
         inst = manifest.instruments[doc.instrument_id]
+        if kind.startswith("html"):
+            page = path.read_text(encoding="utf-8")
+            parsed = (parse_faq if kind == "html_faq" else parse_headed)(doc.instrument_id, page)
+            res = qa(build_chunks(parsed, doc, inst, [], "html"))
+            errors += [f"{doc.doc_id}: {e}" for e in res.errors]
+            per_doc[doc.doc_id] = _summary(kind, parsed, res, 0)
+            chunks += res.chunks
+            continue
         text = extract(path)
         if kind == "bill_layout":
             split = split_margin(text.lines)
@@ -143,24 +180,7 @@ def main() -> int:
             text.page_chars,
         )
         errors += [f"{doc.doc_id}: {e}" for e in res.errors]
-        toks = [c.token_estimate for c in res.chunks]
-        per_doc[doc.doc_id] = {
-            "parser": kind,
-            "chunks": len(res.chunks),
-            "sections": sum(1 for u in parsed.units if u.kind == "section"),
-            "tokens": {
-                "below_min": sum(t < MIN_TOKENS for t in toks),
-                "in_range": sum(MIN_TOKENS <= t <= MAX_TOKENS for t in toks),
-                "above_max": sum(t > MAX_TOKENS for t in toks),
-            },
-            "warnings": [w for w in res.warnings if "token_estimate" not in w],
-            "skipped": res.skipped,
-            "state_amendment_blocks": len(parsed.state_amendments),
-            "state_amendment_blocks_mp": sum(s.mentions_mp for s in parsed.state_amendments),
-            "unassigned_lines": len(parsed.unassigned),
-            "trailing_lines": len(parsed.trailing),
-            "footnotes": len(text.footnotes),
-        }
+        per_doc[doc.doc_id] = _summary(kind, parsed, res, len(text.footnotes))
         chunks += res.chunks
 
     if errors:

@@ -32,13 +32,14 @@ class Line:
     page: int  # 1-based PDF page
     text: str  # raw, as extracted
     kind: str  # body | footnote | header
-    markers: tuple[tuple[int, int], ...] = ()  # spans in `text` of superscript footnote markers
-    small: tuple[
-        tuple[int, int], ...
-    ] = ()  # spans set smaller than body text (margin notes, small caps)
-    skips: tuple[
-        tuple[int, int], ...
-    ] = ()  # spans kept in raw text but dropped from canonical text
+    # spans in `text` of superscript footnote markers
+    markers: tuple[tuple[int, int], ...] = ()
+    # spans set smaller than body text (margin notes, small caps)
+    small: tuple[tuple[int, int], ...] = ()
+    # spans kept in raw text but dropped from canonical text
+    skips: tuple[tuple[int, int], ...] = ()
+    # starts a new paragraph in canonical text (HTML blocks)
+    para_start: bool = False
 
 
 @dataclass

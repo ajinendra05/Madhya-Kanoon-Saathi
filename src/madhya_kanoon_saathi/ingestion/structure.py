@@ -75,6 +75,7 @@ class Unit:
     chapter: str = ""  # "CHAPTER II — TITLE"
     repealed: bool = False  # "[Heading.] Rep. by ..." / "Omitted": no current text, not chunked
     para_restart: bool = False  # schedule numbering restarts (Part A / Part B): chunk by size only
+    selector: str = ""  # HTML locator (CSS id or XPath) for HTML guides
     lines: list[Line] = field(default_factory=list)
 
 

@@ -51,7 +51,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 ## W1 — 10–16 Nov: parsing + retrieval
 | # | Item | Status | Definition of done |
 | --- | --- | --- | --- |
-| W1.1 | Parser + clause-aware chunker (EN + HI) | in progress (W1.1a India Code part done 2026-11-10: DEC-055, `pdf_text`, `structure`, `chunker`, `scripts/build_chunks.py`, `scripts/chunk_viewer.py`; 2,859 chunks from 9 Acts, 0 hard QA errors; build record in `data/parsed_manifest/`. Left: MTA + SVANidhi + HTML guides (W1.1a), OCR/Hindi pages after W0.5 (W1.1b), S12 version question) | Chunk tests; chunk viewer works |
+| W1.1 | Parser + clause-aware chunker (EN + HI) | in progress: **W1.1a done 2026-11-11** (DEC-055/056/057): 3,020 chunks from 14 documents, 0 hard QA errors. Parsers: India Code statutes (9 Acts), Bill layout (Model Tenancy Act), decimal-numbered guidelines (PM-SVANidhi x2), HTML guides (e-Shram FAQ, MP SLSA legal aid). Left: **W1.1b** = 8 scanned/mixed documents (RTI Rules EN/HI, MP wage notification, Demarcation Rules, MP Wage Code Rules draft, CPA E-Commerce + Jurisdiction Rules bilingual gazettes), after the W0.5 ground truth; Hindi chunks aligned to English uids (DEC-040) | Chunk tests; chunk viewer works |
 | W1.2 | Bulk OCR on Colab | todo | OCR'd pages in manifest |
 | W1.3 | Custom tokeniser (DEC-026) + bm25s index | todo | Tokeniser unit tests |
 | W1.4 | BGE-M3 int8 + fp32 embeddings, FAISS exact (DEC-021/022/025) | todo | Parity test passes |

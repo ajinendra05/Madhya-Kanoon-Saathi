@@ -167,7 +167,7 @@ def _assemble(
     for gi, group in enumerate(groups):
         for li, ln in enumerate(group):
             if not first:
-                if li == 0 and gi > 0:
+                if (li == 0 and gi > 0) or ln.para_start:
                     breaks.append(pos)
                 raw.append("\n")
                 pos += 1
@@ -259,7 +259,7 @@ def build_chunks(
                 heading=heading,
                 path=path,
                 footnotes=notes,
-                locator={"kind": "pdf_page", "pages": [pages[0], pages[-1]]} if pages else {},
+                locator=_locator(doc, parts, path, pages),
                 source_url=doc.source_url,
                 doc_sha256=doc.sha256,
                 extraction=extraction,
@@ -337,6 +337,20 @@ def build_chunks(
     return res
 
 
+def _locator(
+    doc: Document, parts: Sequence[Unit], path: list[str], pages: list[int]
+) -> dict[str, Any]:
+    """pdf_page locator, or html locator for HTML guides (DEC-055 7c)."""
+    if doc.content_type.startswith("text/html"):
+        sel = next((u.selector for u in parts if u.selector), "")
+        return (
+            {"kind": "html", "url": doc.source_url, "selector": sel, "heading_path": path}
+            if sel
+            else {}
+        )
+    return {"kind": "pdf_page", "pages": [pages[0], pages[-1]]} if pages else {}
+
+
 def _page_at(lines: Sequence[Line], raw_text: str, offset: int) -> int:
     pos = 0
     for ln in lines:
@@ -354,7 +368,7 @@ def qa(result: BuildResult, page_chars: dict[int, int] | None = None) -> BuildRe
         if c.chunk_id in seen:
             result.errors.append(f"duplicate chunk_id {c.chunk_id}")
         seen.add(c.chunk_id)
-        if not c.locator or not c.locator.get("pages"):
+        if not c.locator or not (c.locator.get("pages") or c.locator.get("selector")):
             result.errors.append(f"{c.chunk_id}: missing locator")
         if canonicalise(c.raw_text, c.raw_map) != c.text:
             result.errors.append(f"{c.chunk_id}: raw/canonical mismatch")
