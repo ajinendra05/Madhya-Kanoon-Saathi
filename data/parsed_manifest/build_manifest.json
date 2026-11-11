@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-11-11T10:10:59+00:00",
-  "git_commit": "65ce66221af75a9f714440a34d5b8e39c00bfe11",
-  "git_dirty": true,
+  "built_at": "2026-11-11T10:12:28+00:00",
+  "git_commit": "36aae0317ed19b159c672a49adf1e2cc31743033",
+  "git_dirty": false,
   "python": "3.12.0",
   "libraries": {
     "pypdfium2": "5.15.2",
