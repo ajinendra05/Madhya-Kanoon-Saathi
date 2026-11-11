@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-11-10T11:47:26+00:00",
-  "git_commit": "9fd662d09ea521cbb3fabccb3877d43cb1ca0ad6",
+  "built_at": "2026-11-11T09:27:39+00:00",
+  "git_commit": "15ae5fe12ea0c61af5fe19d44403a9e7f7858902",
   "git_dirty": false,
   "python": "3.12.0",
   "libraries": {
@@ -58,7 +58,7 @@
   ],
   "output": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "abd113cbc4ce01b4cc892eec4d9e120649c6eb5796c6db596ffeef8aab8bebb7",
+    "sha256": "1eeeabac112f57b62eec5d437ae232e8f4b55c0c68da7d0bdd2c23942f41fff2",
     "chunks": 2859,
     "by_doc": {
       "IN.COW2019@en@1": 245,
