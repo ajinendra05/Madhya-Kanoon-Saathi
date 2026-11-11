@@ -37,6 +37,7 @@ from madhya_kanoon_saathi.ingestion.chunker import (
     build_chunks,
     qa,
 )
+from madhya_kanoon_saathi.ingestion.guideline import parse_guideline
 from madhya_kanoon_saathi.ingestion.manifest import Document, parse_manifest
 from madhya_kanoon_saathi.ingestion.pdf_text import extract
 from madhya_kanoon_saathi.ingestion.structure import parse_statute
@@ -56,12 +57,15 @@ def sha256(path: Path) -> str:
 
 # Documents whose layout is known by inspection (DEC-055); everything else is routed by rule.
 BILL_LAYOUT = {"IN.MTA2021@en@1"}  # margin-note headings, contents pages (bill_layout.py)
+GUIDELINE = {"IN.SVANSG2025@en@1", "IN.SVANLOG2025@en@1"}  # decimal-numbered paragraphs (DEC-057)
 
 
 def route(doc: Document) -> str | None:
     """Return the parser name for a document, or None with the reason recorded by the caller."""
     if doc.doc_id in BILL_LAYOUT and doc.text_layer == "born_digital":
         return "bill_layout"
+    if doc.doc_id in GUIDELINE and doc.text_layer in ("born_digital", "mixed"):
+        return "guideline"  # mixed: image-only annexure pages are reported as low-text pages
     if (
         doc.content_type == "application/pdf"
         and doc.text_layer == "born_digital"
@@ -130,6 +134,8 @@ def main() -> int:
                     u.heading = split.headings.get(u.label, "")
             if any(u.kind == "section" and not u.heading for u in parsed.units):
                 errors.append(f"{doc.doc_id}: section without a heading from the contents pages")
+        elif kind == "guideline":
+            parsed = parse_guideline(doc.instrument_id, text.lines)
         else:
             parsed = parse_statute(doc.instrument_id, text.lines)
         res = qa(

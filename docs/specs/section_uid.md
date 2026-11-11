@@ -34,6 +34,7 @@ version     = <YYYY-MM-DD> | "nd-" <first 8 hex of the document sha256>
 | `sch<n>[A]` | schedule | `sch1` | top |
 | `form_<x>` | form | `form_a` | top |
 | `ss<n>[A]` | sub-section / sub-rule | `ss1` | 1 |
+| `sp<n>[A]` | numbered sub-paragraph of a paragraph (guidelines "5.1", "5.1.1"; DEC-057); follows `para` or another `sp` | `para5:sp1:sp1` | 1 (repeats) |
 | `cl_<a..zzz>` | clause, **alphabetic** numbering | `cl_j`, `cl_ja` | 2 |
 | `clr_<roman>` | clause, **roman** numbering (DEC-045) | `clr_vii` | 2 |
 | `scl_<roman>` | sub-clause, roman (must follow a clause) | `scl_ii` | 3 |

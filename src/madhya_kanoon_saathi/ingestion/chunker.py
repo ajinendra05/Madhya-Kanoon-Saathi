@@ -28,7 +28,7 @@ from madhya_kanoon_saathi.ingestion.manifest import AppliesTo, Document, Instrum
 from madhya_kanoon_saathi.ingestion.pdf_text import Footnote, Line
 from madhya_kanoon_saathi.ingestion.structure import Parsed, Unit
 
-CHUNKER_VERSION = "1"
+CHUNKER_VERSION = "2"  # 2: U+FFFE from pdfium read as a hyphen (IN.SVANSG2025 p.4 "non-NPA")
 MIN_TOKENS, MAX_TOKENS = 150, 450
 _SPACES = re.compile(r"[ \t]+")
 
@@ -62,7 +62,7 @@ def canonicalise(raw_text: str, raw_map: dict[str, list[Any]]) -> str:
         else:
             out.append(ch)
         i += 1
-    text = normalize("".join(out), fold_nukta=False)
+    text = normalize("".join(out).replace("\ufffe", "-"), fold_nukta=False)
     paras = [_SPACES.sub(" ", p).strip() for p in text.split("\n")]
     return "\n".join(p for p in paras if p)
 
@@ -358,6 +358,8 @@ def qa(result: BuildResult, page_chars: dict[int, int] | None = None) -> BuildRe
             result.errors.append(f"{c.chunk_id}: missing locator")
         if canonicalise(c.raw_text, c.raw_map) != c.text:
             result.errors.append(f"{c.chunk_id}: raw/canonical mismatch")
+        if any(0xFDD0 <= ord(ch) <= 0xFDEF or (ord(ch) & 0xFFFE) == 0xFFFE for ch in c.text):
+            result.errors.append(f"{c.chunk_id}: Unicode non-character in canonical text")
         if not (MIN_TOKENS <= c.token_estimate <= MAX_TOKENS):
             result.warnings.append(
                 f"{c.chunk_id}: token_estimate {c.token_estimate} outside {MIN_TOKENS}-{MAX_TOKENS}"

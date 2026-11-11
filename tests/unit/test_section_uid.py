@@ -208,3 +208,34 @@ def test_letter_i_and_numeral_i_are_different_uids() -> None:
     assert not covers("IN.X2020:s2:cl_i", "IN.X2020:s2:clr_i")
     assert covers("IN.X2020:s2:clr_vii", "IN.X2020:s2:clr_vii:scla_a")
     assert parent("MP.LSGR2010:r8:clr_vii:prov1") == "MP.LSGR2010:r8:clr_vii"
+
+
+@pytest.mark.parametrize(
+    "uid",
+    [
+        "IN.SVANSG2025:para5:sp1",  # para 5.1 (DEC-057)
+        "IN.SVANSG2025:para5:sp1:sp1",  # para 5.1.1
+        "IN.SVANSG2025:para5:sp1:sp2:cl_a",  # item a) of para 5.1.2
+        "IN.SVANSG2025:sch1:para2:sp1",  # sub-paragraph inside a schedule paragraph
+    ],
+)
+def test_sub_paragraph_segments_valid(uid: str) -> None:
+    assert is_valid(uid)
+
+
+@pytest.mark.parametrize(
+    "uid",
+    [
+        "IN.SVANSG2025:sp1",  # cannot be first
+        "IN.RTI2005:s8:sp1",  # only under para / sp
+        "IN.SVANSG2025:para5:ss1:sp1",  # not under a sub-section
+        "IN.SVANSG2025:para5:sp0",  # numbers start at 1
+    ],
+)
+def test_sub_paragraph_segments_invalid(uid: str) -> None:
+    assert not is_valid(uid)
+
+
+def test_para_covers_its_sub_paragraphs() -> None:
+    assert covers("IN.SVANSG2025:para5", "IN.SVANSG2025:para5:sp1:sp1")
+    assert not covers("IN.SVANSG2025:para5:sp1", "IN.SVANSG2025:para5:sp2")

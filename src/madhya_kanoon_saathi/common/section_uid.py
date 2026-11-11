@@ -41,6 +41,8 @@ _TOP, _SUB, _CLAUSE, _SUBCLAUSE, _NOTE = 0, 1, 2, 3, 4
 _CLAUSE_KINDS = frozenset({"cl", "clr"})
 _SEGMENTS: tuple[tuple[str, re.Pattern[str], int], ...] = (
     ("ss", re.compile(r"^ss[1-9][0-9]*[A-Z]{0,2}$"), _SUB),
+    # DEC-057: numbered sub-paragraph of a paragraph (guidelines "5.1", "5.1.1"); repeats per level
+    ("sp", re.compile(r"^sp[1-9][0-9]*[A-Z]{0,2}$"), _SUB),
     ("scl", re.compile(rf"^scl_{_ROMAN}$"), _SUBCLAUSE),
     ("scla", re.compile(r"^scla_[a-z]{1,3}$"), _SUBCLAUSE),
     ("clr", re.compile(rf"^clr_{_ROMAN}$"), _CLAUSE),
@@ -113,7 +115,10 @@ def parse(text: str) -> SectionUid:
                 raise InvalidSectionUidError("a proviso/explanation must be the last segment")
             # The one top-level-under-top-level case: paragraphs inside a schedule.
             schedule_paragraph = prev_kind == "sch" and kind == "para"
-            if level <= prev_level and not schedule_paragraph:
+            if kind == "sp" and prev_kind not in ("para", "sp"):
+                raise InvalidSectionUidError("a sub-paragraph (sp) must follow para or sp")
+            nested_sp = kind == "sp" and prev_kind == "sp"  # 5.1.1 = para5:sp1:sp1 (DEC-057)
+            if level <= prev_level and not (schedule_paragraph or nested_sp):
                 raise InvalidSectionUidError(f"{segment!r} cannot follow {prev_kind!r}")
             if level == _SUBCLAUSE and prev_kind not in _CLAUSE_KINDS:
                 raise InvalidSectionUidError("a sub-clause must follow a clause")

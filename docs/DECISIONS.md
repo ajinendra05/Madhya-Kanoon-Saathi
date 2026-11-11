@@ -640,6 +640,14 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: the version date should say when the text in the chunk took its current form; that is what "valid from" means to a user.
 - Effects: chunk_ids of amended provisions change (rebuild) · needs amendment entries in the manifest (added now for RTI s.8(1)(j) and IRC s.104(1)) · ₹0.
 
+## DEC-057 — `sp` segment for decimal-numbered guideline paragraphs
+- Date: 2026-11-11 | Status: accepted | Approved by: Malik | Amends DEC-040 (section_uid grammar)
+- Context: Scheme guidelines (PM-SVANidhi 2025) number paragraphs 5 > 5.1 > 5.1.1 > a). The section_uid grammar had no numeric level under a paragraph, but users and citations name "para 5.1.1".
+- Options: **A) new repeatable `sp<n>` segment under `para`** · B) flat label `para5_1_1` (loses coverage: para5 would not cover it) · C) chunk only at top level (loses precision).
+- Decision: **A.** `sp<n>[A]` = numbered sub-paragraph; it may follow `para` or another `sp` (so it repeats for each decimal level) and can be followed by clauses (`cl_`/`clr_`), sub-clauses, provisos and explanations as usual. Example: para 5.1.1 = `IN.SVANSG2025:para5:sp1:sp1`; its item a) = `…:sp1:sp1:cl_a`.
+- Why: keeps the hierarchy, so `covers()` stays correct for eval (a retrieved "para 5" covers a question about 5.1.1) and citations keep the printed precision.
+- Effects: `common/section_uid.py` + spec + tests · ₹0 · no change to existing uids.
+
 ---
 
 ## Pending decisions (not yet made)
