@@ -9,8 +9,8 @@ def test_nfc_makes_composed_and_decomposed_equal() -> None:
 
 
 def test_nukta_folded_in_both_spellings() -> None:
-    precomposed = "ज़रूरी"  # ज़रूरी with U+095B
-    decomposed = "ज़रूरी"  # ज + nukta
+    precomposed = "\u095bरूरी"  # ज\u093cरूरी with U+095B
+    decomposed = "ज\u093cरूरी"  # ज + nukta
     plain = "जरूरी"  # जरूरी
     assert normalize(precomposed) == normalize(decomposed) == plain
 
@@ -23,14 +23,14 @@ def test_all_precomposed_nukta_letters_fold_to_base() -> None:
 
 
 def test_fold_nukta_off_keeps_one_canonical_form() -> None:
-    a = normalize("ज़", fold_nukta=False)
-    b = normalize("ज़", fold_nukta=False)
+    a = normalize("\u095b", fold_nukta=False)
+    b = normalize("ज\u093c", fold_nukta=False)
     assert a == b and NUKTA in a
 
 
 def test_invisible_characters_removed() -> None:
     # ZWJ/ZWNJ inside a conjunct, BOM, soft hyphen, ZWSP
-    assert normalize("﻿क्‍ष­ा​") == "क्षा"
+    assert normalize("\ufeffक्\u200dष\u00adा\u200b") == "क्षा"
 
 
 def test_collapse_space_optional() -> None:
@@ -40,6 +40,6 @@ def test_collapse_space_optional() -> None:
 
 
 def test_idempotent() -> None:
-    s = "﻿ज़मीन  का   ख़सरा‍"
+    s = "\ufeffज़मीन  का   ख़सरा\u200d"
     once = normalize(s, collapse_space=True)
     assert normalize(once, collapse_space=True) == once

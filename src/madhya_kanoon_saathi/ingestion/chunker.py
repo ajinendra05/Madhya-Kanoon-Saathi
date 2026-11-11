@@ -107,7 +107,7 @@ class BuildResult:
 
 
 def _version(uid: str, doc: Document, inst: Instrument) -> tuple[str, str]:
-    """DEC-055 7d fallback chain; returns (version, version_source)."""
+    """DEC-055 7d chain as amended by DEC-056; returns (version, version_source)."""
     if doc.valid_from:
         return doc.valid_from.isoformat(), "valid_from"
     best: date | None = None
@@ -117,6 +117,14 @@ def _version(uid: str, doc: Document, inst: Instrument) -> tuple[str, str]:
             best, best_len = ov.commenced_on, len(ov.uid)
     if best is not None:
         return best.isoformat(), "commencement_override"
+    # DEC-056: the latest amendment whose affected provision overlaps this chunk
+    amended = [
+        a.commenced_on
+        for a in inst.amendments
+        if a.commenced_on and any(covers(x, uid) or covers(uid, x) for x in a.affects)
+    ]
+    if amended:
+        return max(amended).isoformat(), "amendment"
     if inst.commenced_on:
         return inst.commenced_on.isoformat(), "commenced_on"
     if inst.enacted_on:

@@ -27,7 +27,7 @@ question or heading.
 | `jurisdiction` | `IN` or `MP` | from the instrument (DEC-055 7c) |
 | `lang` | `en` or `hi` | language of this chunk's text (a `bi` document yields chunks in both) |
 | `version` | str | the version part of `chunk_id`: ISO date or `nd-<sha8>` |
-| `version_source` | str | `valid_from`, `commencement_override`, `commenced_on`, `enacted_on` or `doc_sha256` (DEC-055 7d) |
+| `version_source` | str | `valid_from`, `commencement_override`, `amendment` (DEC-056), `commenced_on`, `enacted_on` or `doc_sha256` (DEC-055 7d) |
 | `text` | str | **canonical** text: `normalize(fold_nukta=False)` (DEC-054), footnote numerals removed, square brackets kept, line-wraps joined, paragraph breaks kept as `\n` |
 | `raw_text` | str | the extractor's text for the same span, unchanged except page headers/footers removed (DEC-055 7a) |
 | `heading` | str | the section heading (marginal note), canonical form |
@@ -47,8 +47,10 @@ Not stored (computed, DEC-040): `binding`, `authority_rank`, `is_current`.
 the build used. This is how an auditor maps a quote back to the extractor output.
 
 ## Version part of `chunk_id` (DEC-055 7d)
-`valid_from` of the document → the provision's `commencement_overrides` entry → instrument `commenced_on` →
-instrument `enacted_on` → `nd-` + first 8 hex of the document sha256. Never the fetch date.
+`valid_from` of the document → the provision's `commencement_overrides` entry → **the latest
+`amendments[].commenced_on` whose `affects` uid covers the chunk uid or is covered by it (DEC-056)** →
+instrument `commenced_on` → instrument `enacted_on` → `nd-` + first 8 hex of the document sha256. Never the
+fetch date.
 `version_source` records which one was used.
 
 ## Extraction QA (DEC-055 7e)

@@ -57,7 +57,7 @@ def test_whitespace_differences_ignored() -> None:
 
 def test_nukta_and_invisibles_count_raw_but_not_normalised() -> None:
     ref = "ज़मीन का ख़सरा"
-    hyp = "जमीन का खसरा‍"  # nukta dropped (OCR habit) + stray ZWJ
+    hyp = "जमीन का खसरा\u200d"  # nukta dropped (OCR habit) + stray ZWJ
     s = score(ref, hyp)
     assert s.cer_raw > 0
     assert s.cer_norm == 0.0 and s.wer_norm == 0.0

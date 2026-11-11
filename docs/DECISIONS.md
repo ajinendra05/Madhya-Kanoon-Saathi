@@ -633,6 +633,13 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: one provision = one citable unit; canonical text keeps quotes exact while raw text keeps an audit trail; hard QA gates turn "no unverified text reaches the index" into code; the committed build record makes every index snapshot traceable.
 - Effects: ₹0 · no new dependency · ~1.5–2 days · full field list in `docs/specs/chunks.md`.
 
+## DEC-056 — Chunk version uses the latest amendment to the provision
+- Date: 2026-11-11 | Status: accepted ("ok for s12") | Approved by: Malik | Amends DEC-055 item 7d (OPEN_QUESTIONS S12)
+- Context: India Code consolidated copies have no `valid_from`, so an amended provision got the Act's commencement date as its version (RTI s.8(1), whose clause (j) was substituted w.e.f. 13.11.2025, showed version 2005-06-15).
+- Decision: The version chain becomes: document `valid_from` → provision commencement override → **latest `amendments[].commenced_on` whose `affects` uid covers the chunk uid or is covered by it** → instrument `commenced_on` → `enacted_on` → `nd-<sha8>`. `version_source` = `amendment`. Amendments are recorded in the manifest from official sources (e.g. India Code footnotes), with the amending Act as `by` (it may be outside the corpus).
+- Why: the version date should say when the text in the chunk took its current form; that is what "valid from" means to a user.
+- Effects: chunk_ids of amended provisions change (rebuild) · needs amendment entries in the manifest (added now for RTI s.8(1)(j) and IRC s.104(1)) · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)

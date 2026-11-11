@@ -11,6 +11,7 @@ from madhya_kanoon_saathi.ingestion.chunker import (
     qa,
 )
 from madhya_kanoon_saathi.ingestion.manifest import (
+    Amendment,
     AppliesTo,
     CommencementOverride,
     Document,
@@ -61,7 +62,7 @@ def test_canonicalise_markers_breaks_and_hyphens() -> None:
 
 def test_canonicalise_keeps_nukta_and_drops_invisibles() -> None:
     # DEC-054: stored text keeps the nukta; zero-width joiners go
-    assert canonicalise("ज़मीन‍ का\nख़सरा", {"markers": [], "breaks": []}) == "ज़मीन का ख़सरा"
+    assert canonicalise("ज़मीन\u200d का\nख़सरा", {"markers": [], "breaks": []}) == "ज़मीन का ख़सरा"
 
 
 def test_rti_s8_chunk_with_footnote_and_version() -> None:
@@ -110,6 +111,26 @@ def test_version_chain_override_then_undated() -> None:
     dated = replace(DOC, valid_from=date(2025, 11, 18))
     (c,) = build_chunks(parsed, dated, INST, [], "x").chunks
     assert c.version_source == "valid_from"
+
+
+def test_version_from_latest_amendment_dec_056() -> None:
+    # RTI s.8(1)(j) substituted by DPDP Act s.44(3) w.e.f. 13.11.2025 (India Code footnote, p.11)
+    parsed = parse_statute(
+        "IN.RTI2005",
+        body(
+            "1. Short title.—(1) This Act may be called the Right to Information Act, 2005.",
+            "(2) It extends to the whole of India.",
+        ),
+    )
+    inst = replace(
+        INST,
+        amendments=(Amendment("IN.DPDP2023", date(2025, 11, 13), ("IN.RTI2005:s1:ss1:cl_j",)),),
+    )
+    by_uid = {c.section_uid: c for c in build_chunks(parsed, DOC, inst, [], "x").chunks}
+    # ss1 contains the amended clause -> amendment date; ss2 is untouched -> Act commencement
+    assert by_uid["IN.RTI2005:s1:ss1"].version == "2025-11-13"
+    assert by_uid["IN.RTI2005:s1:ss1"].version_source == "amendment"
+    assert by_uid["IN.RTI2005:s1:ss2"].version_source == "commenced_on"
 
 
 def test_index_scope_and_repealed_sections_are_skipped() -> None:

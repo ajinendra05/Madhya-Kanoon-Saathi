@@ -432,7 +432,16 @@
       "jurisdiction": "IN",
       "title_en": "The Right to Information Act, 2005 (Act No. 22 of 2005)",
       "notes": "Enacted 15.06.2005. s.1(3): s.4(1), s.5(1),(2), ss.12, 13, 15, 16, 24, 27, 28 in force at once; the remaining provisions 'on the one hundred and twentieth day of its enactment' (India Code p.5). commenced_on records the first stage. s.8(1)(j) substituted by DPDP Act s.44(3) w.e.f. 13.11.2025 (India Code footnote, p.11).",
-      "commenced_on": "2005-06-15"
+      "commenced_on": "2005-06-15",
+      "amendments": [
+        {
+          "by": "IN.DPDP2023",
+          "commenced_on": "2025-11-13",
+          "affects": [
+            "IN.RTI2005:s8:ss1:cl_j"
+          ]
+        }
+      ]
     },
     {
       "instrument_id": "IN.DPDP2023",
@@ -456,7 +465,16 @@
       "jurisdiction": "IN",
       "title_en": "The Industrial Relations Code, 2020 (Act No. 35 of 2020)",
       "commenced_on": "2025-11-21",
-      "notes": "S.O. 5320(E) dt 21.11.2025 (India Code p.7 footnote). Copy 'As on the 2nd April, 2026'."
+      "notes": "S.O. 5320(E) dt 21.11.2025 (India Code p.7 footnote). Copy 'As on the 2nd April, 2026'. Amendment (DEC-056, OPEN_QUESTIONS S11): s.104(1) substituted by Act 1 of 2026, s. 2 (w.e.f. 21-11-2025), per the India Code footnote on p.59 of IN.IRC2020@en@1. \"IN.IRCA2026\" is our id for that Act; its title and gazette copy are not yet seen.",
+      "amendments": [
+        {
+          "by": "IN.IRCA2026",
+          "commenced_on": "2025-11-21",
+          "affects": [
+            "IN.IRC2020:s104:ss1"
+          ]
+        }
+      ]
     },
     {
       "instrument_id": "IN.SSC2020",
