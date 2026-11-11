@@ -1,6 +1,6 @@
 # Chunk build QA report
 
-Built 2026-11-11T09:27:39+00:00 from commit `15ae5fe12e`; chunker v1, normaliser v1. Output sha256 `1eeeabac112f57b6`.
+Built 2026-11-11T10:10:59+00:00 from commit `65ce66221a` (uncommitted changes); chunker v2, normaliser v1. Output sha256 `8c5437327f62df56`.
 
 Hard QA errors: **0** (the build stops on any). Token counts are estimates until W1.4.
 
@@ -8,13 +8,18 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | IN.COW2019@en@1 | 69 | 245 | 212 | 33 | 0 | 1 | 0 (0) | 0 | 107 | 88 |
 | IN.CPA2019@en@1 | 107 | 369 | 327 | 42 | 0 | 4 | 0 (0) | 0 | 144 | 0 |
+| IN.ESHRAMFAQ2026@en@1 | 59 | 59 | 56 | 3 | 0 | 0 | 0 (0) | 0 | 24 | 0 |
 | IN.IRC2020@en@1 | 104 | 467 | 400 | 67 | 0 | 2 | 0 (0) | 0 | 165 | 101 |
 | IN.LSA1987@en@1 | 40 | 1 | 0 | 1 | 0 | 32 | 0 (0) | 149 | 72 | 0 |
+| IN.MTA2021@en@1 | 47 | 136 | 125 | 11 | 0 | 0 | 0 (0) | 0 | 79 | 0 |
 | IN.OSHC2020@en@1 | 143 | 706 | 594 | 112 | 0 | 1 | 0 (0) | 0 | 219 | 86 |
 | IN.RA1908@en@1 | 95 | 17 | 16 | 1 | 0 | 68 | 41 (0) | 183 | 152 | 0 |
 | IN.RTI2005@en@1 | 31 | 149 | 120 | 29 | 0 | 17 | 0 (0) | 0 | 87 | 19 |
-| IN.SSC2020@en@1 | 164 | 878 | 726 | 152 | 0 | 1 | 0 (0) | 0 | 227 | 99 |
+| IN.SSC2020@en@1 | 164 | 788 | 630 | 158 | 0 | 1 | 0 (0) | 0 | 227 | 99 |
+| IN.SVANLOG2025@en@1 | 10 | 22 | 8 | 14 | 0 | 0 | 0 (0) | 0 | 22 | 0 |
+| IN.SVANSG2025@en@1 | 13 | 31 | 19 | 12 | 0 | 0 | 0 (0) | 0 | 31 | 0 |
 | IN.TPA1882@en@1 | 148 | 27 | 20 | 7 | 0 | 150 | 1 (0) | 194 | 226 | 0 |
+| MP.SLSALAGUIDE2025@en@1 | 1 | 3 | 1 | 2 | 0 | 0 | 0 (0) | 0 | 5 | 0 |
 
 ## Warnings and skipped units
 
@@ -176,6 +181,14 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 - skipped: IN.LSA1987:s29A:ss2 (outside index_scope)
 - skipped: IN.LSA1987:s30:ss1 (outside index_scope)
 - skipped: IN.LSA1987:s30:ss2 (outside index_scope)
+
+### IN.MTA2021@en@1
+- warning: IN.MTA2021:s2:cl_n: footnote marker '43' on p.6 has no footnote text
+- warning: IN.MTA2021:s3:ss1: footnote marker '1995' on p.6 has no footnote text
+- warning: IN.MTA2021:s36:ss1: footnote marker '45' on p.20 has no footnote text
+- warning: IN.MTA2021:s36:ss1: footnote marker '1860' on p.20 has no footnote text
+- warning: IN.MTA2021:s36:ss1: footnote marker '2' on p.20 has no footnote text
+- warning: IN.MTA2021:s36:ss1: footnote marker '1974' on p.20 has no footnote text
 
 ### IN.OSHC2020@en@1
 - warning: p.1: only 100 characters of text
@@ -375,6 +388,21 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 - warning: IN.SSC2020:s1:ss3: footnote marker '1' on p.8 has no footnote text
 - warning: p.1: only 71 characters of text
 - warning: p.2: only 105 characters of text
+
+### IN.SVANLOG2025@en@1
+- warning: IN.SVANLOG2025:sch3:para1: footnote marker '1' on p.14 has no footnote text
+- warning: IN.SVANLOG2025:sch3:para3: footnote marker '1' on p.14 has no footnote text
+- warning: p.16: only 104 characters of text
+- warning: p.17: only 168 characters of text
+- warning: p.18: only 77 characters of text
+- warning: p.19: only 2 characters of text
+- warning: p.20: only 2 characters of text
+- warning: p.21: only 2 characters of text
+- warning: p.22: only 13 characters of text
+
+### IN.SVANSG2025@en@1
+- warning: IN.SVANSG2025:sch1:para1: footnote marker '1' on p.11 has no footnote text
+- warning: IN.SVANSG2025:sch1:para3: footnote marker '1' on p.11 has no footnote text
 
 ### IN.TPA1882@en@1
 - warning: IN.TPA1882:s105: footnote marker '53' on p.37 has no footnote text
@@ -580,13 +608,8 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | IN.CPECR2020@bi@1 | mixed text layer: needs OCR (W1.1b) |
 | IN.CPECRA2021@bi@1 | mixed text layer: needs OCR (W1.1b) |
 | IN.CPJR2021@bi@1 | mixed text layer: needs OCR (W1.1b) |
-| IN.ESHRAMFAQ2026@en@1 | HTML guide: parser to do (W1.1a remainder) |
-| IN.MTA2021@en@1 | born-digital layout other than India Code: parser to do (W1.1a remainder) |
 | IN.RTIR2012@en@1 | scanned text layer: needs OCR (W1.1b) |
 | IN.RTIR2012@hi@1 | scanned text layer: needs OCR (W1.1b) |
-| IN.SVANLOG2025@en@1 | mixed text layer: needs OCR (W1.1b) |
-| IN.SVANSG2025@en@1 | born-digital layout other than India Code: parser to do (W1.1a remainder) |
 | MP.LRCDR2018@bi@1 | scanned text layer: needs OCR (W1.1b) |
 | MP.MWVDAOCT2026@hi@1 | scanned text layer: needs OCR (W1.1b) |
-| MP.SLSALAGUIDE2025@en@1 | HTML guide: parser to do (W1.1a remainder) |
 | MP.WCR2026@en@1 | mixed text layer: needs OCR (W1.1b) |

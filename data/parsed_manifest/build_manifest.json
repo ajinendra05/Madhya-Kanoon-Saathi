@@ -1,14 +1,14 @@
 {
-  "built_at": "2026-11-11T09:27:39+00:00",
-  "git_commit": "15ae5fe12ea0c61af5fe19d44403a9e7f7858902",
-  "git_dirty": false,
+  "built_at": "2026-11-11T10:10:59+00:00",
+  "git_commit": "65ce66221af75a9f714440a34d5b8e39c00bfe11",
+  "git_dirty": true,
   "python": "3.12.0",
   "libraries": {
     "pypdfium2": "5.15.2",
     "pypdf": "6.21.4"
   },
   "normaliser_version": "1",
-  "chunker_version": "1",
+  "chunker_version": "2",
   "inputs": [
     {
       "doc_id": "IN.COW2019@en@1",
@@ -21,6 +21,11 @@
       "local_path": "raw/IN.CPA2019/IN.CPA2019_en_1.pdf"
     },
     {
+      "doc_id": "IN.ESHRAMFAQ2026@en@1",
+      "sha256": "7c0ac8de25b039c93299068bd0b4550773948cbce7e21595ebe5f642e8365541",
+      "local_path": "raw/IN.ESHRAMFAQ2026/IN.ESHRAMFAQ2026_en_1.html"
+    },
+    {
       "doc_id": "IN.IRC2020@en@1",
       "sha256": "aaba0f44807c6aca7b1c8113937755e8efb37087936dcce7bda6574c6007226f",
       "local_path": "raw/IN.IRC2020/IN.IRC2020_en_1.pdf"
@@ -29,6 +34,11 @@
       "doc_id": "IN.LSA1987@en@1",
       "sha256": "3aae5d5c9f8c2ad100c0553c351af559e35fb36c3fc68a921fd1e64dd4a9318f",
       "local_path": "raw/IN.LSA1987/IN.LSA1987_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.MTA2021@en@1",
+      "sha256": "e83830bf8826328bb6f421a83b8def8b793d4bc8ab2603932ab179544036982c",
+      "local_path": "raw/IN.MTA2021/IN.MTA2021_en_1.pdf"
     },
     {
       "doc_id": "IN.OSHC2020@en@1",
@@ -51,44 +61,59 @@
       "local_path": "raw/IN.SSC2020/IN.SSC2020_en_1.pdf"
     },
     {
+      "doc_id": "IN.SVANLOG2025@en@1",
+      "sha256": "ae0d68c34831b0ad4527f69f46a00fad170be56345f8c4efe77f02f05576d952",
+      "local_path": "raw/IN.SVANLOG2025/IN.SVANLOG2025_en_1.pdf"
+    },
+    {
+      "doc_id": "IN.SVANSG2025@en@1",
+      "sha256": "c3e73b7107ee281e8c875478604722d0fdb8234ed0f4ebd8644a79d7722c43be",
+      "local_path": "raw/IN.SVANSG2025/IN.SVANSG2025_en_1.pdf"
+    },
+    {
       "doc_id": "IN.TPA1882@en@1",
       "sha256": "5223fdf06a0aa3ed14ca62cb2b6b923d42e14a159d7f2c8b8f96cbe1800a7a3a",
       "local_path": "raw/IN.TPA1882/IN.TPA1882_en_1.pdf"
+    },
+    {
+      "doc_id": "MP.SLSALAGUIDE2025@en@1",
+      "sha256": "c0a46a703dd056381c4348e089265715330292150fd6c05f622f5ee443a73972",
+      "local_path": "raw/MP.SLSALAGUIDE2025/MP.SLSALAGUIDE2025_en_1.html"
     }
   ],
   "output": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "1eeeabac112f57b62eec5d437ae232e8f4b55c0c68da7d0bdd2c23942f41fff2",
-    "chunks": 2859,
+    "sha256": "8c5437327f62df56ad20b214052e7d26029f323b63c671365ad0f66d8f286e85",
+    "chunks": 3020,
     "by_doc": {
       "IN.COW2019@en@1": 245,
       "IN.CPA2019@en@1": 369,
+      "IN.ESHRAMFAQ2026@en@1": 59,
       "IN.IRC2020@en@1": 467,
       "IN.LSA1987@en@1": 1,
+      "IN.MTA2021@en@1": 136,
       "IN.OSHC2020@en@1": 706,
       "IN.RA1908@en@1": 17,
       "IN.RTI2005@en@1": 149,
-      "IN.SSC2020@en@1": 878,
-      "IN.TPA1882@en@1": 27
+      "IN.SSC2020@en@1": 788,
+      "IN.SVANLOG2025@en@1": 22,
+      "IN.SVANSG2025@en@1": 31,
+      "IN.TPA1882@en@1": 27,
+      "MP.SLSALAGUIDE2025@en@1": 3
     }
   },
   "qa": {
     "errors": 0,
-    "warnings": 13
+    "warnings": 30
   },
   "unsupported": {
     "IN.CPECR2020@bi@1": "mixed text layer: needs OCR (W1.1b)",
     "IN.CPECRA2021@bi@1": "mixed text layer: needs OCR (W1.1b)",
     "IN.CPJR2021@bi@1": "mixed text layer: needs OCR (W1.1b)",
-    "IN.ESHRAMFAQ2026@en@1": "HTML guide: parser to do (W1.1a remainder)",
-    "IN.MTA2021@en@1": "born-digital layout other than India Code: parser to do (W1.1a remainder)",
     "IN.RTIR2012@en@1": "scanned text layer: needs OCR (W1.1b)",
     "IN.RTIR2012@hi@1": "scanned text layer: needs OCR (W1.1b)",
-    "IN.SVANLOG2025@en@1": "mixed text layer: needs OCR (W1.1b)",
-    "IN.SVANSG2025@en@1": "born-digital layout other than India Code: parser to do (W1.1a remainder)",
     "MP.LRCDR2018@bi@1": "scanned text layer: needs OCR (W1.1b)",
     "MP.MWVDAOCT2026@hi@1": "scanned text layer: needs OCR (W1.1b)",
-    "MP.SLSALAGUIDE2025@en@1": "HTML guide: parser to do (W1.1a remainder)",
     "MP.WCR2026@en@1": "mixed text layer: needs OCR (W1.1b)"
   }
 }
