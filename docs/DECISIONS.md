@@ -648,6 +648,17 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: keeps the hierarchy, so `covers()` stays correct for eval (a retrieved "para 5" covers a question about 5.1.1) and citations keep the printed precision.
 - Effects: `common/section_uid.py` + spec + tests · ₹0 · no change to existing uids.
 
+## DEC-058 — BM25 index: bm25s 0.3.16, one combined index
+- Date: 2026-11-11 | Status: accepted | Approved by: Malik | Implements DEC-003 (BM25 part) and DEC-026
+- Decision:
+  1. **Dependency:** `bm25s==0.3.16` (MIT per PyPI classifiers; only required dependency numpy), pinned in `uv.lock`, in the `serve` group (queried inside the Lambda; the index build uses the same code). Licence re-checked from installed metadata.
+  2. **One index** over all chunks (English and Hindi together). Indexed tokens per chunk = `tokenize(text)` + `provision_tokens(section_uid)` + `tokenize(heading)` (DEC-026 tokeniser, shared with queries).
+  3. **Scoring:** Okapi BM25, k1 = 1.5, b = 0.75.
+  4. **Filters after scoring**, from chunk metadata: jurisdiction guard (`applies_to` state level only MP; central/national always) and currency on the query date (not expired, within `valid_from`/`valid_to`; `draft`, `model_law`, `enacted_not_commenced` chunks are kept but flagged for the answer layer).
+  5. **Files:** `data/index/bm25/` (git-ignored) with the chunk_id order and a committed build record next to the chunk record.
+- Why: section-number queries ("धारा 8(1)(j)") need exact keyword matching across languages; one index keeps the shared section tokens matching across Hindi and English chunks.
+- Effects: +numpy, +bm25s in the Lambda image (small) · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)

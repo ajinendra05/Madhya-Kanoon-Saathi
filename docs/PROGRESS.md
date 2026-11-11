@@ -53,7 +53,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | --- | --- | --- | --- |
 | W1.1 | Parser + clause-aware chunker (EN + HI) | in progress: **W1.1a done 2026-11-11** (DEC-055/056/057): 3,020 chunks from 14 documents, 0 hard QA errors. Parsers: India Code statutes (9 Acts), Bill layout (Model Tenancy Act), decimal-numbered guidelines (PM-SVANidhi x2), HTML guides (e-Shram FAQ, MP SLSA legal aid). Left: **W1.1b** = 8 scanned/mixed documents (RTI Rules EN/HI, MP wage notification, Demarcation Rules, MP Wage Code Rules draft, CPA E-Commerce + Jurisdiction Rules bilingual gazettes), after the W0.5 ground truth; Hindi chunks aligned to English uids (DEC-040) | Chunk tests; chunk viewer works |
 | W1.2 | Bulk OCR on Colab | todo | OCR'd pages in manifest |
-| W1.3 | Custom tokeniser (DEC-026) + bm25s index | todo | Tokeniser unit tests |
+| W1.3 | Custom tokeniser (DEC-026) + bm25s index | **done 2026-11-11** (DEC-058): `retrieval/tokenizer.py` (section refs, Devanagari digits, nukta folding, stop-words), `retrieval/bm25_index.py` + `filters.py` (jurisdiction + currency after scoring, status flags), `scripts/build_bm25.py`; 3,020 chunks, vocab 8,388, query 1-4 ms. Open: Act-title tokens proposal (see session log) | Tokeniser unit tests |
 | W1.4 | BGE-M3 int8 + fp32 embeddings, FAISS exact (DEC-021/022/025) | todo | Parity test passes |
 | W1.5 | RRF + reranker | todo | |
 | W1.6 | Embedding bake-off vs e5-large (DEC-004) | todo | recall@10 per language |

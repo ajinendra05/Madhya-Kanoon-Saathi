@@ -20,7 +20,9 @@ ingest = [
     "pypdfium2>=5.15.2",
 ]
 eval = []
-serve = []
+serve = [
+    "bm25s==0.3.16",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -30,7 +32,7 @@ build-backend = "hatchling.build"
 packages = ["src/madhya_kanoon_saathi"]
 
 [tool.uv]
-default-groups = ["dev", "ingest"]
+default-groups = ["dev", "ingest", "serve"]
 
 [tool.ruff]
 line-length = 100
@@ -50,8 +52,8 @@ strict = true
 files = ["src"]
 
 [[tool.mypy.overrides]]
-# pypdfium2 ships no type stubs or py.typed marker (checked 2026-11-10, v5.15.2)
-module = ["pypdfium2", "pypdfium2.*"]
+# pypdfium2 (v5.15.2, 2026-11-10) and bm25s (v0.3.16, 2026-11-11) ship no type stubs or py.typed marker
+module = ["pypdfium2", "pypdfium2.*", "bm25s", "bm25s.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

@@ -54,6 +54,7 @@ check date are given. Verify against the official page before code depends on it
 | Library | bm25s | Keyword (BM25) search | decided (DEC-003) |
 | Library | pypdf | PDF text-layer detection + extraction | decided (DEC-041) |
 | Library | pypdfium2 + Pillow | Render PDF pages to images (OCR input, visual checks) | decided (DEC-053) |
+| Library | bm25s + numpy | BM25 keyword index (serve group) | in use (DEC-058) |
 | Library | ONNX Runtime | Runs int8/fp32 models on CPU in Lambda | decided (DEC-021) |
 | Library | Ragas, DeepEval | RAG metrics, pytest-style eval assertions | planned |
 | Dev | Terraform | Infrastructure as code | planned |
@@ -285,6 +286,14 @@ check date are given. Verify against the official page before code depends on it
   superscript marker); on India Code PDFs it gives 0 split words per page where pypdf gave 7. pypdf stays for
   text-layer detection only.
 - **Why this one:** PyMuPDF is AGPL (would bind our public repo); Poppler needs a system binary on Windows.
+
+### bm25s + numpy — BM25 keyword index (DEC-003, DEC-058)
+- **What:** `bm25s==0.3.16` (MIT, per installed classifiers; only required dependency numpy) and `numpy==2.5.4`
+  (BSD-3-Clause and permissive component licences). `serve` group, so the Lambda can query the index.
+- **How we use it:** one index over all chunks; tokens from our own DEC-026 tokeniser (bm25s's built-in tokeniser and
+  stemmer are not used); Okapi BM25 "lucene" variant, k1 = 1.5, b = 0.75; `get_scores` over all chunks, then our
+  filters. Unknown query tokens are ignored by bm25s; an empty query returns no hits (guarded in our code).
+- **Measured 2026-11-11:** 3,020 chunks, vocabulary 8,388, build ~1.3 s, query 1-4 ms on the laptop.
 
 ### urllib (stdlib) — corpus downloader
 - **How we use it:** `ingestion/fetch.py` downloads from `data/corpus_sources.json` with retries, a generic
