@@ -666,6 +666,15 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: names the Act a user means ("RTI dhara 8"), and lets a Hindi Act name match English chunks of the same Act.
 - Effects: one shared token set per instrument (low IDF, so it only tips ties between Acts) · ₹0 · Hindi titles for other central Acts need their official Hindi copies (OPEN_QUESTIONS S14).
 
+## DEC-060 — W1.4 embedding setup: official BGE-M3 ONNX, own int8, laptop CPU
+- Date: 2026-11-12 | Status: accepted (all as recommended) | Approved by: Malik | Implements DEC-004/021/022/025
+- Decision:
+  1. **Model:** BAAI's own ONNX export of `BAAI/bge-m3` (MIT, not gated), pinned to revision `5617a9f61b028005a4858fdac845db406aefb181`; fp32 = `onnx/model.onnx` + `onnx/model.onnx_data` (~2.27 GB). **int8 is made by us** with onnxruntime dynamic quantization; sha256 of every model file is recorded and checked (DEC-022 checksum pinning).
+  2. **Libraries:** `serve` group: onnxruntime 1.31.1 (MIT), tokenizers 0.23.3 (Apache-2.0; loads `tokenizer.json`, no torch), faiss-cpu 1.15.1 (MIT; 1.16.0 was 2 days old). `ingest` group: onnx 1.23.2 (Apache-2.0; only for building the int8 file). Licences re-checked from installed metadata.
+  3. **Where:** models in git-ignored `data/models/`; embeddings computed on the laptop CPU (same runtime as the Lambda).
+- Why: provenance traceable to BAAI; the same ONNX runtime at build and query time is what DEC-022's parity test needs; no torch in the Lambda image.
+- Effects: ~2.3 GB download (free) · W1.5 reranker has no official ONNX file: exporting it needs torch (separate decision) · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)

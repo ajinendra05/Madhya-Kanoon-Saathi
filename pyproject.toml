@@ -15,6 +15,7 @@ dev = [
     "ruff>=0.17.3",
 ]
 ingest = [
+    "onnx==1.23.2",
     "pillow>=13.0.0",
     "pypdf>=6.21.4",
     "pypdfium2>=5.15.2",
@@ -22,6 +23,9 @@ ingest = [
 eval = []
 serve = [
     "bm25s==0.3.16",
+    "faiss-cpu==1.15.1",
+    "onnxruntime==1.31.1",
+    "tokenizers==0.23.3",
 ]
 
 [build-system]
@@ -53,7 +57,7 @@ files = ["src"]
 
 [[tool.mypy.overrides]]
 # pypdfium2 (v5.15.2, 2026-11-10) and bm25s (v0.3.16, 2026-11-11) ship no type stubs or py.typed marker
-module = ["pypdfium2", "pypdfium2.*", "bm25s", "bm25s.*"]
+module = ["pypdfium2", "pypdfium2.*", "bm25s", "bm25s.*", "onnxruntime", "onnxruntime.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
