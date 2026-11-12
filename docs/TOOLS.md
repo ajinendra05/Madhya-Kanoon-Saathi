@@ -55,6 +55,8 @@ check date are given. Verify against the official page before code depends on it
 | Library | pypdf | PDF text-layer detection + extraction | decided (DEC-041) |
 | Library | pypdfium2 + Pillow | Render PDF pages to images (OCR input, visual checks) | decided (DEC-053) |
 | Library | bm25s + numpy | BM25 keyword index (serve group) | in use (DEC-058) |
+| Library | onnxruntime + tokenizers + faiss-cpu | BGE-M3 embeddings and exact dense search (serve group) | in use (DEC-060) |
+| Library | onnx | builds the int8 model only (ingest group) | in use (DEC-060) |
 | Library | ONNX Runtime | Runs int8/fp32 models on CPU in Lambda | decided (DEC-021) |
 | Library | Ragas, DeepEval | RAG metrics, pytest-style eval assertions | planned |
 | Dev | Terraform | Infrastructure as code | planned |
@@ -294,6 +296,18 @@ check date are given. Verify against the official page before code depends on it
   stemmer are not used); Okapi BM25 "lucene" variant, k1 = 1.5, b = 0.75; `get_scores` over all chunks, then our
   filters. Unknown query tokens are ignored by bm25s; an empty query returns no hits (guarded in our code).
 - **Measured 2026-11-11:** 3,020 chunks, vocabulary 10,533 (incl. contained-clause tokens), build ~1.3 s, query 1-4 ms on the laptop.
+
+### onnxruntime + tokenizers + faiss-cpu (+ onnx) — dense retrieval (DEC-060)
+- **What:** onnxruntime 1.31.1 (MIT), tokenizers 0.23.3 (Apache-2.0), faiss-cpu 1.15.1 (MIT) in `serve`; onnx 1.23.2
+  (Apache-2.0) in `ingest`, only for quantisation. Licences from installed metadata (2026-11-12). Pulled in as
+  dependencies: huggingface-hub (via tokenizers; also used by `scripts/fetch_models.py`), protobuf, flatbuffers,
+  pyyaml, tqdm, ml-dtypes.
+- **Model:** BAAI/bge-m3 ONNX (MIT), revision `5617a9f61b028005a4858fdac845db406aefb181`; fp32 2.27 GB; our int8
+  (onnxruntime dynamic, QInt8) 569 MB. sha256 of every file in `data/parsed_manifest/models.json`; the embedder
+  refuses mismatching files. Output `sentence_embedding` = normalised [CLS] (verified); no query prefix (model card).
+- **Measured 2026-11-12 (laptop, 8 cores):** 3,020 chunks: int8 526 s (174 ms/chunk), fp32 1,355 s (449 ms/chunk),
+  0 truncated; query (embed + exact search) 40-120 ms int8 with 2 threads. int8 vs fp32: same top-1 on 7/8 sample
+  queries (formal DEC-021 recall@10 check needs the golden set). Parity test passes for both.
 
 ### urllib (stdlib) — corpus downloader
 - **How we use it:** `ingestion/fetch.py` downloads from `data/corpus_sources.json` with retries, a generic
