@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-11-11T10:50:39+00:00",
-  "git_commit": "ab665624ead1fce63939b902989bd964f55ea34d",
+  "built_at": "2026-11-12T12:33:17+00:00",
+  "git_commit": "c2f51f1b288bf8095ebfae20fe00e4ef0005cb0f",
   "git_dirty": false,
   "input": {
     "path": "data/parsed/chunks.jsonl",
@@ -12,7 +12,11 @@
     "k1": 1.5,
     "b": 0.75
   },
-  "vocab_size": 10533,
+  "instrument_tokens": {
+    "aliases_sha256": "b5343f74d6306642fc9120d6b0e3ec53f821e28c4c5bbf14961e931eab900589",
+    "instruments": 53
+  },
+  "vocab_size": 10554,
   "libraries": {
     "bm25s": "0.3.16",
     "numpy": "2.5.4"
