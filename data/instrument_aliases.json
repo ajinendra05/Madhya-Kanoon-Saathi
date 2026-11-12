@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "note": "BM25 search aids only (DEC-059); never shown to users as titles. Hindi entries need an official source.",
+  "aliases": {
+    "IN.RTI2005": {"aliases": ["RTI", "RTI Act"]},
+    "IN.CPA2019": {"aliases": ["CPA", "consumer law", "consumer forum"]},
+    "IN.CPJR2021": {"aliases": ["consumer commission jurisdiction"]},
+    "IN.CPECR2020": {"aliases": ["e-commerce rules", "online shopping"]},
+    "IN.COW2019": {"aliases": ["wage code", "minimum wages"]},
+    "IN.IRC2020": {"aliases": ["IR Code"]},
+    "IN.SSC2020": {"aliases": ["SS Code"]},
+    "IN.OSHC2020": {"aliases": ["OSH Code"]},
+    "IN.TPA1882": {"aliases": ["TPA", "lease"]},
+    "IN.RA1908": {"aliases": ["registration"]},
+    "IN.LSA1987": {"aliases": ["legal aid", "NALSA"]},
+    "IN.MTA2021": {"aliases": ["MTA", "tenancy", "rent agreement"]},
+    "IN.ESHRAMFAQ2026": {
+      "aliases": ["eShram", "e-Shram", "ई-श्रम"],
+      "sources": {"ई-श्रम": "title_hi of IN.ESHRAMEXG2023 (MoLE Hindi guideline, eshram.gov.in)"}
+    },
+    "IN.SVANSG2025": {
+      "aliases": ["SVANidhi", "PM SVANidhi", "street vendor loan", "पीएम स्वनिधि"],
+      "sources": {"पीएम स्वनिधि": "cgtmse.in menu label 'पीएम स्वनिधि' (Circulars page, fetched 2026-11-08)"}
+    },
+    "IN.SVANLOG2025": {
+      "aliases": ["SVANidhi", "PM SVANidhi", "street vendor loan", "पीएम स्वनिधि"],
+      "sources": {"पीएम स्वनिधि": "cgtmse.in menu label 'पीएम स्वनिधि' (Circulars page, fetched 2026-11-08)"}
+    },
+    "MP.SLSALAGUIDE2025": {"aliases": ["legal aid", "free lawyer", "MPSLSA"]}
+  }
+}

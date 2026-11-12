@@ -18,9 +18,11 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-from madhya_kanoon_saathi.retrieval.bm25_index import K1, B, Bm25Index
+from madhya_kanoon_saathi.retrieval.bm25_index import K1, B, Bm25Index, instrument_tokens
 
 SRC = Path("data/parsed/chunks.jsonl")
+MANIFEST = Path("data/corpus_manifest.json")
+ALIASES = Path("data/instrument_aliases.json")
 OUT = Path("data/index/bm25")
 REC = Path("data/parsed_manifest/bm25_build.json")
 RECORD_EXCLUDE = (
@@ -37,7 +39,14 @@ def git(*args: str) -> str:
 def main() -> int:
     raw = SRC.read_bytes()
     chunks = [json.loads(x) for x in raw.decode("utf-8").splitlines()]
-    index = Bm25Index.build(chunks)
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    titles = {
+        i["instrument_id"]: (i.get("title_en"), i.get("title_hi")) for i in manifest["instruments"]
+    }
+    aliases_raw = ALIASES.read_bytes()
+    aliases = {k: v["aliases"] for k, v in json.loads(aliases_raw)["aliases"].items()}
+    extra = instrument_tokens(titles, aliases)
+    index = Bm25Index.build(chunks, extra)
     index.save(OUT)
     record = {
         "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -51,6 +60,10 @@ def main() -> int:
             "chunks": len(chunks),
         },
         "params": {"method": "lucene", "k1": K1, "b": B},
+        "instrument_tokens": {
+            "aliases_sha256": hashlib.sha256(aliases_raw).hexdigest(),
+            "instruments": len(extra),
+        },
         "vocab_size": index.vocab_size,
         "libraries": {p: md.version(p) for p in ("bm25s", "numpy")},
         "output": OUT.as_posix(),

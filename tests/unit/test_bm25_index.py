@@ -95,3 +95,19 @@ def test_save_and_load_round_trip(tmp_path: Path) -> None:
         h.chunk_id for h in ix.search(q, on=DAY)
     ]
     assert back.vocab_size == ix.vocab_size
+
+
+def test_instrument_title_and_alias_tokens_dec_059() -> None:
+    from madhya_kanoon_saathi.retrieval.bm25_index import instrument_tokens
+
+    # IN.RTI2005 title_hi from the official India Code Hindi PDF p.1
+    extra = instrument_tokens(
+        {"IN.RTI2005": ("The Right to Information Act, 2005", "सूचना का अधिकार अधिनियम, 2005")},
+        {"IN.RTI2005": ["RTI"]},
+    )
+    assert {"right", "information", "act", "2005", "सूचना", "अधिकार", "अधिनियम", "rti"} <= set(
+        extra["IN.RTI2005"]
+    )
+    ix = Bm25Index.build(CHUNKS, extra)
+    # a Hindi Act name now reaches the English RTI chunk
+    assert ix.search("सूचना का अधिकार", on=DAY)[0].chunk_id.startswith("IN.RTI2005")

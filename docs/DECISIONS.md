@@ -659,6 +659,13 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: section-number queries ("धारा 8(1)(j)") need exact keyword matching across languages; one index keeps the shared section tokens matching across Hindi and English chunks.
 - Effects: +numpy, +bm25s in the Lambda image (small) · ₹0.
 
+## DEC-059 — Instrument titles and aliases as BM25 tokens
+- Date: 2026-11-11 | Status: accepted ("A") | Approved by: Malik | Amends DEC-058 item 2
+- Context: Keyword search could not tell which Act a bare section number belongs to ("धारा 8(1)(j)" ranked CPA s.8(1) above RTI s.8(1)), and an Act named in a query only matched if its words happened to be in the chunk text.
+- Decision: Every chunk also gets the tokens of its instrument's **English and Hindi titles** (manifest `title_en` / `title_hi`) and of a short **alias list** in `data/instrument_aliases.json` (common abbreviations such as "RTI"; Hindi short names only where an official source spells them, with the source recorded). Hindi titles are added to the manifest only from an official Hindi copy (first: RTI Act, India Code Hindi PDF p.1). Aliases are search aids only, never shown to users as titles.
+- Why: names the Act a user means ("RTI dhara 8"), and lets a Hindi Act name match English chunks of the same Act.
+- Effects: one shared token set per instrument (low IDF, so it only tips ties between Acts) · ₹0 · Hindi titles for other central Acts need their official Hindi copies (OPEN_QUESTIONS S14).
+
 ---
 
 ## Pending decisions (not yet made)

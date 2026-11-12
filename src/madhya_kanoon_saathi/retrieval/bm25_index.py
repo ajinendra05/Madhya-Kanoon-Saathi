@@ -58,12 +58,27 @@ def contained_tokens(chunk: Mapping[str, Any]) -> list[str]:
     ]
 
 
-def chunk_tokens(chunk: Mapping[str, Any]) -> list[str]:
+def instrument_tokens(
+    titles: Mapping[str, tuple[str | None, str | None]], aliases: Mapping[str, list[str]]
+) -> dict[str, list[str]]:
+    """Per instrument: tokens of its English + Hindi titles and its aliases (DEC-059)."""
+    out: dict[str, list[str]] = {}
+    for iid in set(titles) | set(aliases):
+        en, hi = titles.get(iid, (None, None))
+        words = [en or "", hi or "", *aliases.get(iid, [])]
+        out[iid] = [t for w in words for t in tokenize(w)]
+    return out
+
+
+def chunk_tokens(
+    chunk: Mapping[str, Any], extra: Mapping[str, list[str]] | None = None
+) -> list[str]:
     return (
         tokenize(chunk["text"])
         + provision_tokens(chunk["section_uid"])
         + contained_tokens(chunk)
         + tokenize(chunk.get("heading", ""))
+        + list((extra or {}).get(chunk["section_uid"].split(":")[0], []))
     )
 
 
@@ -80,10 +95,13 @@ class Bm25Index:
         self.meta = meta
 
     @classmethod
-    def build(cls, chunks: Iterable[Mapping[str, Any]]) -> Bm25Index:
+    def build(
+        cls, chunks: Iterable[Mapping[str, Any]], extra: Mapping[str, list[str]] | None = None
+    ) -> Bm25Index:
+        """``extra``: instrument_id -> title/alias tokens added to every chunk of it (DEC-059)."""
         chunks = list(chunks)
         retriever = bm25s.BM25(k1=K1, b=B, method="lucene")
-        retriever.index([chunk_tokens(c) for c in chunks], show_progress=False)
+        retriever.index([chunk_tokens(c, extra) for c in chunks], show_progress=False)
         meta = [{k: c.get(k) for k in META_FIELDS} for c in chunks]
         return cls(retriever, meta)
 

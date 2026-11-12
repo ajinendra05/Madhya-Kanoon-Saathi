@@ -431,7 +431,7 @@
       "type": "act",
       "jurisdiction": "IN",
       "title_en": "The Right to Information Act, 2005 (Act No. 22 of 2005)",
-      "notes": "Enacted 15.06.2005. s.1(3): s.4(1), s.5(1),(2), ss.12, 13, 15, 16, 24, 27, 28 in force at once; the remaining provisions 'on the one hundred and twentieth day of its enactment' (India Code p.5). commenced_on records the first stage. s.8(1)(j) substituted by DPDP Act s.44(3) w.e.f. 13.11.2025 (India Code footnote, p.11).",
+      "notes": "Enacted 15.06.2005. s.1(3): s.4(1), s.5(1),(2), ss.12, 13, 15, 16, 24, 27, 28 in force at once; the remaining provisions 'on the one hundred and twentieth day of its enactment' (India Code p.5). commenced_on records the first stage. s.8(1)(j) substituted by DPDP Act s.44(3) w.e.f. 13.11.2025 (India Code footnote, p.11). title_hi read from the official India Code Hindi PDF (IN.RTI2005@hi@1, p.1 rendered image, 2026-11-11; the text layer is corrupted).",
       "commenced_on": "2005-06-15",
       "amendments": [
         {
@@ -441,7 +441,8 @@
             "IN.RTI2005:s8:ss1:cl_j"
           ]
         }
-      ]
+      ],
+      "title_hi": "सूचना का अधिकार अधिनियम, 2005"
     },
     {
       "instrument_id": "IN.DPDP2023",
