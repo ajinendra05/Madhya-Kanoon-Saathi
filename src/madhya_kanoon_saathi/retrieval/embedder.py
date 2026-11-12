@@ -16,9 +16,10 @@ from __future__ import annotations
 
 import hashlib
 import json
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import onnxruntime as ort
@@ -36,6 +37,22 @@ def _sha256(path: Path) -> str:
         for block in iter(lambda: f.read(1 << 20), b""):
             h.update(block)
     return h.hexdigest()
+
+
+EMBED_FORMAT = "title / heading path joined with > / text, one per line (DEC-061)"
+
+
+def embed_text(
+    chunk: Mapping[str, Any], titles: Mapping[str, tuple[str | None, str | None]]
+) -> str:
+    """Text given to the model for a chunk (DEC-061); stored chunk text is unchanged.
+
+    Title in the chunk's language when the manifest has it, else English; queries get no prefix.
+    """
+    en, hi = titles.get(chunk["instrument_id"], (None, None))
+    title = (hi if chunk.get("lang") == "hi" and hi else en) or ""
+    path = " > ".join(chunk.get("path") or [])
+    return "\n".join(p for p in (title, path, chunk["text"]) if p)
 
 
 @dataclass

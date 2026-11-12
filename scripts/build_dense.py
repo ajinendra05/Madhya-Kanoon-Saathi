@@ -24,7 +24,7 @@ from pathlib import Path
 import numpy as np
 
 from madhya_kanoon_saathi.retrieval.dense_index import DenseIndex
-from madhya_kanoon_saathi.retrieval.embedder import Embedder
+from madhya_kanoon_saathi.retrieval.embedder import EMBED_FORMAT, Embedder, embed_text
 
 SRC = Path("data/parsed/chunks.jsonl")
 REC_DIR = Path("data/parsed_manifest")
@@ -48,7 +48,11 @@ def main() -> int:
     chunks = [json.loads(x) for x in raw.decode("utf-8").splitlines()]
     emb = Embedder.load(variant)
     t0 = time.time()
-    vecs = emb.encode([c["text"] for c in chunks])
+    manifest = json.loads(Path("data/corpus_manifest.json").read_text(encoding="utf-8"))
+    titles = {
+        i["instrument_id"]: (i.get("title_en"), i.get("title_hi")) for i in manifest["instruments"]
+    }
+    vecs = emb.encode([embed_text(c, titles) for c in chunks])
     seconds = time.time() - t0
     out = Path(f"data/index/dense-{variant}")
     DenseIndex.build(vecs, chunks).save(out)
@@ -81,7 +85,7 @@ def main() -> int:
             "sha256": hashlib.sha256(raw).hexdigest(),
             "chunks": len(chunks),
         },
-        "text_embedded": "chunk.text (stored, unfolded; DEC-054)",
+        "text_embedded": EMBED_FORMAT,
         "max_length": emb.max_length,
         "truncated": emb.last_stats.truncated,
         "seconds": round(seconds, 1),

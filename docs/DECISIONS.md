@@ -675,6 +675,18 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: provenance traceable to BAAI; the same ONNX runtime at build and query time is what DEC-022's parity test needs; no torch in the Lambda image.
 - Effects: ~2.3 GB download (free) · W1.5 reranker has no official ONNX file: exporting it needs torch (separate decision) · ₹0.
 
+## DEC-061 — Embed the Act title and heading path with each chunk
+- Date: 2026-11-12 | Status: accepted ("S16 - yes") | Approved by: Malik | Amends DEC-054's "Embeddings use the stored (unfolded) text" (OPEN_QUESTIONS S16)
+- Decision: The text given to the embedding model is `<instrument title> \n <path joined with " > "> \n <chunk text>` (title in the chunk's language when the manifest has it, else English). Stored and displayed chunk text is unchanged. Queries are embedded as typed (no prefix). The text-only vectors of 2026-11-12 are kept (git-ignored `dense-<variant>-v1`) so the eval can compare both.
+- Why: later sub-section chunks do not repeat their section heading or Act name, so their vectors miss what the chunk is about.
+- Effects: re-embedding ~30 min (both variants) · ₹0.
+
+## DEC-062 — Reranker: one-time ONNX export on Colab
+- Date: 2026-11-12 | Status: accepted ("S18 - A") | Approved by: Malik | Implements DEC-005 (OPEN_QUESTIONS S18)
+- Decision: `BAAI/bge-reranker-v2-m3` (Apache-2.0) is exported to ONNX **once on Google Colab** (torch there only), with the revision pinned and sha256 recorded; Malik runs the notebook and downloads the file. int8 is then made locally with the same onnxruntime dynamic quantisation as the embedder. No torch on the laptop or in the Lambda image.
+- Why: same runtime as the embedder; no large temporary install on the laptop.
+- Effects: one Colab run by Malik · ~2.3 GB download, ~0.6 GB int8 · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)
