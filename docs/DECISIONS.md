@@ -708,6 +708,17 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: Lok Adalats are a free, statutory route that users ask about; the text is born-digital and already verified as the in-force India Code copy.
 - Effects: chunks, BM25 and dense indexes rebuilt · CORPUS.md item 13 updated · ₹0.
 
+## DEC-065 — Retrieval eval: strict + lenient matching; indexed-row and all-row sets
+- Date: 2026-11-13 | Status: accepted (both as recommended) | Approved by: Malik | Implements plan §7 retrieval metrics (W1.7)
+- Context: Seed golden rows often name a broader provision than the chunk that answers it (expected LSA s.12; chunks are s.12 clauses), and many rows cite laws that are gated today.
+- Decision:
+  1. **Matching:** report both. **Strict** = DEC-040 `covers(chunk, expected)` (chunk equal to or an ancestor of the expected provision); this is the gated metric. **Lenient** = strict or the chunk is a descendant of the expected provision. An act-level expected clause (`section_uid: null`) uses the instrument id.
+  2. **Row sets:** headline and gates on rows whose expected clauses all have a chunk in the index now (**indexed**); also report **all** rows with expected clauses (shows corpus gaps).
+  3. **Metrics per row, averaged:** Recall@10 = share of expected clauses matched by a top-10 chunk; MRR@10 = 1 / rank of the first matching chunk (0 if none); nDCG@10 with binary gain, where a chunk gains only if it matches an expected clause not matched higher up (IDCG = min(|expected|, 10) hits).
+  4. Plan gates (Recall@10 ≥ 0.85, MRR@10 ≥ 0.6) are **reported, not enforced in CI**, while the golden set is the unverified v0.1 seed. Every report is sliced by language × domain × answerability (eval rules).
+- Why: strict keeps the citation-precision meaning of DEC-040; lenient shows how much of the gap is labelling granularity that the golden review will fix. Gating on indexed rows measures the retriever, not missing laws.
+- Effects: `eval/retrieval_metrics.py` + `scripts/eval_retrieval.py`; committed reports under `reports/` · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)
