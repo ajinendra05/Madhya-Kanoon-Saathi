@@ -79,7 +79,11 @@ def test_pairs_follow_the_tokenizer_pair_template() -> None:
     r.score("free legal aid", ["legal aid", "rent notice"])
     tok = toy_tokenizer()
     want = {tuple(tok.encode("free legal aid", p).ids) for p in ["legal aid", "rent notice"]}
-    got = {tuple(int(x) for x, m in zip(row, row != 1, strict=True) if m) for row in s.batches[0]}
+    got = {
+        tuple(int(x) for x, m in zip(row, row != 1, strict=True) if m)
+        for b in s.batches
+        for row in b
+    }
     assert got == want
 
 
