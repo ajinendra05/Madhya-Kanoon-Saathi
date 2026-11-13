@@ -1,0 +1,6499 @@
+{
+ "date": "2026-11-13",
+ "golden": "data\\golden\\v0.1-seed\\golden_set_v0.1_seed.jsonl",
+ "configs": {
+  "bm25": {
+   "indexed/strict": {
+    "recall@10": 0.1235632183908046,
+    "recall@6": 0.09770114942528736,
+    "mrr@10": 0.08852627257799671,
+    "ndcg@10": 0.08762035944979597,
+    "rows": 58
+   },
+   "indexed/lenient": {
+    "recall@10": 0.27586206896551724,
+    "recall@6": 0.21551724137931033,
+    "mrr@10": 0.15294198139025725,
+    "ndcg@10": 0.17053588594593577,
+    "rows": 58
+   },
+   "all/strict": {
+    "recall@10": 0.08085808580858085,
+    "recall@6": 0.06600660066006601,
+    "mrr@10": 0.06238802451673739,
+    "ndcg@10": 0.05854985621457216,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.18646864686468645,
+    "recall@6": 0.14686468646864687,
+    "mrr@10": 0.12536932264655037,
+    "ndcg@10": 0.12315285856001931,
+    "rows": 101
+   }
+  },
+  "dense": {
+   "indexed/strict": {
+    "recall@10": 0.3218390804597701,
+    "recall@6": 0.3160919540229885,
+    "mrr@10": 0.2583333333333333,
+    "ndcg@10": 0.26555856673939815,
+    "rows": 58
+   },
+   "indexed/lenient": {
+    "recall@10": 0.6379310344827587,
+    "recall@6": 0.6063218390804598,
+    "mrr@10": 0.4721264367816092,
+    "ndcg@10": 0.5024713207937984,
+    "rows": 58
+   },
+   "all/strict": {
+    "recall@10": 0.19801980198019803,
+    "recall@6": 0.19471947194719474,
+    "mrr@10": 0.16072607260726074,
+    "ndcg@10": 0.16216049338470026,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.40264026402640263,
+    "recall@6": 0.38448844884488453,
+    "mrr@10": 0.31600660066006603,
+    "ndcg@10": 0.32038112859124396,
+    "rows": 101
+   }
+  },
+  "rrf": {
+   "indexed/strict": {
+    "recall@10": 0.31321839080459773,
+    "recall@6": 0.2959770114942529,
+    "mrr@10": 0.2011494252873563,
+    "ndcg@10": 0.22008474078091175,
+    "rows": 58
+   },
+   "indexed/lenient": {
+    "recall@10": 0.6120689655172413,
+    "recall@6": 0.5603448275862069,
+    "mrr@10": 0.3692528735632184,
+    "ndcg@10": 0.4189063888149847,
+    "rows": 58
+   },
+   "all/strict": {
+    "recall@10": 0.19801980198019803,
+    "recall@6": 0.18481848184818483,
+    "mrr@10": 0.13128241395568127,
+    "ndcg@10": 0.13896786371690903,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.3927392739273927,
+    "recall@6": 0.35973597359735976,
+    "mrr@10": 0.2610561056105611,
+    "ndcg@10": 0.2751283561003823,
+    "rows": 101
+   }
+  },
+  "rerank-int8": {
+   "indexed/strict": {
+    "recall@10": 0.3563218390804598,
+    "recall@6": 0.3477011494252874,
+    "mrr@10": 0.30651340996168586,
+    "ndcg@10": 0.3062962488795191,
+    "rows": 58
+   },
+   "indexed/lenient": {
+    "recall@10": 0.6637931034482759,
+    "recall@6": 0.6293103448275862,
+    "mrr@10": 0.5038998357963875,
+    "ndcg@10": 0.5324328039109066,
+    "rows": 58
+   },
+   "all/strict": {
+    "recall@10": 0.22277227722772278,
+    "recall@6": 0.21782178217821782,
+    "mrr@10": 0.1977997799779978,
+    "ndcg@10": 0.1914215547998416,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.4224422442244224,
+    "recall@6": 0.40264026402640263,
+    "mrr@10": 0.35372465818010373,
+    "ndcg@10": 0.34797099344711047,
+    "rows": 101
+   }
+  },
+  "rerank-fp32": {
+   "indexed/strict": {
+    "recall@10": 0.3563218390804598,
+    "recall@6": 0.3477011494252874,
+    "mrr@10": 0.34099616858237547,
+    "ndcg@10": 0.33229137181541146,
+    "rows": 58
+   },
+   "indexed/lenient": {
+    "recall@10": 0.6637931034482759,
+    "recall@6": 0.6293103448275862,
+    "mrr@10": 0.5294745484400657,
+    "ndcg@10": 0.551570209510063,
+    "rows": 58
+   },
+   "all/strict": {
+    "recall@10": 0.22277227722772278,
+    "recall@6": 0.21782178217821782,
+    "mrr@10": 0.2275027502750275,
+    "ndcg@10": 0.21083052412007516,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.4224422442244224,
+    "recall@6": 0.40264026402640263,
+    "mrr@10": 0.3832626119754833,
+    "ndcg@10": 0.36568240613368286,
+    "rows": 101
+   }
+  }
+ },
+ "rows": {
+  "GS-001": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.MTA2021:s15:ss3",
+    "IN.SSC2020:s129:ss5",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.SSC2020:s129:ss2"
+   ],
+   "rrf": [
+    "IN.MTA2021:s15:ss3",
+    "IN.SSC2020:s129:ss5",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.SSC2020:s129:ss2"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.MTA2021:s24:ss2",
+    "IN.SSC2020:s94:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.CPA2019:s101:ss2:cl_zd"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.MTA2021:s14:ss1",
+    "IN.SSC2020:s94:ss2",
+    "IN.MTA2021:s24:ss2",
+    "IN.SSC2020:s94:ss1"
+   ]
+  },
+  "GS-002": {
+   "expected": [
+    "MP.ACA1961:s12:ss1"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.MTA2021:s21:ss2:cl_d"
+   ],
+   "dense": [
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s17:ss2"
+   ],
+   "rrf": [
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s26:ss1"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s21:ss5",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s21:ss2:cl_h"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s21:ss2:cl_e"
+   ]
+  },
+  "GS-003": {
+   "expected": [
+    "MP.ACA1961:s12:ss1:cl_a",
+    "MP.ACA1961:s13"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s23"
+   ],
+   "rrf": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s23"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s21:ss5",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s21:ss5",
+    "IN.MTA2021:s20:ss4"
+   ]
+  },
+  "GS-004": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s22:ss2",
+    "IN.MTA2021:s22:ss1",
+    "IN.MTA2021:s28",
+    "IN.IRC2020:s2:cl_zm",
+    "IN.MTA2021:s2:cl_f",
+    "IN.MTA2021:s18",
+    "IN.MTA2021:s27:ss1",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s14:ss1"
+   ],
+   "dense": [
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s36:ss4",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s41:ss2",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s36:ss2",
+    "IN.MTA2021:s27:ss1"
+   ],
+   "rrf": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s27:ss1",
+    "IN.MTA2021:s22:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s18",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s26:ss3"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s19:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s41:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s41:ss2",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s19:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s14:ss3"
+   ]
+  },
+  "GS-005": {
+   "expected": [
+    "IN.RA1908:s17:ss1:cl_d"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s20:ss3",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s21:ss3",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.MTA2021:s21:ss2:cl_b"
+   ],
+   "dense": [
+    "IN.RA1908:s17:ss1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s9:ss2",
+    "IN.SSC2020:s89:ss2",
+    "IN.MTA2021:s12",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s5:ss3"
+   ],
+   "rrf": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s20:ss3",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s5:ss3",
+    "IN.TPA1882:s107",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s13:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RA1908:s17:ss1",
+    "IN.TPA1882:s107",
+    "IN.RA1908:s17:ss1A",
+    "IN.SSC2020:s89:ss2",
+    "IN.OSHC2020:s96:ss1",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s4:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.RA1908:s17:ss1",
+    "IN.TPA1882:s107",
+    "IN.RA1908:s17:ss1A",
+    "IN.SSC2020:s89:ss2",
+    "IN.MTA2021:s4:ss1",
+    "IN.OSHC2020:s96:ss1",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s4:ss3",
+    "MP.SLSALAGUIDE2025:para1:sp3"
+   ]
+  },
+  "GS-006": {
+   "expected": [
+    "IN.RA1908:s17:ss1:cl_d"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.SSC2020:sch4",
+    "IN.SSC2020:s25:ss4",
+    "IN.SVANLOG2025:sch1",
+    "IN.IRC2020:s55:ss6",
+    "IN.COW2019:s48:ss5",
+    "IN.SVANLOG2025:sch3",
+    "IN.SSC2020:s81:ss3",
+    "IN.SSC2020:s36:ss3",
+    "IN.SSC2020:s53:ss3",
+    "IN.SSC2020:s141:ss1"
+   ],
+   "dense": [
+    "IN.RA1908:s17:ss1",
+    "IN.OSHC2020:s3:ss1",
+    "IN.TPA1882:s107",
+    "IN.RA1908:s17:ss1A",
+    "IN.IRC2020:s8:ss2",
+    "IN.OSHC2020:s3:ss6",
+    "IN.OSHC2020:s3:ss3",
+    "IN.RA1908:s17:ss2:expl1",
+    "IN.TPA1882:s106:ss1",
+    "IN.OSHC2020:s33"
+   ],
+   "rrf": [
+    "IN.SSC2020:sch4",
+    "IN.RA1908:s17:ss1",
+    "IN.SSC2020:s25:ss4",
+    "IN.OSHC2020:s3:ss1",
+    "IN.SVANLOG2025:sch1",
+    "IN.TPA1882:s107",
+    "IN.IRC2020:s55:ss6",
+    "IN.RA1908:s17:ss1A",
+    "IN.COW2019:s48:ss5",
+    "IN.IRC2020:s8:ss2"
+   ],
+   "rerank-int8": [
+    "IN.RA1908:s17:ss1",
+    "IN.RA1908:s17:ss2:expl1",
+    "IN.RA1908:s17:ss1A",
+    "IN.RA1908:s17:ss3",
+    "IN.TPA1882:s107",
+    "IN.SVANLOG2025:sch1",
+    "IN.SSC2020:s3:ss1",
+    "IN.IRC2020:s8:ss2",
+    "IN.OSHC2020:s3:ss1",
+    "IN.OSHC2020:s3:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.RA1908:s17:ss1",
+    "IN.RA1908:s17:ss2:expl1",
+    "IN.RA1908:s17:ss1A",
+    "IN.RA1908:s17:ss3",
+    "IN.TPA1882:s107",
+    "IN.SVANLOG2025:sch1",
+    "IN.SSC2020:s3:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.MTA2021:s35:ss6",
+    "IN.OSHC2020:s3:ss6"
+   ]
+  },
+  "GS-007": {
+   "expected": [
+    "IN.TPA1882:s106"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s20:ss3",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s23"
+   ],
+   "dense": [
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s20:ss5"
+   ],
+   "rrf": [
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s20:ss3",
+    "IN.TPA1882:s106:ss1"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s17:ss1",
+    "IN.TPA1882:s106:ss1",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s15:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s23",
+    "IN.TPA1882:s106:ss1",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s4:ss1"
+   ]
+  },
+  "GS-008": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.OSHC2020:sch1:para20",
+    "IN.SSC2020:s2:ss14",
+    "IN.COW2019:s2:cl_e",
+    "IN.IRC2020:s86:ss20",
+    "IN.MTA2021:s20:ss1",
+    "IN.SSC2020:sch4",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s2:ss20",
+    "IN.TPA1882:s105",
+    "IN.ESHRAMFAQ2026:para20"
+   ],
+   "dense": [
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s19:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s26:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.SSC2020:s43:ss5"
+   ],
+   "rrf": [
+    "IN.MTA2021:s20:ss1",
+    "IN.TPA1882:s105",
+    "IN.OSHC2020:sch1:para20",
+    "IN.SSC2020:s2:ss14",
+    "IN.MTA2021:s20:ss5",
+    "IN.COW2019:s2:cl_e",
+    "IN.MTA2021:s9:ss2",
+    "IN.IRC2020:s86:ss20",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s19:ss2"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s20:ss2",
+    "IN.SSC2020:s43:ss5",
+    "IN.MTA2021:s19:ss1",
+    "IN.TPA1882:s105"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s20:ss4",
+    "IN.TPA1882:s105",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s15:ss6"
+   ]
+  },
+  "GS-009": {
+   "expected": [
+    "IN.MTA2021",
+    "MP.ACA1961:s1"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s41:ss1",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s2",
+    "IN.MTA2021:s2:cl_l",
+    "IN.MTA2021:s5:ss1",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s4:ss5",
+    "IN.MTA2021:s2:cl_h"
+   ],
+   "dense": [
+    "IN.MTA2021:s1:ss3",
+    "IN.MTA2021:s42",
+    "IN.MTA2021:s5:ss1",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s3:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s3:ss2"
+   ],
+   "rrf": [
+    "IN.MTA2021:s5:ss1",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s1:ss1",
+    "IN.MTA2021:s41:ss1",
+    "IN.MTA2021:s47:ss1",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s1:ss2",
+    "IN.MTA2021:s4:ss3"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s3:ss1",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s1:ss3",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s7:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s3:ss1",
+    "IN.MTA2021:s1:ss3",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s1:ss2",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s27:ss1",
+    "IN.MTA2021:s28"
+   ]
+  },
+  "GS-010": {
+   "expected": [
+    "IN.MTA2021",
+    "MP.ACA1961:s1"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para7"
+   ],
+   "dense": [
+    "IN.TPA1882:s105",
+    "IN.SVANSG2025:para1",
+    "IN.SSC2020:s161:ss1",
+    "IN.SSC2020:s160:ss1",
+    "IN.MTA2021:s13:ss1",
+    "IN.SSC2020:s2:ss59",
+    "IN.SSC2020:s1:ss2",
+    "IN.MTA2021:s26:ss1",
+    "IN.SSC2020:s43:ss5",
+    "IN.MTA2021:s5:ss1"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para7",
+    "IN.TPA1882:s105",
+    "IN.SVANSG2025:para1",
+    "IN.SSC2020:s161:ss1",
+    "IN.SSC2020:s160:ss1",
+    "IN.MTA2021:s13:ss1",
+    "IN.SSC2020:s2:ss59",
+    "IN.SSC2020:s1:ss2",
+    "IN.MTA2021:s26:ss1",
+    "IN.SSC2020:s43:ss5"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s2:cl_n",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s36:ss2",
+    "IN.MTA2021:s13:ss1",
+    "IN.SVANSG2025:para1",
+    "IN.ESHRAMFAQ2026:para7"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s2:cl_n",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s36:ss2",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s5:ss3",
+    "IN.SVANSG2025:para1",
+    "IN.SSC2020:s43:ss5",
+    "IN.SSC2020:s2:ss26"
+   ]
+  },
+  "GS-011": {
+   "expected": [
+    "IN.TPA1882:s108:cl_c"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.RTI2005:sch1",
+    "IN.MTA2021:s5:ss2",
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.MTA2021:s15:ss6",
+    "IN.ESHRAMFAQ2026:para40"
+   ],
+   "dense": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s36:ss3",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s37:ss3",
+    "IN.MTA2021:s8"
+   ],
+   "rrf": [
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s36:ss3",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s18",
+    "IN.MTA2021:s15:ss3"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s36:ss3",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s16"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s36:ss3",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s16",
+    "IN.MTA2021:s26:ss3"
+   ]
+  },
+  "GS-012": {
+   "expected": [
+    "MP.ACA1961:s12:ss1:cl_e"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s5:ss1",
+    "IN.MTA2021:s28",
+    "IN.SSC2020:s125:ss5",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s12",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s18",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s6"
+   ],
+   "dense": [
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s5:ss3"
+   ],
+   "rrf": [
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s22:ss2",
+    "IN.MTA2021:s15:ss3"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s125:ss5",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s16",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s20:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s17:ss2",
+    "IN.SSC2020:s125:ss5",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s16",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s6",
+    "IN.MTA2021:s14:ss4"
+   ]
+  },
+  "GS-013": {
+   "expected": [
+    "IN.TPA1882:s107",
+    "MP.ACA1961:s2"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s35:ss1",
+    "IN.MTA2021:s40:ss2",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s35:ss3",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s35:ss6",
+    "IN.TPA1882:s109"
+   ],
+   "rrf": [
+    "IN.RTI2005:s2",
+    "IN.MTA2021:s44:ss2",
+    "IN.RTI2005:s1:ss2",
+    "IN.MTA2021:s35:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.MTA2021:s40:ss2",
+    "IN.RTI2005:s31",
+    "IN.MTA2021:s4:ss6",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.MTA2021:s4:ss1"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s43",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:s13:ss2",
+    "IN.TPA1882:s108",
+    "IN.MTA2021:s35:ss6"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s35:ss1",
+    "IN.TPA1882:s108",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:s20:ss4",
+    "IN.TPA1882:s109"
+   ]
+  },
+  "GS-014": {
+   "expected": [
+    "MP.ACA1961:s12:ss1:cl_a"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s11:ss1",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s22:ss2",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s23"
+   ],
+   "dense": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s20:ss3"
+   ],
+   "rrf": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s15:ss3"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s21:ss2:cl_e"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s15:ss6"
+   ]
+  },
+  "GS-017": {
+   "expected": [
+    "MP.ACA1961:s2",
+    "MP.ACA1961:s12:ss1:cl_f"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.MTA2021:s15:ss1",
+    "IN.TPA1882:s105",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s15:ss2",
+    "IN.MTA2021:s38:ss1",
+    "IN.MTA2021:s8",
+    "IN.TPA1882:s110",
+    "IN.MTA2021:s38:ss2",
+    "IN.MTA2021:s44:ss2",
+    "IN.OSHC2020:s80"
+   ],
+   "rrf": [
+    "IN.MTA2021:s15:ss1",
+    "IN.TPA1882:s105",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s15:ss2",
+    "IN.MTA2021:s38:ss1",
+    "IN.MTA2021:s8",
+    "IN.TPA1882:s110",
+    "IN.MTA2021:s38:ss2",
+    "IN.MTA2021:s44:ss2",
+    "IN.OSHC2020:s80"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s38:ss1",
+    "IN.MTA2021:s2:cl_n",
+    "IN.MTA2021:s40:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s36:ss9",
+    "IN.MTA2021:s2:cl_d"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s38:ss1",
+    "IN.MTA2021:s2:cl_n",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s2:cl_d"
+   ]
+  },
+  "GS-018": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.SSC2020:s98",
+    "IN.ESHRAMFAQ2026:para22",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para50",
+    "IN.ESHRAMFAQ2026:para51",
+    "IN.ESHRAMFAQ2026:para52",
+    "IN.ESHRAMFAQ2026:para4",
+    "IN.ESHRAMFAQ2026:para46"
+   ],
+   "dense": [
+    "IN.MTA2021:s36:ss2",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s36:ss7",
+    "IN.MTA2021:s36:ss6",
+    "IN.MTA2021:s37:ss5",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s36:ss4",
+    "IN.MTA2021:s39",
+    "IN.MTA2021:s36:ss3"
+   ],
+   "rrf": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s39",
+    "IN.MTA2021:s14:ss3",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.MTA2021:s36:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.SSC2020:s98",
+    "IN.MTA2021:s36:ss7"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s39",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s30",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s31",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.MTA2021:s42"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s39",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s30",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s31",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.MTA2021:s42"
+   ]
+  },
+  "GS-021": {
+   "expected": [
+    "IN.TPA1882",
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s4:ss2",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.MTA2021:s9:ss2",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s21:ss3",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.MTA2021:s21:ss2:cl_b"
+   ],
+   "dense": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rrf": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s12"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s15:ss4"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s13:ss2"
+   ]
+  },
+  "GS-023": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s22:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s22:ss1",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s2:cl_f",
+    "IN.MTA2021:s18"
+   ],
+   "dense": [
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s35:ss6",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s5:ss2"
+   ],
+   "rrf": [
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s18",
+    "IN.MTA2021:s8"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s4:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s2:cl_a"
+   ]
+  },
+  "GS-024": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s22:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s26:ss2"
+   ],
+   "dense": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s38:ss1",
+    "IN.MTA2021:s35:ss3",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rrf": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s22:ss2",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s15:ss6"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s13:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s24:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s13:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s24:ss1"
+   ]
+  },
+  "GS-025": {
+   "expected": [
+    "IN.COW2019:s17",
+    "IN.COW2019:s45"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.COW2019:s45:ss3",
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s4:ss8",
+    "IN.IRC2020:s59:ss2",
+    "IN.MTA2021:s20:ss4",
+    "IN.COW2019:s45:ss2",
+    "IN.IRC2020:s69",
+    "IN.IRC2020:s59:ss1",
+    "IN.MTA2021:s21:ss4",
+    "IN.SSC2020:s89:ss1"
+   ],
+   "rrf": [
+    "IN.COW2019:s45:ss3",
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s4:ss8",
+    "IN.IRC2020:s59:ss2",
+    "IN.MTA2021:s20:ss4",
+    "IN.COW2019:s45:ss2",
+    "IN.IRC2020:s69",
+    "IN.IRC2020:s59:ss1",
+    "IN.MTA2021:s21:ss4",
+    "IN.SSC2020:s89:ss1"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s49:ss1",
+    "IN.COW2019:s45:ss3",
+    "IN.MTA2021:s21:ss4",
+    "IN.COW2019:s59",
+    "IN.COW2019:s45:ss2",
+    "IN.IRC2020:s56",
+    "IN.COW2019:s45:ss4",
+    "IN.SSC2020:s82:ss1",
+    "IN.COW2019:s48:ss1",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s49:ss1",
+    "IN.COW2019:s45:ss3",
+    "IN.MTA2021:s21:ss4",
+    "IN.COW2019:s45:ss2",
+    "IN.COW2019:s45:ss4",
+    "IN.IRC2020:s56",
+    "IN.COW2019:s59",
+    "IN.COW2019:s48:ss1",
+    "IN.SSC2020:s82:ss1",
+    "IN.MTA2021:s20:ss4"
+   ]
+  },
+  "GS-026": {
+   "expected": [
+    "IN.COW2019:s17:ss1"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.SSC2020:s24:ss7",
+    "IN.SSC2020:s14:ss6",
+    "IN.SSC2020:s76:ss1:cl_d",
+    "IN.IRC2020:s2:cl_d",
+    "IN.SSC2020:s76:ss4",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.SSC2020:s76:ss6",
+    "IN.ESHRAMFAQ2026:para27"
+   ],
+   "dense": [
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s16",
+    "IN.COW2019:s17:ss2",
+    "IN.SSC2020:s78",
+    "IN.COW2019:s39:ss2",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s39:ss1",
+    "IN.COW2019:s15",
+    "IN.SSC2020:s80",
+    "IN.COW2019:s17:ss3"
+   ],
+   "rrf": [
+    "IN.SSC2020:s76:ss4",
+    "IN.SSC2020:s78",
+    "IN.COW2019:s17:ss1",
+    "IN.SSC2020:s80",
+    "IN.IRC2020:s2:cl_d",
+    "IN.SSC2020:s56:ss4",
+    "IN.SSC2020:s76:ss6",
+    "IN.COW2019:s28",
+    "IN.SSC2020:s62:ss5",
+    "IN.SSC2020:s76:ss3"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s2:cl_d",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s16",
+    "IN.SSC2020:s29:ss4",
+    "IN.COW2019:s39:ss2",
+    "IN.SSC2020:s78",
+    "IN.COW2019:s17:ss3",
+    "IN.OSHC2020:s55:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s2:cl_d",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s16",
+    "IN.SSC2020:s78",
+    "IN.SSC2020:s29:ss4",
+    "IN.COW2019:s39:ss2",
+    "IN.COW2019:s17:ss3",
+    "IN.COW2019:s26:ss1"
+   ]
+  },
+  "GS-027": {
+   "expected": [
+    "IN.COW2019:s17:ss2"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s83:ss3",
+    "IN.IRC2020:s59:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s76:ss4",
+    "IN.IRC2020:s38:ss3",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s17:ss1",
+    "IN.IRC2020:s83:ss2",
+    "IN.OSHC2020:s25:ss3"
+   ],
+   "rrf": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s83:ss3",
+    "IN.IRC2020:s59:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s76:ss4",
+    "IN.IRC2020:s38:ss3",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s17:ss1",
+    "IN.IRC2020:s83:ss2",
+    "IN.OSHC2020:s25:ss3"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s79:ss9",
+    "IN.IRC2020:s83:ss3",
+    "IN.IRC2020:s70",
+    "IN.SSC2020:s77:ss3",
+    "IN.IRC2020:s67",
+    "IN.OSHC2020:s32:ss1:clr_vi",
+    "IN.SSC2020:s76:ss4",
+    "IN.SSC2020:s53:ss2",
+    "IN.COW2019:s19:ss6"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s79:ss9",
+    "IN.IRC2020:s83:ss3",
+    "IN.SSC2020:s76:ss4",
+    "IN.SSC2020:s77:ss3",
+    "IN.OSHC2020:s32:ss1:clr_vi",
+    "IN.IRC2020:s70",
+    "IN.IRC2020:s67",
+    "IN.IRC2020:s83:ss2",
+    "IN.COW2019:s19:ss6"
+   ]
+  },
+  "GS-028": {
+   "expected": [
+    "MP.MWVDAOCT2026"
+   ],
+   "indexed": false,
+   "bm25": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.ESHRAMFAQ2026:para43",
+    "IN.ESHRAMFAQ2026:para5",
+    "IN.ESHRAMFAQ2026:para51",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.COW2019:s9:ss1",
+    "IN.COW2019:s6:ss6",
+    "IN.ESHRAMFAQ2026:para46",
+    "MP.SLSALAGUIDE2025:para1:sp2"
+   ],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.COW2019:s6:ss6",
+    "IN.COW2019:s12",
+    "IN.COW2019:s10",
+    "IN.COW2019:s5",
+    "IN.COW2019:s6:ss3",
+    "IN.COW2019:s7:ss1",
+    "IN.COW2019:s9:ss2",
+    "IN.COW2019:s8:ss3",
+    "IN.COW2019:s6:ss4"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.COW2019:s6:ss6",
+    "IN.COW2019:s9:ss2",
+    "IN.COW2019:s9:ss1",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.COW2019:s12",
+    "IN.COW2019:s5",
+    "IN.COW2019:s6:ss4",
+    "IN.COW2019:s6:ss3",
+    "IN.COW2019:s6:ss1"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.COW2019:s6:ss6",
+    "IN.SVANLOG2025:sch1",
+    "IN.COW2019:s54:ss1",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.COW2019:s7:ss1",
+    "IN.COW2019:s9:ss1",
+    "IN.COW2019:s2:cl_k",
+    "IN.COW2019:s8:ss1",
+    "IN.COW2019:s12"
+   ],
+   "rerank-fp32": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.COW2019:s6:ss6",
+    "IN.COW2019:s54:ss1",
+    "IN.SVANLOG2025:sch1",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.COW2019:s7:ss1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.COW2019:s8:ss1",
+    "IN.COW2019:s12",
+    "IN.COW2019:s8:ss3"
+   ]
+  },
+  "GS-029": {
+   "expected": [
+    "IN.COW2019:s14"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s14",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "IN.SVANSG2025:para10",
+    "IN.SVANSG2025:para12",
+    "IN.OSHC2020:s20:ss3",
+    "IN.COW2019:s13:ss1"
+   ],
+   "dense": [
+    "IN.COW2019:s14",
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "IN.OSHC2020:s20:ss3",
+    "IN.OSHC2020:s29:ss2",
+    "IN.OSHC2020:s29:ss1",
+    "IN.COW2019:s36:ss1"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s14",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "IN.OSHC2020:s20:ss3",
+    "IN.COW2019:s13:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SVANSG2025:para10"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s14",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.SSC2020:s2:ss88:cl_c",
+    "IN.OSHC2020:s20:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s14",
+    "IN.OSHC2020:s27",
+    "IN.SSC2020:s53:ss2",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "IN.SSC2020:s2:ss88:cl_c",
+    "IN.SSC2020:s123:cl_a",
+    "IN.COW2019:s13:ss1"
+   ]
+  },
+  "GS-030": {
+   "expected": [
+    "IN.COW2019:s3"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.SSC2020:s78",
+    "IN.COW2019:s3:ss2",
+    "IN.SSC2020:s59:ss1",
+    "IN.COW2019:s12",
+    "IN.COW2019:s11",
+    "IN.OSHC2020:s43",
+    "IN.COW2019:s14",
+    "IN.ESHRAMFAQ2026:para40",
+    "IN.IRC2020:s78:ss10",
+    "IN.IRC2020:s69"
+   ],
+   "dense": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s11",
+    "IN.COW2019:s3:ss1",
+    "IN.COW2019:s10",
+    "IN.COW2019:s14",
+    "IN.COW2019:s5",
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s12",
+    "IN.IRC2020:s2:cl_zq:expl1",
+    "IN.COW2019:s27"
+   ],
+   "rrf": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s11",
+    "IN.COW2019:s12",
+    "IN.COW2019:s14",
+    "IN.SSC2020:s59:ss1",
+    "IN.COW2019:s3:ss1",
+    "IN.COW2019:s5",
+    "IN.OSHC2020:s43",
+    "IN.COW2019:s10",
+    "IN.IRC2020:s69"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s3:ss1",
+    "IN.COW2019:s5",
+    "IN.COW2019:s54:ss1",
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s78",
+    "IN.OSHC2020:s97:ss1",
+    "IN.SSC2020:s71",
+    "IN.COW2019:s42:ss8",
+    "IN.IRC2020:s4:ss4"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s3:ss1",
+    "IN.OSHC2020:s43",
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s5",
+    "IN.OSHC2020:s97:ss1",
+    "IN.SSC2020:s78",
+    "IN.IRC2020:s4:ss4",
+    "IN.SSC2020:s71",
+    "IN.SSC2020:s85:ss1"
+   ]
+  },
+  "GS-031": {
+   "expected": [
+    "IN.OSHC2020:s6:ss1:cl_f"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.IRC2020:s73",
+    "IN.SSC2020:s89:ss3",
+    "IN.MTA2021:s13:ss2",
+    "IN.SSC2020:s89:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.TPA1882:s106:ss4",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s9:ss2",
+    "IN.CPA2019:s65:ss4",
+    "IN.SSC2020:s88:ss2"
+   ],
+   "rrf": [
+    "IN.IRC2020:s73",
+    "IN.SSC2020:s89:ss3",
+    "IN.MTA2021:s13:ss2",
+    "IN.SSC2020:s89:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.TPA1882:s106:ss4",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s9:ss2",
+    "IN.CPA2019:s65:ss4",
+    "IN.SSC2020:s88:ss2"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s15:ss5",
+    "IN.SSC2020:s82:ss4",
+    "IN.TPA1882:s106:ss4",
+    "IN.CPA2019:s65:ss4",
+    "IN.MTA2021:s17:ss2",
+    "IN.OSHC2020:s89:ss2",
+    "IN.MTA2021:s35:ss6",
+    "IN.MTA2021:s35:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s15:ss5",
+    "IN.SSC2020:s82:ss4",
+    "IN.TPA1882:s106:ss4",
+    "IN.MTA2021:s13:ss2",
+    "IN.OSHC2020:s89:ss2",
+    "IN.CPA2019:s65:ss4",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s35:ss6",
+    "IN.MTA2021:s19:ss1"
+   ]
+  },
+  "GS-032": {
+   "expected": [
+    "IN.OSHC2020:s25"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para40",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.ESHRAMFAQ2026:para16",
+    "IN.COW2019:s13:ss1",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.COW2019:s10",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.ESHRAMFAQ2026:para41",
+    "IN.ESHRAMFAQ2026:para13"
+   ],
+   "dense": [
+    "IN.OSHC2020:s25:ss2",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s30",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s26:ss1",
+    "IN.OSHC2020:s25:ss3",
+    "IN.OSHC2020:s134:ss2:cl_r"
+   ],
+   "rrf": [
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.COW2019:s10",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.OSHC2020:s25:ss2",
+    "IN.COW2019:s14",
+    "IN.OSHC2020:s27",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s133:ss2:cl_zh"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s25:ss4",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s25:ss2",
+    "IN.OSHC2020:s26:ss1",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s13:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s25:ss4",
+    "IN.OSHC2020:s25:ss2",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s26:ss1",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s27"
+   ]
+  },
+  "GS-033": {
+   "expected": [
+    "MP.SSS2026:s1:ss3",
+    "MP.SEA1958"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.OSHC2020:sch1:para24",
+    "IN.IRC2020:s2:cl_zd",
+    "IN.SSC2020:s2:ss66",
+    "IN.OSHC2020:s2:ss1:cl_zzc",
+    "IN.SSC2020:s24:ss1",
+    "IN.RTI2005:s13:ss5",
+    "IN.CPA2019:s24",
+    "IN.OSHC2020:s2:ss1:cl_zzi",
+    "IN.COW2019:s24",
+    "IN.IRC2020:s24:ss1"
+   ],
+   "dense": [
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s25:ss2",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s24:ss2",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s30",
+    "IN.COW2019:s13:ss3",
+    "IN.OSHC2020:s134:ss2:cl_r"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para24",
+    "IN.OSHC2020:sch1:para24",
+    "IN.OSHC2020:s28",
+    "IN.IRC2020:s2:cl_zd",
+    "IN.OSHC2020:s25:ss2",
+    "IN.SSC2020:s2:ss66",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s2:ss1:cl_zzc",
+    "IN.OSHC2020:s24:ss2",
+    "IN.SSC2020:s24:ss1"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s2:ss1:cl_q",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "IN.OSHC2020:s43",
+    "IN.OSHC2020:s25:ss3",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s29:ss2",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s30",
+    "IN.OSHC2020:s24:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s2:ss1:cl_q",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "IN.OSHC2020:s43",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss3",
+    "IN.OSHC2020:s30",
+    "IN.OSHC2020:s24:ss1",
+    "IN.OSHC2020:s29:ss2",
+    "IN.OSHC2020:s25:ss1:cl_b"
+   ]
+  },
+  "GS-034": {
+   "expected": [
+    "IN.SSC2020:s53"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.IRC2020:s2:cl_o",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.SSC2020:s53:ss1",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.SSC2020:s53:ss2",
+    "IN.OSHC2020:s120:ss1",
+    "IN.IRC2020:s2:cl_zh"
+   ],
+   "dense": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s56:ss4",
+    "IN.SSC2020:s56:ss3",
+    "IN.SSC2020:s53:ss5",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_j",
+    "IN.SSC2020:s56:ss2",
+    "IN.SSC2020:s57:ss5",
+    "IN.SSC2020:s53:ss6"
+   ],
+   "rrf": [
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s53:ss5",
+    "IN.SSC2020:s56:ss5",
+    "IN.SSC2020:s56:ss4",
+    "IN.SSC2020:s56:ss2",
+    "IN.SSC2020:s2:ss34",
+    "IN.SSC2020:s53:ss6",
+    "IN.SVANSG2025:para5:sp1"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s54:cl_a",
+    "IN.SSC2020:s53:ss5",
+    "IN.COW2019:s2:cl_y:scla_j",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_j",
+    "IN.SSC2020:s56:ss4",
+    "IN.IRC2020:s2:cl_zq:scla_j",
+    "IN.SSC2020:s56:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s54:cl_a",
+    "IN.SSC2020:s53:ss5",
+    "IN.SSC2020:s56:ss4",
+    "IN.IRC2020:s2:cl_zq:scla_j",
+    "IN.COW2019:s2:cl_y:scla_j",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_j",
+    "IN.SSC2020:s56:ss1"
+   ]
+  },
+  "GS-035": {
+   "expected": [
+    "IN.SSC2020:s53:ss1"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s66",
+    "IN.SSC2020:s91:ss1",
+    "IN.COW2019:s26:ss7",
+    "IN.SSC2020:s106",
+    "IN.COW2019:s26:ss6",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s14:ss6",
+    "IN.IRC2020:s66:cl_a",
+    "IN.SSC2020:s24:ss2"
+   ],
+   "rrf": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s66",
+    "IN.SSC2020:s91:ss1",
+    "IN.COW2019:s26:ss7",
+    "IN.SSC2020:s106",
+    "IN.COW2019:s26:ss6",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s14:ss6",
+    "IN.IRC2020:s66:cl_a",
+    "IN.SSC2020:s24:ss2"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s2:ss82",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s107:ss2",
+    "IN.IRC2020:s99:ss2:cl_zo",
+    "IN.COW2019:s26:ss6",
+    "IN.SSC2020:s2:ss17",
+    "IN.IRC2020:s70"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s2:ss82",
+    "IN.SSC2020:s107:ss2",
+    "IN.SSC2020:s60:ss2",
+    "IN.IRC2020:s2:cl_o",
+    "IN.COW2019:s26:ss6",
+    "IN.IRC2020:s99:ss2:cl_zo",
+    "IN.IRC2020:s70",
+    "IN.COW2019:s26:ss7"
+   ]
+  },
+  "GS-036": {
+   "expected": [
+    "IN.SSC2020:s60"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s59:ss4",
+    "IN.SSC2020:s60:ss4",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s62:ss2",
+    "IN.SSC2020:s2:ss91",
+    "IN.SSC2020:s63",
+    "IN.IRC2020:s66:expl2"
+   ],
+   "dense": [
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s60:ss1",
+    "IN.SSC2020:s65:ss3",
+    "IN.SSC2020:s66",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s60:ss4"
+   ],
+   "rrf": [
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s60:ss4",
+    "IN.SSC2020:s65:ss3",
+    "IN.SSC2020:s59:ss4",
+    "IN.SSC2020:s62:ss2",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s60:ss1"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s59:ss4",
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s60:ss4",
+    "IN.SSC2020:s62:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s59:ss4",
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s62:ss2",
+    "IN.SSC2020:s60:ss4"
+   ]
+  },
+  "GS-037": {
+   "expected": [
+    "IN.COW2019:s26"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.COW2019:s37",
+    "IN.COW2019:s26:ss5",
+    "IN.COW2019:s27",
+    "IN.COW2019:s26:ss3",
+    "IN.COW2019:s29",
+    "IN.SSC2020:s64",
+    "IN.COW2019:s26:ss2",
+    "IN.COW2019:s31:ss1",
+    "IN.COW2019:s38",
+    "IN.COW2019:s26:ss6"
+   ],
+   "dense": [
+    "IN.COW2019:s31:ss1",
+    "IN.COW2019:s37",
+    "IN.COW2019:s36:ss1",
+    "IN.COW2019:s31:ss2",
+    "IN.COW2019:s39:ss1",
+    "IN.COW2019:s26:ss3",
+    "IN.COW2019:s26:ss1",
+    "IN.SSC2020:s64",
+    "IN.COW2019:s36:ss3",
+    "IN.COW2019:s36:ss4"
+   ],
+   "rrf": [
+    "IN.COW2019:s37",
+    "IN.COW2019:s31:ss1",
+    "IN.COW2019:s26:ss3",
+    "IN.SSC2020:s64",
+    "IN.COW2019:s26:ss5",
+    "IN.COW2019:s26:ss1",
+    "IN.COW2019:s39:ss1",
+    "IN.COW2019:s31:ss2",
+    "IN.COW2019:s27",
+    "IN.COW2019:s36:ss1"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s41:ss1",
+    "IN.COW2019:s26:ss1",
+    "IN.SSC2020:s68:ss2",
+    "IN.COW2019:s37",
+    "IN.COW2019:s2:cl_y:scla_a",
+    "IN.IRC2020:s2:cl_zq:scla_a",
+    "IN.COW2019:s26:ss2",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_a",
+    "IN.COW2019:s36:ss1",
+    "IN.SSC2020:s64"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s41:ss1",
+    "IN.SSC2020:s68:ss2",
+    "IN.COW2019:s37",
+    "IN.IRC2020:s2:cl_zq:scla_a",
+    "IN.COW2019:s26:ss1",
+    "IN.COW2019:s2:cl_y:scla_a",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_a",
+    "IN.SSC2020:s64",
+    "IN.COW2019:s26:ss2",
+    "IN.COW2019:s31:ss1"
+   ]
+  },
+  "GS-038": {
+   "expected": [
+    "IN.IRC2020"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para7",
+    "IN.SVANSG2025:para1"
+   ],
+   "dense": [
+    "IN.IRC2020:s93:ss1",
+    "IN.OSHC2020:s120:ss1",
+    "IN.OSHC2020:s54",
+    "IN.IRC2020:s79:ss7",
+    "IN.SSC2020:s42:ss1",
+    "IN.IRC2020:s70",
+    "IN.OSHC2020:s100:ss2",
+    "IN.COW2019:s63",
+    "IN.SSC2020:s164:ss1",
+    "IN.IRC2020:s76:ss1"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para7",
+    "IN.IRC2020:s93:ss1",
+    "IN.SVANSG2025:para1",
+    "IN.OSHC2020:s120:ss1",
+    "IN.OSHC2020:s54",
+    "IN.IRC2020:s79:ss7",
+    "IN.SSC2020:s42:ss1",
+    "IN.IRC2020:s70",
+    "IN.OSHC2020:s100:ss2",
+    "IN.COW2019:s63"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s79:ss7",
+    "IN.IRC2020:s79:ss1",
+    "IN.IRC2020:s70",
+    "IN.SSC2020:s82:ss1",
+    "IN.SSC2020:s164:ss1",
+    "IN.SSC2020:s74:ss5",
+    "IN.IRC2020:s76:ss1",
+    "IN.SSC2020:s87:ss3",
+    "IN.OSHC2020:s139:ss4",
+    "IN.SSC2020:s73:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s79:ss7",
+    "IN.IRC2020:s79:ss1",
+    "IN.SSC2020:s82:ss1",
+    "IN.IRC2020:s70",
+    "IN.IRC2020:s76:ss1",
+    "IN.SSC2020:s74:ss5",
+    "IN.SSC2020:s87:ss3",
+    "IN.SSC2020:s164:ss1",
+    "IN.SSC2020:s73:ss1",
+    "IN.SSC2020:s35"
+   ]
+  },
+  "GS-039": {
+   "expected": [
+    "IN.IRC2020",
+    "MP.SSS2026:s40"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.IRC2020:s35:ss1",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s37",
+    "IN.IRC2020:s33:ss2",
+    "IN.IRC2020:s29:ss2",
+    "IN.IRC2020:s35:ss2",
+    "IN.IRC2020:s99:ss2:cl_zc",
+    "IN.IRC2020:s36",
+    "IN.IRC2020:s34",
+    "IN.IRC2020:s30:ss11"
+   ],
+   "dense": [
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s34",
+    "IN.IRC2020:s30:ss2",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s30:ss7",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss4"
+   ],
+   "rrf": [
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s35:ss1",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s34",
+    "IN.IRC2020:s35:ss2",
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s37",
+    "IN.IRC2020:s29:ss2"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s37",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s35:ss2",
+    "IN.IRC2020:s30:ss2",
+    "IN.IRC2020:s35:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s37",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s35:ss2",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s29:ss2",
+    "IN.IRC2020:s30:ss2"
+   ]
+  },
+  "GS-040": {
+   "expected": [
+    "IN.COW2019"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s53",
+    "IN.OSHC2020:s54",
+    "IN.COW2019:s2:cl_l",
+    "IN.OSHC2020:s2:ss1:cl_u",
+    "IN.SSC2020:s77:ss2",
+    "IN.IRC2020:s2:cl_m",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.SSC2020:s85:ss1"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s53",
+    "IN.OSHC2020:s54",
+    "IN.COW2019:s2:cl_l",
+    "IN.OSHC2020:s2:ss1:cl_u",
+    "IN.SSC2020:s77:ss2",
+    "IN.IRC2020:s2:cl_m",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.SSC2020:s85:ss1"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s54",
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.OSHC2020:s55:ss4",
+    "IN.OSHC2020:s53",
+    "IN.OSHC2020:s2:ss1:cl_m",
+    "IN.COW2019:s2:cl_g",
+    "IN.OSHC2020:s47:ss1",
+    "IN.OSHC2020:s2:ss1:cl_u",
+    "IN.SSC2020:s85:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s54",
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.OSHC2020:s53",
+    "IN.OSHC2020:s55:ss4",
+    "IN.OSHC2020:s2:ss1:cl_m",
+    "IN.COW2019:s2:cl_g",
+    "IN.OSHC2020:s2:ss1:cl_u",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.SSC2020:s85:ss2"
+   ]
+  },
+  "GS-041": {
+   "expected": [
+    "IN.SSC2020:s113"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para13",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.ESHRAMFAQ2026:para5",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para22"
+   ],
+   "dense": [
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para8",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para13",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para55"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para13",
+    "IN.ESHRAMFAQ2026:para8",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para1"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para2",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para56",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para57"
+   ],
+   "rerank-fp32": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para2",
+    "IN.ESHRAMFAQ2026:para56",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para40"
+   ]
+  },
+  "GS-042": {
+   "expected": [
+    "IN.COW2019:s18"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s19:ss1",
+    "IN.COW2019:s18:ss1",
+    "IN.COW2019:s67:ss2",
+    "IN.COW2019:s19:ss4",
+    "IN.SSC2020:s53:ss6",
+    "IN.COW2019:s21:ss2",
+    "IN.COW2019:s63",
+    "IN.COW2019:s29",
+    "IN.COW2019:s54:ss2"
+   ],
+   "rrf": [
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s19:ss1",
+    "IN.COW2019:s18:ss1",
+    "IN.COW2019:s67:ss2",
+    "IN.COW2019:s19:ss4",
+    "IN.SSC2020:s53:ss6",
+    "IN.COW2019:s21:ss2",
+    "IN.COW2019:s63",
+    "IN.COW2019:s29",
+    "IN.COW2019:s54:ss2"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s18:ss2:cl_a",
+    "IN.COW2019:s67:ss2",
+    "IN.COW2019:s19:ss1",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s19:ss4",
+    "IN.COW2019:s19:ss3",
+    "IN.COW2019:s19:ss7",
+    "IN.IRC2020:s86:ss1",
+    "IN.COW2019:s57"
+   ],
+   "rerank-fp32": [
+    "IN.COW2019:s18:ss2:cl_a",
+    "IN.COW2019:s67:ss2",
+    "IN.COW2019:s19:ss1",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s19:ss3",
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s19:ss4",
+    "IN.COW2019:s63",
+    "IN.COW2019:s57",
+    "IN.COW2019:s38"
+   ]
+  },
+  "GS-043": {
+   "expected": [
+    "IN.OSHC2020:s43"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s29:ss1",
+    "IN.ESHRAMFAQ2026:para40",
+    "IN.SSC2020:s59:ss1",
+    "IN.COW2019:s42:ss8",
+    "IN.OSHC2020:s43",
+    "IN.OSHC2020:s2:ss1:cl_zzk",
+    "IN.SSC2020:s59:ss2",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.COW2019:s3:ss2"
+   ],
+   "dense": [
+    "IN.OSHC2020:s43",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s29:ss1",
+    "IN.SSC2020:s59:ss1",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s24:ss2",
+    "IN.SSC2020:s59:ss2",
+    "IN.OSHC2020:s29:ss2",
+    "IN.OSHC2020:s136:cl_j"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s29:ss1",
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s59:ss1",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.SSC2020:s59:ss2",
+    "IN.COW2019:s42:ss8",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s44",
+    "IN.COW2019:s3:ss2"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s59:ss4",
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s42:ss8",
+    "IN.COW2019:s42:ss3",
+    "IN.SSC2020:s60:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "IN.COW2019:s42:ss8",
+    "IN.COW2019:s3:ss2",
+    "IN.SSC2020:s60:ss5",
+    "IN.OSHC2020:s136:cl_j",
+    "IN.SSC2020:s59:ss1",
+    "IN.COW2019:s42:ss3"
+   ]
+  },
+  "GS-044": {
+   "expected": [
+    "IN.OSHC2020:s26"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.COW2019:s13:ss3",
+    "IN.OSHC2020:s2:ss1:cl_r",
+    "IN.SVANLOG2025:para7",
+    "IN.SVANSG2025:para7",
+    "IN.IRC2020:s81",
+    "IN.OSHC2020:s2:ss1:cl_zw",
+    "IN.OSHC2020:s36",
+    "IN.OSHC2020:s136:cl_za",
+    "IN.OSHC2020:s2:ss1:cl_zl",
+    "IN.IRC2020:s68"
+   ],
+   "rrf": [
+    "IN.COW2019:s13:ss3",
+    "IN.OSHC2020:s2:ss1:cl_r",
+    "IN.SVANLOG2025:para7",
+    "IN.SVANSG2025:para7",
+    "IN.IRC2020:s81",
+    "IN.OSHC2020:s2:ss1:cl_zw",
+    "IN.OSHC2020:s36",
+    "IN.OSHC2020:s136:cl_za",
+    "IN.OSHC2020:s2:ss1:cl_zl",
+    "IN.IRC2020:s68"
+   ],
+   "rerank-int8": [
+    "IN.SVANLOG2025:para8",
+    "IN.SVANLOG2025:para9",
+    "IN.OSHC2020:s2:ss1:cl_zl",
+    "IN.SVANSG2025:para1",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s90:ss1",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.SVANSG2025:sch5",
+    "IN.OSHC2020:s2:ss1:cl_r"
+   ],
+   "rerank-fp32": [
+    "IN.SVANLOG2025:para8",
+    "IN.SVANLOG2025:para9",
+    "IN.OSHC2020:s2:ss1:cl_zl",
+    "IN.SVANSG2025:para1",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s91:ss1",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.OSHC2020:s73",
+    "IN.OSHC2020:s113:ss2"
+   ]
+  },
+  "GS-045": {
+   "expected": [
+    "IN.SSC2020"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s133:cl_k",
+    "IN.SSC2020:s21:ss3",
+    "IN.COW2019:s45:ss3",
+    "IN.COW2019:s18:ss5",
+    "IN.COW2019:s36:ss2",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s18:ss2:cl_m",
+    "IN.SSC2020:s77:ss2",
+    "IN.SSC2020:s57:ss5"
+   ],
+   "rrf": [
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s133:cl_k",
+    "IN.SSC2020:s21:ss3",
+    "IN.COW2019:s45:ss3",
+    "IN.COW2019:s18:ss5",
+    "IN.COW2019:s36:ss2",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s18:ss2:cl_m",
+    "IN.SSC2020:s77:ss2",
+    "IN.SSC2020:s57:ss5"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s128",
+    "IN.SSC2020:s131:ss3:cl_f",
+    "IN.SSC2020:s94:ss1",
+    "IN.SSC2020:s131:ss3:cl_a",
+    "IN.SSC2020:s22",
+    "IN.SSC2020:s94:ss2",
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s143:ss8",
+    "IN.SSC2020:s129:ss2",
+    "IN.IRC2020:s59:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:s128",
+    "IN.SSC2020:s131:ss3:cl_f",
+    "IN.SSC2020:s94:ss1",
+    "IN.SSC2020:s131:ss3:cl_a",
+    "IN.SSC2020:s22",
+    "IN.SSC2020:s94:ss2",
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s143:ss8",
+    "IN.SSC2020:s21:ss2",
+    "IN.SSC2020:s21:ss1"
+   ]
+  },
+  "GS-047": {
+   "expected": [
+    "MP.MWVDAAPR2026"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para7"
+   ],
+   "dense": [
+    "IN.IRC2020:s86:ss5",
+    "IN.SSC2020:s76:ss1:cl_d",
+    "IN.SSC2020:s76:ss1:cl_b",
+    "IN.SSC2020:s76:ss1:cl_a",
+    "IN.COW2019:s9:ss2",
+    "IN.COW2019:s7:ss1",
+    "IN.SSC2020:sch6",
+    "IN.COW2019:s6:ss6",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s26:ss1"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para7",
+    "IN.IRC2020:s86:ss5",
+    "IN.SSC2020:s76:ss1:cl_d",
+    "IN.SSC2020:s76:ss1:cl_b",
+    "IN.SSC2020:s76:ss1:cl_a",
+    "IN.COW2019:s9:ss2",
+    "IN.COW2019:s7:ss1",
+    "IN.SSC2020:sch6",
+    "IN.COW2019:s6:ss6",
+    "IN.SSC2020:s76:ss4"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:sch6",
+    "IN.ESHRAMFAQ2026:para7",
+    "IN.COW2019:s6:ss6",
+    "IN.COW2019:s7:ss1",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s8:ss3",
+    "IN.COW2019:s8:ss1",
+    "IN.COW2019:s8:ss2",
+    "IN.SSC2020:s78",
+    "IN.COW2019:s10"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:sch6",
+    "IN.ESHRAMFAQ2026:para7",
+    "IN.COW2019:s8:ss3",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s8:ss1",
+    "IN.COW2019:s7:ss1",
+    "IN.COW2019:s6:ss6",
+    "IN.SSC2020:s78",
+    "IN.COW2019:s8:ss2",
+    "IN.COW2019:s8:ss4"
+   ]
+  },
+  "GS-048": {
+   "expected": [
+    "IN.SSC2020:s114"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.SSC2020:sch7",
+    "IN.CPA2019:s2:ss21",
+    "IN.ESHRAMFAQ2026:para25",
+    "IN.SSC2020:s141:ss1",
+    "IN.SSC2020:s13"
+   ],
+   "dense": [
+    "IN.SSC2020:s113:ss4",
+    "IN.SSC2020:s114:ss1",
+    "IN.SSC2020:s114:ss3",
+    "IN.SSC2020:s114:ss7",
+    "IN.SSC2020:sch7",
+    "IN.SSC2020:s109:ss3",
+    "IN.SSC2020:s2:ss78",
+    "IN.SSC2020:s113:ss2",
+    "IN.SSC2020:s20:ss1",
+    "IN.SSC2020:s114:ss4"
+   ],
+   "rrf": [
+    "IN.SSC2020:sch7",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.SSC2020:s113:ss4",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.SSC2020:s114:ss1",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.SSC2020:s114:ss3",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.SSC2020:s114:ss7",
+    "IN.ESHRAMFAQ2026:para17"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:sch7",
+    "IN.SSC2020:s2:ss78",
+    "IN.SSC2020:s114:ss1",
+    "IN.SSC2020:s114:ss7",
+    "IN.SSC2020:s141:ss1",
+    "IN.SSC2020:s20:ss1",
+    "IN.SSC2020:s110:ss1",
+    "IN.SSC2020:s114:ss3",
+    "IN.SSC2020:s2:ss23",
+    "IN.SSC2020:s109:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:sch7",
+    "IN.SSC2020:s2:ss78",
+    "IN.SSC2020:s114:ss7",
+    "IN.SSC2020:s114:ss1",
+    "IN.SSC2020:s20:ss1",
+    "IN.SSC2020:s114:ss3",
+    "IN.SSC2020:s141:ss1",
+    "IN.COW2019:s18:ss2:cl_i",
+    "IN.SSC2020:s109:ss1",
+    "IN.SSC2020:s113:ss1"
+   ]
+  },
+  "GS-049": {
+   "expected": [
+    "IN.CPA2019:s35",
+    "IN.CPA2019:s2:ss11"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s48",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s65:ss1"
+   ],
+   "rrf": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s48",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s65:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s51:ss3",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s38:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s38:ss6",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s51:ss3"
+   ]
+  },
+  "GS-050": {
+   "expected": [
+    "IN.CPA2019:s69:ss1"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s38:ss2:cl_b",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s34:ss2",
+    "IN.COW2019:s17:ss4",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s38:ss2",
+    "IN.CPA2019:s2:ss8"
+   ],
+   "dense": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s67"
+   ],
+   "rrf": [
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s38:ss2:cl_b",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s69:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s67"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s52"
+   ]
+  },
+  "GS-051": {
+   "expected": [
+    "IN.CPCDRCR2020:r7"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s17"
+   ],
+   "rrf": [
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s17"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s35:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s41"
+   ]
+  },
+  "GS-052": {
+   "expected": [
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s34"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s2:ss36",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s2:ss22",
+    "IN.CPA2019:s2:ss28",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s39:ss1:cl_i"
+   ],
+   "dense": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s51:ss1"
+   ],
+   "rrf": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s39:ss1:cl_e",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s30",
+    "IN.CPA2019:s90:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s39:ss1:cl_e",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s66",
+    "IN.CPA2019:s51:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s51:ss5",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s39:ss1:cl_e",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s66"
+   ]
+  },
+  "GS-053": {
+   "expected": [
+    "IN.CPA2019:s35"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s73:ss3",
+    "IN.LSA1987:s21:ss1",
+    "IN.RTI2005:s2:cl_e",
+    "IN.CPA2019:s90:ss3",
+    "IN.CPA2019:s96:ss1",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss7"
+   ],
+   "dense": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s59:ss2",
+    "IN.CPA2019:s101:ss2:cl_zc",
+    "IN.CPA2019:s64",
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s49:ss2",
+    "IN.CPA2019:s82"
+   ],
+   "rrf": [
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s90:ss3",
+    "IN.CPA2019:s101:ss2:cl_s",
+    "IN.CPA2019:s38:ss8",
+    "IN.CPA2019:s51:ss4",
+    "IN.CPA2019:s81:ss2",
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s47:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s51:ss4",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s101:ss2:cl_zf"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s51:ss4",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s101:ss2:cl_zf"
+   ]
+  },
+  "GS-054": {
+   "expected": [
+    "IN.CPA2019:s34:ss2"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s10:ss3",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s53:ss2",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s38:ss9"
+   ],
+   "rrf": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s10:ss3",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s53:ss2",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s38:ss9"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s10:ss3",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s69:ss2",
+    "IN.IRC2020:s91",
+    "IN.CPA2019:s38:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s10:ss3",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s38:ss1"
+   ]
+  },
+  "GS-055": {
+   "expected": [
+    "IN.CPA2019:s35"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s2:ss17",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.CPA2019:s38:ss11",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s38:ss2",
+    "IN.CPA2019:s2:ss8",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s38:ss2:cl_b"
+   ],
+   "dense": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s38:ss6",
+    "IN.CPA2019:s38:ss2:cl_f",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s83"
+   ],
+   "rrf": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPA2019:s38:ss6",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s38:ss11",
+    "IN.CPA2019:s24"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s18:ss2",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s65:ss1",
+    "IN.CPA2019:s38:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s18:ss2",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s65:ss1",
+    "IN.CPA2019:s38:ss3"
+   ]
+  },
+  "GS-056": {
+   "expected": [
+    "IN.CPA2019:s2:ss42"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s69:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s35:ss2",
+    "IN.MTA2021:s38:ss2",
+    "IN.MTA2021:s37:ss2",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s37:ss1",
+    "IN.CPA2019:s52",
+    "IN.MTA2021:s35:ss6",
+    "IN.IRC2020:s4:ss8"
+   ],
+   "rrf": [
+    "IN.CPA2019:s69:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s35:ss2",
+    "IN.MTA2021:s38:ss2",
+    "IN.MTA2021:s37:ss2",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s37:ss1",
+    "IN.CPA2019:s52",
+    "IN.MTA2021:s35:ss6",
+    "IN.IRC2020:s4:ss8"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s72:ss3",
+    "IN.CPA2019:s35:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s72:ss3",
+    "IN.CPA2019:s80:ss3",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s69:ss1"
+   ]
+  },
+  "GS-057": {
+   "expected": [
+    "IN.CPA2019:s2:ss42"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.SSC2020:s39:ss2",
+    "IN.CPA2019:s84:ss2",
+    "IN.SSC2020:s40:ss8",
+    "IN.SSC2020:s40:ss9",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s26:cl_e",
+    "IN.OSHC2020:s77",
+    "IN.SSC2020:s44",
+    "IN.SSC2020:s40:ss1",
+    "IN.CPA2019:s2:ss47:clr_iii"
+   ],
+   "dense": [
+    "IN.CPA2019:s2:ss22",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s43:ss1",
+    "IN.SSC2020:s40:ss9",
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.SSC2020:s84:ss6",
+    "IN.CPA2019:s90:ss3",
+    "IN.SSC2020:s44",
+    "IN.SSC2020:s40:ss4",
+    "IN.CPA2019:s82"
+   ],
+   "rrf": [
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s40:ss9",
+    "IN.SSC2020:s40:ss8",
+    "IN.SSC2020:s44",
+    "IN.SSC2020:s40:ss1",
+    "IN.SSC2020:s39:ss2",
+    "IN.CPA2019:s84:ss2",
+    "IN.SSC2020:s40:ss4",
+    "IN.OSHC2020:s77",
+    "IN.CPA2019:s2:ss11"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s2:ss11",
+    "IN.CPA2019:s2:ss6",
+    "IN.SSC2020:s44",
+    "IN.CPA2019:s2:ss22",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s40:ss9",
+    "IN.CPA2019:s84:ss2",
+    "IN.SSC2020:s39:ss2",
+    "IN.SSC2020:s40:ss8"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s2:ss11",
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss22",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s40:ss9",
+    "IN.SSC2020:s44",
+    "IN.SSC2020:s39:ss2",
+    "IN.CPA2019:s100",
+    "IN.SSC2020:s26:cl_e"
+   ]
+  },
+  "GS-058": {
+   "expected": [
+    "IN.CPA2019:s2:ss47"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s21:ss4",
+    "IN.CPA2019:s72:ss1",
+    "IN.CPA2019:s21:ss7"
+   ],
+   "rrf": [
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s21:ss4",
+    "IN.CPA2019:s72:ss1",
+    "IN.CPA2019:s21:ss7"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s22:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s96:ss5",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s93"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s22:ss1",
+    "IN.CPA2019:s96:ss5",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s91:ss1"
+   ]
+  },
+  "GS-059": {
+   "expected": [
+    "IN.CPA2019:s84",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s86"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s87:ss3",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s87:ss1",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s82"
+   ],
+   "dense": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s87:ss1"
+   ],
+   "rrf": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s87:ss3",
+    "IN.CPA2019:s87:ss1",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss35"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s87:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s87:ss3"
+   ]
+  },
+  "GS-060": {
+   "expected": [
+    "IN.CPA2019:s2:ss11"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s91:ss3",
+    "IN.MTA2021:s24:ss2",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s90:ss3",
+    "IN.MTA2021:s24:ss1",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s38:ss5",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s67",
+    "IN.OSHC2020:s3:ss5"
+   ],
+   "dense": [
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s20",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s49:ss2",
+    "IN.CPA2019:s51:ss2"
+   ],
+   "rrf": [
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s73:ss1",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s38:ss5",
+    "IN.SSC2020:s52:ss5",
+    "IN.CPA2019:s91:ss3",
+    "IN.MTA2021:s24:ss2",
+    "IN.CPA2019:s51:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s38:ss10",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s20",
+    "IN.CPA2019:s73:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s38:ss10",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s20",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s73:ss2"
+   ]
+  },
+  "GS-061": {
+   "expected": [
+    "IN.CPA2019:s41"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s69:ss1",
+    "IN.IRC2020:s4:ss8",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s24",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.CPA2019:s52"
+   ],
+   "rrf": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s69:ss1",
+    "IN.IRC2020:s4:ss8",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s24",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.CPA2019:s52"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s36:ss2",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.RTI2005:s19:ss6",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s52"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s73:ss3",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s40"
+   ]
+  },
+  "GS-062": {
+   "expected": [
+    "IN.CPA2019:s74",
+    "IN.CPA2019:s79"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s74:ss3",
+    "IN.CPA2019:s37:ss2",
+    "IN.CPA2019:s74:ss2",
+    "IN.CPA2019:s79:ss3",
+    "IN.CPA2019:s74:ss5",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s79:ss2"
+   ],
+   "dense": [
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s78",
+    "IN.CPA2019:s79:ss3",
+    "IN.CPA2019:s76",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s77"
+   ],
+   "rrf": [
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s79:ss3",
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s74:ss2",
+    "IN.CPA2019:s74:ss3",
+    "IN.CPA2019:s37:ss2"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s77",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s80:ss2",
+    "IN.CPA2019:s37:ss2",
+    "IN.CPA2019:s37:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s37:ss2",
+    "IN.CPA2019:s77",
+    "IN.CPA2019:s37:ss1",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s81:ss2"
+   ]
+  },
+  "GS-063": {
+   "expected": [
+    "IN.CPA2019:s2:ss7"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s2:ss36",
+    "IN.CPA2019:s2:ss24",
+    "IN.CPA2019:s2:ss47:clr_iv",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss5",
+    "IN.CPA2019:s82"
+   ],
+   "rrf": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s2:ss36",
+    "IN.CPA2019:s2:ss24",
+    "IN.CPA2019:s2:ss47:clr_iv",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss5",
+    "IN.CPA2019:s82"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s2:ss5",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPA2019:s2:ss46",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss24",
+    "IN.CPA2019:s2:ss41"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPA2019:s2:ss5",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s2:ss24",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss46",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPA2019:s2:ss41"
+   ]
+  },
+  "GS-064": {
+   "expected": [
+    "IN.CPA2019:s69"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.RTI2005:sch1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s2:ss36"
+   ],
+   "dense": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s87:ss1",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s96:ss3",
+    "IN.CPA2019:s38:ss2:cl_c"
+   ],
+   "rrf": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s87:ss1",
+    "IN.CPA2019:s21:ss3",
+    "IN.CPA2019:s2:ss22",
+    "IN.CPA2019:s96:ss3",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s86"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s87:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s87:ss2"
+   ]
+  },
+  "GS-067": {
+   "expected": [
+    "IN.CPA2019:s2:ss47"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s2:ss35",
+    "IN.SVANLOG2025:para10:sp2",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s2:ss36",
+    "IN.CPA2019:s2:ss6"
+   ],
+   "dense": [
+    "IN.CPA2019:s89",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s38:ss2:cl_f",
+    "IN.CPA2019:s2:ss47:clr_i:scla_a",
+    "IN.CPA2019:s21:ss4",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s90:ss1"
+   ],
+   "rrf": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s87:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s21:ss3",
+    "IN.CPA2019:s2:ss28",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPA2019:s89",
+    "IN.CPA2019:s39:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s21:ss3",
+    "IN.CPA2019:s2:ss28",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPA2019:s89",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPA2019:s38:ss7"
+   ]
+  },
+  "GS-068": {
+   "expected": [
+    "IN.CPA2019:s2:ss42"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s26:ss2",
+    "IN.CPA2019:s65:ss3",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s35:ss1",
+    "IN.COW2019:s48:ss2",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s58:ss1"
+   ],
+   "rrf": [
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s26:ss2",
+    "IN.CPA2019:s65:ss3",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s35:ss1",
+    "IN.COW2019:s48:ss2",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s58:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss5",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s65:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s51:ss5",
+    "IN.CPA2019:s65:ss3",
+    "IN.CPA2019:s58:ss1"
+   ]
+  },
+  "GS-069": {
+   "expected": [
+    "MP.RTIFAR2005:r3:ss1",
+    "MP.RTIFAR2005:r9"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.SVANLOG2025:sch1",
+    "IN.SVANLOG2025:para5:sp2",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANSG2025:para5:sp1:sp2",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s7:ss5",
+    "IN.SVANSG2025:para5:sp2"
+   ],
+   "rrf": [
+    "IN.RTI2005:s2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s31",
+    "IN.SVANLOG2025:sch1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.SVANLOG2025:para5:sp2"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s7:ss3",
+    "IN.IRC2020:s86:ss16",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s28:ss2",
+    "IN.SVANLOG2025:sch1",
+    "IN.SSC2020:s114:ss4",
+    "IN.SSC2020:s56:ss4",
+    "IN.RTI2005:s26:ss4",
+    "IN.SSC2020:s56:ss7"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s28:ss2",
+    "IN.SVANLOG2025:sch1",
+    "IN.IRC2020:s86:ss16",
+    "IN.SSC2020:s114:ss4",
+    "IN.SSC2020:s56:ss4",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:para5:sp1"
+   ]
+  },
+  "GS-070": {
+   "expected": [
+    "IN.RTI2005:s7:ss1"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.RTI2005:s5:ss1",
+    "IN.IRC2020:s80:ss3",
+    "IN.IRC2020:s78:ss5",
+    "IN.IRC2020:s79:ss4",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s19:ss3",
+    "IN.ESHRAMFAQ2026:para35",
+    "IN.RTI2005:s19:ss1"
+   ],
+   "dense": [
+    "IN.IRC2020:s4:ss6",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s5:ss2",
+    "IN.IRC2020:s4:ss8",
+    "IN.RTI2005:s7:ss1",
+    "IN.IRC2020:s26:ss2",
+    "IN.RTI2005:s19:ss2",
+    "IN.MTA2021:s35:ss2",
+    "IN.RTI2005:s11:ss3",
+    "IN.IRC2020:s53:ss6"
+   ],
+   "rrf": [
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s5:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss2",
+    "IN.IRC2020:s80:ss3",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s4:ss1:cl_b",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s29:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s5:ss2",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s4:ss1:cl_b",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s5:ss1",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s19:ss3"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s5:ss2",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s5:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s4:ss1:cl_b",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss6",
+    "IN.IRC2020:s4:ss6"
+   ]
+  },
+  "GS-071": {
+   "expected": [
+    "IN.RTI2005:s19:ss1",
+    "MP.RTIFAR2005:r7:ss1"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.MTA2021:s35:ss2",
+    "IN.IRC2020:s4:ss8",
+    "IN.MTA2021:s37:ss2",
+    "IN.CPA2019:s51:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.IRC2020:s4:ss10",
+    "IN.CPA2019:s52"
+   ],
+   "rrf": [
+    "IN.RTI2005:s19:ss5",
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s31",
+    "IN.MTA2021:s35:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s5:ss2",
+    "IN.IRC2020:s4:ss10",
+    "IN.CPA2019:s52",
+    "IN.MTA2021:s35:ss2",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.MTA2021:s37:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s5:ss2",
+    "IN.IRC2020:s4:ss10",
+    "IN.MTA2021:s37:ss2",
+    "IN.MTA2021:s35:ss2",
+    "IN.CPA2019:s52",
+    "IN.IRC2020:s4:ss6"
+   ]
+  },
+  "GS-072": {
+   "expected": [
+    "MP.RTIFAR2005:r8:ss2",
+    "IN.RTI2005:s19:ss3"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s19:ss9",
+    "IN.RTI2005:s19:ss7",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.CPA2019:s52",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s20:ss2"
+   ],
+   "dense": [
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTI2005:s19:ss9"
+   ],
+   "rrf": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s19:ss9",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s19:ss7",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s20:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s26:ss3",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTI2005:s19:ss5",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s20:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s26:ss3",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s19:ss5",
+    "IN.RTI2005:s19:ss8",
+    "IN.CPA2019:s102:ss2:cl_k",
+    "IN.RTI2005:s20:ss2"
+   ]
+  },
+  "GS-073": {
+   "expected": [
+    "IN.RTI2005:s6:ss2"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s14:ss3",
+    "IN.RTI2005:s17:ss3",
+    "IN.RTI2005:s3",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s2:cl_d",
+    "IN.RTI2005:s19:ss7",
+    "IN.RTI2005:s2:cl_l",
+    "IN.RTI2005:s5:ss3",
+    "IN.RTI2005:s12:ss2"
+   ],
+   "dense": [
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s14:ss4",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s8:ss3",
+    "IN.RTI2005:s7:ss9",
+    "IN.RTI2005:s14:ss1"
+   ],
+   "rrf": [
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s14:ss3",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s19:ss5",
+    "IN.RTI2005:s14:ss1",
+    "IN.RTI2005:s13:ss4",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:s20:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s7:ss9",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s14:ss4",
+    "IN.RTI2005:s19:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s7:ss9",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s14:ss4"
+   ]
+  },
+  "GS-074": {
+   "expected": [
+    "IN.RTIR2012:r3"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s16:ss5",
+    "IN.IRC2020:s11:ss2",
+    "IN.RTI2005:s7:ss6"
+   ],
+   "rrf": [
+    "IN.RTI2005:s4:ss1:cl_b:scl_x",
+    "IN.RTI2005:s19:ss9",
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s10:ss2"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s7:ss6",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s99:ss2:cl_zc"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s7:ss6",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s6:ss1",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s99:ss2:cl_zc"
+   ]
+  },
+  "GS-075": {
+   "expected": [
+    "IN.RTI2005:s8:ss1:cl_j",
+    "IN.RTI2005:s8:ss2"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para37",
+    "IN.ESHRAMFAQ2026:para38",
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.RTI2005:sch1",
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv"
+   ],
+   "dense": [
+    "IN.IRC2020:s59:ss2",
+    "IN.IRC2020:s59:ss5",
+    "IN.IRC2020:s59:ss1",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:s10:ss2",
+    "IN.IRC2020:s26:ss3",
+    "IN.MTA2021:sch1",
+    "IN.IRC2020:s61",
+    "IN.RTI2005:s4:ss1:cl_b:scl_x",
+    "IN.IRC2020:s86:ss9"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para37",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.IRC2020:s59:ss2",
+    "IN.IRC2020:s59:ss5",
+    "IN.ESHRAMFAQ2026:para38",
+    "IN.IRC2020:s59:ss1",
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s10:ss2"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s61",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTI2005:s6:ss2",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv",
+    "IN.RTI2005:s2:cl_f",
+    "IN.RTI2005:s4:ss1:cl_b:scl_x",
+    "IN.RTI2005:s16:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s16:ss5",
+    "IN.IRC2020:s59:ss2",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s13:ss5",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv"
+   ]
+  },
+  "GS-076": {
+   "expected": [
+    "MP.RTIFAR2005:r5:ss1"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.SVANLOG2025:sch1",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.RTI2005:s28:ss2",
+    "IN.OSHC2020:s98:ss2"
+   ],
+   "rrf": [
+    "IN.RTI2005:s2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.RTI2005:s1:ss2",
+    "IN.SVANLOG2025:sch1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.RTI2005:s31",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s7:ss5"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s7:ss3",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s28:ss2",
+    "IN.OSHC2020:s98:ss2",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s99:ss2:cl_zc",
+    "IN.OSHC2020:s96:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s27:ss2",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s7:ss5",
+    "IN.IRC2020:s99:ss2:cl_zc",
+    "IN.RTI2005:s20:ss1",
+    "IN.OSHC2020:s98:ss2",
+    "IN.OSHC2020:s96:ss2"
+   ]
+  },
+  "GS-077": {
+   "expected": [
+    "IN.RTI2005:s2:cl_h",
+    "IN.RTI2005:s2:cl_f"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s2:cl_f",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.RTI2005:s2:cl_i",
+    "IN.COW2019:s40:ss1",
+    "IN.OSHC2020:s77",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.RTI2005:s10:ss1",
+    "IN.OSHC2020:s109:ss2",
+    "IN.OSHC2020:s24:ss3",
+    "IN.OSHC2020:s2:ss1:cl_zzi"
+   ],
+   "dense": [
+    "IN.RTI2005:s11:ss1",
+    "IN.IRC2020:s8:ss1",
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s12",
+    "IN.IRC2020:s94:ss4",
+    "IN.IRC2020:s10:ss1",
+    "IN.IRC2020:s8:ss3",
+    "IN.RTI2005:s11:ss2",
+    "IN.IRC2020:s8:ss4",
+    "IN.RTI2005:s19:ss2"
+   ],
+   "rrf": [
+    "IN.RTI2005:s14:ss4",
+    "IN.RTI2005:s2:cl_f",
+    "IN.RTI2005:s11:ss1",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.IRC2020:s8:ss1",
+    "IN.RTI2005:s2:cl_i",
+    "IN.IRC2020:s61",
+    "IN.COW2019:s40:ss1",
+    "IN.IRC2020:s12",
+    "IN.OSHC2020:s77"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s49:ss7",
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s4:ss10",
+    "IN.IRC2020:s10:ss2",
+    "IN.IRC2020:s10:ss1",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s19:ss8",
+    "IN.IRC2020:s12",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s17:ss4"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s4:ss10",
+    "IN.IRC2020:s49:ss7",
+    "IN.IRC2020:s10:ss1",
+    "IN.RTI2005:s19:ss4",
+    "IN.IRC2020:s10:ss2",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s11:ss1"
+   ]
+  },
+  "GS-078": {
+   "expected": [
+    "IN.RTI2005:s6:ss3"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "IN.RTI2005:s20:ss2",
+    "IN.MTA2021:s36:ss5",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s25:ss4",
+    "IN.SSC2020:s42:ss1",
+    "IN.CPA2019:s62",
+    "IN.RTI2005:s29:ss2",
+    "IN.CPA2019:s38:ss2:cl_f"
+   ],
+   "rrf": [
+    "IN.RTI2005:s29:ss2",
+    "IN.RTI2005:s19:ss5",
+    "IN.RTI2005:s19:ss9",
+    "IN.RTI2005:s30:ss2",
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s1:ss2",
+    "IN.MTA2021:s36:ss5",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s7:ss8"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s86:ss8",
+    "IN.RTI2005:s20:ss2",
+    "IN.IRC2020:s86:ss7",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s25:ss4",
+    "IN.MTA2021:s36:ss5",
+    "IN.CPA2019:s65:ss3",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s25:ss1",
+    "IN.RTI2005:s19:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s86:ss8",
+    "IN.IRC2020:s86:ss7",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.MTA2021:s36:ss5",
+    "IN.RTI2005:s25:ss4",
+    "IN.RTI2005:s19:ss5",
+    "IN.CPA2019:s65:ss3",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s7:ss8"
+   ]
+  },
+  "GS-079": {
+   "expected": [
+    "IN.RTI2005:s20:ss1"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.SSC2020:s104",
+    "IN.OSHC2020:s114:ss2",
+    "IN.OSHC2020:s94",
+    "IN.OSHC2020:s99",
+    "IN.OSHC2020:s115:ss1",
+    "IN.SSC2020:s16:ss1:cl_c",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.RTI2005:s20:ss1",
+    "IN.OSHC2020:s114:ss5",
+    "IN.SSC2020:s100:ss1"
+   ],
+   "dense": [
+    "IN.IRC2020:s85:ss3",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s89:ss7",
+    "IN.CPA2019:s88",
+    "IN.IRC2020:s86:ss10",
+    "IN.SSC2020:s104",
+    "IN.CPA2019:s72:ss1",
+    "IN.IRC2020:s38:ss1"
+   ],
+   "rrf": [
+    "IN.SSC2020:s104",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s85:ss3",
+    "IN.CPA2019:s72:ss1",
+    "IN.OSHC2020:s111:ss5",
+    "IN.OSHC2020:s114:ss3",
+    "IN.OSHC2020:s99",
+    "IN.IRC2020:s38:ss1",
+    "IN.IRC2020:s86:ss7",
+    "IN.IRC2020:s85:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.OSHC2020:s99",
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss3",
+    "IN.SSC2020:s133:cl_e",
+    "IN.CPA2019:s88",
+    "IN.OSHC2020:s114:ss3",
+    "IN.SSC2020:s104",
+    "IN.CPA2019:s72:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.OSHC2020:s99",
+    "IN.IRC2020:s85:ss3",
+    "IN.OSHC2020:s111:ss5",
+    "IN.SSC2020:s133:cl_e",
+    "IN.CPA2019:s88",
+    "IN.SSC2020:s104",
+    "IN.OSHC2020:s96:ss2",
+    "IN.OSHC2020:s114:ss3"
+   ]
+  },
+  "GS-080": {
+   "expected": [
+    "IN.RTI2005:s7:ss1"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s12:ss5",
+    "IN.RTI2005:s15:ss5",
+    "IN.CPA2019:s2:ss47:clr_i:scla_g",
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i"
+   ],
+   "dense": [
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s8:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.IRC2020:s95:ss2",
+    "IN.RTI2005:s12:ss3",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s6:ss1",
+    "IN.SSC2020:s56:ss6",
+    "IN.LSA1987:s22:ss3"
+   ],
+   "rrf": [
+    "IN.RTI2005:s3",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_x",
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s12:ss5",
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s15:ss5",
+    "IN.RTI2005:s8:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss1",
+    "IN.IRC2020:s61",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:s12:ss3",
+    "IN.RTI2005:sch2",
+    "IN.CPA2019:s2:ss6",
+    "IN.RTI2005:s23",
+    "IN.RTI2005:s12:ss5",
+    "IN.RTI2005:s10:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s7:ss1",
+    "IN.IRC2020:s61",
+    "IN.RTI2005:s12:ss3",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s23",
+    "IN.CPA2019:s2:ss6",
+    "IN.RTI2005:s12:ss5"
+   ]
+  },
+  "GS-082": {
+   "expected": [
+    "IN.RTI2005:s7:ss5",
+    "MP.RTIFAR2005:r9"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para35",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.SVANLOG2025:para4",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.RTI2005:s7:ss5",
+    "IN.SVANLOG2025:sch4",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s22",
+    "IN.ESHRAMFAQ2026:para28"
+   ],
+   "dense": [
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.RTI2005:s7:ss3",
+    "IN.SVANLOG2025:sch1",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.SVANLOG2025:para4",
+    "IN.MTA2021:s20:ss5",
+    "IN.IRC2020:s15:ss3",
+    "IN.RTI2005:s28:ss2",
+    "IN.IRC2020:s49:ss7",
+    "IN.MTA2021:s13:ss2"
+   ],
+   "rrf": [
+    "IN.SVANLOG2025:para4",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s7:ss5",
+    "IN.ESHRAMFAQ2026:para36",
+    "IN.ESHRAMFAQ2026:para35",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.RTI2005:s7:ss3",
+    "IN.SVANLOG2025:sch1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s7:ss5",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s27:ss2",
+    "IN.IRC2020:s15:ss1",
+    "IN.SVANLOG2025:sch1",
+    "IN.IRC2020:s49:ss7",
+    "IN.IRC2020:s15:ss4",
+    "IN.SVANSG2025:para5:sp2"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s27:ss2",
+    "IN.IRC2020:s15:ss4",
+    "IN.IRC2020:s15:ss1",
+    "IN.IRC2020:s15:ss3",
+    "IN.SVANLOG2025:sch1",
+    "IN.IRC2020:s15:ss2"
+   ]
+  },
+  "GS-083": {
+   "expected": [
+    "IN.RTI2005:s8:ss1:cl_h"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "IN.IRC2020:s34",
+    "IN.RTI2005:s6:ss1",
+    "IN.IRC2020:s10:ss2",
+    "IN.RTI2005:s10:ss2",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s18:ss3",
+    "IN.MTA2021:s38:ss2",
+    "IN.IRC2020:s26:ss3",
+    "IN.RTI2005:s25:ss4",
+    "IN.OSHC2020:s35:ss1:clr_vii"
+   ],
+   "rrf": [
+    "IN.RTI2005:s2",
+    "IN.IRC2020:s34",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.IRC2020:s10:ss2",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.IRC2020:s86:ss9"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s35:ss1:clr_vii",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s25:ss4",
+    "IN.MTA2021:s37:ss1",
+    "IN.IRC2020:s10:ss2",
+    "IN.RTI2005:s4:ss1:cl_d",
+    "IN.RTI2005:s31",
+    "IN.MTA2021:s37:ss3",
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s35:ss1:clr_vii",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s25:ss4",
+    "IN.IRC2020:s10:ss2",
+    "IN.MTA2021:s37:ss3",
+    "IN.RTI2005:s2:cl_i",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv",
+    "IN.MTA2021:s37:ss1",
+    "IN.RTI2005:s19:ss2"
+   ]
+  },
+  "GS-084": {
+   "expected": [
+    "IN.RTI2005:s2:cl_f",
+    "IN.RTI2005:s4:ss1:cl_d"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTI2005:s11:ss3",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s10:ss2",
+    "IN.SSC2020:s139:ss4",
+    "IN.RTI2005:s7:ss8"
+   ],
+   "dense": [
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s5:ss4",
+    "IN.OSHC2020:s111:ss3",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s11:ss1",
+    "IN.MTA2021:s37:ss5",
+    "IN.RTI2005:s18:ss2"
+   ],
+   "rrf": [
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s5:ss4",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss9"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s5:ss4",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s19:ss5"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s5:ss4",
+    "IN.RTI2005:s19:ss5"
+   ]
+  },
+  "GS-085": {
+   "expected": [
+    "IN.RTI2005:s8:ss1:cl_j"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:s2",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s4:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vi",
+    "IN.RTI2005:s3"
+   ],
+   "dense": [
+    "IN.IRC2020:s13",
+    "IN.CPA2019:s71",
+    "IN.IRC2020:s25:ss2",
+    "IN.IRC2020:s51:ss1",
+    "IN.IRC2020:s25:ss1",
+    "IN.IRC2020:s76:ss2",
+    "IN.RA1908:s17:ss1A",
+    "IN.IRC2020:s76:ss1",
+    "IN.IRC2020:s104:ss1A",
+    "IN.CPA2019:s39:ss1:cl_g"
+   ],
+   "rrf": [
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s2",
+    "IN.IRC2020:s13",
+    "IN.RTI2005:s1:ss2",
+    "IN.CPA2019:s71",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.IRC2020:s25:ss2",
+    "IN.IRC2020:s51:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.IRC2020:s25:ss1"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s104:ss1",
+    "IN.IRC2020:s13",
+    "IN.IRC2020:s104:ss1A",
+    "IN.RTI2005:s8:ss1",
+    "IN.IRC2020:s6:ss3",
+    "IN.IRC2020:s51:ss1",
+    "IN.RTI2005:s31",
+    "IN.IRC2020:s25:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.IRC2020:s76:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s104:ss1",
+    "IN.IRC2020:s104:ss1A",
+    "IN.RTI2005:s8:ss1",
+    "IN.IRC2020:s13",
+    "IN.IRC2020:s6:ss3",
+    "IN.IRC2020:s25:ss1",
+    "IN.IRC2020:s51:ss1",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xvi",
+    "IN.IRC2020:s76:ss2"
+   ]
+  },
+  "GS-086": {
+   "expected": [
+    "IN.RTI2005:s24"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.RTI2005:sch2",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.RTI2005:s2:cl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xi",
+    "IN.RTI2005:s24:ss2",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s2:cl_f",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss1"
+   ],
+   "dense": [
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s12:ss7",
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s18:ss3",
+    "IN.RTI2005:s12:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss8"
+   ],
+   "rrf": [
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s12:ss3",
+    "IN.RTI2005:s18:ss1",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.RTI2005:s2:cl_i"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s19:ss9",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s25:ss4",
+    "IN.RTI2005:s19:ss8"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s25:ss4",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss9"
+   ]
+  },
+  "GS-087": {
+   "expected": [
+    "IN.LSA1987:s12",
+    "IN.LSA1987:s13"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s56:ss6",
+    "IN.LSA1987:s13:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.OSHC2020:s63",
+    "IN.LSA1987:s13:ss2",
+    "IN.SSC2020:s56:ss1"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s56:ss6",
+    "IN.LSA1987:s13:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.OSHC2020:s63",
+    "IN.LSA1987:s13:ss2",
+    "IN.SSC2020:s56:ss1"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s13:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.SSC2020:s56:ss9",
+    "IN.SSC2020:s56:ss1",
+    "IN.SSC2020:s56:ss5",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s56:ss6"
+   ],
+   "rerank-fp32": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.SSC2020:s56:ss8",
+    "IN.LSA1987:s13:ss1",
+    "IN.SSC2020:s56:ss1",
+    "IN.SSC2020:s56:ss9",
+    "IN.SSC2020:s56:ss5",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s56:ss6"
+   ]
+  },
+  "GS-088": {
+   "expected": [
+    "IN.LSA1987:s12:cl_h",
+    "MP.SLSAR1996:r20",
+    "MP.SLSALAGUIDE2025"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para44",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s13:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.LSA1987:s20:ss7",
+    "IN.LSA1987:s20:ss5",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.LSA1987:s19:ss5"
+   ],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:para5:sp1",
+    "IN.SVANLOG2025:sch1",
+    "IN.SSC2020:s53:ss1",
+    "IN.LSA1987:s13:ss2",
+    "IN.SVANSG2025:para5:sp2"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.LSA1987:s13:ss2",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.LSA1987:s13:ss1",
+    "IN.LSA1987:s12",
+    "IN.SVANLOG2025:sch2",
+    "IN.LSA1987:s21:ss1",
+    "IN.ESHRAMFAQ2026:para44"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s13:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:sch2",
+    "IN.SVANLOG2025:sch1",
+    "IN.LSA1987:s13:ss1",
+    "IN.SVANSG2025:para5:sp2"
+   ],
+   "rerank-fp32": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s13:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.LSA1987:s12",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:sch2",
+    "IN.LSA1987:s13:ss1",
+    "IN.SVANLOG2025:sch1",
+    "IN.SVANLOG2025:para5:sp1"
+   ]
+  },
+  "GS-089": {
+   "expected": [
+    "IN.LSA1987:s12:cl_c"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s69",
+    "IN.SSC2020:s64",
+    "IN.SSC2020:s60:ss1",
+    "IN.SSC2020:s32:ss1:cl_b",
+    "IN.SSC2020:s53:ss5"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s69",
+    "IN.SSC2020:s64",
+    "IN.SSC2020:s60:ss1",
+    "IN.SSC2020:s32:ss1:cl_b",
+    "IN.SSC2020:s53:ss5"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s64",
+    "IN.SSC2020:s142:ss1",
+    "IN.SSC2020:s60:ss2",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss5"
+   ],
+   "rerank-fp32": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s12",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.SSC2020:s64",
+    "IN.SSC2020:s142:ss1",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s57:ss2",
+    "IN.SSC2020:s53:ss5"
+   ]
+  },
+  "GS-090": {
+   "expected": [
+    "IN.LSA1987:s19",
+    "IN.LSA1987:s21:ss2"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s22:ss3",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s22:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s20:ss5"
+   ],
+   "dense": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s20:ss3",
+    "IN.LSA1987:s20:ss4"
+   ],
+   "rrf": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s22:ss3",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s22:ss2"
+   ],
+   "rerank-int8": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss3",
+    "IN.LSA1987:s22:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss3"
+   ]
+  },
+  "GS-091": {
+   "expected": [
+    "IN.LSA1987:s12:cl_g"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.OSHC2020:s63",
+    "IN.CPA2019:s2:ss47:clr_iii",
+    "IN.OSHC2020:s74:ss2",
+    "IN.TPA1882:s108:cl_o",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.MTA2021:s21:ss2:cl_f",
+    "IN.OSHC2020:s136:cl_r",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.OSHC2020:s136:cl_q"
+   ],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.SVANSG2025:para9",
+    "IN.SSC2020:s56:ss8",
+    "IN.SSC2020:s56:ss7",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s64",
+    "IN.SVANSG2025:para7",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.SVANLOG2025:para9"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s64",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.CPA2019:s2:ss47:clr_iii",
+    "IN.SVANSG2025:para9",
+    "IN.OSHC2020:s74:ss2",
+    "IN.SSC2020:s56:ss8",
+    "IN.TPA1882:s108:cl_o"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s39:ss1:cl_b",
+    "IN.CPA2019:s2:ss47:clr_iii",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.OSHC2020:s8:ss6",
+    "IN.OSHC2020:s18:ss2",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.SVANLOG2025:para9",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s56:ss7"
+   ],
+   "rerank-fp32": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.CPA2019:s39:ss1:cl_b",
+    "IN.CPA2019:s2:ss47:clr_iii",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.OSHC2020:s133:ss2:cl_zv",
+    "IN.OSHC2020:s8:ss6",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:para9",
+    "IN.SSC2020:s53:ss1",
+    "IN.OSHC2020:s18:ss2"
+   ]
+  },
+  "GS-092": {
+   "expected": [
+    "IN.LSA1987:s21:ss1"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.MTA2021:s41:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.MTA2021:s41:ss1",
+    "IN.MTA2021:s41:ss3",
+    "IN.IRC2020:s49:ss7",
+    "IN.IRC2020:s56",
+    "IN.IRC2020:s59:ss2",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.IRC2020:s59:ss4"
+   ],
+   "rrf": [
+    "IN.MTA2021:s41:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.MTA2021:s41:ss1",
+    "IN.MTA2021:s41:ss3",
+    "IN.IRC2020:s49:ss7",
+    "IN.IRC2020:s56",
+    "IN.IRC2020:s59:ss2",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.IRC2020:s59:ss4"
+   ],
+   "rerank-int8": [
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s20:ss7",
+    "IN.MTA2021:s36:ss6",
+    "IN.MTA2021:s41:ss3",
+    "IN.MTA2021:s41:ss2",
+    "IN.LSA1987:s21:ss2",
+    "IN.MTA2021:s41:ss1",
+    "IN.SSC2020:s23:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp2"
+   ],
+   "rerank-fp32": [
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s20:ss7",
+    "IN.MTA2021:s36:ss6",
+    "IN.MTA2021:s41:ss3",
+    "IN.MTA2021:s41:ss2",
+    "IN.MTA2021:s41:ss1",
+    "IN.LSA1987:s21:ss2",
+    "IN.IRC2020:s49:ss7",
+    "MP.SLSALAGUIDE2025:para1:sp2"
+   ]
+  },
+  "GS-094": {
+   "expected": [
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s22B"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.SSC2020:s23:ss1",
+    "IN.MTA2021:s32:ss1",
+    "IN.LSA1987:s22:ss1",
+    "IN.CPA2019:s81:ss3",
+    "IN.LSA1987:s22A",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s51:ss1",
+    "IN.LSA1987:s22B:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s41"
+   ],
+   "rrf": [
+    "IN.SSC2020:s23:ss1",
+    "IN.MTA2021:s32:ss1",
+    "IN.LSA1987:s22:ss1",
+    "IN.CPA2019:s81:ss3",
+    "IN.LSA1987:s22A",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s51:ss1",
+    "IN.LSA1987:s22B:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s41"
+   ],
+   "rerank-int8": [
+    "IN.LSA1987:s22B:ss1",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s22B:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s22:ss3",
+    "IN.IRC2020:s4:ss10",
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s81:ss2",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s67"
+   ],
+   "rerank-fp32": [
+    "IN.LSA1987:s22B:ss1",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s22B:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s22:ss3",
+    "IN.IRC2020:s4:ss10",
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s81:ss2",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1"
+   ]
+  },
+  "GS-095": {
+   "expected": [
+    "MP.LSG2010:s3"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss4",
+    "IN.IRC2020:s30:ss8",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.IRC2020:s26:ss2",
+    "IN.IRC2020:s55:ss3",
+    "IN.SSC2020:s52:ss3",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s59:ss2",
+    "IN.IRC2020:s83:ss3"
+   ],
+   "rrf": [
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss4",
+    "IN.IRC2020:s30:ss8",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.IRC2020:s26:ss2",
+    "IN.IRC2020:s55:ss3",
+    "IN.SSC2020:s52:ss3",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s59:ss2",
+    "IN.IRC2020:s83:ss3"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s30:ss8",
+    "IN.SSC2020:s56:ss8",
+    "IN.IRC2020:s26:ss2",
+    "IN.IRC2020:s55:ss3",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s30:ss1",
+    "IN.CPA2019:s105:ss1",
+    "IN.IRC2020:s30:ss5",
+    "IN.RTI2005:s29:ss1",
+    "IN.IRC2020:s4:ss6"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s30:ss5",
+    "IN.SSC2020:s56:ss8",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s55:ss3",
+    "IN.IRC2020:s26:ss2",
+    "IN.CPA2019:s105:ss1",
+    "IN.RTI2005:s29:ss1",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s30:ss4"
+   ]
+  },
+  "GS-096": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "bm25": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SSC2020:s129:ss5",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.COW2019:s35:cl_b",
+    "IN.OSHC2020:s136:cl_ze",
+    "IN.SSC2020:s130:ss7",
+    "IN.SSC2020:s130:ss6"
+   ],
+   "dense": [
+    "IN.SVANLOG2025:para4",
+    "IN.SVANSG2025:para4",
+    "IN.SVANSG2025:sch1:para2",
+    "IN.SVANLOG2025:para6:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.SVANLOG2025:sch3:para2",
+    "IN.OSHC2020:s3:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s129:ss4",
+    "MP.SLSALAGUIDE2025:para1:sp1"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SSC2020:s129:ss5",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.OSHC2020:s117:ss2",
+    "IN.OSHC2020:s56",
+    "IN.SVANLOG2025:para3",
+    "IN.SVANLOG2025:para4",
+    "IN.SVANSG2025:para4",
+    "IN.SVANSG2025:sch1:para2"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.SVANLOG2025:para3",
+    "IN.SVANSG2025:para4",
+    "IN.SVANSG2025:sch1:para2",
+    "IN.SVANLOG2025:sch4",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SVANLOG2025:para4",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.SVANLOG2025:sch3:para2",
+    "MP.SLSALAGUIDE2025:para1:sp2"
+   ],
+   "rerank-fp32": [
+    "IN.SVANLOG2025:sch4",
+    "IN.SVANSG2025:sch1:para2",
+    "IN.SVANSG2025:para4",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.SVANLOG2025:para3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SVANLOG2025:sch3:para2",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.SVANLOG2025:para4",
+    "MP.SLSALAGUIDE2025:para1:sp2"
+   ]
+  },
+  "GS-097": {
+   "expected": [
+    "MP.LSG2010:s6",
+    "MP.LSGR2010:r8"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.SSC2020:s130:ss4",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s50:ss2",
+    "IN.OSHC2020:s3:ss3",
+    "IN.IRC2020:s30:ss8",
+    "IN.SSC2020:s130:ss2",
+    "IN.IRC2020:s30:ss5",
+    "IN.SSC2020:s84:ss3",
+    "IN.COW2019:s45:ss3",
+    "IN.CPA2019:s38:ss2:cl_c"
+   ],
+   "rrf": [
+    "IN.SSC2020:s130:ss4",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s50:ss2",
+    "IN.OSHC2020:s3:ss3",
+    "IN.IRC2020:s30:ss8",
+    "IN.SSC2020:s130:ss2",
+    "IN.IRC2020:s30:ss5",
+    "IN.SSC2020:s84:ss3",
+    "IN.COW2019:s45:ss3",
+    "IN.CPA2019:s38:ss2:cl_c"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss1",
+    "IN.IRC2020:s10:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s79:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.SSC2020:s83:ss6",
+    "IN.CPA2019:s80:ss3",
+    "IN.OSHC2020:s4:ss1",
+    "IN.IRC2020:s30:ss5",
+    "IN.SSC2020:s130:ss4"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s19:ss1",
+    "IN.IRC2020:s10:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s83:ss6",
+    "IN.CPA2019:s80:ss3",
+    "IN.SSC2020:s79:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.IRC2020:s30:ss5",
+    "IN.OSHC2020:s4:ss1",
+    "IN.SSC2020:s130:ss4"
+   ]
+  },
+  "GS-098": {
+   "expected": [
+    "MP.LSG2010:s7"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.OSHC2020:s114:ss3",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.COW2019:s53:ss1",
+    "IN.IRC2020:s85:ss1",
+    "IN.OSHC2020:s111:ss1",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.RTI2005:s20:ss1"
+   ],
+   "dense": [
+    "IN.OSHC2020:s111:ss5",
+    "IN.OSHC2020:s114:ss3",
+    "IN.OSHC2020:s102:ss2",
+    "IN.COW2019:s56:ss7",
+    "IN.OSHC2020:s102:ss1",
+    "IN.CPA2019:s72:ss1",
+    "IN.OSHC2020:s95:ss1",
+    "IN.OSHC2020:s111:ss3",
+    "IN.SSC2020:s138:ss7",
+    "IN.IRC2020:s85:ss3"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s114:ss3",
+    "IN.RTI2005:s20:ss1",
+    "IN.SSC2020:s133:cl_n",
+    "IN.OSHC2020:s111:ss3",
+    "IN.SSC2020:s133:cl_f",
+    "IN.OSHC2020:s111:ss2",
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.OSHC2020:s111:ss5",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.OSHC2020:s102:ss2"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss3",
+    "IN.OSHC2020:s114:ss3",
+    "IN.COW2019:s56:ss7",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s89:ss7",
+    "IN.SSC2020:s138:ss7",
+    "IN.OSHC2020:s95:ss1",
+    "IN.OSHC2020:s102:ss1",
+    "IN.OSHC2020:s95:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss3",
+    "IN.OSHC2020:s114:ss3",
+    "IN.COW2019:s56:ss7",
+    "IN.RTI2005:s20:ss1",
+    "IN.SSC2020:s138:ss7",
+    "IN.IRC2020:s89:ss7",
+    "IN.OSHC2020:s102:ss1",
+    "IN.OSHC2020:s95:ss1",
+    "IN.OSHC2020:s104"
+   ]
+  },
+  "GS-099": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.SVANSG2025:para5:sp4",
+    "IN.OSHC2020:s136:cl_h",
+    "IN.IRC2020:s26:ss3",
+    "IN.IRC2020:s2:cl_zm",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss1",
+    "IN.OSHC2020:s56",
+    "IN.SSC2020:s130:ss3",
+    "IN.SSC2020:s130:ss5"
+   ],
+   "dense": [
+    "IN.OSHC2020:s56",
+    "IN.SVANLOG2025:para4",
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.OSHC2020:s117:ss2",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.OSHC2020:s48:ss1",
+    "IN.OSHC2020:s35:ss1:clr_vi",
+    "IN.OSHC2020:s136:cl_h"
+   ],
+   "rrf": [
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.OSHC2020:s56",
+    "IN.OSHC2020:s136:cl_h",
+    "IN.OSHC2020:s117:ss2",
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.SVANLOG2025:para4",
+    "IN.IRC2020:s26:ss3",
+    "IN.LSA1987:s12",
+    "IN.ESHRAMFAQ2026:para31"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.SVANLOG2025:para4",
+    "IN.IRC2020:s26:ss3",
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.OSHC2020:s117:ss2",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s136:cl_h",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.RA1908:s17:ss2:clr_vii"
+   ],
+   "rerank-fp32": [
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.SVANLOG2025:para4",
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.OSHC2020:s117:ss2",
+    "IN.IRC2020:s26:ss3",
+    "IN.OSHC2020:s136:cl_h",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s12",
+    "IN.RA1908:s17:ss2:clr_vii"
+   ]
+  },
+  "GS-101": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.SSC2020:s130:ss1",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para25",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.OSHC2020:s16:ss6",
+    "IN.COW2019:s48:ss3",
+    "IN.CPA2019:s81:ss2",
+    "IN.SSC2020:s130:ss2",
+    "IN.CPA2019:s80:ss1",
+    "IN.IRC2020:s9:ss5"
+   ],
+   "dense": [
+    "IN.OSHC2020:s56",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.SVANLOG2025:sch4",
+    "IN.OSHC2020:s47:ss2",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.OSHC2020:s117:ss2",
+    "IN.SVANSG2025:para4",
+    "IN.OSHC2020:s37:ss1",
+    "IN.OSHC2020:s133:ss2:cl_zr"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s56",
+    "IN.SSC2020:s130:ss1",
+    "IN.OSHC2020:s117:ss2",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.OSHC2020:s133:ss2:cl_zr",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s130:ss4",
+    "IN.SSC2020:s79:ss1",
+    "IN.ESHRAMFAQ2026:para55"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s133:ss2:cl_zr",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.SSC2020:s130:ss1",
+    "IN.OSHC2020:s56",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s130:ss2",
+    "IN.OSHC2020:s119:ss4",
+    "IN.OSHC2020:s37:ss2",
+    "IN.SSC2020:s130:ss6",
+    "IN.OSHC2020:s37:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.OSHC2020:s133:ss2:cl_zr",
+    "IN.OSHC2020:s56",
+    "IN.SSC2020:s130:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s130:ss2",
+    "IN.OSHC2020:s119:ss4",
+    "IN.OSHC2020:s37:ss2",
+    "IN.SSC2020:s130:ss6",
+    "IN.OSHC2020:s117:ss2"
+   ]
+  },
+  "GS-102": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.OSHC2020:s117:ss2",
+    "IN.SSC2020:s130:ss2",
+    "IN.OSHC2020:s48:ss1",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.OSHC2020:s21:ss2",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.IRC2020:s34",
+    "IN.SSC2020:s130:ss1",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s134:ss2:cl_d"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s117:ss2",
+    "IN.SSC2020:s130:ss2",
+    "IN.OSHC2020:s48:ss1",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.OSHC2020:s21:ss2",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.IRC2020:s34",
+    "IN.SSC2020:s130:ss1",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s134:ss2:cl_d"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:sch4",
+    "IN.OSHC2020:s134:ss2:cl_e",
+    "IN.SSC2020:s130:ss7",
+    "IN.SSC2020:s130:ss1",
+    "IN.SSC2020:s130:ss6",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss3",
+    "IN.SVANSG2025:para5:sp3",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.SVANLOG2025:para6:sp1"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:sch4",
+    "IN.OSHC2020:s134:ss2:cl_e",
+    "IN.SSC2020:s130:ss6",
+    "IN.SSC2020:s130:ss7",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss1",
+    "IN.SSC2020:s130:ss3",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.SVANLOG2025:sch4"
+   ]
+  },
+  "GS-105": {
+   "expected": [
+    "MP.LSG2010:s6"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.SVANLOG2025:para7",
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s22:ss3",
+    "IN.RTI2005:s19:ss3",
+    "IN.SVANSG2025:para5:sp1:sp3",
+    "IN.LSA1987:s22:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s20:ss1"
+   ],
+   "dense": [
+    "IN.SVANLOG2025:para7",
+    "IN.LSA1987:s21:ss1",
+    "IN.OSHC2020:s75",
+    "IN.LSA1987:s20:ss2",
+    "IN.SSC2020:s37:ss7",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s20:ss1",
+    "IN.SSC2020:s23:ss1",
+    "IN.COW2019:s66",
+    "IN.SSC2020:s128"
+   ],
+   "rrf": [
+    "IN.SVANLOG2025:para7",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.SVANSG2025:para5:sp1:sp3",
+    "IN.SSC2020:s37:ss7",
+    "IN.CPA2019:s102:ss2:cl_k"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss3",
+    "IN.SSC2020:s154:ss2:cl_b",
+    "IN.LSA1987:s21:ss2",
+    "IN.SSC2020:s37:ss7",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.SVANLOG2025:para7",
+    "IN.CPA2019:s102:ss2:cl_k",
+    "IN.LSA1987:s20:ss1",
+    "IN.SVANSG2025:para5:sp1:sp3",
+    "IN.LSA1987:s21:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.RTI2005:s19:ss3",
+    "IN.SSC2020:s154:ss2:cl_b",
+    "IN.CPA2019:s102:ss2:cl_k",
+    "IN.LSA1987:s21:ss2",
+    "IN.SSC2020:s37:ss7",
+    "IN.SVANLOG2025:para7",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.SVANSG2025:para5:sp1:sp3",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s22:ss1"
+   ]
+  },
+  "GS-110": {
+   "expected": [
+    "IN.SSC2020:s113",
+    "IN.ESHRAMFAQ2026:para30"
+   ],
+   "indexed": true,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para40",
+    "IN.ESHRAMFAQ2026:para49",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para13"
+   ],
+   "dense": [
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para2",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para1"
+   ],
+   "rrf": [
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para2",
+    "IN.ESHRAMFAQ2026:para13",
+    "IN.ESHRAMFAQ2026:para34"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para12"
+   ],
+   "rerank-fp32": [
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para34"
+   ]
+  },
+  "GS-118": {
+   "expected": [
+    "IN.LSA1987:s12:cl_g"
+   ],
+   "indexed": true,
+   "bm25": [],
+   "dense": [
+    "IN.MTA2021:s38:ss2",
+    "IN.SSC2020:s97",
+    "IN.OSHC2020:s111:ss3",
+    "IN.SVANSG2025:para7",
+    "IN.OSHC2020:s111:ss2",
+    "IN.COW2019:s53:ss2",
+    "IN.OSHC2020:s113:ss1",
+    "IN.OSHC2020:s4:ss1",
+    "IN.OSHC2020:s111:ss4",
+    "IN.OSHC2020:s111:ss5"
+   ],
+   "rrf": [
+    "IN.MTA2021:s38:ss2",
+    "IN.SSC2020:s97",
+    "IN.OSHC2020:s111:ss3",
+    "IN.SVANSG2025:para7",
+    "IN.OSHC2020:s111:ss2",
+    "IN.COW2019:s53:ss2",
+    "IN.OSHC2020:s113:ss1",
+    "IN.OSHC2020:s4:ss1",
+    "IN.OSHC2020:s111:ss4",
+    "IN.OSHC2020:s111:ss5"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s111:ss2",
+    "IN.COW2019:s53:ss2",
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss2",
+    "IN.OSHC2020:s111:ss3",
+    "IN.CPA2019:s93",
+    "IN.CPA2019:s22:ss1",
+    "IN.OSHC2020:s95:ss2",
+    "IN.OSHC2020:s111:ss4",
+    "IN.OSHC2020:s95:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s111:ss2",
+    "IN.IRC2020:s85:ss2",
+    "IN.COW2019:s53:ss2",
+    "IN.OSHC2020:s111:ss3",
+    "IN.CPA2019:s22:ss1",
+    "IN.OSHC2020:s111:ss5",
+    "IN.CPA2019:s93",
+    "IN.OSHC2020:s95:ss2",
+    "IN.OSHC2020:s95:ss1",
+    "IN.OSHC2020:s111:ss4"
+   ]
+  },
+  "GS-121": {
+   "expected": [
+    "MP.LRC1959:s110"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.TPA1882:s106:ss1",
+    "IN.SSC2020:s2:ss59",
+    "IN.SSC2020:s75",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s108:cl_i",
+    "IN.TPA1882:s105",
+    "IN.SSC2020:s60:ss4",
+    "IN.CPA2019:s81:ss1",
+    "IN.MTA2021:s38:ss3",
+    "IN.SSC2020:s80"
+   ],
+   "rrf": [
+    "IN.TPA1882:s106:ss1",
+    "IN.SSC2020:s2:ss59",
+    "IN.SSC2020:s75",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s108:cl_i",
+    "IN.TPA1882:s105",
+    "IN.SSC2020:s60:ss4",
+    "IN.CPA2019:s81:ss1",
+    "IN.MTA2021:s38:ss3",
+    "IN.SSC2020:s80"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s106:ss1",
+    "IN.SSC2020:s75",
+    "IN.IRC2020:s66:cl_a",
+    "IN.MTA2021:s35:ss2",
+    "IN.SSC2020:s2:ss59",
+    "IN.RTI2005:s29:ss1",
+    "IN.MTA2021:s35:ss7",
+    "IN.CPA2019:s81:ss1",
+    "IN.IRC2020:s58:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.SSC2020:s75",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.SSC2020:s2:ss59",
+    "IN.IRC2020:s58:ss2",
+    "IN.IRC2020:s66:cl_a",
+    "IN.CPA2019:s81:ss1",
+    "IN.MTA2021:s35:ss2",
+    "IN.TPA1882:s106:ss1",
+    "IN.RTI2005:s29:ss1",
+    "IN.MTA2021:s35:ss7"
+   ]
+  },
+  "GS-122": {
+   "expected": [
+    "MP.LRC1959:s109"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.CPA2019:s2:ss6",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.SSC2020:s2:ss59",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para25",
+    "IN.TPA1882:s108:cl_i",
+    "IN.COW2019:s2:cl_j",
+    "IN.SSC2020:s42:ss2"
+   ],
+   "dense": [
+    "IN.SSC2020:s2:ss59",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s108:cl_i",
+    "IN.SVANSG2025:sch1:para3",
+    "IN.SVANSG2025:para4",
+    "IN.SVANLOG2025:sch3:para3",
+    "IN.SVANSG2025:para3",
+    "IN.TPA1882:s106:ss1",
+    "IN.TPA1882:s106:ss4",
+    "IN.ESHRAMFAQ2026:para54"
+   ],
+   "rrf": [
+    "IN.SSC2020:s2:ss59",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s108:cl_i",
+    "IN.RTI2005:s6:ss3",
+    "IN.TPA1882:s108:cl_p",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.CPA2019:s2:ss6",
+    "IN.SVANSG2025:sch1:para3"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s84:ss5",
+    "IN.RTI2005:s6:ss3",
+    "IN.TPA1882:s106:ss4",
+    "IN.RTI2005:s29:ss2",
+    "IN.RTI2005:s11:ss1",
+    "IN.OSHC2020:s84:ss2",
+    "IN.MTA2021:s3:ss2",
+    "IN.TPA1882:s108:cl_p",
+    "IN.TPA1882:s106:ss1",
+    "IN.RTI2005:s10:ss2"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s84:ss5",
+    "IN.RTI2005:s6:ss3",
+    "IN.RTI2005:s11:ss1",
+    "IN.TPA1882:s106:ss4",
+    "IN.RTI2005:s29:ss2",
+    "IN.OSHC2020:s84:ss2",
+    "IN.SSC2020:s1:ss6",
+    "IN.TPA1882:s106:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.TPA1882:s108:cl_p"
+   ]
+  },
+  "GS-123": {
+   "expected": [
+    "MP.LRC1959:s110"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.OSHC2020:s38:ss1:prov1",
+    "IN.CPA2019:s38:ss2:cl_g",
+    "IN.OSHC2020:s139:ss5",
+    "IN.OSHC2020:s139:ss6",
+    "IN.SSC2020:s130:ss1",
+    "IN.CPA2019:s73:ss1",
+    "IN.SSC2020:s99:ss1",
+    "IN.MTA2021:s38:ss3",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.MTA2021:s38:ss1"
+   ],
+   "dense": [
+    "IN.IRC2020:s36",
+    "IN.CPA2019:s61",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s68",
+    "IN.CPA2019:s72:ss1",
+    "IN.CPA2019:s103:ss1",
+    "IN.CPA2019:s106",
+    "IN.IRC2020:s33:ss1",
+    "IN.SSC2020:s125:ss6"
+   ],
+   "rrf": [
+    "IN.CPA2019:s67",
+    "IN.SSC2020:s125:ss6",
+    "IN.CPA2019:s73:ss1",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s72:ss1",
+    "IN.CPA2019:s68",
+    "IN.IRC2020:s78:ss6",
+    "IN.CPA2019:s73:ss2",
+    "IN.OSHC2020:s38:ss1:prov1",
+    "IN.IRC2020:s36"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s38:ss1:prov1",
+    "IN.CPA2019:s38:ss2:cl_g",
+    "IN.OSHC2020:s139:ss6",
+    "IN.OSHC2020:s139:ss5",
+    "IN.OSHC2020:s38:ss1:prov3",
+    "IN.CPA2019:s68",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.CPA2019:s73:ss2",
+    "IN.SSC2020:s130:ss1",
+    "IN.SSC2020:s99:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s38:ss1:prov1",
+    "IN.CPA2019:s38:ss2:cl_g",
+    "IN.OSHC2020:s139:ss6",
+    "IN.OSHC2020:s139:ss5",
+    "IN.OSHC2020:s38:ss1:prov3",
+    "IN.CPA2019:s68",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.CPA2019:s73:ss1",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s51:ss1"
+   ]
+  },
+  "GS-124": {
+   "expected": [
+    "MP.LRC1959:s129",
+    "MP.LRCDR2018:r3"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.CPA2019:s34:ss2",
+    "IN.IRC2020:s22:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.IRC2020:s4:ss10",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s37:ss1",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s81:ss1",
+    "IN.CPA2019:s41",
+    "IN.IRC2020:s4:ss8"
+   ],
+   "rrf": [
+    "IN.CPA2019:s34:ss2",
+    "IN.IRC2020:s22:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.IRC2020:s4:ss10",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s37:ss1",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s81:ss1",
+    "IN.CPA2019:s41",
+    "IN.IRC2020:s4:ss8"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s53:ss6",
+    "IN.IRC2020:s4:ss10",
+    "IN.IRC2020:s22:ss1",
+    "IN.IRC2020:s53:ss2",
+    "IN.CPA2019:s79:ss2",
+    "IN.IRC2020:s53:ss1",
+    "IN.IRC2020:s49:ss2",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s81:ss1",
+    "IN.IRC2020:s42:ss7"
+   ],
+   "rerank-fp32": [
+    "IN.IRC2020:s53:ss6",
+    "IN.IRC2020:s4:ss10",
+    "IN.IRC2020:s22:ss1",
+    "IN.IRC2020:s53:ss2",
+    "IN.IRC2020:s53:ss1",
+    "IN.IRC2020:s49:ss2",
+    "IN.CPA2019:s81:ss1",
+    "IN.IRC2020:s42:ss7",
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s79:ss2"
+   ]
+  },
+  "GS-125": {
+   "expected": [
+    "MP.LRCDR2018:r4"
+   ],
+   "indexed": false,
+   "bm25": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.SSC2020:s2:ss59",
+    "IN.COW2019:s9:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.OSHC2020:s136:cl_u",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.RA1908:s17:ss2:clr_ix"
+   ],
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.CPA2019:s103:ss2",
+    "IN.RA1908:s17:ss1",
+    "IN.SVANLOG2025:sch1",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.CPA2019:s47:ss1",
+    "IN.IRC2020:s49:ss7",
+    "IN.SVANSG2025:para5:sp1"
+   ],
+   "rrf": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SSC2020:s2:ss59",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.COW2019:s9:ss1",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.IRC2020:s99:ss2:cl_zc",
+    "IN.RTI2005:s28:ss2",
+    "IN.ESHRAMFAQ2026:para57"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SVANLOG2025:sch1",
+    "IN.OSHC2020:s136:cl_f",
+    "IN.SSC2020:s2:ss59",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.OSHC2020:s133:ss2:cl_zzi",
+    "IN.RTI2005:s27:ss2",
+    "IN.COW2019:s9:ss1"
+   ],
+   "rerank-fp32": [
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SVANLOG2025:sch1",
+    "IN.OSHC2020:s136:cl_f",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.SSC2020:s2:ss59",
+    "IN.OSHC2020:s133:ss2:cl_zzo",
+    "IN.SSC2020:s100:ss1",
+    "IN.OSHC2020:s133:ss2:cl_c"
+   ]
+  },
+  "GS-126": {
+   "expected": [
+    "MP.LRC1959:s129:ss5",
+    "MP.LRC1959:s129:ss8"
+   ],
+   "indexed": false,
+   "bm25": [],
+   "dense": [
+    "IN.OSHC2020:s75",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s51:ss1",
+    "IN.SSC2020:s105:ss1",
+    "IN.IRC2020:s32",
+    "IN.MTA2021:s32:ss1",
+    "IN.COW2019:s49:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s24",
+    "IN.OSHC2020:s79:ss3"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s75",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s51:ss1",
+    "IN.SSC2020:s105:ss1",
+    "IN.IRC2020:s32",
+    "IN.MTA2021:s32:ss1",
+    "IN.COW2019:s49:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s24",
+    "IN.OSHC2020:s79:ss3"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s52:ss1",
+    "IN.SSC2020:s126",
+    "IN.IRC2020:s32",
+    "IN.CPA2019:s41",
+    "IN.SSC2020:s56:ss8",
+    "IN.CPA2019:s51:ss2",
+    "IN.RTI2005:s19:ss1",
+    "IN.OSHC2020:s4:ss1",
+    "IN.CPA2019:s67",
+    "IN.COW2019:s49:ss1"
+   ],
+   "rerank-fp32": [
+    "IN.OSHC2020:s52:ss1",
+    "IN.IRC2020:s32",
+    "IN.CPA2019:s41",
+    "IN.SSC2020:s126",
+    "IN.OSHC2020:s4:ss1",
+    "IN.RTI2005:s19:ss1",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s73:ss3",
+    "IN.SSC2020:s56:ss8",
+    "IN.CPA2019:s67"
+   ]
+  },
+  "GS-127": {
+   "expected": [
+    "MP.LRC1959:s129",
+    "MP.LRCDR2018:r3"
+   ],
+   "indexed": false,
+   "bm25": [
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s34:ss2",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.SSC2020:s54:expl1",
+    "IN.OSHC2020:s136:cl_u",
+    "IN.RTI2005:sch1"
+   ],
+   "dense": [
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.OSHC2020:s35:ss1:clr_iv",
+    "IN.SSC2020:s2:ss59",
+    "IN.OSHC2020:s92:ss2",
+    "IN.OSHC2020:s42:ss2",
+    "IN.OSHC2020:s93:ss3",
+    "IN.OSHC2020:s41",
+    "IN.OSHC2020:s136:cl_u",
+    "IN.MTA2021:s21:ss2:cl_f",
+    "IN.IRC2020:s30:ss7"
+   ],
+   "rrf": [
+    "IN.OSHC2020:s136:cl_u",
+    "IN.CPA2019:s47:ss4",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.CPA2019:s34:ss2",
+    "IN.OSHC2020:s35:ss1:clr_iv",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.SSC2020:s2:ss59",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.OSHC2020:s92:ss2",
+    "IN.ESHRAMFAQ2026:para14"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.OSHC2020:s35:ss1:clr_iv",
+    "IN.OSHC2020:s41",
+    "IN.OSHC2020:s136:cl_u",
+    "IN.OSHC2020:s2:ss1:cl_r",
+    "IN.MTA2021:s21:ss2:cl_f",
+    "IN.SVANSG2025:sch1:para2",
+    "IN.SSC2020:s129:ss4",
+    "IN.SVANLOG2025:sch3:para2"
+   ],
+   "rerank-fp32": [
+    "IN.CPA2019:s34:ss2",
+    "IN.OSHC2020:s136:cl_u",
+    "IN.CPA2019:s47:ss4",
+    "IN.OSHC2020:s41",
+    "IN.OSHC2020:s2:ss1:cl_r",
+    "IN.OSHC2020:s35:ss1:clr_iv",
+    "IN.MTA2021:s21:ss2:cl_f",
+    "IN.SVANSG2025:sch1:para2",
+    "IN.SSC2020:s129:ss4",
+    "IN.OSHC2020:s2:ss1:cl_zl"
+   ]
+  }
+ }
+}

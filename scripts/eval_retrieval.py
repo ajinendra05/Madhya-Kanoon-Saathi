@@ -1,7 +1,7 @@
 """Deterministic retrieval eval on the golden set (W1.7, plan §7, DEC-065).
 
 Usage:
-    uv run python scripts/eval_retrieval.py [--configs bm25,dense,rrf,rerank-int8,rerank-fp32]
+    uv run python scripts/eval_retrieval.py [--configs bm25,dense,dense-fp32,rrf,rerank-int8,...]
         [--golden PATH] [--limit N]
 
 For each configuration, retrieves the top 10 chunks per golden row and scores Recall@10,
@@ -44,7 +44,7 @@ GOLDEN = Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
 OUT = Path("reports/retrieval")
 K = 10
 GATES = {"recall@10": 0.85, "mrr@10": 0.6}  # plan §7; reported, not enforced (DEC-065)
-ALL_CONFIGS = "bm25,dense,rrf,rerank-int8,rerank-fp32"
+ALL_CONFIGS = "bm25,dense,dense-fp32,rrf,rerank-int8,rerank-fp32"
 SLICES = ("language", "domain", "answerability")
 
 
@@ -80,6 +80,7 @@ def main() -> int:
     ap.add_argument("--configs", default=ALL_CONFIGS)
     ap.add_argument("--golden", type=Path, default=GOLDEN)
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--tag", default="", help="suffix for the report file name")
     a = ap.parse_args()
     configs = a.configs.split(",")
 
@@ -98,6 +99,9 @@ def main() -> int:
     dense = DenseIndex.load(Path("data/index/dense-int8"))
     embedder = Embedder.load("int8")
     hybrid = HybridRetriever(bm25, dense, embedder)
+    fp32 = None
+    if "dense-fp32" in configs:  # DEC-021 int8 acceptance: same queries, fp32 model + index
+        fp32 = (DenseIndex.load(Path("data/index/dense-fp32")), Embedder.load("fp32"))
     rerankers = {v: Reranker.load(v) for v in ("int8", "fp32") if f"rerank-{v}" in configs}
 
     ranked: dict[str, dict[str, list[str]]] = defaultdict(dict)  # config -> row id -> uids
@@ -113,6 +117,9 @@ def main() -> int:
             ranked["bm25"][rid] = [uid(h.chunk_id) for h in lex[:K]]
         if "dense" in configs:
             ranked["dense"][rid] = [uid(h.chunk_id) for h in sem[:K]]
+        if fp32 is not None:
+            hits32 = fp32[0].search_vector(fp32[1].encode([q])[0], k=K)
+            ranked["dense-fp32"][rid] = [uid(h.chunk_id) for h in hits32]
         if "rrf" in configs:
             ranked["rrf"][rid] = [uid(h.chunk_id) for h in pool[:K]]
             seconds["rrf"] += base
@@ -206,8 +213,8 @@ def main() -> int:
     lines.append("")
 
     OUT.mkdir(parents=True, exist_ok=True)
-    stem = OUT / f"{name}_{today}"
-    stem.with_suffix(".md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    stem = f"{name}_{today}{a.tag}"  # not Path.with_suffix: "v0.1-seed" contains a dot
+    (OUT / f"{stem}.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     result["rows"] = {
         r["id"]: {
             "expected": r["_expected"],
@@ -216,11 +223,11 @@ def main() -> int:
         }
         for r in rows
     }  # fmt: skip
-    stem.with_suffix(".json").write_text(
+    (OUT / f"{stem}.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n"
     )
     print("\n".join(lines[: 14 + 2 * len(configs)]))
-    print(f"-> {stem}.md / .json")
+    print(f"-> {OUT / stem}.md / .json")
     return 0
 
 
