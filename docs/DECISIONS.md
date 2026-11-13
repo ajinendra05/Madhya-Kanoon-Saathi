@@ -700,6 +700,14 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: the eval (W1.6/W1.7, DEC-021 int8 check) needs questions now; a checker keeps the set honest about what the corpus can actually answer.
 - Effects: v0.1-seed is a draft (`draft_unverified`); v1.0 is frozen only after Malik's verification (eval rules) · ₹0.
 
+## DEC-064 — Wider index scope for the Legal Services Authorities Act
+- Date: 2026-11-13 | Status: accepted ("yes for 3b") | Approved by: Malik | Amends DEC-037 (LSA Act: s.12 only)
+- Context: 7 golden seed clauses (6 legal-aid rows) cite LSA ss.13, 19, 21, 22A, 22B (who is entitled, Lok Adalats, Permanent Lok Adalats), which the s.12-only scope left unanswerable.
+- Options: **A) widen `index_scope` to ss.12, 13, 19–22B** · B) keep s.12 only and rewrite those rows as should-abstain.
+- Decision: **A.** `IN.LSA1987@en@1` `index_scope` = s12, s13, s19, s20, s21, s22, s22A, s22B (headings confirmed in the India Code PDF contents, 2026-11-13). ss.22C–22E (Permanent Lok Adalat cognizance and procedure) are not included now.
+- Why: Lok Adalats are a free, statutory route that users ask about; the text is born-digital and already verified as the in-force India Code copy.
+- Effects: chunks, BM25 and dense indexes rebuilt · CORPUS.md item 13 updated · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)

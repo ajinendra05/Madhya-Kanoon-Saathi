@@ -1,13 +1,13 @@
 # Golden-set coverage: golden_set_v0.1_seed.jsonl
 
-Rows: 130 · rows with expected clauses: 101 · rows whose clauses are all retrievable now: 54
+Rows: 130 · rows with expected clauses: 101 · rows whose clauses are all retrievable now: 58
 Chunks file: present
 
 | status | clauses |
 | --- | --- |
-| retrievable_now | 74 |
+| retrievable_now | 80 |
 | no_matching_chunk | 6 |
-| outside_index_scope | 7 |
+| outside_index_scope | 1 |
 | not_indexed | 44 |
 | not_in_manifest | 1 |
 | invalid_uid | 0 |
@@ -24,12 +24,6 @@ Chunks file: present
 ## outside_index_scope
 
 - GS-021 IN.TPA1882
-- GS-087 IN.LSA1987:s13
-- GS-090 IN.LSA1987:s19
-- GS-090 IN.LSA1987:s21:ss2
-- GS-092 IN.LSA1987:s21:ss1
-- GS-094 IN.LSA1987:s22A
-- GS-094 IN.LSA1987:s22B
 
 ## not_indexed
 

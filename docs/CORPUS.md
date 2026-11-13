@@ -39,7 +39,7 @@ The status column uses our status flags. New flags proposed by [R] are marked *(
 | 10 | MP Parisar Kirayedari Adhiniyam 2010 | Tenancy | unknown (L1, lawyer) [P] | **archive** until L1 resolved | MP gazette | likely |
 | 11 | Model Tenancy Act 2021 | Tenancy | model_law, not binding in MP [P] | index | MoHUA | no |
 | 12 | Transfer of Property Act **ss.105–111 only**; Registration Act 1908 **s.17 only** | Tenancy | in_force [P] | index | India Code | no |
-| 13 | Legal Services Authorities Act 1987 (s.12) | Legal aid | in_force [P] | index | India Code; NALSA | no |
+| 13 | Legal Services Authorities Act 1987 (ss.12, 13, 19–22B; DEC-064) | Legal aid | in_force [P] | index | India Code; NALSA | no |
 | 13a | **MP State Legal Services Authority Rules 1996** r.20 (₹12,000 "or higher as notified"); MPSLSA legal-aid page states ₹2,00,000; amending notification not found | Legal aid | rules in_force (text unamended); limit unresolved (G13) | rules gated: G13; page = guide → ₹2 lakh only as qualified official guidance + DLSA referral + other s.12 categories (DEC-045) | madhyapradesh.nalsa.gov.in (`MP.SLSAR1996`, `MP.SLSALAGUIDE2025`) | yes |
 | 14 | Scheme guidelines: **e-Shram + PM-SVANidhi only** | Schemes | time-bound, `expires_on` where stated [P] | index | ministry portals | maybe |
 | 15 | MP Lok Sewaon ke Pradan ki Guarantee Adhiniyam 2010 (Act 24/2010) + 2010 Rules + amendments (incl. Rules amendment 09.07.2026) + notified service list (19.08.2025) | Public services | in_force | gated: G6 | mpedistrict.gov.in/MPL (`MP.LSG2010`, `MP.LSGR2010`, `MP.LSGRA2026`, `MP.LSGSERVICES2026`) | yes (CCITT) |

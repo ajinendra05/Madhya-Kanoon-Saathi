@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-11-11T10:12:28+00:00",
-  "git_commit": "36aae0317ed19b159c672a49adf1e2cc31743033",
-  "git_dirty": false,
+  "built_at": "2026-11-13T05:44:48+00:00",
+  "git_commit": "e8df28a8e0e2a1c9727892dc9624a9a0cd338744",
+  "git_dirty": true,
   "python": "3.12.0",
   "libraries": {
     "pypdfium2": "5.15.2",
@@ -83,14 +83,14 @@
   ],
   "output": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "8c5437327f62df56ad20b214052e7d26029f323b63c671365ad0f66d8f286e85",
-    "chunks": 3020,
+    "sha256": "fb3a732229c2cd8bea67fc92bc1c96696bbe8f5dc8a9192a366c9a68d1b43984",
+    "chunks": 3042,
     "by_doc": {
       "IN.COW2019@en@1": 245,
       "IN.CPA2019@en@1": 369,
       "IN.ESHRAMFAQ2026@en@1": 59,
       "IN.IRC2020@en@1": 467,
-      "IN.LSA1987@en@1": 1,
+      "IN.LSA1987@en@1": 23,
       "IN.MTA2021@en@1": 136,
       "IN.OSHC2020@en@1": 706,
       "IN.RA1908@en@1": 17,

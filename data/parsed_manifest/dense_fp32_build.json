@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-11-12T14:32:40+00:00",
-  "git_commit": "cabb1b1285892b4a322891950176e936bcd83bd5",
-  "git_dirty": false,
+  "built_at": "2026-11-13T06:25:24+00:00",
+  "git_commit": "e8df28a8e0e2a1c9727892dc9624a9a0cd338744",
+  "git_dirty": true,
   "variant": "fp32",
   "model": {
     "key": "bge-m3-fp32",
@@ -50,14 +50,14 @@
   },
   "input": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "8c5437327f62df56ad20b214052e7d26029f323b63c671365ad0f66d8f286e85",
-    "chunks": 3020
+    "sha256": "fb3a732229c2cd8bea67fc92bc1c96696bbe8f5dc8a9192a366c9a68d1b43984",
+    "chunks": 3042
   },
   "text_embedded": "title / heading path joined with > / text, one per line (DEC-061)",
   "max_length": 1024,
   "truncated": 0,
-  "seconds": 2046.4,
-  "ms_per_chunk": 677.6,
+  "seconds": 1647.2,
+  "ms_per_chunk": 541.5,
   "machine": {
     "python": "3.12.0",
     "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",

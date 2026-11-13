@@ -1,6 +1,6 @@
 # Chunk build QA report
 
-Built 2026-11-11T10:12:28+00:00 from commit `36aae0317e`; chunker v2, normaliser v1. Output sha256 `8c5437327f62df56`.
+Built 2026-11-13T05:44:48+00:00 from commit `e8df28a8e0` (uncommitted changes); chunker v2, normaliser v1. Output sha256 `fb3a732229c2cd8b`.
 
 Hard QA errors: **0** (the build stops on any). Token counts are estimates until W1.4.
 
@@ -10,7 +10,7 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | IN.CPA2019@en@1 | 107 | 369 | 327 | 42 | 0 | 4 | 0 (0) | 0 | 144 | 0 |
 | IN.ESHRAMFAQ2026@en@1 | 59 | 59 | 56 | 3 | 0 | 0 | 0 (0) | 0 | 24 | 0 |
 | IN.IRC2020@en@1 | 104 | 467 | 400 | 67 | 0 | 2 | 0 (0) | 0 | 165 | 101 |
-| IN.LSA1987@en@1 | 40 | 1 | 0 | 1 | 0 | 32 | 0 (0) | 149 | 72 | 0 |
+| IN.LSA1987@en@1 | 40 | 23 | 18 | 5 | 0 | 32 | 0 (0) | 127 | 72 | 0 |
 | IN.MTA2021@en@1 | 47 | 136 | 125 | 11 | 0 | 0 | 0 (0) | 0 | 79 | 0 |
 | IN.OSHC2020@en@1 | 143 | 706 | 594 | 112 | 0 | 1 | 0 (0) | 0 | 219 | 86 |
 | IN.RA1908@en@1 | 95 | 17 | 16 | 1 | 0 | 68 | 41 (0) | 183 | 152 | 0 |
@@ -101,8 +101,6 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 - skipped: IN.LSA1987:s11A:ss4 (outside index_scope)
 - skipped: IN.LSA1987:s11A:ss5 (outside index_scope)
 - skipped: IN.LSA1987:s11B (outside index_scope)
-- skipped: IN.LSA1987:s13:ss1 (outside index_scope)
-- skipped: IN.LSA1987:s13:ss2 (outside index_scope)
 - skipped: IN.LSA1987:s14 (outside index_scope)
 - skipped: IN.LSA1987:s15:ss1 (outside index_scope)
 - skipped: IN.LSA1987:s15:ss2 (outside index_scope)
@@ -116,26 +114,6 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 - skipped: IN.LSA1987:s18:ss4 (outside index_scope)
 - skipped: IN.LSA1987:s18:ss5 (outside index_scope)
 - skipped: IN.LSA1987:s18:ss6 (outside index_scope)
-- skipped: IN.LSA1987:s19:ss1 (outside index_scope)
-- skipped: IN.LSA1987:s19:ss2 (outside index_scope)
-- skipped: IN.LSA1987:s19:ss3 (outside index_scope)
-- skipped: IN.LSA1987:s19:ss4 (outside index_scope)
-- skipped: IN.LSA1987:s19:ss5 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss1 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss2 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss3 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss4 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss5 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss6 (outside index_scope)
-- skipped: IN.LSA1987:s20:ss7 (outside index_scope)
-- skipped: IN.LSA1987:s21:ss1 (outside index_scope)
-- skipped: IN.LSA1987:s21:ss2 (outside index_scope)
-- skipped: IN.LSA1987:s22:ss1 (outside index_scope)
-- skipped: IN.LSA1987:s22:ss2 (outside index_scope)
-- skipped: IN.LSA1987:s22:ss3 (outside index_scope)
-- skipped: IN.LSA1987:s22A (outside index_scope)
-- skipped: IN.LSA1987:s22B:ss1 (outside index_scope)
-- skipped: IN.LSA1987:s22B:ss2 (outside index_scope)
 - skipped: IN.LSA1987:s22C:ss1 (outside index_scope)
 - skipped: IN.LSA1987:s22C:ss2 (outside index_scope)
 - skipped: IN.LSA1987:s22C:ss3 (outside index_scope)

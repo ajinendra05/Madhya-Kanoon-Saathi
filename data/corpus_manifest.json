@@ -514,8 +514,19 @@
       "type": "act",
       "jurisdiction": "IN",
       "title_en": "The Legal Services Authorities Act, 1987 (Act No. 39 of 1987)",
-      "notes": "Corpus scope per DEC-037: s.12 (eligibility) only. In force 09.11.1995, S.O. 893(E) dt 09.11.1995 (India Code p.3 footnote 2).",
-      "commenced_on": "1995-11-09"
+      "notes": "Corpus scope per DEC-037: s.12 (eligibility) only. In force 09.11.1995, S.O. 893(E) dt 09.11.1995 (India Code p.3 footnote 2). Amendment entry from India Code footnotes (p.13): Act 37 of 2002 s.3 (s.22) and s.4 (inserts Chapter VIA, ss.22A-22E), w.e.f. 11-6-2002; amending Act itself not in corpus. Only provisions in index_scope listed (DEC-064).",
+      "commenced_on": "1995-11-09",
+      "amendments": [
+        {
+          "by": "IN.LSAA2002",
+          "commenced_on": "2002-06-11",
+          "affects": [
+            "IN.LSA1987:s22",
+            "IN.LSA1987:s22A",
+            "IN.LSA1987:s22B"
+          ]
+        }
+      ]
     },
     {
       "instrument_id": "IN.RTIR2012",
@@ -2582,7 +2593,7 @@
       "applies_to": {
         "level": "national"
       },
-      "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope s.12 (DEC-037) set by index_scope (DEC-051). Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049). Indexed 2026-11-08.",
+      "notes": "India Code text (2020 snapshot). The MP SLSA copy (cdnbbsr.s3waas.gov.in ...202506121170574493.pdf) is amended only to 1994, so not used. Partial scope ss.12, 13, 19-22B (DEC-037, widened by DEC-064) set by index_scope (DEC-051). Original URL: https://www.indiacode.nic.in/bitstream/123456789/1925/1/198739.pdf; Internet Archive snapshot 20201204181454 (DEC-049). Indexed 2026-11-08.",
       "fetched_at": "2026-11-08T04:15:16+00:00",
       "sha256": "3aae5d5c9f8c2ad100c0553c351af559e35fb36c3fc68a921fd1e64dd4a9318f",
       "bytes": 160490,
@@ -2619,7 +2630,14 @@
         }
       ],
       "index_scope": [
-        "IN.LSA1987:s12"
+        "IN.LSA1987:s12",
+        "IN.LSA1987:s13",
+        "IN.LSA1987:s19",
+        "IN.LSA1987:s20",
+        "IN.LSA1987:s21",
+        "IN.LSA1987:s22",
+        "IN.LSA1987:s22A",
+        "IN.LSA1987:s22B"
       ]
     },
     {

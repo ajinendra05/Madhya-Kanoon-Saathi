@@ -1,11 +1,11 @@
 {
-  "built_at": "2026-11-12T12:33:17+00:00",
-  "git_commit": "c2f51f1b288bf8095ebfae20fe00e4ef0005cb0f",
-  "git_dirty": false,
+  "built_at": "2026-11-13T05:44:52+00:00",
+  "git_commit": "e8df28a8e0e2a1c9727892dc9624a9a0cd338744",
+  "git_dirty": true,
   "input": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "8c5437327f62df56ad20b214052e7d26029f323b63c671365ad0f66d8f286e85",
-    "chunks": 3020
+    "sha256": "fb3a732229c2cd8bea67fc92bc1c96696bbe8f5dc8a9192a366c9a68d1b43984",
+    "chunks": 3042
   },
   "params": {
     "method": "lucene",
@@ -14,9 +14,9 @@
   },
   "instrument_tokens": {
     "aliases_sha256": "b5343f74d6306642fc9120d6b0e3ec53f821e28c4c5bbf14961e931eab900589",
-    "instruments": 53
+    "instruments": 54
   },
-  "vocab_size": 10554,
+  "vocab_size": 10590,
   "libraries": {
     "bm25s": "0.3.16",
     "numpy": "2.5.4"
