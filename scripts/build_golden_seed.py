@@ -2000,6 +2000,9 @@ ANSWERABILITY = {
 # provision that answers the question. Each entry: new clause specs, {uid: evidence phrase found in
 # that chunk's text}, reason. Malik reviews label_review_2026-11-13.csv; delete an entry to revert it.
 LABEL_REVIEW_DATE = "2026-11-13"
+LABEL_REVIEW_DECISION = (
+    "accepted"  # Malik reviewed label_review_2026-11-13.csv: all accepted (2026-11-13)
+)
 FIXES = {
     "GS-007": (
         ["IN.TPA1882:s106:ss1|high"],
@@ -2179,9 +2182,12 @@ for row in rows:
         specs, evidence, why = FIXES[rid]
         old = [c["section_uid"] or c["act_id"] for c in row["expected_clauses"]]
         row["expected_clauses"] = [clause_obj(c) for c in specs]
+        if LABEL_REVIEW_DECISION == "accepted":
+            for c in row["expected_clauses"]:
+                c["needs_verification"] = False
         row["notes"] = (
             (row["notes"] or "")
-            + f" Label refined {LABEL_REVIEW_DATE} (DEC-066, proposed by Claude; Malik review pending): {why}."
+            + f" Label refined {LABEL_REVIEW_DATE} (DEC-066, proposed by Claude; {LABEL_REVIEW_DECISION} by Malik {LABEL_REVIEW_DATE}): {why}."
         ).strip()
         review.append(
             [
@@ -2192,7 +2198,7 @@ for row in rows:
                 "; ".join(s.split("|")[0] for s in specs),
                 why,
                 "; ".join(f"{u}: '{e}'" for u, e in evidence.items()),
-                "",
+                LABEL_REVIEW_DECISION,
             ]
         )
     elif rid in KEEP:
@@ -2205,7 +2211,7 @@ for row in rows:
                 "(unchanged)",
                 KEEP[rid],
                 "",
-                "",
+                LABEL_REVIEW_DECISION,
             ]
         )
 
