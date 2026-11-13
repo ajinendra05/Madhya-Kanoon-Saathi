@@ -75,5 +75,81 @@
         "sha256": "7e4c1cc848840aeccdd763458c18dd525eb0f795c992e00ebe9c28554e7db2d4"
       }
     ]
+  },
+  "bge-reranker-v2-m3-fp32": {
+    "repo": "BAAI/bge-reranker-v2-m3",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "licence": "Apache-2.0",
+    "exported": "torch.onnx.export opset 17 (TorchScript exporter)",
+    "export_versions": {
+      "torch": "2.14.1+cpu",
+      "transformers": "5.22.1",
+      "onnx": "1.23.2",
+      "onnxruntime": "1.31.1",
+      "python": "3.13.18"
+    },
+    "export_check": {
+      "pairs": 4,
+      "max_abs_diff_vs_torch": 4.276633262634277e-06,
+      "torch_scores": [
+        0.21283802390098572,
+        0.1259806752204895,
+        -4.411688804626465,
+        -11.040046691894531
+      ],
+      "onnx_scores": [
+        0.21283584833145142,
+        0.12598495185375214,
+        -4.4116902351379395,
+        -11.040046691894531
+      ]
+    },
+    "dir": "data/models/bge-reranker-v2-m3",
+    "files": [
+      {
+        "file": "model.onnx",
+        "bytes": 558815,
+        "sha256": "3f3a7d578d218872044493341fbe78c0c5ba6eff6cea1ac77e5f608be80b4b41"
+      },
+      {
+        "file": "model.onnx.data",
+        "bytes": 2271023104,
+        "sha256": "61f3e7229e6c1cc5e8e3d09f7657210a9cc15247cd6944ac60303e1b900a7f9b"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 17098338,
+        "sha256": "45885ab5cd9f8d0becc7075cecb177574d1cf4d086a891cac2b745f681d2b3c3"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 409,
+        "sha256": "9dc74fea52f2666f23d5f5d52d9e2983adc82c00c9a35dadc39346ecbc9aa53a"
+      }
+    ]
+  },
+  "bge-reranker-v2-m3-int8": {
+    "from": "bge-reranker-v2-m3-fp32",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "method": "onnxruntime.quantization.quantize_dynamic, QuantType.QInt8, per-tensor",
+    "onnxruntime": "1.31.1",
+    "dir": "data/models/bge-reranker-v2-m3-int8/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "files": [
+      {
+        "file": "model.int8.onnx",
+        "bytes": 569629673,
+        "sha256": "ca94201c01eea9157e797ca1f9ea573c4cd9df1a950a8364225c6aa7b7767fda"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 17098338,
+        "sha256": "45885ab5cd9f8d0becc7075cecb177574d1cf4d086a891cac2b745f681d2b3c3"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 409,
+        "sha256": "9dc74fea52f2666f23d5f5d52d9e2983adc82c00c9a35dadc39346ecbc9aa53a"
+      }
+    ]
   }
 }

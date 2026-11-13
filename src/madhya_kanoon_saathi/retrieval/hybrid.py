@@ -5,22 +5,26 @@ Clarke & Buettcher, SIGIR 2009; K = 60 as in that paper). It uses ranks only, be
 scores (about 0-10) and cosine scores (about 0-1) are not on the same scale. Each retriever
 already applied the shared filters (retrieval/filters.py), so fused hits are eligible only.
 
-The fused top-40 is what the reranker (DEC-005, DEC-062) re-sorts to the final top-6.
+The fused top-40 is what the reranker (DEC-005, DEC-062) re-sorts to the final top-6
+(``search_reranked``); ``rerank_pool=20`` is the DEC-021 latency fallback.
 """
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import date
+from typing import Any
 
 from madhya_kanoon_saathi.retrieval.bm25_index import Bm25Index, Hit
 from madhya_kanoon_saathi.retrieval.dense_index import DenseIndex
-from madhya_kanoon_saathi.retrieval.embedder import Embedder
+from madhya_kanoon_saathi.retrieval.embedder import Embedder, embed_text
 from madhya_kanoon_saathi.retrieval.filters import IN_SCOPE_STATES
+from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
 RRF_K = 60
 POOL = 40  # candidates taken from each retriever and returned after fusion (DEC-021: rerank top-40)
+FINAL = 6  # passages kept after reranking (DEC-005)
 
 
 @dataclass
@@ -29,6 +33,7 @@ class FusedHit:
     score: float
     ranks: dict[str, int] = field(default_factory=dict)  # retriever name -> 1-based rank
     flags: list[str] = field(default_factory=list)
+    rerank_score: float | None = None  # cross-encoder logit, set by search_reranked
 
 
 def rrf(lists: dict[str, Sequence[Hit]], k: int = RRF_K, limit: int = POOL) -> list[FusedHit]:
@@ -43,12 +48,24 @@ def rrf(lists: dict[str, Sequence[Hit]], k: int = RRF_K, limit: int = POOL) -> l
 
 
 class HybridRetriever:
-    def __init__(self, bm25: Bm25Index, dense: DenseIndex, embedder: Embedder) -> None:
+    def __init__(
+        self,
+        bm25: Bm25Index,
+        dense: DenseIndex,
+        embedder: Embedder,
+        reranker: Reranker | None = None,
+        passages: Mapping[str, str] | None = None,
+    ) -> None:
+        """``passages``: chunk_id -> text the reranker reads (``embed_text`` form, DEC-061)."""
         if [m["chunk_id"] for m in bm25.meta] != [m["chunk_id"] for m in dense.meta]:
             raise ValueError("BM25 and dense indexes were built from different chunk sets")
+        if reranker is not None and passages is None:
+            raise ValueError("a reranker needs the passage texts")
         self.bm25 = bm25
         self.dense = dense
         self.embedder = embedder
+        self.reranker = reranker
+        self.passages = passages or {}
 
     def search(
         self,
@@ -62,3 +79,40 @@ class HybridRetriever:
         vector = self.embedder.encode([query])[0]
         semantic = self.dense.search_vector(vector, k=POOL, on=day, states=states)
         return rrf({"bm25": lexical, "dense": semantic}, limit=k)
+
+    def search_reranked(
+        self,
+        query: str,
+        k: int = FINAL,
+        rerank_pool: int = POOL,
+        on: date | None = None,
+        states: frozenset[str] = IN_SCOPE_STATES,
+    ) -> list[FusedHit]:
+        """RRF top-``rerank_pool`` re-sorted by the cross-encoder; best ``k`` returned."""
+        if self.reranker is None:
+            raise RuntimeError("no reranker loaded")
+        return rerank_hits(
+            self.reranker, query, self.search(query, rerank_pool, on, states), self.passages, k
+        )
+
+
+def rerank_hits(
+    reranker: Reranker, query: str, hits: Sequence[FusedHit], passages: Mapping[str, str], k: int
+) -> list[FusedHit]:
+    by_id = {h.chunk_id: h for h in hits}
+    missing = [h.chunk_id for h in hits if h.chunk_id not in passages]
+    if missing:
+        raise KeyError(f"no passage text for {missing[:3]}")
+    best = reranker.rerank(query, [(h.chunk_id, passages[h.chunk_id]) for h in hits], top=k)
+    out = []
+    for cid, score in best:
+        by_id[cid].rerank_score = score
+        out.append(by_id[cid])
+    return out
+
+
+def passages_from_chunks(
+    chunks: Sequence[Mapping[str, Any]], titles: Mapping[str, tuple[str | None, str | None]]
+) -> dict[str, str]:
+    """chunk_id -> reranker input: the same title / heading path / text the embedder reads."""
+    return {c["chunk_id"]: embed_text(c, titles) for c in chunks}
