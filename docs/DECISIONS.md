@@ -719,6 +719,22 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: strict keeps the citation-precision meaning of DEC-040; lenient shows how much of the gap is labelling granularity that the golden review will fix. Gating on indexed rows measures the retriever, not missing laws.
 - Effects: `eval/retrieval_metrics.py` + `scripts/eval_retrieval.py`; committed reports under `reports/` · ₹0.
 
+## DEC-066 — int8 dense model retained provisionally; DEC-021 validation clarified
+- Date: 2026-11-13 | Status: accepted (option B, with clarifications) | Approved by: Malik | Clarifies DEC-021 (threshold unchanged)
+- Context: W1.7 seed eval (`reports/retrieval/v0.1-seed_2026-11-13_dense-int8-vs-fp32.md`): dense int8 vs fp32 Recall@10 is -0.017 overall, 0.000 en, 0.000 hinglish, **-0.042 hi**, which is one question of 24 on unverified seed labels.
+- Options: A) switch to fp32 now · **B) keep int8 provisionally, re-check on the verified golden set** · C) change the margin to a question count (rejected: one allowed miss grows more permissive as the sample grows).
+- Decision: **B.** int8 status = **`provisional_pending_validation`**; it is **not** validated for production until it passes on the verified, frozen golden set. The DEC-021 requirement stays: Recall@10 no more than 0.02 below fp32 overall and per language. Added requirements for the final comparison:
+  1. Same frozen questions, corpus snapshot, expected provision ids, retrieval configuration and eval code for both.
+  2. Coarse parent-section labels corrected to the actual retrievable provision ids first.
+  3. Per language: questions, hits, misses and paired disagreements reported.
+  4. Paired bootstrap confidence intervals (or another paired test) to quantify uncertainty.
+  5. A language slice too small for a meaningful conclusion is marked **`insufficient_sample`**, not pass/fail.
+  6. Target at least 50 verified questions per language before the 0.02 tolerance is used as a one-question threshold (a practical minimum, not a significance guarantee).
+  - Failure: if the verified eval shows int8 beyond the allowed loss, switch to fp32 or benchmark another quantisation.
+- Also decided: plan gates (Recall@10 ≥ 0.85, MRR@10 ≥ 0.60) are **not lowered**. Next order: (1) freeze the W1.7 baseline (commit b856aef + 13 Nov report); (2) correct golden labels; (3) fix genuine misses GS-075, GS-007, GS-057 with regression tests; (4) BM25 (S15) and fusion vs dense-only; (5) re-run int8 vs fp32 paired per language; (6) production precision decision.
+- Why: one question on an unverified 24-row slice is too little evidence for a 3.8× larger model, but the result must not be recorded as a pass.
+- Effects: no model change · eval script gains paired per-language reporting before step 5 · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)
