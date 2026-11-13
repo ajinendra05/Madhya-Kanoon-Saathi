@@ -1995,6 +1995,147 @@ ANSWERABILITY = {
     "crisis_route": "unanswerable",
 }
 
+# ------------------------------------------------------------------ label refinements (DEC-066 step 2)
+# Proposed by Claude on 2026-11-13 from the official chunk text: section-level labels narrowed to the
+# provision that answers the question. Each entry: new clause specs, {uid: evidence phrase found in
+# that chunk's text}, reason. Malik reviews label_review_2026-11-13.csv; delete an entry to revert it.
+LABEL_REVIEW_DATE = "2026-11-13"
+FIXES = {
+    "GS-007": (
+        ["IN.TPA1882:s106:ss1|high"],
+        {"IN.TPA1882:s106:ss1": "fifteen days"},
+        "15-day notice for month-to-month leases is in s.106(1)",
+    ),
+    "GS-025": (
+        ["IN.COW2019:s17:ss1|high", "IN.COW2019:s45:ss1|high"],
+        {
+            "IN.COW2019:s17:ss1": "shall pay or cause to be paid wages",
+            "IN.COW2019:s45:ss1": "hear and determine the claims",
+        },
+        "payment deadlines s.17(1); claims authority s.45(1)",
+    ),
+    "GS-030": (
+        ["IN.COW2019:s3:ss1|high"],
+        {"IN.COW2019:s3:ss1": "no discrimination"},
+        "gender pay prohibition is s.3(1)",
+    ),
+    "GS-032": (
+        ["IN.OSHC2020:s25:ss1:cl_a|high"],
+        {"IN.OSHC2020:s25:ss1:cl_a": "eight hours in a day"},
+        "8-hour daily cap is s.25(1)(a)",
+    ),
+    "GS-034": (
+        ["IN.SSC2020:s53:ss1|high"],
+        {"IN.SSC2020:s53:ss1": "fixed term employment"},
+        "fixed-term gratuity: s.53(1)(d) and second proviso (five years not needed)",
+    ),
+    "GS-036": (
+        ["IN.SSC2020:s60:ss3|high"],
+        {"IN.SSC2020:s60:ss3": "twenty-six weeks"},
+        "26-week maximum is s.60(3)",
+    ),
+    "GS-037": (
+        ["IN.COW2019:s26:ss1|high"],
+        {"IN.COW2019:s26:ss1": "thirty days"},
+        "minimum bonus and 30-day eligibility are in s.26(1)",
+    ),
+    "GS-040": (
+        ["IN.OSHC2020:s55:ss3|high"],
+        {"IN.OSHC2020:s55:ss3": "principal employer shall be liable"},
+        "principal-employer liability for unpaid contract-labour wages is OSH Code s.55(3), not the Code on Wages",
+    ),
+    "GS-041": (
+        ["IN.SSC2020:s113:ss1|high", "IN.SSC2020:s113:ss2|high"],
+        {
+            "IN.SSC2020:s113:ss1": "registered",
+            "IN.SSC2020:s113:ss2": "application for registration",
+        },
+        "registration duty s.113(1); application s.113(2)",
+    ),
+    "GS-042": (
+        ["IN.COW2019:s18:ss1|high", "IN.COW2019:s18:ss2:cl_a|high", "IN.COW2019:s19:ss1|high"],
+        {
+            "IN.COW2019:s18:ss1": "no deductions",
+            "IN.COW2019:s18:ss2:cl_a": "fines",
+            "IN.COW2019:s19:ss1": "No fine shall be imposed",
+        },
+        "only authorised deductions s.18(1); fines as a deduction s.18(2)(a); conditions on fines s.19(1)",
+    ),
+    "GS-044": (
+        ["IN.OSHC2020:s26:ss1|high"],
+        {"IN.OSHC2020:s26:ss1": "six days in any one week"},
+        "weekly rest is s.26(1)",
+    ),
+    "GS-048": (
+        ["IN.SSC2020:s114:ss1|high"],
+        {"IN.SSC2020:s114:ss1": "gig workers and platform workers"},
+        "schemes for gig/platform workers s.114(1)",
+    ),
+    "GS-049": (
+        ["IN.CPA2019:s35:ss1|high", "IN.CPA2019:s2:ss11|high"],
+        {"IN.CPA2019:s35:ss1": "District Commission"},
+        "who files where is s.35(1); deficiency definition s.2(11) kept",
+    ),
+    "GS-053": (
+        ["IN.CPA2019:s35:ss1|medium", "IN.CPA2019:s38:ss6|low"],
+        {"IN.CPA2019:s35:ss1": "the consumer", "IN.CPA2019:s38:ss6": "in person"},
+        "the consumer may file (s.35(1)(a)); hearing of parties in person (s.38(6)); no provision says a lawyer is required - verify",
+    ),
+    "GS-055": (
+        ["IN.CPA2019:s35:ss1|high"],
+        {"IN.CPA2019:s35:ss1": "filed electronically"},
+        "proviso to s.35(1): complaint may be filed electronically",
+    ),
+    "GS-059": (
+        ["IN.CPA2019:s84:ss1|high", "IN.CPA2019:s85|medium", "IN.CPA2019:s86|medium"],
+        {"IN.CPA2019:s84:ss1": "product manufacturer shall be liable"},
+        "manufacturer liability conditions s.84(1); ss.85, 86 kept",
+    ),
+    "GS-062": (
+        ["IN.CPA2019:s74:ss1|high", "IN.CPA2019:s79:ss1|high"],
+        {
+            "IN.CPA2019:s74:ss1": "consumer mediation cell",
+            "IN.CPA2019:s79:ss1": "mediation shall be held",
+        },
+        "mediation cells s.74(1); where mediation is held s.79(1)",
+    ),
+    "GS-064": (
+        ["IN.CPA2019:s69:ss1|high", "IN.CPA2019:s69:ss2|high"],
+        {"IN.CPA2019:s69:ss1": "two years", "IN.CPA2019:s69:ss2": "after the period"},
+        "2-year limit s.69(1); condonation s.69(2)",
+    ),
+    "GS-086": (
+        ["IN.RTI2005:s24:ss1|high"],
+        {"IN.RTI2005:s24:ss1": "corruption and human rights"},
+        "exemption and the corruption/human-rights proviso are both in s.24(1)",
+    ),
+    "GS-087": (
+        ["IN.LSA1987:s12|high", "IN.LSA1987:s13:ss1|high"],
+        {"IN.LSA1987:s13:ss1": "entitled to receive legal services"},
+        "eligibility s.12; entitlement s.13(1)",
+    ),
+    "GS-090": (
+        ["IN.LSA1987:s19:ss1|high", "IN.LSA1987:s21:ss2|high"],
+        {"IN.LSA1987:s19:ss1": "Lok Adalats", "IN.LSA1987:s21:ss2": "final and binding"},
+        "organisation of Lok Adalats s.19(1); award final, no appeal s.21(2)",
+    ),
+    "GS-094": (
+        ["IN.LSA1987:s22A|high", "IN.LSA1987:s22B:ss1|high"],
+        {"IN.LSA1987:s22B:ss1": "Permanent Lok Adalats"},
+        "public utility services defined s.22A; PLA established s.22B(1) (s.22C cognizance is outside index_scope)",
+    ),
+    "GS-110": (
+        ["IN.SSC2020:s113:ss1|medium", "IN.ESHRAMFAQ2026:para30|high"],
+        {"IN.SSC2020:s113:ss1": "registered"},
+        "registration duty s.113(1); eligibility from the official FAQ Q30 kept",
+    ),
+}
+KEEP = {
+    "GS-038": "abstain row about which law applies to a 2024 dismissal; act-level IRC label is appropriate",
+    "GS-045": "PF deducted but not deposited: no single SS Code provision identified with confidence; needs Malik (EPF chapter / s.133 penalty?)",
+}
+
+
 rows = []
 for i, r in enumerate(R, 1):
     rows.append(
@@ -2028,6 +2169,45 @@ for i, r in enumerate(R, 1):
             "notes": r["notes"],
         }
     )
+
+
+# apply label refinements and write the review sheet
+review = []
+for row in rows:
+    rid = row["id"]
+    if rid in FIXES:
+        specs, evidence, why = FIXES[rid]
+        old = [c["section_uid"] or c["act_id"] for c in row["expected_clauses"]]
+        row["expected_clauses"] = [clause_obj(c) for c in specs]
+        row["notes"] = (
+            (row["notes"] or "")
+            + f" Label refined {LABEL_REVIEW_DATE} (DEC-066, proposed by Claude; Malik review pending): {why}."
+        ).strip()
+        review.append(
+            [
+                rid,
+                row["language"],
+                row["raw_question_redacted"],
+                "; ".join(old),
+                "; ".join(s.split("|")[0] for s in specs),
+                why,
+                "; ".join(f"{u}: '{e}'" for u, e in evidence.items()),
+                "",
+            ]
+        )
+    elif rid in KEEP:
+        review.append(
+            [
+                rid,
+                row["language"],
+                row["raw_question_redacted"],
+                "; ".join(c["section_uid"] or c["act_id"] for c in row["expected_clauses"]),
+                "(unchanged)",
+                KEEP[rid],
+                "",
+                "",
+            ]
+        )
 
 OUT_DIR = __import__("pathlib").Path("data/golden/v0.1-seed")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -2071,3 +2251,21 @@ with open(OUT_DIR / "golden_set_v0.1_seed_review.csv", "w", encoding="utf-8-sig"
         w.writerow(out)
 
 print(len(rows), "rows written")
+with open(
+    OUT_DIR / f"label_review_{LABEL_REVIEW_DATE}.csv", "w", encoding="utf-8-sig", newline=""
+) as f:
+    w = csv.writer(f)
+    w.writerow(
+        [
+            "id",
+            "language",
+            "question",
+            "old_expected",
+            "proposed_expected",
+            "reason",
+            "evidence_in_chunk_text",
+            "malik_decision",
+        ]
+    )
+    w.writerows(review)
+print(len(review), "label review rows written")
