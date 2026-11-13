@@ -1,0 +1,83 @@
+# Golden-set coverage: golden_set_v0.1_seed.jsonl
+
+Rows: 130 · rows with expected clauses: 101 · rows whose clauses are all retrievable now: 54
+Chunks file: present
+
+| status | clauses |
+| --- | --- |
+| retrievable_now | 74 |
+| no_matching_chunk | 6 |
+| outside_index_scope | 7 |
+| not_indexed | 27 |
+| not_in_manifest | 18 |
+| invalid_uid | 0 |
+
+## no_matching_chunk
+
+- GS-028 MP.MWVDAOCT2026
+- GS-052 IN.CPJR2021:r3
+- GS-074 IN.RTIR2012:r3
+- GS-124 MP.LRCDR2018:r3
+- GS-125 MP.LRCDR2018:r4
+- GS-127 MP.LRCDR2018:r3
+
+## outside_index_scope
+
+- GS-021 IN.TPA1882
+- GS-087 IN.LSA1987:s13
+- GS-090 IN.LSA1987:s19
+- GS-090 IN.LSA1987:s21:ss2
+- GS-092 IN.LSA1987:s21:ss1
+- GS-094 IN.LSA1987:s22A
+- GS-094 IN.LSA1987:s22B
+
+## not_indexed
+
+- GS-033 MP.SSS2026:s1:ss3
+- GS-033 MP.SEA1958
+- GS-039 MP.SSS2026:s40
+- GS-047 MP.MWVDAAPR2026
+- GS-069 MP.RTIFAR2005:r3:ss1
+- GS-069 MP.RTIFAR2005:r9
+- GS-071 MP.RTIFAR2005:r7:ss1
+- GS-072 MP.RTIFAR2005:r8:ss2
+- GS-076 MP.RTIFAR2005:r5:ss1
+- GS-082 MP.RTIFAR2005:r9
+- GS-088 MP.SLSAR1996:r20
+- GS-095 MP.LSG2010:s3
+- GS-096 MP.LSGSERVICES2026
+- GS-097 MP.LSG2010:s6
+- GS-097 MP.LSGR2010:r8
+- GS-098 MP.LSG2010:s7
+- GS-099 MP.LSGSERVICES2026
+- GS-101 MP.LSGSERVICES2026
+- GS-102 MP.LSGSERVICES2026
+- GS-105 MP.LSG2010:s6
+- GS-121 MP.LRC1959:s110
+- GS-122 MP.LRC1959:s109
+- GS-123 MP.LRC1959:s110
+- GS-124 MP.LRC1959:s129
+- GS-126 MP.LRC1959:s129:ss5
+- GS-126 MP.LRC1959:s129:ss8
+- GS-127 MP.LRC1959:s129
+
+## not_in_manifest
+
+- GS-001 MP.ACA1961
+- GS-002 MP.ACA1961:s12:ss1
+- GS-003 MP.ACA1961:s12:ss1:cl_a
+- GS-003 MP.ACA1961:s13
+- GS-004 MP.ACA1961
+- GS-008 MP.ACA1961
+- GS-009 MP.ACA1961:s1
+- GS-010 MP.ACA1961:s1
+- GS-012 MP.ACA1961:s12:ss1:cl_e
+- GS-013 MP.ACA1961:s2
+- GS-014 MP.ACA1961:s12:ss1:cl_a
+- GS-017 MP.ACA1961:s2
+- GS-017 MP.ACA1961:s12:ss1:cl_f
+- GS-018 MP.ACA1961
+- GS-021 MP.ACA1961
+- GS-023 MP.ACA1961
+- GS-024 MP.ACA1961
+- GS-051 IN.CPCDRCR2020:r7
