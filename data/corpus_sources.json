@@ -1207,6 +1207,44 @@
       "target_mode": "archive",
       "gazette_ref": "MP Rajpatra (Asadharan) No. 406, 27.07.2018 (Law and Legislative Affairs Dept)",
       "notes": "Official gazette publication of MP Act 23 of 2018, listed on govtpress as 'मध्यप्रदेश भू-राजस्व संहिता (संशोधन) अधिनियम, 2018'. 82-page image-only scan (no text layer): content, language mix (Hindi only or with English translation) and page references not yet read; decide language label and mode after OCR (W0.5). Working text remains the born-digital MP Code copy MP.LRCA2018@en@1."
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L1"
+      ],
+      "instrument_id": "MP.ACA1961",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Housing & Environment Department",
+      "doc_id": "MP.ACA1961@en@1",
+      "language": "en",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1961_0041_Pdf_F277_Eng.pdf",
+      "notes": "Listed on code.mp.gov.in as THE MADHYA PRADESH ACCOMODATION CONTROL ACT, 1961 (sic). Consolidation date to verify. Gated until L1 (which MP tenancy law governs) is resolved."
+    },
+    {
+      "status": "in_force",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "target_mode": "gated",
+      "gate": [
+        "L1"
+      ],
+      "instrument_id": "MP.ACA1961",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Housing & Environment Department",
+      "doc_id": "MP.ACA1961@hi@2",
+      "language": "hi",
+      "url": "https://code.mp.gov.in/WriteReadData/Pdf/%E0%A4%AE%E0%A4%A7%E0%A5%8D%E0%A4%AF%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A6%E0%A5%87%E0%A4%B6%20%E0%A4%86%E0%A4%B5%E0%A4%BE%E0%A4%B8%20%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%A3%20%E0%A4%85%E0%A4%A7%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%2C%201961%20MPCode%20%281%29.pdf",
+      "notes": "Listed on code.mp.gov.in as मध्य प्रदेश आवास नियंत्रण अधिनियम, 1961 (अधि.क्र. 41 सन 1961). Consolidation date to verify. Gated until L1."
     }
   ]
 }

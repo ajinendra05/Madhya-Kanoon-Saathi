@@ -622,6 +622,13 @@
       "title_en": "PM SVANidhi Credit Card Operational Guidelines, 2025",
       "parent_instrument": "IN.SVANSG2025",
       "notes": "Annexure-III. 30 pp. Not in the DEC-037 corpus list; kept archive (not indexed). Issued as annexures to a MoHUA (PM SVANidhi-B Section) letter dt 16.09.2025 to State/UT Chief Secretaries, reportedly F. No. K-12017(30)/2/2020-UPA-II-UD: the letter has been seen only as an unofficial reproduction, so its number and signature are NOT verified (OPEN_QUESTIONS S7). CGTMSE re-issued Annexures I-III with its Circular No. 255/2025-26 dt 26.12.2025 (https://www.cgtmse.in/Circulars). Restructuring approved by the Union Cabinet on 27.08.2025 (pmindia.gov.in release of that date): lending period to 31.03.2030."
+    },
+    {
+      "instrument_id": "MP.ACA1961",
+      "type": "act",
+      "jurisdiction": "MP",
+      "title_en": "The Madhya Pradesh Accommodation Control Act, 1961 (No. 41 of 1961)",
+      "notes": "CORPUS item 9 (DEC-037). Fetched 2026-11-13 (W0.4 gap). Which MP tenancy law governs (this Act vs MP Parisar Kirayedari Adhiniyam 2010) is open question L1 (advocate). Amendments not yet recorded."
     }
   ],
   "documents": [
@@ -3266,6 +3273,50 @@
           "note": "Identity from the official listing only; text not read (image-only scan, OCR pending W0.5)."
         }
       ]
+    },
+    {
+      "doc_id": "MP.ACA1961@en@1",
+      "mode": "archive",
+      "instrument_id": "MP.ACA1961",
+      "language": "en",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/Act_1961_0041_Pdf_F277_Eng.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Housing & Environment Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Listed on code.mp.gov.in as THE MADHYA PRADESH ACCOMODATION CONTROL ACT, 1961 (sic). Consolidation date to verify. Gated until L1 (which MP tenancy law governs) is resolved. [pending: target_mode=gated] Read 2026-11-13: 42 pp, title page No. XLI of 1961; contents include s.11-A (inserted); latest year referenced in the text 1985, so later amendments (if any) may be missing. Text layer clean.",
+      "fetched_at": "2026-11-13T05:14:48+00:00",
+      "sha256": "fb18b30889a2c39492369736ba55eabf749a0b1c08f1e70b42f6743206055bec",
+      "bytes": 354293,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.ACA1961/MP.ACA1961_en_1.pdf"
+    },
+    {
+      "doc_id": "MP.ACA1961@hi@2",
+      "mode": "archive",
+      "instrument_id": "MP.ACA1961",
+      "language": "hi",
+      "status": "in_force",
+      "source_url": "https://code.mp.gov.in/WriteReadData/Pdf/%E0%A4%AE%E0%A4%A7%E0%A5%8D%E0%A4%AF%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A6%E0%A5%87%E0%A4%B6%20%E0%A4%86%E0%A4%B5%E0%A4%BE%E0%A4%B8%20%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%82%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%A3%20%E0%A4%85%E0%A4%A7%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%2C%201961%20MPCode%20%281%29.pdf",
+      "publisher": "Government of Madhya Pradesh, MP Code portal (code.mp.gov.in), Housing & Environment Department",
+      "applies_to": {
+        "level": "state",
+        "states": [
+          "MP"
+        ]
+      },
+      "notes": "Listed on code.mp.gov.in as मध्य प्रदेश आवास नियंत्रण अधिनियम, 1961 (अधि.क्र. 41 सन 1961). Consolidation date to verify. Gated until L1. [pending: target_mode=gated] Read 2026-11-13: 32 pp; p.1 recital: assent 25.12.1961, first published MP Gazette (Extraordinary) 30.12.1961. Text layer corrupt (ध/ल/त/द mapped to ि etc., e.g. अनिनियम); clause labels (ए) suggest a translation, official status unclear. Not quotable without OCR/repair.",
+      "fetched_at": "2026-11-13T05:16:14+00:00",
+      "sha256": "2ebfda0f67be9e932646739430248b572c936256e8a94cd9c6f4269522d959fa",
+      "bytes": 1939524,
+      "content_type": "application/pdf",
+      "text_layer": "born_digital",
+      "local_path": "raw/MP.ACA1961/MP.ACA1961_hi_2.pdf"
     }
   ]
 }

@@ -44,7 +44,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | W0.1 | Validation posts in 3 groups (Malik) | todo | ≥15 real questions logged (redacted) |
 | W0.2 | AWS account: Paid plan, root MFA, ₹100 alert (Malik, DEC-019) | todo | Alert visible in Budgets |
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
-| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | **done 2026-11-10, except one gap found 2026-11-12:** CORPUS item 9 MP Accommodation Control Act 1961 was never fetched/registered (13 seed golden rows cite it; L1 open). Otherwise (53 instruments, 69 documents; 20 index, 17 gated, 30 archive, 2 guide; validator 0 errors). Remaining gated items wait on others or on OCR: L7 (advocate), G13 (Malik), G12/G8a/S2 (OCR, W0.5), G4/G14/G6 (commencement or notifications), G8d-f (parked post-MVP); law-watch LW1 continues. History: steps 1-3, DEC-041 to DEC-052, docs/W0.4_FINDINGS.md (frozen) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
+| W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | **done 2026-11-10; gap closed 2026-11-13:** CORPUS item 9 MP Accommodation Control Act 1961 fetched from code.mp.gov.in (EN + HI, both gated L1; EN consolidation references nothing after 1985, HI text layer corrupt). Before that (53 instruments, 69 documents; 20 index, 17 gated, 30 archive, 2 guide; validator 0 errors). Remaining gated items wait on others or on OCR: L7 (advocate), G13 (Malik), G12/G8a/S2 (OCR, W0.5), G4/G14/G6 (commencement or notifications), G8d-f (parked post-MVP); law-watch LW1 continues. History: steps 1-3, DEC-041 to DEC-052, docs/W0.4_FINDINGS.md (frozen) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
 | W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015, DEC-053) | in progress (2026-11-10: DEC-053; renderer, normaliser, OCR metrics, page set `data/ocr_gt/pages.json`, Colab notebook `notebooks/ocr_bakeoff_colab.ipynb`, scorer `scripts/ocr_score.py` done and tested. Waiting on Malik: Colab run (HF licence + token), Sarvam opt-in, ground-truth correction) | CER table per tool |
 | W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
 
@@ -70,7 +70,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | W2.3 | Eval harness (Ragas/DeepEval + own scorers), judge cache (DEC-023) | todo | Gates computed per slice |
 | W2.4 | Judge calibration (40 hand-graded, κ) | todo | κ reported |
 | W2.5 | Telegram bot (local) | todo | |
-| W2.6 | Golden set 120 rows frozen v1.0 | todo | Frozen + versioned |
+| W2.6 | Golden set 120 rows frozen v1.0 | **in progress** (DEC-063): v0.1-seed, 130 synthetic rows (incl. 10 land) in data/golden/v0.1-seed, generator scripts/build_golden_seed.py, coverage via scripts/check_golden.py (74 clauses retrievable now); Malik review pending | Frozen + versioned |
 | W2.7 | CI job green | todo | |
 
 ## W3 — 24 Nov–~5 Dec: deploy + publish (demo target moved from 30 Nov to ~3–5 Dec, DEC-038)

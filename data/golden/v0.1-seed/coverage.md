@@ -8,8 +8,8 @@ Chunks file: present
 | retrievable_now | 74 |
 | no_matching_chunk | 6 |
 | outside_index_scope | 7 |
-| not_indexed | 27 |
-| not_in_manifest | 18 |
+| not_indexed | 44 |
+| not_in_manifest | 1 |
 | invalid_uid | 0 |
 
 ## no_matching_chunk
@@ -33,6 +33,23 @@ Chunks file: present
 
 ## not_indexed
 
+- GS-001 MP.ACA1961
+- GS-002 MP.ACA1961:s12:ss1
+- GS-003 MP.ACA1961:s12:ss1:cl_a
+- GS-003 MP.ACA1961:s13
+- GS-004 MP.ACA1961
+- GS-008 MP.ACA1961
+- GS-009 MP.ACA1961:s1
+- GS-010 MP.ACA1961:s1
+- GS-012 MP.ACA1961:s12:ss1:cl_e
+- GS-013 MP.ACA1961:s2
+- GS-014 MP.ACA1961:s12:ss1:cl_a
+- GS-017 MP.ACA1961:s2
+- GS-017 MP.ACA1961:s12:ss1:cl_f
+- GS-018 MP.ACA1961
+- GS-021 MP.ACA1961
+- GS-023 MP.ACA1961
+- GS-024 MP.ACA1961
 - GS-033 MP.SSS2026:s1:ss3
 - GS-033 MP.SEA1958
 - GS-039 MP.SSS2026:s40
@@ -63,21 +80,4 @@ Chunks file: present
 
 ## not_in_manifest
 
-- GS-001 MP.ACA1961
-- GS-002 MP.ACA1961:s12:ss1
-- GS-003 MP.ACA1961:s12:ss1:cl_a
-- GS-003 MP.ACA1961:s13
-- GS-004 MP.ACA1961
-- GS-008 MP.ACA1961
-- GS-009 MP.ACA1961:s1
-- GS-010 MP.ACA1961:s1
-- GS-012 MP.ACA1961:s12:ss1:cl_e
-- GS-013 MP.ACA1961:s2
-- GS-014 MP.ACA1961:s12:ss1:cl_a
-- GS-017 MP.ACA1961:s2
-- GS-017 MP.ACA1961:s12:ss1:cl_f
-- GS-018 MP.ACA1961
-- GS-021 MP.ACA1961
-- GS-023 MP.ACA1961
-- GS-024 MP.ACA1961
 - GS-051 IN.CPCDRCR2020:r7
