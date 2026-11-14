@@ -1,0 +1,82 @@
+{
+ "report": "reports/retrieval/v0.1-seed_2026-11-14_dec067.json",
+ "golden": "data\\golden\\v0.1-seed\\golden_set_v0.1_seed.jsonl",
+ "pairs": {
+  "dense vs dense-fp32": {
+   "decision": "insufficient_sample",
+   "slices": [
+    {
+     "name": "overall",
+     "questions": 58,
+     "verified": 0,
+     "clauses": 76,
+     "hits_a": 41,
+     "hits_b": 42,
+     "recall_a": 0.5545977011494252,
+     "recall_b": 0.57183908045977,
+     "diff": -0.017241379310344827,
+     "ci_low": -0.05172413793103448,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 1,
+     "verdict": "insufficient_sample",
+     "verified_diff": null
+    },
+    {
+     "name": "en",
+     "questions": 25,
+     "verified": 0,
+     "clauses": 36,
+     "hits_a": 22,
+     "hits_b": 22,
+     "recall_a": 0.68,
+     "recall_b": 0.68,
+     "diff": 0.0,
+     "ci_low": 0.0,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 0,
+     "verdict": "insufficient_sample",
+     "verified_diff": null
+    },
+    {
+     "name": "hi",
+     "questions": 24,
+     "verified": 0,
+     "clauses": 30,
+     "hits_a": 16,
+     "hits_b": 17,
+     "recall_a": 0.5069444444444444,
+     "recall_b": 0.548611111111111,
+     "diff": -0.041666666666666664,
+     "ci_low": -0.125,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 1,
+     "verdict": "insufficient_sample",
+     "verified_diff": null
+    },
+    {
+     "name": "hinglish",
+     "questions": 9,
+     "verified": 0,
+     "clauses": 10,
+     "hits_a": 3,
+     "hits_b": 3,
+     "recall_a": 0.3333333333333333,
+     "recall_b": 0.3333333333333333,
+     "diff": 0.0,
+     "ci_low": 0.0,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 0,
+     "verdict": "insufficient_sample",
+     "verified_diff": null
+    }
+   ],
+   "disagreements": [
+    "GS-118 (hi): dense 0/1 vs dense-fp32 1/1"
+   ]
+  }
+ }
+}

@@ -399,6 +399,16 @@ on demand in v1 (DEC-023).
 **int8 acceptance margin.** int8 models are accepted only if recall@10 is within 0.02 of fp32, overall and per
 language (DEC-021).
 
+**Paired comparison and paired bootstrap.** When two configs answer the *same* questions, compare them row by row
+(int8 recall minus fp32 recall per question), not as two separate averages. Most questions are easy or hard for both,
+so pairing cancels that shared noise. The paired bootstrap resamples questions with replacement 10,000 times and
+averages the per-question differences each time; the middle 95% of those averages is the confidence interval.
+`insufficient_sample` marks a slice with fewer than 50 verified questions, where one question moves recall by more
+than the 0.02 tolerance, so pass/fail would be noise (DEC-066; `eval/paired.py`, `scripts/compare_precision.py`).
+
+**Pool recall.** With a reranker, the fused order does not matter; what matters is whether the right chunk is
+*anywhere* in the pool the reranker scores (DEC-068, `scripts/compare_fusion.py`).
+
 ---
 
 ## 8. Serverless and cost
