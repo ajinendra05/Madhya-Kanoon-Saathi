@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import sys
 import time
 from collections import defaultdict
 from datetime import date
@@ -76,6 +77,7 @@ def fmt(x: float) -> str:
 
 
 def main() -> int:
+    sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[union-attr]  # Windows console is cp1252
     ap = argparse.ArgumentParser()
     ap.add_argument("--configs", default=ALL_CONFIGS)
     ap.add_argument("--golden", type=Path, default=GOLDEN)
