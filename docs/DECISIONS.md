@@ -746,6 +746,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   4. Each of the three rows gets a golden regression test on the real index.
 - Why: the bot should lead with binding law; model-law text stays available when nothing in force matches. The GS-057 label now names what the statute text supports.
 - Effects: estimated rerank-int8 MRR@10 +0.014 on indexed rows (GS-007 rank 6 → 1), recall unchanged · ₹0 · ~1 h.
+  Measured (`reports/retrieval/v0.1-seed_2026-11-14_dec067.md`): rerank-int8 strict MRR@10 0.463 → 0.486, R@10 0.606 → 0.615; only GS-007 and GS-057 changed.
+
+## DEC-068 — Reranker candidate pool stays RRF 1:1; S15 deferred
+- Date: 2026-11-14 | Status: accepted ("Yes" to A) | Approved by: Malik | DEC-066 step 4 (S15, S20)
+- Context: S20 saw RRF below dense-only. But the reranker re-sorts its whole pool, so the measure that matters is **pool recall** (expected provisions inside the pool), not the fused order. The index is 100% English today (3,042 chunks; Hindi copies await OCR, W1.1b), so BM25 finds nothing for 19 of 24 Hindi questions; none of the 130 seed questions cites a section number.
+- Evidence (`scripts/compare_fusion.py`, `reports/retrieval/v0.1-seed_2026-11-14_fusion.md`; 58 indexed seed rows, strict): pool@40 dense-only 0.647 · **RRF 1:1 0.681** · RRF with BM25 ×0.5 0.647 · dense 30 + BM25 10 0.672 · RRF without BM25 for Devanagari 0.681. At pool 20: RRF 1:1 0.615 vs Devanagari-skip 0.649 (Hindi 0.507 vs 0.590: BM25 title-token matches push out dense hits). Differences are 1–3 provisions.
+- Options: **A) keep RRF 1:1 at pool 40; Devanagari-skip as the pool-20 fallback; defer S15** · B) dense-only (lower pool recall, worst on en/hinglish) · C) add the Devanagari skip now (no gain at 40; a temporary rule).
+- Decision: **A.**
+  1. No retrieval change: BM25 + dense, RRF K = 60, equal weights, pool 40, then rerank (DEC-021, DEC-067).
+  2. If S19 forces a smaller pool, re-run `compare_fusion.py`; "no BM25 for Devanagari queries" is the candidate then, re-checked once Hindi chunks are indexed.
+  3. **S15 deferred:** add ~5 section-number questions (e.g. "RTI dhara 8(1)(j)") when golden v1.0 is built (W2.6), then measure before any scoring change.
+- Why: the fused order is not what the generator sees; RRF gives the reranker the most expected provisions, mainly through English exact-term matches dense misses (e.g. RTI definitions in s.2).
+- Effects: ₹0 · no code change in the pipeline · `compare_fusion.py` kept for re-runs.
 
 ---
 
