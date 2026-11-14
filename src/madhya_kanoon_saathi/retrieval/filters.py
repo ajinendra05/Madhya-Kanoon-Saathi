@@ -29,6 +29,10 @@ FLAGGED_STATUSES = frozenset(
     }
 )
 
+# Flagged statuses whose text is not operative law; ranked after in-force law (DEC-067).
+# sub_judice_flag is in force (only under challenge), so it is not in this set.
+NOT_IN_FORCE = FLAGGED_STATUSES - {"sub_judice_flag"}
+
 
 def _day(value: Any) -> date | None:
     return date.fromisoformat(value) if value else None

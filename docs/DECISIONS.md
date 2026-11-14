@@ -735,6 +735,18 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: one question on an unverified 24-row slice is too little evidence for a 3.8× larger model, but the result must not be recorded as a pass.
 - Effects: no model change · eval script gains paired per-language reporting before step 5 · ₹0.
 
+## DEC-067 — In-force law ranks before not-in-force text after reranking; GS-057 relabelled
+- Date: 2026-11-14 | Status: accepted ("yes" to B and A) | Approved by: Malik | Amends DEC-058 item 4 (flagged chunks kept) · DEC-066 step 3
+- Context: S21 regressions. GS-007 (monthly-tenancy notice): TPA s.106(1) is retrieved but the reranker puts five Model Tenancy Act chunks (model law, not in force in MP) above it (rank 6). GS-057 (hospital negligence): the expected CPA s.2(42) "service" definition never mentions medical treatment; the statutory hook is s.2(11)(i) "any act of negligence" (chunk text checked), which the reranker already ranks 2nd. GS-075 (neighbour's salary via RTI): vocabulary gap; s.8(1) is at dense rank 137; a clause-only (j) chunk scores lower (0.398 vs 0.436), so chunking is not the fix.
+- Options (ordering): A) keep the reranker order; the answer layer handles flags · **B) after reranking, stable-partition: in-force chunks first, not-in-force chunks after** · C) drop not-in-force chunks unless the query names the law. Options (GS-057): **A) expected s.2(11) high + s.2(42) low** · B) keep label.
+- Decision:
+  1. **B.** `rerank_hits` scores the whole pool, then keeps the reranker order inside two groups: chunks whose status is **not in force** (`draft`, `model_law`, `enacted_not_commenced`, `passed_awaiting_assent`, `proposal`) go after all other chunks; then the top k is cut. `sub_judice_flag` law is in force and is **not** demoted. This orders by in-force status, not by authority rank (DEC-040 unchanged); flags still go to the answer layer.
+  2. **GS-057 label A:** expected `IN.CPA2019:s2:ss11` (high) + `IN.CPA2019:s2:ss42` (low); row stays `answer_with_caveat` (coverage of hospitals comes from case law, not in the corpus).
+  3. **GS-075:** no retrieval change now; fixed by query rewriting in W2 (no hand-written synonym list: that would encode legal interpretation). Its regression test is `xfail(strict=True)` until then.
+  4. Each of the three rows gets a golden regression test on the real index.
+- Why: the bot should lead with binding law; model-law text stays available when nothing in force matches. The GS-057 label now names what the statute text supports.
+- Effects: estimated rerank-int8 MRR@10 +0.014 on indexed rows (GS-007 rank 6 → 1), recall unchanged · ₹0 · ~1 h.
+
 ---
 
 ## Pending decisions (not yet made)

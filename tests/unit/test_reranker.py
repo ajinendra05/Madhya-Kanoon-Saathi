@@ -121,10 +121,12 @@ def test_empty_and_too_long_query() -> None:
 
 def test_rerank_hits_keeps_rrf_fields_and_sets_score() -> None:
     r, _ = make()
-    hits = [FusedHit("c1", 0.03, {"bm25": 1}), FusedHit("c2", 0.02, {"dense": 1}, ["draft"])]
+    # sub_judice_flag is in force, so DEC-067 ordering leaves the cross-encoder order alone
+    flag = ["sub_judice_flag"]
+    hits = [FusedHit("c1", 0.03, {"bm25": 1}), FusedHit("c2", 0.02, {"dense": 1}, flag)]
     out = rerank_hits(r, "free legal aid", hits, {"c1": "rent notice", "c2": "free legal aid"}, k=1)
     assert [h.chunk_id for h in out] == ["c2"]
-    assert out[0].rerank_score == 3.0 and out[0].flags == ["draft"] and out[0].ranks == {"dense": 1}
+    assert out[0].rerank_score == 3.0 and out[0].flags == flag and out[0].ranks == {"dense": 1}
     with pytest.raises(KeyError):
         rerank_hits(r, "q", hits, {"c1": "x"}, k=1)
 

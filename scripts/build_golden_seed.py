@@ -2089,6 +2089,11 @@ FIXES = {
         {"IN.CPA2019:s35:ss1": "filed electronically"},
         "proviso to s.35(1): complaint may be filed electronically",
     ),
+    "GS-057": (
+        ["IN.CPA2019:s2:ss11|high", "IN.CPA2019:s2:ss42|low"],
+        {"IN.CPA2019:s2:ss11": "any act of negligence"},
+        "statutory hook is 'deficiency' incl. any act of negligence s.2(11)(i); 'service' s.2(42) kept low - hospital coverage comes from case law, not in corpus (DEC-067)",
+    ),
     "GS-059": (
         ["IN.CPA2019:s84:ss1|high", "IN.CPA2019:s85|medium", "IN.CPA2019:s86|medium"],
         {"IN.CPA2019:s84:ss1": "product manufacturer shall be liable"},

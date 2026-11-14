@@ -5,7 +5,7 @@ Chunks file: present
 
 | status | clauses |
 | --- | --- |
-| retrievable_now | 85 |
+| retrievable_now | 86 |
 | no_matching_chunk | 6 |
 | outside_index_scope | 1 |
 | not_indexed | 44 |

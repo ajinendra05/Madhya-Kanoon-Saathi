@@ -19,7 +19,7 @@ from typing import Any
 from madhya_kanoon_saathi.retrieval.bm25_index import Bm25Index, Hit
 from madhya_kanoon_saathi.retrieval.dense_index import DenseIndex
 from madhya_kanoon_saathi.retrieval.embedder import Embedder, embed_text
-from madhya_kanoon_saathi.retrieval.filters import IN_SCOPE_STATES
+from madhya_kanoon_saathi.retrieval.filters import IN_SCOPE_STATES, NOT_IN_FORCE
 from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
 RRF_K = 60
@@ -99,16 +99,25 @@ class HybridRetriever:
 def rerank_hits(
     reranker: Reranker, query: str, hits: Sequence[FusedHit], passages: Mapping[str, str], k: int
 ) -> list[FusedHit]:
+    """Cross-encoder order, then in-force law before not-in-force text (DEC-067); best ``k``."""
     by_id = {h.chunk_id: h for h in hits}
     missing = [h.chunk_id for h in hits if h.chunk_id not in passages]
     if missing:
         raise KeyError(f"no passage text for {missing[:3]}")
-    best = reranker.rerank(query, [(h.chunk_id, passages[h.chunk_id]) for h in hits], top=k)
+    scored = reranker.rerank(
+        query, [(h.chunk_id, passages[h.chunk_id]) for h in hits], top=len(hits)
+    )
     out = []
-    for cid, score in best:
+    for cid, score in scored:
         by_id[cid].rerank_score = score
         out.append(by_id[cid])
-    return out
+    return in_force_first(out)[:k]
+
+
+def in_force_first(hits: Sequence[FusedHit]) -> list[FusedHit]:
+    """Stable partition: hits without a not-in-force flag keep their order and come first."""
+    later = [h for h in hits if NOT_IN_FORCE.intersection(h.flags)]
+    return [h for h in hits if not NOT_IN_FORCE.intersection(h.flags)] + later
 
 
 def passages_from_chunks(
