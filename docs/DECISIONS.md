@@ -760,6 +760,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: the fused order is not what the generator sees; RRF gives the reranker the most expected provisions, mainly through English exact-term matches dense misses (e.g. RTI definitions in s.2).
 - Effects: ₹0 · no code change in the pipeline · `compare_fusion.py` kept for re-runs.
 
+## DEC-069 — Bulk OCR may run on Kaggle Notebooks as well as Colab
+- Date: 2026-11-15 | Status: accepted ("A") | Approved by: Malik | Amends DEC-053 item 1 ("Bodhan runs on Google Colab only")
+- Context: The W1.2 bulk run (635 pages) failed on a CPU runtime because Malik's free Colab GPU quota was used up. The laptop GPU (2 GB) is too small (DEC-053).
+- Options: **A) Kaggle Notebooks (free GPU)** · B) wait for the Colab quota to reset · C) paid Colab compute units.
+- Decision: **A.** One notebook (`notebooks/ocr_bulk_colab.ipynb`) detects Colab or Kaggle and runs the same pipeline on either:
+  - same Bodhan revision (cd50d301…), pypdfium2 pin and 300 dpi, sha256 check of every PDF;
+  - on Kaggle: inputs as a **private** Kaggle Dataset (read-only `/kaggle/input`), outputs in `/kaggle/working`, `HF_TOKEN` as a Kaggle secret, accelerator **GPU T4**, run with "Save & Run All";
+  - the run stops itself before Kaggle's session limit so outputs are saved; a later version resumes by attaching the previous version's output as input;
+  - `run_info.json` records which platform and GPU ran each session.
+- Why: free, available today, and the pinned model/renderer keep results identical in kind to the bake-off, so DEC-053's quality basis still holds.
+- Effects: ₹0 · new external service (Kaggle; free tier, GPU quota and session limits not verified) · Malik needs a phone-verified Kaggle account for internet access (not verified).
+- Follow-ups: record Kaggle's actual GPU quota and session limit from the account's quota page; per-page time from the first session.
+
 ---
 
 ## Pending decisions (not yet made)

@@ -64,7 +64,7 @@ check date are given. Verify against the official page before code depends on it
 | Dev | pre-commit + gitleaks | Lint/format + secret scanning before commits | proposed (kickoff) |
 | Dev | Python toolchain (version, package manager, linter, test runner) | — | proposed (kickoff step 2) |
 | Dev | Claude Code | Implementation partner, with hooks/permissions/skills | in use |
-| Compute | Google Colab | Bulk OCR on free GPU | decided (DEC-015) |
+| Compute | Google Colab, Kaggle Notebooks | Bulk OCR on free GPU | decided (DEC-015, DEC-069) |
 | Channel | Telegram Bot API | The only user channel for v1 | decided (DEC-007) |
 | Ops | Google Sheets | Logging validation questions before they become golden rows | planned (plan §1) |
 | Data | India Code, eGazette, MP Labour DMS, ministry portals | Primary legal sources | planned (plan §2) |
@@ -347,6 +347,14 @@ check date are given. Verify against the official page before code depends on it
 
 ### Google Colab — decided (DEC-015)
 - Free GPU notebooks for bulk OCR. Sessions time out, so the OCR script must be resumable.
+
+### Kaggle Notebooks — decided (DEC-069)
+- Free GPU (T4) notebooks; the alternative to Colab when its free GPU quota is used up. The bulk OCR notebook
+  (`notebooks/ocr_bulk_colab.ipynb`) detects Kaggle and reads inputs from a **private** Kaggle Dataset, writes to
+  `/kaggle/working`, reads `HF_TOKEN` from Kaggle Secrets, and stops itself after `MAX_HOURS` so a committed run saves
+  its output. Resume = attach the previous version's output as input.
+- **Verify:** weekly GPU quota and session limit (from memory: ~30 h/week, ~12 h/session); internet needs a
+  phone-verified account; whether recent torch still supports the P100 option (prefer T4).
 
 ### Google Sheets — planned (plan §1)
 - Intake log for validation questions (names/phones stripped) before conversion into golden-set JSONL.

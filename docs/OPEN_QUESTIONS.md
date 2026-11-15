@@ -150,6 +150,7 @@ moves `gated → index`, or stays archived if found invalid.
 | P7 | S3, ECR, CloudWatch, KMS (customer-managed key) prices in ap-south-1 | DEC-011, 024, 029 | C | open |
 | P8 | NAT gateway cost (justification for no VPC) | DEC-029 | C | open |
 | P9 | GitHub Actions minutes for private repos | DEC-024 | C | open |
+| P10 | Kaggle free GPU: weekly quota (~30 h?), session limit (~12 h? notebook `MAX_HOURS` = 11), phone verification for internet, P100 support in current torch | DEC-069 | Malik (quota page) / C | open |
 
 ## C. Models and libraries
 | ID | Question | Used in | Owner | Status |
