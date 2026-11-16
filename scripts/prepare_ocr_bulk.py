@@ -11,8 +11,10 @@ Output: <out>/mks_ocr_bulk/{jobs.json, pdfs/*.pdf} and <out>/mks_ocr_bulk.zip (u
 unzipped folder to Google Drive root). Index-mode documents come first, the largest gated
 document (MPLRC Hindi consolidation) last, so a short session still covers what is indexed.
 With --parts N the ordered job list is cut into N packages of about equal page count
-(<out>/mks_ocr_bulk_p1 ... _pN, each with its own jobs.json and zip; documents are never split),
-so each part fits in one GPU session or account quota.
+(<out>/mks_ocr_bulk_p1 ... _pN, each with its own jobs.json and zip), so each part fits in one
+GPU session. A document larger than one share is split by page range: its job carries `first`
+and `last` (1-based, inclusive) and outputs keep the original page numbers, so parts merge by
+(doc_id, page).
 """
 
 from __future__ import annotations
@@ -41,34 +43,44 @@ def sha256(path: Path) -> str:
 
 
 def split_by_pages(jobs: list[dict[str, Any]], parts: int) -> list[list[dict[str, Any]]]:
-    """Cut the ordered job list into `parts` runs of about equal pages; documents stay whole.
+    """Cut the ordered pages of all jobs into `parts` contiguous runs of near-equal size.
 
-    A document goes to the part its page midpoint falls in, so no part is empty unless one
-    document is larger than a whole share.
+    Page g (0-based, across all jobs in order) goes to part g * parts // total, so part sizes
+    differ by at most one page. A job crossing a boundary becomes one slice per part, each with
+    its own `first`/`last` page range.
     """
     total = sum(j["pages"] for j in jobs)
-    share = total / parts
-    groups: list[list[dict[str, Any]]] = [[] for _ in range(parts)]
-    before = 0
+    groups: list[list[dict[str, Any]]] = [[] for _ in range(min(parts, total))]
+    g = 0
     for j in jobs:
-        k = min(parts - 1, int((before + j["pages"] / 2) // share))
-        groups[k].append(j)
-        before += j["pages"]
-    return [g for g in groups if g]
+        n = 1
+        while n <= j["pages"]:
+            k = g * len(groups) // total
+            # last global page index (exclusive) that still belongs to part k
+            end = -(-(k + 1) * total // len(groups))
+            take = min(j["pages"] - n + 1, end - g)
+            groups[k].append({**j, "first": n, "last": n + take - 1})
+            n += take
+            g += take
+    return groups
 
 
 def write_package(out: Path, name: str, jobs: list[dict[str, Any]], part: tuple[int, int]) -> None:
     root = out / name
-    (root / "pdfs").mkdir(parents=True, exist_ok=True)
+    # rebuild inputs from scratch; never touch root/"out" (downloaded OCR results)
+    if (root / "pdfs").exists():
+        shutil.rmtree(root / "pdfs")
+    (root / "pdfs").mkdir(parents=True)
     for j in jobs:
-        shutil.copyfile(j["_src"], root / j["file"])
+        if not (root / j["file"]).exists():
+            shutil.copyfile(j["_src"], root / j["file"])
     info = {
         "package": name,
         "part": part[0],
         "parts": part[1],
         "dpi": DPI,
         "renderer": f"pypdfium2=={version('pypdfium2')}",
-        "total_pages": sum(j["pages"] for j in jobs),
+        "total_pages": sum(j["last"] - j["first"] + 1 for j in jobs),
         "jobs": [{k: v for k, v in j.items() if k != "_src"} for j in jobs],
     }
     (root / "jobs.json").write_text(
@@ -81,7 +93,8 @@ def write_package(out: Path, name: str, jobs: list[dict[str, Any]], part: tuple[
                 z.write(f, f.relative_to(out).as_posix())
     print(f"== {name}")
     for j in jobs:
-        print(f"{j['mode']:6s} {j['pages']:4d}p  {j['doc_id']}")
+        rng = f"pp.{j['first']}-{j['last']}"
+        print(f"{j['mode']:6s} {j['last'] - j['first'] + 1:4d}p  {j['doc_id']} {rng}")
     mb = zpath.stat().st_size / 1e6
     print(f"{len(jobs)} documents, {info['total_pages']} pages -> {zpath} ({mb:.1f} MB)")
 
