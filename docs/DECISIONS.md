@@ -773,6 +773,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: ₹0 · new external service (Kaggle; free tier, GPU quota and session limits not verified) · Malik needs a phone-verified Kaggle account for internet access (not verified).
 - Follow-ups: record Kaggle's actual GPU quota and session limit from the account's quota page; per-page time from the first session.
 
+## DEC-070 — November land slice: demarcation only; mutation moves to December
+- Date: 2026-11-16 | Status: accepted ("B") | Approved by: Malik | Applies DEC-045 item 6 (16 Nov deadline); narrows DEC-038
+- Context: The 16 Nov deadline for official land texts (G8) passed with G8a parked: no current official consolidation of MPLRC ss.109–110 (mutation) or verified Mutation Rules 2018. Demarcation is verified: s.129 as substituted by MP Act 23/2018 (commenced 25.09.2018) and amended by MP Act 1/2023 (DEC-046), and the Demarcation Rules 2018 are indexed (DEC-049).
+- Options: A) drop land from the November demo (DEC-045 as written) · **B) keep only the verified demarcation procedure** · C) extend the deadline.
+- Decision: **B.**
+  1. **November demo:** demarcation procedure only. Sources: MPLRC s.129 (current text) and the Demarcation Rules 2018 (Forms, team, agencies, boundary marks, SDO route). Fees stay qualified (no amounts, DEC-049); s.129(5) SDO application vs s.129(8) no-appeal bar kept apart (DEC-046).
+  2. **Moved to December (stay gated):** mutation (ss.109–110, Mutation Rules 2018 EN/HI) and the Bhulekh/Cyber Tehsil record-copy guide. Mutation questions get a referral answer (Tahsil office / DLSA) until then; wording in W2.1.
+  3. **Still November:** the jurisdiction guard for land and the dispute detector (DEC-038) — "who owns it" and boundary-dispute merits go to DLSA.
+  4. **Golden set:** land rows asking about mutation or record copies become out-of-corpus for v1.0 (expected behaviour re-checked at the W2.6 freeze); demarcation rows stay.
+- Why: demarcation is fully verified from official copies and is a common rural question; mutation without a verified current text would risk quoting superseded law.
+- Effects: ₹0 · less land ingestion work in November · the demo keeps a land story.
+- Follow-ups: (a) how to index the current s.129 text, since the MP Code consolidation (`MP.LRC1959@en@1`) is pre-2018 and the current wording sits in the 2018 amending Act plus the 2023 amendment (small schema/ingestion decision before W1.1b reaches land); (b) OCR of MP Act 1/2023 (bulk part p5); (c) G8a resumes in December.
+
 ---
 
 ## Pending decisions (not yet made)

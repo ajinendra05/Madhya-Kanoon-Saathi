@@ -19,6 +19,10 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
    - G8h: Mutation Rules gazette publication date
 
    Demarcation stays gated (DEC-046); mutation is backed by official texts.
+
+   **2026-11-16 deadline outcome (DEC-070):** G8a parked; November land slice = **demarcation only**
+   (s.129 current text + Demarcation Rules 2018). Mutation and the record-copy guide move to December (gated).
+   Open before W1.1b reaches land: how to index the current s.129 text (DEC-070 follow-up a).
 2. ~~**L8**~~ fetched 2026-11-07 (stayed 2024, reinstated 2025 except textiles/apparel/footwear; saved status for advocate). ~~**G14**~~ texts fetched 2026-11-07 (gated until base-text overlay). **G6:** later s.3 time-limit notifications. **G12:** amendment check.
 3. **LW1:** periodic manual check for the final MP Code on Wages Rules and the Sanhita/EoDB commencement notifications. (Checked 2026-11-07: nothing final/commenced; see OPEN_QUESTIONS LW1 log.) Advocate brief for L7/L8: `docs/briefs/advocate_brief_L7_L8.md` (Malik to send).
 4. Plans (not code yet) for **X1–X4**.
