@@ -1,6 +1,6 @@
 # Chunk build QA report
 
-Built 2026-11-17T04:28:57+00:00 from commit `3695236398` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `1d4a5fae9c49eb88`.
+Built 2026-11-17T04:39:27+00:00 from commit `88ee5d740d` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `dddb6fc952ab84cb`.
 
 Hard QA errors: **0** (the build stops on any). Token counts are estimates until W1.4.
 
@@ -9,8 +9,11 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | IN.COW2019@en@1 | 69 | 245 | 212 | 33 | 0 | 1 | 0 (0) | 0 | 107 | 88 |
 | IN.CPA2019@en@1 | 107 | 369 | 327 | 42 | 0 | 4 | 0 (0) | 0 | 144 | 0 |
 | IN.CPECR2020@bi@1 [en] | 8 | 33 | 26 | 7 | 0 | 0 | 0 (0) | 0 | 16 | 4 |
+| IN.CPECR2020@bi@1 [hi] | 8 | 55 | 45 | 10 | 0 | 0 | 0 (0) | 0 | 14 | 2 |
 | IN.CPECRA2021@bi@1 [en] | 2 | 3 | 2 | 1 | 0 | 0 | 0 (0) | 0 | 16 | 6 |
+| IN.CPECRA2021@bi@1 [hi] | 2 | 3 | 2 | 1 | 0 | 0 | 0 (0) | 0 | 15 | 4 |
 | IN.CPJR2021@bi@1 [en] | 5 | 7 | 7 | 0 | 0 | 0 | 0 (0) | 0 | 17 | 4 |
+| IN.CPJR2021@bi@1 [hi] | 5 | 7 | 7 | 0 | 0 | 0 | 0 (0) | 0 | 16 | 2 |
 | IN.ESHRAMFAQ2026@en@1 | 59 | 59 | 56 | 3 | 0 | 0 | 0 (0) | 0 | 24 | 0 |
 | IN.IRC2020@en@1 | 104 | 467 | 400 | 67 | 0 | 2 | 0 (0) | 0 | 165 | 101 |
 | IN.LSA1987@en@1 | 40 | 23 | 18 | 5 | 0 | 32 | 0 (0) | 127 | 72 | 0 |
@@ -19,10 +22,13 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | IN.RA1908@en@1 | 95 | 17 | 16 | 1 | 0 | 68 | 41 (0) | 183 | 152 | 0 |
 | IN.RTI2005@en@1 | 31 | 149 | 120 | 29 | 0 | 17 | 0 (0) | 0 | 87 | 19 |
 | IN.RTIR2012@en@1 [en] | 15 | 21 | 16 | 5 | 0 | 0 | 0 (0) | 0 | 8 | 5 |
+| IN.RTIR2012@hi@1 [hi] | 15 | 21 | 13 | 8 | 0 | 0 | 0 (0) | 0 | 16 | 2 |
 | IN.SSC2020@en@1 | 164 | 788 | 630 | 158 | 0 | 1 | 0 (0) | 0 | 227 | 99 |
 | IN.SVANLOG2025@en@1 | 10 | 22 | 8 | 14 | 0 | 0 | 0 (0) | 0 | 22 | 0 |
 | IN.SVANSG2025@en@1 | 13 | 31 | 19 | 12 | 0 | 0 | 0 (0) | 0 | 31 | 0 |
 | IN.TPA1882@en@1 | 148 | 27 | 20 | 7 | 0 | 150 | 1 (0) | 194 | 226 | 0 |
+| MP.LRCDR2018@bi@1 [hi] | 11 | 29 | 19 | 9 | 1 | 0 | 0 (0) | 0 | 17 | 3 |
+| MP.LRCDR2018@bi@1 [en] | 11 | 34 | 29 | 5 | 0 | 0 | 0 (0) | 0 | 12 | 2 |
 | MP.SLSALAGUIDE2025@en@1 | 1 | 3 | 1 | 2 | 0 | 0 | 0 (0) | 0 | 5 | 0 |
 | MP.WCR2026@en@1 [en] | 49 | 145 | 116 | 28 | 1 | 0 | 0 (0) | 0 | 20 | 0 |
 
@@ -31,6 +37,11 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 ### IN.COW2019@en@1
 - warning: p.1: only 62 characters of text
 - warning: p.2: only 105 characters of text
+
+### IN.CPECR2020@bi@1 [hi]
+- warning: IN.CPECR2020:r4:ss1: kept whole in Hindi (Hindi and English sub-units differ under IN.CPECR2020:r4:ss1)
+- warning: IN.CPECR2020:r4:ss2: kept whole in Hindi (Hindi and English sub-units differ under IN.CPECR2020:r4:ss2)
+- warning: IN.CPECR2020:r5:ss3: kept whole in Hindi (Hindi and English sub-units differ under IN.CPECR2020:r5:ss3)
 
 ### IN.IRC2020@en@1
 - warning: p.1: only 69 characters of text
@@ -367,6 +378,9 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 ### IN.RTI2005@en@1
 - warning: p.1: only 72 characters of text
 
+### IN.RTIR2012@hi@1 [hi]
+- warning: IN.RTIR2012:r14: kept whole in Hindi (Hindi and English sub-units differ under IN.RTIR2012:r14)
+
 ### IN.SSC2020@en@1
 - warning: IN.SSC2020:s1:ss3: footnote marker '1' on p.8 has no footnote text
 - warning: p.1: only 71 characters of text
@@ -584,10 +598,14 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 - skipped: IN.TPA1882:s137 (outside index_scope)
 - skipped: IN.TPA1882:sch1 (outside index_scope)
 
+### MP.LRCDR2018@bi@1 [hi]
+- warning: p.1: only 93 characters of text
+
+### MP.LRCDR2018@bi@1 [en]
+- warning: p.1: only 93 characters of text
+
 ## Not chunked yet
 
 | Document | Reason |
 | --- | --- |
-| IN.RTIR2012@hi@1 | scanned text layer: needs OCR (W1.1b) |
-| MP.LRCDR2018@bi@1 | scanned text layer: needs OCR (W1.1b) |
 | MP.MWVDAOCT2026@hi@1 | scanned text layer: needs OCR (W1.1b) |

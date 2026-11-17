@@ -42,6 +42,7 @@ from madhya_kanoon_saathi.ingestion.chunker import (
     qa,
 )
 from madhya_kanoon_saathi.ingestion.guideline import parse_guideline
+from madhya_kanoon_saathi.ingestion.hindi_rules import align, parse_hindi_rules
 from madhya_kanoon_saathi.ingestion.html_guide import parse_faq, parse_headed
 from madhya_kanoon_saathi.ingestion.manifest import Document, parse_manifest
 from madhya_kanoon_saathi.ingestion.ocr_text import load as load_ocr
@@ -68,15 +69,27 @@ BILL_LAYOUT = {"IN.MTA2021@en@1"}  # margin-note headings, contents pages (bill_
 GUIDELINE = {"IN.SVANSG2025@en@1", "IN.SVANLOG2025@en@1"}  # decimal-numbered paragraphs (DEC-057)
 HTML_FAQ = {"IN.ESHRAMFAQ2026@en@1"}  # accordion of "Q - n." questions (html_guide.py)
 HTML_HEADED = {"MP.SLSALAGUIDE2025@en@1"}  # h2 "1. ..." with h3 questions (html_guide.py)
-# Rules gazettes chunked from the bulk Bodhan OCR (W1.1b, DEC-071); languages done so far
+# Rules gazettes chunked from the bulk Bodhan OCR (W1.1b, DEC-071), with the languages chunked.
+# Hindi text is aligned to the English text of the same document, or of EN_COUNTERPART.
 OCR_RULES: dict[str, tuple[str, ...]] = {
     "IN.RTIR2012@en@1": ("en",),
-    "IN.CPJR2021@bi@1": ("en",),
-    "IN.CPECR2020@bi@1": ("en",),
-    "IN.CPECRA2021@bi@1": ("en",),
+    "IN.RTIR2012@hi@1": ("hi",),
+    "IN.CPJR2021@bi@1": ("en", "hi"),
+    "IN.CPECR2020@bi@1": ("en", "hi"),
+    "IN.CPECRA2021@bi@1": ("en", "hi"),
+    "MP.LRCDR2018@bi@1": ("hi", "en"),  # Hindi original + English translation (Art. 348(3))
     "MP.WCR2026@en@1": ("en",),
 }
+EN_COUNTERPART = {"IN.RTIR2012@hi@1": "IN.RTIR2012@en@1"}
 OCR_ROOT = DATA / "ocr" / "bulk"
+
+
+def _pages(path: Path) -> int:
+    pdf = pdfium.PdfDocument(path)
+    try:
+        return len(pdf)
+    finally:
+        pdf.close()
 
 
 def route(doc: Document) -> str | None:
@@ -180,9 +193,7 @@ def main() -> int:
             chunks += res.chunks
             continue
         if kind == "ocr_rules":
-            pdf = pdfium.PdfDocument(path)
-            n_pages = len(pdf)
-            pdf.close()
+            n_pages = _pages(path)
             ocr = load_ocr(OCR_ROOT, doc.doc_id, n_pages, "en" if doc.language == "en" else "hi")
             inputs[-1]["ocr"] = {
                 "engine": ocr.engine,
@@ -192,8 +203,26 @@ def main() -> int:
                 ).hexdigest(),
             }
             for lang in OCR_RULES[doc.doc_id]:
-                parsed = parse_statute(doc.instrument_id, ocr.lines[lang], rules=True)
+                if lang == "en":
+                    parsed = parse_statute(doc.instrument_id, ocr.lines["en"], rules=True)
+                    report: list[str] = []
+                else:
+                    # Hindi uids come from the English structure (section_uid rule 2)
+                    en_doc_id = EN_COUNTERPART.get(doc.doc_id, doc.doc_id)
+                    en_doc = manifest.documents[en_doc_id]
+                    en_ocr = (
+                        ocr
+                        if en_doc_id == doc.doc_id
+                        else load_ocr(
+                            OCR_ROOT, en_doc_id, _pages(DATA / (en_doc.local_path or "")), "en"
+                        )
+                    )
+                    english = parse_statute(doc.instrument_id, en_ocr.lines["en"], rules=True)
+                    parsed, report = align(
+                        doc.instrument_id, parse_hindi_rules(ocr.lines["hi"]), english
+                    )
                 res = qa(build_chunks(parsed, doc, inst, [], ocr.engine, lang), ocr.page_chars)
+                res.warnings += report
                 res.warnings += model_notes(ocr.lines[lang])
                 errors += [f"{doc.doc_id}: {e}" for e in res.errors]
                 per_doc[f"{doc.doc_id} [{lang}]"] = _summary(kind, parsed, res, 0)

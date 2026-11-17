@@ -76,7 +76,8 @@ _SCHEDULE = re.compile(
     r"^THE\s+((?P<ord>FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH"
     r"|TWELFTH)\s+)?SCHEDULE\b"
 )
-_SCHEDULE_BARE = re.compile(r"^SCHEDULE\s*\**\s*$")  # rules: "SCHEDULE*" (MP.WCR2026 p.33)
+# rules: "SCHEDULE*" (MP.WCR2026 p.33), "SCHEDULE-I" (MP.LRCDR2018 p.20)
+_SCHEDULE_BARE = re.compile(r"^SCHEDULE\s*[-–—]?\s*(?P<num>[IVX]+|\d{1,2})?\s*\**\s*$")  # noqa: RUF001
 _REPEALED = re.compile(r"^\[(.+?)\]\.?\s*(Rep\.|Repealed|Omitted)")
 _NO_DASH_SS1 = re.compile(r"\.\s+(?=\(1\)\s)")
 _END_OF_ACT = re.compile(
@@ -312,7 +313,11 @@ def parse_statute(
 
         m_sch = _SCHEDULE.match(t) or (_SCHEDULE_BARE.match(t) if rules else None)
         if m_sch:
-            n = _ORDINALS.get(m_sch.groupdict().get("ord") or "", 1)
+            num_lab = m_sch.groupdict().get("num")
+            if num_lab:
+                n = int(num_lab) if num_lab.isdigit() else _ROMAN.get(num_lab.lower(), 1)
+            else:
+                n = _ORDINALS.get(m_sch.groupdict().get("ord") or "", 1)
             sched = new(f"{instrument_id}:sch{n}", "schedule", t)
             sec = ss = clause = sub = None
             after_clause = []
@@ -349,6 +354,17 @@ def parse_statute(
                     # "9. Procedure ... etc. (1) A Social ...": dash missing (IN.SSC2020 s.9)
                     parts = _NO_DASH_SS1.split(rest, maxsplit=1)
                 heading_open = len(parts) < 2 and not m_rep  # heading wraps until ".--"
+                if (
+                    rules
+                    and heading_open
+                    and not any(
+                        head_dash.search(_start_text(merged[j]))
+                        for j in range(idx + 1, min(idx + 3, len(merged)))
+                    )
+                ):
+                    # "3. The application for demarcation ... shall be made in Form I." has no
+                    # heading at all (MP.LRCDR2018 p.18); a wrapped heading ends within 2 lines
+                    parts, heading_open = ["", rest], False
                 if m_rep:
                     heading = m_rep.group(1).rstrip(". ")
                 else:

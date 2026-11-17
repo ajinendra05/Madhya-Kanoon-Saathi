@@ -100,3 +100,9 @@ Code: `ingestion/ocr_text.py`. Input: the bulk Bodhan run, `data/ocr/bulk/**/out
   signature block (`[F. No. …]`, "By order and in the name of …") and the printer's line are not rule text.
   A digit form label among roman ones ("FORM-1" with "FORM-II") is read as roman (OCR).
 - The build record lists, per OCR input, the engine, page count and a sha256 over its page texts.
+- Hindi rules text (`ingestion/hindi_rules.py`): parsed into a tree (rules "3. शीर्षक – text", sub-rules "(1)",
+  clauses in Devanagari letters, Hindi number words or roman numerals, "परंतु" provisos, "स्पष्टीकरण" explanations,
+  "प्ररूप"/"परिशिष्ट"/"अनुसूची" blocks) and aligned to the English parse of the same document or of its English
+  counterpart (`EN_COUNTERPART`): rules/sub-rules by number, other units by position among same-kind siblings,
+  forms/schedules by order. A count mismatch keeps the Hindi unit whole under its aligned uid and is a QA warning.
+  A Hindi rule with no English rule of that number keeps `r<n>` and stays whole.

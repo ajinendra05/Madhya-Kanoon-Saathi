@@ -284,6 +284,21 @@ missing page number, raw/canonical mismatch, duplicate ID) and only warns on sof
 **Layout cues beat text patterns.** In India Code PDFs, footnotes look like section starts ("1. Subs. by ...").
 Font size separates them reliably: body 11 pt, footnotes 9 pt, superscript markers 7 pt.
 
+**OCR text as raw text (W1.1b, DEC-071).** For scanned gazettes the "extractor" is Bodhan IndicOCR. Its output is
+stored unchanged as `raw_text` (including its `▁` word marks, HTML table tags and dotted fill-in lines); the cleanup
+runs only inside the canonical-text function, switched on by an `ocr` flag. So the raw ↔ canonical audit still holds,
+and born-digital chunks are untouched.
+- Why: you can always show exactly what the OCR engine produced, and fix cleanup rules without re-running OCR.
+
+**Structural alignment of Hindi and English (W1.1b, section_uid rule 2).** A Hindi provision gets the same
+`section_uid` as its English counterpart, so a question in either language finds the same law. Rule and sub-rule
+numbers are matched by number (digits are the same in both texts); clauses, provisos and explanations by their
+**position** among siblings, never by mapping (ख) to (b). If the two texts have a different number of sub-units, the
+Hindi provision is kept whole under the parent uid and reported.
+- Example: RTI Rules 2012 r.14 lists 4 modes of service in English but 3 in the official Hindi (no registered post).
+  Position matching alone would have labelled Hindi "e-mail" as English "registered post"; the count check prevents it.
+- Interview angle: "alignment fails safe: when unsure it becomes coarser, never wrong."
+
 ## 5. Retrieval
 
 **Sparse (keyword) retrieval: BM25.** Scores documents by how often the query's words appear, adjusted for rarity and
