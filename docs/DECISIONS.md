@@ -806,6 +806,13 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: the uid matches what is printed and what users say ("अनुसूची च"), and follows the existing `form_<x>` pattern.
 - Effects: `common/section_uid.py` + spec + tests · ₹0 · no change to existing uids.
 
+## DEC-073 — Part (खण्ड) letter appended when two schedules share a letter
+- Date: 2026-11-17 | Status: accepted ("confirm ... s25a as yes") | Approved by: Malik | Amends DEC-072 (OPEN_QUESTIONS S25a)
+- Context: `MP.MWVDAOCT2026@hi@1` has two schedules lettered अ: "अनुसूची-अ (खण्ड-ब)" (67 scheduled employments) and "(खण्ड-अ - अनुसूची-अ)" (the 3 new employments). `sch_a` alone would give both the same uid.
+- Decision: `sch_<x>_<y>`, where `y` is the खण्ड (part) letter with the same fixed transliteration table: `sch_a_ba` (अनुसूची-अ, खण्ड-ब) and `sch_a_a` (खण्ड-अ, अनुसूची-अ). The part is added only when the label carries one; at most one part qualifier.
+- Why: keeps the printed label readable in the uid and stays inside the DEC-072 pattern.
+- Effects: already implemented in W1.1b (`common/section_uid.py`, `ingestion/wage_tables.py`, spec, tests) · ₹0.
+
 ---
 
 ## Pending decisions (not yet made)
