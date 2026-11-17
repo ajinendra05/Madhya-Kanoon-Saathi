@@ -10,6 +10,10 @@ Hand-corrected text of 20 scanned pages, used to score OCR engines (CER/WER). Pu
 Open the page image (`data/ocr/pages/<page_id>.png`) next to `<page_id>.txt` and fix the text until it matches the
 page exactly. Then set that page's `gt_status` to `corrected` in `pages.json`.
 
+As done for v1 (2026-11-17): the corrected text was added **below** the Tesseract pre-fill, after a line
+`--corrected--`. `scripts/ocr_score.py` scores only the text after that line (the pre-fill above it is kept as a
+record); a file without the line is taken as ground truth in full.
+
 **Conventions** (all engines are converted to the same plain-text form before scoring):
 1. Type what is printed, in reading order: header line, body, footer, page number. Columns left to right.
 2. Keep the original script and spelling, including printer errors. Do not translate or "fix" the law.

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import statistics
 from collections import defaultdict
 from pathlib import Path
@@ -55,6 +56,16 @@ def prefill() -> None:
     )
 
 
+_MARKER = re.compile(r"(?m)^--corrected-*[ 	]*$")
+
+
+def corrected_part(text: str) -> str:
+    """Malik's ground truth: the corrected text follows a '--corrected--' line under the
+    Tesseract pre-fill (data/ocr_gt/README.md). Without the line the whole file is the truth."""
+    m = _MARKER.search(text)
+    return text[m.end() :] if m else text
+
+
 def _fmt(xs: list[float]) -> str:
     return f"{100 * statistics.fmean(xs):.1f}" if xs else "-"
 
@@ -66,7 +77,8 @@ def score_all(include_drafts: bool, out: Path) -> None:
         gt = GT / f"{p['page_id']}.txt"
         if not gt.exists() or (p.get("gt_status") != "corrected" and not include_drafts):
             continue
-        ref = plain_text(gt.read_text(encoding="utf-8"))  # same conversion as the engines
+        # same conversion as the engines; only the corrected part counts
+        ref = plain_text(corrected_part(gt.read_text(encoding="utf-8")))
         for e in ENGINES:
             hyp = engine_text(e, p["page_id"])
             if hyp is not None:

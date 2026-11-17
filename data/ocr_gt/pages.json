@@ -9,7 +9,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Sanhita Hindi body text (after the blank-patch pages)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p02",
@@ -18,7 +18,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Sanhita Hindi body text",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p03",
@@ -27,7 +27,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Demarcation Rules 2018, Hindi gazette text (indexed)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p04",
@@ -36,7 +36,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Demarcation Rules 2018, Hindi gazette text",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p05",
@@ -45,7 +45,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Mutation Rules 2018 gazette, dense rules text",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p06",
@@ -54,7 +54,7 @@
       "kind": "hindi_form",
       "lang": "hi",
       "why": "Mutation Rules 2018, declaration form (form layout, blanks)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p07",
@@ -63,7 +63,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Lok Seva amendment 2026 (G6)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p08",
@@ -72,7 +72,7 @@
       "kind": "hindi_act",
       "lang": "hi",
       "why": "Central RTI Rules 2012, Hindi (indexed; text layer is noise)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p09",
@@ -81,7 +81,7 @@
       "kind": "wage_table",
       "lang": "hi",
       "why": "Current MP wage notification (indexed, DEC-050)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p10",
@@ -90,7 +90,7 @@
       "kind": "wage_table",
       "lang": "hi",
       "why": "Current MP wage notification",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p11",
@@ -99,7 +99,7 @@
       "kind": "wage_table",
       "lang": "hi",
       "why": "Current MP wage notification",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p12",
@@ -108,7 +108,7 @@
       "kind": "wage_table",
       "lang": "hi",
       "why": "2024 base-rate schedules (L8)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p13",
@@ -117,7 +117,7 @@
       "kind": "wage_table",
       "lang": "hi",
       "why": "2024 base-rate schedules (L8)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p14",
@@ -126,7 +126,7 @@
       "kind": "degraded_scan",
       "lang": "hi",
       "why": "MP SLSA Rules 1996 (G13), faded Hindi page: stress test",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p15",
@@ -135,7 +135,7 @@
       "kind": "gazette_notice",
       "lang": "hi",
       "why": "Shops Act amendment 2025 (G14)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p16",
@@ -144,7 +144,7 @@
       "kind": "gazette_notice",
       "lang": "hi",
       "why": "MPLRC amendment 2023 (G8)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p17",
@@ -153,7 +153,7 @@
       "kind": "gazette_notice",
       "lang": "hi",
       "why": "MPLRC amendment Jan 2022 (G8)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p18",
@@ -162,7 +162,7 @@
       "kind": "english_scan",
       "lang": "en",
       "why": "Central RTI Rules 2012 fees/appeal page (indexed)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p19",
@@ -171,7 +171,7 @@
       "kind": "degraded_scan",
       "lang": "en",
       "why": "MP SLSA Rules 1996 (G13), faded English page: stress test",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     },
     {
       "page_id": "p20",
@@ -180,7 +180,7 @@
       "kind": "english_scan",
       "lang": "en",
       "why": "Sanhita English part (Chapter IX onwards)",
-      "gt_status": "draft"
+      "gt_status": "corrected"
     }
   ]
 }
