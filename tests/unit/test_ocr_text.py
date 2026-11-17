@@ -164,3 +164,33 @@ def test_canonicalise_applies_ocr_clean_only_when_flagged() -> None:
     raw = w("Date ........ Inspector")
     assert canonicalise(raw, {"breaks": [], "ocr": [1]}) == "Date … Inspector"
     assert canonicalise(raw, {"breaks": []}) == raw  # born-digital path unchanged
+
+
+def test_recorded_corrections_apply_once_on_their_page() -> None:
+    from madhya_kanoon_saathi.ingestion.ocr_text import apply_corrections
+
+    fix = [
+        {"doc_id": "MP.X2026@hi@1", "page": 3, "find": "(वीडी नियोजन)", "replace": "(बीडी नियोजन)"}
+    ]
+    md = w("अनुसूची - ई (वीडी नियोजन)\nवीडी श्रमिकों को")
+    out, n = apply_corrections("MP.X2026@hi@1", 3, md, fix)
+    assert n == 1 and w("(बीडी नियोजन)") in out and w("वीडी श्रमिकों") in out
+    assert apply_corrections("MP.X2026@hi@1", 2, md, fix) == (md, 0)  # other page untouched
+    with pytest.raises(ValueError, match="found 0x"):
+        apply_corrections("MP.X2026@hi@1", 3, w("no match here"), fix)
+
+
+def test_load_keeps_raw_pages_and_applies_corrections_to_lines(tmp_path: Path) -> None:
+    _part(tmp_path, "p1", "IN.X2020_en_1", {1: w("(E) all information")}, wrapped=False)
+    fix = [{"doc_id": "IN.X2020@en@1", "page": 1, "find": "(E) all", "replace": "(ङ) all"}]
+    doc = load(tmp_path, "IN.X2020@en@1", 1, "en", fix)
+    assert doc.pages[1] == w("(E) all information")  # Bodhan's text kept for the record
+    assert doc.corrections == 1
+    assert [ln.text for ln in doc.lines["en"]] == [w("(ङ) all information")]
+
+
+def test_committed_corrections_file_is_well_formed() -> None:
+    data = json.loads(Path("data/ocr_corrections.json").read_text(encoding="utf-8"))
+    for c in data["corrections"]:
+        assert {"doc_id", "page", "find", "replace", "by", "on", "evidence"} <= set(c)
+        assert c["by"] in ("malik", "claude", "advocate") and c["find"] != c["replace"]

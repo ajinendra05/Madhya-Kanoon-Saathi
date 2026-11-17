@@ -1,0 +1,24 @@
+{
+ "schema_version": 1,
+ "note": "Human-verified fixes to bulk Bodhan OCR text (DEC-071 spot-check). Applied by ingestion/ocr_text.py before parsing; each 'find' must occur exactly once on its page. Spaces in find/replace match Bodhan's U+2581 word marks.",
+ "corrections": [
+  {
+   "doc_id": "MP.MWVDAOCT2026@hi@1",
+   "page": 3,
+   "find": "अनुसूची - ई (वीडी नियोजन)",
+   "replace": "अनुसूची - ई (बीडी नियोजन)",
+   "by": "malik",
+   "on": "2026-11-17",
+   "evidence": "PDF page image checked by Malik (S25c): the schedule title is printed बीडी"
+  },
+  {
+   "doc_id": "IN.CPECR2020@bi@1",
+   "page": 9,
+   "find": "(E) all information provided to it by sellers",
+   "replace": "(ङ) all information provided to it by sellers",
+   "by": "claude",
+   "on": "2026-11-17",
+   "evidence": "the PDF's own text layer on p.9 reads '(ङ) all information provided to it by sellers' (S23)"
+  }
+ ]
+}

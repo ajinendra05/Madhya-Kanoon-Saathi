@@ -1,0 +1,160 @@
+{
+ "schema_version": 1,
+ "note": "Escalation contacts (DEC-018). JSON syntax (valid YAML 1.2), read by common/contacts.py. Each number needs an official source page saved under data/raw/contacts/ with an exact quote containing the number; check with scripts/fetch_contacts.py. name_hi is filled only where an official Hindi name is printed in a source.",
+ "contacts": [
+  {
+   "id": "erss_112",
+   "number": "112",
+   "name_en": "Emergency Response Support System (ERSS-112)",
+   "name_hi": null,
+   "scope": "IN",
+   "purpose": [
+    "emergency"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296048",
+     "file": "raw/contacts/pib_2296048.html",
+     "sha256": "c95bbfe15b8820b70e8e93a37757fa3d15bafcd1b41795ced1cd7a230efff65a",
+     "fetched_on": "2026-11-17",
+     "quote": "Emergency Response Support System (ERSS-112)"
+    }
+   ]
+  },
+  {
+   "id": "women_181",
+   "number": "181",
+   "name_en": "Women Helpline (181)",
+   "name_hi": "महिला हेल्पलाइन",
+   "scope": "IN",
+   "purpose": [
+    "women_helpline"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296048",
+     "file": "raw/contacts/pib_2296048.html",
+     "sha256": "c95bbfe15b8820b70e8e93a37757fa3d15bafcd1b41795ced1cd7a230efff65a",
+     "fetched_on": "2026-11-17",
+     "quote": "Women Helpline (181) is also a component of the Sambal vertical"
+    },
+    {
+     "url": "https://mpwcdmis.gov.in/",
+     "file": "raw/contacts/mpwcdmis_home.html",
+     "sha256": "cbbbf528a669ce75d4f536d1eda30b0792fb56efb9440aa3e98494f33fcadddc",
+     "fetched_on": "2026-11-17",
+     "quote": "महिला हेल्पलाइन– 181"
+    }
+   ]
+  },
+  {
+   "id": "child_1098",
+   "number": "1098",
+   "name_en": "Child Helpline (1098)",
+   "name_hi": null,
+   "scope": "IN",
+   "purpose": [
+    "child_helpline"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1933794",
+     "file": "raw/contacts/pib_1933794.html",
+     "sha256": "a48758495ceae774e51e0d6be45e0a2e909937e65d99d3f7e75f3d42d10e7f39",
+     "fetched_on": "2026-11-17",
+     "quote": "by dialing a four digit toll free number (1098)"
+    }
+   ]
+  },
+  {
+   "id": "cyber_1930",
+   "number": "1930",
+   "name_en": "Report a Cybercrime on 1930",
+   "name_hi": null,
+   "scope": "IN",
+   "purpose": [
+    "cybercrime"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://i4c.mha.gov.in/",
+     "file": "raw/contacts/i4c_home.html",
+     "sha256": "906aaaf96d2de22c37d86ada563c7e5c588f7af84000c050bd5af4a810d49789",
+     "fetched_on": "2026-11-17",
+     "quote": "Report a Cybercrime on 1930"
+    }
+   ]
+  },
+  {
+   "id": "telemanas_14416",
+   "number": "14416",
+   "name_en": "Tele-MANAS (Tele Mental Health Assistance and Networking Across States)",
+   "name_hi": null,
+   "scope": "IN",
+   "purpose": [
+    "mental_health"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2118790",
+     "file": "raw/contacts/pib_2118790.html",
+     "sha256": "7786afef5d78aee966f29190b6cedcc3812846d6177c10abc5edc98506e40f35",
+     "fetched_on": "2026-11-17",
+     "quote": "a toll-free number (14416) has been set up across the country"
+    }
+   ]
+  },
+  {
+   "id": "nalsa_15100",
+   "number": "15100",
+   "name_en": "NALSA Helpline Number 15100",
+   "name_hi": null,
+   "scope": "IN",
+   "purpose": [
+    "legal_aid"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://nalsa.gov.in/contact-us",
+     "file": "raw/contacts/nalsa_contact_us.html",
+     "sha256": "51956788772a9adeccbafed56360f1c6219b1f847297d5753751b4bb3d8c8fa3",
+     "fetched_on": "2026-11-17",
+     "quote": "NALSA Helpline Number 15100"
+    }
+   ]
+  },
+  {
+   "id": "cm_helpline_181",
+   "number": "181",
+   "name_en": "CM Helpline Madhya Pradesh",
+   "name_hi": "सीएम हेल्पलाइन",
+   "scope": "MP",
+   "purpose": [
+    "grievance"
+   ],
+   "verified_on": "2026-11-17",
+   "verified_by": "claude",
+   "sources": [
+    {
+     "url": "https://cmhelpline.mp.gov.in/",
+     "file": "raw/contacts/cmhelpline_home.html",
+     "sha256": "4179c40d4f360e785387b18c6101b99c06fb06096ffb5792a59796edb68ba8ee",
+     "fetched_on": "2026-11-17",
+     "quote": "सीएम हेल्पलाइन 181"
+    }
+   ]
+  }
+ ]
+}

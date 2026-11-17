@@ -1,6 +1,6 @@
 # Chunk build QA report
 
-Built 2026-11-17T04:43:40+00:00 from commit `f0edcefa8e` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `5f0cbc830d721755`.
+Built 2026-11-17T14:16:21+00:00 from commit `74af9a1040` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `c677ee2c52ecf35c`.
 
 Hard QA errors: **0** (the build stops on any). Token counts are estimates until W1.4.
 

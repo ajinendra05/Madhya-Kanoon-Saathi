@@ -85,6 +85,8 @@ EN_COUNTERPART = {"IN.RTIR2012@hi@1": "IN.RTIR2012@en@1"}
 # Hindi wage notifications: schedules + arithmetic gate (DEC-050, DEC-071 item 2, DEC-072)
 OCR_WAGES = {"MP.MWVDAOCT2026@hi@1"}
 OCR_ROOT = DATA / "ocr" / "bulk"
+# human-verified OCR fixes (DEC-071 spot-check), applied before parsing
+OCR_FIXES = json.loads((DATA / "ocr_corrections.json").read_text(encoding="utf-8"))["corrections"]
 
 
 def _pages(path: Path) -> int:
@@ -199,9 +201,11 @@ def main() -> int:
             continue
         if kind in ("ocr_rules", "ocr_wages"):
             n_pages = _pages(path)
-            ocr = load_ocr(OCR_ROOT, doc.doc_id, n_pages, "en" if doc.language == "en" else "hi")
+            lang0 = "en" if doc.language == "en" else "hi"
+            ocr = load_ocr(OCR_ROOT, doc.doc_id, n_pages, lang0, OCR_FIXES)
             inputs[-1]["ocr"] = {
                 "engine": ocr.engine,
+                "corrections_applied": ocr.corrections,
                 "pages": n_pages,
                 "pages_sha256": hashlib.sha256(
                     "\n\f".join(ocr.pages[n] for n in sorted(ocr.pages)).encode("utf-8")
@@ -234,7 +238,11 @@ def main() -> int:
                         ocr
                         if en_doc_id == doc.doc_id
                         else load_ocr(
-                            OCR_ROOT, en_doc_id, _pages(DATA / (en_doc.local_path or "")), "en"
+                            OCR_ROOT,
+                            en_doc_id,
+                            _pages(DATA / (en_doc.local_path or "")),
+                            "en",
+                            OCR_FIXES,
                         )
                     )
                     english = parse_statute(doc.instrument_id, en_ocr.lines["en"], rules=True)

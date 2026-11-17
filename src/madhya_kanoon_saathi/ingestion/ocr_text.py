@@ -24,6 +24,7 @@ import json
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any
 
 from madhya_kanoon_saathi.ingestion.pdf_text import Line
 
@@ -61,6 +62,7 @@ class OcrDoc:
     pages: dict[int, str]  # page number -> raw markdown
     lines: dict[str, list[Line]] = field(default_factory=dict)  # "en" / "hi" -> body lines
     page_chars: dict[int, int] = field(default_factory=dict)  # visible chars per page (decoded)
+    corrections: int = 0  # recorded human fixes applied (data/ocr_corrections.json)
 
 
 def find_pages(root: Path, doc_id: str) -> tuple[dict[int, Path], set[str]]:
@@ -131,8 +133,37 @@ def page_lines(page: int, md: str) -> list[tuple[Line, bool]]:
     return out
 
 
-def load(root: Path, doc_id: str, n_pages: int, default_lang: str) -> OcrDoc:
-    """Read a document's OCR pages (all of 1..n_pages must exist) into per-language lines."""
+def apply_corrections(
+    doc_id: str, page: int, md: str, corrections: list[dict[str, Any]]
+) -> tuple[str, int]:
+    """Apply human-verified fixes (``data/ocr_corrections.json``) to one page; (text, applied).
+
+    Spaces in ``find``/``replace`` stand for Bodhan's U+2581 word marks. Each ``find`` must occur
+    exactly once on its page, so a fix can never land in the wrong place.
+    """
+    applied = 0
+    for c in corrections:
+        if c["doc_id"] != doc_id or int(c["page"]) != page:
+            continue
+        find, repl = c["find"].replace(" ", SP_MARK), c["replace"].replace(" ", SP_MARK)
+        if md.count(find) != 1:
+            raise ValueError(f"{doc_id} p.{page}: correction {c['find']!r} found {md.count(find)}x")
+        md = md.replace(find, repl)
+        applied += 1
+    return md, applied
+
+
+def load(
+    root: Path,
+    doc_id: str,
+    n_pages: int,
+    default_lang: str,
+    corrections: list[dict[str, Any]] | None = None,
+) -> OcrDoc:
+    """Read a document's OCR pages (all of 1..n_pages must exist) into per-language lines.
+
+    ``pages`` keeps Bodhan's text unchanged; recorded ``corrections`` are applied to the lines.
+    """
     files, revisions = find_pages(root, doc_id)
     missing = [n for n in range(1, n_pages + 1) if n not in files]
     if missing:
@@ -145,6 +176,8 @@ def load(root: Path, doc_id: str, n_pages: int, default_lang: str) -> OcrDoc:
     for n in range(1, n_pages + 1):
         md = files[n].read_text(encoding="utf-8")
         doc.pages[n] = md
+        md, k = apply_corrections(doc_id, n, md, corrections or [])
+        doc.corrections += k
         doc.page_chars[n] = sum(1 for c in decode(md) if not c.isspace())
         for line, is_body in page_lines(n, md):
             if is_body:

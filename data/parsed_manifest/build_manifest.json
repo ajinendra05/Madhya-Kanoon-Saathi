@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-11-17T04:43:40+00:00",
-  "git_commit": "f0edcefa8ec7fd25b82e1884702a73d809e07312",
+  "built_at": "2026-11-17T14:16:21+00:00",
+  "git_commit": "74af9a10405a52ddfa1ba8373dddf2a31dfbaf05",
   "git_dirty": true,
   "python": "3.12.0",
   "libraries": {
@@ -26,6 +26,7 @@
       "local_path": "raw/IN.CPECR2020/IN.CPECR2020_bi_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 1,
         "pages": 11,
         "pages_sha256": "b402dabc1f481428a9f49750ae090db7f6dfd49d2dccfcf9e059b21d51bb9f08"
       }
@@ -36,6 +37,7 @@
       "local_path": "raw/IN.CPECRA2021/IN.CPECRA2021_bi_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 0,
         "pages": 2,
         "pages_sha256": "7f6f7026ac224cab8f2848f9442dff1a66e6354eb50b953b08b08fa1a069c46c"
       }
@@ -46,6 +48,7 @@
       "local_path": "raw/IN.CPJR2021/IN.CPJR2021_bi_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 0,
         "pages": 2,
         "pages_sha256": "1aedd3f20045ecc97af529eb455f68e939e7a94a81bfaed48707e3adf7c3f381"
       }
@@ -91,6 +94,7 @@
       "local_path": "raw/IN.RTIR2012/IN.RTIR2012_en_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 0,
         "pages": 4,
         "pages_sha256": "b22ce21df8372e624c6452b12a7568b47eac53e15aec029fd7dc7e5cef9844f4"
       }
@@ -101,6 +105,7 @@
       "local_path": "raw/IN.RTIR2012/IN.RTIR2012_hi_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 0,
         "pages": 5,
         "pages_sha256": "db01254939ae10cac37a121e8353bb82378604b48c9f13170f9bffb0fa954aa3"
       }
@@ -131,6 +136,7 @@
       "local_path": "raw/MP.LRCDR2018/MP.LRCDR2018_bi_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 0,
         "pages": 28,
         "pages_sha256": "7a17ad634d946a2efb3a83aa07f118b8f4dd7d3055eaafe06c1a02da93d90379"
       }
@@ -141,6 +147,7 @@
       "local_path": "raw/MP.MWVDAOCT2026/MP.MWVDAOCT2026_hi_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 1,
         "pages": 4,
         "pages_sha256": "fa75b84c248a4fae1a34a9fca9121a70fe1271ba4f6e81ef075320886126e8c3"
       }
@@ -156,6 +163,7 @@
       "local_path": "raw/MP.WCR2026/MP.WCR2026_en_1.pdf",
       "ocr": {
         "engine": "ocr:bodhan@cd50d301",
+        "corrections_applied": 0,
         "pages": 56,
         "pages_sha256": "113d202cb82b7d602112cbfc2f336ae90914a494c335421cc230092c3e2b6b06"
       }
@@ -163,7 +171,7 @@
   ],
   "output": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "5f0cbc830d7217556fa60a7347fe3a8122c10a73a0742df46731df9e765e84c6",
+    "sha256": "c677ee2c52ecf35c612e2d061dbb0f443ef6adb5991798ce33f995b54fbdd8a2",
     "chunks": 3410,
     "by_doc": {
       "IN.COW2019@en@1": 245,
