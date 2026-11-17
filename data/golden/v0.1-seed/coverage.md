@@ -1,25 +1,16 @@
 # Golden-set coverage: golden_set_v0.1_seed.jsonl
 
-Rows: 130 · rows with expected clauses: 101 · rows whose clauses are all retrievable now: 58
+Rows: 130 · rows with expected clauses: 101 · rows whose clauses are all retrievable now: 62
 Chunks file: present
 
 | status | clauses |
 | --- | --- |
-| retrievable_now | 86 |
-| no_matching_chunk | 6 |
+| retrievable_now | 92 |
+| no_matching_chunk | 0 |
 | outside_index_scope | 1 |
 | not_indexed | 44 |
 | not_in_manifest | 1 |
 | invalid_uid | 0 |
-
-## no_matching_chunk
-
-- GS-028 MP.MWVDAOCT2026
-- GS-052 IN.CPJR2021:r3
-- GS-074 IN.RTIR2012:r3
-- GS-124 MP.LRCDR2018:r3
-- GS-125 MP.LRCDR2018:r4
-- GS-127 MP.LRCDR2018:r3
 
 ## outside_index_scope
 
