@@ -1,5 +1,5 @@
 {
- "threshold": 0.5222,
+ "threshold": -0.0453,
  "embedder": "int8",
  "set": "crisis_set_v0",
  "categories": [
@@ -10,5 +10,7 @@
   "cyber_fraud",
   "eviction_now"
  ],
- "tuned_on": "dev"
+ "tuned_on": "dev",
+ "score": "margin",
+ "ordinary_anchors": 24
 }

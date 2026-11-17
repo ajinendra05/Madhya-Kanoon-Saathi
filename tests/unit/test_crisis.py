@@ -70,3 +70,74 @@ def test_embedding_layer_adds_categories_at_threshold() -> None:
 def test_every_router_contact_is_sourced() -> None:
     ids = {c.id for c in load_contacts(Path("data/contacts.yaml"))}
     assert {x for v in CONTACTS.values() for x in v} <= ids
+
+
+def test_tiers_follow_dec075() -> None:
+    idx = ExampleIndex(
+        vectors={"self_harm": np.array([[1.0, 0.0]])},
+        threshold=0.1,
+        ordinary=np.array([[0.0, 1.0]]),
+    )
+    note = route("salary nahi mili", np.array([0.9, 0.3]), idx)  # embedding-only hit
+    assert note.tier == "note" and note.categories == ["self_harm"]
+    assert note.legal_answer_allowed  # only a rule-detected self-harm switches legal content off
+    full = route("main aatmahatya karna chahta hoon", np.array([0.9, 0.3]), idx)
+    assert full.tier == "full" and not full.legal_answer_allowed
+    assert route("RTI fee kitni hai").tier is None
+
+
+def test_margin_subtracts_nearest_ordinary_question() -> None:
+    idx = ExampleIndex(
+        vectors={"cyber_fraud": np.array([[1.0, 0.0]])},
+        threshold=0.0,
+        ordinary=np.array([[0.8, 0.6]]),
+    )
+    margin = idx.similarities(np.array([1.0, 0.0]))["cyber_fraud"]
+    assert abs(margin - (1.0 - 0.8)) < 1e-6
+
+
+REPLIES = json.loads(Path("data/safety/crisis_replies.json").read_text(encoding="utf-8"))
+NUMBERS = {c.id: c.number for c in load_contacts(Path("data/contacts.yaml"))}
+
+
+def _templates() -> list[str]:
+    out = [t for cat in REPLIES["full"].values() for t in cat.values()]
+    return out + list(REPLIES["note"].values())
+
+
+def test_reply_templates_cover_every_category_and_language() -> None:
+    assert set(REPLIES["full"]) == set(CONTACTS)
+    for texts in [*REPLIES["full"].values(), REPLIES["note"]]:
+        assert set(texts) == {"hi", "hinglish", "en"}
+
+
+def test_reply_templates_never_hardcode_numbers() -> None:
+    import re
+
+    for t in _templates():
+        bare = re.sub(r"\{[a-z0-9_]+\}", "", t)
+        assert not re.search(r"\d{3,}", bare), t  # numbers come only from contacts.yaml
+        for ph in re.findall(r"\{([a-z0-9_]+)\}", t):
+            assert ph == "numbers" or ph in NUMBERS, ph
+
+
+def test_unapproved_wording_is_never_used() -> None:
+    from madhya_kanoon_saathi.generation.crisis import render
+
+    if REPLIES["status"] == "approved":
+        pytest.skip("wording approved")
+    with pytest.raises(PermissionError):
+        render(route("pati roz maarta hai"), "hinglish", REPLIES, NUMBERS)
+
+
+def test_render_full_and_note_tiers() -> None:
+    from madhya_kanoon_saathi.generation.crisis import render
+
+    approved = {**REPLIES, "status": "approved"}
+    full = render(route("main aatmahatya karna chahta hoon"), "hinglish", approved, NUMBERS)
+    assert full.prefix and "14416" in full.prefix and "112" in full.prefix
+    assert full.suffix is None and not full.legal_answer_allowed
+    idx = ExampleIndex(vectors={"cyber_fraud": np.array([[1.0, 0.0]])}, threshold=0.5)
+    note = render(route("kuch hua hai", np.array([1.0, 0.0]), idx), "en", approved, NUMBERS)
+    assert note.prefix is None and note.suffix and "1930" in note.suffix
+    assert note.legal_answer_allowed

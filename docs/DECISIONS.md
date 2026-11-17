@@ -824,6 +824,18 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: rules give a predictable floor, embeddings catch paraphrases, both free inside the existing image; legal text is inappropriate for someone at risk of self-harm, while a fraud victim needs both 1930 and the legal steps.
 - Effects: ₹0 · ~1 ms rules + reuse of the query vector · a crisis test set (draft, Malik reviews) with recall = 100% as a test gate.
 
+## DEC-075 — Tiered crisis reply: rule hits get the full crisis reply, embedding-only hits a safety line
+- Date: 2026-11-17 | Status: accepted ("Tiered (Recommended)") | Approved by: Malik | Amends DEC-074 item 2
+- Context: First eval (`reports/safety/crisis_2026-11-17.md`): rules catch 60/60 dev+test crisis rows with 0 false alarms but only **1/20** holdout rows (new wording); the embedding layer catches 19–20/20 holdout rows but also flags ~30–50% of ordinary legal questions (raw BGE-M3 similarities of short Indic messages overlap).
+- Options: **A) tiered** · B) full crisis reply on any hit · C) rules only, grow them · D) LLM confirms embedding hits (paid).
+- Decision: **A.**
+  1. **Rule hit → full crisis reply** (DEC-074 item 2: numbers first; self-harm without legal content).
+  2. **Embedding-only hit → the normal answer plus one short safety line at the end** with the category's number(s) (e.g. "If you are in danger, call 112"). Self-harm embedding-only hits also get only the safety line (Tele-MANAS 14416 + 112), not the full mode.
+  3. The embedding layer scores **margin = similarity to the nearest crisis example − similarity to the nearest ordinary legal question** (a set of ordinary-question anchors), threshold tuned on the dev split for 100% recall.
+  4. Embedding-only hits are logged without PII for review, to grow the rules (logging design with W3.1/DynamoDB).
+- Why: keeps recall on unseen phrasings without derailing a third to a half of normal answers; a false safety line costs a sentence, a missed crisis costs much more.
+- Effects: ₹0 · reply wording for both tiers needs Malik's approval before use · gate: 100% router recall on the test split; false-alarm rate reported per tier.
+
 ---
 
 ## Pending decisions (not yet made)

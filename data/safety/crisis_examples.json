@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "note": "Example crisis messages for the embedding layer of the crisis router (DEC-074). Synthetic, written by Claude 2026-11-17; none may appear in data/safety/crisis_set_v0.jsonl. Draft: Malik reviews with the test set.",
+ "note": "Example crisis messages for the embedding layer of the crisis router (DEC-074). Synthetic, written by Claude 2026-11-17; none may appear in data/safety/crisis_set_v0.jsonl. Draft: Malik reviews with the test set. 'ordinary' = everyday legal questions used as contrast anchors: the embedding layer scores the margin between the nearest crisis example and the nearest ordinary question (DEC-075).",
  "examples": {
   "self_harm": [
    "मैं अपनी जान लेना चाहता हूँ",
@@ -62,5 +62,31 @@
    "my landlord removed the door and my things while I was away",
    "the owner sent people to force us out of the house today"
   ]
- }
+ },
+ "ordinary": [
+  "मालिक ने तीन महीने से तनख्वाह नहीं दी, क्या करूँ",
+  "किराएदारी का एग्रीमेंट कैसे बनता है",
+  "बिजली का बिल ज़्यादा आया है शिकायत कहाँ करें",
+  "राशन कार्ड में नाम कैसे जुड़वाएँ",
+  "जमीन का नामांतरण कैसे होता है",
+  "दुकानदार ने खराब सामान दिया, उपभोक्ता शिकायत कैसे करूँ",
+  "आरटीआई की पहली अपील कहाँ करें",
+  "पेंशन रुकी हुई है, किस दफ्तर जाऊँ",
+  "मकान मालिक किराया बढ़ा रहा है, क्या वो ऐसा कर सकता है",
+  "naukri se nikal diya bina notice ke, kya hak hai",
+  "PF ka paisa kaise nikale",
+  "online order galat aaya, refund nahi mil raha",
+  "ration dukaan wala kam anaaj deta hai",
+  "bank ne loan dene se mana kar diya",
+  "property tax galat lagaya hai",
+  "patta aur khasra ki nakal kaise milegi",
+  "How do I appeal if my RTI is rejected?",
+  "My employer deducted money from my salary without reason",
+  "Can my landlord keep my security deposit?",
+  "How to complain about a defective product bought online?",
+  "What documents are needed for an income certificate?",
+  "My bank froze my account for KYC, what can I do?",
+  "How do I get free legal aid for a property case?",
+  "The contractor did not pay overtime wages"
+ ]
 }

@@ -355,6 +355,13 @@ numbers, sourced from `contacts.yaml`. Legal information comes after that, or no
   Missing a crisis is the worst failure, so the gate is recall = 100%; a few false alarms are acceptable.
 - Interview angle: "I route before I retrieve. Safety classification is a separate, high-recall stage, not
   something I hope the generator handles."
+- **Tiers (DEC-075).** Phrase rules are precise but brittle: on a holdout set written with new wording they caught
+  1 of 20 crises. Embedding similarity catches paraphrases (20/20) but also fires on many ordinary questions. So a
+  rule hit gives the full crisis reply, while an embedding-only hit adds one safety line after the normal answer.
+  Similarity is scored as a **margin**: closeness to the nearest crisis example minus closeness to the nearest
+  ordinary legal question, which removes the "all short Hindi messages look alike" baseline.
+- Interview angle: "Measure on data the rules never saw. My rules looked perfect on the set I wrote them from and
+  caught 1 in 20 on a holdout; that number is why the system has two layers and two reply tiers."
 
 **Expiry-aware answers (DEC-033).** Seasonal schemes and time-bound notifications carry `expires_on`. When a retrieved
 instrument has expired, the bot abstains instead of quoting stale dates or amounts.

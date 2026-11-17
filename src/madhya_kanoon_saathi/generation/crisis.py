@@ -18,8 +18,9 @@ approved it (generation rules: escalation text is a major decision).
 from __future__ import annotations
 
 import re
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
+from typing import Any
 
 import numpy as np
 
@@ -37,6 +38,7 @@ CONTACTS: dict[str, tuple[str, ...]] = {
 # self-harm replies carry no legal content (DEC-074 item 2)
 NO_LEGAL_ANSWER = frozenset({"self_harm"})
 ORDER = tuple(CONTACTS)  # self_harm first: it decides the reply mode
+MAX_EMBEDDING_CATEGORIES = 2  # embedding layer: top categories kept (crisis_2026-11-17 eval)
 
 _RULES: dict[str, tuple[str, ...]] = {
     "self_harm": (
@@ -44,7 +46,7 @@ _RULES: dict[str, tuple[str, ...]] = {
         r"जीने का (मन|मतलब|कोई मतलब) नहीं", r"जीना नहीं चाहत",
         r"(जिंदगी|जान) खत्म कर", r"सब खत्म कर (दूं|दूंगा|दूंगी|देना|दें)",
         r"जान दे (दूंगा|दूंगी|दूं)", r"नस काट", r"जहर खा",
-        r"khud ?kushi", r"aa?tm ?hatya", r"\bsuicid", r"\b(mar jaana|marna) (chahta|chahti|hai)",
+        r"khud ?kushi", r"aa?tma? ?hatya", r"\bsuicid", r"\b(mar jaana|marna) (chahta|chahti|hai)",
         r"jeene ka (koi )?(mann?|matlab) nahi", r"jeena nahi chaht",
         r"\b(zindagi|jindagi) khatam", r"sab khatam kar (dena|dunga|dungi|du)\b",
         r"jaan de (dunga|dungi)", r"\b(fansi|phansi|phaansi)\b", r"\b(zeher|jahar) kha",
@@ -125,18 +127,28 @@ _COMPILED = {
 
 @dataclass
 class CrisisResult:
+    """Router output. ``tier`` (DEC-075): "full" when a rule fired (crisis reply first), "note"
+    when only the embedding layer fired (normal answer + one safety line), None otherwise."""
+
     categories: list[str] = field(default_factory=list)  # in ORDER
     by_rule: list[str] = field(default_factory=list)
     by_embedding: list[str] = field(default_factory=list)
-    similarity: dict[str, float] = field(default_factory=dict)
+    similarity: dict[str, float] = field(default_factory=dict)  # margin per category
 
     @property
     def is_crisis(self) -> bool:
         return bool(self.categories)
 
     @property
+    def tier(self) -> str | None:
+        if self.by_rule:
+            return "full"
+        return "note" if self.by_embedding else None
+
+    @property
     def legal_answer_allowed(self) -> bool:
-        return not any(c in NO_LEGAL_ANSWER for c in self.categories)
+        # only a rule-detected self-harm message switches off legal content (DEC-075 item 2)
+        return not any(c in NO_LEGAL_ANSWER for c in self.by_rule)
 
     @property
     def contact_ids(self) -> list[str]:
@@ -153,14 +165,18 @@ def rule_categories(text: str) -> list[str]:
 
 @dataclass
 class ExampleIndex:
-    """Normalised BGE-M3 vectors of example crisis messages, per category."""
+    """Normalised BGE-M3 vectors of example crisis messages per category, and of ordinary legal
+    questions. A category's score is the **margin** (DEC-075): similarity to its nearest example
+    minus similarity to the nearest ordinary question; it fires at or above ``threshold``."""
 
     vectors: dict[str, np.ndarray]  # category -> (n, d), rows L2-normalised
     threshold: float
+    ordinary: np.ndarray | None = None  # (m, d), rows L2-normalised
 
     def similarities(self, query_vec: np.ndarray) -> dict[str, float]:
         q = query_vec / (np.linalg.norm(query_vec) or 1.0)
-        return {c: float(np.max(v @ q)) for c, v in self.vectors.items()}
+        base = float(np.max(self.ordinary @ q)) if self.ordinary is not None else 0.0
+        return {c: float(np.max(v @ q)) - base for c, v in self.vectors.items()}
 
 
 def route(
@@ -170,20 +186,82 @@ def route(
     res = CrisisResult(by_rule=rule_categories(text))
     if query_vec is not None and examples is not None:
         res.similarity = examples.similarities(query_vec)
-        res.by_embedding = [c for c in ORDER if res.similarity.get(c, -1.0) >= examples.threshold]
+        # at most the MAX_EMBEDDING_CATEGORIES best: a safety line with six numbers is noise
+        ranked = sorted(res.similarity, key=lambda c: -res.similarity[c])
+        top = {
+            c for c in ranked[:MAX_EMBEDDING_CATEGORIES] if res.similarity[c] >= examples.threshold
+        }
+        # self-harm is kept whenever it clears the threshold, whatever its rank: missing it costs
+        # most (added after holdout HO-005 "neend ki goliyan kha li hain" ranked it third)
+        if res.similarity.get("self_harm", -1.0) >= examples.threshold:
+            top.add("self_harm")
+        res.by_embedding = [c for c in ORDER if c in top]
     hits = set(res.by_rule) | set(res.by_embedding)
     res.categories = [c for c in ORDER if c in hits]
     return res
 
 
 def build_examples(
-    examples: dict[str, Sequence[str]], encode: object, threshold: float
+    examples: dict[str, Sequence[str]],
+    encode: Callable[[list[str]], np.ndarray],
+    threshold: float,
+    ordinary: Sequence[str] = (),
 ) -> ExampleIndex:
-    """Embed example messages with ``encode(list[str]) -> ndarray`` (the retrieval embedder)."""
-    vecs: dict[str, np.ndarray] = {}
-    for cat, texts in examples.items():
-        if cat not in CONTACTS:
-            raise ValueError(f"unknown crisis category {cat!r}")
-        m = np.asarray(encode(list(texts)), dtype=np.float32)  # type: ignore[operator]
-        vecs[cat] = m / np.linalg.norm(m, axis=1, keepdims=True)
-    return ExampleIndex(vectors=vecs, threshold=threshold)
+    """Embed example messages with ``encode`` (the retrieval embedder's ``encode``)."""
+
+    def unit(texts: Sequence[str]) -> np.ndarray:
+        m = np.asarray(encode(list(texts)), dtype=np.float32)
+        out: np.ndarray = m / np.linalg.norm(m, axis=1, keepdims=True)
+        return out
+
+    unknown = set(examples) - set(CONTACTS)
+    if unknown:
+        raise ValueError(f"unknown crisis categories {sorted(unknown)}")
+    return ExampleIndex(
+        vectors={cat: unit(texts) for cat, texts in examples.items()},
+        threshold=threshold,
+        ordinary=unit(ordinary) if ordinary else None,
+    )
+
+
+LANGS = ("hi", "hinglish", "en")
+_PLACEHOLDER = re.compile(r"\{([a-z0-9_]+)\}")
+
+
+@dataclass(frozen=True)
+class CrisisReply:
+    """Text around the normal answer: ``prefix`` first (full tier), ``suffix`` last (note tier)."""
+
+    prefix: str | None
+    suffix: str | None
+    legal_answer_allowed: bool
+
+
+def render(
+    result: CrisisResult,
+    lang: str,
+    replies: dict[str, Any],
+    numbers: dict[str, str],
+) -> CrisisReply:
+    """Crisis text for one message (DEC-074/075).
+
+    ``replies`` is ``data/safety/crisis_replies.json`` and must be approved by Malik; ``numbers``
+    maps contact ids to numbers from ``data/contacts.yaml``. Raises PermissionError on unapproved
+    wording and KeyError if a placeholder has no sourced contact.
+    """
+    if replies.get("status") != "approved":
+        raise PermissionError("crisis reply wording is not approved yet (crisis_replies.json)")
+    lang = lang if lang in LANGS else "en"
+
+    def fill(template: str) -> str:
+        return _PLACEHOLDER.sub(lambda m: numbers[m.group(1)], template)
+
+    prefix = suffix = None
+    if result.tier == "full":
+        prefix = "\n".join(fill(replies["full"][c][lang]) for c in result.by_rule)
+    elif result.tier == "note":
+        ids: list[str] = []
+        for c in result.by_embedding:
+            ids += [x for x in CONTACTS[c] if x not in ids]
+        suffix = replies["note"][lang].replace("{numbers}", ", ".join(numbers[x] for x in ids))
+    return CrisisReply(prefix, suffix, result.legal_answer_allowed)

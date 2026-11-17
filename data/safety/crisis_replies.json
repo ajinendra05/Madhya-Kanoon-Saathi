@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "status": "draft_pending_approval",
+ "approved_by": null,
+ "approved_on": null,
+ "about": "Crisis reply wording (DEC-074 item 2, DEC-075). Drafted by Claude 2026-11-17; must be approved by Malik before the bot uses it (generation rules). Numbers are never written here: {contact_id} placeholders are filled from data/contacts.yaml. 'full' = a rule fired (this text comes first; for self_harm it is the whole reply). 'note' = only the embedding layer fired (one line after the normal answer).",
+ "full": {
+  "self_harm": {
+   "hi": "आप अकेले नहीं हैं। अभी किसी से बात करना मदद कर सकता है। Tele-MANAS (टोल-फ्री): {telemanas_14416}। अगर आप तुरंत खतरे में हैं तो {erss_112} पर कॉल करें।",
+   "hinglish": "Aap akele nahi hain. Abhi kisi se baat karna madad kar sakta hai. Tele-MANAS (toll-free): {telemanas_14416}. Agar aap turant khatre mein hain to {erss_112} par call karein.",
+   "en": "You are not alone. Talking to someone right now can help. Tele-MANAS (toll-free): {telemanas_14416}. If you are in immediate danger, call {erss_112}."
+  },
+  "violence_now": {
+   "hi": "अगर आप अभी खतरे में हैं, तो तुरंत {erss_112} पर कॉल करें।",
+   "hinglish": "Agar aap abhi khatre mein hain, to turant {erss_112} par call karein.",
+   "en": "If you are in danger right now, call {erss_112} immediately."
+  },
+  "domestic_violence": {
+   "hi": "अगर आप अभी खतरे में हैं, तो {erss_112} पर कॉल करें। महिला हेल्पलाइन: {women_181}।",
+   "hinglish": "Agar aap abhi khatre mein hain, to {erss_112} par call karein. Women Helpline: {women_181}.",
+   "en": "If you are in danger right now, call {erss_112}. Women Helpline: {women_181}."
+  },
+  "child_at_risk": {
+   "hi": "बच्चे की मदद के लिए चाइल्ड हेल्पलाइन {child_1098} पर कॉल करें। अगर बच्चा अभी खतरे में है, तो {erss_112} पर कॉल करें।",
+   "hinglish": "Bachche ki madad ke liye Child Helpline {child_1098} par call karein. Agar bachcha abhi khatre mein hai, to {erss_112} par call karein.",
+   "en": "Call the Child Helpline {child_1098}. If the child is in danger right now, call {erss_112}."
+  },
+  "cyber_fraud": {
+   "hi": "साइबर ठगी की शिकायत तुरंत {cyber_1930} पर कॉल करके करें।",
+   "hinglish": "Cyber fraud ki shikayat turant {cyber_1930} par call karke karein.",
+   "en": "Report the cyber fraud right away by calling {cyber_1930}."
+  },
+  "eviction_now": {
+   "hi": "अगर आपको अभी ज़बरदस्ती घर से निकाला गया है या आपकी सुरक्षा खतरे में है, तो {erss_112} पर कॉल करें। मुफ़्त कानूनी सहायता: NALSA हेल्पलाइन {nalsa_15100}।",
+   "hinglish": "Agar aapko abhi zabardasti ghar se nikala gaya hai ya aapki suraksha khatre mein hai, to {erss_112} par call karein. Muft kanooni sahayata: NALSA Helpline {nalsa_15100}.",
+   "en": "If you have just been forced out of your home or your safety is at risk, call {erss_112}. Free legal aid: NALSA Helpline {nalsa_15100}."
+  }
+ },
+ "note": {
+  "hi": "अगर आप या कोई और खतरे में है, तो {numbers} पर कॉल करें।",
+  "hinglish": "Agar aap ya koi aur khatre mein hai, to {numbers} par call karein.",
+  "en": "If you or someone else is in danger, call {numbers}."
+ }
+}

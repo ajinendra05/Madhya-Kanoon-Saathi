@@ -34,15 +34,16 @@ def main() -> int:
     ap.add_argument("--threshold", type=float)
     a = ap.parse_args()
     rows = [json.loads(x) for x in (DATA / "crisis_set_v0.jsonl").read_text("utf-8").splitlines()]
-    ex = json.loads((DATA / "crisis_examples.json").read_text("utf-8"))["examples"]
-    texts = {t for v in ex.values() for t in v}
+    exfile = json.loads((DATA / "crisis_examples.json").read_text("utf-8"))
+    ex, ordinary = exfile["examples"], exfile.get("ordinary", [])
+    texts = {t for v in ex.values() for t in v} | set(ordinary)
     leaked = [r["id"] for r in rows if r["text"] in texts]
     if leaked:
         raise SystemExit(f"examples also in the test set: {leaked}")
 
     emb = Embedder.load("int8")
     vecs = emb.encode([r["text"] for r in rows])
-    probe = build_examples(ex, emb.encode, threshold=1.0)  # threshold set below
+    probe = build_examples(ex, emb.encode, threshold=1.0, ordinary=ordinary)  # threshold below
     sims = [probe.similarities(v) for v in vecs]
     dev_own = [s[r["label"]] for r, s in zip(rows, sims, strict=True)
                if r["split"] == "dev" and r["label"] != "none"]  # fmt: skip
@@ -59,6 +60,11 @@ def main() -> int:
             "rules": r["label"] in res.by_rule if crisis else bool(res.by_rule),
             "embeddings": r["label"] in res.by_embedding if crisis else bool(res.by_embedding),
             "router": r["label"] in res.categories if crisis else res.is_crisis,
+            # DEC-075 tiers: a full crisis reply needs a rule hit
+            "full tier": r["label"] in res.by_rule if crisis else res.tier == "full",
+            "note tier": (r["label"] in res.categories and not res.by_rule)
+            if crisis
+            else res.tier == "note",
         }
         kind = "crisis" if crisis else "none"
         for layer, hit in layers.items():
@@ -80,18 +86,23 @@ def main() -> int:
         "**Synthetic draft set (Claude, 2026-11-17), not yet reviewed by Malik.** Rules and "
         "dev/test rows were written by the same author, so dev/test recall is optimistic; "
         "the holdout split "
-        "was written afterwards with different wording and was not used to tune anything.",
+        "was written afterwards with different wording and was not used to tune anything, except "
+        "one rule: self-harm is kept whenever it clears the threshold (added after HO-005).",
         "",
         f"- embedder: int8 BGE-M3 · examples: {sum(len(v) for v in ex.values())} "
         f"· threshold: **{threshold}** "
         f"({'given' if a.threshold is not None else 'min dev crisis'})",
         "",
-        "| split / rows | rules | embeddings | router (either) |",
-        "| --- | --- | --- | --- |",
+        "Margin = similarity to the nearest crisis example minus similarity to the nearest "
+        f"ordinary question ({len(ordinary)} anchors). Tiers (DEC-075): **full** = a rule fired "
+        "(crisis reply first); **note** = only embeddings fired (normal answer + safety line).",
+        "",
+        "| split / rows | rules | embeddings | router (either) | full tier | note tier |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     for key in sorted({k[0] for k in stats}):
         cells = []
-        for layer in ("rules", "embeddings", "router"):
+        for layer in ("rules", "embeddings", "router", "full tier", "note tier"):
             hit, n = stats[(key, layer)]
             cells.append(f"{hit}/{n}")
         what = "caught" if key.endswith("crisis") else "false alarms"
@@ -102,19 +113,19 @@ def main() -> int:
     for r, res in misses:
         top = max(res.similarity.items(), key=lambda kv: kv[1]) if res.similarity else ("-", 0)
         L.append(
-            f"- {r['id']} ({r['split']}, {r['label']}, best sim {top[0]} {top[1]:.3f}): {r['text']}"
+            f"- {r['id']} ({r['split']}, {r['label']}, best margin {top[0]} {top[1]:.3f}): "
+            f"{r['text']}"
         )
     L += ["", "## False alarms", ""]
     for r, res in alarms:
-        L.append(
-            f"- {r['id']} ({r['split']}) → {res.categories} (rules {res.by_rule}): {r['text']}"
-        )
+        L.append(f"- {r['id']} ({r['split']}, {res.tier}) → {res.categories}: {r['text']}")
     OUT.mkdir(parents=True, exist_ok=True)
     out = OUT / f"crisis_{date.today().isoformat()}.md"
     out.write_text("\n".join(L) + "\n", encoding="utf-8", newline="\n")
     (DATA / "crisis_threshold.json").write_text(
         json.dumps({"threshold": threshold, "embedder": "int8", "set": "crisis_set_v0",
-                    "categories": list(ORDER), "tuned_on": "dev"}, indent=1) + "\n",
+                    "categories": list(ORDER), "tuned_on": "dev", "score": "margin",
+                    "ordinary_anchors": len(ordinary)}, indent=1) + "\n",
         encoding="utf-8", newline="\n",
     )  # fmt: skip
     print("\n".join(L[4:]))
