@@ -10,7 +10,8 @@ Text (DEC-055 7a, DEC-054):
 - ``raw_map`` = ``{"markers": [[start, end], ...], "breaks": [offset, ...]}`` (footnote marker spans
   and the newlines that are paragraph breaks, as offsets into ``raw_text``);
 - ``text`` = ``canonicalise(raw_text, raw_map)``: markers dropped, paragraph breaks kept as
-  ``\\n``, other line wraps joined (no space after a line-final hyphen), DEC-054 normaliser.
+  ``\\n``, other line wraps joined (no space after a line-final hyphen), DEC-054 normaliser;
+  OCR text (``raw_map["ocr"]``, W1.1b) is also cleaned by :func:`ocr_clean`.
 """
 
 from __future__ import annotations
@@ -20,6 +21,7 @@ import re
 from collections.abc import Iterable, Sequence
 from dataclasses import asdict, dataclass, field
 from datetime import date
+from functools import partial
 from typing import Any
 
 from madhya_kanoon_saathi.common.normalize import normalize
@@ -28,9 +30,24 @@ from madhya_kanoon_saathi.ingestion.manifest import AppliesTo, Document, Instrum
 from madhya_kanoon_saathi.ingestion.pdf_text import Footnote, Line
 from madhya_kanoon_saathi.ingestion.structure import Parsed, Unit
 
-CHUNKER_VERSION = "2"  # 2: U+FFFE from pdfium read as a hyphen (IN.SVANSG2025 p.4 "non-NPA")
+# 2: U+FFFE from pdfium read as a hyphen (IN.SVANSG2025 p.4 "non-NPA"); 3: OCR cleanup (W1.1b)
+CHUNKER_VERSION = "3"
 MIN_TOKENS, MAX_TOKENS = 150, 450
 _SPACES = re.compile(r"[ \t]+")
+_TAG = re.compile(r"</?[A-Za-z][^<>]{0,200}>")  # <td>, <br/>, <th rowspan="2"> (OCR tables)
+_MD_RULE = re.compile(r"\|?([ \t]*:?-{3,}:?[ \t]*\|)+")  # markdown table rule "| --- | --- |"
+_EMPTY_CELLS = re.compile(r"\|([ \t]*\|)+")  # "| | |" -> "|"
+_LEADER = re.compile(r"(?:[.…·][ \t]?){4,}|_{4,}")
+
+
+def ocr_clean(text: str) -> str:
+    """OCR-only cleanup inside canonicalise (W1.1b): U+2581 word marks become spaces, HTML table
+    tags and markdown table rules are dropped, empty cells merged, fill-in leaders become "…"."""
+    text = text.replace("▁", " ")
+    text = _TAG.sub(" ", text)
+    text = _MD_RULE.sub(" ", text)
+    text = _EMPTY_CELLS.sub("|", text)
+    return _LEADER.sub(" … ", text)
 
 
 def token_estimate(text: str, lang: str) -> int:
@@ -62,7 +79,10 @@ def canonicalise(raw_text: str, raw_map: dict[str, list[Any]]) -> str:
         else:
             out.append(ch)
         i += 1
-    text = normalize("".join(out).replace("\ufffe", "-"), fold_nukta=False)
+    joined = "".join(out).replace("\ufffe", "-")
+    if raw_map.get("ocr"):
+        joined = ocr_clean(joined)
+    text = normalize(joined, fold_nukta=False)
     paras = [_SPACES.sub(" ", p).strip() for p in text.split("\n")]
     return "\n".join(p for p in paras if p)
 
@@ -152,7 +172,7 @@ def _subtree(units: Sequence[Unit], root: Unit) -> list[Unit]:
 
 
 def _assemble(
-    parts: Sequence[Unit], prefix: Sequence[Line] = ()
+    parts: Sequence[Unit], prefix: Sequence[Line] = (), *, ocr: bool = False
 ) -> tuple[str, dict[str, list[Any]], list[Line]]:
     """Join unit lines into raw text; record marker spans and paragraph breaks (new unit starts)."""
     raw: list[str] = []
@@ -180,6 +200,8 @@ def _assemble(
     rmap: dict[str, list[Any]] = {"markers": markers, "breaks": breaks}
     if skips:
         rmap["skips"] = skips
+    if ocr:
+        rmap["ocr"] = [1]
     return "".join(raw), rmap, all_lines
 
 
@@ -192,6 +214,7 @@ def build_chunks(
     lang: str = "en",
 ) -> BuildResult:
     res = BuildResult()
+    assemble = partial(_assemble, ocr=extraction.startswith("ocr:"))
     fn_by_key = {(f.page, f.n): f for f in footnotes}
     units = parsed.units
     sections = [u for u in units if u.kind in ("section", "schedule")]
@@ -209,7 +232,7 @@ def build_chunks(
         if not doc.in_scope(uid):
             res.skipped.append(f"{uid} (outside index_scope)")
             return
-        raw_text, raw_map, lines = _assemble(parts, prefix)
+        raw_text, raw_map, lines = assemble(parts, prefix)
         if not raw_text.strip():
             return
         text = canonicalise(raw_text, raw_map)
@@ -276,7 +299,7 @@ def build_chunks(
     def emit_tree(root: Unit, sec: Unit, prefix: Sequence[Line] = ()) -> None:
         """Emit root with all descendants; split into direct children when too long."""
         tree = _subtree(units, root)
-        raw, rmap, _ = _assemble(tree, prefix)
+        raw, rmap, _ = assemble(tree, prefix)
         if token_estimate(canonicalise(raw, rmap), lang) <= MAX_TOKENS:
             emit(root.uid, tree, sec, prefix)
             return
@@ -285,7 +308,7 @@ def build_chunks(
             _emit_long_leaf(root, sec, prefix)
             return
         # the unit's own lines (intro / heading), size-limited like any leaf
-        own_raw, own_map, _ = _assemble([root], prefix)
+        own_raw, own_map, _ = assemble([root], prefix)
         if token_estimate(canonicalise(own_raw, own_map), lang) > MAX_TOKENS:
             _emit_long_leaf(root, sec, prefix)
         else:

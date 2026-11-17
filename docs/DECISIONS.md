@@ -786,6 +786,26 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Effects: ₹0 · less land ingestion work in November · the demo keeps a land story.
 - Follow-ups: (a) how to index the current s.129 text, since the MP Code consolidation (`MP.LRC1959@en@1`) is pre-2018 and the current wording sits in the 2018 amending Act plus the 2023 amendment (small schema/ingestion decision before W1.1b reaches land); (b) OCR of MP Act 1/2023 (bulk part p5); (c) G8a resumes in December.
 
+## DEC-071 — OCR text is indexed before the W0.5 error rate is known; key provisions spot-checked
+- Date: 2026-11-17 | Status: accepted ("go with recomm.": A + C) | Approved by: Malik | W1.1b
+- Context: The bulk Bodhan run (635 pages) is done, but the OCR character error rate is unknown until Malik finishes the W0.5 ground-truth correction. 8 indexed documents (RTI Rules EN/HI, three consumer gazettes, WCR draft, Demarcation Rules, Oct 2026 wage notification) can only be chunked from OCR text, and the bot will eventually quote it.
+- Options: **A) index now, every chunk records `extraction: ocr:bodhan@<revision>`; the quoting policy for OCR chunks is set in W2.1 from the W0.5 error rate** · B) wait for the error rate (blocks W1.1b) · **C) Malik spot-checks the golden-set provisions from OCR documents against the PDF pages before the demo**.
+- Decision: **A + C.**
+  1. OCR chunks are indexed now; `extraction` names the engine and revision (spec field, no schema change).
+  2. **Wage tables:** every wage row must pass an arithmetic check (base + VDA = total; daily = monthly ÷ the printed day basis, within rounding) or the build fails.
+  3. Before the demo, Malik checks the OCR text of the provisions the golden set expects (now IN.RTIR2012 r3, IN.CPJR2021 r3, MP.LRCDR2018 r3/r4, the wage schedules) against the PDF pages.
+  4. W2.1 decides how answers quote OCR chunks, using the W0.5 CER/WER.
+- Why: retrieval work and the eval can continue; the pages that matter most get human eyes; a misread wage digit is caught by arithmetic, not luck.
+- Effects: ₹0 · ~30 min of Malik's time · OCR chunks are distinguishable everywhere downstream.
+
+## DEC-072 — `sch_<letter>` segment for Hindi-lettered schedules
+- Date: 2026-11-17 | Status: accepted ("go with recomm.": C) | Approved by: Malik | Amends DEC-040 (section_uid grammar)
+- Context: The Oct 2026 MP wage notification (`MP.MWVDAOCT2026@hi@1`, Hindi only) numbers its schedules with Devanagari letters (अनुसूची क, च, द …). The grammar only had numbered schedules (`sch<n>`), and there is no English text to align with (spec rule 2).
+- Options: A) `sch<n>` by alphabet position (क=1 … द=18; opaque) · B) `sch<n>` in printed order (fragile: OCR page order is not alphabet order) · **C) new top-level segment `sch_<x>` with a fixed transliteration**.
+- Decision: **C.** `sch_<x>` = schedule labelled with a Devanagari letter, `x` from a fixed table in `docs/specs/section_uid.md` (e.g. क → `ka`, च → `cha`, द → `da`; a conjunct or compound label maps letter by letter). It is top-level like `sch<n>`, may be followed by `para`, and is used only when the source has no English numbering to align with.
+- Why: the uid matches what is printed and what users say ("अनुसूची च"), and follows the existing `form_<x>` pattern.
+- Effects: `common/section_uid.py` + spec + tests · ₹0 · no change to existing uids.
+
 ---
 
 ## Pending decisions (not yet made)

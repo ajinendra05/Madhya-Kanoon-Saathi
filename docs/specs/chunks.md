@@ -79,3 +79,18 @@ inputs [{doc_id, sha256, local_path}], output {path, sha256, chunks, by_doc}, qa
 - Body text is ~11 pt, footnotes ~9 pt: lines are classed by font size, not by pattern.
 - The first line of each page is the page number (removed as header).
 - Pages before the enactment line (`[15th June, 2005.]`) are title and contents: not chunked, listed in the QA report.
+
+## OCR text (W1.1b, DEC-071)
+Code: `ingestion/ocr_text.py`. Input: the bulk Bodhan run, `data/ocr/bulk/**/out/<doc_id with @→_>/pNNNN.md`.
+- All pages 1..n of the PDF must exist, from one Bodhan revision; one page found twice with different text is an
+  error. `extraction` = `ocr:bodhan@<first 8 hex of the revision>`.
+- `raw_text` is Bodhan's text unchanged (U+2581 word marks, HTML table tags, dot leaders). `raw_map` carries
+  `"ocr": [1]`, and `canonicalise` then also: turns U+2581 into spaces, drops HTML tags and markdown table rules,
+  merges empty table cells, and shortens fill-in leaders (`.....`, `____`) to "…". Born-digital chunks are unchanged.
+- Running heads in the first 5 lines of a page (page numbers incl. Devanagari digits and "226 (74)", "THE GAZETTE
+  OF INDIA", "भारत का राजपत्र", "मध्यप्रदेश राजपत्र, दिनांक …", "[PART II—SEC. 3(i)]", "भाग 4 (ग)", rules
+  `____`) and a bare page number as the last line are headers: never chunked.
+- A blank line or a table row (`|…`, `<tr>`) starts a paragraph, so table rows stay on separate lines.
+- Each line is Hindi or English by its letters (HTML tags ignored); lines without letters keep the previous
+  line's language. A bilingual gazette becomes one line list per language.
+- QA warning for model notes rather than printed text ("The image contains …", "Scanned with …").
