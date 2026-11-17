@@ -321,7 +321,9 @@ def build_chunks(
         piece: list[Line] = []
         part = 1
         for ln in all_lines:
-            if piece and token_estimate(" ".join(x.text for x in [*piece, ln]), lang) > MAX_TOKENS:
+            # count words on decoded text: OCR raw lines join words with U+2581, not spaces
+            joined = " ".join(x.text for x in [*piece, ln]).replace("▁", " ")
+            if piece and token_estimate(joined, lang) > MAX_TOKENS:
                 emit(
                     root.uid,
                     [Unit(root.uid, root.kind, root.label, lines=piece)],

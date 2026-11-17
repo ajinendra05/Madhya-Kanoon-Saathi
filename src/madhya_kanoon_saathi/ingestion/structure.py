@@ -33,20 +33,50 @@ from madhya_kanoon_saathi.ingestion.pdf_text import Line
 
 _ENACTED = re.compile(r"^\[\d{1,2}(st|nd|rd|th)\s+[A-Z][a-z]+,?\s+\d{4}\.?\]\.?$")
 _ENACTING = re.compile(r"^BE\s+it\s+enacted\b")  # body start in Bill-layout texts
-_CHAPTER = re.compile(r"^CHAPTER\s+([IVXLC]+[A-Z]?)\s*$")
+_CHAPTER = re.compile(r"^CHAPTER\s*[-–—]?\s*([IVXLC]+[A-Z]?)\s*$")  # noqa: RUF001  "CHAPTER-I"
 _SECTION = re.compile(
     r"^(\d{1,4})([A-Z]{0,3})\s?\.\s*(?=[A-Za-z\[\"“(])(.*)$"
 )  # "8. ", "49.Matters", "39 .Time"
 _HEAD_DASH = re.compile(r"\.?\s*[—–]\s*")  # noqa: RUF001  heading ends with em or en dash
+# rules gazettes also end headings with ".-" ("1. Short title and extent.-", MP.WCR2026),
+# ". ---" and ": -" (IN.CPECR2020 r.4, r.7)
+_HEAD_DASH_RULES = re.compile(r"\.?\s*[—–]\s*|[.:]\s*-+(?!\w)\s*|\s-{2,}\s*")  # noqa: RUF001
+# "FORM-II", "Form I"; "APPENDIX" (RTI Rules 2012 appeal format) -> form_appendix
+# A form heading is a line of its own ("FORM-III", "Form - IX", "FORM-I [See rule 49]"); a
+# sentence like "Form-I appended to these rules" is a cross-reference (MP.WCR2026 p.17).
+_FORM = re.compile(
+    r"^(?:FORM\s*[-–—.]?\s*(?P<n>[IVXLC]+|\d{1,3}|[A-Z])|"  # noqa: RUF001
+    r"(?P<app>APPENDIX|ANNEXURE)\s*[-–—]?\s*(?P<an>[IVXLC]+|\d{1,3}|[A-Z])?)"  # noqa: RUF001
+    r"\s*(\[\s*See\s+rule[^\]]*\]?)?\s*$",  # no full stop: "Form-IX." ends a sentence
+    re.I,
+)
+_ROMAN_OUT = ((10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i"))
+
+
+def _to_roman(n: int) -> str:
+    out = ""
+    for v, s in _ROMAN_OUT:
+        while n >= v:
+            out, n = out + s, n - v
+    return out
+
+
+_RULES_END = re.compile(
+    r"^(By\s+order\s+and\s+in\s+the\s+name\s+of|F\.\s*No\.|फा\.\s*सं|"
+    r"मध्यप्रदेश\s+के\s+राज्यपाल\s+के\s+नाम\s+से|"
+    r"(Printed|Uploaded)\s+by\s+(the\s+Manager|Dte\.))"
+)  # signature block / printer's line ("[" is already stripped): lines after it are not rule
+# text until a FORM, APPENDIX or SCHEDULE starts
 _SUBSEC = re.compile(r"^\((\d{1,3})([A-Z]{0,2})\)\s*(.*)$")
 _CLAUSE = re.compile(r"^\(([a-z]{1,4})\)\s*(.*)$")
 _DEF_START = re.compile(r"^[\"“‘']")  # noqa: RUF001  a definition starts with the quoted term
 _PROVISO = re.compile(r"^Provided\s+(further\s+|also\s+)?that\b")
 _EXPLAN = re.compile(r"^Explanations?\s*(\d+|[IVX]+)?\s*\.?\s*[—–-]")  # noqa: RUF001
 _SCHEDULE = re.compile(
-    r"^THE\s+((FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH|TWELFTH)"
-    r"\s+)?SCHEDULE\b"
+    r"^THE\s+((?P<ord>FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH"
+    r"|TWELFTH)\s+)?SCHEDULE\b"
 )
+_SCHEDULE_BARE = re.compile(r"^SCHEDULE\s*\**\s*$")  # rules: "SCHEDULE*" (MP.WCR2026 p.33)
 _REPEALED = re.compile(r"^\[(.+?)\]\.?\s*(Rep\.|Repealed|Omitted)")
 _NO_DASH_SS1 = re.compile(r"\.\s+(?=\(1\)\s)")
 _END_OF_ACT = re.compile(
@@ -106,7 +136,8 @@ def visible_text(line: Line) -> str:
         out.append(line.text[last:a])
         last = b
     out.append(line.text[last:])
-    return "".join(out).strip()
+    # OCR lines (W1.1b) carry U+2581 word marks instead of spaces; same length, so spans still fit
+    return "".join(out).replace("▁", " ").strip()
 
 
 def _start_text(line: Line) -> str:
@@ -147,13 +178,24 @@ def _next_clause_label(lines: Sequence[Line], i: int, window: int = 80) -> str |
 
 
 def parse_statute(
-    instrument_id: str, lines: Sequence[Line], *, margin_headings: bool = False
+    instrument_id: str,
+    lines: Sequence[Line],
+    *,
+    margin_headings: bool = False,
+    rules: bool = False,
 ) -> Parsed:
     """Parse body lines into units.
 
     ``margin_headings=True`` is the Bill layout (IN.MTA2021): sections start "1. (1) text" with
     the heading printed in the margin; the caller fills ``Unit.heading`` from the contents pages.
+
+    ``rules=True`` is a rules gazette (W1.1b): numbered units are rules (``r<n>``, sub-rules
+    ``ss<n>``), headings may end ".-", ``FORM-II`` starts a form unit (``form_ii``, chunked by size
+    only), and the signature block ("By order and in the name of ...") ends rule text until the next
+    form or schedule.
     """
+    top = "r" if rules else "s"
+    head_dash = _HEAD_DASH_RULES if rules else _HEAD_DASH
     body = [ln for ln in lines if ln.kind == "body"]
     # merge marker-only lines into the following line ("1" + "[(j) information ...", RTI p.11)
     merged: list[Line] = []
@@ -208,6 +250,7 @@ def parse_statute(
     state_amendments: list[StateAmendment] = []
     trailing: list[Line] = []
     last_para = 0
+    signed = False  # rules: inside the signature block
 
     def owner() -> Unit:
         assert sec is not None
@@ -224,6 +267,26 @@ def parse_statute(
         if _END_OF_ACT.match(t):
             trailing = list(merged[idx:])
             break
+        if rules:
+            m_form = _FORM.match(t)
+            if m_form and (sec is not None or sched is not None):
+                if m_form.group("app"):
+                    label = m_form.group("app") + (m_form.group("an") or "")
+                else:
+                    label = m_form.group("n")
+                sched = new(f"{instrument_id}:form_{label.lower()}", "schedule", t)
+                sched.para_restart = True  # a form is chunked by size, never by its numbered items
+                sec = ss = clause = sub = None
+                after_clause = []
+                cur, signed = sched, False
+                cur.lines.append(ln)
+                continue
+            if _RULES_END.match(t):
+                signed = True
+            if signed and not (_SCHEDULE.match(t) or _SCHEDULE_BARE.match(t)):
+                trailing.append(ln)
+                continue
+            signed = False
         if _STATE_AMEND.match(t):
             sa = StateAmendment(after_uid=units[-1].uid if units else instrument_id)
             state_amendments.append(sa)
@@ -247,9 +310,9 @@ def parse_statute(
             pending_chapter = None
             continue
 
-        m_sch = _SCHEDULE.match(t)
+        m_sch = _SCHEDULE.match(t) or (_SCHEDULE_BARE.match(t) if rules else None)
         if m_sch:
-            n = _ORDINALS.get(m_sch.group(2) or "", 1)
+            n = _ORDINALS.get(m_sch.groupdict().get("ord") or "", 1)
             sched = new(f"{instrument_id}:sch{n}", "schedule", t)
             sec = ss = clause = sub = None
             after_clause = []
@@ -278,7 +341,9 @@ def parse_statute(
                 or (last_sec == 0 and num == 1)
             )
             if plausible:
-                parts = ["", rest] if margin_headings else _HEAD_DASH.split(rest, maxsplit=1)
+                # "1. (1) These rules may be called ..." (amending rules): no heading at all
+                no_head = margin_headings or (rules and _SUBSEC.match(rest) is not None)
+                parts = ["", rest] if no_head else head_dash.split(rest, maxsplit=1)
                 m_rep = None if margin_headings else _REPEALED.match(rest)
                 if len(parts) < 2 and not m_rep:
                     # "9. Procedure ... etc. (1) A Social ...": dash missing (IN.SSC2020 s.9)
@@ -289,7 +354,7 @@ def parse_statute(
                 else:
                     heading = parts[0].rstrip(". ") if len(parts) == 2 else rest.rstrip()
                 last_sec = num
-                sec = new(f"{instrument_id}:s{num}{ins}", "section", f"{num}{ins}", heading)
+                sec = new(f"{instrument_id}:{top}{num}{ins}", "section", f"{num}{ins}", heading)
                 sec.repealed = bool(m_rep)
                 ss = clause = sub = None
                 clause_sys = last_clause = last_sub = sub_sys = None
@@ -316,7 +381,7 @@ def parse_statute(
                 sec.heading, sec.repealed, heading_open = m_rep2.group(1).rstrip(". "), True, False
                 cur.lines.append(ln)
                 continue
-            parts = _HEAD_DASH.split(t, maxsplit=1)
+            parts = head_dash.split(t, maxsplit=1)
             if len(parts) == 2:
                 sec.heading = f"{sec.heading} {parts[0]}".strip().rstrip(". ")
                 heading_open = False
@@ -454,6 +519,13 @@ def parse_statute(
         if cur is None:
             cur = sec
         cur.lines.append(ln)
+    forms = [u for u in units if ":form_" in u.uid and "appendix" not in u.uid]
+    labels = [u.uid.rsplit("_", 1)[1] for u in forms]
+    if any(x.isdigit() for x in labels) and any(not x.isdigit() for x in labels):
+        # "FORM-1" among "FORM-II", "FORM-III": an OCR reading of "FORM-I" (MP.WCR2026 p.47)
+        for u, x in zip(forms, labels, strict=True):
+            if x.isdigit():
+                u.uid = f"{u.uid.rsplit('_', 1)[0]}_{_to_roman(int(x))}"
     return Parsed(
         units=units, unassigned=unassigned, state_amendments=state_amendments, trailing=trailing
     )

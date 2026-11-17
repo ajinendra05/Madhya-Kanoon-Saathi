@@ -94,3 +94,9 @@ Code: `ingestion/ocr_text.py`. Input: the bulk Bodhan run, `data/ocr/bulk/**/out
 - Each line is Hindi or English by its letters (HTML tags ignored); lines without letters keep the previous
   line's language. A bilingual gazette becomes one line list per language.
 - QA warning for model notes rather than printed text ("The image contains …", "Scanned with …").
+- Rules gazettes (`scripts/build_chunks.py` `OCR_RULES`) use `parse_statute(rules=True)`: units are `r<n>` /
+  `ss<n>`; headings may end `.-`, `. ---`, `: -`; a line that is only `FORM-II` / `Form - IX [See rule 49]` /
+  `APPENDIX` starts a form (`form_ii`, `form_appendix`, chunked by size); a bare `SCHEDULE*` starts `sch1`; the
+  signature block (`[F. No. …]`, "By order and in the name of …") and the printer's line are not rule text.
+  A digit form label among roman ones ("FORM-1" with "FORM-II") is read as roman (OCR).
+- The build record lists, per OCR input, the engine, page count and a sha256 over its page texts.

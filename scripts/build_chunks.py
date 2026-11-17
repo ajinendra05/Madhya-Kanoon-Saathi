@@ -6,7 +6,8 @@ Usage:
     uv run python scripts/build_chunks.py [--only DOC_ID ...]
 
 - Reads data/corpus_manifest.json; considers documents with mode index or guide.
-- Supported now (W1.1a): born-digital English India Code PDFs. Others are listed as unsupported
+- Supported: born-digital India Code PDFs, Bill layout, guidelines, HTML guides (W1.1a) and rules
+  gazettes from the bulk Bodhan OCR (W1.1b, OCR_RULES). Others are listed as unsupported
   in the QA report with the reason (W1.1a remainder: other born-digital layouts and HTML;
   W1.1b: OCR pages).
 - Re-checks every input file's sha256 against the manifest (hard error on mismatch).
@@ -28,6 +29,8 @@ from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
 
+import pypdfium2 as pdfium
+
 from madhya_kanoon_saathi.common.normalize import NORMALISER_VERSION
 from madhya_kanoon_saathi.ingestion.bill_layout import split_margin
 from madhya_kanoon_saathi.ingestion.chunker import (
@@ -41,6 +44,8 @@ from madhya_kanoon_saathi.ingestion.chunker import (
 from madhya_kanoon_saathi.ingestion.guideline import parse_guideline
 from madhya_kanoon_saathi.ingestion.html_guide import parse_faq, parse_headed
 from madhya_kanoon_saathi.ingestion.manifest import Document, parse_manifest
+from madhya_kanoon_saathi.ingestion.ocr_text import load as load_ocr
+from madhya_kanoon_saathi.ingestion.ocr_text import model_notes
 from madhya_kanoon_saathi.ingestion.pdf_text import extract
 from madhya_kanoon_saathi.ingestion.structure import Parsed, parse_statute
 
@@ -63,10 +68,21 @@ BILL_LAYOUT = {"IN.MTA2021@en@1"}  # margin-note headings, contents pages (bill_
 GUIDELINE = {"IN.SVANSG2025@en@1", "IN.SVANLOG2025@en@1"}  # decimal-numbered paragraphs (DEC-057)
 HTML_FAQ = {"IN.ESHRAMFAQ2026@en@1"}  # accordion of "Q - n." questions (html_guide.py)
 HTML_HEADED = {"MP.SLSALAGUIDE2025@en@1"}  # h2 "1. ..." with h3 questions (html_guide.py)
+# Rules gazettes chunked from the bulk Bodhan OCR (W1.1b, DEC-071); languages done so far
+OCR_RULES: dict[str, tuple[str, ...]] = {
+    "IN.RTIR2012@en@1": ("en",),
+    "IN.CPJR2021@bi@1": ("en",),
+    "IN.CPECR2020@bi@1": ("en",),
+    "IN.CPECRA2021@bi@1": ("en",),
+    "MP.WCR2026@en@1": ("en",),
+}
+OCR_ROOT = DATA / "ocr" / "bulk"
 
 
 def route(doc: Document) -> str | None:
     """Return the parser name for a document, or None with the reason recorded by the caller."""
+    if doc.doc_id in OCR_RULES:
+        return "ocr_rules"
     if doc.doc_id in BILL_LAYOUT and doc.text_layer == "born_digital":
         return "bill_layout"
     if doc.doc_id in HTML_FAQ:
@@ -162,6 +178,26 @@ def main() -> int:
             errors += [f"{doc.doc_id}: {e}" for e in res.errors]
             per_doc[doc.doc_id] = _summary(kind, parsed, res, 0)
             chunks += res.chunks
+            continue
+        if kind == "ocr_rules":
+            pdf = pdfium.PdfDocument(path)
+            n_pages = len(pdf)
+            pdf.close()
+            ocr = load_ocr(OCR_ROOT, doc.doc_id, n_pages, "en" if doc.language == "en" else "hi")
+            inputs[-1]["ocr"] = {
+                "engine": ocr.engine,
+                "pages": n_pages,
+                "pages_sha256": hashlib.sha256(
+                    "\n\f".join(ocr.pages[n] for n in sorted(ocr.pages)).encode("utf-8")
+                ).hexdigest(),
+            }
+            for lang in OCR_RULES[doc.doc_id]:
+                parsed = parse_statute(doc.instrument_id, ocr.lines[lang], rules=True)
+                res = qa(build_chunks(parsed, doc, inst, [], ocr.engine, lang), ocr.page_chars)
+                res.warnings += model_notes(ocr.lines[lang])
+                errors += [f"{doc.doc_id}: {e}" for e in res.errors]
+                per_doc[f"{doc.doc_id} [{lang}]"] = _summary(kind, parsed, res, 0)
+                chunks += res.chunks
             continue
         text = extract(path)
         if kind == "bill_layout":

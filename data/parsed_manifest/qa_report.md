@@ -1,6 +1,6 @@
 # Chunk build QA report
 
-Built 2026-11-13T05:44:48+00:00 from commit `e8df28a8e0` (uncommitted changes); chunker v2, normaliser v1. Output sha256 `fb3a732229c2cd8b`.
+Built 2026-11-17T04:28:57+00:00 from commit `3695236398` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `1d4a5fae9c49eb88`.
 
 Hard QA errors: **0** (the build stops on any). Token counts are estimates until W1.4.
 
@@ -8,6 +8,9 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | IN.COW2019@en@1 | 69 | 245 | 212 | 33 | 0 | 1 | 0 (0) | 0 | 107 | 88 |
 | IN.CPA2019@en@1 | 107 | 369 | 327 | 42 | 0 | 4 | 0 (0) | 0 | 144 | 0 |
+| IN.CPECR2020@bi@1 [en] | 8 | 33 | 26 | 7 | 0 | 0 | 0 (0) | 0 | 16 | 4 |
+| IN.CPECRA2021@bi@1 [en] | 2 | 3 | 2 | 1 | 0 | 0 | 0 (0) | 0 | 16 | 6 |
+| IN.CPJR2021@bi@1 [en] | 5 | 7 | 7 | 0 | 0 | 0 | 0 (0) | 0 | 17 | 4 |
 | IN.ESHRAMFAQ2026@en@1 | 59 | 59 | 56 | 3 | 0 | 0 | 0 (0) | 0 | 24 | 0 |
 | IN.IRC2020@en@1 | 104 | 467 | 400 | 67 | 0 | 2 | 0 (0) | 0 | 165 | 101 |
 | IN.LSA1987@en@1 | 40 | 23 | 18 | 5 | 0 | 32 | 0 (0) | 127 | 72 | 0 |
@@ -15,11 +18,13 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | IN.OSHC2020@en@1 | 143 | 706 | 594 | 112 | 0 | 1 | 0 (0) | 0 | 219 | 86 |
 | IN.RA1908@en@1 | 95 | 17 | 16 | 1 | 0 | 68 | 41 (0) | 183 | 152 | 0 |
 | IN.RTI2005@en@1 | 31 | 149 | 120 | 29 | 0 | 17 | 0 (0) | 0 | 87 | 19 |
+| IN.RTIR2012@en@1 [en] | 15 | 21 | 16 | 5 | 0 | 0 | 0 (0) | 0 | 8 | 5 |
 | IN.SSC2020@en@1 | 164 | 788 | 630 | 158 | 0 | 1 | 0 (0) | 0 | 227 | 99 |
 | IN.SVANLOG2025@en@1 | 10 | 22 | 8 | 14 | 0 | 0 | 0 (0) | 0 | 22 | 0 |
 | IN.SVANSG2025@en@1 | 13 | 31 | 19 | 12 | 0 | 0 | 0 (0) | 0 | 31 | 0 |
 | IN.TPA1882@en@1 | 148 | 27 | 20 | 7 | 0 | 150 | 1 (0) | 194 | 226 | 0 |
 | MP.SLSALAGUIDE2025@en@1 | 1 | 3 | 1 | 2 | 0 | 0 | 0 (0) | 0 | 5 | 0 |
+| MP.WCR2026@en@1 [en] | 49 | 145 | 116 | 28 | 1 | 0 | 0 (0) | 0 | 20 | 0 |
 
 ## Warnings and skipped units
 
@@ -583,11 +588,6 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 
 | Document | Reason |
 | --- | --- |
-| IN.CPECR2020@bi@1 | mixed text layer: needs OCR (W1.1b) |
-| IN.CPECRA2021@bi@1 | mixed text layer: needs OCR (W1.1b) |
-| IN.CPJR2021@bi@1 | mixed text layer: needs OCR (W1.1b) |
-| IN.RTIR2012@en@1 | scanned text layer: needs OCR (W1.1b) |
 | IN.RTIR2012@hi@1 | scanned text layer: needs OCR (W1.1b) |
 | MP.LRCDR2018@bi@1 | scanned text layer: needs OCR (W1.1b) |
 | MP.MWVDAOCT2026@hi@1 | scanned text layer: needs OCR (W1.1b) |
-| MP.WCR2026@en@1 | mixed text layer: needs OCR (W1.1b) |
