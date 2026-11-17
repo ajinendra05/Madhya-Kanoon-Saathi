@@ -1,0 +1,66 @@
+{
+ "schema_version": 1,
+ "note": "Example crisis messages for the embedding layer of the crisis router (DEC-074). Synthetic, written by Claude 2026-11-17; none may appear in data/safety/crisis_set_v0.jsonl. Draft: Malik reviews with the test set.",
+ "examples": {
+  "self_harm": [
+   "मैं अपनी जान लेना चाहता हूँ",
+   "मुझसे अब और नहीं होगा, मैं खुद को खत्म कर लूँगी",
+   "मन करता है छत से कूद जाऊँ",
+   "zindagi se thak gaya hoon, ab jeena bekaar hai",
+   "maine bahut saari dawai kha li hai",
+   "I am planning to end everything tonight",
+   "there is no point in living, I want it all to stop",
+   "I have been cutting myself and I feel like dying"
+  ],
+  "domestic_violence": [
+   "शराब पीकर घरवाला रोज़ मुझे और बच्चों को मारता है",
+   "सास और ननद मुझे कमरे में बंद करके पीटती हैं",
+   "पति ने मुझ पर मिट्टी का तेल डालने की धमकी दी",
+   "mera pati mujhe jalane ki dhamki deta hai",
+   "shaadi ke baad se roz maar khaati hoon, ghar mein koi nahi bachata",
+   "my husband choked me last night and I am afraid to go home",
+   "my partner hits me and does not let me leave the house",
+   "my in-laws burnt me with a hot iron over dowry"
+  ],
+  "child_at_risk": [
+   "मेरे पड़ोस में एक छोटी बच्ची को रोज़ भूखा रखकर मारा जाता है",
+   "कोई आदमी स्कूल के बाहर बच्चों को गलत तरीके से छूता है",
+   "13 साल के लड़के से फैक्ट्री में रात भर काम करवाते हैं",
+   "chhoti bachi ki shaadi badi umar ke aadmi se kar rahe hain",
+   "ek bachcha station par akela ro raha hai, koi uska nahi",
+   "my daughter's coach is touching her inappropriately",
+   "a small boy is chained at a tea stall and beaten",
+   "children are being sent to beg and are beaten if they bring less money"
+  ],
+  "cyber_fraud": [
+   "लॉटरी जीतने का मैसेज आया, फीस भरी और पैसे चले गए",
+   "किसी ने मेरा व्हाट्सएप हैक करके रिश्तेदारों से पैसे माँगे",
+   "बैंक का अधिकारी बनकर किसी ने कार्ड नंबर ले लिया और पैसे निकाल लिए",
+   "mere photos viral karne ki dhamki dekar paise maang rahe hain",
+   "app download karaya aur account khali ho gaya",
+   "someone used my Aadhaar to take a loan through an app",
+   "I paid for a fake courier fee and lost my money",
+   "a person posing as police on a video call demanded money for a fake arrest"
+  ],
+  "violence_now": [
+   "कुछ लोग लाठी डंडे लेकर मेरे घर की ओर आ रहे हैं",
+   "दबंगों ने मेरे भाई का सिर फोड़ दिया",
+   "मुझे धमकी मिली है कि आज रात मुझे खत्म कर देंगे",
+   "gundon ne dukaan mein ghuskar mujhe peeta",
+   "woh log kehte hain tujhe zinda nahi chhodenge",
+   "a group of men are breaking into my house right now",
+   "someone smashed my head with a rod and I am bleeding",
+   "my neighbour pulled a pistol on me during an argument"
+  ],
+  "eviction_now": [
+   "मालिक ने आधी रात को हमें घर से बाहर निकाल दिया",
+   "किराया न देने पर मालिक ने कमरे का दरवाज़ा तोड़कर सामान फेंक दिया",
+   "मकान मालिक ने ताला बदल दिया, मेरा सारा सामान अंदर है",
+   "landlord ke aadmi zabardasti ghar khali karwa rahe hain abhi",
+   "malik ne paani bijli band karke humein bahar kar diya",
+   "the landlord threw us out at night with our small children",
+   "my landlord removed the door and my things while I was away",
+   "the owner sent people to force us out of the house today"
+  ]
+ }
+}

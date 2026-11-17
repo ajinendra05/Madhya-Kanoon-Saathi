@@ -813,6 +813,17 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: keeps the printed label readable in the uid and stays inside the DEC-072 pattern.
 - Effects: already implemented in W1.1b (`common/section_uid.py`, `ingestion/wage_tables.py`, spec, tests) · ₹0.
 
+## DEC-074 — W2.0 crisis router: rules + embeddings, per-category replies, six categories
+- Date: 2026-11-17 | Status: accepted (all three as recommended) | Approved by: Malik | Implements DEC-033 item 1
+- Context: Every message must be checked for danger before retrieval, in Hindi, Hinglish and English; the gate is crisis-trigger recall = 100%. Numbers come only from `data/contacts.yaml` (DEC-018; 112, 181, 1098, 1930, 14416, 15100 sourced 2026-11-17).
+- Options: detection A) rules only · B) LLM classifier (paid, latency, non-deterministic) · **C) rules + BGE-M3 similarity to crisis examples**. Reply A) numbers then the normal answer · B) numbers only · **C) per category**. Categories: **six** · or life-safety only.
+- Decision:
+  1. **Detection = C.** Keyword/phrase rules per category and language (deterministic floor), plus cosine similarity of the query's BGE-M3 vector (already computed for retrieval) to example crisis messages; the threshold is tuned on the crisis test set for 100% recall, false-alarm rate reported. No LLM, no new dependency.
+  2. **Reply = per category.** Self-harm: a short supportive line + Tele-MANAS 14416 and 112, no legal content. Violence, child at risk, cyber fraud in progress, forced eviction now: the emergency number(s) first, then the legal answer and free legal aid. The exact Hindi/English wording is approved by Malik before use (generation rules).
+  3. **Categories (six):** violence/threat now → 112 · domestic violence/women → 181 + 112 · child at risk → 1098 + 112 · cyber fraud in progress → 1930 · self-harm → 14416 + 112 · forced eviction/lock-out now → 112 + NALSA 15100.
+- Why: rules give a predictable floor, embeddings catch paraphrases, both free inside the existing image; legal text is inappropriate for someone at risk of self-harm, while a fraud victim needs both 1930 and the legal steps.
+- Effects: ₹0 · ~1 ms rules + reuse of the query vector · a crisis test set (draft, Malik reviews) with recall = 100% as a test gate.
+
 ---
 
 ## Pending decisions (not yet made)

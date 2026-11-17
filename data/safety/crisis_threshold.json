@@ -1,0 +1,14 @@
+{
+ "threshold": 0.5222,
+ "embedder": "int8",
+ "set": "crisis_set_v0",
+ "categories": [
+  "self_harm",
+  "violence_now",
+  "domestic_violence",
+  "child_at_risk",
+  "cyber_fraud",
+  "eviction_now"
+ ],
+ "tuned_on": "dev"
+}

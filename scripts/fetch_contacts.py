@@ -51,7 +51,8 @@ def main() -> int:
             )
             failed |= not quote_ok
     if a.record:
-        FILE.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        text = json.dumps(data, ensure_ascii=False, indent=1) + "\n"
+        FILE.write_text(text, encoding="utf-8", newline="\n")  # LF on Windows too
     errs = validate(data)
     if not errs:
         for contact in load(FILE):

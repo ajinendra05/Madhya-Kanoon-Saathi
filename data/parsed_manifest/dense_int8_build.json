@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-11-17T04:56:45+00:00",
-  "git_commit": "7269b9c0e8829a663f1da563f6a33e3330f381cd",
+  "built_at": "2026-11-17T14:34:47+00:00",
+  "git_commit": "29e0ca082d3950d437d5ad9bab50e72891f916db",
   "git_dirty": true,
   "variant": "int8",
   "model": {
@@ -30,14 +30,14 @@
   },
   "input": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "5f0cbc830d7217556fa60a7347fe3a8122c10a73a0742df46731df9e765e84c6",
+    "sha256": "c677ee2c52ecf35c612e2d061dbb0f443ef6adb5991798ce33f995b54fbdd8a2",
     "chunks": 3410
   },
   "text_embedded": "title / heading path joined with > / text, one per line (DEC-061)",
   "max_length": 1024,
   "truncated": 0,
-  "seconds": 654.5,
-  "ms_per_chunk": 191.9,
+  "seconds": 994.2,
+  "ms_per_chunk": 291.6,
   "machine": {
     "python": "3.12.0",
     "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
