@@ -52,6 +52,10 @@ _SEGMENTS: tuple[tuple[str, re.Pattern[str], int], ...] = (
     ("reg", re.compile(r"^reg[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
     ("para", re.compile(r"^para[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
     ("sch", re.compile(r"^sch[1-9][0-9]*[A-Z]?$"), _TOP),
+    # DEC-072: schedule labelled with a Devanagari letter, transliterated (अनुसूची-च -> sch_cha);
+    # an optional second part is the खण्ड (part) letter when two schedules share a letter
+    # (MP.MWVDAOCT2026: अनुसूची-अ खण्ड-ब -> sch_a_ba, खण्ड-अ अनुसूची-अ -> sch_a_a)
+    ("sch", re.compile(r"^sch_[a-z]{1,8}(?:_[a-z]{1,8})?$"), _TOP),
     ("form", re.compile(r"^form_[a-z0-9]+$"), _TOP),
     ("s", re.compile(r"^s[1-9][0-9]*[A-Z]{0,2}$"), _TOP),
     ("r", re.compile(r"^r[1-9][0-9]*[A-Z]{0,2}$"), _TOP),

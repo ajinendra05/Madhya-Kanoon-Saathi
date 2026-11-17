@@ -34,6 +34,9 @@ from madhya_kanoon_saathi.common.section_uid import (
         "IN.CPA2019:sch1:para3",
         "MP.LSG2010:form_a",
         "IN.X2020:reg5",
+        "MP.MWVDAOCT2026:sch_cha",  # DEC-072: Devanagari-lettered schedule
+        "MP.MWVDAOCT2026:sch_a_ba",  # schedule अ, खण्ड ब
+        "MP.MWVDAOCT2026:sch_epha:para1",
     ],
 )
 def test_valid_uids_round_trip(uid: str) -> None:
@@ -63,6 +66,9 @@ def test_valid_uids_round_trip(uid: str) -> None:
         "IN.RTI2005:s८",  # Devanagari digit: canonical uids are ASCII (tokeniser converts, DEC-026)
         "IN.RTI2005:s8:cl_ज",  # Hindi clause letter: aligned structurally, never transliterated
         "IN.RTI2005:art5",  # unknown segment kind
+        "MP.X2026:sch_",  # empty schedule label
+        "MP.X2026:sch_Cha",  # transliteration is lowercase
+        "MP.X2026:sch_a_ba_ka",  # at most one part qualifier
     ],
 )
 def test_invalid_uids_rejected(uid: str) -> None:

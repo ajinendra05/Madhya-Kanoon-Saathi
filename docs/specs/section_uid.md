@@ -32,6 +32,7 @@ version     = <YYYY-MM-DD> | "nd-" <first 8 hex of the document sha256>
 | `reg<n>[A]` | regulation | `reg5` | top |
 | `para<n>[A]` | paragraph (top, or inside a schedule) | `para3` | top |
 | `sch<n>[A]` | schedule | `sch1` | top |
+| `sch_<x>[_<y>]` | schedule with a Devanagari letter label, no English to align with (DEC-072); `y` = the खण्ड (part) letter when two schedules share a letter | `sch_cha`, `sch_a_ba` | top |
 | `form_<x>` | form | `form_a` | top |
 | `ss<n>[A]` | sub-section / sub-rule | `ss1` | 1 |
 | `sp<n>[A]` | numbered sub-paragraph of a paragraph (guidelines "5.1", "5.1.1"; DEC-057); follows `para` or another `sp` | `para5:sp1:sp1` | 1 (repeats) |
@@ -46,6 +47,13 @@ Numbering systems (DEC-045 item 7, U1): clauses and sub-clauses keep the system 
 **kind** records it, so letter "(i)" is `cl_i` and numeral "(i)" is `clr_i`; they are different units. Roman values
 must be canonical lowercase numerals 1–3999 (`iv`, not `iiii`). Hindi sources use Devanagari words or letters (e.g.
 "(सात)"); they are mapped by structural alignment with the English text (rule 2), never written into the uid.
+
+**Devanagari schedule labels (DEC-072).** Transliterated letter by letter, lowercase ASCII, with this fixed table
+(code: `ingestion/wage_tables.py` `TRANSLIT`). Vowels: अ a · आ aa · इ i · ई ii · उ u · ऊ uu · ए e · ऐ ai · ओ o ·
+औ au. Consonants (with their inherent a): क ka · ख kha · ग ga · घ gha · ङ nga · च cha · छ chha · ज ja · झ jha ·
+ञ nya · ट tta · ठ ttha · ड dda · ढ ddha · ण nna · त ta · थ tha · द da · ध dha · न na · प pa · फ pha · ब ba ·
+भ bha · म ma · य ya · र ra · ल la · व va · श sha · ष ssa · स sa · ह ha. A label of several letters joins them
+(एफ → `epha`). Example: MP.MWVDAOCT2026 अनुसूची-च → `sch_cha`; अनुसूची-अ (खण्ड-ब) → `sch_a_ba`; (खण्ड-अ - अनुसूची-अ) → `sch_a_a`.
 
 Order rules: the first segment is top-level; each next segment must be deeper; `para` may follow `sch`;
 `prov`/`expl` end the uid. Numbers have no leading zeros and start at 1.

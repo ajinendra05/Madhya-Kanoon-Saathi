@@ -49,6 +49,7 @@ from madhya_kanoon_saathi.ingestion.ocr_text import load as load_ocr
 from madhya_kanoon_saathi.ingestion.ocr_text import model_notes
 from madhya_kanoon_saathi.ingestion.pdf_text import extract
 from madhya_kanoon_saathi.ingestion.structure import Parsed, parse_statute
+from madhya_kanoon_saathi.ingestion.wage_tables import check_wage_rows, parse_wage_notification
 
 DATA = Path("data")
 OUT = DATA / "parsed" / "chunks.jsonl"
@@ -81,6 +82,8 @@ OCR_RULES: dict[str, tuple[str, ...]] = {
     "MP.WCR2026@en@1": ("en",),
 }
 EN_COUNTERPART = {"IN.RTIR2012@hi@1": "IN.RTIR2012@en@1"}
+# Hindi wage notifications: schedules + arithmetic gate (DEC-050, DEC-071 item 2, DEC-072)
+OCR_WAGES = {"MP.MWVDAOCT2026@hi@1"}
 OCR_ROOT = DATA / "ocr" / "bulk"
 
 
@@ -94,6 +97,8 @@ def _pages(path: Path) -> int:
 
 def route(doc: Document) -> str | None:
     """Return the parser name for a document, or None with the reason recorded by the caller."""
+    if doc.doc_id in OCR_WAGES:
+        return "ocr_wages"
     if doc.doc_id in OCR_RULES:
         return "ocr_rules"
     if doc.doc_id in BILL_LAYOUT and doc.text_layer == "born_digital":
@@ -192,7 +197,7 @@ def main() -> int:
             per_doc[doc.doc_id] = _summary(kind, parsed, res, 0)
             chunks += res.chunks
             continue
-        if kind == "ocr_rules":
+        if kind in ("ocr_rules", "ocr_wages"):
             n_pages = _pages(path)
             ocr = load_ocr(OCR_ROOT, doc.doc_id, n_pages, "en" if doc.language == "en" else "hi")
             inputs[-1]["ocr"] = {
@@ -202,6 +207,21 @@ def main() -> int:
                     "\n\f".join(ocr.pages[n] for n in sorted(ocr.pages)).encode("utf-8")
                 ).hexdigest(),
             }
+        if kind == "ocr_wages":
+            parsed = parse_wage_notification(doc.instrument_id, ocr.lines["hi"])
+            rows = 0
+            for u in parsed.units:
+                wage_errors, n_rows = check_wage_rows(u)
+                errors += [f"{doc.doc_id}: wage arithmetic: {e}" for e in wage_errors]
+                rows += n_rows
+            res = qa(build_chunks(parsed, doc, inst, [], ocr.engine, "hi"), ocr.page_chars)
+            res.warnings += model_notes(ocr.lines["en"] + ocr.lines["hi"])
+            res.warnings.append(f"wage arithmetic gate: {rows} rows checked")
+            errors += [f"{doc.doc_id}: {e}" for e in res.errors]
+            per_doc[f"{doc.doc_id} [hi]"] = _summary(kind, parsed, res, 0)
+            chunks += res.chunks
+            continue
+        if kind == "ocr_rules":
             for lang in OCR_RULES[doc.doc_id]:
                 if lang == "en":
                     parsed = parse_statute(doc.instrument_id, ocr.lines["en"], rules=True)

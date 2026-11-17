@@ -1,6 +1,6 @@
 # Chunk build QA report
 
-Built 2026-11-17T04:39:27+00:00 from commit `88ee5d740d` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `dddb6fc952ab84cb`.
+Built 2026-11-17T04:43:40+00:00 from commit `f0edcefa8e` (uncommitted changes); chunker v3, normaliser v1. Output sha256 `5f0cbc830d721755`.
 
 Hard QA errors: **0** (the build stops on any). Token counts are estimates until W1.4.
 
@@ -29,6 +29,7 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 | IN.TPA1882@en@1 | 148 | 27 | 20 | 7 | 0 | 150 | 1 (0) | 194 | 226 | 0 |
 | MP.LRCDR2018@bi@1 [hi] | 11 | 29 | 19 | 9 | 1 | 0 | 0 (0) | 0 | 17 | 3 |
 | MP.LRCDR2018@bi@1 [en] | 11 | 34 | 29 | 5 | 0 | 0 | 0 (0) | 0 | 12 | 2 |
+| MP.MWVDAOCT2026@hi@1 [hi] | 0 | 10 | 1 | 9 | 0 | 0 | 0 (0) | 0 | 25 | 3 |
 | MP.SLSALAGUIDE2025@en@1 | 1 | 3 | 1 | 2 | 0 | 0 | 0 (0) | 0 | 5 | 0 |
 | MP.WCR2026@en@1 [en] | 49 | 145 | 116 | 28 | 1 | 0 | 0 (0) | 0 | 20 | 0 |
 
@@ -604,8 +605,15 @@ Hard QA errors: **0** (the build stops on any). Token counts are estimates until
 ### MP.LRCDR2018@bi@1 [en]
 - warning: p.1: only 93 characters of text
 
+### MP.MWVDAOCT2026@hi@1 [hi]
+- warning: p.1: model note? 'The image contains a symbol that represents a flower, which '
+- warning: p.1: model note? 'Scanned with OKEN Scanner'
+- warning: p.2: model note? 'Scanned with OKEN Scanner'
+- warning: p.3: model note? 'Scanned with OKEN Scanner'
+- warning: p.4: model note? 'Scanned with OKEN Scanner'
+- warning: wage arithmetic gate: 31 rows checked
+
 ## Not chunked yet
 
 | Document | Reason |
 | --- | --- |
-| MP.MWVDAOCT2026@hi@1 | scanned text layer: needs OCR (W1.1b) |

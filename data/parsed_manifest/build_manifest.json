@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-11-17T04:39:27+00:00",
-  "git_commit": "88ee5d740dc7f697b6e2693a27589de4b1891703",
+  "built_at": "2026-11-17T04:43:40+00:00",
+  "git_commit": "f0edcefa8ec7fd25b82e1884702a73d809e07312",
   "git_dirty": true,
   "python": "3.12.0",
   "libraries": {
@@ -136,6 +136,16 @@
       }
     },
     {
+      "doc_id": "MP.MWVDAOCT2026@hi@1",
+      "sha256": "9b30baa74dbdca0154576d1d5748ff79f8c5477dd1532efbb48a249f8e6d9ddb",
+      "local_path": "raw/MP.MWVDAOCT2026/MP.MWVDAOCT2026_hi_1.pdf",
+      "ocr": {
+        "engine": "ocr:bodhan@cd50d301",
+        "pages": 4,
+        "pages_sha256": "fa75b84c248a4fae1a34a9fca9121a70fe1271ba4f6e81ef075320886126e8c3"
+      }
+    },
+    {
       "doc_id": "MP.SLSALAGUIDE2025@en@1",
       "sha256": "c0a46a703dd056381c4348e089265715330292150fd6c05f622f5ee443a73972",
       "local_path": "raw/MP.SLSALAGUIDE2025/MP.SLSALAGUIDE2025_en_1.html"
@@ -153,8 +163,8 @@
   ],
   "output": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "dddb6fc952ab84cbf3ad4c27ee1d7e63a7c9f31f0554e94f0943472930f1a043",
-    "chunks": 3400,
+    "sha256": "5f0cbc830d7217556fa60a7347fe3a8122c10a73a0742df46731df9e765e84c6",
+    "chunks": 3410,
     "by_doc": {
       "IN.COW2019@en@1": 245,
       "IN.CPA2019@en@1": 369,
@@ -175,15 +185,14 @@
       "IN.SVANSG2025@en@1": 31,
       "IN.TPA1882@en@1": 27,
       "MP.LRCDR2018@bi@1": 63,
+      "MP.MWVDAOCT2026@hi@1": 10,
       "MP.SLSALAGUIDE2025@en@1": 3,
       "MP.WCR2026@en@1": 145
     }
   },
   "qa": {
     "errors": 0,
-    "warnings": 36
+    "warnings": 42
   },
-  "unsupported": {
-    "MP.MWVDAOCT2026@hi@1": "scanned text layer: needs OCR (W1.1b)"
-  }
+  "unsupported": {}
 }
