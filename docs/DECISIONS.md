@@ -836,6 +836,16 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: keeps recall on unseen phrasings without derailing a third to a half of normal answers; a false safety line costs a sentence, a missed crisis costs much more.
 - Effects: ₹0 · reply wording for both tiers needs Malik's approval before use · gate: 100% router recall on the test split; false-alarm rate reported per tier.
 
+## DEC-076 — Redaction by placeholders (W2.0b); dispute detector by rules + embeddings (W2.0c)
+- Date: 2026-11-18 | Status: accepted (both as recommended) | Approved by: Malik | Implements DEC-029 (PII), DEC-033 items 4 and 6, DEC-038
+- Context: DEC-033.4 requires sensitive data (caste, disability, health, religion) volunteered by users to be used only in-session and redacted from all logs, traces and DynamoDB writes; DEC-029 requires PII redaction before any log. DEC-033.6/038: for land, family, SC/ST and criminal questions, answer the procedure and route "who is right" questions to DLSA.
+- Options (redaction): **A) placeholders in place** · B) drop the whole message if anything is found · C) never store user text. Options (disputes): **A) rules + margin embeddings (as DEC-074/075)** · B) rules only · C) the generator decides.
+- Decision:
+  1. **Redaction = A.** Before anything is stored or logged, PII (phone, Aadhaar, PAN, e-mail, bank account, UPI id, card number) becomes `[PHONE]`, `[AADHAAR]`, …, and self-disclosed caste/tribe category, religion, disability and health conditions become `[CASTE]`, `[RELIGION]`, `[DISABILITY]`, `[HEALTH]`. Neutral topic words stay ("जाति प्रमाण पत्र" is a topic, not a disclosure). The bot never asks for these (generation rule, W2.1).
+  2. **Dispute detector = A.** Phrase rules plus margin similarity to example "who is right / who owns" messages; a hit tells the generator to answer procedure only and adds the DLSA referral. Own test set with a holdout split, as for crisis.
+- Why: placeholders keep logs useful for debugging while removing the identifying or sensitive part; the detector reuses a design whose limits were measured.
+- Effects: ₹0 · known gap: specific caste and community names are not in the v1 lexicon (listed in OPEN_QUESTIONS) · DLSA referral wording needs Malik's approval (W2.1).
+
 ---
 
 ## Pending decisions (not yet made)
