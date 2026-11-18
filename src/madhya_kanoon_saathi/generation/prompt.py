@@ -65,11 +65,23 @@ Rules:
 6. Keep it short: at most 4 answer blocks, plain words."""
 
 
+PROCEDURE_ONLY = (
+    "\n7. This question asks who is right or how a dispute will end. Do not answer that part;"
+    " explain only the procedure the excerpts describe."
+)
+
+
 def build_messages(
-    question: str, chunks: Sequence[tuple[str, str]], lang: str
+    question: str,
+    chunks: Sequence[tuple[str, str]],
+    lang: str,
+    *,
+    procedure_only: bool = False,
 ) -> list[dict[str, str]]:
     """Messages for one question; ``chunks`` = (chunk_id, canonical text) as retrieved."""
     excerpts = "\n\n".join(f"[{cid}]\n{text}" for cid, text in chunks)
     system = SYSTEM_V0.format(language=LANG_NAME.get(lang, "English"))
+    if procedure_only:
+        system += PROCEDURE_ONLY
     user = f"Law excerpts:\n\n{excerpts}\n\nQuestion: {question}"
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]

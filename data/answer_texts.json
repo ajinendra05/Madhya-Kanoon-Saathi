@@ -1,0 +1,86 @@
+{
+ "schema_version": 1,
+ "status": "draft_pending_approval",
+ "approved_by": null,
+ "approved_on": null,
+ "about": "Everything the bot adds around a generated answer (W2.1; generation rules: user-facing wording is a major decision). Drafted by Claude 2026-11-18 from DEC-050, DEC-052, DEC-044, DEC-071/077, DEC-033/038/076; Malik approves or edits, then sets status to 'approved'. {placeholders} are filled by code: {date} law-as-of date, {page}/{url} source locator, {numbers}/{nalsa_15100} from contacts.yaml, {notification}/{valid_from}/{valid_to} from the corpus manifest. No legal facts are written here.",
+ "law_as_of": {
+  "hi": "कानून {date} की स्थिति के अनुसार।",
+  "hinglish": "Kanoon {date} ki sthiti ke anusaar.",
+  "en": "Law as of {date}."
+ },
+ "footer": {
+  "hi": "यह कानूनी जानकारी है, कानूनी सलाह नहीं। अपने मामले के लिए ज़िला विधिक सेवा प्राधिकरण (DLSA) से मुफ़्त सलाह लें: NALSA हेल्पलाइन {nalsa_15100}।",
+  "hinglish": "Yeh kanooni jaankari hai, kanooni salah nahi. Apne maamle ke liye District Legal Services Authority (DLSA) se muft salah lein: NALSA Helpline {nalsa_15100}.",
+  "en": "This is legal information, not legal advice. For your own case, get free advice from the District Legal Services Authority (DLSA): NALSA Helpline {nalsa_15100}."
+ },
+ "status_caveat": {
+  "draft": {
+   "hi": "ध्यान दें: यह मसौदा (ड्राफ्ट) नियम है, अभी लागू कानून नहीं।",
+   "hinglish": "Dhyan dein: yeh draft niyam hai, abhi laagu kanoon nahi.",
+   "en": "Note: this is a draft rule, not law in force yet."
+  },
+  "model_law": {
+   "hi": "ध्यान दें: यह केंद्र का मॉडल कानून है; मध्यप्रदेश में तभी लागू होगा जब राज्य इसे अपनाए।",
+   "hinglish": "Dhyan dein: yeh Kendra ka model kanoon hai; Madhya Pradesh mein tabhi laagu hoga jab rajya ise apnaaye.",
+   "en": "Note: this is a model law; it is not in force in Madhya Pradesh unless the state adopts it."
+  },
+  "enacted_not_commenced": {
+   "hi": "ध्यान दें: यह कानून पारित हो चुका है पर अभी लागू (प्रभावी) नहीं हुआ है।",
+   "hinglish": "Dhyan dein: yeh kanoon paarit ho chuka hai par abhi laagu nahi hua hai.",
+   "en": "Note: this law has been enacted but has not come into force yet."
+  },
+  "sub_judice_flag": {
+   "hi": "ध्यान दें: इस प्रावधान को अदालत में चुनौती दी गई है।",
+   "hinglish": "Dhyan dein: is pravdhaan ko adalat mein chunauti di gayi hai.",
+   "en": "Note: this provision has been challenged in court."
+  },
+  "passed_awaiting_assent": {
+   "hi": "ध्यान दें: यह विधेयक पारित है पर अभी स्वीकृति (अनुमति) की प्रतीक्षा में है, इसलिए कानून नहीं बना।",
+   "hinglish": "Dhyan dein: yeh vidheyak paarit hai par abhi sweekriti ki prateeksha mein hai, isliye kanoon nahi bana.",
+   "en": "Note: this bill has been passed but awaits assent, so it is not law yet."
+  },
+  "proposal": {
+   "hi": "ध्यान दें: यह केवल प्रस्ताव है, कानून नहीं।",
+   "hinglish": "Dhyan dein: yeh sirf prastaav hai, kanoon nahi.",
+   "en": "Note: this is only a proposal, not law."
+  }
+ },
+ "scan_label": {
+  "hi": "(स्कैन की गई प्रति से — आधिकारिक PDF का पृष्ठ {page} देखें: {url})",
+  "hinglish": "(scan ki gayi prati se — official PDF ka page {page} dekhein: {url})",
+  "en": "(from a scanned copy — check page {page} of the official PDF: {url})"
+ },
+ "rti_r14_note": {
+  "hi": "ध्यान दें: इस नियम के अंग्रेज़ी पाठ में रजिस्ट्री डाक (पावती सहित) भी लिखा है; हिंदी पाठ में नहीं।",
+  "hinglish": "Dhyan dein: is niyam ke English text mein registered post (acknowledgement due) bhi likha hai; Hindi text mein nahi.",
+  "en": "Note: the English text of this rule also lists registered post with acknowledgement due; the Hindi text does not."
+ },
+ "wage_qualification": {
+  "hi": "ये दरें श्रमायुक्त, मध्यप्रदेश की अधिसूचना {notification} के अनुसार हैं, जो {valid_from} से {valid_to} तक लागू हैं। यह अधिसूचना न्यूनतम वेतन अधिनियम, 1948 के अंतर्गत जारी हुई है; वेतन संहिता, 2019 की धारा 69(2) के तहत इसके जारी रहने का ठोस तर्क है, पर संहिता के तहत इसकी वैधता पर अदालत ने निर्णय नहीं दिया है। विवाद हो तो श्रम कार्यालय से संपर्क करें; मुफ़्त कानूनी सहायता: DLSA।",
+  "hinglish": "Ye daren Shramayukt, Madhya Pradesh ki adhisuchna {notification} ke anusaar hain, jo {valid_from} se {valid_to} tak laagu hain. Yeh adhisuchna Minimum Wages Act, 1948 ke antargat jaari hui hai; Code on Wages, 2019 ki dhara 69(2) ke tahat iske jaari rehne ka thos tark hai, par Code ke tahat iski vaidhata par adalat ne nirnay nahi diya hai. Vivaad ho to Labour Office se sampark karein; muft kanooni sahayata: DLSA.",
+  "en": "These rates are from Labour Commissioner, Madhya Pradesh notification {notification}, valid from {valid_from} to {valid_to}. The notification was issued under the Minimum Wages Act, 1948; there is a substantial argument that it continues under section 69(2) of the Code on Wages, 2019, but no court has decided its validity under the Code. For disputes contact the Labour Office; free legal aid: DLSA."
+ },
+ "dispute_referral": {
+  "hi": "कौन सही है, यह अदालत या प्राधिकरण तय करेगा; यहाँ केवल प्रक्रिया बताई गई है। अपने मामले पर मुफ़्त सलाह के लिए ज़िला विधिक सेवा प्राधिकरण (DLSA) से मिलें या NALSA हेल्पलाइन {nalsa_15100} पर कॉल करें।",
+  "hinglish": "Kaun sahi hai, yeh adalat ya pradhikaran tay karega; yahan sirf prakriya batayi gayi hai. Apne maamle par muft salah ke liye District Legal Services Authority (DLSA) se milein ya NALSA Helpline {nalsa_15100} par call karein.",
+  "en": "Who is right is for a court or authority to decide; this explains the procedure only. For free advice on your case, contact the District Legal Services Authority (DLSA) or call the NALSA Helpline {nalsa_15100}."
+ },
+ "abstain": {
+  "no_support": {
+   "hi": "माफ़ कीजिए, मेरे पास मौजूद कानून के पाठ में इस सवाल का भरोसेमंद जवाब नहीं मिला।",
+   "hinglish": "Maaf kijiye, mere paas maujood kanoon ke text mein is sawaal ka bharosemand jawab nahi mila.",
+   "en": "Sorry, I could not find a reliable answer to this in the law texts I have."
+  },
+  "other_state": {
+   "hi": "मैं केवल मध्यप्रदेश और केंद्र के कानूनों की जानकारी देता हूँ; दूसरे राज्य के कानून के लिए वहाँ के ज़िला विधिक सेवा प्राधिकरण से संपर्क करें।",
+   "hinglish": "Main sirf Madhya Pradesh aur Kendra ke kanoonon ki jaankari deta hoon; doosre rajya ke kanoon ke liye wahan ke District Legal Services Authority se sampark karein.",
+   "en": "I only cover Madhya Pradesh and central laws; for another state's law, contact that district's Legal Services Authority."
+  },
+  "expired": {
+   "hi": "जिस अधिसूचना/योजना में इसका जवाब था, उसकी अवधि समाप्त हो चुकी है; ताज़ा जानकारी के लिए संबंधित विभाग से पूछें।",
+   "hinglish": "Jis adhisuchna/yojana mein iska jawab tha, uski avadhi samaapt ho chuki hai; taaza jaankari ke liye sambandhit vibhaag se poochein.",
+   "en": "The notification or scheme that answered this has expired; ask the department concerned for the current position."
+  }
+ }
+}
