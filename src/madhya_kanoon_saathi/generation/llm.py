@@ -19,7 +19,6 @@ from SSM, DEC-009). It is never printed, logged or included in error messages.
 from __future__ import annotations
 
 import json
-import os
 import time
 import urllib.error
 import urllib.request
@@ -27,6 +26,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from madhya_kanoon_saathi.common.env import secret
 from madhya_kanoon_saathi.generation import budget
 
 ENDPOINT = "https://api.sarvam.ai/v1/chat/completions"
@@ -52,15 +52,7 @@ class Completion:
 
 def api_key(env_file: Path = Path(".env")) -> str:
     """SARVAM_API_KEY from the environment, else from a local .env (value never echoed)."""
-    key = os.environ.get("SARVAM_API_KEY", "").strip()
-    if not key and env_file.is_file():
-        for line in env_file.read_text(encoding="utf-8").splitlines():
-            name, _, value = line.partition("=")
-            if name.strip() == "SARVAM_API_KEY":
-                key = value.strip().strip('"').strip("'")
-    if not key:
-        raise RuntimeError("SARVAM_API_KEY is not set (.env locally, SSM in production)")
-    return key
+    return secret("SARVAM_API_KEY", env_file)
 
 
 def request_body(

@@ -85,7 +85,8 @@ class LocalRuntime:
         hits = rerank_hits(
             self.reranker, question, rrf({"bm25": lex, "dense": sem}), self.passages, FINAL
         )
-        return [self._as_retrieved(self.chunks[h.chunk_id]) for h in hits]
+        # the reranker logit rides along for abstention-threshold analysis (eval); not used yet
+        return [self._as_retrieved(self.chunks[h.chunk_id], h.rerank_score) for h in hits]
 
     def versions(self, section_uid: str) -> list[Retrieved]:
         """Every language version of one provision (e.g. RTI Rules r.14 in English and Hindi)."""
@@ -93,7 +94,7 @@ class LocalRuntime:
             self._as_retrieved(c) for c in self.chunks.values() if c["section_uid"] == section_uid
         ]
 
-    def _as_retrieved(self, c: dict[str, Any]) -> Retrieved:
+    def _as_retrieved(self, c: dict[str, Any], rerank: float | None = None) -> Retrieved:
         pages = c.get("locator", {}).get("pages")
         doc: dict[str, Any] = next(
             (d for d in self.manifest["documents"] if d["doc_id"] == c["doc_id"]), {}
@@ -110,6 +111,8 @@ class LocalRuntime:
         checked = max(confirmed) if confirmed else str(doc.get("fetched_at", ""))[:10]
         if checked:
             extra["checked_on"] = checked
+        if rerank is not None:
+            extra["rerank"] = f"{rerank:.4f}"
         return Retrieved(
             chunk_id=c["chunk_id"],
             text=c["text"],

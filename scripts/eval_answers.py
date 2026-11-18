@@ -89,6 +89,24 @@ def pick(
 ) -> list[dict[str, Any]]:
     if ids:
         return [r for r in rows if r["id"] in ids]
+
+    def answerable(r: dict[str, Any]) -> bool:
+        return bool(r["expected_clauses"]) and all(
+            any(
+                covers(p, c["section_uid"] or c["act_id"])
+                or covers(c["section_uid"] or c["act_id"], p)
+                for p in present
+            )
+            for c in r["expected_clauses"]
+        )
+
+    if sample == "indexed":  # every answerable-now row + every refer/crisis row (cheap or free)
+        return [
+            r
+            for r in rows
+            if (r["expected_behavior"] in ("answer", "answer_with_caveat") and answerable(r))
+            or r["expected_behavior"] in ("abstain_refer", "crisis_route")
+        ]
     out: list[dict[str, Any]] = []
     for behaviour, n in SMOKE.items():
         cands = [
@@ -115,7 +133,7 @@ def pick(
     return out
 
 
-def score(row: dict[str, Any], reply: Any) -> dict[str, Any]:
+def score(row: dict[str, Any], reply: Any, top_rerank: float | None) -> dict[str, Any]:
     exp = row["expected_behavior"]
     cited = [c.split("@")[0] for c in reply.log.get("cited", [])]
     if exp in ("answer", "answer_with_caveat"):
@@ -134,7 +152,8 @@ def score(row: dict[str, Any], reply: Any) -> dict[str, Any]:
     inc = [p for p in row.get("must_include", []) if not re.search(p, text, re.I)]
     exc = [p for p in row.get("must_not_include", []) if re.search(p, text, re.I)]
     return {
-        "id": row["id"], "lang": row["language"], "expected": exp, "abstained": reply.abstained,
+        "id": row["id"], "lang": row["language"], "domain": row["domain"], "expected": exp,
+        "abstained": reply.abstained, "top_rerank": top_rerank,
         "reason": reply.reason, "behaviour_ok": behaviour, "cited": cited,
         "cited_expected": cited_expected, "missing_must_include": inc, "found_must_not_include": exc,
         "merits_dropped": reply.log.get("merits_blocks_dropped", 0), "attempts": reply.log.get("attempts"),
@@ -166,7 +185,8 @@ def main() -> int:
         reply = answer(q, retrieve=lambda _q, c=chunks: c, generate=gen, texts=texts, crisis_replies=replies,
                        numbers=numbers, today=date.today(), query_vec=vec, crisis_examples=rt.crisis_index,
                        dispute_examples=rt.dispute_index, versions=rt.versions, allow_draft=True)  # fmt: skip
-        s = score(r, reply)
+        scores = [float(c.extra["rerank"]) for c in chunks if c.extra.get("rerank")]
+        s = score(r, reply, max(scores) if scores else None)
         s["seconds"] = round(time.perf_counter() - t0, 1)
         results.append(s)
         samples.append({"id": r["id"], "question": q, "reply": reply.text})
@@ -179,7 +199,7 @@ def main() -> int:
         return f"{sum(vals)}/{len(vals)}" if vals else "-"
 
     L = [f"# Answer eval ({a.sample}): {GOLDEN.parent.name}, {date.today().isoformat()}", "",
-         f"**Seed golden set (unverified); draft wording and prompt {PROMPT_VERSION}.** Deterministic scores, no judge.", "",
+         f"**Seed golden set (unverified); wording approved (DEC-079), prompt {PROMPT_VERSION}.** Deterministic scores, no judge.", "",
          f"- rows: {len(results)} · paid calls: {stats['paid_calls']} · cache hits: {stats['cache_hits']}", "",
          "| expected | rows | behaviour ok | cited an expected provision | must_include all | must_not_include none |",
          "| --- | --- | --- | --- | --- | --- |"]  # fmt: skip
@@ -190,16 +210,55 @@ def main() -> int:
         L.append(
             f"| {exp} | {len(sub)} | {rate('behaviour_ok', sub)} | {rate('cited_expected', sub)} | {inc}/{len(sub)} | {exc}/{len(sub)} |"
         )
+    for key in ("lang", "domain"):
+        L += [
+            "",
+            f"### By {key} (answer + answer_with_caveat rows)",
+            "",
+            f"| {key} | rows | behaviour ok | cited expected |",
+            "| --- | --- | --- | --- |",
+        ]
+        ans_rows = [x for x in results if x["expected"] in ("answer", "answer_with_caveat")]
+        for v in sorted({x[key] for x in ans_rows}):
+            sub = [x for x in ans_rows if x[key] == v]
+            L.append(
+                f"| {v} | {len(sub)} | {rate('behaviour_ok', sub)} | {rate('cited_expected', sub)} |"
+            )
+    # abstention-threshold candidates (analysis only; the threshold is Malik's decision)
+    good = sorted(
+        x["top_rerank"]
+        for x in results
+        if x["expected"] in ("answer", "answer_with_caveat")
+        and x["behaviour_ok"]
+        and x["top_rerank"] is not None
+    )
+    refer = sorted(
+        x["top_rerank"]
+        for x in results
+        if x["expected"] == "abstain_refer" and x["top_rerank"] is not None
+    )
+    if good and refer:
+        L += [
+            "",
+            "## Abstention threshold candidates (top reranker logit; analysis only)",
+            "",
+            "| threshold | correct answers kept | refer rows blocked |",
+            "| --- | --- | --- |",
+        ]
+        for t in sorted({round(v, 2) for v in good + refer}):
+            kept = sum(v >= t for v in good)
+            blocked = sum(v < t for v in refer)
+            L.append(f"| {t} | {kept}/{len(good)} | {blocked}/{len(refer)} |")
     L += [
         "",
         "## Per row",
         "",
-        "| id | lang | expected | abstained (reason) | ok | cited expected | missing must_include | cited |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| id | lang | expected | abstained (reason) | ok | cited expected | top rerank | missing must_include | cited |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for x in results:
         L.append(
-            f"| {x['id']} | {x['lang']} | {x['expected']} | {x['abstained']} ({x['reason']}) | {x['behaviour_ok']} | {x['cited_expected']} | {', '.join(x['missing_must_include'])} | {', '.join(x['cited'])} |"
+            f"| {x['id']} | {x['lang']} | {x['expected']} | {x['abstained']} ({x['reason']}) | {x['behaviour_ok']} | {x['cited_expected']} | {x['top_rerank']} | {', '.join(x['missing_must_include'])} | {', '.join(x['cited'])} |"
         )
     L += ["", "## Replies", ""]
     for smp in samples:

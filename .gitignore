@@ -59,3 +59,6 @@ CLAUDE.local.md
 # --- Personal agent tooling (Malik; not project files) ---
 .agents/
 .codex/
+
+# local bot logs (redacted records, still not for git; DEC-029)
+data/logs/

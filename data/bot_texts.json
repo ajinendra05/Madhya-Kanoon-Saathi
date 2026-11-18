@@ -1,0 +1,10 @@
+{
+ "schema_version": 1,
+ "status": "draft_pending_approval",
+ "approved_by": null,
+ "approved_on": null,
+ "about": "Telegram bot texts outside answers (W2.5): greeting for /start and /help, the message on an internal error, and the reply to chats outside the local allow-list. Drafted by Claude 2026-11-18; Malik approves. {placeholders} come from data/contacts.yaml. No legal facts.",
+ "start": "नमस्ते! मैं मध्यप्रदेश और केंद्र के कानूनों के बारे में जानकारी देता हूँ (कानूनी सलाह नहीं)। हिंदी, Hinglish या English में अपना सवाल लिखें। हर जवाब कानून के स्रोत के साथ आता है; भरोसेमंद स्रोत न मिले तो मैं साफ़ बता दूँगा।\nआपात स्थिति में तुरंत {erss_112} पर कॉल करें।\n\nHello! I give information (not legal advice) about Madhya Pradesh and central laws. Ask in Hindi, Hinglish or English. Every answer cites the law; if I cannot find a reliable source, I will say so.\nIn an emergency, call {erss_112} right away.",
+ "error": "माफ़ कीजिए, अभी जवाब नहीं बन पाया। कृपया थोड़ी देर बाद फिर पूछें। आपात स्थिति में {erss_112} पर कॉल करें।\nSorry, I could not prepare an answer right now. Please try again later. In an emergency, call {erss_112}.",
+ "not_allowed": "यह बॉट अभी केवल परीक्षण के लिए है।\nThis bot is in private testing for now."
+}
