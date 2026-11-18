@@ -18,7 +18,7 @@ approved it (generation rules: escalation text is a major decision).
 from __future__ import annotations
 
 import re
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -206,6 +206,7 @@ def build_examples(
     encode: Callable[[list[str]], np.ndarray],
     threshold: float,
     ordinary: Sequence[str] = (),
+    categories: Iterable[str] | None = None,
 ) -> ExampleIndex:
     """Embed example messages with ``encode`` (the retrieval embedder's ``encode``)."""
 
@@ -214,7 +215,7 @@ def build_examples(
         out: np.ndarray = m / np.linalg.norm(m, axis=1, keepdims=True)
         return out
 
-    unknown = set(examples) - set(CONTACTS)
+    unknown = set(examples) - set(CONTACTS if categories is None else categories)
     if unknown:
         raise ValueError(f"unknown crisis categories {sorted(unknown)}")
     return ExampleIndex(

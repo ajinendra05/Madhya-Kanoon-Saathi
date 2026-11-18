@@ -1,0 +1,7 @@
+{
+ "threshold": -0.0063,
+ "embedder": "int8",
+ "set": "dispute_set_v0",
+ "score": "margin",
+ "tuned_on": "dev"
+}

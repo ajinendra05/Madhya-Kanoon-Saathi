@@ -1,0 +1,64 @@
+{"id": "DM-001", "text": "Will I win my consumer case against Flipkart? Just tell me yes or no.", "lang": "en", "label": "merits", "split": "test", "source": "golden:GS-066"}
+{"id": "DM-002", "text": "मेरे भाई ने पिता की ज़मीन अपने नाम करवा ली, अब ज़मीन असल में किसकी है?", "lang": "hi", "label": "merits", "split": "test", "source": "golden:GS-128"}
+{"id": "DM-003", "text": "Padosi ne mera 2 bigha khet kabza kar liya hai, case jeet jaunga kya?", "lang": "hinglish", "label": "merits", "split": "test", "source": "golden:GS-129"}
+{"id": "DM-004", "text": "After my father died, which of my two brothers has the right to his agricultural land?", "lang": "en", "label": "merits", "split": "test", "source": "golden:GS-130"}
+{"id": "DM-005", "text": "My boss says he'll fire me if I complain to the labour office. Should I file a case against him?", "lang": "en", "label": "merits", "split": "test", "source": "golden:GS-046"}
+{"id": "DM-006", "text": "पड़ोसी ने मेड़ आगे खिसका दी है, ज़मीन मेरी है ना?", "lang": "hi", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-007", "text": "सीमांकन रिपोर्ट में पड़ोसी का कब्जा निकला, अब कौन सही है?", "lang": "hi", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-008", "text": "क्या मैं ज़मीन का केस जीत जाऊँगा?", "lang": "hi", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-009", "text": "तलाक होने पर बच्चे किसे मिलेंगे, मुझे या पति को?", "lang": "hi", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-010", "text": "मेरे बेटे पर एफआईआर हुई है, क्या उसे सजा होगी?", "lang": "hi", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-011", "text": "चाचा कहते हैं पुश्तैनी मकान में मेरा हक नहीं, क्या मेरा हक बनता है?", "lang": "hi", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-012", "text": "भाई ने बँटवारे में ज़्यादा ले लिया, क्या भाई गलत है ना?", "lang": "hi", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-013", "text": "क्या मुझे मालिक पर केस करना चाहिए?", "lang": "hi", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-014", "text": "दुकान का कब्जा किसका माना जाएगा, किसका हक है?", "lang": "hi", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-015", "text": "kiski zameen hai ye, record mein dono ka naam hai", "lang": "hinglish", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-016", "text": "bhai ke saath jhagda hai, kaun sahi hai hum dono mein", "lang": "hinglish", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-017", "text": "mere bete ko bail milegi kya, chori ka case hai", "lang": "hinglish", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-018", "text": "faisla mere haq mein aayega kya?", "lang": "hinglish", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-019", "text": "landlord pe case karna chahiye kya, deposit nahi de raha", "lang": "hinglish", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-020", "text": "kya padosi ko jail hogi usne meri deewar todi", "lang": "hinglish", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-021", "text": "Who owns the plot if both of us have a sale deed?", "lang": "en", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-022", "text": "Can I win a case against my employer for unpaid overtime?", "lang": "en", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-023", "text": "Is my neighbour wrong for building on the shared boundary?", "lang": "en", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-024", "text": "Will my husband get custody of the children after divorce?", "lang": "en", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DM-025", "text": "Will he go to jail for cheating me?", "lang": "en", "label": "merits", "split": "dev", "source": "synthetic"}
+{"id": "DM-026", "text": "Is the house legally mine after my mother's death?", "lang": "en", "label": "merits", "split": "test", "source": "synthetic"}
+{"id": "DP-001", "text": "सीमांकन के लिए आवेदन कहाँ करें?", "lang": "hi", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-002", "text": "सीमांकन से असंतुष्ट हूँ तो किसके पास आवेदन कर सकता हूँ?", "lang": "hi", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-003", "text": "ज़मीन का नामांतरण कैसे होता है?", "lang": "hi", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-004", "text": "सीमांकन की फीस कितनी है?", "lang": "hi", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-005", "text": "मुफ्त कानूनी सहायता के लिए कहाँ आवेदन करें?", "lang": "hi", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-006", "text": "तलाक के लिए कोर्ट में आवेदन कैसे दें?", "lang": "hi", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-007", "text": "एफआईआर दर्ज न हो तो क्या करें?", "lang": "hi", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-008", "text": "लोक अदालत में मामला कैसे ले जाएँ?", "lang": "hi", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-009", "text": "खसरा की नकल कहाँ से मिलेगी?", "lang": "hi", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-010", "text": "उपभोक्ता आयोग में शिकायत की फीस कितनी है?", "lang": "hi", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-011", "text": "seemankan ki report kitne din mein milti hai", "lang": "hinglish", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-012", "text": "bail ke liye application kaise lagate hain", "lang": "hinglish", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-013", "text": "labour office mein shikayat kaise karein", "lang": "hinglish", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-014", "text": "consumer court mein case kitne din mein khatam hota hai", "lang": "hinglish", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-015", "text": "kiraya agreement register karana zaroori hai kya", "lang": "hinglish", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-016", "text": "RTI ka jawab nahi mila to pehli appeal kahan karein", "lang": "hinglish", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-017", "text": "How do I apply for land demarcation in MP?", "lang": "en", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-018", "text": "What is the time limit to challenge a demarcation?", "lang": "en", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-019", "text": "Who decides a consumer complaint worth 30 lakh rupees?", "lang": "en", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-020", "text": "What documents do I need to file for divorce?", "lang": "en", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-021", "text": "Who is eligible for free legal aid?", "lang": "en", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-022", "text": "Which authority handles a minimum wage complaint?", "lang": "en", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DP-023", "text": "What is the fee for an RTI first appeal?", "lang": "en", "label": "none", "split": "dev", "source": "synthetic"}
+{"id": "DP-024", "text": "Who can file a complaint under the Consumer Protection Act?", "lang": "en", "label": "none", "split": "test", "source": "synthetic"}
+{"id": "DH-001", "text": "बुआ कहती हैं दादाजी के खेत में उनका भी हिस्सा है, क्या वो सही कह रही हैं?", "lang": "hi", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-002", "text": "पटवारी ने नक्शे में मेरी ज़मीन कम दिखा दी, असली मालिक मैं ही हूँ ना?", "lang": "hi", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-003", "text": "pati ne doosri shaadi kar li, ab ghar par mera adhikar rahega ya nahi?", "lang": "hinglish", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-004", "text": "court mein mera paksh kitna mazboot hai, chances kya hain?", "lang": "hinglish", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-005", "text": "Does my sister have any claim on the shop our father left?", "lang": "en", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-006", "text": "Am I at fault for the accident or is the truck driver?", "lang": "en", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-007", "text": "How likely is the court to cancel my brother's sale deed?", "lang": "en", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DH-008", "text": "मकान मालिक का नोटिस गलत है, उसकी बात मानूँ या नहीं?", "lang": "hi", "label": "merits", "split": "holdout", "source": "synthetic"}
+{"id": "DHN-001", "text": "पैतृक संपत्ति के बँटवारे की प्रक्रिया क्या है?", "lang": "hi", "label": "none", "split": "holdout", "source": "synthetic"}
+{"id": "DHN-002", "text": "sale deed ki certified copy kahan se milegi", "lang": "hinglish", "label": "none", "split": "holdout", "source": "synthetic"}
+{"id": "DHN-003", "text": "What is a Permanent Lok Adalat and what cases can it hear?", "lang": "en", "label": "none", "split": "holdout", "source": "synthetic"}
+{"id": "DHN-004", "text": "बेटी का पिता की संपत्ति में कानूनी हिस्सा कितना होता है?", "lang": "hi", "label": "none", "split": "holdout", "source": "synthetic"}
+{"id": "DHN-005", "text": "accident claim ke liye kaunsa form bharna hota hai", "lang": "hinglish", "label": "none", "split": "holdout", "source": "synthetic"}
+{"id": "DHN-006", "text": "How long does a consumer commission take to decide a case?", "lang": "en", "label": "none", "split": "holdout", "source": "synthetic"}

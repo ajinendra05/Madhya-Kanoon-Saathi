@@ -1,0 +1,25 @@
+{
+ "schema_version": 1,
+ "note": "Examples for the dispute detector's embedding layer (DEC-076). 'merits' = asks the bot to judge a dispute or predict an outcome; 'ordinary' = procedural questions on the same topics (contrast anchors). Synthetic, Claude 2026-11-18; none may appear in dispute_set_v0.jsonl. Draft for Malik's review.",
+ "examples": {
+  "merits": [
+   "हमारे खेत की ज़मीन पर असली हक किसका है, मेरा या चचेरे भाई का?",
+   "क्या अदालत मेरे पक्ष में फैसला देगी?",
+   "पड़ोसी का दावा झूठा है ना? बताइए कौन सही है",
+   "क्या मेरे पति को दहेज के केस में सज़ा मिलेगी?",
+   "bata do meri zameen par padosi ka koi haq hai ya nahi",
+   "is case mein main jeetunga ya haarunga",
+   "Tell me honestly, do I have a strong case against my landlord?",
+   "Which of us is the legal owner of the house, me or my stepmother?",
+   "Will the judge give me custody of my daughter?",
+   "Is my employer legally in the wrong here? Yes or no."
+  ]
+ },
+ "ordinary": [
+  "सीमांकन का आवेदन कैसे भरें?", "नामांतरण के लिए कौन से दस्तावेज चाहिए?", "खसरा खतौनी की नकल कैसे निकालें?",
+  "लोक अदालत क्या होती है?", "तलाक की अर्जी कहाँ दी जाती है?", "उपभोक्ता शिकायत कैसे दर्ज करें?",
+  "jamanat ki application kahan lagti hai", "labour court mein case kaise file karein", "registry ke liye kitna stamp duty lagta hai",
+  "How do I file an RTI first appeal?", "What is the process to get free legal aid?", "Where do I register a rent agreement?",
+  "What documents are needed for a succession certificate?", "How do I file a consumer complaint online?"
+ ]
+}
