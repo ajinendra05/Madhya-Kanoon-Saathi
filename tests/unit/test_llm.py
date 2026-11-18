@@ -45,4 +45,30 @@ def test_api_key_from_env_file_and_missing_key(
 def test_messages_carry_chunk_ids_and_language() -> None:
     msgs = build_messages("RTI fee?", [("IN.RTIR2012:r3@en@2012-07-31", "fee of rupees ten")], "hi")
     assert "Hindi (Devanagari)" in msgs[0]["content"]
-    assert "[IN.RTIR2012:r3@en@2012-07-31]" in msgs[1]["content"]
+    assert "[E1]" in msgs[1]["content"]  # short label; code maps it back (ref_map)
+    assert "IN.RTIR2012" not in msgs[1]["content"]
+
+
+def test_parse_answer_maps_labels_and_tolerates_fences_and_trailing_junk() -> None:
+    from madhya_kanoon_saathi.generation.pipeline import parse_answer
+
+    refs = {"E1": "IN.RTIR2012:r3@en@2012-07-31"}
+    obj = {
+        "answer_blocks": [
+            {"text": "x", "citations": [{"ref": "[E1]", "quote": "q"}, {"ref": "E9", "quote": "q"}]}
+        ],
+        "abstain": False,
+        "abstain_reason": None,
+    }
+    fence = "`" * 3
+    raw = fence + "json" + chr(10) + json.dumps(obj) + chr(10) + fence + "   " + chr(10) * 3
+    cits = parse_answer(raw, refs)["answer_blocks"][0]["citations"]
+    assert cits[0]["chunk_id"] == refs["E1"]
+    assert cits[1]["chunk_id"] == "unknown-ref:E9"  # the validator will reject it
+    with pytest.raises(ValueError):
+        parse_answer("no json here", refs)
+
+
+def test_json_object_mode() -> None:
+    body = request_body([{"role": "user", "content": "x"}], "json_object")
+    assert body["response_format"] == {"type": "json_object"}

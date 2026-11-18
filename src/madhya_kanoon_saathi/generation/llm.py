@@ -65,7 +65,7 @@ def api_key(env_file: Path = Path(".env")) -> str:
 
 def request_body(
     messages: list[dict[str, str]],
-    schema: dict[str, Any] | None = None,
+    schema: dict[str, Any] | str | None = None,
     *,
     model: str = MODEL,
     max_tokens: int = 1024,
@@ -79,7 +79,9 @@ def request_body(
         "temperature": temperature,
         "reasoning_effort": reasoning_effort,
     }
-    if schema is not None:
+    if schema == "json_object":  # plain JSON mode; the format is described in the prompt
+        body["response_format"] = {"type": "json_object"}
+    elif schema is not None:
         body["response_format"] = {
             "type": "json_schema",
             # strict=True returned a literal skeleton ("text": "...") on 2026-11-18; non-strict

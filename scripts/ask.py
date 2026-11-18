@@ -23,7 +23,6 @@ from madhya_kanoon_saathi.generation import crisis, dispute, jurisdiction
 from madhya_kanoon_saathi.generation.llm import complete, request_body
 from madhya_kanoon_saathi.generation.local import LocalRuntime
 from madhya_kanoon_saathi.generation.pipeline import answer
-from madhya_kanoon_saathi.generation.prompt import ANSWER_SCHEMA
 
 
 def main() -> int:
@@ -50,7 +49,8 @@ def main() -> int:
 
     def generate(messages: list[dict[str, str]]) -> str:
         comp = complete(
-            request_body(messages, ANSWER_SCHEMA, reasoning_effort="low"), purpose="ask_cli"
+            request_body(messages, "json_object", reasoning_effort="low", max_tokens=1200),
+            purpose="ask_cli",
         )
         print(f"(LLM: {comp.prompt_tokens}+{comp.completion_tokens} tokens, "
               f"~₹{comp.cost_inr:.4f} excl. GST)", file=sys.stderr)  # fmt: skip

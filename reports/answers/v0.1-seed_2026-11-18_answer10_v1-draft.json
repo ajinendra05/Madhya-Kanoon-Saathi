@@ -1,0 +1,176 @@
+[
+ {
+  "id": "GS-005",
+  "lang": "en",
+  "expected": "answer",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RA1908:s17:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 10.7
+ },
+ {
+  "id": "GS-026",
+  "lang": "en",
+  "expected": "answer",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.COW2019:s17:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 15.9
+ },
+ {
+  "id": "GS-032",
+  "lang": "en",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.OSHC2020:s25:ss1",
+   "IN.OSHC2020:s25:ss1:cl_a",
+   "IN.OSHC2020:s25:ss1:cl_b"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 11.9
+ },
+ {
+  "id": "GS-040",
+  "lang": "hi",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.OSHC2020:s55:ss3"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 14.9
+ },
+ {
+  "id": "GS-045",
+  "lang": "hi",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.SSC2020:s128",
+   "IN.SSC2020:s131:ss3:cl_j"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 10.6
+ },
+ {
+  "id": "GS-053",
+  "lang": "hinglish",
+  "expected": "answer",
+  "abstained": true,
+  "reason": "no claim could be verified against the retrieved law",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 9.9
+ },
+ {
+  "id": "GS-058",
+  "lang": "hi",
+  "expected": "answer_with_caveat",
+  "abstained": true,
+  "reason": "उद्धरणों में दुकानदार द्वारा MRP से अधिक पैसे लेने की प्रक्रिया या शिकायत दर्ज करने का उल्लेख नहीं है।",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [
+   "1915"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 13.7
+ },
+ {
+  "id": "GS-063",
+  "lang": "hi",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s2:ss7"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 13.2
+ },
+ {
+  "id": "GS-073",
+  "lang": "hinglish",
+  "expected": "answer",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s6:ss2"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 10.8
+ },
+ {
+  "id": "GS-079",
+  "lang": "en",
+  "expected": "answer",
+  "abstained": false,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s20:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [
+   "250",
+   "25,?000"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 10.2
+ }
+]

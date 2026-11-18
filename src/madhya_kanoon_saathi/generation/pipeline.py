@@ -33,7 +33,7 @@ import numpy as np
 from madhya_kanoon_saathi.common.redact import redact
 from madhya_kanoon_saathi.generation import crisis, dispute, jurisdiction
 from madhya_kanoon_saathi.generation.crisis import ExampleIndex
-from madhya_kanoon_saathi.generation.prompt import build_messages
+from madhya_kanoon_saathi.generation.prompt import build_messages, ref_map
 from madhya_kanoon_saathi.generation.validator import Validation, decide, validate
 
 _DEVANAGARI = re.compile(r"[ऀ-ॿ]")
@@ -226,7 +226,8 @@ def answer(
     messages = build_messages(
         question, [(r.chunk_id, r.text) for r in chunks], lang, procedure_only=dp.is_dispute
     )
-    first = _validate_raw(generate(messages), context)
+    refs = ref_map([(r.chunk_id, r.text) for r in chunks])
+    first = _validate_raw(generate(messages), context, refs)
     retry = None
     if not first.all_supported and not first.abstained:
         feedback = "; ".join(r for _, r in first.v.dropped) or "; ".join(first.v.errors)
@@ -236,10 +237,11 @@ def answer(
                 "role": "user",
                 "content": "Your previous answer had unsupported citations ("
                 + feedback[:500]
-                + "). Answer again; copy every quote exactly from one excerpt.",
+                + "). Answer again: cite the excerpt label (E1, E2, ...) and copy every"
+                " quote exactly.",
             },
         ]
-        retry = _validate_raw(generate(messages), context)
+        retry = _validate_raw(generate(messages), context, refs)
     if first.abstained and not first.v.supported:
         decision_blocks, abstain, reason, attempts = [], True, first.reason, 1
     else:
@@ -278,10 +280,31 @@ class _Raw:
         return self.v.all_supported
 
 
-def _validate_raw(content: str, context: Mapping[str, str]) -> _Raw:
+_FENCE = re.compile(r"^```(?:json)?\s*|\s*```\s*$")
+
+
+def parse_answer(content: str, refs: Mapping[str, str]) -> Any:
+    """Tolerant parse: strip code fences, ignore trailing junk after the first JSON object, and map
+    excerpt labels (E1, E2, ...) back to chunk ids. Raises ValueError if no JSON object is found.
+    Citation checking itself is unchanged (validator)."""
+    text = _FENCE.sub("", content.strip())
+    start = text.find("{")
+    if start < 0:
+        raise ValueError("no JSON object")
+    ans, _ = json.JSONDecoder().raw_decode(text[start:])
+    if isinstance(ans, dict):
+        for b in ans.get("answer_blocks") or []:
+            for c in (b.get("citations") or []) if isinstance(b, dict) else []:
+                if isinstance(c, dict) and "ref" in c and "chunk_id" not in c:
+                    label = str(c["ref"]).strip("[] ")
+                    c["chunk_id"] = refs.get(label, f"unknown-ref:{label}")
+    return ans
+
+
+def _validate_raw(content: str, context: Mapping[str, str], refs: Mapping[str, str]) -> _Raw:
     try:
-        ans = json.loads(content)
-    except (json.JSONDecodeError, TypeError):
+        ans = parse_answer(content, refs)
+    except (ValueError, TypeError):
         return _Raw(validate(None, context), False, "invalid JSON")
     abstained = isinstance(ans, dict) and ans.get("abstain") is True
     reason = ans.get("abstain_reason") if isinstance(ans, dict) else None
