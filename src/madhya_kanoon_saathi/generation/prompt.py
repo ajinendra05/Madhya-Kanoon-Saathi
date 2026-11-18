@@ -1,5 +1,5 @@
-"""Generator prompt and answer schema (W2.1). PROMPT_VERSION v0 is a DRAFT pending Malik's approval
-(generation rules: prompts are a major decision); it is used for the DEC-077 contract test only.
+"""Generator prompt and answer schema (W2.1). PROMPT_VERSION v1 approved by Malik on 2026-11-18
+(DEC-079; generation rules: prompt changes are a major decision and need a new approval).
 
 The model sees only the retrieved chunks, each with its ``chunk_id``, and must answer in the output
 contract below; :mod:`validator` then checks every citation deterministically.
@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from typing import Any
 
-PROMPT_VERSION = "v1-draft"  # v1: E-labels + JSON in prompt (eval 2026-11-18)
+PROMPT_VERSION = "v1"  # E-labels + JSON in prompt; approved by Malik 2026-11-18 (DEC-079)
 
 ANSWER_SCHEMA: dict[str, Any] = {
     "type": "object",

@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "status": "draft_pending_approval",
- "approved_by": null,
- "approved_on": null,
+ "status": "approved",
+ "approved_by": "malik",
+ "approved_on": "2026-11-18",
  "about": "Crisis reply wording (DEC-074 item 2, DEC-075). Drafted by Claude 2026-11-17; must be approved by Malik before the bot uses it (generation rules). Numbers are never written here: {contact_id} placeholders are filled from data/contacts.yaml. 'full' = a rule fired (this text comes first; for self_harm it is the whole reply). 'note' = only the embedding layer fired (one line after the normal answer).",
  "full": {
   "self_harm": {

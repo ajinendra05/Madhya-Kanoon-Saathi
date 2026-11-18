@@ -864,6 +864,15 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: a hard, code-enforced ceiling, not a habit; the ledger shows exactly where the money went.
 - Effects: at ~₹0.02–0.03 per question (~1.2K in / 0.6K out tokens) the cap allows a few hundred questions, enough for the contract test, local trials and roughly one or two golden-set runs.
 
+## DEC-079 — User-facing wording, crisis replies and prompt v1 approved
+- Date: 2026-11-18 | Status: accepted ("2 is approved") | Approved by: Malik | Approves the drafts under DEC-074/075/076/077 (OPEN_QUESTIONS S27a, S29b)
+- Decision: approved as committed on 2026-11-18:
+  1. `data/answer_texts.json` v2 (footer with LSA Act s.12 eligibility, per-source "official copy last checked" line, status caveats, OCR scan labels by source type, RTI r.14 note with both texts, wage qualification with notification number / authority / validity / review date, dispute referral, abstention messages), hi / hinglish / en;
+  2. `data/safety/crisis_replies.json` (full tier per category + note tier), hi / hinglish / en;
+  3. generator prompt **v1** (`generation/prompt.py`: E-label citations, JSON format in the prompt, procedure-only mode).
+  Both JSON files carry `status: approved, approved_by: malik, approved_on: 2026-11-18`; the code refuses unapproved wording.
+- Effects: the bot may now show these texts to users; any later wording or prompt change needs a new approval (generation rules). Still recommended: a fluent Hindi/Hinglish read-through before the public demo (not blocking).
+
 ---
 
 ## Pending decisions (not yet made)

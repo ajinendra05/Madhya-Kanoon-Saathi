@@ -1,8 +1,8 @@
 {
  "schema_version": 2,
- "status": "draft_pending_approval",
- "approved_by": null,
- "approved_on": null,
+ "status": "approved",
+ "approved_by": "malik",
+ "approved_on": "2026-11-18",
  "about": "Everything the bot adds around a generated answer (W2.1; generation rules: user-facing wording is a major decision). v2 2026-11-18 after review: per-source check dates instead of 'law as of today', notification number + authority in wage answers, RTI r.14 note only with both versions, dispute wording backed by a deterministic merits screen, scan label by source type, legal-aid eligibility per LSA Act s.12, unused 'expired' message removed. {placeholders} are filled by code from contacts.yaml and the corpus manifest. No legal facts are written here. Hindi/Hinglish still need a fluent reviewer.",
  "sources_checked": {
   "hi": "आधार: ऊपर दिए गए स्रोत (आधिकारिक प्रति अंतिम बार जाँची गई: {checks})।",
