@@ -1,18 +1,18 @@
 {
- "schema_version": 1,
+ "schema_version": 2,
  "status": "draft_pending_approval",
  "approved_by": null,
  "approved_on": null,
- "about": "Everything the bot adds around a generated answer (W2.1; generation rules: user-facing wording is a major decision). Drafted by Claude 2026-11-18 from DEC-050, DEC-052, DEC-044, DEC-071/077, DEC-033/038/076; Malik approves or edits, then sets status to 'approved'. {placeholders} are filled by code: {date} law-as-of date, {page}/{url} source locator, {numbers}/{nalsa_15100} from contacts.yaml, {notification}/{valid_from}/{valid_to} from the corpus manifest. No legal facts are written here.",
- "law_as_of": {
-  "hi": "कानून {date} की स्थिति के अनुसार।",
-  "hinglish": "Kanoon {date} ki sthiti ke anusaar.",
-  "en": "Law as of {date}."
+ "about": "Everything the bot adds around a generated answer (W2.1; generation rules: user-facing wording is a major decision). v2 2026-11-18 after review: per-source check dates instead of 'law as of today', notification number + authority in wage answers, RTI r.14 note only with both versions, dispute wording backed by a deterministic merits screen, scan label by source type, legal-aid eligibility per LSA Act s.12, unused 'expired' message removed. {placeholders} are filled by code from contacts.yaml and the corpus manifest. No legal facts are written here. Hindi/Hinglish still need a fluent reviewer.",
+ "sources_checked": {
+  "hi": "आधार: ऊपर दिए गए स्रोत (आधिकारिक प्रति अंतिम बार जाँची गई: {checks})।",
+  "hinglish": "Aadhaar: upar diye gaye srot (official copy aakhri baar jaanchi gayi: {checks}).",
+  "en": "Based on the sources cited above (official copies last checked: {checks})."
  },
  "footer": {
-  "hi": "यह कानूनी जानकारी है, कानूनी सलाह नहीं। अपने मामले के लिए ज़िला विधिक सेवा प्राधिकरण (DLSA) से मुफ़्त सलाह लें: NALSA हेल्पलाइन {nalsa_15100}।",
-  "hinglish": "Yeh kanooni jaankari hai, kanooni salah nahi. Apne maamle ke liye District Legal Services Authority (DLSA) se muft salah lein: NALSA Helpline {nalsa_15100}.",
-  "en": "This is legal information, not legal advice. For your own case, get free advice from the District Legal Services Authority (DLSA): NALSA Helpline {nalsa_15100}."
+  "hi": "यह कानूनी जानकारी है, कानूनी सलाह नहीं। अपने मामले के लिए ज़िला विधिक सेवा प्राधिकरण (DLSA) से संपर्क करें; मुफ़्त कानूनी सेवाएँ विधिक सेवा प्राधिकरण अधिनियम, 1987 की धारा 12 की पात्रता पर निर्भर हैं। NALSA हेल्पलाइन: {nalsa_15100}।",
+  "hinglish": "Yeh kanooni jaankari hai, kanooni salah nahi. Apne maamle ke liye District Legal Services Authority (DLSA) se sampark karein; muft kanooni sevaayein Legal Services Authorities Act, 1987 ki dhara 12 ki paatrata par nirbhar hain. NALSA Helpline: {nalsa_15100}.",
+  "en": "This is legal information, not legal advice. For your own case, contact the District Legal Services Authority (DLSA); free legal services depend on eligibility under section 12 of the Legal Services Authorities Act, 1987. NALSA Helpline: {nalsa_15100}."
  },
  "status_caveat": {
   "draft": {
@@ -32,12 +32,12 @@
   },
   "sub_judice_flag": {
    "hi": "ध्यान दें: इस प्रावधान को अदालत में चुनौती दी गई है।",
-   "hinglish": "Dhyan dein: is pravdhaan ko adalat mein chunauti di gayi hai.",
+   "hinglish": "Dhyan dein: is praavdhaan ko adalat mein chunauti di gayi hai.",
    "en": "Note: this provision has been challenged in court."
   },
   "passed_awaiting_assent": {
-   "hi": "ध्यान दें: यह विधेयक पारित है पर अभी स्वीकृति (अनुमति) की प्रतीक्षा में है, इसलिए कानून नहीं बना।",
-   "hinglish": "Dhyan dein: yeh vidheyak paarit hai par abhi sweekriti ki prateeksha mein hai, isliye kanoon nahi bana.",
+   "hi": "ध्यान दें: यह विधेयक पारित है पर अभी अनुमति की प्रतीक्षा में है, इसलिए कानून नहीं बना।",
+   "hinglish": "Dhyan dein: yeh vidheyak paarit hai par abhi anumati (assent) ki prateeksha mein hai, isliye kanoon nahi bana.",
    "en": "Note: this bill has been passed but awaits assent, so it is not law yet."
   },
   "proposal": {
@@ -46,41 +46,47 @@
    "en": "Note: this is only a proposal, not law."
   }
  },
- "scan_label": {
-  "hi": "(स्कैन की गई प्रति से — आधिकारिक PDF का पृष्ठ {page} देखें: {url})",
-  "hinglish": "(scan ki gayi prati se — official PDF ka page {page} dekhein: {url})",
-  "en": "(from a scanned copy — check page {page} of the official PDF: {url})"
+ "scan_label_official": {
+  "hi": "(आधिकारिक PDF की स्कैन प्रति से — पृष्ठ {page} देखें: {url})",
+  "hinglish": "(official PDF ki scan prati se — page {page} dekhein: {url})",
+  "en": "(from a scanned official PDF — check page {page}: {url})"
+ },
+ "scan_label_other": {
+  "hi": "(स्कैन की गई प्रति से, स्रोत {host} — पृष्ठ {page} देखें: {url})",
+  "hinglish": "(scan ki gayi prati se, srot {host} — page {page} dekhein: {url})",
+  "en": "(from a scanned copy hosted at {host} — check page {page}: {url})"
  },
  "rti_r14_note": {
-  "hi": "ध्यान दें: इस नियम के अंग्रेज़ी पाठ में रजिस्ट्री डाक (पावती सहित) भी लिखा है; हिंदी पाठ में नहीं।",
-  "hinglish": "Dhyan dein: is niyam ke English text mein registered post (acknowledgement due) bhi likha hai; Hindi text mein nahi.",
-  "en": "Note: the English text of this rule also lists registered post with acknowledgement due; the Hindi text does not."
+  "hi": "ध्यान दें: इस नियम के अंग्रेज़ी पाठ में रजिस्ट्री डाक (पावती सहित) भी लिखा है; हिंदी पाठ में नहीं। दोनों पाठ: {refs}",
+  "hinglish": "Dhyan dein: is niyam ke English text mein registered post (acknowledgement due) bhi likha hai; Hindi text mein nahi. Dono text: {refs}",
+  "en": "Note: the English text of this rule also lists registered post with acknowledgement due; the Hindi text does not. Both texts: {refs}"
  },
  "wage_qualification": {
-  "hi": "ये दरें श्रमायुक्त, मध्यप्रदेश की अधिसूचना {notification} के अनुसार हैं, जो {valid_from} से {valid_to} तक लागू हैं। यह अधिसूचना न्यूनतम वेतन अधिनियम, 1948 के अंतर्गत जारी हुई है; वेतन संहिता, 2019 की धारा 69(2) के तहत इसके जारी रहने का ठोस तर्क है, पर संहिता के तहत इसकी वैधता पर अदालत ने निर्णय नहीं दिया है। विवाद हो तो श्रम कार्यालय से संपर्क करें; मुफ़्त कानूनी सहायता: DLSA।",
-  "hinglish": "Ye daren Shramayukt, Madhya Pradesh ki adhisuchna {notification} ke anusaar hain, jo {valid_from} se {valid_to} tak laagu hain. Yeh adhisuchna Minimum Wages Act, 1948 ke antargat jaari hui hai; Code on Wages, 2019 ki dhara 69(2) ke tahat iske jaari rehne ka thos tark hai, par Code ke tahat iski vaidhata par adalat ne nirnay nahi diya hai. Vivaad ho to Labour Office se sampark karein; muft kanooni sahayata: DLSA.",
-  "en": "These rates are from Labour Commissioner, Madhya Pradesh notification {notification}, valid from {valid_from} to {valid_to}. The notification was issued under the Minimum Wages Act, 1948; there is a substantial argument that it continues under section 69(2) of the Code on Wages, 2019, but no court has decided its validity under the Code. For disputes contact the Labour Office; free legal aid: DLSA."
+  "hi": "ये दरें {publisher} की अधिसूचना क्रमांक {notification_no} के अनुसार हैं, जो {valid_from} से {valid_to} तक लागू हैं। यह अधिसूचना न्यूनतम वेतन अधिनियम, 1948 के अंतर्गत जारी हुई है; यह वेतन संहिता, 2019 की धारा 69(2) के तहत जारी रह सकती है, पर {reviewed_on} तक संहिता के तहत इसकी वैधता पर अदालत का कोई निर्णय नहीं मिला। विवाद हो तो श्रम कार्यालय से संपर्क करें; कानूनी सहायता: DLSA।",
+  "hinglish": "Ye daren {publisher} ki adhisuchna kramank {notification_no} ke anusaar hain, jo {valid_from} se {valid_to} tak laagu hain. Yeh adhisuchna Minimum Wages Act, 1948 ke antargat jaari hui hai; yeh Code on Wages, 2019 ki dhara 69(2) ke tahat jaari reh sakti hai, par {reviewed_on} tak Code ke tahat iski vaidhata par adalat ka koi nirnay nahi mila. Vivaad ho to Labour Office se sampark karein; kanooni sahayata: DLSA.",
+  "en": "These rates are from notification no. {notification_no} of the {publisher}, valid from {valid_from} to {valid_to}. It was issued under the Minimum Wages Act, 1948; it may continue under section 69(2) of the Code on Wages, 2019, but as of {reviewed_on} no court decision on its validity under the Code was found. For disputes contact the Labour Office; legal aid: DLSA."
+ },
+ "wage_qualification_meta": {
+  "basis": "DEC-050 item 1(c); DEC-042",
+  "reviewed_on": "2026-11-08",
+  "open_review": "L7: a human MP labour-law advocate has not yet reviewed this wording",
+  "update_rule": "law-watch (DEC-013, LW1) flags any court ruling or new wage notification; the wording and reviewed_on are then re-approved by Malik before use"
  },
  "dispute_referral": {
-  "hi": "कौन सही है, यह अदालत या प्राधिकरण तय करेगा; यहाँ केवल प्रक्रिया बताई गई है। अपने मामले पर मुफ़्त सलाह के लिए ज़िला विधिक सेवा प्राधिकरण (DLSA) से मिलें या NALSA हेल्पलाइन {nalsa_15100} पर कॉल करें।",
-  "hinglish": "Kaun sahi hai, yeh adalat ya pradhikaran tay karega; yahan sirf prakriya batayi gayi hai. Apne maamle par muft salah ke liye District Legal Services Authority (DLSA) se milein ya NALSA Helpline {nalsa_15100} par call karein.",
-  "en": "Who is right is for a court or authority to decide; this explains the procedure only. For free advice on your case, contact the District Legal Services Authority (DLSA) or call the NALSA Helpline {nalsa_15100}."
+  "hi": "यह उत्तर तय नहीं करता कि कौन सही है; यह अदालत या संबंधित प्राधिकरण तय करेगा। अपने मामले पर सलाह के लिए ज़िला विधिक सेवा प्राधिकरण (DLSA) से संपर्क करें या NALSA हेल्पलाइन {nalsa_15100} पर कॉल करें।",
+  "hinglish": "Yeh jawab tay nahi karta ki kaun sahi hai; yeh adalat ya sambandhit pradhikaran tay karega. Apne maamle par salah ke liye District Legal Services Authority (DLSA) se sampark karein ya NALSA Helpline {nalsa_15100} par call karein.",
+  "en": "This answer does not decide who is right; that is for a court or the authority concerned. For advice on your case, contact the District Legal Services Authority (DLSA) or call the NALSA Helpline {nalsa_15100}."
  },
  "abstain": {
   "no_support": {
-   "hi": "माफ़ कीजिए, मेरे पास मौजूद कानून के पाठ में इस सवाल का भरोसेमंद जवाब नहीं मिला।",
-   "hinglish": "Maaf kijiye, mere paas maujood kanoon ke text mein is sawaal ka bharosemand jawab nahi mila.",
-   "en": "Sorry, I could not find a reliable answer to this in the law texts I have."
+   "hi": "माफ़ कीजिए, मेरे पास मौजूद स्रोतों में इस सवाल का भरोसेमंद जवाब नहीं मिला।",
+   "hinglish": "Maaf kijiye, mere paas maujood srot mein is sawaal ka bharosemand jawab nahi mila.",
+   "en": "Sorry, I could not find a reliable answer to this in the sources I have."
   },
   "other_state": {
    "hi": "मैं केवल मध्यप्रदेश और केंद्र के कानूनों की जानकारी देता हूँ; दूसरे राज्य के कानून के लिए वहाँ के ज़िला विधिक सेवा प्राधिकरण से संपर्क करें।",
    "hinglish": "Main sirf Madhya Pradesh aur Kendra ke kanoonon ki jaankari deta hoon; doosre rajya ke kanoon ke liye wahan ke District Legal Services Authority se sampark karein.",
    "en": "I only cover Madhya Pradesh and central laws; for another state's law, contact that district's Legal Services Authority."
-  },
-  "expired": {
-   "hi": "जिस अधिसूचना/योजना में इसका जवाब था, उसकी अवधि समाप्त हो चुकी है; ताज़ा जानकारी के लिए संबंधित विभाग से पूछें।",
-   "hinglish": "Jis adhisuchna/yojana mein iska jawab tha, uski avadhi samaapt ho chuki hai; taaza jaankari ke liye sambandhit vibhaag se poochein.",
-   "en": "The notification or scheme that answered this has expired; ask the department concerned for the current position."
   }
  }
 }

@@ -87,21 +87,29 @@ class LocalRuntime:
         )
         return [self._as_retrieved(self.chunks[h.chunk_id]) for h in hits]
 
+    def versions(self, section_uid: str) -> list[Retrieved]:
+        """Every language version of one provision (e.g. RTI Rules r.14 in English and Hindi)."""
+        return [
+            self._as_retrieved(c) for c in self.chunks.values() if c["section_uid"] == section_uid
+        ]
+
     def _as_retrieved(self, c: dict[str, Any]) -> Retrieved:
         pages = c.get("locator", {}).get("pages")
-        extra: dict[str, str] = {}
-        if c.get("valid_from"):
-            extra["valid_from"] = c["valid_from"]
-        if c.get("valid_to"):
-            extra["valid_to"] = c["valid_to"]
-        inst: dict[str, Any] = next(
-            (i for i in self.manifest["instruments"] if i["instrument_id"] == c["instrument_id"]),
-            {},
+        doc: dict[str, Any] = next(
+            (d for d in self.manifest["documents"] if d["doc_id"] == c["doc_id"]), {}
         )
-        # no structured notification number in the manifest yet (OPEN_QUESTIONS S30): the
-        # official title stands in for it
-        title = inst.get("title_hi") if c.get("lang") == "hi" else inst.get("title_en")
-        extra["notification"] = title or c["instrument_id"]
+        extra: dict[str, str] = {}
+        # wage answers (DEC-050): number, issuing authority and validity from the manifest document
+        for key in ("notification_no", "publisher", "valid_from", "valid_to"):
+            if doc.get(key):
+                extra[key] = str(doc[key])
+        # when the official copy was last checked: the latest confirmed verification, else fetch
+        confirmed = [
+            v["on"] for v in doc.get("verifications", []) if v.get("result") == "confirmed"
+        ]
+        checked = max(confirmed) if confirmed else str(doc.get("fetched_at", ""))[:10]
+        if checked:
+            extra["checked_on"] = checked
         return Retrieved(
             chunk_id=c["chunk_id"],
             text=c["text"],

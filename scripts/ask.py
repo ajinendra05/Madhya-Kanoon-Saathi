@@ -67,6 +67,7 @@ def main() -> int:
         query_vec=vec,
         crisis_examples=rt.crisis_index,
         dispute_examples=rt.dispute_index,
+        versions=rt.versions,
         allow_draft=a.allow_draft,
     )
     print(reply.text)

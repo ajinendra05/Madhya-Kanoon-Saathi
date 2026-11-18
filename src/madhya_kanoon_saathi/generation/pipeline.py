@@ -26,6 +26,7 @@ from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import date
 from typing import Any
+from urllib.parse import urlparse
 
 import numpy as np
 
@@ -100,27 +101,74 @@ def _render_blocks(
             r = chunks[c["chunk_id"]]
             cite = f"“{c['quote'].strip()}” [{r.section_uid}]"
             if r.extraction.startswith("ocr:"):
-                page = str(r.pages[0]) if r.pages else "?"
-                cite += " " + _fill(texts["scan_label"][lang], {"page": page, "url": r.source_url})
+                cite += " " + _scan_label(r, lang, texts)
             lines.append(cite)
         out.append("\n".join(lines))
     return out
 
 
+def source_host(url: str) -> str:
+    """Host that published the file; for an Internet Archive ``id_`` copy, the original host."""
+    host = urlparse(url).netloc.lower()
+    if host.endswith("archive.org"):
+        inner = re.search(r"/web/\d+[a-z_]*/(https?://[^\s]+)", url)
+        if inner:
+            return urlparse(inner.group(1)).netloc.lower()
+    return host
+
+
+def is_official_host(host: str) -> bool:
+    """Government domains; archive copies of them count too (DEC-049)."""
+    return host.endswith((".gov.in", ".nic.in"))
+
+
+def _scan_label(r: Retrieved, lang: str, texts: Mapping[str, Any]) -> str:
+    page = str(r.pages[0]) if r.pages else "?"
+    host = source_host(r.source_url)
+    key = "scan_label_official" if is_official_host(host) else "scan_label_other"
+    return _fill(texts[key][lang], {"page": page, "url": r.source_url, "host": host or "?"})
+
+
+def _ref(r: Retrieved) -> str:
+    lang = "English" if "@en@" in r.chunk_id else "हिंदी" if "@hi@" in r.chunk_id else "?"
+    page = f" p.{r.pages[0]}" if r.pages else ""
+    return f"[{r.section_uid}, {lang}{page}: {r.source_url}]"
+
+
 def _notes(
-    used: Sequence[Retrieved], lang: str, texts: Mapping[str, Any], numbers: Mapping[str, str]
+    used: Sequence[Retrieved],
+    lang: str,
+    texts: Mapping[str, Any],
+    numbers: Mapping[str, str],
+    versions: Callable[[str], Sequence[Retrieved]] | None,
 ) -> list[str]:
     notes: list[str] = []
     for status in dict.fromkeys(r.status for r in used):
         if status in texts["status_caveat"]:
             notes.append(texts["status_caveat"][status][lang])
-    if any(r.section_uid.startswith(RTI_R14) for r in used):
-        notes.append(texts["rti_r14_note"][lang])
+    if versions is not None and any(r.section_uid.startswith(RTI_R14) for r in used):
+        # DEC-077: the difference is stated only with both official texts referenced
+        both = {("en" if "@en@" in v.chunk_id else "hi"): v for v in versions(RTI_R14)}
+        if {"en", "hi"} <= set(both):
+            refs = " ".join(_ref(both[k]) for k in ("en", "hi"))
+            notes.append(_fill(texts["rti_r14_note"][lang], {"refs": refs}))
     for r in used:
         if r.chunk_id.startswith(WAGE_DOC_PREFIX):
-            notes.append(_fill(texts["wage_qualification"][lang], {**r.extra, **numbers}))
+            needed = ("notification_no", "publisher", "valid_from", "valid_to")
+            if all(r.extra.get(k) for k in needed):  # DEC-050: never a wage line without them
+                meta = texts["wage_qualification_meta"]
+                values = {**r.extra, **numbers, "reviewed_on": meta["reviewed_on"]}
+                notes.append(_fill(texts["wage_qualification"][lang], values))
             break
     return notes
+
+
+def _sources_checked(used: Sequence[Retrieved], lang: str, texts: Mapping[str, Any]) -> str:
+    seen: dict[str, str] = {}
+    for r in used:
+        seen.setdefault(r.section_uid.split(":")[0], r.extra.get("checked_on", "?"))
+    checks = "; ".join(f"{inst} {on}" for inst, on in seen.items())
+    return _fill(texts["sources_checked"][lang], {"checks": checks})
 
 
 def answer(
@@ -135,6 +183,7 @@ def answer(
     query_vec: np.ndarray | None = None,
     crisis_examples: ExampleIndex | None = None,
     dispute_examples: ExampleIndex | None = None,
+    versions: Callable[[str], Sequence[Retrieved]] | None = None,
     allow_draft: bool = False,
 ) -> Reply:
     """Answer one question end to end; see the module docstring for the order of checks."""
@@ -166,7 +215,8 @@ def answer(
     dp = dispute.route(question, query_vec, dispute_examples)
     log["dispute"] = {"flag": dp.is_dispute, "domains": list(dp.domains)}
 
-    chunks = list(retrieve(question))
+    # repealed text never reaches the generator (retrieval filters it too; this is the guarantee)
+    chunks = [r for r in retrieve(question) if r.status != "repealed"]
     by_id = {r.chunk_id: r for r in chunks}
     context = {r.chunk_id: r.text for r in chunks}
     log["retrieved"] = [r.chunk_id for r in chunks]
@@ -195,6 +245,12 @@ def answer(
     else:
         d = decide(first.v, retry.v if retry else None)
         decision_blocks, abstain, reason, attempts = d.blocks, d.abstain, d.reason, d.attempts
+    # the bot never judges merits or predicts outcomes, whatever the question (DEC-033.6)
+    merits = [b for b in decision_blocks if dispute.judges_merits(b["text"])]
+    decision_blocks = [b for b in decision_blocks if b not in merits]
+    log["merits_blocks_dropped"] = len(merits)
+    if merits and not decision_blocks:
+        abstain, reason = True, "answer judged merits"
     log["attempts"] = attempts
     log["abstain_reason"] = reason
     if abstain:
@@ -204,10 +260,10 @@ def answer(
     used = list({r.chunk_id: r for r in used}.values())
     log["cited"] = [r.chunk_id for r in used]
     body = _render_blocks(decision_blocks, by_id, lang, texts)
-    body += _notes(used, lang, texts, numbers)
+    body += _notes(used, lang, texts, numbers, versions)
     if dp.is_dispute:
         body.append(_fill(texts["dispute_referral"][lang], nalsa))
-    body.append(_fill(texts["law_as_of"][lang], {"date": today.isoformat()}))
+    body.append(_sources_checked(used, lang, texts))
     return wrap(body, False, None)
 
 

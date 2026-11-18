@@ -20,6 +20,7 @@ RTI = Retrieved(
     extraction="ocr:bodhan@cd50d301",
     pages=(2, 2),
     source_url="https://example.gov.in/rtir2012.pdf",
+    extra={"checked_on": "2026-11-08"},
 )
 GOOD = json.dumps(
     {
@@ -72,8 +73,9 @@ def test_supported_answer_is_rendered_with_quote_scan_label_and_footer() -> None
     r = run("RTI ki fees kitni hai, mera number 9876543210", llm)
     assert not r.abstained and len(llm.calls) == 1
     assert "“accompanied by a fee of rupees ten” [IN.RTIR2012:r3]" in r.text
-    assert "scan ki gayi prati se" in r.text and "page 2" in r.text
-    assert "Kanoon 2026-11-18" in r.text and NUMBERS["nalsa_15100"] in r.text
+    assert "official PDF ki scan prati se" in r.text and "page 2" in r.text
+    assert "IN.RTIR2012 2026-11-08" in r.text  # per-source check date, not today's date
+    assert "2026-11-18" not in r.text and NUMBERS["nalsa_15100"] in r.text
     assert "9876543210" not in r.log["question"]  # log is redacted
     assert r.log["cited"] == [RTI.chunk_id]
 
@@ -108,42 +110,112 @@ def test_dispute_adds_procedure_only_instruction_and_referral() -> None:
     llm = FakeLLM(GOOD)
     r = run("RTI ka case jeet jaunga kya", llm)
     assert "procedure" in llm.calls[0][0]["content"]
-    assert "Kaun sahi hai" in r.text
+    assert "tay nahi karta ki kaun sahi hai" in r.text
 
 
-def test_wage_qualification_and_rti_r14_note() -> None:
-    wage = Retrieved(
-        chunk_id="MP.MWVDAOCT2026:sch_da@hi@2026-10-01",
-        text="अनुसूची - द (कृषि नियोजन) अकुशल 7660 255.33 2430 81.00 10090 336.32 336",
-        section_uid="MP.MWVDAOCT2026:sch_da",
-        extra={"notification": "22288-337", "valid_from": "01.10.2026", "valid_to": "31.03.2027"},
-    )
-    r14 = Retrieved(
-        chunk_id="IN.RTIR2012:r14@en@2012-07-31",
-        text="14. Service of notice by Commission.—The Commission may issue the notice",
+WAGE = Retrieved(
+    chunk_id="MP.MWVDAOCT2026:sch_da@hi@2026-10-01",
+    text="अनुसूची - द (कृषि नियोजन) अकुशल 7660 255.33 2430 81.00 10090 336.32 336",
+    section_uid="MP.MWVDAOCT2026:sch_da",
+    extra={
+        "notification_no": "1/11/अन्वे./पांच/2024/22288-337",
+        "publisher": "Labour Commissioner, Madhya Pradesh, Indore",
+        "valid_from": "2026-10-01",
+        "valid_to": "2027-03-31",
+        "checked_on": "2026-11-06",
+    },
+)
+R14 = {
+    lang: Retrieved(
+        chunk_id=f"IN.RTIR2012:r14@{lang}@2012-07-31",
+        text=text,
         section_uid="IN.RTIR2012:r14",
+        pages=(page, page),
+        source_url=f"https://example.gov.in/rtir2012_{lang}.pdf",
     )
-    out = json.dumps(
-        {
-            "answer_blocks": [
-                {
-                    "text": "a",
-                    "citations": [{"chunk_id": wage.chunk_id, "quote": "अकुशल 7660 255.33"}],
-                },
-                {
-                    "text": "b",
-                    "citations": [
-                        {"chunk_id": r14.chunk_id, "quote": "Commission may issue the notice"}
-                    ],
-                },
-            ],
-            "abstain": False,
-            "abstain_reason": None,
+    for lang, text, page in (
+        ("en", "14. Service of notice by Commission.—The Commission may issue the notice", 3),
+        ("hi", "14. आयोग द्वारा सूचना की तामील – आयोग, नाम से सूचना जारी कर सकेगा", 4),
+    )
+}
+
+
+def one_block(chunk: Retrieved, quote: str, text: str = "a") -> str:
+    blocks = [{"text": text, "citations": [{"chunk_id": chunk.chunk_id, "quote": quote}]}]
+    return json.dumps({"answer_blocks": blocks, "abstain": False, "abstain_reason": None})
+
+
+def test_wage_line_has_number_authority_validity_and_review_date() -> None:
+    r = run(
+        "What is the agriculture minimum wage?",
+        FakeLLM(one_block(WAGE, "अकुशल 7660 255.33")),
+        (WAGE,),
+    )
+    for part in (
+        "22288-337",
+        "Labour Commissioner, Madhya Pradesh",
+        "2026-10-01",
+        "2027-03-31",
+        "2026-11-08",
+    ):
+        assert part in r.text
+    bare = Retrieved(WAGE.chunk_id, WAGE.text, WAGE.section_uid)  # no notification data
+    r2 = run(
+        "What is the agriculture minimum wage?",
+        FakeLLM(one_block(bare, "अकुशल 7660 255.33")),
+        (bare,),
+    )
+    assert "22288-337" not in r2.text and "69(2)" not in r2.text  # never a wage line without them
+
+
+@pytest.mark.parametrize(
+    ("question", "marker"),
+    [
+        ("How is notice served by the Commission?", "Both texts"),
+        ("Commission notice kaise bhejta hai?", "Dono text"),
+        ("आयोग सूचना कैसे भेजता है?", "दोनों पाठ"),
+    ],
+)
+def test_rti_r14_note_cites_both_versions(question: str, marker: str) -> None:
+    out = one_block(R14["en"], "Commission may issue the notice")
+    r = run(question, FakeLLM(out), (R14["en"],), versions=lambda uid: list(R14.values()))
+    assert marker in r.text
+    assert "rtir2012_en.pdf" in r.text and "rtir2012_hi.pdf" in r.text
+
+
+def test_rti_r14_note_omitted_without_both_versions() -> None:
+    out = one_block(R14["en"], "Commission may issue the notice")
+    r = run("How is notice served?", FakeLLM(out), (R14["en"],), versions=lambda uid: [R14["en"]])
+    assert "registered post" not in r.text
+    r2 = run("How is notice served?", FakeLLM(out), (R14["en"],))  # no lookup at all
+    assert "registered post" not in r2.text
+
+
+def test_blocks_judging_merits_are_dropped() -> None:
+    win = one_block(RTI, "accompanied by a fee of rupees ten", text="Aap case jeet jaoge.")
+    r = run("RTI ka case jeet jaunga kya", FakeLLM(win))
+    assert r.abstained and r.log["merits_blocks_dropped"] == 1 and "jeet jaoge" not in r.text
+
+
+def test_scan_label_names_unofficial_hosts() -> None:
+    other = Retrieved(**{**RTI.__dict__, "source_url": "https://prsindia.org/files/x.pdf"})
+    r = run("RTI ki fees kitni hai", FakeLLM(GOOD), (other,))
+    assert "srot prsindia.org" in r.text and "official PDF" not in r.text
+    archived = Retrieved(
+        **{
+            **RTI.__dict__,
+            "source_url": "https://web.archive.org/web/2026id_/https://revenue.mp.gov.in/x.pdf",
         }
     )
-    r = run("What is the agriculture wage and how is notice served?", FakeLLM(out), (wage, r14))
-    assert "22288-337" in r.text and "01.10.2026" in r.text
-    assert "registered post" in r.text
+    r2 = run("RTI ki fees kitni hai", FakeLLM(GOOD), (archived,))
+    assert "official PDF ki scan prati se" in r2.text  # DEC-049: archive copy of an official file
+
+
+def test_repealed_chunks_never_reach_the_generator() -> None:
+    old = Retrieved(**{**RTI.__dict__, "status": "repealed"})
+    llm = FakeLLM()
+    r = run("RTI ki fees kitni hai", llm, (old,))
+    assert r.abstained and not llm.calls
 
 
 def test_unapproved_wording_is_refused() -> None:

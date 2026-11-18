@@ -104,3 +104,25 @@ def route(
         margin = examples.similarities(query_vec)[MERITS]
         by_emb = margin >= examples.threshold
     return DisputeResult(rule_hit(text), by_emb, margin, domains(text))
+
+
+# Answer-side screen (review 2026-11-18): the prompt asks for procedure only, but only code can
+# guarantee it. A generated block that judges merits or predicts an outcome is dropped.
+_OUTCOME: tuple[str, ...] = (
+    r"\byou (will|would|are likely to|can|should) (win|lose)\b", r"\byou are (right|wrong)\b",
+    r"\b(is|are) (guilty|innocent)\b", r"\bwill be (convicted|acquitted|jailed|punished)\b",
+    r"\b(belongs|belong) to you\b", r"\bthe (land|property|house|plot) is (yours|his|hers|theirs)\b",
+    r"\byour (claim|case) is (strong|weak|valid)\b",
+    r"आप (केस |मुकदमा )?(जीत|हार) (जाएंगे|जाएंगी|सकते|सकती)", r"आप सही (हैं|है)", r"आप गलत (हैं|है)",
+    r"(जमीन|संपत्ति|मकान|खेत) (आपकी|उनकी|उसकी) है", r"(दोषी|निर्दोष) (है|हैं)", r"सजा (होगी|हो जाएगी)",
+    r"आपका (हक|दावा) (बनता|मजबूत|सही) है",
+    r"\baap (case )?(jeet|haar) (jaoge|jaenge|jayenge|sakte|sakti)\b", r"\baap sahi (ho|hain|hai)\b",
+    r"\b(zameen|jameen|property|makaan) aapki hai\b", r"\b(saza|sazaa) (hogi|ho jayegi)\b",
+)  # fmt: skip
+_OUTCOME_RE = tuple(re.compile(prepare(p)) for p in _OUTCOME)
+
+
+def judges_merits(answer_text: str) -> bool:
+    """True if generated answer text says who is right / who owns / how a case will end."""
+    t = prepare(answer_text)
+    return any(p.search(t) for p in _OUTCOME_RE)  # question rules (rule_hit) would flag "who owns"
