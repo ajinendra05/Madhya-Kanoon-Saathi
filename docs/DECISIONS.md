@@ -857,6 +857,13 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: proves the real contract cheaply without making tests depend on paid calls; the OCR error rate on statute text is low and the label + page link let users verify; stating the difference is honest without giving a legal opinion.
 - Effects: ~a few paise · the scan label and r.14 line join the user-facing wording file for Malik's approval.
 
+## DEC-078 — Hard cap of ₹10 on all paid LLM calls before production
+- Date: 2026-11-18 | Status: accepted | Approved by: Malik ("put cap of 10 credit for everything before production") | Resolves the pending "monthly budget for paid eval API calls"
+- Decision: every paid model call before production (contract test, `scripts/ask.py`, evals, judge runs) goes through one spend guard with a **cumulative cap of ₹10 including 18% GST**. Before a call the guard adds the worst case (prompt tokens estimated from the text, plus `max_tokens` as output, at the verified Sarvam prices) to what was already spent; if that would exceed the cap, the call is refused. After the call the actual usage is appended to a committed ledger (`data/spend/llm_ledger.jsonl`: time, model, purpose, tokens, cost; never prompts, answers or keys). Raising the cap needs a new decision.
+- Interpretation (Claude): "10 credit" = ₹10, since Sarvam prices and free credits are in rupees; GST is counted to stay conservative.
+- Why: a hard, code-enforced ceiling, not a habit; the ledger shows exactly where the money went.
+- Effects: at ~₹0.02–0.03 per question (~1.2K in / 0.6K out tokens) the cap allows a few hundred questions, enough for the contract test, local trials and roughly one or two golden-set runs.
+
 ---
 
 ## Pending decisions (not yet made)
@@ -864,5 +871,5 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 | Topic | Raised in | Status |
 | --- | --- | --- |
 | DynamoDB table design + capacity mode (provisioned vs on-demand) + TTL | R10 | Malik: "will decide later". Must be decided before DEC-010/012 code |
-| Monthly budget for paid eval API calls | R4 | To discuss later |
+| Monthly budget for paid eval API calls | R4 | Resolved 2026-11-18 by DEC-078 (₹10 cap incl. GST before production) |
 | Second (higher) AWS alert that includes Bedrock | R4 | To discuss later |

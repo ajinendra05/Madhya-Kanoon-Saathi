@@ -42,7 +42,7 @@ def main() -> int:
         print(f"{OUT} exists: the contract test has already been run; not calling again")
         return 0
     started = datetime.now(UTC)
-    comp = complete(body)
+    comp = complete(body, purpose="contract_test_gs074")
     try:
         answer = json.loads(comp.content)
         parse_error = None

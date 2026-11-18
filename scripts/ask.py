@@ -49,7 +49,9 @@ def main() -> int:
         return 0
 
     def generate(messages: list[dict[str, str]]) -> str:
-        comp = complete(request_body(messages, ANSWER_SCHEMA, reasoning_effort="low"))
+        comp = complete(
+            request_body(messages, ANSWER_SCHEMA, reasoning_effort="low"), purpose="ask_cli"
+        )
         print(f"(LLM: {comp.prompt_tokens}+{comp.completion_tokens} tokens, "
               f"~₹{comp.cost_inr:.4f} excl. GST)", file=sys.stderr)  # fmt: skip
         return comp.content

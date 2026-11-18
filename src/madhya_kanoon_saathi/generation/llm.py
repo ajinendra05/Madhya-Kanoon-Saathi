@@ -26,6 +26,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from madhya_kanoon_saathi.generation import budget
+
 ENDPOINT = "https://api.sarvam.ai/v1/chat/completions"
 MODEL = "sarvam-105b"
 PRICE_INR_PER_M = {"input": 10.0, "cached_input": 0.25, "output": 25.0}  # excl. GST, see above
@@ -95,8 +97,18 @@ def parse_response(data: dict[str, Any]) -> Completion:
     )
 
 
-def complete(body: dict[str, Any], *, timeout: float = 60.0, retries: int = 2) -> Completion:
-    """One paid call (with retries on 429/5xx). Raises RuntimeError without the key in it."""
+def complete(
+    body: dict[str, Any],
+    *,
+    purpose: str,
+    timeout: float = 60.0,
+    retries: int = 2,
+    ledger: Path = budget.LEDGER,
+) -> Completion:
+    """One paid call (with retries on 429/5xx) inside the DEC-078 spend cap; the actual usage is
+    recorded in the ledger. Raises BudgetExceededError before spending if the cap could be
+    exceeded, RuntimeError (without the key in it) on API errors."""
+    budget.check(body, ledger=ledger)
     payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
     key = api_key()
     for attempt in range(retries + 1):
@@ -112,7 +124,15 @@ def complete(body: dict[str, Any], *, timeout: float = 60.0, retries: int = 2) -
         )
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return parse_response(json.loads(resp.read().decode("utf-8")))
+                comp = parse_response(json.loads(resp.read().decode("utf-8")))
+            budget.record(
+                model=comp.model or str(body.get("model")),
+                purpose=purpose,
+                prompt_tokens=comp.prompt_tokens,
+                completion_tokens=comp.completion_tokens,
+                ledger=ledger,
+            )
+            return comp
         except urllib.error.HTTPError as e:
             detail = e.read().decode("utf-8", errors="replace")[:300]
             if e.code in _RETRY_STATUS and attempt < retries:
