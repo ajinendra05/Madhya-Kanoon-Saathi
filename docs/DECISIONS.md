@@ -846,6 +846,17 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: placeholders keep logs useful for debugging while removing the identifying or sensitive part; the detector reuses a design whose limits were measured.
 - Effects: ₹0 · known gap: specific caste and community names are not in the v1 lexicon (listed in OPEN_QUESTIONS) · DLSA referral wording needs Malik's approval (W2.1).
 
+## DEC-077 — W2.1 start: Sarvam verified + one tiny test; OCR quotes with a scan label; RTI r.14 says both
+- Date: 2026-11-18 | Status: accepted (all three as recommended) | Approved by: Malik | Implements DEC-006, DEC-071 item 4; answers S22
+- Context: Generation needs a live model contract, a policy for quoting OCR text (Bodhan CER 2.5% on Hindi Act text, 13.6% overall, W0.5), and a rule for the RTI Rules r.14 difference between the official English (4 modes of service) and Hindi (3, no registered post).
+- Options: LLM A) verify Sarvam docs + one tiny paid call, fixtures for tests · B) fully offline · C) Claude/Bedrock first (blocked on AWS). OCR quotes A) quote with a scan label · B) only spot-checked provisions · C) never quote OCR. RTI r.14 A) say both · B) follow English · C) follow each language silently.
+- Decision: **A, A, A.**
+  1. Sarvam's model id, endpoint, JSON/structured-output support and price are read from official docs and recorded (URL + date); **one** tiny paid call proves the contract (key from `.env`, never printed); all tests use recorded fixtures (`@pytest.mark.paid` only for live calls).
+  2. OCR chunks are quoted like any other, with a label: "from a scanned copy — check page N of the official PDF" plus the source link; the validator still requires an exact match to the chunk text.
+  3. For RTI Rules r.14 the answer uses the text in the user's language and adds one line that the English text also lists registered post and the Hindi text does not, citing both; no judgment on which prevails.
+- Why: proves the real contract cheaply without making tests depend on paid calls; the OCR error rate on statute text is low and the label + page link let users verify; stating the difference is honest without giving a legal opinion.
+- Effects: ~a few paise · the scan label and r.14 line join the user-facing wording file for Malik's approval.
+
 ---
 
 ## Pending decisions (not yet made)

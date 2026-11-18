@@ -206,8 +206,14 @@ check date are given. Verify against the official page before code depends on it
 ### Sarvam-105B (`sarvam-105b`) — decided (DEC-006)
 - **What:** Indic-native LLM from Sarvam AI, billed in INR.
 - **How we use it:** Default generator; outputs strict JSON claims with citations; also the cheap query-rewrite call.
-- **Price (from plan.md, not re-verified):** ₹15 in / ₹5 cached / ₹60 out per 1M tokens, excluding GST; 60 req/min on
-  pay-as-you-go. Plan notes the price changed several times in 2026, so re-check docs.sarvam.ai monthly.
+- **Verified 2026-11-18 (DEC-077)** from docs.sarvam.ai `api-reference-docs/chat/completions` and
+  `getting-started/pricing`: `POST https://api.sarvam.ai/v1/chat/completions`, `api-subscription-key` / `Authorization:
+  Bearer` header; models `sarvam-105b` (128K context) and `sarvam-105b-conversations` (32K); structured output via
+  `response_format: {type: json_schema, json_schema: {name, schema, strict}}`; `reasoning_effort` none…max (reasoning
+  tokens billed as output); **₹10 in / ₹0.25 cached in / ₹25 out per 1M tokens excl. GST** (introductory, through
+  end-2026; the plan's ₹15/₹5/₹60 is outdated); 60 req/min pay-as-you-go; ₹100 free credits on signup.
+- **Code:** `generation/llm.py` (stdlib client, key from env/.env, never printed), `generation/prompt.py` (schema +
+  draft prompt v0), `scripts/sarvam_contract_test.py` (the one approved paid call; writes a test fixture).
 
 ### Claude via Bedrock — decided (DEC-006)
 - See Amazon Bedrock above. Strong instruction-following; costs several times more than Sarvam per query (plan §8 estimate).
