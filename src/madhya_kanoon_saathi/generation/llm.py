@@ -5,7 +5,8 @@ Verified 2026-11-18 from official docs:
   https://api.sarvam.ai/v1/chat/completions``; ``Authorization: Bearer`` / ``api-subscription-key``
   header; models ``sarvam-105b`` (128K context) and ``sarvam-105b-conversations`` (32K);
   ``response_format = {"type": "json_schema", "json_schema": {name, schema, strict}}``;
-  ``reasoning_effort`` none|low|medium|high|max (default medium; reasoning tokens billed as
+  ``reasoning_effort``: docs list none..max, but the live API accepted only low|medium|high on
+  2026-11-18 (HTTP 400 for "none"); default medium; reasoning tokens billed as
   output); text in ``choices[0].message.content``; usage in ``usage.{prompt,completion}_tokens``.
 - https://docs.sarvam.ai/api-reference-docs/getting-started/pricing — ₹10 input / ₹0.25 cached
   input / ₹25 output per 1M tokens excl. GST (introductory, through end-2026); 60 req/min on
@@ -81,7 +82,9 @@ def request_body(
     if schema is not None:
         body["response_format"] = {
             "type": "json_schema",
-            "json_schema": {"name": "answer", "schema": schema, "strict": True},
+            # strict=True returned a literal skeleton ("text": "...") on 2026-11-18; non-strict
+            # mode gives real answers and the validator still checks every citation
+            "json_schema": {"name": "answer", "schema": schema, "strict": False},
         }
     return body
 

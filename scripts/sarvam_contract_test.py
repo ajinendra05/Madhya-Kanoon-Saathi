@@ -36,7 +36,7 @@ def main() -> int:
         build_messages(QUESTION, [(CHUNK_ID, chunk["text"])], "hinglish"),
         ANSWER_SCHEMA,
         max_tokens=600,
-        reasoning_effort="none",
+        reasoning_effort="low",  # the API rejects "none" (HTTP 400, 2026-11-18)
     )
     if OUT.exists():
         print(f"{OUT} exists: the contract test has already been run; not calling again")

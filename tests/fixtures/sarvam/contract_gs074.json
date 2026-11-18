@@ -1,0 +1,99 @@
+{
+ "run_at": "2026-11-18T16:15:53+00:00",
+ "prompt_version": "v0-draft",
+ "request": {
+  "model": "sarvam-105b",
+  "messages": [
+   {
+    "role": "system",
+    "content": "You give legal INFORMATION (not legal advice) about Madhya Pradesh and central\nIndian law. Use ONLY the law excerpts provided. Each excerpt starts with its chunk_id in\nsquare brackets.\nRules:\n1. Every statement must be supported by an excerpt. Put it in an answer block and cite the chunk_id\n   with a quote copied EXACTLY, word for word, from that excerpt (at least 3 words, no changes).\n2. If the excerpts do not answer the question, set abstain to true, give a short abstain_reason,\n   and return no answer blocks. Never use outside knowledge, never guess amounts, dates or sections.\n3. Do not say who is right in a dispute and do not predict outcomes; explain the procedure only.\n4. Never ask for caste, religion, disability or health information. Never recommend private lawyers.\n5. Write the answer text in Hinglish (Hindi in Roman script). Quotes stay in the excerpt's own language.\n6. Keep it short: at most 4 answer blocks, plain words."
+   },
+   {
+    "role": "user",
+    "content": "Law excerpts:\n\n[IN.RTIR2012:r3@en@2012-07-31]\n3. Application Fee.—An application under sub-section (1) of Section 6 of the Act shall be accompanied by a fee of rupees ten and shall ordinarily not contain more than five hundred words, excluding annexures, containing address of the Central Public Information Officer and that of the applicant:\nProvided that no application shall be rejected only on the ground that it contains more than five hundred words.\n\nQuestion: RTI application ki fees kitni hai central government ke liye?"
+   }
+  ],
+  "max_tokens": 600,
+  "temperature": 0.2,
+  "reasoning_effort": "low",
+  "response_format": {
+   "type": "json_schema",
+   "json_schema": {
+    "name": "answer",
+    "schema": {
+     "type": "object",
+     "properties": {
+      "answer_blocks": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "text": {
+          "type": "string"
+         },
+         "citations": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "chunk_id": {
+             "type": "string"
+            },
+            "quote": {
+             "type": "string"
+            }
+           },
+           "required": [
+            "chunk_id",
+            "quote"
+           ],
+           "additionalProperties": false
+          }
+         }
+        },
+        "required": [
+         "text",
+         "citations"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "abstain": {
+       "type": "boolean"
+      },
+      "abstain_reason": {
+       "type": [
+        "string",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "answer_blocks",
+      "abstain",
+      "abstain_reason"
+     ],
+     "additionalProperties": false
+    },
+    "strict": true
+   }
+  }
+ },
+ "response": {
+  "model": "sarvam-105b",
+  "content": "{\"answer_blocks\": [{\"text\": \"...\", \"citations\": [{\"chunk_id\": \"...\", \"quote\": \"...\"}]}], \"abstain\": false, \"abstain_reason\": \"\"}"
+ },
+ "usage": {
+  "prompt_tokens": 365,
+  "completion_tokens": 42
+ },
+ "cost_inr_excl_gst": 0.0047,
+ "json_parse_error": null,
+ "validation": {
+  "supported_blocks": 0,
+  "dropped": [
+   "chunk_id ... not in retrieved context"
+  ],
+  "errors": []
+ }
+}
