@@ -151,5 +151,33 @@
         "sha256": "9dc74fea52f2666f23d5f5d52d9e2983adc82c00c9a35dadc39346ecbc9aa53a"
       }
     ]
+  },
+  "e5-large-fp32": {
+    "repo": "intfloat/multilingual-e5-large",
+    "revision": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+    "dir": "data/models/e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+    "licence": "MIT",
+    "files": [
+      {
+        "file": "onnx/model.onnx",
+        "sha256": "bb5a52503a3ef35247f5b5ae6c473aaae60505dd3ffaef56d7b69e2f84683c05",
+        "bytes": 545850
+      },
+      {
+        "file": "onnx/model.onnx_data",
+        "sha256": "0cf1883fee81c63819a44e2ba0efa51d4043d9759685a4ebebbde97e0623d15c",
+        "bytes": 2235363328
+      },
+      {
+        "file": "onnx/tokenizer.json",
+        "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626",
+        "bytes": 17082660
+      },
+      {
+        "file": "onnx/config.json",
+        "sha256": "513fe5e3d0e6d2fa441b6bd2145b20ae82158e9fdd08df9d5405db283afa7710",
+        "bytes": 688
+      }
+    ]
   }
 }
