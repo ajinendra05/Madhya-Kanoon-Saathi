@@ -1,0 +1,598 @@
+[
+ {
+  "id": "GS-005",
+  "lang": "en",
+  "domain": "tenancy",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -3.7858,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RA1908:s17:ss1",
+   "IN.TPA1882:s107"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 14.1
+ },
+ {
+  "id": "GS-011",
+  "lang": "en",
+  "domain": "tenancy",
+  "expected": "answer_with_caveat",
+  "abstained": true,
+  "top_rerank": -5.7964,
+  "reason": "The provided excerpts do not address landlord entry into rented premises; they cover mine inspection, sample-taking, information commissioner oaths, and eShram portal details.",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [
+   "108"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 15.9
+ },
+ {
+  "id": "GS-026",
+  "lang": "en",
+  "domain": "labour",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -0.9341,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.COW2019:s17:ss1",
+   "IN.COW2019:s17:ss2"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 14.2
+ },
+ {
+  "id": "GS-030",
+  "lang": "en",
+  "domain": "labour",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -0.2384,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.COW2019:s3:ss2"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 16.3
+ },
+ {
+  "id": "GS-031",
+  "lang": "hi",
+  "domain": "labour",
+  "expected": "answer",
+  "abstained": true,
+  "top_rerank": -6.7124,
+  "reason": "दिए गए अंशों में अपॉइंटमेंट लेटर देने की अनिवार्यता का कोई उल्लेख नहीं है।",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [
+   "6"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 11.3
+ },
+ {
+  "id": "GS-035",
+  "lang": "hi",
+  "domain": "labour",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -1.0781,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.SSC2020:s53:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 15.5
+ },
+ {
+  "id": "GS-040",
+  "lang": "hi",
+  "domain": "labour",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": 1.2573,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.OSHC2020:s55:ss3"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 26.6
+ },
+ {
+  "id": "GS-044",
+  "lang": "hinglish",
+  "domain": "labour",
+  "expected": "answer_with_caveat",
+  "abstained": true,
+  "top_rerank": -9.0107,
+  "reason": "Diye gaye excerpts mein hafte mein ek chhutti (weekly leave) ke sambandh mein koi jankari nahi hai, isliye is sawal ka jawab nahi diya ja sakta.",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 17.4
+ },
+ {
+  "id": "GS-045",
+  "lang": "hi",
+  "domain": "labour",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -5.1657,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.SSC2020:s128",
+   "IN.SSC2020:s131:ss3:cl_j"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 19.3
+ },
+ {
+  "id": "GS-050",
+  "lang": "en",
+  "domain": "consumer",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": 1.9869,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s69:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 18.7
+ },
+ {
+  "id": "GS-053",
+  "lang": "hinglish",
+  "domain": "consumer",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -8.0747,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s51:ss4",
+   "IN.CPA2019:s73:ss3",
+   "IN.CPA2019:s51:ss2",
+   "IN.CPA2019:s73:ss2"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 12.1
+ },
+ {
+  "id": "GS-055",
+  "lang": "en",
+  "domain": "consumer",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -0.1933,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s35:ss1",
+   "IN.CPA2019:s17"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [
+   "jagriti"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 10.6
+ },
+ {
+  "id": "GS-057",
+  "lang": "en",
+  "domain": "consumer",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -5.1543,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s2:ss11"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 28.7
+ },
+ {
+  "id": "GS-058",
+  "lang": "hi",
+  "domain": "consumer",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -5.1159,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s35:ss1",
+   "IN.CPA2019:s34:ss1"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [
+   "1915"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 20.0
+ },
+ {
+  "id": "GS-059",
+  "lang": "en",
+  "domain": "consumer",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": 2.5706,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s2:ss34",
+   "IN.CPA2019:s83"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [
+   "84"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 19.1
+ },
+ {
+  "id": "GS-060",
+  "lang": "hinglish",
+  "domain": "consumer",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -7.6297,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPECR2020:r4:ss10",
+   "IN.CPECR2020:r5:ss3"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 14.3
+ },
+ {
+  "id": "GS-061",
+  "lang": "hi",
+  "domain": "consumer",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": 2.5173,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s41"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [
+   "45"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 12.1
+ },
+ {
+  "id": "GS-062",
+  "lang": "en",
+  "domain": "consumer",
+  "expected": "answer",
+  "abstained": true,
+  "top_rerank": 4.1512,
+  "reason": "no claim could be verified against the retrieved law",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 10.4
+ },
+ {
+  "id": "GS-067",
+  "lang": "hinglish",
+  "domain": "consumer",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -5.779,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPECR2020:r6:ss2",
+   "IN.CPA2019:s2:ss6"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 15.7
+ },
+ {
+  "id": "GS-068",
+  "lang": "hi",
+  "domain": "consumer",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -4.1994,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.CPA2019:s51:ss1"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 18.9
+ },
+ {
+  "id": "GS-070",
+  "lang": "en",
+  "domain": "rti",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -2.4136,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s7:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [
+   "30",
+   "48"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 11.6
+ },
+ {
+  "id": "GS-079",
+  "lang": "en",
+  "domain": "rti",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -1.6177,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s20:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [
+   "250",
+   "25,?000"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 16.1
+ },
+ {
+  "id": "GS-081",
+  "lang": "hi",
+  "domain": "rti",
+  "expected": "ask_clarifying",
+  "abstained": true,
+  "top_rerank": -5.63,
+  "reason": "no claim could be verified against the retrieved law",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 16.1
+ },
+ {
+  "id": "GS-083",
+  "lang": "hi",
+  "domain": "rti",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -7.6259,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTIR2012:r8",
+   "IN.RTIR2012:r8"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 13.3
+ },
+ {
+  "id": "GS-084",
+  "lang": "en",
+  "domain": "rti",
+  "expected": "answer_with_caveat",
+  "abstained": false,
+  "top_rerank": -3.7624,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s10:ss2"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 15.3
+ },
+ {
+  "id": "GS-085",
+  "lang": "hi",
+  "domain": "rti",
+  "expected": "answer",
+  "abstained": true,
+  "top_rerank": -7.9575,
+  "reason": "दी गई सामग्री में DPDP कानून अथवा उसके आने के बाद RTI कानून के समाप्त होने या रद्द होने से संबंधित कोई जानकारी उपलब्ध नहीं है।",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [
+   "8\\(1\\)\\(j\\)"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 14.4
+ },
+ {
+  "id": "GS-086",
+  "lang": "en",
+  "domain": "rti",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": -4.8191,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s24:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 17.7
+ },
+ {
+  "id": "GS-092",
+  "lang": "hi",
+  "domain": "legal_aid",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": 2.1181,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.LSA1987:s21:ss1"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 14.3
+ },
+ {
+  "id": "GS-110",
+  "lang": "en",
+  "domain": "schemes",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": 4.1722,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.ESHRAMFAQ2026:para54",
+   "IN.ESHRAMFAQ2026:para33",
+   "IN.ESHRAMFAQ2026:para55"
+  ],
+  "cited_expected": false,
+  "missing_must_include": [
+   "16"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 12.7
+ },
+ {
+  "id": "GS-112",
+  "lang": "en",
+  "domain": "schemes",
+  "expected": "ask_clarifying",
+  "abstained": false,
+  "top_rerank": -0.0498,
+  "reason": null,
+  "behaviour_ok": false,
+  "cited": [
+   "IN.SVANSG2025:para5:sp1",
+   "IN.SVANLOG2025:sch2",
+   "IN.SVANLOG2025:sch1"
+  ],
+  "cited_expected": null,
+  "missing_must_include": [],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 29.3
+ }
+]

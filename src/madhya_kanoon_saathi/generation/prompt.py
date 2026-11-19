@@ -11,7 +11,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from typing import Any
 
-PROMPT_VERSION = "v2"  # v2 under test (DEC-080): claim-level blocks, short quotes, clarify field
+PROMPT_VERSION = "v1"  # production (DEC-079); v2 tested 2026-11-19 and not adopted (DEC-080 item 3)
 
 ANSWER_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -98,7 +98,7 @@ Return ONLY this JSON object, nothing else:
 Replace every <...> with real content; never output the placeholders themselves."""
 
 PROCEDURE_ONLY = (
-    "\n9. This question asks who is right or how a dispute will end. Do not answer that part;"
+    "\n7. This question asks who is right or how a dispute will end. Do not answer that part;"
     " explain only the procedure the excerpts describe."
 )
 
@@ -115,7 +115,9 @@ def build_messages(
     Excerpts are labelled E1, E2, ... (see :func:`ref_map`): the model mangled long chunk ids in
     the first live eval (2026-11-18), so it cites short labels and code maps them back."""
     excerpts = "\n\n".join(f"[E{i}]\n{text}" for i, (_, text) in enumerate(chunks, 1))
-    system = SYSTEM_V2.format(language=LANG_NAME.get(lang, "English"))
+    # v2 (SYSTEM_V2) answered more but produced off-topic answers with genuine quotes on 2026-11-19
+    # (reports/answers/v0.1-seed_2026-11-19_v2check_v2.md), so v1 stays until a faithfulness check
+    system = SYSTEM_V1.format(language=LANG_NAME.get(lang, "English"))
     if procedure_only:
         system += PROCEDURE_ONLY
     user = f"Law excerpts:\n\n{excerpts}\n\nQuestion: {question}"
