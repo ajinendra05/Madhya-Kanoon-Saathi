@@ -228,6 +228,9 @@ def answer(
     )
     refs = ref_map([(r.chunk_id, r.text) for r in chunks])
     first = _validate_raw(generate(messages), context, refs)
+    if first.clarify:
+        log["clarify"] = True
+        return wrap([first.clarify], False, "clarify")
     retry = None
     if not first.all_supported and not first.abstained:
         feedback = "; ".join(r for _, r in first.v.dropped) or "; ".join(first.v.errors)
@@ -274,6 +277,7 @@ class _Raw:
     v: Validation
     abstained: bool
     reason: str | None
+    clarify: str | None = None  # a checked clarifying question (DEC-080), else None
 
     @property
     def all_supported(self) -> bool:
@@ -308,4 +312,18 @@ def _validate_raw(content: str, context: Mapping[str, str], refs: Mapping[str, s
         return _Raw(validate(None, context), False, "invalid JSON")
     abstained = isinstance(ans, dict) and ans.get("abstain") is True
     reason = ans.get("abstain_reason") if isinstance(ans, dict) else None
+    question = ans.get("clarify") if isinstance(ans, dict) else None
+    blocks = ans.get("answer_blocks") if isinstance(ans, dict) else None
+    if isinstance(question, str) and not blocks and not abstained and clarify_ok(question):
+        return _Raw(validate(ans, context), False, None, question.strip())
     return _Raw(validate(ans, context), abstained, reason)
+
+
+MAX_CLARIFY = 200
+
+
+def clarify_ok(question: str) -> bool:
+    """A clarifying question carries no citations, so code limits it (DEC-080): short, really a
+    question, and no merits judgement."""
+    q = question.strip()
+    return 0 < len(q) <= MAX_CLARIFY and "?" in q and not dispute.judges_merits(q)

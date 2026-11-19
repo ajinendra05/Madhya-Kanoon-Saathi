@@ -873,6 +873,16 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   Both JSON files carry `status: approved, approved_by: malik, approved_on: 2026-11-18`; the code refuses unapproved wording.
 - Effects: the bot may now show these texts to users; any later wording or prompt change needs a new approval (generation rules). Still recommended: a fluent Hindi/Hinglish read-through before the public demo (not blocking).
 
+## DEC-080 — Prompt v2 (claim-level blocks, short quotes, optional clarifying question); bot texts approved
+- Date: 2026-11-19 | Status: accepted | Approved by: Malik ("1 … 2 approved") | Amends DEC-079 (prompt), output contract in generation rules
+- Context: the 80-row eval (2026-11-18) failed 11 answerable rows because the model spliced or shortened long quotes, and the prompt had no way to ask about an ambiguous question.
+- Decision:
+  1. **Prompt v2** (`generation/prompt.py` `SYSTEM_V2`), written from Malik's instructions: (a) one independently checkable claim per answer block, whose citations together support every claim in it; (b) quotes of 5–20 consecutive words copied exactly, no "...", "***" or joined passages; (c) "no outside knowledge" stays: abstain when the excerpts are insufficient, but the model **may ask one brief clarifying question** when the question is ambiguous and the excerpts could answer it once clarified.
+  2. **Output contract** gains an optional `clarify` string (no answer blocks, abstain false). Code limits it: at most 200 characters, must be a question, must pass the merits screen; otherwise it is treated as an unsupported answer (retry, then abstain). It carries no citations, so it must contain no legal claim.
+  3. v2 is used for the eval; it becomes the production prompt only if the re-run improves on v1 (result recorded in PROGRESS); otherwise v1 stays.
+  4. **`data/bot_texts.json` approved** (Telegram greeting, error and not-allowed texts).
+- Effects: ~₹1 for the re-run (DEC-078 cap) · golden `ask_clarifying` rows now scored.
+
 ---
 
 ## Pending decisions (not yet made)

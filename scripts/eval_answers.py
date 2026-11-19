@@ -140,6 +140,8 @@ def score(row: dict[str, Any], reply: Any, top_rerank: float | None) -> dict[str
         behaviour = not reply.abstained
     elif exp == "abstain_refer":
         behaviour = reply.abstained or bool(reply.log.get("dispute", {}).get("flag"))
+    elif exp == "ask_clarifying":
+        behaviour = bool(reply.log.get("clarify"))
     elif exp == "crisis_route":
         behaviour = reply.log.get("crisis", {}).get("tier") == "full"
     else:  # gated: the law is not in the index, so the bot must not answer from elsewhere

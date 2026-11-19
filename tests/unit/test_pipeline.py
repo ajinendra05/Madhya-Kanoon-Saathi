@@ -231,3 +231,32 @@ def test_unapproved_wording_is_refused() -> None:
             numbers=NUMBERS,
             today=date(2026, 11, 18),
         )
+
+
+def clarify_out(question: str) -> str:
+    return json.dumps(
+        {"answer_blocks": [], "clarify": question, "abstain": False, "abstain_reason": None}
+    )
+
+
+def test_valid_clarifying_question_is_asked_without_retry() -> None:
+    llm = FakeLLM(
+        clarify_out("Kya aapka aavedan central government ke vibhag ko hai ya MP sarkar ke?")
+    )
+    r = run("RTI ki fees kitni hai", llm)
+    assert len(llm.calls) == 1 and not r.abstained and r.reason == "clarify"
+    assert r.text.startswith("Kya aapka aavedan") and r.log["clarify"] is True
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "x" * 201 + "?",  # too long
+        "Please tell me your department",  # not a question
+        "Kya aap case jeet jaoge?",  # judges the outcome
+    ],
+)
+def test_bad_clarifying_question_is_treated_as_unsupported(question: str) -> None:
+    llm = FakeLLM(clarify_out(question), GOOD)
+    r = run("RTI ki fees kitni hai", llm)
+    assert len(llm.calls) == 2 and not r.abstained and r.reason is None
