@@ -911,6 +911,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: topic questions are detected by rules that exclude any named legal subject, so a note-tier match there is noise; real crisis wording is caught by the rules (100% recall gate unchanged).
 - Effects: ₹0 · small risk of missing a crisis phrased like a topic question with no crisis words.
 
+## DEC-084 — Cloud storage: S3 only for Terraform state; artifacts in GitHub Releases; no cloud PDF copy; ECR with one image
+- Date: 2026-11-20 | Status: accepted | Approved by: Malik | Supersedes the production part of DEC-011 (PDFs in versioned S3); amends DEC-024 (ECR keeps 3 images)
+- Context: Malik asked to keep AWS storage cost near zero before the W3.1 deploy. Sizes: int8 models + indexes ~1.25 GB, raw PDFs 83 MB, one answer image ~1.5–2 GB (estimate).
+- Options (ECR): **A) keep ECR, one image** · B) keep two images (instant rollback) · C) zip Lambda + download models at cold start (no ECR, slower cold start) · D) EFS (needs VPC, rejected by DEC-029) · E) host outside AWS (reverses DEC-002).
+- Decision:
+  1. **S3 holds only the Terraform state** (one bucket, versioned, encrypted, public access blocked).
+  2. **Models and indexes are published as GitHub Release assets** on the public repo (BGE-M3 MIT, reranker Apache-2.0; indexes built from public law texts), each with its sha256; GitHub Actions downloads and checks them before building the image. S3 for these artifacts may come back later (Malik: "will use S3 later").
+  3. **No cloud copy of raw PDFs.** Provenance = the laptop copy + official source URLs + sha256 in `corpus_manifest.json` (DEC-011's manifest part stands). A GitHub Release may hold a backup copy.
+  4. **ECR keeps one image** (lifecycle rule). Rollback = rebuild the previous image in GitHub Actions (~10–20 min, not measured).
+  5. The alternatives (B–E, artifacts in S3) are kept in OPEN_QUESTIONS (P11) to revisit when users grow.
+- Why: storage drops to roughly ₹14/month (ECR only, price not verified) while the image stays one sealed unit of code + models + law with the fastest cold start.
+- Effects: cost ~₹14/month · no S3 version history of PDFs (manifest hashes still prove what was indexed) · rollback is slower than with two images · release assets are public.
+
 ---
 
 ## Pending decisions (not yet made)

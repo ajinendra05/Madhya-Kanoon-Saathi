@@ -18,13 +18,15 @@ flowchart TB
 
     subgraph CI["GitHub"]
         GHA["Actions: lint · tests · deterministic eval"]
+        REL["Releases: models + indexes (sha256)"]
         BUILD["Actions: build image<br/>code + models + index<br/>tag = manifest hash"]
         PAGES["Pages: cost dashboard"]
         ISSUE["Issues: law-change alerts"]
     end
 
-    EMB --> BUILD
-    BM --> BUILD
+    EMB --> REL
+    BM --> REL
+    REL --> BUILD
 
     subgraph AWS["AWS ap-south-1 (always-free first)"]
         URL["Lambda Function URL"] --> ING["Ingress Lambda<br/>secret check · dedup · enqueue"]
@@ -35,10 +37,9 @@ flowchart TB
         ANS --> DDB
         ANS --> SSM["SSM Parameter Store<br/>(secrets)"]
         ECR[("ECR images")] --> ANS
-        S3[("S3 versioned corpus")]
+        S3[("S3: Terraform state only")]
         EB["EventBridge"] --> LW["Law-watch Lambda"]
         EB --> CS["Cost-summary Lambda"]
-        LW --> S3
         CS --> DDB
         CW["CloudWatch logs + alarms · Budgets ₹100"]
     end
@@ -59,8 +60,11 @@ Born-digital PDFs give text directly; scanned ones go through Bodhan IndicOCR. T
 structure (sub-section chunks with provisos attached), tagged with `section_uid`, state, status and validity dates,
 then indexed twice: BGE-M3 vectors in an exact FAISS index, and a BM25 index using our Hindi-aware tokeniser.
 
-**Packaging.** GitHub Actions bakes code, int8 models and both index files into one container image, tagged with the
-corpus manifest hash, and pushes it to ECR. One image = one snapshot of code + law (DEC-024).
+**Packaging.** Models and index files are published as GitHub Release assets with their sha256 (DEC-084). GitHub Actions
+downloads and checks them, bakes code, int8 models and both index files into one container image, tagged with the
+corpus manifest hash, and pushes it to ECR, which keeps one image. One image = one snapshot of code + law (DEC-024).
+Raw PDFs have no cloud copy: the laptop copy, official URLs and manifest hashes are the provenance; S3 holds only
+the Terraform state.
 
 **Answer path.** Telegram calls the ingress Lambda's Function URL. It verifies the secret header, drops duplicate
 `update_id`s via a conditional DynamoDB write, puts the message on SQS and returns 200 immediately. The answer Lambda
