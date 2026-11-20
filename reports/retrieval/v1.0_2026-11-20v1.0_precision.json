@@ -1,0 +1,162 @@
+{
+ "report": "reports/retrieval/v1.0_2026-11-20v1.0.json",
+ "golden": "data\\golden\\v1.0\\golden_set_v1.0.jsonl",
+ "pairs": {
+  "dense vs dense-fp32": {
+   "decision": "fail",
+   "slices": [
+    {
+     "name": "overall",
+     "questions": 62,
+     "verified": 62,
+     "clauses": 81,
+     "hits_a": 40,
+     "hits_b": 45,
+     "recall_a": 0.510752688172043,
+     "recall_b": 0.575268817204301,
+     "diff": -0.06451612903225806,
+     "ci_low": -0.12903225806451613,
+     "ci_high": -0.016129032258064516,
+     "a_better": 0,
+     "b_better": 5,
+     "verdict": "fail",
+     "verified_diff": -0.06451612903225806
+    },
+    {
+     "name": "en",
+     "questions": 28,
+     "verified": 28,
+     "clauses": 40,
+     "hits_a": 22,
+     "hits_b": 23,
+     "recall_a": 0.6071428571428571,
+     "recall_b": 0.625,
+     "diff": -0.017857142857142856,
+     "ci_low": -0.05357142857142857,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 1,
+     "verdict": "insufficient_sample",
+     "verified_diff": -0.017857142857142856
+    },
+    {
+     "name": "hi",
+     "questions": 25,
+     "verified": 25,
+     "clauses": 31,
+     "hits_a": 16,
+     "hits_b": 19,
+     "recall_a": 0.5066666666666666,
+     "recall_b": 0.6066666666666667,
+     "diff": -0.1,
+     "ci_low": -0.22,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 3,
+     "verdict": "insufficient_sample",
+     "verified_diff": -0.1
+    },
+    {
+     "name": "hinglish",
+     "questions": 9,
+     "verified": 9,
+     "clauses": 10,
+     "hits_a": 2,
+     "hits_b": 3,
+     "recall_a": 0.2222222222222222,
+     "recall_b": 0.3333333333333333,
+     "diff": -0.1111111111111111,
+     "ci_low": -0.3333333333333333,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 1,
+     "verdict": "insufficient_sample",
+     "verified_diff": -0.1111111111111111
+    }
+   ],
+   "disagreements": [
+    "GS-058 (hi): dense 0/1 vs dense-fp32 1/1",
+    "GS-064 (en): dense 1/2 vs dense-fp32 2/2",
+    "GS-073 (hinglish): dense 0/1 vs dense-fp32 1/1",
+    "GS-094 (hi): dense 1/2 vs dense-fp32 2/2",
+    "GS-118 (hi): dense 0/1 vs dense-fp32 1/1"
+   ]
+  },
+  "rerank-int8 vs rerank-fp32": {
+   "decision": "insufficient_sample",
+   "slices": [
+    {
+     "name": "overall",
+     "questions": 62,
+     "verified": 62,
+     "clauses": 81,
+     "hits_a": 46,
+     "hits_b": 47,
+     "recall_a": 0.5833333333333333,
+     "recall_b": 0.5887096774193549,
+     "diff": -0.005376344086021506,
+     "ci_low": -0.016129032258064516,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 1,
+     "verdict": "pass",
+     "verified_diff": -0.005376344086021506
+    },
+    {
+     "name": "en",
+     "questions": 28,
+     "verified": 28,
+     "clauses": 40,
+     "hits_a": 25,
+     "hits_b": 25,
+     "recall_a": 0.6785714285714286,
+     "recall_b": 0.6785714285714286,
+     "diff": 0.0,
+     "ci_low": 0.0,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 0,
+     "verdict": "insufficient_sample",
+     "verified_diff": 0.0
+    },
+    {
+     "name": "hi",
+     "questions": 25,
+     "verified": 25,
+     "clauses": 31,
+     "hits_a": 17,
+     "hits_b": 18,
+     "recall_a": 0.5266666666666666,
+     "recall_b": 0.54,
+     "diff": -0.013333333333333334,
+     "ci_low": -0.04,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 1,
+     "verdict": "insufficient_sample",
+     "verified_diff": -0.013333333333333334
+    },
+    {
+     "name": "hinglish",
+     "questions": 9,
+     "verified": 9,
+     "clauses": 10,
+     "hits_a": 4,
+     "hits_b": 4,
+     "recall_a": 0.4444444444444444,
+     "recall_b": 0.4444444444444444,
+     "diff": 0.0,
+     "ci_low": 0.0,
+     "ci_high": 0.0,
+     "a_better": 0,
+     "b_better": 0,
+     "verdict": "insufficient_sample",
+     "verified_diff": 0.0
+    }
+   ],
+   "disagreements": [
+    "GS-042 (hi): rerank-int8 2/3 vs rerank-fp32 3/3"
+   ]
+  }
+ }
+}
