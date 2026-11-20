@@ -18,7 +18,7 @@ flowchart TB
 
     subgraph CI["GitHub"]
         GHA["Actions: lint · tests · deterministic eval"]
-        REL["Releases: models + indexes (sha256)"]
+        REL["Private repo mks-artifacts:<br/>releases with models + indexes (sha256)"]
         BUILD["Actions: build image<br/>code + models + index<br/>tag = manifest hash"]
         PAGES["Pages: cost dashboard"]
         ISSUE["Issues: law-change alerts"]
@@ -60,7 +60,8 @@ Born-digital PDFs give text directly; scanned ones go through Bodhan IndicOCR. T
 structure (sub-section chunks with provisos attached), tagged with `section_uid`, state, status and validity dates,
 then indexed twice: BGE-M3 vectors in an exact FAISS index, and a BM25 index using our Hindi-aware tokeniser.
 
-**Packaging.** Models and index files are published as GitHub Release assets with their sha256 (DEC-084). GitHub Actions
+**Packaging.** Models and index files are published as release assets of the private repo `mks-artifacts` with their sha256
+(DEC-084/085), downloaded by Actions with a read-only token. GitHub Actions
 downloads and checks them, bakes code, int8 models and both index files into one container image, tagged with the
 corpus manifest hash, and pushes it to ECR, which keeps one image. One image = one snapshot of code + law (DEC-024).
 Raw PDFs have no cloud copy: the laptop copy, official URLs and manifest hashes are the provenance; S3 holds only

@@ -924,6 +924,17 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: storage drops to roughly ₹14/month (ECR only, price not verified) while the image stays one sealed unit of code + models + law with the fastest cold start.
 - Effects: cost ~₹14/month · no S3 version history of PDFs (manifest hashes still prove what was indexed) · rollback is slower than with two images · release assets are public.
 
+## DEC-085 — Artifacts in a separate private repo's releases
+- Date: 2026-11-20 | Status: accepted ("go with A") | Approved by: Malik | Amends DEC-084 items 2 and 3 (release assets were on the public repo)
+- Context: Malik wants the model/index release files private. A release always has its repo's visibility, and `Madhya-Kanoon-Saathi` is public (DEC-036).
+- Options: **A) separate private repo holding only releases** (₹0; needs a read-only token) · B) private S3 bucket (~₹3/month, OIDC, no token) · C) GitHub Packages / Actions artifacts (quota ~500 MB, artifacts expire; unusable).
+- Decision: **A.**
+  1. Private repo **`mks-artifacts`** (same owner) holds models, indexes and the optional raw-PDF backup as release assets, each with its sha256 in the release notes and a committed artifact list in the main repo.
+  2. The public repo's GitHub Actions downloads them with a **fine-grained token limited to `mks-artifacts`, read-only contents**, stored as an Actions secret. Malik creates the token; it is never printed or committed.
+  3. The raw-PDF backup (DEC-084 item 3) goes here too, so source files are not republished publicly.
+- Why: ₹0 and private; the files stay outside AWS until usage justifies S3 (OPEN_QUESTIONS P11).
+- Effects: one more repo · a token to rotate (set an expiry and a reminder) · private-repo release storage and per-file limit (believed 2 GB per file) not verified.
+
 ---
 
 ## Pending decisions (not yet made)
