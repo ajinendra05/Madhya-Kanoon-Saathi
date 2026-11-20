@@ -302,3 +302,25 @@ def test_other_state_abstention_has_no_topic_list() -> None:
     reply = run("Kerala mein rent control law kya hai?", FakeLLM(), topics=HELP_TOPICS)
     assert reply.reason == "other_state"
     assert HELP_TOPICS["abstain_intro"]["hinglish"] not in reply.text
+
+
+def test_topic_question_drops_embedding_only_safety_line() -> None:
+    import numpy as np
+
+    from madhya_kanoon_saathi.generation.crisis import ExampleIndex
+
+    idx = ExampleIndex(vectors={"cyber_fraud": np.array([[1.0, 0.0]])}, threshold=0.5)
+    q = "aap mujhe kis kis topic me help kar sakte hai"
+    reply = run(
+        q, FakeLLM(), topics=HELP_TOPICS, query_vec=np.array([1.0, 0.0]), crisis_examples=idx
+    )
+    assert reply.reason == "help" and reply.log["crisis"]["tier"] == "note"
+    assert reply.log["crisis_note_suppressed"]
+    assert REPLIES["note"]["hinglish"].split("{")[0] not in reply.text
+
+
+def test_topic_question_keeps_rule_based_crisis_reply() -> None:
+    q = "pati mujhe maar raha hai, aap kis kis topic me help kar sakte ho"
+    reply = run(q, FakeLLM(), topics=HELP_TOPICS)
+    assert reply.reason == "help" and reply.log["crisis"]["tier"] == "full"
+    assert "181" in reply.text and "112" in reply.text

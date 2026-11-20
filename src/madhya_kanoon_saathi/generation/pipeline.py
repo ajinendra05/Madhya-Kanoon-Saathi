@@ -217,6 +217,11 @@ def answer(
 
     if topics is not None and scope.is_help_request(question):
         log["help"] = True
+        if cr.tier == "note":
+            # DEC-083: an embedding-only safety line on a topic question is a false alarm; a rule
+            # hit ("full" tier) keeps its crisis reply
+            crisis_text = None
+            log["crisis_note_suppressed"] = True
         return wrap([scope.render(topics, lang)], False, "help")
 
     jur = jurisdiction.check(question)

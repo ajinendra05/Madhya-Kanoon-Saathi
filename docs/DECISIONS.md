@@ -902,6 +902,15 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: users learn what the bot covers, and an abstention becomes a pointer instead of a dead end.
 - Effects: ₹0 · the topic file must be updated whenever the corpus scope changes (test enforces it) · `eval_answers.py` does not pass the list, so eval reports stay comparable.
 
+## DEC-083 — Topic questions: no embedding-only safety line; topic wording confirmed
+- Date: 2026-11-20 | Status: accepted ("yes for both") | Approved by: Malik | Amends DEC-075 item 2 for topic questions only
+- Context: "aap mujhe kis kis topic me help kar sakte hai" got the note-tier safety line ("Agar aap ya koi aur khatre mein hai … 1098, 112, 1930") from an embedding-only crisis match, a false alarm.
+- Decision:
+  1. When a message is detected as a topic question (DEC-082), an **embedding-only** (note-tier) crisis match is dropped and logged (`crisis_note_suppressed`). A **rule** hit (full tier) still puts the crisis reply first.
+  2. The wording in `data/help_topics.json` is confirmed as written.
+- Why: topic questions are detected by rules that exclude any named legal subject, so a note-tier match there is noise; real crisis wording is caught by the rules (100% recall gate unchanged).
+- Effects: ₹0 · small risk of missing a crisis phrased like a topic question with no crisis words.
+
 ---
 
 ## Pending decisions (not yet made)
