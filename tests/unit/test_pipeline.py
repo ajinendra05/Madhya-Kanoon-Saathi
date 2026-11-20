@@ -260,3 +260,45 @@ def test_bad_clarifying_question_is_treated_as_unsupported(question: str) -> Non
     llm = FakeLLM(clarify_out(question), GOOD)
     r = run("RTI ki fees kitni hai", llm)
     assert len(llm.calls) == 2 and not r.abstained and r.reason is None
+
+
+HELP_TOPICS = json.loads(Path("data/help_topics.json").read_text(encoding="utf-8"))
+
+
+def test_topic_question_gets_topic_list_without_retrieval_or_llm() -> None:
+    llm = FakeLLM()
+
+    def no_retrieval(q):  # type: ignore[no-untyped-def]
+        raise AssertionError("retrieval must not run for a topic question")
+
+    reply = answer(
+        "aap mujhe kis kis topic me help kar sakte hai",
+        retrieve=no_retrieval,
+        generate=llm,
+        texts=TEXTS,
+        crisis_replies=REPLIES,
+        numbers=NUMBERS,
+        today=date(2026, 11, 18),
+        topics=HELP_TOPICS,
+        allow_draft=True,
+    )
+    assert reply.reason == "help" and not reply.abstained and not llm.calls
+    assert HELP_TOPICS["topics"][0]["hinglish"] in reply.text
+
+
+@pytest.mark.parametrize("chunks", [(), (RTI,)])
+def test_no_support_abstention_lists_topics(chunks) -> None:  # type: ignore[no-untyped-def]
+    abstain = json.dumps({"answer_blocks": [], "abstain": True, "abstain_reason": "not covered"})
+    reply = run(
+        "What is the stamp duty on a sale deed?", FakeLLM(abstain), chunks, topics=HELP_TOPICS
+    )
+    assert reply.abstained
+    assert TEXTS["abstain"]["no_support"]["en"] in reply.text
+    assert HELP_TOPICS["abstain_intro"]["en"] in reply.text
+    assert all(t["en"] in reply.text for t in HELP_TOPICS["topics"])
+
+
+def test_other_state_abstention_has_no_topic_list() -> None:
+    reply = run("Kerala mein rent control law kya hai?", FakeLLM(), topics=HELP_TOPICS)
+    assert reply.reason == "other_state"
+    assert HELP_TOPICS["abstain_intro"]["hinglish"] not in reply.text

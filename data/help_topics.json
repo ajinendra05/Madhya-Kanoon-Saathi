@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "status": "approved",
+ "approved_by": "malik",
+ "approved_on": "2026-11-20",
+ "about": "Topics the bot can answer from its indexed sources (DEC-082). Shown when a user asks what the bot can help with, and appended to the 'no reliable answer' abstention. Content = the list Malik asked for on 2026-11-20 (from the indexed corpus); each topic names the instruments it relies on, and a unit test checks every one is indexed or a guide in data/corpus_manifest.json. Update this file whenever the corpus scope changes. No amounts, dates or section numbers: scope only.",
+ "intro": {
+  "hi": "मैं इन विषयों पर कानून के स्रोत के साथ जानकारी दे सकता हूँ:",
+  "hinglish": "Main in vishayon par kanoon ke srot ke saath jaankari de sakta hoon:",
+  "en": "I can give information, with the law cited, on these topics:"
+ },
+ "abstain_intro": {
+  "hi": "मैं इन विषयों पर मदद कर सकता हूँ:",
+  "hinglish": "Main in vishayon par madad kar sakta hoon:",
+  "en": "These are the topics I can help with:"
+ },
+ "topics": [
+  {
+   "id": "rti",
+   "instruments": ["IN.RTI2005", "IN.RTIR2012"],
+   "hi": "सूचना का अधिकार (RTI): आवेदन कैसे करें, फीस, समय-सीमा, अपील, कौन-सी जानकारी मना की जा सकती है (केंद्र सरकार के कार्यालयों के नियम)",
+   "hinglish": "Soochna ka Adhikar (RTI): aavedan kaise karein, fees, samay-seema, appeal, kaun si jaankari mana ho sakti hai (Kendra sarkar ke daftaron ke niyam)",
+   "en": "Right to Information (RTI): how to apply, fees, time limits, appeals, what information can be refused (rules for central-government offices)"
+  },
+  {
+   "id": "consumer",
+   "instruments": ["IN.CPA2019", "IN.CPJR2021", "IN.CPECR2020", "IN.CPECRA2021"],
+   "hi": "उपभोक्ता शिकायत: खराब सामान या सेवा, छपी कीमत से ज़्यादा वसूली, ऑनलाइन खरीदारी की समस्या, किस उपभोक्ता आयोग में जाएँ",
+   "hinglish": "Upbhokta shikayat: kharab saamaan ya seva, chhapi keemat se zyada vasooli, online shopping ki samasya, kis upbhokta aayog mein jaayein",
+   "en": "Consumer complaints: defective goods or service, charging above the printed price, online shopping problems, which consumer commission to approach"
+  },
+  {
+   "id": "labour",
+   "instruments": ["IN.COW2019", "IN.IRC2020", "IN.SSC2020", "IN.OSHC2020", "MP.MWVDAOCT2026", "MP.WCR2026", "IN.ESHRAMFAQ2026"],
+   "hi": "श्रम और मज़दूरी: वेतन भुगतान, बोनस, ओवरटाइम, सामाजिक सुरक्षा, कार्यस्थल सुरक्षा, छँटनी; मध्यप्रदेश की न्यूनतम मज़दूरी दरें (रोज़गार और कुशलता के हिसाब से); ई-श्रम पंजीकरण",
+   "hinglish": "Shram aur mazdoori: vetan bhugtan, bonus, overtime, saamajik suraksha, kaam ki jagah ki suraksha, chhantni; MP ki nyuntam mazdoori daren (rozgaar aur kushalta ke hisaab se); e-Shram registration",
+   "en": "Labour and wages: wage payment, bonus, overtime, social security, workplace safety, layoffs; MP minimum wage rates (by employment and skill level); e-Shram registration"
+  },
+  {
+   "id": "tenancy",
+   "instruments": ["IN.TPA1882", "IN.RA1908", "IN.MTA2021"],
+   "hi": "किरायेदारी: किराये का अनुबंध खत्म करने का नोटिस, मकान-मालिक और किरायेदार के अधिकार और कर्तव्य, किरायानामे का पंजीकरण कब ज़रूरी है",
+   "hinglish": "Kirayedari: kiraye ka agreement khatam karne ka notice, makaan-maalik aur kirayedar ke adhikaar aur kartavya, kirayanama registration kab zaroori hai",
+   "en": "Tenancy: notice to end a lease, rights and duties of landlord and tenant, when a rent agreement must be registered"
+  },
+  {
+   "id": "demarcation",
+   "instruments": ["MP.LRCDR2018"],
+   "hi": "मध्यप्रदेश में ज़मीन का सीमांकन: आवेदन, सर्वे टीम, फ़ॉर्म, सीमांकन को चुनौती देने का तरीका",
+   "hinglish": "MP mein zameen ka seemankan: aavedan, survey team, form, seemankan ko chunauti dene ka tareeka",
+   "en": "Land demarcation (seemankan) in MP: how to apply, the survey team, forms, how to challenge a demarcation"
+  },
+  {
+   "id": "legal_aid",
+   "instruments": ["IN.LSA1987", "MP.SLSALAGUIDE2025"],
+   "hi": "मुफ़्त कानूनी सहायता और लोक अदालत: किसे मुफ़्त सहायता मिलती है, आवेदन कैसे करें, लोक अदालत और स्थायी लोक अदालत",
+   "hinglish": "Muft kanooni sahayata aur Lok Adalat: kise muft sahayata milti hai, aavedan kaise karein, Lok Adalat aur Sthayi Lok Adalat",
+   "en": "Free legal aid and Lok Adalat: who is eligible, how to apply, Lok Adalats and Permanent Lok Adalats"
+  },
+  {
+   "id": "svanidhi",
+   "instruments": ["IN.SVANSG2025", "IN.SVANLOG2025"],
+   "hi": "पीएम स्वनिधि (रेहड़ी-पटरी विक्रेता ऋण): पात्रता, ऋण राशि, आवेदन कैसे करें",
+   "hinglish": "PM SVANidhi (rehdi-patri vikreta loan): paatrata, loan raashi, aavedan kaise karein",
+   "en": "PM SVANidhi (street-vendor loans): eligibility, loan amounts, how to apply"
+  }
+ ],
+ "outro": {
+  "hi": "अपना सवाल इन में से किसी विषय पर लिखें। मैं केवल मध्यप्रदेश और केंद्र के कानूनों की जानकारी देता हूँ।",
+  "hinglish": "Apna sawaal in mein se kisi vishay par likhein. Main sirf Madhya Pradesh aur Kendra ke kanoonon ki jaankari deta hoon.",
+  "en": "Ask your question on any of these topics. I cover Madhya Pradesh and central laws only."
+ }
+}

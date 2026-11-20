@@ -892,6 +892,16 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   3. **Next**: evaluate a **good free model** as a claim-support judge after v1 (e.g. a local multilingual NLI / cross-encoder model, or a free hosted model), with its accuracy measured on labelled examples before it gates anything; a paid judge (Claude, needs AWS) stays an option.
 - Effects: ₹0 · golden v1.0 unlocks the DEC-066 int8/fp32 comparison (S32) and the W2.6 roadmap item.
 
+## DEC-082 — Topic list: reply to "what can you help with?" and add it to the no-answer abstention
+- Date: 2026-11-20 | Status: accepted | Approved by: Malik ("whenever user ask this type of question it will reply with topics … also … add this same helping areas list in our default reply")
+- Context: "aap mujhe kis kis topic me help kar sakte hai" went through retrieval + LLM and gave no useful scope answer; an abstention told users nothing about what they *can* ask.
+- Decision:
+  1. `data/help_topics.json` (hi / hinglish / en): the 7 topic areas of the indexed corpus (RTI, consumer, labour and wages, tenancy, MP land demarcation, free legal aid and Lok Adalat, PM SVANidhi), scope only, no amounts, dates or sections. Each topic lists the instruments it relies on; unit tests require every listed instrument to be indexed or a guide, and every indexed instrument to appear in a topic, so the list cannot drift from the corpus.
+  2. `generation/scope.py`: rule detection (a scope cue such as kis kis / kaun se / what can you, plus a help cue, and no named legal subject). Runs after the crisis router and before the jurisdiction guard; a hit returns the topic list with no retrieval and no LLM call (₹0).
+  3. The "no reliable answer" abstention (nothing retrieved, or model/validator abstains) appends the topic list. The other-state abstention does not.
+- Why: users learn what the bot covers, and an abstention becomes a pointer instead of a dead end.
+- Effects: ₹0 · the topic file must be updated whenever the corpus scope changes (test enforces it) · `eval_answers.py` does not pass the list, so eval reports stay comparable.
+
 ---
 
 ## Pending decisions (not yet made)

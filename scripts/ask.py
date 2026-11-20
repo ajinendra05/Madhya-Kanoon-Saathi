@@ -68,6 +68,7 @@ def main() -> int:
         crisis_examples=rt.crisis_index,
         dispute_examples=rt.dispute_index,
         versions=rt.versions,
+        topics=json.loads(Path("data/help_topics.json").read_text("utf-8")),
         allow_draft=a.allow_draft,
     )
     print(reply.text)

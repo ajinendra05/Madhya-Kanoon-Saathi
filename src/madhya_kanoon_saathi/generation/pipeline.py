@@ -6,11 +6,12 @@ Order (CONCEPTS §2.3, DEC-033/074/075/076/077):
 1. language (hi / hinglish / en);
 2. **crisis router** before anything else — a rule-detected self-harm message gets only the crisis
    reply; other rule hits put the crisis text first; embedding-only hits add one safety line;
-3. **jurisdiction guard** — a question about another state's law abstains;
-4. **dispute detector** — the generator is told to give procedure only, and the referral is added;
-5. retrieval → generation → **citation validator** (retry once, strip unsupported blocks, abstain
-   if none remain);
-6. rendering: answer blocks with exact quotes and section ids, a scan label for OCR chunks,
+3. **topic question** ("what can you help with?") gets the topic list, no retrieval (DEC-082);
+4. **jurisdiction guard** — a question about another state's law abstains;
+5. **dispute detector** — the generator is told to give procedure only, and the referral is added;
+6. retrieval → generation → **citation validator** (retry once, strip unsupported blocks, abstain
+   if none remain); a "no reliable answer" abstention also lists the topics (DEC-082);
+7. rendering: answer blocks with exact quotes and section ids, a scan label for OCR chunks,
    status caveats, the RTI r.14 note, the wage qualification, "law as of", the footer.
 
 All wording comes from ``data/answer_texts.json`` and ``data/safety/crisis_replies.json`` and is
@@ -31,7 +32,7 @@ from urllib.parse import urlparse
 import numpy as np
 
 from madhya_kanoon_saathi.common.redact import redact
-from madhya_kanoon_saathi.generation import crisis, dispute, jurisdiction
+from madhya_kanoon_saathi.generation import crisis, dispute, jurisdiction, scope
 from madhya_kanoon_saathi.generation.crisis import ExampleIndex
 from madhya_kanoon_saathi.generation.prompt import build_messages, ref_map
 from madhya_kanoon_saathi.generation.validator import Validation, decide, validate
@@ -184,6 +185,7 @@ def answer(
     crisis_examples: ExampleIndex | None = None,
     dispute_examples: ExampleIndex | None = None,
     versions: Callable[[str], Sequence[Retrieved]] | None = None,
+    topics: Mapping[str, Any] | None = None,
     allow_draft: bool = False,
 ) -> Reply:
     """Answer one question end to end; see the module docstring for the order of checks."""
@@ -207,6 +209,16 @@ def answer(
         parts.append(_fill(texts["footer"][lang], nalsa))
         return Reply("\n\n".join(p for p in parts if p), abstained, reason, log)
 
+    def no_support(reason: str) -> Reply:
+        body = [texts["abstain"]["no_support"][lang]]
+        if topics is not None:
+            body.append(scope.render(topics, lang, abstain=True))
+        return wrap(body, True, reason)
+
+    if topics is not None and scope.is_help_request(question):
+        log["help"] = True
+        return wrap([scope.render(topics, lang)], False, "help")
+
     jur = jurisdiction.check(question)
     log["states"] = list(jur.states)
     if jur.other_state_only:
@@ -221,7 +233,7 @@ def answer(
     context = {r.chunk_id: r.text for r in chunks}
     log["retrieved"] = [r.chunk_id for r in chunks]
     if not chunks:
-        return wrap([texts["abstain"]["no_support"][lang]], True, "nothing_retrieved")
+        return no_support("nothing_retrieved")
 
     messages = build_messages(
         question, [(r.chunk_id, r.text) for r in chunks], lang, procedure_only=dp.is_dispute
@@ -259,7 +271,7 @@ def answer(
     log["attempts"] = attempts
     log["abstain_reason"] = reason
     if abstain:
-        return wrap([texts["abstain"]["no_support"][lang]], True, reason or "abstained")
+        return no_support(reason or "abstained")
 
     used = [by_id[c["chunk_id"]] for b in decision_blocks for c in b["citations"]]
     used = list({r.chunk_id: r for r in used}.values())
