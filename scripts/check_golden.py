@@ -22,7 +22,7 @@ from pathlib import Path
 from madhya_kanoon_saathi.common.section_uid import covers, is_valid
 from madhya_kanoon_saathi.ingestion.manifest import Document, parse_manifest
 
-DEFAULT = Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
+DEFAULT = Path("data/golden/v1.0/golden_set_v1.0.jsonl")
 ORDER = [
     "retrievable_now",
     "no_matching_chunk",

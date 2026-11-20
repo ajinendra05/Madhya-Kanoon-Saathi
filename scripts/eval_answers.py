@@ -36,7 +36,7 @@ from madhya_kanoon_saathi.generation.local import LocalRuntime
 from madhya_kanoon_saathi.generation.pipeline import answer
 from madhya_kanoon_saathi.generation.prompt import PROMPT_VERSION
 
-GOLDEN = Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
+GOLDEN = Path("data/golden/v1.0/golden_set_v1.0.jsonl")
 CACHE = Path("data/eval/llm_cache.jsonl")
 OUT = Path("reports/answers")
 SMOKE = {  # stratified 20 rows: answerable (indexed), refer/abstain, crisis, gated

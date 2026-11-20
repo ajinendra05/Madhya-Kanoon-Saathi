@@ -16,7 +16,7 @@ import pytest
 
 from madhya_kanoon_saathi.common.section_uid import covers
 
-GOLDEN = Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
+GOLDEN = Path("data/golden/v1.0/golden_set_v1.0.jsonl")
 NEEDED = [
     Path("data/parsed/chunks.jsonl"),
     Path("data/index/bm25"),

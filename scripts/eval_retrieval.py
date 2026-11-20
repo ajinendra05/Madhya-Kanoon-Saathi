@@ -41,7 +41,7 @@ from madhya_kanoon_saathi.retrieval.hybrid import (
 )
 from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
-GOLDEN = Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
+GOLDEN = Path("data/golden/v1.0/golden_set_v1.0.jsonl")
 OUT = Path("reports/retrieval")
 K = 10
 GATES = {"recall@10": 0.85, "mrr@10": 0.6}  # plan §7; reported, not enforced (DEC-065)

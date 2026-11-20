@@ -41,7 +41,7 @@ FILES = ["onnx/model.onnx", "onnx/model.onnx_data", "onnx/tokenizer.json", "onnx
 DEST = Path("data/models/e5-large") / REVISION
 RECORD = Path("data/parsed_manifest/models.json")
 VEC_DIR = Path("data/index/dense-e5-fp32")
-GOLDEN = Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
+GOLDEN = Path("data/golden/v1.0/golden_set_v1.0.jsonl")
 MAX_LEN = 512  # e5-large position limit
 K = 10
 

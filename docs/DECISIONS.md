@@ -883,6 +883,15 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
   4. **`data/bot_texts.json` approved** (Telegram greeting, error and not-allowed texts).
 - Effects: ~₹1 for the re-run (DEC-078 cap) · golden `ask_clarifying` rows now scored.
 
+## DEC-081 — Golden set v1.0 frozen; faithfulness: stricter v1 prompt now, a free judge model next
+- Date: 2026-11-19 | Status: accepted | Approved by: Malik ("golden set is reviewed and verified"; "yes c for now and any good free model after v1")
+- Context: (1) Malik reviewed and verified the 130 seed rows. (2) The prompt v2 test showed the validator proves quotes exist but not that they support the claim (OPEN_QUESTIONS S33).
+- Decision:
+  1. **Golden v1.0** = the 130 verified seed rows, `data/golden/v1.0/golden_set_v1.0.jsonl` (sha256 `386f40b8…`), with only the corrections required by earlier decisions or verified findings (DEC-070 mutation rows out of corpus, DEC-050 wage row answerable with caveat, S31 GS-058 → CPA s.2(6)), listed in `data/golden/v1.0/CHANGES.md`. Protected from now on (eval rules); evals use v1.0. v1.0 keeps 130 rows (plan §7's 120 superseded by DEC-063's seed size).
+  2. **Faithfulness (S33) = option (c) for now**: keep prompt v1 and accept more abstentions.
+  3. **Next**: evaluate a **good free model** as a claim-support judge after v1 (e.g. a local multilingual NLI / cross-encoder model, or a free hosted model), with its accuracy measured on labelled examples before it gates anything; a paid judge (Claude, needs AWS) stays an option.
+- Effects: ₹0 · golden v1.0 unlocks the DEC-066 int8/fp32 comparison (S32) and the W2.6 roadmap item.
+
 ---
 
 ## Pending decisions (not yet made)

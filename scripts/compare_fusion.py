@@ -68,9 +68,7 @@ STRATEGIES: dict[str, Strategy] = {
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[union-attr]  # Windows console is cp1252
     ap = argparse.ArgumentParser()
-    ap.add_argument(
-        "--golden", type=Path, default=Path("data/golden/v0.1-seed/golden_set_v0.1_seed.jsonl")
-    )
+    ap.add_argument("--golden", type=Path, default=Path("data/golden/v1.0/golden_set_v1.0.jsonl"))
     ap.add_argument("--pools", default="40,20")
     a = ap.parse_args()
     pools = [int(p) for p in a.pools.split(",")]
