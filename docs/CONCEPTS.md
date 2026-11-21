@@ -477,6 +477,26 @@ plan.md), and a self-hosted reranker, because Bedrock Rerank isn't offered in ap
 **Immutable image = law snapshot.** The container image contains code + models + index; its tag carries the corpus
 manifest hash, so a rollback restores both code and law text (DEC-024).
 
+**Registry versions vs retention policies (found 2026-11-21, first Cloud Run image build).**
+- *How a registry stores an image:* **layers** (the big blobs) + a small **manifest** (JSON: "this image = these
+  layers"; its sha256 is the image's real identity) + **tags** (human names that point to one manifest). An **index**
+  (manifest list) is a JSON that points to several manifests, e.g. one per CPU platform.
+- *What happened:* GitHub's Docker builder (BuildKit) attaches a **provenance attestation** by default. To store it, one
+  push wrote three versions: an **index** (which got our tag) pointing to the **real image manifest** (1.08 GB, untagged)
+  and the **attestation manifest** (1.8 KB, untagged). The index is written last, so it is the "newest".
+- *Why it was dangerous:* our Artifact Registry cleanup rule (Step 11) keeps only the **most recent 1 version** and
+  deletes the rest after a day. It counts versions, not "images", so it would have kept the tiny index and deleted the
+  real image. Cloud Run pulls the image again on every cold start or scale-up, so the bot would have failed days after
+  the deploy, with nothing wrong in our code. (Artifact Registry *might* protect manifests an index still references;
+  not verified, so we don't rely on it.)
+- *Fix:* build with `--provenance=false --sbom=false`, so one push = one plain manifest = one version, and
+  "keep the newest 1" keeps exactly the deployed image. Provenance is kept our own way: tag = corpus-manifest hash +
+  git commit, archives checked against `data/artifacts.json`.
+- *Lesson:* after the first push, **list what the registry actually holds** before trusting a retention rule.
+  Interview line: "Retention policies count registry versions, not your mental model of an image. With attestations
+  on, one push made three versions and keep-latest-1 would have kept the pointer and deleted the image. We caught it
+  by inspecting the registry before the first deploy."
+
 **Least privilege.** Each Lambda gets only the permissions it needs (e.g., ingress can write to SQS, not read secrets it
 doesn't use).
 

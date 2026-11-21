@@ -81,7 +81,9 @@ jobs:
         run: |
           set -euo pipefail
           ref="${REGION}-docker.pkg.dev/${PROJECT}/${REPOSITORY}/${IMAGE}:${{ steps.tag.outputs.tag }}"
-          docker build -f docker/Dockerfile -t "$ref" .
+          # One plain manifest per push: no attestation index, so Artifact Registry's
+          # "keep newest 1" keeps the real image (docs/CONCEPTS.md, registry versions).
+          docker build --provenance=false --sbom=false -f docker/Dockerfile -t "$ref" .
           docker push "$ref"
           echo "Pushed: $ref" >> "$GITHUB_STEP_SUMMARY"
           docker image inspect "$ref" --format '{{.Size}}' | awk '{printf "Image size: %.2f GB\n", $1/1e9}' >> "$GITHUB_STEP_SUMMARY"
