@@ -156,6 +156,7 @@ moves `gated → index`, or stays archived if found invalid.
 | P14 | Cloud Scheduler free jobs per billing account; Artifact Registry price above 0.5 GB in asia-south1 | DEC-086 | C | open |
 | P15 | Is the ₹1,000 trial prepayment refundable on closing the account? (banner: "credited to your account") | DEC-086 | Malik / C | open |
 | P16 | Firestore: is the free tier limited to the `(default)` database? TTL deletion delay after `expire_at` (believed ≤ 24 h)? Do TTL deletes count against the 20K free deletes/day? | DEC-087 | C | open |
+| P17 | **WhatsApp channel (W4):** current Meta WhatsApp Cloud API pricing in India (plan.md: 1,000 free service messages/number/month from 1 Oct 2026, then ₹0.115 — not re-verified); business verification and display-name rules; whether a new number can be used without verification and its message limits; 24-hour customer-service window rules; webhook signature header and verification handshake; whether Meta's terms allow a legal-information bot for individuals | W4.0 | C + Malik | open |
 | P10 | Kaggle free GPU: weekly quota (~30 h?), session limit (~12 h? notebook `MAX_HOURS` = 11), phone verification for internet, P100 support in current torch | DEC-069 | Malik (quota page) / C | open |
 
 ## C. Models and libraries

@@ -95,8 +95,19 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | Q2 2027 | Panchayat/PESA/VB-G RAM G, SC/ST + forest rights, disability | todo |
 | H2 2027+ | Family/UCC, RERA, motor accidents, electricity, ration, Ayushman, birth/death | todo |
 
+## W4 — Dec: WhatsApp channel (Malik, 2026-11-21: "we will also build a WhatsApp bot")
+Same answer pipeline and cloud design; only a new ingress path and a new reply sender. Starts after W3.1 is live.
+| ID | Item | Status | Done when |
+| --- | --- | --- | --- |
+| W4.0 | Decision: Meta WhatsApp Cloud API direct vs a BSP; number, business verification, pricing (verify P17 first) | todo | DEC entry |
+| W4.1 | Meta setup (Malik): Meta Business account, app, dedicated phone number, webhook verify token; tokens into Secret Manager | todo | Test number receives messages |
+| W4.2 | Channel-neutral queue message (`channel` + reply address) so one answer service serves both channels | todo | Unit tests |
+| W4.3 | WhatsApp webhook in the ingress service: Meta verification handshake, signature check, dedup by message id | todo | Unit tests + live test |
+| W4.4 | WhatsApp sender (24-hour service window; text limits) and per-channel wording review | todo | Live answer on WhatsApp |
+| W4.5 | Quotas, spend cap and logs per channel; WhatsApp message costs in the cost dashboard | todo | Dashboard shows both channels |
+
 ## Later (after November)
-- Keep-warm ping (DEC-020 v2) · judge option B in CI (DEC-023 v2) · WhatsApp Cloud API · voice · NGO console
+- Keep-warm ping (DEC-020 v2) · judge option B in CI (DEC-023 v2) · voice · NGO console
 - DPDP full compliance before 13 May 2027 (per plan §10)
 
 ## Session log
