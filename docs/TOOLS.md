@@ -68,7 +68,8 @@ check date are given. Verify against the official page before code depends on it
 | Library | onnx | builds the int8 model only (ingest group) | in use (DEC-060) |
 | Library | ONNX Runtime | Runs int8/fp32 models on CPU in Lambda | decided (DEC-021) |
 | Library | Ragas, DeepEval | RAG metrics, pytest-style eval assertions | planned |
-| Dev | Terraform | Infrastructure as code | planned |
+| Dev | Terraform 1.17.2 | Infrastructure as code | installed 2026-11-21 (winget) |
+| Dev | Google Cloud SDK (gcloud) 594.0.0 | One-time login for Terraform; inspecting the project | installed 2026-11-21 (winget) |
 | Dev | Docker | Build Lambda images (in CI) | decided (DEC-024) |
 | Dev | pre-commit + gitleaks | Lint/format + secret scanning before commits | proposed (kickoff) |
 | Dev | Python toolchain (version, package manager, linter, test runner) | — | proposed (kickoff step 2) |
@@ -355,10 +356,17 @@ docs.cloud.google.com/free/docs/free-cloud-features (read 2026-11-21); open item
 
 ## 5. Dev tooling
 
-### Terraform — planned (plan §7)
-- **What:** Infrastructure as code.
-- **How we use it:** Defines Lambdas, SQS, DynamoDB, EventBridge, S3, ECR, IAM, SSM parameter *names* (never values).
-  Every `plan`/`apply` that changes resources needs Malik's approval.
+### Terraform — installed 1.17.2 (2026-11-21)
+- **What:** Infrastructure as code: `.tf` files describe the resources; `plan` shows the changes; `apply` makes them.
+- **Install:** `winget install Hashicorp.Terraform --version 1.17.2` (HashiCorp's zip from releases.hashicorp.com,
+  hash verified by winget). Latest stable per releases.hashicorp.com on 2026-11-21. Same version pinned in CI.
+- **How we use it:** Defines the Google Cloud resources of DEC-086 and Secret Manager secret *names* (never values).
+  Every `plan`/`apply` that changes resources needs Malik's approval, explained step by step.
+
+### Google Cloud SDK (gcloud) — installed 594.0.0 (2026-11-21)
+- **What:** Google's command-line tool (Apache-2.0), installed with `winget install Google.CloudSDK --version 594.0.0`.
+- **How we use it:** Malik logs in once (`gcloud auth login` + `gcloud auth application-default login`) so Terraform
+  uses short-lived user credentials; no service-account key files. Also for read-only checks of the project.
 
 ### Docker — decided (DEC-024)
 - Builds Lambda container images **in GitHub Actions**, so it isn't required on the Windows laptop.
