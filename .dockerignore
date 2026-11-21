@@ -1,0 +1,26 @@
+# Deny everything, then allow only what docker/Dockerfile copies (DEC-086).
+# Keeps .env, raw PDFs, OCR output, fp32 models, logs and the spend ledger out of the image.
+*
+
+!pyproject.toml
+!uv.lock
+!README.md
+!src
+src/**/__pycache__
+
+!data/corpus_manifest.json
+!data/contacts.yaml
+!data/answer_texts.json
+!data/bot_texts.json
+!data/help_topics.json
+!data/safety/crisis_examples.json
+!data/safety/crisis_replies.json
+!data/safety/crisis_threshold.json
+!data/safety/dispute_examples.json
+!data/safety/dispute_threshold.json
+!data/parsed/chunks.jsonl
+!data/parsed_manifest/models.json
+!data/index/bm25
+!data/index/dense-int8
+!data/models/bge-m3-int8
+!data/models/bge-reranker-v2-m3-int8
