@@ -1,4 +1,5 @@
-"""Read a secret by name. The environment comes first (production: injected from SSM, DEC-009),
+"""Read a secret by name. The environment comes first (production: Cloud Run injects Secret
+Manager values as environment variables, DEC-086),
 else a local ``.env`` file. Values are never printed, logged or put into error messages.
 (Module named env.py because .gitignore blocks file names containing "secrets".)"""
 
@@ -16,5 +17,5 @@ def secret(name: str, env_file: Path = Path(".env")) -> str:
             if key.strip() == name:
                 value = raw.strip().strip('"').strip("'")
     if not value:
-        raise RuntimeError(f"{name} is not set (.env locally, SSM in production)")
+        raise RuntimeError(f"{name} is not set (.env locally, Secret Manager in production)")
     return value

@@ -6,6 +6,8 @@ Three collections:
   (DEC-010). Kept 2 days.
 - ``queries/{query_id}``: one redacted record per question, costs embedded. Kept 90 days (DEC-029).
 - ``quotas/{chat_hash}_{YYYYMMDD}``: questions per chat per Indian calendar day. Kept 2 days.
+- ``spend/{YYYYMMDD}``: model spend in ₹ (GST incl.) per Indian calendar day, for the daily cap
+  (DEC-088). Kept 2 days; history lives in the nightly summary.
 
 Chat ids are never stored: callers pass ``chat_hash(chat_id, key)`` (HMAC-SHA256, secret key).
 Question and reply text pass ``redact()`` here, so no caller can forget it. Deletion is done by
@@ -26,10 +28,11 @@ from typing import Any, Protocol
 
 from madhya_kanoon_saathi.common.redact import redact
 
-SEEN, QUERIES, QUOTAS = "seen_updates", "queries", "quotas"
+SEEN, QUERIES, QUOTAS, SPEND = "seen_updates", "queries", "quotas", "spend"
 SEEN_TTL = timedelta(days=2)
 QUERY_TTL = timedelta(days=90)
 QUOTA_TTL = timedelta(days=2)
+SPEND_TTL = timedelta(days=2)
 IST = timezone(timedelta(hours=5, minutes=30))  # India has no daylight saving
 MIN_KEY_CHARS = 32
 
@@ -47,7 +50,11 @@ def chat_hash(chat_id: int, key: str) -> str:
 
 
 def quota_id(chat: str, now: datetime) -> str:
-    return f"{chat}_{now.astimezone(IST):%Y%m%d}"
+    return f"{chat}_{day_id(now)}"
+
+
+def day_id(now: datetime) -> str:
+    return f"{now.astimezone(IST):%Y%m%d}"
 
 
 def query_doc(record: Mapping[str, Any], now: datetime) -> dict[str, Any]:
@@ -80,10 +87,20 @@ class Store(Protocol):
         """True the first time an update id arrives, False for a duplicate."""
         ...
 
+    def forget_seen(self, update_id: int) -> None:
+        """Undo ``mark_seen`` when the update could not be queued, so Telegram's retry is
+        processed instead of being dropped as a duplicate."""
+        ...
+
     def log_query(self, query_id: str, record: Mapping[str, Any], now: datetime) -> None: ...
 
     def bump_quota(self, chat: str, now: datetime) -> int:
         """Add one question for this chat today and return today's count."""
+        ...
+
+    def add_spend(self, inr: float, now: datetime, cap: float | None = None) -> bool:
+        """Add ``inr`` to today's spend. With ``cap``, refuse (False, nothing added) if the total
+        would exceed it. Negative amounts (settling an estimate) are always added."""
         ...
 
 
@@ -91,7 +108,12 @@ class MemoryStore:
     """Dict-backed store with the same rules (tests, local bot)."""
 
     def __init__(self) -> None:
-        self.data: dict[str, dict[str, dict[str, Any]]] = {SEEN: {}, QUERIES: {}, QUOTAS: {}}
+        self.data: dict[str, dict[str, dict[str, Any]]] = {
+            SEEN: {},
+            QUERIES: {},
+            QUOTAS: {},
+            SPEND: {},
+        }
 
     def mark_seen(self, update_id: int, now: datetime) -> bool:
         _check_now(now)
@@ -100,6 +122,9 @@ class MemoryStore:
             return False
         self.data[SEEN][key] = {"received_at": now, "expire_at": now + SEEN_TTL}
         return True
+
+    def forget_seen(self, update_id: int) -> None:
+        self.data[SEEN].pop(str(update_id), None)
 
     def log_query(self, query_id: str, record: Mapping[str, Any], now: datetime) -> None:
         _check_now(now)
@@ -113,6 +138,15 @@ class MemoryStore:
         doc["count"] += 1
         doc["expire_at"] = now + QUOTA_TTL
         return int(doc["count"])
+
+    def add_spend(self, inr: float, now: datetime, cap: float | None = None) -> bool:
+        _check_now(now)
+        doc = self.data[SPEND].setdefault(day_id(now), {"inr": 0.0, "calls": 0})
+        new = _next_spend(doc, inr, cap)
+        if new is None:
+            return False
+        doc.update(new, expire_at=now + SPEND_TTL)
+        return True
 
 
 class FirestoreStore:
@@ -141,6 +175,9 @@ class FirestoreStore:
             snap = ref.get()
             return bool(snap.exists and snap.get("token") == token)
 
+    def forget_seen(self, update_id: int) -> None:
+        self.client.collection(SEEN).document(str(update_id)).delete()
+
     def log_query(self, query_id: str, record: Mapping[str, Any], now: datetime) -> None:
         _check_now(now)
         self.client.collection(QUERIES).document(query_id).set(query_doc(record, now))
@@ -161,3 +198,30 @@ class FirestoreStore:
             return n
 
         return int(bump(self.client.transaction()))
+
+    def add_spend(self, inr: float, now: datetime, cap: float | None = None) -> bool:
+        from google.cloud import firestore
+
+        _check_now(now)
+        ref = self.client.collection(SPEND).document(day_id(now))
+
+        @firestore.transactional
+        def add(tx: Any) -> bool:
+            snap = ref.get(transaction=tx)
+            cur = snap.to_dict() if snap.exists else {}
+            new = _next_spend(cur or {}, inr, cap)
+            if new is None:
+                return False
+            tx.set(ref, {**new, "expire_at": now + SPEND_TTL})
+            return True
+
+        return bool(add(self.client.transaction()))
+
+
+def _next_spend(doc: Mapping[str, Any], inr: float, cap: float | None) -> dict[str, Any] | None:
+    """Today's spend after adding ``inr``; None if a positive amount would pass the cap."""
+    total = float(doc.get("inr", 0.0)) + inr
+    if inr > 0 and cap is not None and total > cap:
+        return None
+    calls = int(doc.get("calls", 0)) + (1 if inr > 0 else 0)
+    return {"inr": round(max(total, 0.0), 6), "calls": calls}

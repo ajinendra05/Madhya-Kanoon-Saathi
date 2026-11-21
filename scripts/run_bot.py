@@ -19,15 +19,13 @@ import argparse
 import json
 import re
 import sys
-from datetime import date
 from pathlib import Path
 
 from madhya_kanoon_saathi.bot.telegram import TelegramClient, run
-from madhya_kanoon_saathi.common.contacts import load as load_contacts
 from madhya_kanoon_saathi.common.env import secret
 from madhya_kanoon_saathi.generation.llm import complete, request_body
 from madhya_kanoon_saathi.generation.local import LocalRuntime
-from madhya_kanoon_saathi.generation.pipeline import answer
+from madhya_kanoon_saathi.generation.service import contact_numbers, responder
 
 LOG = Path("data/logs/bot_local.jsonl")
 
@@ -42,11 +40,9 @@ def main() -> int:
     if bot_texts.get("status") != "approved" and not a.allow_draft:
         print("data/bot_texts.json is not approved; use --allow-draft for local testing")
         return 1
-    numbers = {c.id: c.number for c in load_contacts(Path("data/contacts.yaml"))}
+    numbers = contact_numbers()
     fill = lambda t: re.sub(r"\{([a-z0-9_]+)\}", lambda m: numbers[m.group(1)], t)  # noqa: E731
     texts = {k: fill(bot_texts[k]) for k in ("start", "error", "not_allowed")}
-    answer_texts = json.loads(Path("data/answer_texts.json").read_text("utf-8"))
-    replies = json.loads(Path("data/safety/crisis_replies.json").read_text("utf-8"))
 
     try:
         allowed_raw = secret("MKS_BOT_ALLOWED_CHATS")
@@ -64,23 +60,10 @@ def main() -> int:
         body = request_body(messages, "json_object", reasoning_effort="low", max_tokens=1200)
         return complete(body, purpose="telegram_local").content
 
+    respond = responder(rt, generate)
+
     def handler(question: str) -> str:
-        vec = rt.vector(question)
-        chunks = rt.retrieve(question, vec, date.today())
-        reply = answer(
-            question,
-            retrieve=lambda _q: chunks,
-            generate=generate,
-            texts=answer_texts,
-            crisis_replies=replies,
-            numbers=numbers,
-            today=date.today(),
-            query_vec=vec,
-            crisis_examples=rt.crisis_index,
-            dispute_examples=rt.dispute_index,
-            versions=rt.versions,
-            topics=json.loads(Path("data/help_topics.json").read_text("utf-8")),
-        )
+        reply = respond(question)
         LOG.parent.mkdir(parents=True, exist_ok=True)
         with LOG.open("a", encoding="utf-8", newline="\n") as f:
             f.write(json.dumps(reply.log, ensure_ascii=False) + "\n")  # redacted record only

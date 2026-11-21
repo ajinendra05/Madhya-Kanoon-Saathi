@@ -968,6 +968,21 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: one record per question means fewer writes and one place to look when debugging; the dashboard keeps its history through the nightly summary.
 - Effects: ₹0 (free tier 20K writes/day ≈ 6K questions/day at ~3 writes) · one more secret (5 of 6 free versions) · per-step cost rows are no longer kept beyond 90 days · not verified: free tier limited to the `(default)` database; TTL deletion delay (OPEN_QUESTIONS P16).
 
+## DEC-088 — Cloud handlers: stdlib HTTP server, 20 questions per chat per day, ₹20 daily spend cap in Firestore
+- Date: 2026-11-21 | Status: accepted ("1 a, 2 b, 3 make daily cap of 20 for now") | Approved by: Malik | Amends DEC-087 (adds `spend`), resolves the pending "per-chat daily limit + production spend cap"
+- Context: the two Cloud Run services need an HTTP entry point; the DEC-078 spend guard records spend in a local file, which Cloud Run loses on every restart; users and scripts need a per-chat limit.
+- Options: (1) A) Python stdlib `http.server` · B) Flask + gunicorn. (2) A) 10 · **B) 20** · C) 50 questions per chat per day. (3) A) daily cap in Firestore · B) monthly cap · C) no code cap.
+- Decision:
+  1. **Handlers use the stdlib** (`http.server.ThreadingHTTPServer` on `$PORT`); no new dependency. Each service has one POST endpoint; logic stays in package code and is unit-tested.
+  2. **20 questions per chat per Indian calendar day** (DEC-087 `quotas`). Above it, the bot replies with the approved limit message (below) and makes no model call. The NALSA number is filled from `contacts.yaml`, never hard-coded.
+  3. **Production spend cap ₹20 per Indian calendar day, GST included**, held in a new Firestore collection **`spend/{YYYYMMDD}`** `{inr, calls, expire_at = +2 days}`. Before each model call the guard adds the worst-case cost (same estimate as DEC-078) in a transaction and refuses the call if the day's total would exceed ₹20; the user then gets the existing "can't answer reliably" reply. Actual cost replaces the estimate after the call. Malik: "for now"; raising it needs a new decision. The local ₹10 ledger cap (DEC-078) is unchanged for laptop runs and evals.
+- Approved limit message (Malik, 2026-11-21):
+  - hi: "आज के लिए आपके प्रश्नों की सीमा पूरी हो गई है। कृपया कल फिर पूछें। मुफ़्त कानूनी सहायता के लिए NALSA हेल्पलाइन {nalsa} पर कॉल करें।"
+  - hinglish: "Aaj ke liye aapke sawalon ki seema poori ho gayi hai. Kripya kal phir poochhein. Muft kanooni sahayata ke liye NALSA helpline {nalsa} par call karein."
+  - en: "You've reached today's question limit. Please ask again tomorrow. For free legal aid, call the NALSA helpline {nalsa}."
+- Why: no dependency for two one-endpoint services; a cap that survives restarts is the only real control over Sarvam spend; 20/day covers real users while bounding abuse.
+- Effects: worst case ~₹600/month in model spend · ~2 more Firestore writes per question (within free tier) · cold start unchanged.
+
 ---
 
 ## Pending decisions (not yet made)
@@ -975,7 +990,7 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 | Topic | Raised in | Status |
 | --- | --- | --- |
 | Firestore collection design + TTL (was DynamoDB, DEC-086) | R10 | Resolved 2026-11-21 by DEC-087 |
-| Per-chat daily question limit + production spend cap | DEC-087 | Before the public demo |
+| Per-chat daily question limit + production spend cap | DEC-087 | Resolved 2026-11-21 by DEC-088 (20/chat/day; ₹20/day) |
 | Claude fallback + judge source: Vertex AI vs Anthropic API (was Bedrock, DEC-086) | DEC-086 | Later; Sarvam stays default |
 | Monthly budget for paid eval API calls | R4 | Resolved 2026-11-18 by DEC-078 (₹10 cap incl. GST before production) |
 | Second (higher) budget alert including paid LLM use | R4 | To discuss later |

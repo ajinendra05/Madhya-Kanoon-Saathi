@@ -1,4 +1,4 @@
-# Firestore layout (DEC-087)
+# Firestore layout (DEC-087, DEC-088)
 
 One database `(default)`, Native mode, **asia-south1** (location and mode are permanent).
 Code: `src/madhya_kanoon_saathi/common/store.py` (`MemoryStore` for tests/local, `FirestoreStore` for cloud).
@@ -6,8 +6,9 @@ Code: `src/madhya_kanoon_saathi/common/store.py` (`MemoryStore` for tests/local,
 | Collection / doc id | Fields | Kept | Written by |
 | --- | --- | --- | --- |
 | `seen_updates/{update_id}` | `received_at`, `expire_at`, `token` (random, detects our own retried write) | 2 days | ingress, create-if-absent |
-| `queries/{query_id}` | `chat` (hash), `at`, `lang`, `question`*, `reply`*, crisis tier/categories, `help`, `dispute`, `states`, `retrieved`, `cited`, `attempts`, `abstain_reason`, `timings_ms`, `costs[]` `{step, provider, model, units, unit_type, cost_inr, latency_ms}`, `expire_at` | 90 days | answer service |
+| `queries/u{update_id}` | `chat` (hash), `at`, `outcome`, `lang`, `question`*, `reply`*, crisis tier/categories, `help`, `dispute`, `states`, `retrieved`, `cited`, `attempts`, `abstain_reason`, `timings_ms`, `costs[]` `{step, provider, model, units, unit_type, cost_inr, latency_ms}`, `expire_at` | 90 days | answer service |
 | `quotas/{chat_hash}_{YYYYMMDD}` | `count`, `expire_at` (day = Indian calendar day, IST) | 2 days | answer service, in a transaction |
+| `spend/{YYYYMMDD}` | `inr` (₹ incl. GST), `calls`, `expire_at` | 2 days | answer service: reserve worst case before a model call (refused above ₹20/day), settle to actual after (DEC-088) |
 
 \* passed through `common/redact.py` inside `query_doc()`; callers cannot skip it.
 

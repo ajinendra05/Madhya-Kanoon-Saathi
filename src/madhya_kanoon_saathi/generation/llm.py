@@ -101,11 +101,13 @@ def complete(
     timeout: float = 60.0,
     retries: int = 2,
     ledger: Path = budget.LEDGER,
+    guard: budget.DailySpendGuard | None = None,
 ) -> Completion:
-    """One paid call (with retries on 429/5xx) inside the DEC-078 spend cap; the actual usage is
-    recorded in the ledger. Raises BudgetExceededError before spending if the cap could be
-    exceeded, RuntimeError (without the key in it) on API errors."""
-    budget.check(body, ledger=ledger)
+    """One paid call (with retries on 429/5xx) inside a spend cap. Without ``guard``: the local
+    DEC-078 ledger cap (laptop runs, evals). With ``guard``: the production daily cap in Firestore
+    (DEC-088), and the local ledger is not touched. Raises BudgetExceededError before spending if
+    the cap could be exceeded, RuntimeError (without the key in it) on API errors."""
+    reserved = guard.reserve(body) if guard else budget.check(body, ledger=ledger)
     payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
     key = api_key()
     for attempt in range(retries + 1):
@@ -122,13 +124,16 @@ def complete(
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 comp = parse_response(json.loads(resp.read().decode("utf-8")))
-            budget.record(
-                model=comp.model or str(body.get("model")),
-                purpose=purpose,
-                prompt_tokens=comp.prompt_tokens,
-                completion_tokens=comp.completion_tokens,
-                ledger=ledger,
-            )
+            if guard:
+                guard.settle(reserved, budget.cost_inr(comp.prompt_tokens, comp.completion_tokens))
+            else:
+                budget.record(
+                    model=comp.model or str(body.get("model")),
+                    purpose=purpose,
+                    prompt_tokens=comp.prompt_tokens,
+                    completion_tokens=comp.completion_tokens,
+                    ledger=ledger,
+                )
             return comp
         except urllib.error.HTTPError as e:
             detail = e.read().decode("utf-8", errors="replace")[:300]

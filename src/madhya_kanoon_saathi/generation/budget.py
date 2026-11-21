@@ -5,16 +5,21 @@ Before a call, :func:`check` adds the worst case (prompt tokens estimated from t
 if the cap would be exceeded. After the call, :func:`record` appends the actual usage to a
 committed ledger. The ledger stores only time, model, purpose, token counts and cost — never
 prompts, answers or keys.
+
+In the cloud the ledger file would be lost on every restart, so production uses
+:class:`DailySpendGuard` instead: a ₹20/day cap held in Firestore ``spend/{YYYYMMDD}`` (DEC-088).
 """
 
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 CAP_INR = 10.0  # DEC-078: everything before production, GST included
+DAILY_CAP_INR = 20.0  # DEC-088: production, per Indian calendar day, GST included
 GST = 0.18
 LEDGER = Path("data/spend/llm_ledger.jsonl")
 PRICE_INR_PER_M = {"input": 10.0, "output": 25.0}  # sarvam-105b, verified 2026-11-18 (DEC-077)
@@ -47,9 +52,14 @@ def spent(ledger: Path = LEDGER) -> float:
     )
 
 
+def worst_case(body: dict[str, Any]) -> float:
+    """Most this call can cost, incl. GST: estimated prompt + ``max_tokens`` of output."""
+    return cost_inr(estimate_prompt_tokens(body), int(body.get("max_tokens", 2048)))
+
+
 def check(body: dict[str, Any], *, ledger: Path = LEDGER, cap: float = CAP_INR) -> float:
     """Worst-case cost of this call; raises BudgetExceededError if it could exceed the cap."""
-    worst = cost_inr(estimate_prompt_tokens(body), int(body.get("max_tokens", 2048)))
+    worst = worst_case(body)
     already = spent(ledger)
     if already + worst > cap:
         raise BudgetExceededError(
@@ -81,3 +91,32 @@ def record(
     with ledger.open("a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(row) + "\n")
     return cost
+
+
+class SpendCounter(Protocol):
+    def add_spend(self, inr: float, now: datetime, cap: float | None = None) -> bool: ...
+
+
+class DailySpendGuard:
+    """Production cap (DEC-088): reserve the worst case before a call, settle to the actual cost
+    after it. A failed call keeps its reservation (it may still have been billed)."""
+
+    def __init__(
+        self,
+        store: SpendCounter,
+        cap: float = DAILY_CAP_INR,
+        clock: Callable[[], datetime] = lambda: datetime.now(UTC),
+    ) -> None:
+        self.store, self.cap, self.clock = store, cap, clock
+
+    def reserve(self, body: dict[str, Any]) -> float:
+        worst = worst_case(body)
+        if not self.store.add_spend(worst, self.clock(), cap=self.cap):
+            raise BudgetExceededError(
+                f"paid call refused: today's spend would pass the daily cap ₹{self.cap:.2f} "
+                "(DEC-088; raising it needs a new decision)"
+            )
+        return worst
+
+    def settle(self, reserved: float, actual: float) -> None:
+        self.store.add_spend(actual - reserved, self.clock())
