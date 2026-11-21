@@ -1,0 +1,87 @@
+# Build the Cloud Run image and push it to Artifact Registry (DEC-024, DEC-084/085/086).
+# Manual only: Actions tab -> "Build image" -> Run workflow (on main).
+name: Build image
+
+on:
+  workflow_dispatch:
+
+# Least privilege: read the code, and request a GitHub OIDC token for the keyless Google login.
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: build-image
+  cancel-in-progress: false
+
+env:
+  REGION: asia-south1
+  PROJECT: mks-prod-515410
+  REPOSITORY: mks
+  IMAGE: bot
+  # Outputs of infra/terraform/bootstrap (not secret)
+  WIF_PROVIDER: projects/164560503250/locations/global/workloadIdentityPools/mks-github/providers/github-oidc
+  DEPLOY_SA: mks-github-deploy@mks-prod-515410.iam.gserviceaccount.com
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      # actions/checkout v7.0.1, pinned to its commit (checked 2026-11-21)
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Download runtime artifacts from the private release
+        env:
+          GH_TOKEN: ${{ secrets.MKS_ARTIFACTS_TOKEN }}
+        run: |
+          set -euo pipefail
+          repo=$(jq -r .repo data/artifacts.json)
+          tag=$(jq -r .tag data/artifacts.json)
+          mkdir -p /tmp/artifacts
+          gh release download "$tag" -R "$repo" -D /tmp/artifacts
+
+      - name: Verify checksums against data/artifacts.json, then unpack
+        run: |
+          set -euo pipefail
+          jq -r '.assets[] | "\(.sha256)  /tmp/artifacts/\(.file)"' data/artifacts.json > /tmp/artifacts/SHA256SUMS
+          sha256sum --check --strict /tmp/artifacts/SHA256SUMS
+          for f in $(jq -r '.assets[].file' data/artifacts.json); do
+            tar -xf "/tmp/artifacts/$f" -C "$GITHUB_WORKSPACE"
+          done
+          rm -rf /tmp/artifacts
+          du -sh data/models/*int8 data/index/bm25 data/index/dense-int8
+
+      - name: Image tag = corpus manifest hash + commit
+        id: tag
+        run: |
+          set -euo pipefail
+          manifest=$(sha256sum data/corpus_manifest.json | cut -c1-12)
+          echo "tag=m${manifest}-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      # google-github-actions/auth v3, pinned to its commit (checked 2026-11-21).
+      # Keyless: GitHub's OIDC token (repo + main only, bootstrap condition) -> short-lived token.
+      - name: Google Cloud login (Workload Identity Federation)
+        id: auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093
+        with:
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.DEPLOY_SA }}
+          token_format: access_token
+          create_credentials_file: false
+
+      - name: Docker login to Artifact Registry
+        env:
+          TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: printf '%s' "$TOKEN" | docker login -u oauth2accesstoken --password-stdin "https://${REGION}-docker.pkg.dev"
+
+      - name: Build and push
+        run: |
+          set -euo pipefail
+          ref="${REGION}-docker.pkg.dev/${PROJECT}/${REPOSITORY}/${IMAGE}:${{ steps.tag.outputs.tag }}"
+          docker build -f docker/Dockerfile -t "$ref" .
+          docker push "$ref"
+          echo "Pushed: $ref" >> "$GITHUB_STEP_SUMMARY"
+          docker image inspect "$ref" --format '{{.Size}}' | awk '{printf "Image size: %.2f GB\n", $1/1e9}' >> "$GITHUB_STEP_SUMMARY"
