@@ -141,17 +141,20 @@ moves `gated → index`, or stays archived if found invalid.
 ## B. Prices, limits and availability (TODO(verify))
 | ID | Question | Used in | Owner | Status |
 | --- | --- | --- | --- | --- |
-| P1 | AWS Free vs Paid plan rules (auto-close after 6 months / credits) | DEC-002, 019 | C | open |
-| P2 | Always-free limits: Lambda (1M req, 400K GB-s), SQS (1M), DynamoDB (25 GB, 25 RCU/WCU — provisioned only?) | DEC-002, R10 | C | open |
-| P3 | Lambda max memory / vCPU scaling / image size limit; Python 3.12 base image | DEC-021, 024, 030 | C | open |
-| P4 | Claude models on Bedrock India `in.` profile: IDs, prices (Mumbai uplift?), whether AWS credits cover them | DEC-006 | C | open |
+| P1 | AWS Free vs Paid plan rules (auto-close after 6 months / credits) | DEC-002, 019 | C | moot (DEC-086: AWS dropped) |
+| P2 | Always-free limits: Lambda (1M req, 400K GB-s), SQS (1M), DynamoDB (25 GB, 25 RCU/WCU — provisioned only?) | DEC-002, R10 | C | moot (DEC-086: AWS dropped) |
+| P3 | Lambda max memory / vCPU scaling / image size limit; Python 3.12 base image | DEC-021, 024, 030 | C | moot (DEC-086: AWS dropped) |
+| P4 | Claude models on Bedrock India `in.` profile: IDs, prices (Mumbai uplift?), whether AWS credits cover them | DEC-006 | C | moot (DEC-086: AWS dropped) |
 | P5 | Sarvam-105B price + rate limit; Sarvam Document Digitization price | DEC-006, 014 | C | open |
-| P6 | SSM standard tier free; Secrets Manager price | DEC-009 | C | open |
-| P7 | S3, ECR, CloudWatch, KMS (customer-managed key) prices in ap-south-1 | DEC-011, 024, 029 | C | open |
-| P8 | NAT gateway cost (justification for no VPC) | DEC-029 | C | open |
+| P6 | SSM standard tier free; Secrets Manager price | DEC-009 | C | moot (DEC-086: AWS dropped) |
+| P7 | S3, ECR, CloudWatch, KMS (customer-managed key) prices in ap-south-1 | DEC-011, 024, 029 | C | moot (DEC-086: AWS dropped) |
+| P8 | NAT gateway cost (justification for no VPC) | DEC-029 | C | moot (DEC-086: AWS dropped) |
 | P9 | GitHub Actions minutes for private repos | DEC-024 | C | open |
 | P11 | **Storage / hosting alternatives to revisit when users grow (DEC-084).** Current: ECR with 1 image, artifacts in releases of the private repo `mks-artifacts` (DEC-085), S3 only for Terraform state, no cloud PDF copy. Alternatives: (a) ECR with **2 images** for instant rollback (~₹28/month vs ~₹14); (b) **zip Lambda + models downloaded to `/tmp` at cold start** from S3 or GitHub Releases: no ECR, but +5–30 s per cold start (not measured), libraries must fit the ~250 MB zip limit (not checked), `/tmp` above 512 MB is billed; (c) **models/indexes in S3** in ap-south-1 instead of GitHub Releases (~₹3/month, faster in-region download); (d) **raw PDFs in versioned S3** again (DEC-011 original, <₹1/month, version history); (e) EFS: needs a VPC (rejected, DEC-029); (f) host outside AWS (HF Spaces free CPU, Oracle Always Free VM, Cloud Run + Artifact Registry): reverses DEC-002; (g) shrink the image (drop the reranker: hurts retrieval, DEC-067/068). Prices from memory, not verified (see P7) | DEC-084, 024, 011 | M | open (revisit with usage data) |
 | P12 | GitHub release limits for a **private** repo (per-file size, total storage, download bandwidth) for ~1.25 GB of artifacts (DEC-085) | DEC-085 | C | open |
+| P13 | Does the Cloud Run free tier apply in **asia-south1**, or only in some regions/tiers? Max memory per instance; image size limit | DEC-086 | C | open |
+| P14 | Cloud Scheduler free jobs per billing account; Artifact Registry price above 0.5 GB in asia-south1 | DEC-086 | C | open |
+| P15 | Is the ₹1,000 trial prepayment refundable on closing the account? (banner: "credited to your account") | DEC-086 | Malik / C | open |
 | P10 | Kaggle free GPU: weekly quota (~30 h?), session limit (~12 h? notebook `MAX_HOURS` = 11), phone verification for internet, P100 support in current torch | DEC-069 | Malik (quota page) / C | open |
 
 ## C. Models and libraries

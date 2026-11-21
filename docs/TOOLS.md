@@ -28,20 +28,29 @@ check date are given. Verify against the official page before code depends on it
 
 | Area | Tool | Role | Status |
 | --- | --- | --- | --- |
-| AWS | Lambda (container image) | Ingress, answer, law-watch, nightly cost summary | decided (DEC-002) |
-| AWS | Lambda Function URL | Public HTTPS endpoint for the Telegram webhook | decided (DEC-002, 010) |
-| AWS | SQS + dead-letter queue | Queue between ingress and answer Lambdas | decided (DEC-010) |
-| AWS | DynamoDB | Dedup, query log, cost log, quotas | decided (DEC-002); schema pending |
-| AWS | EventBridge Scheduler/rules | Weekly law-watch; nightly cost summary | decided (DEC-012, 013) |
-| AWS | S3 | Production raw corpus, versioned | decided (DEC-011) |
-| AWS | ECR | Stores Lambda container images | decided (DEC-024) |
-| AWS | SSM Parameter Store | Secrets (SecureString) | decided (DEC-009) |
-| AWS | KMS | Encryption for SSM / S3 / DynamoDB | decided (DEC-029) |
-| AWS | IAM | Least-privilege roles; GitHub OIDC role | decided (DEC-019, 029) |
-| AWS | CloudWatch Logs + Alarms | Logs (PII-redacted), metrics, alarms | planned |
-| AWS | AWS Budgets | ₹100 budget alert | decided (DEC-002, 019) |
-| AWS | Amazon Bedrock (Claude) | LLM fallback + LLM-as-judge | decided (DEC-006) |
-| AWS | X-Ray / OpenTelemetry | Per-query traces | planned |
+| GCP | Cloud Run (2 services) | Ingress webhook service; answer service (container) | decided (DEC-086) |
+| GCP | Pub/Sub (push + dead-letter topic) | Queue between ingress and answer services | decided (DEC-086) |
+| GCP | Firestore | Dedup, query log, cost log, quotas | decided (DEC-086); schema pending |
+| GCP | Secret Manager | Secrets | decided (DEC-086) |
+| GCP | Cloud Scheduler | Weekly law-watch; nightly cost summary | decided (DEC-086) |
+| GCP | Artifact Registry | One container image | decided (DEC-086) |
+| GCP | Cloud Storage | Terraform state only | decided (DEC-086) |
+| GCP | Workload Identity Federation | Keyless GitHub Actions deploys | decided (DEC-086) |
+| GCP | Cloud Logging + Monitoring, budget alert | Logs (PII-redacted), alarms, ₹100 alert | decided (DEC-086) |
+| AWS | Lambda (container image) | Ingress, answer, law-watch, nightly cost summary | superseded (DEC-086) |
+| AWS | Lambda Function URL | Public HTTPS endpoint for the Telegram webhook | superseded (DEC-086) |
+| AWS | SQS + dead-letter queue | Queue between ingress and answer Lambdas | superseded (DEC-086) |
+| AWS | DynamoDB | Dedup, query log, cost log, quotas | superseded (DEC-086) |
+| AWS | EventBridge Scheduler/rules | Weekly law-watch; nightly cost summary | superseded (DEC-086) |
+| AWS | S3 | Production raw corpus, versioned | superseded (DEC-086) |
+| AWS | ECR | Stores Lambda container images | superseded (DEC-086) |
+| AWS | SSM Parameter Store | Secrets (SecureString) | superseded (DEC-086) |
+| AWS | KMS | Encryption for SSM / S3 / DynamoDB | superseded (DEC-086) |
+| AWS | IAM | Least-privilege roles; GitHub OIDC role | superseded (DEC-086) |
+| AWS | CloudWatch Logs + Alarms | Logs (PII-redacted), metrics, alarms | superseded (DEC-086) |
+| AWS | AWS Budgets | ₹100 budget alert | superseded (DEC-086) |
+| AWS | Amazon Bedrock (Claude) | LLM fallback + LLM-as-judge | superseded (DEC-086) |
+| AWS | X-Ray / OpenTelemetry | Per-query traces | superseded (DEC-086) |
 | GitHub | Repo, Actions, OIDC, Pages, Issues | Code, CI/CD, image builds, dashboard, law-watch alerts | decided |
 | Models | Sarvam-105B | Default answer generator | decided (DEC-006) |
 | Models | BGE-M3 | Embeddings (dense) | decided (DEC-004) |
@@ -72,7 +81,30 @@ check date are given. Verify against the official page before code depends on it
 
 ---
 
-## 1. AWS (region ap-south-1, Mumbai)
+## 0. Google Cloud (region asia-south1, Mumbai) — decided (DEC-086)
+
+Replaces the AWS plan in section 1, which is kept below as history (AWS sign-up failed, 2026-11-21).
+Free Trial account (welcome credit ends 20 Feb 2027; no automatic billing after it). Free allowances per
+docs.cloud.google.com/free/docs/free-cloud-features (read 2026-11-21); open items in OPEN_QUESTIONS P13–P15.
+
+- **Cloud Run:** runs containers on demand and scales to zero. *Ingress service* (small) checks Telegram's secret
+  header, dedups `update_id` in Firestore, publishes to Pub/Sub and returns 200. *Answer service* holds code + int8
+  models + indexes in its image and runs the pipeline. Why: same "pay only per request" model as Lambda, and a
+  container image is the natural unit (DEC-024). Free: 2M requests, 360K GB-s, 180K vCPU-s per month.
+- **Pub/Sub:** message queue; a push subscription calls the answer service and retries, then moves failures to a
+  dead-letter topic. Why: Telegram resends slow webhooks; the queue gives fast acks and no duplicate answers (DEC-010).
+- **Firestore:** serverless document database for dedup, logs, cost rows and quotas; TTL policies for the 90-day
+  chat retention. Collection design pending.
+- **Secret Manager:** Telegram token, webhook secret, Sarvam key, law-watch GitHub token (~4 of 6 free versions).
+- **Cloud Scheduler:** cron triggers for law-watch and the cost summary.
+- **Artifact Registry:** image store; keep one image (DEC-084).
+- **Cloud Storage:** one bucket for Terraform state (KB-sized).
+- **Workload Identity Federation:** GitHub Actions gets short-lived credentials from its OIDC token; no stored keys.
+- **Not chosen yet:** Claude fallback/judge via Vertex AI or the Anthropic API (DEC-006 follow-up).
+
+---
+
+## 1. AWS (region ap-south-1, Mumbai) — superseded by DEC-086 (kept as history)
 
 ### AWS Lambda — decided (DEC-002)
 - **What:** Runs our code on demand in response to events; no server to manage. Supports container images.

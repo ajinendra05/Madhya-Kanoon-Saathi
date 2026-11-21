@@ -1,7 +1,7 @@
 # Architecture — Madhya Kanoon Saathi
 
 Rebuilt from `docs/plan.md` §5/§7 and updated by `docs/DECISIONS.md` (always-free serverless, no vector DB).
-Three parts: an **offline** ingestion/index build, an **online** answer path on AWS, and **CI/ops** around them.
+Three parts: an **offline** ingestion/index build, an **online** answer path on Google Cloud (DEC-086), and **CI/ops** around them.
 
 ```mermaid
 flowchart TB
@@ -28,27 +28,27 @@ flowchart TB
     BM --> REL
     REL --> BUILD
 
-    subgraph AWS["AWS ap-south-1 (always-free first)"]
-        URL["Lambda Function URL"] --> ING["Ingress Lambda<br/>secret check · dedup · enqueue"]
-        ING --> DDB[("DynamoDB<br/>seen_updates · query_log · cost_log · quotas")]
-        ING --> SQS[["SQS"]]
-        SQS --> ANS["Answer Lambda (container)<br/>understand → hybrid search → RRF<br/>→ rerank → generate → validate"]
-        SQS -. failures .-> DLQ[["Dead-letter queue"]]
-        ANS --> DDB
-        ANS --> SSM["SSM Parameter Store<br/>(secrets)"]
-        ECR[("ECR images")] --> ANS
-        S3[("S3: Terraform state only")]
-        EB["EventBridge"] --> LW["Law-watch Lambda"]
-        EB --> CS["Cost-summary Lambda"]
-        CS --> DDB
-        CW["CloudWatch logs + alarms · Budgets ₹100"]
+    subgraph GCP["Google Cloud asia-south1 (free trial + always-free, DEC-086)"]
+        ING["Ingress Cloud Run service<br/>secret check · dedup · publish"]
+        ING --> FS[("Firestore<br/>seen_updates · query_log · cost_log · quotas")]
+        ING --> PS[["Pub/Sub (push)"]]
+        PS --> ANS["Answer Cloud Run service (container)<br/>understand → hybrid search → RRF<br/>→ rerank → generate → validate"]
+        PS -. failures .-> DLQ[["Dead-letter topic"]]
+        ANS --> FS
+        ANS --> SM["Secret Manager"]
+        AR[("Artifact Registry: 1 image")] --> ANS
+        GCS[("Cloud Storage: Terraform state only")]
+        SCH["Cloud Scheduler"] --> LW["Law-watch job"]
+        SCH --> CS["Cost-summary job"]
+        CS --> FS
+        CW["Cloud Logging + Monitoring · budget alert ₹100"]
     end
 
-    BUILD --> ECR
-    TG["Telegram user"] --> URL
+    BUILD --> AR
+    TG["Telegram user"] --> ING
     ANS -- "sendMessage" --> TG
     ANS --> SARVAM["Sarvam-105B (default LLM)"]
-    ANS --> BEDROCK["Bedrock Claude, India profile<br/>(fallback + judge)"]
+    ANS --> CLAUDE["Claude fallback + judge<br/>(Vertex AI or Anthropic API: TBD)"]
     LW --> ISSUE
     CS --> PAGES
 ```
@@ -63,17 +63,18 @@ then indexed twice: BGE-M3 vectors in an exact FAISS index, and a BM25 index usi
 **Packaging.** Models and index files are published as release assets of the private repo `mks-artifacts` with their sha256
 (DEC-084/085), downloaded by Actions with a read-only token. GitHub Actions
 downloads and checks them, bakes code, int8 models and both index files into one container image, tagged with the
-corpus manifest hash, and pushes it to ECR, which keeps one image. One image = one snapshot of code + law (DEC-024).
-Raw PDFs have no cloud copy: the laptop copy, official URLs and manifest hashes are the provenance; S3 holds only
+corpus manifest hash, and pushes it to Artifact Registry, which keeps one image. One image = one snapshot of code + law (DEC-024).
+Raw PDFs have no cloud copy: the laptop copy, official URLs and manifest hashes are the provenance; a Cloud Storage bucket holds only
 the Terraform state.
 
-**Answer path.** Telegram calls the ingress Lambda's Function URL. It verifies the secret header, drops duplicate
-`update_id`s via a conditional DynamoDB write, puts the message on SQS and returns 200 immediately. The answer Lambda
-runs the pipeline, calls Sarvam-105B (or Claude on Bedrock as fallback), validates every citation against the
-retrieved chunks, and replies with `sendMessage`. Every step writes a `cost_log` row (DEC-010).
+**Answer path.** Telegram calls the ingress Cloud Run service. It verifies the secret header, drops duplicate
+`update_id`s via a create-if-absent Firestore write, publishes the message to Pub/Sub and returns 200 immediately.
+Pub/Sub pushes it to the answer service, which runs the pipeline, calls Sarvam-105B (Claude fallback TBD), validates
+every citation against the retrieved chunks, and replies with `sendMessage`. Failed deliveries go to a dead-letter
+topic. Every step writes a `cost_log` row (DEC-010, DEC-086).
 
-**Operations.** EventBridge triggers the weekly law-watch (checksum diff → GitHub issue → human approval → rebuild,
-DEC-013) and the nightly cost summary (→ static dashboard on GitHub Pages, DEC-012). Secrets live in SSM. No VPC;
-security is least-privilege IAM, encryption at rest, the webhook secret check, and PII redaction (DEC-029).
+**Operations.** Cloud Scheduler triggers the weekly law-watch (checksum diff → GitHub issue → human approval → rebuild,
+DEC-013) and the nightly cost summary (→ static dashboard on GitHub Pages, DEC-012). Secrets live in Secret Manager. No VPC;
+security is least-privilege service accounts, encryption at rest, the webhook secret check, and PII redaction (DEC-029).
 
 **Not in v1:** WhatsApp, voice, keep-warm ping, Marathi.

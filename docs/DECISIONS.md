@@ -935,12 +935,33 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: ₹0 and private; the files stay outside AWS until usage justifies S3 (OPEN_QUESTIONS P11).
 - Effects: one more repo · a token to rotate (set an expiry and a reminder) · private-repo release storage and per-file limit (believed 2 GB per file) not verified.
 
+## DEC-086 — Hosting moves from AWS to Google Cloud (asia-south1)
+- Date: 2026-11-21 | Status: accepted ("Approve as proposed") | Approved by: Malik | Supersedes DEC-002, DEC-009, DEC-019 and the AWS parts of DEC-010, DEC-012, DEC-013, DEC-024, DEC-029, DEC-084
+- Context: AWS sign-up failed at phone verification (error 83740) after several tries. Malik opened a Google Cloud account instead: Free Trial active after a one-off ₹1,000 prepayment (credited to the account balance), welcome credit ₹28,569, ending **20 Feb 2027**. The pipeline code is cloud-neutral; only handlers, secrets, queue, logging and deploy change.
+- Options: A) keep retrying AWS · **B) Google Cloud (Cloud Run)** · C) Oracle Always Free VM · D) Hugging Face Spaces / laptop only.
+- Decision: **B**, region **asia-south1 (Mumbai)**, keeping the DEC-010 shape:
+  1. Telegram → **ingress Cloud Run service** (small; secret-header check, dedup, publish, immediate 200) → **Pub/Sub** push subscription with a dead-letter topic → **answer Cloud Run service** (container with code + int8 models + indexes) → `sendMessage`.
+  2. **Firestore** for dedup (create-if-absent on `update_id`), logs and quotas (replaces DynamoDB; the pending table-design decision becomes the Firestore design).
+  3. **Secret Manager** for secrets (replaces SSM). Read once per instance start; never printed or logged.
+  4. **Cloud Scheduler** for law-watch and the cost summary (replaces EventBridge).
+  5. **Artifact Registry** keeps one image (replaces ECR; DEC-084 item 4 otherwise unchanged).
+  6. **Cloud Storage** bucket only for the Terraform state (replaces S3). Artifacts stay in the private repo `mks-artifacts` (DEC-085).
+  7. GitHub Actions deploys with **Workload Identity Federation** (keyless, replaces AWS OIDC). Malik owns the account; Claude never uses owner keys (replaces DEC-019).
+  8. No VPC / no VPC connector (DEC-029's security list stands: least-privilege service accounts, encryption at rest, webhook secret, PII redaction, 90-day TTL).
+  9. **Claude fallback and judge (DEC-006):** Bedrock is no longer available; Claude via Vertex AI or the Anthropic API is decided later. Sarvam-105B stays the default.
+  10. **Budget alert ₹100** on the billing account. Before 20 Feb 2027 Malik decides whether to upgrade to a paid billing account; otherwise resources stop.
+- Why: the account works today; Cloud Run + Pub/Sub keeps the serverless, Mumbai-region design with near-1:1 service mapping, so the interview story (always-free, no database server) holds.
+- Free allowances (docs.cloud.google.com/free/docs/free-cloud-features, read 2026-11-21): Cloud Run 2M requests, 360,000 GB-s, 180,000 vCPU-s per month; Pub/Sub 10 GiB; Firestore 1 GiB + 50K reads / 20K writes / 20K deletes per day; Secret Manager 6 active versions, 10K accesses; Artifact Registry 0.5 GB; Cloud Build 2,500 min; Logging 50 GiB. Cloud Storage free tier is US regions only. Not verified: whether the Cloud Run free tier applies in asia-south1, Cloud Scheduler free jobs, Artifact Registry price above 0.5 GB (OPEN_QUESTIONS P13–P15).
+- Effects: cost ~₹10–15/month after credits (mostly image storage; not verified) · no AWS work had been written, so nothing is thrown away · AWS open questions P1–P4, P6–P8 become moot.
+
 ---
 
 ## Pending decisions (not yet made)
 
 | Topic | Raised in | Status |
 | --- | --- | --- |
-| DynamoDB table design + capacity mode (provisioned vs on-demand) + TTL | R10 | Malik: "will decide later". Must be decided before DEC-010/012 code |
+| Firestore collection design + TTL (was DynamoDB, DEC-086) | R10 | Malik: "will decide later". Must be decided before ingress/answer service code |
+| Claude fallback + judge source: Vertex AI vs Anthropic API (was Bedrock, DEC-086) | DEC-086 | Later; Sarvam stays default |
 | Monthly budget for paid eval API calls | R4 | Resolved 2026-11-18 by DEC-078 (₹10 cap incl. GST before production) |
-| Second (higher) AWS alert that includes Bedrock | R4 | To discuss later |
+| Second (higher) budget alert including paid LLM use | R4 | To discuss later |
+| Upgrade to a paid billing account before the trial ends (20 Feb 2027) | DEC-086 | Malik, before Feb 2027 |
