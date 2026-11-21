@@ -59,6 +59,7 @@ check date are given. Verify against the official page before code depends on it
 | Models | Bodhan IndicOCR | OCR for scanned PDFs | decided (DEC-001) |
 | Models | Tesseract `hin` | OCR baseline in bake-off | decided (DEC-014) |
 | Models | Sarvam Document Digitization | OCR comparison in bake-off only (~₹10) | decided (DEC-014) |
+| Library | google-cloud-firestore 2.34.1 (Apache-2.0) | Firestore client in the answer/ingress services (`serve` group) | decided (DEC-087) |
 | Library | FAISS | Exact vector search (`IndexFlatIP`) | decided (DEC-003, 025) |
 | Library | bm25s | Keyword (BM25) search | decided (DEC-003) |
 | Library | pypdf | PDF text-layer detection + extraction | decided (DEC-041) |
