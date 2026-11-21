@@ -40,7 +40,9 @@ resource "google_service_account_iam_member" "github_wif" {
   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/${var.github_repo}"
 }
 
-# Project roles for deploys. No Owner, Editor, billing or IAM-admin roles.
+# Project roles for deploys. No Owner, Editor, billing or IAM-admin roles. No Firestore or
+# Secret Manager roles: the database and secret boxes live in bootstrap, and
+# secretmanager.admin would let a workflow read secret values.
 locals {
   deploy_roles = toset([
     "roles/run.admin",               # deploy the two Cloud Run services
@@ -48,8 +50,6 @@ locals {
     "roles/iam.serviceAccountUser",  # run services as their own narrow accounts
     "roles/pubsub.admin",            # queue + dead-letter topic
     "roles/cloudscheduler.admin",    # law-watch and cost-summary schedules
-    "roles/datastore.owner",         # Firestore database
-    "roles/secretmanager.admin",     # secret names only; Malik adds the values
   ])
 }
 

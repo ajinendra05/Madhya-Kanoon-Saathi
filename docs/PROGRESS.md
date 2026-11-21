@@ -106,7 +106,8 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 - Decisions: DEC-086 (hosting on Google Cloud asia-south1).
 - W3.1 progress (each step explained and approved by Malik): Terraform 1.17.2 + gcloud 594.0.0 installed; 12 APIs enabled; state bucket `mks-prod-515410-tfstate` (asia-south1, versioned, public access prevented); bootstrap stack applied (`infra/terraform/bootstrap`: 12 imported, 12 added): WIF pool `mks-github` / provider `github-oidc` (repo + main only), service account `mks-github-deploy` with 7 project roles + state-bucket access. Re-plan: no changes.
 - DEC-087 (Firestore layout B): `common/store.py` + 13 tests; google-cloud-firestore 2.34.1 added (serve). Step 10 applied (5 added): Firestore `(default)` Native/STANDARD asia-south1 with delete protection, TTL on `expire_at` × 3 (ACTIVE), secret `MKS_CHAT_HASH_KEY`; Malik set version 1 via `scripts/set_chat_hash_key.py` (a PowerShell pipe had silently sent nothing). Infra rules rewritten for GCP.
-- Next step: W3.1: Artifact Registry repo + runtime service accounts and their grants (bootstrap), then the app stack and the GitHub Actions deploy workflow.
+- Step 11 applied (15 added, 2 destroyed): Artifact Registry `mks` (keep newest 1, delete >1 day), service accounts `mks-ingress` / `mks-answer` / `mks-pubsub-push`, Firestore user + secret-read grants per service, empty secrets TELEGRAM_BOT_TOKEN / TELEGRAM_WEBHOOK_SECRET / SARVAM_API_KEY; deploy robot lost `secretmanager.admin` and `datastore.owner` (least privilege). TODO(narrow): publisher/invoker are project-wide until the app stack exists. Re-plan clean.
+- Next step: W3.1: Dockerfile + thin ingress/answer handlers (local), then the app stack (topic, subscription, services) and the deploy workflow.
 
 ### 2026-11-08
 - Done:
