@@ -1,0 +1,17 @@
+{
+ "repo": "ajinendra05/mks-artifacts",
+ "tag": "v2026.11.21",
+ "note": "Git-ignored runtime files for the Cloud Run image (DEC-085/086); made by scripts/pack_artifacts.py, checked by the build.",
+ "assets": [
+  {
+   "file": "models-int8.tar",
+   "bytes": 1172592640,
+   "sha256": "214df6140694b9c8cd8fabc28e7c1052df74ad66303a13ed5dfdbdb3d2edf952"
+  },
+  {
+   "file": "index.tar",
+   "bytes": 37734400,
+   "sha256": "fdfdad6a3ce1d52bd9287a57d765996d6bedbdbc1e38a4914f637cd9adb45ebd"
+  }
+ ]
+}
