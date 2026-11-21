@@ -954,13 +954,28 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Free allowances (docs.cloud.google.com/free/docs/free-cloud-features, read 2026-11-21): Cloud Run 2M requests, 360,000 GB-s, 180,000 vCPU-s per month; Pub/Sub 10 GiB; Firestore 1 GiB + 50K reads / 20K writes / 20K deletes per day; Secret Manager 6 active versions, 10K accesses; Artifact Registry 0.5 GB; Cloud Build 2,500 min; Logging 50 GiB. Cloud Storage free tier is US regions only. Not verified: whether the Cloud Run free tier applies in asia-south1, Cloud Scheduler free jobs, Artifact Registry price above 0.5 GB (OPEN_QUESTIONS P13–P15).
 - Effects: cost ~₹10–15/month after credits (mostly image storage; not verified) · no AWS work had been written, so nothing is thrown away · AWS open questions P1–P4, P6–P8 become moot.
 
+## DEC-087 — Firestore data layout: three collections, costs embedded in the query record
+- Date: 2026-11-21 | Status: accepted ("go with B") | Approved by: Malik | Resolves the pending "DynamoDB/Firestore table design" (R10); amends DEC-012 (cost rows)
+- Context: the cloud bot must remember seen Telegram updates (no double answers), a per-question log (debugging, real-world eval), per-answer cost (dashboard) and per-chat daily counts (abuse/cost limit). Firestore location and mode are permanent once created.
+- Options: A) four collections incl. a separate `cost_log` row per step (~6 writes/question) · **B) three collections, costs embedded in each query record (~3 writes/question)** · C) no per-question log (most private, no debugging).
+- Decision: **B.** One Firestore database `(default)`, **Native mode, asia-south1**.
+  1. **`seen_updates/{update_id}`**: `{received_at, expire_at = +2 days}`; written with create-if-absent; a conflict means "duplicate, drop" (DEC-010).
+  2. **`queries/{query_id}`**: `{chat (hashed), at, lang, question (redacted), reply (redacted), crisis tier/categories, help, dispute, states, retrieved, cited, attempts, abstain_reason, timings_ms per stage, costs: [{step, provider, model, units, unit_type, cost_inr, latency_ms}], expire_at = +90 days}` (DEC-029). Text passes `common/redact.py` before the write.
+  3. **`quotas/{chat_hash}_{YYYYMMDD}`**: `{count, expire_at = +2 days}`; incremented per question. The daily limit is decided with the production spend cap.
+  4. **Chat ids are never stored raw:** `chat_hash` = HMAC-SHA256 of the chat id with secret `MKS_CHAT_HASH_KEY` (Secret Manager), hex, truncated to 32 characters.
+  5. **Auto-delete:** Firestore TTL policies on `expire_at` for the three collections.
+  6. **Cost history:** the nightly summary (DEC-012) aggregates the day's embedded costs into the dashboard JSON, so totals outlive the 90-day query records.
+- Why: one record per question means fewer writes and one place to look when debugging; the dashboard keeps its history through the nightly summary.
+- Effects: ₹0 (free tier 20K writes/day ≈ 6K questions/day at ~3 writes) · one more secret (5 of 6 free versions) · per-step cost rows are no longer kept beyond 90 days · not verified: free tier limited to the `(default)` database; TTL deletion delay (OPEN_QUESTIONS P16).
+
 ---
 
 ## Pending decisions (not yet made)
 
 | Topic | Raised in | Status |
 | --- | --- | --- |
-| Firestore collection design + TTL (was DynamoDB, DEC-086) | R10 | Malik: "will decide later". Must be decided before ingress/answer service code |
+| Firestore collection design + TTL (was DynamoDB, DEC-086) | R10 | Resolved 2026-11-21 by DEC-087 |
+| Per-chat daily question limit + production spend cap | DEC-087 | Before the public demo |
 | Claude fallback + judge source: Vertex AI vs Anthropic API (was Bedrock, DEC-086) | DEC-086 | Later; Sarvam stays default |
 | Monthly budget for paid eval API calls | R4 | Resolved 2026-11-18 by DEC-078 (₹10 cap incl. GST before production) |
 | Second (higher) budget alert including paid LLM use | R4 | To discuss later |

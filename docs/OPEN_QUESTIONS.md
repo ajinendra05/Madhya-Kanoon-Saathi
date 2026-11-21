@@ -155,6 +155,7 @@ moves `gated → index`, or stays archived if found invalid.
 | P13 | Does the Cloud Run free tier apply in **asia-south1**, or only in some regions/tiers? Max memory per instance; image size limit | DEC-086 | C | open |
 | P14 | Cloud Scheduler free jobs per billing account; Artifact Registry price above 0.5 GB in asia-south1 | DEC-086 | C | open |
 | P15 | Is the ₹1,000 trial prepayment refundable on closing the account? (banner: "credited to your account") | DEC-086 | Malik / C | open |
+| P16 | Firestore: is the free tier limited to the `(default)` database? TTL deletion delay after `expire_at` (believed ≤ 24 h)? Do TTL deletes count against the 20K free deletes/day? | DEC-087 | C | open |
 | P10 | Kaggle free GPU: weekly quota (~30 h?), session limit (~12 h? notebook `MAX_HOURS` = 11), phone verification for internet, P100 support in current torch | DEC-069 | Malik (quota page) / C | open |
 
 ## C. Models and libraries
