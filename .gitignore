@@ -62,3 +62,4 @@ CLAUDE.local.md
 
 # local bot logs (redacted records, still not for git; DEC-029)
 data/logs/
+*.tfplan

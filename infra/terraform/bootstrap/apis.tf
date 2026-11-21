@@ -22,3 +22,10 @@ resource "google_project_service" "api" {
   service            = each.value
   disable_on_destroy = false
 }
+
+# Already enabled by hand (Step 4, 2026-11-21): adopt them into state instead of "creating" them.
+import {
+  for_each = local.apis
+  to       = google_project_service.api[each.value]
+  id       = "${var.project_id}/${each.value}"
+}
