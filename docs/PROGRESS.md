@@ -105,7 +105,8 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 - Done: AWS sign-up blocked (error 83740); Google Cloud Free Trial opened by Malik (₹1,000 prepayment, welcome credit ₹28,569, ends 20 Feb 2027). DEC-086 recorded; ARCHITECTURE, TOOLS, OPEN_QUESTIONS (P13–P15; AWS P1–P4, P6–P8 moot) and roadmap rows W0.2/W3.1/W3.3 updated. Docs only, no code.
 - Decisions: DEC-086 (hosting on Google Cloud asia-south1).
 - W3.1 progress (each step explained and approved by Malik): Terraform 1.17.2 + gcloud 594.0.0 installed; 12 APIs enabled; state bucket `mks-prod-515410-tfstate` (asia-south1, versioned, public access prevented); bootstrap stack applied (`infra/terraform/bootstrap`: 12 imported, 12 added): WIF pool `mks-github` / provider `github-oidc` (repo + main only), service account `mks-github-deploy` with 7 project roles + state-bucket access. Re-plan: no changes.
-- Next step: W3.1: design the app stack (Firestore collections = pending decision; runtime service accounts + Artifact Registry repo go in bootstrap), then the GitHub Actions deploy workflow.
+- DEC-087 (Firestore layout B): `common/store.py` + 13 tests; google-cloud-firestore 2.34.1 added (serve). Step 10 applied (5 added): Firestore `(default)` Native/STANDARD asia-south1 with delete protection, TTL on `expire_at` × 3 (ACTIVE), secret `MKS_CHAT_HASH_KEY`; Malik set version 1 via `scripts/set_chat_hash_key.py` (a PowerShell pipe had silently sent nothing). Infra rules rewritten for GCP.
+- Next step: W3.1: Artifact Registry repo + runtime service accounts and their grants (bootstrap), then the app stack and the GitHub Actions deploy workflow.
 
 ### 2026-11-08
 - Done:
