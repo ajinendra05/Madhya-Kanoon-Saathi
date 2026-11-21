@@ -21,4 +21,9 @@ provider "google" {
   # bill API quota to this project instead of a gcloud default project.
   user_project_override = true
   billing_project       = var.project_id
+
+  # Added to every resource that supports labels (infra rules: tag every resource).
+  default_labels = {
+    project = "madhya-kanoon-saathi"
+  }
 }
