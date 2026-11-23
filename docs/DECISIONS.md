@@ -1039,6 +1039,17 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: ₹0 per rewrite with a provider whose terms say inputs are not retained; redaction limits what leaves India.
 - Effects: ₹0 · one more external service and account (Malik) · free-plan limits not verified (read from reply headers on first call; OPEN_QUESTIONS P18) · a `GROQ_API_KEY` secret (5 of 6 free Secret Manager versions) readable only by the answer service.
 
+## DEC-093 — Deployed retrieval: rewrite prompt r1 on Groq Qwen3.8-27B, rerank pool 20 + one version per provision, original question on failure
+- Date: 2026-11-23 | Status: accepted ("go ahead with r1 and use Groq …"; "yes go ahead with 1 and a for 2") | Approved by: Malik | Supersedes DEC-091 items 1–2 (prompt r2 + Act filter) and the model in DEC-092
+- Context: measured on golden v1.0 (`reports/retrieval/opt_2026-11-23/`). 50 questions: r1 R@6 0.713 vs r2 0.563 (r2 worse on 10, better on 1; appending official Act titles was the main harm, r2 without titles 0.663); r1 at pool 20 + A3 0.697 in 7.0 s mean vs baseline 0.583 in 12.7 s. 30 questions, r1 at pool 20 + A3: Sarvam 0.694, Groq `qwen/qwen3.8-27b` 0.656 (per question vs Sarvam 2 better, 2 worse; Hindi 0.652 vs 0.621), Groq `openai/gpt-oss-120b` 0.622, baseline 0.572. `llama-3.3-70b-versatile` (DEC-092) is no longer offered by Groq (its `/models` list, 2026-11-23).
+- Decision:
+  1. Rewrite prompt **r1** (`REWRITE_VERSION = "r1"`); the r2 act-filter code stays unused.
+  2. Rewrite model **Groq `qwen/qwen3.8-27b`** (free plan; limits from reply headers: 1,000 requests/day, 8,000 tokens/minute per model, 2026-11-23), question redacted before sending (DEC-092).
+  3. **On any Groq failure** (rate limit, outage, dropped connection): retrieval uses the original question; no paid fallback; failure logged with HTTP status.
+  4. Retrieval defaults: rerank **pool 20** (A2) of the fused candidates (40 per list), **one language version per provision** (A3), A4 filter, window 256, `int8-opt` reranker, threads from `MKS_ORT_THREADS`.
+- Why: Qwen keeps most of the rewriting gain at ₹0 and ~0.5–0.6 s per call; the smaller pool roughly halves retrieval time with a small R@6 cost versus pool 40.
+- Effects: ₹0 for rewriting · Groq free-plan instability observed (32 of 60 calls failed in one window, 1 of 60 in the re-run) → those questions retrieve without rewriting · 30-question sample: differences of 1–2 questions are within noise; re-check on the full golden set before the public demo.
+
 ---
 
 ## Pending decisions (not yet made)

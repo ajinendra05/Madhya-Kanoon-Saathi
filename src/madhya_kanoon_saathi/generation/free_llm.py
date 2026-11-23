@@ -1,9 +1,10 @@
 """Free hosted LLM for query rewriting only (DEC-092). OpenAI-compatible chat API, stdlib only.
 
-Default provider: Groq (``https://api.groq.com/openai/v1``). Its data page says inference inputs are
-not retained by default (console.groq.com/docs/your-data, read 2026-11-23); the service runs outside
-India, so the question is **redacted** (``common/redact.py``: phone, Aadhaar, caste, health …)
-before it is sent, and this client is used for nothing but search rewrites (never answers).
+Default provider: Groq (``https://api.groq.com/openai/v1``), model ``qwen/qwen3.8-27b`` (DEC-093).
+Its data page says inference inputs are not retained by default (console.groq.com/docs/your-data,
+read 2026-11-23). The service runs outside India, so the question is **redacted** first
+(``common/redact.py``: phone, Aadhaar, caste, health …), and this client is used for nothing but
+search rewrites (never answers).
 
 Settings (environment or ``.env``): ``MKS_REWRITE_BASE_URL``, ``MKS_REWRITE_MODEL``, key
 ``GROQ_API_KEY``. Free plans are rate-limited; any error (429, 5xx, timeout) raises, and the caller
@@ -25,7 +26,9 @@ from madhya_kanoon_saathi.common.env import secret
 from madhya_kanoon_saathi.common.redact import redact
 
 DEFAULT_BASE_URL = "https://api.groq.com/openai/v1"
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+# DEC-093: llama-3.3-70b-versatile is no longer offered (Groq /models, 2026-11-23); Qwen3.8-27B
+# was the best free model on 30 golden questions (R@6 0.656 vs Sarvam 0.694; 2 better, 2 worse)
+DEFAULT_MODEL = "qwen/qwen3.8-27b"
 KEY_NAME = "GROQ_API_KEY"
 # Groq's edge (Cloudflare) answers Python's default "Python-urllib" agent with 403 "error code:
 # 1010" (seen 2026-11-23); a plain project agent works. Generic: no personal or contact details.
@@ -48,7 +51,7 @@ class FreeLLM:
     base_url: str = DEFAULT_BASE_URL
     model: str = DEFAULT_MODEL
     timeout: float = 8.0
-    max_tokens: int = 200
+    max_tokens: int = 400  # room for models that emit reasoning tokens before the JSON
     last_limits: dict[str, str] = field(default_factory=dict)
 
     @classmethod
