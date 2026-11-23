@@ -301,6 +301,8 @@ Hindi provision is kept whole under the parent uid and reported.
 
 ## 5. Retrieval
 
+Full reranker design, timings and optimisation options: [RERANKER.md](RERANKER.md).
+
 **Sparse (keyword) retrieval: BM25.** Scores documents by how often the query's words appear, adjusted for rarity and
 document length.
 - Why here: section numbers ("धारा 8(1)(j)") and legal terms need exact matches that meaning-based search can miss.
