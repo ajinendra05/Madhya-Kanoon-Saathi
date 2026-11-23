@@ -983,6 +983,19 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: no dependency for two one-endpoint services; a cap that survives restarts is the only real control over Sarvam spend; 20/day covers real users while bounding abuse.
 - Effects: worst case ~₹600/month in model spend · ~2 more Firestore writes per question (within free tier) · cold start unchanged.
 
+## DEC-089 — Cloud Run sizing and limits; app stack applied from the laptop
+- Date: 2026-11-21 | Status: accepted ("go ahead with A") | Approved by: Malik | Implements DEC-086 item 1
+- Context: memory/CPU and maximum containers set speed, cost and flood protection. Free monthly allowance: 360K GB-s, 180K vCPU-s. Laptop load + first query took 17.1 s with the int8 models (~1.2 GB).
+- Options: **A) answer 4 GiB / 2 vCPU, max 2 containers; ingress max 2** · B) answer 2 GiB / 1 vCPU (OOM risk while loading) · C) A with max 5 (less flood protection).
+- Decision: **A.**
+  1. **Answer service** `mks-answer`: 4 GiB, 2 vCPU (2 vCPU allows up to 8 GiB per Cloud Run docs), 1 request per container, min 0 / max 2 containers, request timeout 600 s (= Pub/Sub ack deadline), CPU only during requests, startup CPU boost, TCP startup probe up to 240 s; callable only by `mks-pubsub-push`.
+  2. **Ingress service** `mks-ingress`: same image, 512 MiB, 1 vCPU, 20 requests per container, max 2, 30 s timeout; **public URL** (Telegram cannot authenticate to Google), protected by the webhook secret header.
+  3. **Queue:** topic `mks-questions`, push subscription (OIDC token as `mks-pubsub-push`, ack 600 s, retention 1 day, 5 delivery attempts, backoff 10–300 s) and dead-letter topic `mks-questions-dead` with a 7-day inspection subscription.
+  4. **Narrow grants** replace the project-wide ones: ingress publishes only to `mks-questions`; only `mks-pubsub-push` invokes `mks-answer`; Pub/Sub's service agent gets token-creator on `mks-pubsub-push` and dead-letter rights.
+  5. The app stack (`infra/terraform/app`) is applied from the laptop with Malik's login for the first deploy; GitHub Actions redeploys come later. Malik: steps 17–18 run continuously, explanations in `docs/CONCEPTS.md`.
+- Why: 4 GiB leaves headroom for loading ~1.2 GB of models (a failed load means no answers); 2 containers bound parallel Sarvam calls, on top of the ₹20/day cap and 20/chat/day quota.
+- Effects: ~90K busy seconds/month in the free allowance ≈ 9–18K questions (estimate; P13 unverified for asia-south1) · ₹0 idle (min 0) · cold start ~20–40 s (not measured).
+
 ---
 
 ## Pending decisions (not yet made)

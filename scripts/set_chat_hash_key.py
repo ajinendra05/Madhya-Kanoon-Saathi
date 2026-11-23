@@ -19,7 +19,9 @@ SECRET = "MKS_CHAT_HASH_KEY"
 
 
 def main() -> int:
-    gcloud = shutil.which("gcloud")
+    # Windows: the SDK ships a bash script "gcloud" next to "gcloud.cmd"; only the .cmd runs here
+    gcloud = shutil.which("gcloud.cmd") if sys.platform == "win32" else None
+    gcloud = gcloud or shutil.which("gcloud")
     if not gcloud:
         print("gcloud not found on PATH; reopen the terminal after installing the Google Cloud SDK")
         return 1

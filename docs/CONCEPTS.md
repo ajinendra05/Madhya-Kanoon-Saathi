@@ -505,3 +505,96 @@ doesn't use).
 **Decision records (ADRs).** Every major choice is written in DECISIONS.md with options and reasons. It's useful for interviews too.
 
 **Human-in-the-loop for legal changes.** Automation detects; a human approves (DEC-013).
+
+---
+
+## 10. Cloud deployment on Google Cloud (DEC-086 to DEC-089, built 2026-11-21 to 23)
+
+Read top to bottom: it follows the order the pieces were built. Names are the real ones in project `mks-prod-515410`.
+
+### 10.1 Account, project, billing
+- **Project** = a folder for everything the app uses (services, data, secrets, bills). Its **project ID**
+  (`mks-prod-515410`) is a permanent unique name; the **project number** (`164560503250`) names Google's own robots.
+- **Free trial**: ₹28,569 welcome credit until 20 Feb 2027; billing never starts on its own. The ₹1,000 prepayment is
+  account balance. A **budget alert** (₹100) only emails; it does not stop spending, which is why the code has its own
+  caps (DEC-078, DEC-088).
+- **APIs** must be switched on per service before anything can use them (free; only usage costs).
+
+### 10.2 Infrastructure as code: two Terraform stacks
+- **Terraform state** records what Terraform created; it lives in bucket `mks-prod-515410-tfstate` (Mumbai, versioned,
+  never public) so the laptop and GitHub share one truth. The bucket was made by hand: Terraform cannot store state in
+  a bucket it has not created yet (bootstrap problem).
+- **`infra/terraform/bootstrap`** (applied by Malik): APIs, identities, all project-level permissions, Firestore,
+  secret names, image store. **`infra/terraform/app`**: queue, dead-letter queue, the two services and the narrow
+  grants *on those resources*. Splitting them means the GitHub deploy robot never needs power over who-can-do-what.
+- Workflow every time: write code → `plan` (dry run, saved to a file) → read it → `apply` exactly that plan → re-`plan`
+  must say "No changes". `import` adopts things that already exist (the APIs) instead of re-creating them.
+
+### 10.3 Identities and least privilege
+- **Service account** = a robot user. Each piece runs as its own: `mks-ingress`, `mks-answer`, `mks-pubsub-push`,
+  plus `mks-github-deploy` for CI. Each gets only what it needs (e.g. ingress reads only the webhook secret).
+- **Workload Identity Federation (WIF)**: GitHub Actions proves "I am repo Madhya-Kanoon-Saathi, branch main" with a
+  signed OIDC token; Google swaps it for short-lived credentials of `mks-github-deploy`. No key file exists to leak.
+  The pool provider rejects any other repo or branch.
+- Two roles were removed from the deploy robot once no longer needed: `secretmanager.admin` (would let a workflow
+  *read* secret values) and `datastore.owner` (could delete data).
+- Temporary project-wide grants (publish, invoke) were replaced by grants on the exact topic and service.
+
+### 10.4 Data and secrets
+- **Firestore** (Native, `(default)`, Mumbai, delete-protected): `seen_updates`, `queries`, `quotas`, `spend`
+  (`docs/specs/firestore.md`). **TTL policies** delete a document after its `expire_at` (2 or 90 days) for free.
+- **Secret Manager**: four secrets, each pinned to Mumbai. Terraform creates only the empty "box"; values go in with
+  scripts that pass them to `gcloud` on **stdin**, so they never appear on screen, in files, in shell history or in
+  Terraform state. Cloud Run injects them as environment variables at container start.
+- Windows lessons: piping text into `gcloud` from PowerShell can silently send nothing; Python's `shutil.which("gcloud")`
+  can return the SDK's bash script instead of `gcloud.cmd` ("not a valid Win32 application"). The scripts use
+  `gcloud.cmd` and pass values on stdin from Python.
+
+### 10.5 The image
+- One image for both services: code + `serve` dependencies + int8 models + indexes + approved wording. Built by the
+  manual workflow **Build image** from the private release in `mks-artifacts` (checksums verified), pushed to
+  **Artifact Registry** `mks/bot`, tagged `m<corpus-manifest-hash>-<commit>` (law snapshot + code snapshot).
+- `.dockerignore` starts with "exclude everything", so `.env`, PDFs and fp32 models cannot leak into the image.
+- Base images pinned by **digest** (sha256), not just a tag: a tag can be moved, a digest cannot.
+- Registry cleanup keeps the newest image; see "Registry versions vs retention policies" in section 9 for the bug this
+  exposed.
+
+### 10.6 Cloud Run services
+- **Cloud Run** runs a container only while requests arrive; **min instances 0** means ₹0 when idle, at the price of a
+  **cold start** (start the container + load the models; the first deploy became ready in ~54 s including that).
+- **`mks-answer`**: 4 GiB / 2 vCPU, **concurrency 1** (one CPU-heavy question per container), max 2 containers,
+  600 s timeout, `cpu_idle` (billed only during requests), **startup CPU boost**. A **TCP startup probe** keeps
+  traffic away until the port opens, and the code opens the port only after the models are loaded. Not public: only
+  `mks-pubsub-push` may call it (an anonymous call got 403).
+- **`mks-ingress`**: same image, different start command, 512 MiB, concurrency 20. Its URL is **public** because
+  Telegram cannot sign in to Google; the lock is the secret header (wrong or missing → 401, tested).
+- Observed: Cloud Run answers `/healthz` with Google's own 404 (that path appears reserved; not verified). Our health
+  path moves to `/health` in the next build; Cloud Run itself uses the startup probe, not this path.
+
+### 10.7 The request path, end to end
+1. A user writes to the bot. Telegram POSTs the update to `mks-ingress` with header `X-Telegram-Bot-Api-Secret-Token`.
+2. Ingress compares it in constant time (no timing leak), then **dedups**: create-if-absent `seen_updates/{update_id}`.
+   Telegram resends anything that did not get a 2xx, so dedup prevents double answers and double LLM bills.
+   *Edge case handled:* if Firestore's reply is lost and the client retries its own successful write, a random token
+   in the document proves "this was us", so the message is not dropped as a duplicate.
+3. Ingress **publishes** `{update_id, chat_id, text, date}` to Pub/Sub topic `mks-questions` (REST call with a token
+   from the Cloud Run metadata server; no client library) and replies 200 at once. If publishing fails it removes the
+   seen-mark and returns 500, so Telegram's retry gets a clean second chance.
+4. **Pub/Sub push** delivers to `mks-answer`, attaching a Google-signed **OIDC token** for `mks-pubsub-push`; Cloud Run
+   checks it before our code runs. 200/204 = acknowledged; anything else = retried with backoff (10–300 s); after
+   **5 failed deliveries** the message moves to the **dead-letter topic** for inspection (kept 7 days). Messages are
+   kept at most 1 day because they carry raw chat ids.
+5. The answer service: `/start` → greeting; **quota** (20 per chat per Indian day, chat id hashed with HMAC) → limit
+   message; else the pipeline runs inside the **daily spend cap** (₹20): before each model call it *reserves* the worst
+   case in Firestore inside a transaction, refuses if the day would pass ₹20, and *settles* to the real cost after.
+6. It sends the reply with `sendMessage`, writes one redacted `queries` record (costs embedded), and **always returns
+   204**: once money may have been spent, a retry would bill twice, so failures are logged, not retried.
+- **Idempotency** (the same input processed twice has the effect of once) is the theme: dedup at the edge,
+  acknowledge-after-spend at the end.
+
+### 10.8 Switching Telegram between laptop and cloud
+- Telegram delivers either by **webhook** (push to a URL) or by **polling** (`getUpdates`), never both: while a webhook
+  is set, the laptop bot gets HTTP 409. `scripts/telegram_webhook.py set <url> | info | delete` switches modes; `set`
+  uses `drop_pending_updates` so the cloud bot does not answer a backlog.
+- The cloud bot has **no allow-list** (the laptop bot had `MKS_BOT_ALLOWED_CHATS`): anyone who finds it can ask,
+  bounded by the 20/day quota and the ₹20/day cap.

@@ -21,3 +21,9 @@ variable "state_bucket" {
   type        = string
   default     = "mks-prod-515410-tfstate"
 }
+
+variable "project_number" {
+  description = "Numeric project id (not secret); names Google's service agents."
+  type        = string
+  default     = "164560503250"
+}

@@ -75,18 +75,13 @@ resource "google_project_iam_member" "firestore_user" {
   member  = "serviceAccount:${each.value}"
 }
 
-# TODO(narrow): project-wide until the topic and the answer service exist in the app stack;
-# then grant on the topic / service only and remove these two.
-resource "google_project_iam_member" "ingress_publish" {
-  project = var.project_id
-  role    = "roles/pubsub.publisher"
-  member  = "serviceAccount:${google_service_account.ingress.email}"
-}
-
-resource "google_project_iam_member" "push_invoke" {
-  project = var.project_id
-  role    = "roles/run.invoker"
-  member  = "serviceAccount:${google_service_account.pubsub_push.email}"
+# Publish/invoke grants are on the exact topic and service, in the app stack (Step 17).
+# Pub/Sub's own service agent mints the OIDC token it attaches to each push, acting as
+# mks-pubsub-push (docs.cloud.google.com/pubsub/docs/authenticate-push-subscriptions, read 2026-11-21).
+resource "google_service_account_iam_member" "pubsub_agent_token" {
+  service_account_id = google_service_account.pubsub_push.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+  member             = "serviceAccount:service-${var.project_number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 }
 
 # Each service may read only its own secrets.
