@@ -160,7 +160,7 @@ on golden v1.0 (Recall@6, MRR@10, per language) before it ships (DEC-021 margin,
 | A2 | **Smaller pool**: rerank RRF top 20 (or 10) instead of 40 | ~2× (4×) — S19 measured 17.5 s / 11.0 s / 5.3 s at 40/20/10 | pool recall drops (DEC-068: 0.681 → 0.615 at 20; "no BM25 for Devanagari" recovers to 0.649) | config |
 | A3 | **One language version per provision**: when both `@en` and `@hi` of the same `section_uid` are in the pool, rerank one and attach the other after | up to ~2× on bilingual Acts | low (same provision) | small |
 | A4 | **Remove junk/duplicate candidates** (filler chunks, `~n` parts of one form) | small | positive | small |
-| A5 | **Shorter window**: 1024 → 256 tokens | small (91% of passages already < 256) — *being measured* | the long passages cut are often answer-bearing | config |
+| A5 | **Shorter window**: 1024 → 256 tokens | **measured 2026-11-23: −19% mean, −26% p95** (12.55 → 10.11 s; 728 of ~4,000 pairs cut) | **measured: R@6 −0.016, MRR −0.023 (indexed); R@10 unchanged; 64/101 top-6 lists changed** — not adopted alone ([report](../reports/retrieval/v1.0_2026-11-23_rerank_window.md)) | config |
 | A6 | **Confidence gate**: skip the reranker when BM25 and dense agree on the top hits | varies | needs tuning on golden | medium |
 | A7 | **Cache** reranked results per normalised question (repeat/FAQ questions) | 100% on repeats | none | small–medium |
 
@@ -200,7 +200,7 @@ on golden v1.0 (Recall@6, MRR@10, per language) before it ships (DEC-021 margin,
 1. **E2 / A4** junk chunk → rebuild index (₹0).
 2. **A1** skip retrieval when not needed (₹0).
 3. **B1** threads = vCPUs; measure warm latency on Cloud Run before/after.
-4. **A5** window 256: measured on golden v1.0 (running 2026-11-23); adopt only if quality holds.
+4. ~~**A5** window 256~~: measured 2026-11-23, −19% time for −0.016 R@6 / −0.023 MRR; not adopted on its own.
 5. **A2 + A3** smaller pool + one language version per provision: measure pool recall and Recall@6.
 6. **B2** graph optimisation + re-quantise: parity test + golden.
 7. **D1** typing indicator (small UX win).
