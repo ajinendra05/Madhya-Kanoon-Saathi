@@ -30,7 +30,8 @@ resource "google_artifact_registry_repository" "images" {
 
 # --- Secret boxes; Malik adds the values (never in code or state) ---
 locals {
-  app_secrets = toset(["TELEGRAM_BOT_TOKEN", "TELEGRAM_WEBHOOK_SECRET", "SARVAM_API_KEY"])
+  # GROQ_API_KEY: free hosted model for query rewriting only (DEC-092/093)
+  app_secrets = toset(["TELEGRAM_BOT_TOKEN", "TELEGRAM_WEBHOOK_SECRET", "SARVAM_API_KEY", "GROQ_API_KEY"])
 }
 
 resource "google_secret_manager_secret" "app" {
@@ -91,6 +92,7 @@ locals {
     "answer-bot"      = { secret = "TELEGRAM_BOT_TOKEN", sa = google_service_account.answer.email }
     "answer-sarvam"   = { secret = "SARVAM_API_KEY", sa = google_service_account.answer.email }
     "answer-chathash" = { secret = "MKS_CHAT_HASH_KEY", sa = google_service_account.answer.email }
+    "answer-groq"     = { secret = "GROQ_API_KEY", sa = google_service_account.answer.email }
   }
 }
 

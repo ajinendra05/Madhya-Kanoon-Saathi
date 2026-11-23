@@ -24,4 +24,4 @@ src/**/__pycache__
 !data/index/bm25
 !data/index/dense-int8
 !data/models/bge-m3-int8
-!data/models/bge-reranker-v2-m3-int8
+!data/models/bge-reranker-v2-m3-int8-opt

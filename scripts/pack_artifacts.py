@@ -18,7 +18,7 @@ import tarfile
 from pathlib import Path
 
 GROUPS = {
-    "models-int8.tar": ["data/models/bge-m3-int8", "data/models/bge-reranker-v2-m3-int8"],
+    "models-int8.tar": ["data/models/bge-m3-int8", "data/models/bge-reranker-v2-m3-int8-opt"],
     "index.tar": [
         "data/index/bm25",
         "data/index/dense-int8",
@@ -26,7 +26,7 @@ GROUPS = {
         "data/parsed_manifest/models.json",
     ],
 }
-MODEL_KEYS = ("bge-m3-int8", "bge-reranker-v2-m3-int8")
+MODEL_KEYS = ("bge-m3-int8", "bge-reranker-v2-m3-int8-opt")  # B3: only the optimised reranker
 RECORD = Path("data/artifacts.json")
 
 

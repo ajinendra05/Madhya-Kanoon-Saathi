@@ -55,7 +55,7 @@ class RetrievalConfig:
     search_k: int = POOL  # hits each BM25 / dense list contributes before fusion
     rerank_window: int = 256  # A5 (DEC-090)
     rerank_batch: int = 1  # B7: set from the batch benchmark
-    rerank_variant: str = "int8"  # B3: "int8-opt" once the optimised file is built and recorded
+    rerank_variant: str = "int8-opt"  # B3: pre-optimised graph, scores identical to int8
     threads: int | None = None  # B1: None = ONNX Runtime default; Cloud Run sets the vCPU count
     drop_filler: bool = True  # A4
     one_version: bool = True  # A3: one language version per provision in the rerank pool

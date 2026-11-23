@@ -17,5 +17,11 @@ variable "region" {
 variable "image_tag" {
   description = "Tag of asia-south1-docker.pkg.dev/<project>/mks/bot built by build-image.yml."
   type        = string
-  default     = "m5dd9a6afe7fb-187dea0"
+  default     = "m5dd9a6afe7fb-187dea0" # replaced by the new build's tag before apply
+}
+
+variable "answer_cpu" {
+  description = "vCPU for the answer service; also sets MKS_ORT_THREADS (B1). DEC-089: 2."
+  type        = string
+  default     = "2"
 }

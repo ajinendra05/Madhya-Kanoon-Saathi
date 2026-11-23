@@ -80,7 +80,7 @@ resource "google_cloud_run_v2_service" "answer" {
 
       resources {
         limits = {
-          cpu    = "2"
+          cpu    = var.answer_cpu # DEC-089: 2; 4 is being measured (OPTIMIZATION.md)
           memory = "4Gi"
         }
         cpu_idle          = true # billed only while handling a request
@@ -101,8 +101,14 @@ resource "google_cloud_run_v2_service" "answer" {
         name  = "MKS_PROJECT"
         value = var.project_id
       }
+      # B1 (DEC-090): ONNX Runtime threads must equal the vCPU limit above
+      env {
+        name  = "MKS_ORT_THREADS"
+        value = var.answer_cpu
+      }
       dynamic "env" {
-        for_each = toset(["TELEGRAM_BOT_TOKEN", "SARVAM_API_KEY", "MKS_CHAT_HASH_KEY"])
+        # GROQ_API_KEY: free model for query rewriting (DEC-092/093); missing key = no rewriting
+        for_each = toset(["TELEGRAM_BOT_TOKEN", "SARVAM_API_KEY", "MKS_CHAT_HASH_KEY", "GROQ_API_KEY"])
         content {
           name = env.value
           value_source {

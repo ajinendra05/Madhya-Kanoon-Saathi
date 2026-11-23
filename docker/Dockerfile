@@ -41,7 +41,7 @@ COPY data/parsed_manifest/models.json ./data/parsed_manifest/
 COPY data/index/bm25/ ./data/index/bm25/
 COPY data/index/dense-int8/ ./data/index/dense-int8/
 COPY data/models/bge-m3-int8/ ./data/models/bge-m3-int8/
-COPY data/models/bge-reranker-v2-m3-int8/ ./data/models/bge-reranker-v2-m3-int8/
+COPY data/models/bge-reranker-v2-m3-int8-opt/ ./data/models/bge-reranker-v2-m3-int8-opt/
 
 # Run as an unprivileged user; nothing in /app needs to be written at runtime
 RUN useradd --system --uid 10001 mks

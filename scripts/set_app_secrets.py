@@ -2,7 +2,7 @@
 
     uv run python scripts/set_app_secrets.py
 
-- TELEGRAM_BOT_TOKEN, SARVAM_API_KEY: copied from the environment or the local .env
+- TELEGRAM_BOT_TOKEN, SARVAM_API_KEY, GROQ_API_KEY: copied from the environment or the local .env
   (common/env.secret; the values are never printed).
 - TELEGRAM_WEBHOOK_SECRET: generated here (Telegram allows 1-256 chars of A-Z a-z 0-9 _ -,
   core.telegram.org/bots/api#setwebhook); it only ever exists in Secret Manager.
@@ -54,6 +54,7 @@ def main() -> int:
         "TELEGRAM_BOT_TOKEN": lambda: secret("TELEGRAM_BOT_TOKEN"),
         "SARVAM_API_KEY": lambda: secret("SARVAM_API_KEY"),
         "TELEGRAM_WEBHOOK_SECRET": lambda: secrets.token_urlsafe(48),
+        "GROQ_API_KEY": lambda: secret("GROQ_API_KEY"),  # DEC-092/093 query rewriting
     }
     failed = 0
     for name, make in values.items():
