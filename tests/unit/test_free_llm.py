@@ -31,6 +31,7 @@ def test_question_is_redacted_and_limits_are_kept(monkeypatch: pytest.MonkeyPatc
     def fake_urlopen(req: Any, timeout: float) -> _Resp:
         sent["url"] = req.full_url
         sent["auth"] = req.headers["Authorization"]
+        sent["ua"] = req.get_header("User-agent")
         sent["body"] = json.loads(req.data)
         return _Resp(
             {"choices": [{"message": {"content": '{"en": "x", "hi": "y"}'}}]},
@@ -51,6 +52,7 @@ def test_question_is_redacted_and_limits_are_kept(monkeypatch: pytest.MonkeyPatc
     assert "9876543210" not in user and "[PHONE]" in user
     assert sent["body"]["messages"][0]["content"] == "sys" and sent["body"]["model"] == "m"
     assert llm.last_limits["x-ratelimit-limit-requests"] == "14400"
+    assert sent["ua"] == "madhya-kanoon-saathi/0.1"  # not Python-urllib (Cloudflare 1010)
 
 
 def test_http_errors_raise_without_details(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -87,3 +89,14 @@ def test_no_key_disables_rewriting(monkeypatch: pytest.MonkeyPatch, tmp_path: An
     monkeypatch.delenv("GROQ_API_KEY", raising=False)
     monkeypatch.chdir(tmp_path)  # no .env here
     assert free_rewriter([]) is None
+
+
+def test_dropped_connection_becomes_free_llm_error(monkeypatch: pytest.MonkeyPatch) -> None:
+    import http.client
+
+    def dropped(req: Any, timeout: float) -> _Resp:
+        raise http.client.RemoteDisconnected("Remote end closed connection without response")
+
+    monkeypatch.setattr(free_llm.urllib.request, "urlopen", dropped)
+    with pytest.raises(FreeLLMError, match="RemoteDisconnected"):
+        FreeLLM(key="k")([{"role": "user", "content": "q"}])

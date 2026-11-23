@@ -5,10 +5,10 @@ Colloquial Hinglish ("dukaan vaale ne kharab saman diya") shares no words with s
 call turns the question into a formal English and a formal Hindi search query; retrieval searches
 with the original *and* the rewrites and fuses all lists by RRF.
 
-Act names (prompt r2, DEC-091): the model may name the law it thinks applies, but only in a
-separate ``acts`` list. Each name is matched against the instruments we actually index (official
-title or recorded alias, :func:`act_catalog`); a match adds that instrument's official title to the
-queries, and a name we do not hold is dropped, so a guessed law cannot steer the search.
+Prompt r1 is in use (DEC-093): on 50 golden questions it beat r2 (R@6 0.713 vs 0.563). The r2
+machinery stays for later experiments: if a reply carries an ``acts`` list, each name is matched
+against the instruments we index (official title or alias, :func:`act_catalog`) and only matches
+are used; r1 does not ask for that list, so nothing is appended today.
 
 Rules: the rewrite is a search aid only. It is never shown to users, never cited, and never used by
 the crisis router, dispute detector or jurisdiction guard (those read the user's own words). On any
@@ -25,16 +25,15 @@ from typing import Any
 
 from madhya_kanoon_saathi.common.normalize import normalize
 
-REWRITE_VERSION = "r2"
+REWRITE_VERSION = "r1"  # DEC-093: r1 kept (r2 measured worse)
 MAX_CHARS = 300
 MAX_ACTS = 3
 
 SYSTEM = """You turn a user's message about Indian or Madhya Pradesh law into search queries for a database of statutes, rules and official guides.
-Return JSON only, exactly: {"en": "<English query>", "hi": "<Hindi query>", "acts": ["<law name>", ...]}
-- "en": one English search query using the formal legal words a statute would use. Do not put names of Acts, Codes or Rules in it.
-- "hi": the same query in Hindi (Devanagari script), also with formal legal words and no names of Acts.
-- "acts": the names of at most 3 Indian or Madhya Pradesh laws that most likely govern the question (for example "Consumer Protection Act, 2019"). Use [] if unsure.
-- Keep every fact the user gave. Add no facts, section numbers, amounts or dates.
+Return JSON only, exactly: {"en": "<English query>", "hi": "<Hindi query>"}
+- "en": one English search query using the formal legal words a statute would use.
+- "hi": the same query in Hindi (Devanagari script), also with formal legal words.
+- Keep every fact the user gave. Add no facts, section numbers, amounts, dates or names of Acts that the user did not mention.
 - Do not answer the question and do not give advice.
 - Each query at most 25 words."""  # noqa: E501
 

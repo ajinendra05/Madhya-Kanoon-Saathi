@@ -274,3 +274,334 @@ start 18:01:38 rows=50 batch=1 threads=4
 18:20:16 50/50 GS-087 hi r2_p40 21.0s r6=1.00 mrr=0.50
 18:20:27 50/50 GS-087 hi r2_p20_a3 10.9s r6=1.00 mrr=0.50
 done 18:20:27
+start 18:22:04 rows=50 batch=1 threads=4
+18:22:09 1/50 GS-006 hi r1_p20_a3 5.9s r6=1.00 mrr=0.20
+18:22:16 1/50 GS-006 hi r2nt_p20_a3 6.1s r6=1.00 mrr=1.00
+rewrite_failed GS-006 FreeLLMError
+18:22:22 1/50 GS-006 hi groq_p20_a3 6.3s r6=1.00 mrr=1.00
+18:22:28 2/50 GS-029 hinglish r1_p20_a3 6.1s r6=1.00 mrr=1.00
+18:22:34 2/50 GS-029 hinglish r2nt_p20_a3 6.1s r6=1.00 mrr=0.50
+rewrite_failed GS-029 FreeLLMError
+18:22:40 2/50 GS-029 hinglish groq_p20_a3 5.8s r6=1.00 mrr=0.50
+18:22:45 3/50 GS-005 en r1_p20_a3 5.2s r6=1.00 mrr=1.00
+18:22:50 3/50 GS-005 en r2nt_p20_a3 5.4s r6=1.00 mrr=1.00
+rewrite_failed GS-005 FreeLLMError
+18:22:56 3/50 GS-005 en groq_p20_a3 5.1s r6=1.00 mrr=1.00
+18:23:03 4/50 GS-025 hi r1_p20_a3 7.0s r6=0.00 mrr=0.00
+18:23:09 4/50 GS-025 hi r2nt_p20_a3 6.5s r6=0.00 mrr=0.00
+rewrite_failed GS-025 FreeLLMError
+18:23:14 4/50 GS-025 hi groq_p20_a3 5.3s r6=0.00 mrr=0.00
+18:23:20 5/50 GS-037 hinglish r1_p20_a3 5.2s r6=1.00 mrr=0.50
+18:23:25 5/50 GS-037 hinglish r2nt_p20_a3 5.2s r6=1.00 mrr=0.17
+rewrite_failed GS-037 FreeLLMError
+18:23:29 5/50 GS-037 hinglish groq_p20_a3 4.6s r6=1.00 mrr=1.00
+18:23:35 6/50 GS-007 en r1_p20_a3 6.1s r6=1.00 mrr=1.00
+18:23:43 6/50 GS-007 en r2nt_p20_a3 7.5s r6=1.00 mrr=1.00
+rewrite_failed GS-007 FreeLLMError
+18:23:49 6/50 GS-007 en groq_p20_a3 5.6s r6=1.00 mrr=1.00
+18:23:54 7/50 GS-027 hi r1_p20_a3 5.5s r6=1.00 mrr=1.00
+18:24:01 7/50 GS-027 hi r2nt_p20_a3 7.0s r6=1.00 mrr=1.00
+rewrite_failed GS-027 FreeLLMError
+18:24:08 7/50 GS-027 hi groq_p20_a3 6.7s r6=1.00 mrr=1.00
+18:24:14 8/50 GS-044 hinglish r1_p20_a3 6.0s r6=1.00 mrr=1.00
+18:24:19 8/50 GS-044 hinglish r2nt_p20_a3 5.1s r6=1.00 mrr=0.50
+rewrite_failed GS-044 FreeLLMError
+18:24:26 8/50 GS-044 hinglish groq_p20_a3 6.5s r6=0.00 mrr=0.00
+18:24:32 9/50 GS-011 en r1_p20_a3 6.2s r6=0.00 mrr=0.00
+18:24:37 9/50 GS-011 en r2nt_p20_a3 5.4s r6=0.00 mrr=0.00
+rewrite_failed GS-011 FreeLLMError
+18:24:43 9/50 GS-011 en groq_p20_a3 6.0s r6=0.00 mrr=0.00
+18:24:49 10/50 GS-031 hi r1_p20_a3 6.4s r6=1.00 mrr=0.25
+18:24:56 10/50 GS-031 hi r2nt_p20_a3 6.3s r6=1.00 mrr=0.33
+rewrite_failed GS-031 FreeLLMError
+18:25:02 10/50 GS-031 hi groq_p20_a3 5.8s r6=0.00 mrr=0.00
+18:25:07 11/50 GS-053 hinglish r1_p20_a3 5.1s r6=0.00 mrr=0.00
+18:25:12 11/50 GS-053 hinglish r2nt_p20_a3 5.3s r6=0.00 mrr=0.00
+rewrite_failed GS-053 FreeLLMError
+18:25:17 11/50 GS-053 hinglish groq_p20_a3 5.0s r6=0.00 mrr=0.00
+18:25:25 12/50 GS-026 en r1_p20_a3 7.6s r6=1.00 mrr=0.20
+18:25:32 12/50 GS-026 en r2nt_p20_a3 7.1s r6=1.00 mrr=1.00
+rewrite_failed GS-026 FreeLLMError
+18:25:38 12/50 GS-026 en groq_p20_a3 6.4s r6=1.00 mrr=1.00
+18:25:44 13/50 GS-035 hi r1_p20_a3 5.8s r6=1.00 mrr=1.00
+18:25:50 13/50 GS-035 hi r2nt_p20_a3 6.1s r6=1.00 mrr=1.00
+rewrite_failed GS-035 FreeLLMError
+18:26:00 13/50 GS-035 hi groq_p20_a3 9.5s r6=1.00 mrr=1.00
+18:26:08 14/50 GS-060 hinglish r1_p20_a3 8.7s r6=0.00 mrr=0.00
+18:26:16 14/50 GS-060 hinglish r2nt_p20_a3 7.6s r6=0.00 mrr=0.00
+rewrite_failed GS-060 FreeLLMError
+18:26:23 14/50 GS-060 hinglish groq_p20_a3 6.9s r6=0.00 mrr=0.00
+18:26:33 15/50 GS-028 en r1_p20_a3 10.1s r6=1.00 mrr=0.25
+18:26:41 15/50 GS-028 en r2nt_p20_a3 8.4s r6=0.00 mrr=0.00
+rewrite_failed GS-028 FreeLLMError
+18:26:49 15/50 GS-028 en groq_p20_a3 8.0s r6=0.00 mrr=0.00
+18:26:57 16/50 GS-038 hi r1_p20_a3 7.9s r6=0.00 mrr=0.00
+18:27:05 16/50 GS-038 hi r2nt_p20_a3 8.0s r6=0.00 mrr=0.00
+rewrite_failed GS-038 FreeLLMError
+18:27:14 16/50 GS-038 hi groq_p20_a3 8.3s r6=0.00 mrr=0.00
+18:27:23 17/50 GS-067 hinglish r1_p20_a3 9.0s r6=0.00 mrr=0.00
+18:27:33 17/50 GS-067 hinglish r2nt_p20_a3 10.7s r6=0.00 mrr=0.00
+rewrite_failed GS-067 FreeLLMError
+18:27:40 17/50 GS-067 hinglish groq_p20_a3 6.1s r6=0.00 mrr=0.00
+18:27:46 18/50 GS-030 en r1_p20_a3 6.5s r6=1.00 mrr=0.33
+18:27:53 18/50 GS-030 en r2nt_p20_a3 6.6s r6=1.00 mrr=0.50
+rewrite_failed GS-030 FreeLLMError
+18:27:58 18/50 GS-030 en groq_p20_a3 5.4s r6=1.00 mrr=0.50
+18:28:06 19/50 GS-040 hi r1_p20_a3 8.1s r6=1.00 mrr=1.00
+18:28:15 19/50 GS-040 hi r2nt_p20_a3 8.8s r6=1.00 mrr=1.00
+rewrite_failed GS-040 FreeLLMError
+18:28:22 19/50 GS-040 hi groq_p20_a3 7.5s r6=1.00 mrr=1.00
+18:28:31 20/50 GS-073 hinglish r1_p20_a3 8.2s r6=1.00 mrr=1.00
+18:28:37 20/50 GS-073 hinglish r2nt_p20_a3 6.3s r6=1.00 mrr=1.00
+rewrite_failed GS-073 FreeLLMError
+18:28:43 20/50 GS-073 hinglish groq_p20_a3 5.9s r6=1.00 mrr=0.50
+18:28:49 21/50 GS-032 en r1_p20_a3 6.4s r6=1.00 mrr=0.50
+18:28:55 21/50 GS-032 en r2nt_p20_a3 6.1s r6=1.00 mrr=1.00
+rewrite_failed GS-032 FreeLLMError
+18:29:02 21/50 GS-032 en groq_p20_a3 7.0s r6=1.00 mrr=1.00
+18:29:08 22/50 GS-042 hi r1_p20_a3 5.9s r6=0.33 mrr=0.33
+18:29:14 22/50 GS-042 hi r2nt_p20_a3 5.9s r6=0.67 mrr=1.00
+rewrite_failed GS-042 FreeLLMError
+18:29:19 22/50 GS-042 hi groq_p20_a3 4.9s r6=0.33 mrr=1.00
+18:29:25 23/50 GS-080 hinglish r1_p20_a3 5.5s r6=1.00 mrr=1.00
+18:29:30 23/50 GS-080 hinglish r2nt_p20_a3 5.8s r6=1.00 mrr=1.00
+rewrite_failed GS-080 FreeLLMError
+18:29:36 23/50 GS-080 hinglish groq_p20_a3 5.8s r6=1.00 mrr=1.00
+18:29:43 24/50 GS-034 en r1_p20_a3 6.3s r6=1.00 mrr=1.00
+18:29:48 24/50 GS-034 en r2nt_p20_a3 5.8s r6=1.00 mrr=0.50
+rewrite_failed GS-034 FreeLLMError
+18:29:54 24/50 GS-034 en groq_p20_a3 5.3s r6=1.00 mrr=0.50
+18:30:00 25/50 GS-045 hi r1_p20_a3 6.3s r6=0.00 mrr=0.00
+18:30:06 25/50 GS-045 hi r2nt_p20_a3 6.0s r6=0.00 mrr=0.00
+rewrite_failed GS-045 FreeLLMError
+18:30:11 25/50 GS-045 hi groq_p20_a3 5.2s r6=0.00 mrr=0.00
+18:30:18 26/50 GS-091 hinglish r1_p20_a3 6.7s r6=1.00 mrr=0.20
+18:30:24 26/50 GS-091 hinglish r2nt_p20_a3 6.3s r6=1.00 mrr=0.20
+rewrite_failed GS-091 FreeLLMError
+18:30:30 26/50 GS-091 hinglish groq_p20_a3 6.2s r6=0.00 mrr=0.00
+18:30:36 27/50 GS-036 en r1_p20_a3 5.8s r6=1.00 mrr=1.00
+18:30:42 27/50 GS-036 en r2nt_p20_a3 5.6s r6=1.00 mrr=1.00
+rewrite_failed GS-036 FreeLLMError
+18:30:47 27/50 GS-036 en groq_p20_a3 5.2s r6=1.00 mrr=1.00
+18:30:53 28/50 GS-049 hi r1_p20_a3 6.3s r6=0.50 mrr=0.20
+18:30:59 28/50 GS-049 hi r2nt_p20_a3 5.5s r6=0.50 mrr=0.33
+rewrite_failed GS-049 FreeLLMError
+18:31:05 28/50 GS-049 hi groq_p20_a3 6.0s r6=0.50 mrr=1.00
+18:31:10 29/50 GS-041 en r1_p20_a3 5.2s r6=0.00 mrr=0.00
+18:31:15 29/50 GS-041 en r2nt_p20_a3 4.9s r6=0.00 mrr=0.00
+rewrite_failed GS-041 FreeLLMError
+18:31:20 29/50 GS-041 en groq_p20_a3 4.8s r6=0.00 mrr=0.00
+18:31:26 30/50 GS-054 hi r1_p20_a3 6.7s r6=1.00 mrr=0.20
+18:31:32 30/50 GS-054 hi r2nt_p20_a3 5.8s r6=0.00 mrr=0.00
+rewrite_failed GS-054 FreeLLMError
+18:31:38 30/50 GS-054 hi groq_p20_a3 6.2s r6=1.00 mrr=1.00
+18:31:44 31/50 GS-043 en r1_p20_a3 5.2s r6=1.00 mrr=1.00
+18:31:49 31/50 GS-043 en r2nt_p20_a3 5.3s r6=1.00 mrr=0.50
+rewrite_failed GS-043 FreeLLMError
+18:31:54 31/50 GS-043 en groq_p20_a3 5.2s r6=1.00 mrr=1.00
+18:32:01 32/50 GS-056 hi r1_p20_a3 6.5s r6=0.00 mrr=0.00
+18:32:06 32/50 GS-056 hi r2nt_p20_a3 5.9s r6=0.00 mrr=0.00
+rewrite_failed GS-056 FreeLLMError
+18:32:11 32/50 GS-056 hi groq_p20_a3 4.3s r6=0.00 mrr=0.00
+18:32:18 33/50 GS-048 en r1_p20_a3 7.4s r6=1.00 mrr=0.17
+18:32:25 33/50 GS-048 en r2nt_p20_a3 6.4s r6=1.00 mrr=0.33
+rewrite_failed GS-048 FreeLLMError
+18:32:30 33/50 GS-048 en groq_p20_a3 5.6s r6=1.00 mrr=0.33
+18:32:37 34/50 GS-058 hi r1_p20_a3 6.8s r6=1.00 mrr=1.00
+18:32:48 34/50 GS-058 hi r2nt_p20_a3 11.4s r6=1.00 mrr=1.00
+rewrite_failed GS-058 FreeLLMError
+18:33:00 34/50 GS-058 hi groq_p20_a3 11.5s r6=0.00 mrr=0.00
+18:33:09 35/50 GS-050 en r1_p20_a3 9.3s r6=1.00 mrr=1.00
+18:33:20 35/50 GS-050 en r2nt_p20_a3 10.6s r6=1.00 mrr=1.00
+rewrite_failed GS-050 FreeLLMError
+18:33:28 35/50 GS-050 en groq_p20_a3 8.7s r6=1.00 mrr=1.00
+18:33:39 36/50 GS-061 hi r1_p20_a3 10.1s r6=1.00 mrr=1.00
+18:33:52 36/50 GS-061 hi r2nt_p20_a3 13.5s r6=1.00 mrr=1.00
+rewrite_failed GS-061 FreeLLMError
+18:33:59 36/50 GS-061 hi groq_p20_a3 7.2s r6=1.00 mrr=1.00
+18:34:07 37/50 GS-052 en r1_p20_a3 7.3s r6=0.50 mrr=0.17
+18:34:12 37/50 GS-052 en r2nt_p20_a3 5.5s r6=0.50 mrr=0.17
+rewrite_failed GS-052 FreeLLMError
+18:34:18 37/50 GS-052 en groq_p20_a3 5.8s r6=0.50 mrr=0.17
+18:34:24 38/50 GS-063 hi r1_p20_a3 6.6s r6=1.00 mrr=0.50
+18:34:31 38/50 GS-063 hi r2nt_p20_a3 6.9s r6=1.00 mrr=1.00
+rewrite_failed GS-063 FreeLLMError
+18:34:37 38/50 GS-063 hi groq_p20_a3 5.5s r6=1.00 mrr=1.00
+18:34:42 39/50 GS-055 en r1_p20_a3 5.1s r6=1.00 mrr=0.33
+18:34:47 39/50 GS-055 en r2nt_p20_a3 4.9s r6=1.00 mrr=0.17
+rewrite_failed GS-055 FreeLLMError
+18:34:52 39/50 GS-055 en groq_p20_a3 4.8s r6=1.00 mrr=0.50
+18:34:58 40/50 GS-068 hi r1_p20_a3 6.4s r6=0.00 mrr=0.00
+18:35:03 40/50 GS-068 hi r2nt_p20_a3 5.0s r6=0.00 mrr=0.00
+rewrite_failed GS-068 FreeLLMError
+18:35:09 40/50 GS-068 hi groq_p20_a3 5.7s r6=0.00 mrr=0.00
+18:35:15 41/50 GS-057 en r1_p20_a3 6.3s r6=0.50 mrr=1.00
+18:35:21 41/50 GS-057 en r2nt_p20_a3 6.0s r6=0.50 mrr=0.50
+rewrite_failed GS-057 FreeLLMError
+18:35:27 41/50 GS-057 en groq_p20_a3 5.7s r6=0.50 mrr=1.00
+18:35:33 42/50 GS-074 hi r1_p20_a3 5.9s r6=1.00 mrr=1.00
+18:35:39 42/50 GS-074 hi r2nt_p20_a3 6.0s r6=1.00 mrr=1.00
+rewrite_failed GS-074 FreeLLMError
+18:35:45 42/50 GS-074 hi groq_p20_a3 6.0s r6=1.00 mrr=1.00
+18:35:51 43/50 GS-059 en r1_p20_a3 6.2s r6=1.00 mrr=0.50
+18:35:56 43/50 GS-059 en r2nt_p20_a3 5.5s r6=1.00 mrr=0.50
+rewrite_failed GS-059 FreeLLMError
+18:36:02 43/50 GS-059 en groq_p20_a3 5.8s r6=1.00 mrr=1.00
+18:36:09 44/50 GS-078 hi r1_p20_a3 6.6s r6=0.00 mrr=0.10
+18:36:15 44/50 GS-078 hi r2nt_p20_a3 6.0s r6=0.00 mrr=0.11
+rewrite_failed GS-078 FreeLLMError
+18:36:19 44/50 GS-078 hi groq_p20_a3 4.3s r6=0.00 mrr=0.00
+18:36:23 45/50 GS-062 en r1_p20_a3 3.7s r6=1.00 mrr=0.33
+18:36:26 45/50 GS-062 en r2nt_p20_a3 3.5s r6=0.50 mrr=0.20
+rewrite_failed GS-062 FreeLLMError
+18:36:29 45/50 GS-062 en groq_p20_a3 3.1s r6=1.00 mrr=0.25
+18:36:35 46/50 GS-083 hi r1_p20_a3 6.0s r6=0.00 mrr=0.00
+18:36:43 46/50 GS-083 hi r2nt_p20_a3 7.4s r6=0.00 mrr=0.00
+rewrite_failed GS-083 FreeLLMError
+18:36:51 46/50 GS-083 hi groq_p20_a3 8.0s r6=0.00 mrr=0.00
+18:37:02 47/50 GS-064 en r1_p20_a3 10.8s r6=1.00 mrr=0.50
+18:37:13 47/50 GS-064 en r2nt_p20_a3 11.2s r6=0.50 mrr=1.00
+rewrite_failed GS-064 FreeLLMError
+18:37:22 47/50 GS-064 en groq_p20_a3 9.4s r6=0.50 mrr=0.25
+18:37:35 48/50 GS-085 hi r1_p20_a3 12.5s r6=1.00 mrr=0.50
+18:37:44 48/50 GS-085 hi r2nt_p20_a3 9.4s r6=1.00 mrr=0.50
+rewrite_failed GS-085 FreeLLMError
+18:37:53 48/50 GS-085 hi groq_p20_a3 9.2s r6=0.00 mrr=0.00
+18:38:04 49/50 GS-070 en r1_p20_a3 10.5s r6=0.00 mrr=0.00
+18:38:15 49/50 GS-070 en r2nt_p20_a3 11.5s r6=1.00 mrr=1.00
+rewrite_failed GS-070 FreeLLMError
+18:38:25 49/50 GS-070 en groq_p20_a3 10.1s r6=1.00 mrr=0.33
+18:38:36 50/50 GS-087 hi r1_p20_a3 10.8s r6=1.00 mrr=0.25
+18:38:47 50/50 GS-087 hi r2nt_p20_a3 10.9s r6=1.00 mrr=0.25
+rewrite_failed GS-087 FreeLLMError
+18:38:58 50/50 GS-087 hi groq_p20_a3 11.0s r6=0.50 mrr=0.25
+done 18:38:58
+start 18:39:52 rows=30 batch=1 threads=4
+18:40:04 1/30 GS-006 hi groq_gptoss120_r1 12.5s r6=1.00 mrr=1.00
+18:40:15 1/30 GS-006 hi groq_qwen_r1 10.9s r6=1.00 mrr=0.25
+18:40:26 2/30 GS-029 hinglish groq_gptoss120_r1 11.5s r6=1.00 mrr=0.50
+18:40:36 2/30 GS-029 hinglish groq_qwen_r1 9.7s r6=1.00 mrr=0.50
+18:40:47 3/30 GS-005 en groq_gptoss120_r1 11.2s r6=1.00 mrr=1.00
+18:40:58 3/30 GS-005 en groq_qwen_r1 10.2s r6=1.00 mrr=1.00
+18:41:10 4/30 GS-025 hi groq_gptoss120_r1 12.8s r6=0.00 mrr=0.00
+18:41:23 4/30 GS-025 hi groq_qwen_r1 13.0s r6=0.00 mrr=0.00
+18:41:33 5/30 GS-037 hinglish groq_gptoss120_r1 9.9s r6=1.00 mrr=0.25
+18:41:43 5/30 GS-037 hinglish groq_qwen_r1 10.0s r6=1.00 mrr=1.00
+18:41:55 6/30 GS-007 en groq_gptoss120_r1 11.3s r6=1.00 mrr=1.00
+18:42:05 6/30 GS-007 en groq_qwen_r1 10.2s r6=1.00 mrr=1.00
+18:42:17 7/30 GS-027 hi groq_gptoss120_r1 12.2s r6=1.00 mrr=1.00
+18:42:31 7/30 GS-027 hi groq_qwen_r1 13.9s r6=1.00 mrr=1.00
+18:42:41 8/30 GS-044 hinglish groq_gptoss120_r1 10.2s r6=1.00 mrr=1.00
+18:42:49 8/30 GS-044 hinglish groq_qwen_r1 8.3s r6=1.00 mrr=1.00
+18:43:00 9/30 GS-011 en groq_gptoss120_r1 10.7s r6=0.00 mrr=0.00
+18:43:10 9/30 GS-011 en groq_qwen_r1 10.2s r6=0.00 mrr=0.00
+18:43:22 10/30 GS-031 hi groq_gptoss120_r1 11.2s r6=0.00 mrr=0.00
+18:43:33 10/30 GS-031 hi groq_qwen_r1 11.1s r6=1.00 mrr=0.50
+18:43:44 11/30 GS-053 hinglish groq_gptoss120_r1 11.3s r6=0.50 mrr=0.20
+18:43:54 11/30 GS-053 hinglish groq_qwen_r1 10.4s r6=0.50 mrr=0.20
+18:44:07 12/30 GS-026 en groq_gptoss120_r1 12.3s r6=1.00 mrr=1.00
+18:44:18 12/30 GS-026 en groq_qwen_r1 10.9s r6=1.00 mrr=1.00
+18:44:29 13/30 GS-035 hi groq_gptoss120_r1 11.9s r6=1.00 mrr=1.00
+18:44:41 13/30 GS-035 hi groq_qwen_r1 11.8s r6=1.00 mrr=1.00
+18:44:53 14/30 GS-060 hinglish groq_gptoss120_r1 11.8s r6=0.00 mrr=0.00
+18:45:04 14/30 GS-060 hinglish groq_qwen_r1 10.6s r6=0.00 mrr=0.00
+rewrite_failed GS-028 FreeLLMError
+18:45:14 15/30 GS-028 en groq_gptoss120_r1 10.0s r6=0.00 mrr=0.00
+rewrite_failed GS-028 FreeLLMError
+18:45:23 15/30 GS-028 en groq_qwen_r1 9.7s r6=0.00 mrr=0.00
+rewrite_failed GS-038 FreeLLMError
+18:45:35 16/30 GS-038 hi groq_gptoss120_r1 11.9s r6=0.00 mrr=0.00
+rewrite_failed GS-038 FreeLLMError
+18:45:47 16/30 GS-038 hi groq_qwen_r1 11.8s r6=0.00 mrr=0.00
+rewrite_failed GS-067 FreeLLMError
+18:45:56 17/30 GS-067 hinglish groq_gptoss120_r1 8.8s r6=0.00 mrr=0.00
+rewrite_failed GS-067 FreeLLMError
+18:46:05 17/30 GS-067 hinglish groq_qwen_r1 8.7s r6=0.00 mrr=0.00
+rewrite_failed GS-030 FreeLLMError
+18:46:14 18/30 GS-030 en groq_gptoss120_r1 9.2s r6=1.00 mrr=0.50
+rewrite_failed GS-030 FreeLLMError
+18:46:23 18/30 GS-030 en groq_qwen_r1 9.1s r6=1.00 mrr=0.50
+rewrite_failed GS-040 FreeLLMError
+18:46:35 19/30 GS-040 hi groq_gptoss120_r1 11.5s r6=1.00 mrr=1.00
+rewrite_failed GS-040 FreeLLMError
+18:46:46 19/30 GS-040 hi groq_qwen_r1 11.5s r6=1.00 mrr=1.00
+rewrite_failed GS-073 FreeLLMError
+18:46:56 20/30 GS-073 hinglish groq_gptoss120_r1 9.5s r6=1.00 mrr=0.50
+rewrite_failed GS-073 FreeLLMError
+18:47:05 20/30 GS-073 hinglish groq_qwen_r1 9.4s r6=1.00 mrr=0.50
+rewrite_failed GS-032 FreeLLMError
+18:47:15 21/30 GS-032 en groq_gptoss120_r1 9.4s r6=1.00 mrr=1.00
+rewrite_failed GS-032 FreeLLMError
+18:47:24 21/30 GS-032 en groq_qwen_r1 9.4s r6=1.00 mrr=1.00
+rewrite_failed GS-042 FreeLLMError
+18:47:33 22/30 GS-042 hi groq_gptoss120_r1 8.9s r6=0.33 mrr=1.00
+rewrite_failed GS-042 FreeLLMError
+18:47:42 22/30 GS-042 hi groq_qwen_r1 8.8s r6=0.33 mrr=1.00
+rewrite_failed GS-080 FreeLLMError
+18:47:51 23/30 GS-080 hinglish groq_gptoss120_r1 9.1s r6=1.00 mrr=1.00
+rewrite_failed GS-080 FreeLLMError
+18:48:00 23/30 GS-080 hinglish groq_qwen_r1 8.9s r6=1.00 mrr=1.00
+rewrite_failed GS-034 FreeLLMError
+18:48:09 24/30 GS-034 en groq_gptoss120_r1 9.6s r6=1.00 mrr=0.50
+rewrite_failed GS-034 FreeLLMError
+18:48:19 24/30 GS-034 en groq_qwen_r1 9.3s r6=1.00 mrr=0.50
+rewrite_failed GS-045 FreeLLMError
+18:48:28 25/30 GS-045 hi groq_gptoss120_r1 9.3s r6=0.00 mrr=0.00
+rewrite_failed GS-045 FreeLLMError
+18:48:37 25/30 GS-045 hi groq_qwen_r1 9.3s r6=0.00 mrr=0.00
+rewrite_failed GS-091 FreeLLMError
+18:48:48 26/30 GS-091 hinglish groq_gptoss120_r1 10.6s r6=0.00 mrr=0.00
+rewrite_failed GS-091 FreeLLMError
+18:48:58 26/30 GS-091 hinglish groq_qwen_r1 10.6s r6=0.00 mrr=0.00
+rewrite_failed GS-036 FreeLLMError
+18:49:07 27/30 GS-036 en groq_gptoss120_r1 9.1s r6=1.00 mrr=1.00
+rewrite_failed GS-036 FreeLLMError
+18:49:17 27/30 GS-036 en groq_qwen_r1 9.2s r6=1.00 mrr=1.00
+rewrite_failed GS-049 FreeLLMError
+18:49:27 28/30 GS-049 hi groq_gptoss120_r1 10.4s r6=0.50 mrr=1.00
+rewrite_failed GS-049 FreeLLMError
+18:49:37 28/30 GS-049 hi groq_qwen_r1 10.3s r6=0.50 mrr=1.00
+rewrite_failed GS-041 FreeLLMError
+18:49:46 29/30 GS-041 en groq_gptoss120_r1 8.3s r6=0.00 mrr=0.00
+rewrite_failed GS-041 FreeLLMError
+18:49:54 29/30 GS-041 en groq_qwen_r1 8.3s r6=0.00 mrr=0.00
+rewrite_failed GS-054 FreeLLMError
+18:50:05 30/30 GS-054 hi groq_gptoss120_r1 11.1s r6=1.00 mrr=1.00
+rewrite_failed GS-054 FreeLLMError
+18:50:16 30/30 GS-054 hi groq_qwen_r1 11.2s r6=1.00 mrr=1.00
+done 18:50:16
+start 22:42:43 rows=30 batch=1 threads=4
+22:42:52 15/30 GS-028 en groq_gptoss120_r1 9.1s r6=0.00 mrr=0.00
+22:42:58 15/30 GS-028 en groq_qwen_r1 6.0s r6=0.00 mrr=0.00
+22:43:07 16/30 GS-038 hi groq_gptoss120_r1 9.1s r6=0.00 mrr=0.00
+22:43:19 16/30 GS-038 hi groq_qwen_r1 11.4s r6=0.00 mrr=0.00
+22:43:26 17/30 GS-067 hinglish groq_gptoss120_r1 7.7s r6=0.00 mrr=0.00
+22:43:34 17/30 GS-067 hinglish groq_qwen_r1 7.6s r6=0.00 mrr=0.00
+22:43:42 18/30 GS-030 en groq_gptoss120_r1 8.2s r6=1.00 mrr=0.50
+22:43:47 18/30 GS-030 en groq_qwen_r1 5.0s r6=1.00 mrr=1.00
+22:43:56 19/30 GS-040 hi groq_gptoss120_r1 8.9s r6=1.00 mrr=1.00
+22:44:04 19/30 GS-040 hi groq_qwen_r1 7.8s r6=1.00 mrr=1.00
+22:44:12 20/30 GS-073 hinglish groq_gptoss120_r1 8.0s r6=1.00 mrr=1.00
+22:44:19 20/30 GS-073 hinglish groq_qwen_r1 7.0s r6=1.00 mrr=1.00
+rewrite_failed GS-032 RemoteDisconnected: Remote end closed connection without response
+22:44:38 21/30 GS-032 en groq_gptoss120_r1 19.6s r6=1.00 mrr=1.00
+22:44:46 21/30 GS-032 en groq_qwen_r1 7.2s r6=1.00 mrr=0.33
+22:44:55 22/30 GS-042 hi groq_gptoss120_r1 9.8s r6=0.67 mrr=0.33
+22:45:06 22/30 GS-042 hi groq_qwen_r1 10.9s r6=0.67 mrr=1.00
+22:45:19 23/30 GS-080 hinglish groq_gptoss120_r1 12.8s r6=1.00 mrr=1.00
+22:45:34 23/30 GS-080 hinglish groq_qwen_r1 14.9s r6=1.00 mrr=1.00
+22:45:46 24/30 GS-034 en groq_gptoss120_r1 11.6s r6=1.00 mrr=0.50
+22:45:57 24/30 GS-034 en groq_qwen_r1 11.4s r6=1.00 mrr=0.50
+22:46:14 25/30 GS-045 hi groq_gptoss120_r1 17.5s r6=0.00 mrr=0.00
+22:46:31 25/30 GS-045 hi groq_qwen_r1 16.5s r6=0.00 mrr=0.00
+22:46:44 26/30 GS-091 hinglish groq_gptoss120_r1 12.8s r6=0.00 mrr=0.14
+22:46:55 26/30 GS-091 hinglish groq_qwen_r1 11.0s r6=0.00 mrr=0.00
+22:47:06 27/30 GS-036 en groq_gptoss120_r1 11.0s r6=1.00 mrr=0.50
+22:47:16 27/30 GS-036 en groq_qwen_r1 10.7s r6=1.00 mrr=1.00
+22:47:28 28/30 GS-049 hi groq_gptoss120_r1 11.2s r6=0.50 mrr=0.50
+22:47:40 28/30 GS-049 hi groq_qwen_r1 12.7s r6=0.50 mrr=0.33
+22:47:50 29/30 GS-041 en groq_gptoss120_r1 10.0s r6=0.00 mrr=0.00
+22:47:59 29/30 GS-041 en groq_qwen_r1 8.9s r6=0.00 mrr=0.00
+22:48:14 30/30 GS-054 hi groq_gptoss120_r1 15.0s r6=1.00 mrr=0.50
+22:48:24 30/30 GS-054 hi groq_qwen_r1 9.9s r6=1.00 mrr=0.50
+done 22:48:24

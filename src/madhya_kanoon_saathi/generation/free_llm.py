@@ -14,6 +14,7 @@ limit never costs money or blocks an answer. The rate-limit headers of the last 
 
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import urllib.error
@@ -26,6 +27,9 @@ from madhya_kanoon_saathi.common.redact import redact
 DEFAULT_BASE_URL = "https://api.groq.com/openai/v1"
 DEFAULT_MODEL = "llama-3.3-70b-versatile"
 KEY_NAME = "GROQ_API_KEY"
+# Groq's edge (Cloudflare) answers Python's default "Python-urllib" agent with 403 "error code:
+# 1010" (seen 2026-11-23); a plain project agent works. Generic: no personal or contact details.
+USER_AGENT = "madhya-kanoon-saathi/0.1"
 _LIMIT_HEADERS = (
     "x-ratelimit-limit-requests",
     "x-ratelimit-remaining-requests",
@@ -71,7 +75,11 @@ class FreeLLM:
             f"{self.base_url.rstrip('/')}/chat/completions",
             data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
             method="POST",
-            headers={"Content-Type": "application/json", "Authorization": f"Bearer {self.key}"},
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.key}",
+                "User-Agent": USER_AGENT,
+            },
         )
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
@@ -80,8 +88,12 @@ class FreeLLM:
                 }
                 data = json.loads(resp.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
-            raise FreeLLMError(f"free LLM HTTP {e.code}") from None
-        except (urllib.error.URLError, TimeoutError) as e:
+            wait = e.headers.get("retry-after") if e.headers else None
+            raise FreeLLMError(
+                f"free LLM HTTP {e.code}" + (f" retry-after {wait}s" if wait else "")
+            ) from None
+        except (urllib.error.URLError, http.client.HTTPException, OSError) as e:
+            # URLError, timeouts, and dropped connections (RemoteDisconnected, seen 2026-11-23)
             raise FreeLLMError(f"free LLM network error ({type(e).__name__})") from None
         try:
             return str(data["choices"][0]["message"]["content"] or "")

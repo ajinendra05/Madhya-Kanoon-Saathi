@@ -11,6 +11,8 @@ Configurations (same questions, interleaved per question so machine load affects
   local DEC-078 ledger cap).
 - ``r2_p40``: rewriting with prompt r2 + corpus Act-name filter (DEC-091), pool 40.
 - ``r2_p20_a3``: r2 + A2 (rerank pool 20) + A3 (one language version per provision).
+- ``r1_p20_a3`` / ``r2nt_p20_a3``: saved r1 rewrites, or saved r2 rewrites with the appended
+  official titles removed, with A2 + A3 (no new model calls).
 - ``groq_p20_a3``: as ``r2_p20_a3`` but the rewrite runs on the free hosted model (DEC-092,
   ``GROQ_API_KEY``); skipped when no key is set.
 
@@ -56,14 +58,33 @@ from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
 OUT = Path("reports/retrieval/opt_2026-11-23")
 BASE = Path("data/baseline/2026-11-23")
-CONFIGS = ("baseline", "optimised_no_rw", "optimised", "r2_p40", "r2_p20_a3", "groq_p20_a3")
+CONFIGS = (
+    "baseline",
+    "optimised_no_rw",
+    "optimised",
+    "r2_p40",
+    "r2_p20_a3",
+    "r1_p20_a3",
+    "r2nt_p20_a3",
+    "groq_p20_a3",
+    "groq_r1_p20_a3",
+    "groq_gptoss120_r1",
+    "groq_qwen_r1",
+)
+# free-model configs (DEC-092/093): Groq model per config; r1 prompt, A2 + A3
+FREE_MODELS = {"groq_gptoss120_r1": "openai/gpt-oss-120b", "groq_qwen_r1": "qwen/qwen3.8-27b"}
 # per-config settings on top of the shared optimised config (DEC-090 runs kept as they were)
 OVERRIDES: dict[str, dict[str, Any]] = {
     "optimised_no_rw": {"one_version": False},
     "optimised": {"one_version": False},
     "r2_p40": {"one_version": False, "pool": 40},  # prompt r2 + corpus act filter (DEC-091)
     "r2_p20_a3": {"one_version": True, "pool": 20},  # + A2 pool 20 + A3 (DEC-091)
+    "r1_p20_a3": {"one_version": True, "pool": 20},  # saved r1 rewrites, no new calls
+    "r2nt_p20_a3": {"one_version": True, "pool": 20},  # saved r2 rewrites without appended titles
     "groq_p20_a3": {"one_version": True, "pool": 20},  # r2 prompt on the free model (DEC-092)
+    "groq_r1_p20_a3": {"one_version": True, "pool": 20},  # r1 on Groq llama-3.3-70b (DEC-093)
+    "groq_gptoss120_r1": {"one_version": True, "pool": 20},
+    "groq_qwen_r1": {"one_version": True, "pool": 20},
 }
 R2 = ("r2_p40", "r2_p20_a3")
 LANGS = ("hi", "hinglish", "en")
@@ -85,7 +106,7 @@ def failure_logger(log: Any, rid: str) -> Any:
     """Write a rewrite failure (error type only) to the progress log."""
 
     def write(e: Exception) -> None:
-        log.write(f"rewrite_failed {rid} {type(e).__name__}\n")
+        log.write(f"rewrite_failed {rid} {type(e).__name__}: {e}\n")  # status only, no content
         log.flush()
 
     return write
@@ -135,6 +156,7 @@ def main() -> int:
     ap.add_argument("--rows", type=int, default=50)
     ap.add_argument("--batch", type=int, default=1)
     ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--configs", default=",".join(CONFIGS), help="comma-separated subset")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     rows_path, log_path = OUT / "rows.jsonl", OUT / "progress.log"
@@ -146,6 +168,7 @@ def main() -> int:
     done = {(r["id"], r["config"]) for r in saved}
     rewrites_seen = {r["id"]: r["rewrites"] for r in saved if r["config"] == "optimised"}
     rewrites_r2 = {r["id"]: r["rewrites"] for r in saved if r["config"] in R2}
+    acts_r2 = {r["id"]: r.get("acts") or {} for r in saved if r["config"] == "r2_p40"}
 
     chunks = [
         json.loads(x) for x in Path("data/parsed/chunks.jsonl").read_text("utf-8").splitlines()
@@ -181,6 +204,21 @@ def main() -> int:
     except RuntimeError:
         free = None
 
+    titles_by_id = {a.instrument_id: (a.title_en, a.title_hi) for a in catalog.values()}
+
+    def without_titles(rid: str, queries: list[str]) -> list[str]:
+        """r2 queries minus the official titles appended for matched acts."""
+        out = []
+        for q in queries:
+            for iid in acts_r2.get(rid, {}).get("matched", []):
+                for t in titles_by_id.get(iid, ("", "")):
+                    if t:
+                        q = q.replace(t, " ")
+            q = " ".join(q.split())
+            if q:
+                out.append(q)
+        return out
+
     def rewrite_call(messages: list[dict[str, str]]) -> str:
         body = request_body(messages, "json_object", reasoning_effort="low", max_tokens=200)
         return complete(body, purpose="eval_rewrite_dec090").content
@@ -196,7 +234,7 @@ def main() -> int:
         )
         for i, r in enumerate(rows, 1):
             q, exp, lang = r["raw_question_redacted"], r["_expected"], r.get("language", "en")
-            for name in CONFIGS:
+            for name in a.configs.split(","):
                 if (r["id"], name) in done:
                     continue
                 rw: list[str] = []
@@ -220,6 +258,21 @@ def main() -> int:
                             failure_logger(log, rid),
                         )
                         rewrites_seen[rid] = rw
+                    elif name == "r1_p20_a3":
+                        rw = rewrites_seen.get(rid, [])
+                    elif name == "r2nt_p20_a3":
+                        rw = without_titles(rid, rewrites_r2.get(rid, []))
+                    elif name in FREE_MODELS:
+                        if free is None:
+                            continue
+                        llm = FreeLLM(key=free.key, model=FREE_MODELS[name], max_tokens=600)
+                        rw = rewrite.rewrite(q, llm, failure_logger(log, rid))
+                        acts = {"model": llm.model, "limits": dict(llm.last_limits)}
+                    elif name == "groq_r1_p20_a3":
+                        if free is None:
+                            continue
+                        rw = rewrite.rewrite(q, free, failure_logger(log, rid))
+                        acts = {"limits": dict(free.last_limits)}
                     elif name == "groq_p20_a3":
                         if free is None:
                             continue  # no GROQ_API_KEY: measured on a later run

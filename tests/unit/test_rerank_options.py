@@ -55,7 +55,7 @@ def test_rewrite_drops_copies_of_the_question() -> None:
 
 def test_rewrite_prompt_forbids_new_facts_and_answers() -> None:
     assert "Add no facts" in rewrite.SYSTEM and "Do not answer" in rewrite.SYSTEM
-    assert '"acts"' in rewrite.SYSTEM and rewrite.REWRITE_VERSION == "r2"
+    assert rewrite.REWRITE_VERSION == "r1" and "names of Acts" in rewrite.SYSTEM
 
 
 MANIFEST = json.loads(Path("data/corpus_manifest.json").read_text(encoding="utf-8"))
@@ -129,7 +129,8 @@ def test_keep_candidates_drops_filler_and_duplicate_texts_in_order() -> None:
 
 def test_config_defaults_and_env(monkeypatch: pytest.MonkeyPatch) -> None:
     d = RetrievalConfig()
-    assert (d.pool, d.final, d.rerank_window, d.threads) == (40, 6, 256, None)
+    assert (d.pool, d.search_k, d.final, d.rerank_window, d.threads) == (20, 40, 6, 256, None)
+    assert d.one_version and d.drop_filler
     monkeypatch.setenv("MKS_ORT_THREADS", "2")
     monkeypatch.setenv("MKS_RERANK_WINDOW", "512")
     monkeypatch.setenv("MKS_RERANK_BATCH", "4")

@@ -50,7 +50,7 @@ def _env_int(name: str, default: int | None) -> int | None:
 
 @dataclass(frozen=True)
 class RetrievalConfig:
-    pool: int = POOL  # A2: candidates the reranker scores (DEC-091: 20)
+    pool: int = 20  # A2: candidates the reranker scores (DEC-091, DEC-093)
     final: int = FINAL
     search_k: int = POOL  # hits each BM25 / dense list contributes before fusion
     rerank_window: int = 256  # A5 (DEC-090)
