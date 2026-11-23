@@ -302,6 +302,7 @@ Hindi provision is kept whole under the parent uid and reported.
 ## 5. Retrieval
 
 Full reranker design, timings and optimisation options: [RERANKER.md](RERANKER.md).
+What changed between the first and second deployment, with measured results: [OPTIMIZATION.md](OPTIMIZATION.md).
 
 **Sparse (keyword) retrieval: BM25.** Scores documents by how often the query's words appear, adjusted for rarity and
 document length.

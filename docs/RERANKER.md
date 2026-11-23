@@ -1,6 +1,6 @@
 # Reranker: how it is built, how it works, where it can be faster
 
-Written 2026-11-23 from the code and model files in this repo, after the first Cloud Run test showed
+Change log with all measured results: [OPTIMIZATION.md](OPTIMIZATION.md). Written 2026-11-23 from the code and model files in this repo, after the first Cloud Run test showed
 30–70 s per answer. Everything marked *measured* was run; *estimate* means not measured yet.
 
 Code: [`retrieval/reranker.py`](../src/madhya_kanoon_saathi/retrieval/reranker.py) (model + scoring),
