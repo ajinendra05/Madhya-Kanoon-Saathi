@@ -13,6 +13,7 @@ src/**/__pycache__
 !data/answer_texts.json
 !data/bot_texts.json
 !data/help_topics.json
+!data/instrument_aliases.json
 !data/safety/crisis_examples.json
 !data/safety/crisis_replies.json
 !data/safety/crisis_threshold.json

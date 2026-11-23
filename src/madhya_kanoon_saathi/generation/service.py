@@ -42,6 +42,7 @@ def responder(
     def read(name: str) -> Any:
         return json.loads((data / name).read_text("utf-8"))
 
+    catalog = rewrite.act_catalog(read("corpus_manifest.json"), read("instrument_aliases.json"))
     answer_texts = read("answer_texts.json")
     replies = read("safety/crisis_replies.json")
     topics = read("help_topics.json")
@@ -52,7 +53,9 @@ def responder(
         on = today()
 
         def retrieve(q: str) -> list[Retrieved]:
-            rewrites = rewrite.rewrite(q, rewrite_call, on_rewrite_error) if rewrite_call else []
+            rewrites = (
+                rewrite.rewrite(q, rewrite_call, on_rewrite_error, catalog) if rewrite_call else []
+            )
             return rt.retrieve(q, vec, on, rewrites=rewrites)
 
         reply = answer(

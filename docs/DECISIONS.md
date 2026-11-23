@@ -1013,6 +1013,18 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: the measured bottleneck is reranking work and weak Hinglish candidates; each change is small, reversible by configuration, and measured before deployment.
 - Effects: estimated ~₹0.003–0.005 and ~1 s more per question for E1 · speed and quality measured on 50 golden questions before the image is rebuilt · E1's rewrite prompt is internal wording (no user-facing change).
 
+## DEC-091 — Rewrite prompt r2 with a corpus Act-name filter; rerank pool 20; one language version per provision
+- Date: 2026-11-23 | Status: accepted ("allow rewriting with filter name and also A2 and A3 with that"; "yes" to r2) | Approved by: Malik | Amends DEC-090 item 10 (prompt r1) and DEC-021/DEC-068 (pool 40)
+- Context: DEC-090 results (50 golden questions): query rewriting raised R@6 0.583 → 0.713, but prompt r1 let the model add Act names the user never mentioned, and retrieval was still ~10–15 s on the laptop.
+- Decision:
+  1. **Prompt r2** (`generation/rewrite.py`): queries without law names; the model may list up to 3 law names in a separate `acts` field.
+  2. **Corpus Act filter:** each name is matched to an instrument with an indexed document by official title or a recorded alias (`data/instrument_aliases.json`), comparing folded lower-case names without year or "(Act No. …)"; a match appends the instrument's official English title to the English query (official Hindi title to the Hindi query when recorded); a name we do not hold, or an ambiguous one, is dropped. The rewrite stays internal (never shown or cited).
+  3. **A2:** the reranker scores the top **20** fused candidates (each BM25/dense list still contributes 40 before fusion).
+  4. **A3:** before the cut to 20, keep one language version per provision (and per `~n` part): the question's language (Devanagari → Hindi, else English) when the pool has it, else the best-ranked version. Other versions stay reachable through `versions()` (e.g. RTI Rules r.14, DEC-077).
+  5. Measured on the same 50 golden questions before deployment (`reports/retrieval/opt_2026-11-23/`, configs `r2_p40`, `r2_p20_a3`).
+- Why: a law name the model guesses can steer search to law we do not hold; the filter keeps only names that point at our own instruments. A smaller, de-duplicated pool roughly halves reranking work.
+- Effects: `data/instrument_aliases.json` joins the image · ~₹0.2 for the comparison's rewrite calls (DEC-078 cap) · results decide the deployed defaults.
+
 ---
 
 ## Pending decisions (not yet made)

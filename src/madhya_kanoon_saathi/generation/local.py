@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from collections import OrderedDict
 from collections.abc import Sequence
 from dataclasses import dataclass, field
@@ -39,6 +40,7 @@ from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
 DATA = Path("data")
 POOL, FINAL = 40, 6
+_DEVANAGARI = re.compile("[\u0900-\u097f]")
 
 
 def _env_int(name: str, default: int | None) -> int | None:
@@ -48,13 +50,15 @@ def _env_int(name: str, default: int | None) -> int | None:
 
 @dataclass(frozen=True)
 class RetrievalConfig:
-    pool: int = POOL
+    pool: int = POOL  # A2: candidates the reranker scores (DEC-091: 20)
     final: int = FINAL
+    search_k: int = POOL  # hits each BM25 / dense list contributes before fusion
     rerank_window: int = 256  # A5 (DEC-090)
     rerank_batch: int = 1  # B7: set from the batch benchmark
     rerank_variant: str = "int8"  # B3: "int8-opt" once the optimised file is built and recorded
     threads: int | None = None  # B1: None = ONNX Runtime default; Cloud Run sets the vCPU count
     drop_filler: bool = True  # A4
+    one_version: bool = True  # A3: one language version per provision in the rerank pool
     cache_size: int = 256  # A7: recent questions kept per process
 
     @classmethod
@@ -62,12 +66,43 @@ class RetrievalConfig:
         d = cls()
         return cls(
             pool=_env_int("MKS_RERANK_POOL", d.pool) or d.pool,
+            search_k=_env_int("MKS_SEARCH_K", d.search_k) or d.search_k,
             rerank_window=_env_int("MKS_RERANK_WINDOW", d.rerank_window) or d.rerank_window,
             rerank_batch=_env_int("MKS_RERANK_BATCH", d.rerank_batch) or d.rerank_batch,
             rerank_variant=os.environ.get("MKS_RERANK_VARIANT", "").strip() or d.rerank_variant,
             threads=_env_int("MKS_ORT_THREADS", d.threads),
             cache_size=_env_int("MKS_RETRIEVAL_CACHE", d.cache_size) or 0,
         )
+
+
+def chunk_lang(chunk_id: str) -> str:
+    return chunk_id.split("@")[1] if chunk_id.count("@") >= 2 else ""
+
+
+def provision_key(chunk_id: str) -> str:
+    """Provision + part: language versions share it; "~n" parts of one long unit do not."""
+    uid, _, rest = chunk_id.partition("@")
+    part = rest.rpartition("~")[2] if "~" in rest else ""
+    return f"{uid}~{part}" if part else uid
+
+
+def one_version_per_provision(hits: Sequence[FusedHit], prefer: str) -> list[FusedHit]:
+    """A3: keep one chunk per provision (language ``prefer`` if the pool has it, else the best
+    ranked), at the position of the provision's best-ranked chunk. The generator can still see the
+    other language through ``versions()`` (e.g. RTI Rules r.14, DEC-077)."""
+    groups: dict[str, list[FusedHit]] = {}
+    order: list[str] = []
+    for h in hits:
+        k = provision_key(h.chunk_id)
+        if k not in groups:
+            groups[k] = []
+            order.append(k)
+        groups[k].append(h)
+    out = []
+    for k in order:
+        g = groups[k]
+        out.append(next((h for h in g if chunk_lang(h.chunk_id) == prefer), g[0]))
+    return out
 
 
 def keep_candidates(
@@ -159,16 +194,21 @@ class LocalRuntime:
         if cfg.cache_size and key in self._cache:  # A7
             self._cache.move_to_end(key)
             return list(self._cache[key])
+        k = cfg.search_k
         lists: dict[str, Sequence[Hit]] = {
-            "bm25": self.bm25.search(question, k=cfg.pool, on=on),
-            "dense": self.dense.search_vector(vec, k=cfg.pool, on=on),
+            "bm25": self.bm25.search(question, k=k, on=on),
+            "dense": self.dense.search_vector(vec, k=k, on=on),
         }
         if rewrites:
             vecs = self.embedder.encode(list(rewrites))
             for i, (q, v) in enumerate(zip(rewrites, vecs, strict=True)):
-                lists[f"bm25_rw{i}"] = self.bm25.search(q, k=cfg.pool, on=on)
-                lists[f"dense_rw{i}"] = self.dense.search_vector(np.asarray(v), k=cfg.pool, on=on)
-        pool = keep_candidates(rrf(lists, limit=cfg.pool), self.passages, cfg.drop_filler)
+                lists[f"bm25_rw{i}"] = self.bm25.search(q, k=k, on=on)
+                lists[f"dense_rw{i}"] = self.dense.search_vector(np.asarray(v), k=k, on=on)
+        # fuse everything, filter (A4, A3), then cut to the rerank pool (A2)
+        fused = keep_candidates(rrf(lists, limit=10_000), self.passages, cfg.drop_filler)
+        if cfg.one_version:
+            fused = one_version_per_provision(fused, "hi" if _DEVANAGARI.search(question) else "en")
+        pool = fused[: cfg.pool]
         # the reranker judges against the user's words plus the formal English rewrite
         rerank_query = f"{question}\n{rewrites[0]}" if rewrites else question
         self.last_rerank_query = rerank_query

@@ -32,7 +32,7 @@ RUN uv sync --frozen --no-default-groups --group serve --no-editable
 
 # Runtime data: what LocalRuntime, the pipeline and the handlers read (paths relative to /app)
 COPY data/corpus_manifest.json data/contacts.yaml data/answer_texts.json \
-     data/bot_texts.json data/help_topics.json ./data/
+     data/bot_texts.json data/help_topics.json data/instrument_aliases.json ./data/
 COPY data/safety/crisis_examples.json data/safety/crisis_replies.json \
      data/safety/crisis_threshold.json data/safety/dispute_examples.json \
      data/safety/dispute_threshold.json ./data/safety/

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import threading
 from contextlib import contextmanager
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -37,7 +38,7 @@ def test_rewrite_returns_english_then_hindi() -> None:
     ["not json", "[]", json.dumps({"en": 5}), json.dumps({"en": "x" * 400}), json.dumps({})],
 )
 def test_rewrite_bad_output_falls_back_to_nothing(raw: str) -> None:
-    assert rewrite.parse(raw, "q") == []
+    assert rewrite.parse(raw, "q").queries == []
 
 
 def test_rewrite_failure_never_raises() -> None:
@@ -49,11 +50,58 @@ def test_rewrite_failure_never_raises() -> None:
 
 def test_rewrite_drops_copies_of_the_question() -> None:
     raw = json.dumps({"en": "RTI kaise du", "hi": "RTI kaise du"})
-    assert rewrite.parse(raw, "rti KAISE du") == []
+    assert rewrite.parse(raw, "rti KAISE du").queries == []
 
 
 def test_rewrite_prompt_forbids_new_facts_and_answers() -> None:
     assert "Add no facts" in rewrite.SYSTEM and "Do not answer" in rewrite.SYSTEM
+    assert '"acts"' in rewrite.SYSTEM and rewrite.REWRITE_VERSION == "r2"
+
+
+MANIFEST = json.loads(Path("data/corpus_manifest.json").read_text(encoding="utf-8"))
+ALIASES = json.loads(Path("data/instrument_aliases.json").read_text(encoding="utf-8"))
+CATALOG = rewrite.act_catalog(MANIFEST, ALIASES)
+
+
+@pytest.mark.parametrize(
+    ("name", "expected"),
+    [
+        ("Legal Services Authorities Act, 1987", "IN.LSA1987"),
+        ("consumer protection act 2019", "IN.CPA2019"),
+        ("RTI Act", "IN.RTI2005"),
+        ("Consumer Protection (E-Commerce) Rules, 2020", "IN.CPECR2020"),
+        ("Indian Penal Code", None),  # not in our corpus
+        ("Consumer Protection Rules", None),  # ambiguous between three Rules
+        ("Payment of Gratuity Act", None),
+    ],
+)
+def test_act_names_match_only_our_corpus(name: str, expected: str | None) -> None:
+    act = rewrite.match_act(name, CATALOG)
+    assert (act.instrument_id if act else None) == expected
+
+
+def test_matched_acts_add_official_titles_and_unknown_are_dropped() -> None:
+    raw = json.dumps(
+        {
+            "en": "free legal services eligibility",
+            "hi": "निःशुल्क विधिक सेवा पात्रता",
+            "acts": ["Legal Services Authorities Act, 1987", "Indian Penal Code"],
+        }
+    )
+    rw = rewrite.parse(raw, "free legal aid kaise milega", CATALOG)
+    assert [a.instrument_id for a in rw.acts] == ["IN.LSA1987"]
+    assert rw.dropped_acts == ["Indian Penal Code"]
+    assert (
+        rw.queries[0] == "free legal services eligibility The Legal Services Authorities Act, 1987"
+    )
+    assert rw.queries[1] == "निःशुल्क विधिक सेवा पात्रता"  # no official Hindi title recorded
+    assert "Penal" not in " ".join(rw.queries)
+
+
+def test_hindi_title_is_used_for_the_hindi_query_when_recorded() -> None:
+    raw = json.dumps({"en": "information request fee", "hi": "सूचना शुल्क", "acts": ["RTI Act"]})
+    rw = rewrite.parse(raw, "RTI fees?", CATALOG)
+    assert rw.queries[1].endswith("सूचना का अधिकार अधिनियम, 2005")
 
 
 # --- A4 candidate filter ---
@@ -205,3 +253,36 @@ def test_reranker_uses_its_batch_size() -> None:
     r.batch_size = 2
     r.score("q", ["a b", "a b c", "a"])
     assert s.batches == [2, 1]
+
+
+# --- A3 one version per provision ---
+
+
+def test_provision_key_keeps_parts_apart_and_joins_languages() -> None:
+    from madhya_kanoon_saathi.generation.local import provision_key
+
+    assert provision_key("IN.RTIR2012:r8@hi@2012-07-31") == provision_key(
+        "IN.RTIR2012:r8@en@2012-07-31"
+    )
+    assert provision_key("MP.LRCDR2018:form_i@en@2019-02-01~2") != provision_key(
+        "MP.LRCDR2018:form_i@en@2019-02-01"
+    )
+
+
+def test_one_version_per_provision_prefers_the_question_language() -> None:
+    from madhya_kanoon_saathi.generation.local import one_version_per_provision
+
+    hits = [
+        hit("IN.RTIR2012:r8@hi@2012-07-31"),
+        hit("IN.RTI2005:s6:ss1@en@2005-06-15"),
+        hit("IN.RTIR2012:r8@en@2012-07-31"),
+        hit("IN.RTIR2012:r3@hi@2012-07-31"),
+    ]
+    en = [h.chunk_id for h in one_version_per_provision(hits, "en")]
+    assert en == [
+        "IN.RTIR2012:r8@en@2012-07-31",
+        "IN.RTI2005:s6:ss1@en@2005-06-15",
+        "IN.RTIR2012:r3@hi@2012-07-31",
+    ]
+    hi = [h.chunk_id for h in one_version_per_provision(hits, "hi")]
+    assert hi[0] == "IN.RTIR2012:r8@hi@2012-07-31" and len(hi) == 3

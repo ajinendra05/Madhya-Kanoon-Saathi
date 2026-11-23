@@ -7,8 +7,10 @@ Configurations (same questions, interleaved per question so machine load affects
   batch 1, ONNX Runtime default threads, plain int8, no candidate filter, no rewriting.
 - ``optimised_no_rw``: rebuilt index (E2), window 256 (A5), A4 filter, ``--batch`` (B7),
   ``--threads`` (B1), pre-optimised graph (B3); no query rewriting.
-- ``optimised``: the same plus query rewriting (E1; one paid Sarvam call per question, local
-  DEC-078 ledger cap).
+- ``optimised``: the same plus query rewriting (E1, prompt r1; one paid Sarvam call per question,
+  local DEC-078 ledger cap).
+- ``r2_p40``: rewriting with prompt r2 + corpus Act-name filter (DEC-091), pool 40.
+- ``r2_p20_a3``: r2 + A2 (rerank pool 20) + A3 (one language version per provision).
 
 Questions: golden v1.0 rows whose expected provisions are all indexed, taken round-robin by
 language (hi, hinglish, en) up to ``--rows``. Strict matching (DEC-065).
@@ -51,7 +53,15 @@ from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
 OUT = Path("reports/retrieval/opt_2026-11-23")
 BASE = Path("data/baseline/2026-11-23")
-CONFIGS = ("baseline", "optimised_no_rw", "optimised")
+CONFIGS = ("baseline", "optimised_no_rw", "optimised", "r2_p40", "r2_p20_a3")
+# per-config settings on top of the shared optimised config (DEC-090 runs kept as they were)
+OVERRIDES: dict[str, dict[str, Any]] = {
+    "optimised_no_rw": {"one_version": False},
+    "optimised": {"one_version": False},
+    "r2_p40": {"one_version": False, "pool": 40},  # prompt r2 + corpus act filter (DEC-091)
+    "r2_p20_a3": {"one_version": True, "pool": 20},  # + A2 pool 20 + A3 (DEC-091)
+}
+R2 = ("r2_p40", "r2_p20_a3")
 LANGS = ("hi", "hinglish", "en")
 
 
@@ -131,6 +141,7 @@ def main() -> int:
     )
     done = {(r["id"], r["config"]) for r in saved}
     rewrites_seen = {r["id"]: r["rewrites"] for r in saved if r["config"] == "optimised"}
+    rewrites_r2 = {r["id"]: r["rewrites"] for r in saved if r["config"] in R2}
 
     chunks = [
         json.loads(x) for x in Path("data/parsed/chunks.jsonl").read_text("utf-8").splitlines()
@@ -157,6 +168,10 @@ def main() -> int:
     )
     rt = LocalRuntime.load(config=cfg)
 
+    catalog = rewrite.act_catalog(
+        man, json.loads(Path("data/instrument_aliases.json").read_text("utf-8"))
+    )
+
     def rewrite_call(messages: list[dict[str, str]]) -> str:
         body = request_body(messages, "json_object", reasoning_effort="low", max_tokens=200)
         return complete(body, purpose="eval_rewrite_dec090").content
@@ -176,6 +191,7 @@ def main() -> int:
                 if (r["id"], name) in done:
                     continue
                 rw: list[str] = []
+                acts: dict[str, list[str]] = {}
                 t0 = time.perf_counter()
                 if name == "baseline":
                     vec = rt.embedder.encode([q])[0]  # same model file as the baseline index
@@ -187,15 +203,28 @@ def main() -> int:
                     )
                     top = [uid(h.chunk_id) for h in rerank_hits(old_rr, q, pool, old_passages, 10)]
                 else:
+                    rid = r["id"]
                     if name == "optimised":
-                        rid = r["id"]
                         rw = rewrites_seen.get(rid) or rewrite.rewrite(
                             q,
                             rewrite_call,
                             failure_logger(log, rid),
                         )
-                        rewrites_seen[r["id"]] = rw
-                    rt.config = RetrievalConfig(**{**vars(cfg), "final": 10})
+                        rewrites_seen[rid] = rw
+                    elif name in R2:
+                        if rid in rewrites_r2:
+                            rw = rewrites_r2[rid]
+                        else:
+                            full = rewrite.rewrite_full(
+                                q, rewrite_call, catalog, failure_logger(log, rid)
+                            )
+                            rw = full.queries
+                            acts = {
+                                "matched": [x.instrument_id for x in full.acts],
+                                "dropped": full.dropped_acts,
+                            }
+                            rewrites_r2[rid] = rw
+                    rt.config = RetrievalConfig(**{**vars(cfg), "final": 10, **OVERRIDES[name]})
                     hits = rt.retrieve(q, rt.vector(q), on, rewrites=rw)
                     top = [uid(h.chunk_id) for h in hits]
                 secs = time.perf_counter() - t0
@@ -205,6 +234,7 @@ def main() -> int:
                     "language": lang,
                     "seconds": round(secs, 3),
                     "rewrites": rw,
+                    "acts": acts,
                     "top10": top,
                     "expected": exp,
                     **metrics(top, exp),
