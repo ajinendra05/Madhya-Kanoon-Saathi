@@ -8,7 +8,9 @@ from madhya_kanoon_saathi.ingestion.chunker import (
     MAX_TOKENS,
     build_chunks,
     canonicalise,
+    content_share,
     qa,
+    strip_filler,
 )
 from madhya_kanoon_saathi.ingestion.manifest import (
     Amendment,
@@ -63,6 +65,21 @@ def test_canonicalise_markers_breaks_and_hyphens() -> None:
 def test_canonicalise_keeps_nukta_and_drops_invisibles() -> None:
     # DEC-054: stored text keeps the nukta; zero-width joiners go
     assert canonicalise("ज़मीन\u200d का\nख़सरा", {"markers": [], "breaks": []}) == "ज़मीन का ख़सरा"
+
+
+def test_filler_rules_and_blanks_are_removed_from_all_text() -> None:
+    # MP.LRCDR2018 Form I (OCR) carried one 24,272-dash table rule; IN.MTA2021 sch1 has "____" blanks
+    assert strip_filler("Signature " + "-" * 24272 + " end") == "Signature  end"
+    assert strip_filler("Name : ____________ 2.") == "Name :  …  2."
+    assert strip_filler("a - b — c -- d ---- e") == "a - b — c -- d ---- e"  # real dashes stay
+    assert strip_filler("legal services.—Every person") == "legal services.—Every person"
+    assert canonicalise("x " + "= " * 10 + "y", {}) == "x y"
+
+
+def test_content_share_counts_letters_and_digits_in_any_script() -> None:
+    assert content_share("ab ----") == 2 / 6
+    assert content_share("धारा 8") == 1.0
+    assert content_share("") == 0.0
 
 
 def test_rti_s8_chunk_with_footnote_and_version() -> None:

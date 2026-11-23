@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import math
 import re
+import unicodedata
 from collections.abc import Iterable, Sequence
 from dataclasses import asdict, dataclass, field
 from datetime import date
@@ -30,14 +31,32 @@ from madhya_kanoon_saathi.ingestion.manifest import AppliesTo, Document, Instrum
 from madhya_kanoon_saathi.ingestion.pdf_text import Footnote, Line
 from madhya_kanoon_saathi.ingestion.structure import Parsed, Unit
 
-# 2: U+FFFE from pdfium read as a hyphen (IN.SVANSG2025 p.4 "non-NPA"); 3: OCR cleanup (W1.1b)
-CHUNKER_VERSION = "3"
+# 2: U+FFFE from pdfium read as a hyphen (IN.SVANSG2025 p.4 "non-NPA"); 3: OCR cleanup (W1.1b);
+# 4: filler cleanup for all text (2026-11-23: a 24,272-dash table rule made a junk top hit)
+CHUNKER_VERSION = "4"
 MIN_TOKENS, MAX_TOKENS = 150, 450
 _SPACES = re.compile(r"[ \t]+")
 _TAG = re.compile(r"</?[A-Za-z][^<>]{0,200}>")  # <td>, <br/>, <th rowspan="2"> (OCR tables)
 _MD_RULE = re.compile(r"\|?([ \t]*:?-{3,}:?[ \t]*\|)+")  # markdown table rule "| --- | --- |"
 _EMPTY_CELLS = re.compile(r"\|([ \t]*\|)+")  # "| | |" -> "|"
 _LEADER = re.compile(r"(?:[.…·][ \t]?){4,}|_{4,}")
+# table/separator rules (no content): hyphen-minus, =, and the Unicode hyphens/dashes U+2010-2015
+_RULE_LINE = re.compile("(?:[-=\u2010-\u2015][ \t]?){8,}")
+_BLANK = re.compile(r"_{4,}")  # form fill-in blanks "______"
+MIN_CONTENT_SHARE = 0.25  # QA: letters + digits must be at least this share of a chunk's text
+
+
+def strip_filler(text: str) -> str:
+    """All text: separator rules (8+ dashes/equals) become a space; form blanks become "…"."""
+    return _BLANK.sub(" … ", _RULE_LINE.sub(" ", text))
+
+
+def content_share(text: str) -> float:
+    """Share of letters, marks and digits among non-space characters. Marks (Unicode category M)
+    count because Devanagari vowel signs (ा, ि) are marks, not letters, for ``str.isalnum``."""
+    chars = [ch for ch in text if not ch.isspace()]
+    content = sum(unicodedata.category(ch)[0] in "LMN" for ch in chars)
+    return content / len(chars) if chars else 0.0
 
 
 def ocr_clean(text: str) -> str:
@@ -82,7 +101,7 @@ def canonicalise(raw_text: str, raw_map: dict[str, list[Any]]) -> str:
     joined = "".join(out).replace("\ufffe", "-")
     if raw_map.get("ocr"):
         joined = ocr_clean(joined)
-    text = normalize(joined, fold_nukta=False)
+    text = normalize(strip_filler(joined), fold_nukta=False)
     paras = [_SPACES.sub(" ", p).strip() for p in text.split("\n")]
     return "\n".join(p for p in paras if p)
 
@@ -402,6 +421,10 @@ def qa(result: BuildResult, page_chars: dict[int, int] | None = None) -> BuildRe
         if not (MIN_TOKENS <= c.token_estimate <= MAX_TOKENS):
             result.warnings.append(
                 f"{c.chunk_id}: token_estimate {c.token_estimate} outside {MIN_TOKENS}-{MAX_TOKENS}"
+            )
+        if content_share(c.text) < MIN_CONTENT_SHARE:
+            result.errors.append(
+                f"{c.chunk_id}: mostly filler ({content_share(c.text):.0%} letters/digits)"
             )
         if re.search(r"\b(sub -section|\( \d)", c.text):
             result.warnings.append(f"{c.chunk_id}: suspected split words")
