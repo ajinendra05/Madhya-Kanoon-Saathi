@@ -39,6 +39,7 @@ Return JSON only, exactly: {"en": "<English query>", "hi": "<Hindi query>", "act
 - Each query at most 25 words."""  # noqa: E501
 
 Call = Callable[[list[dict[str, str]]], str]
+_JSON_OBJECT = re.compile(r"\{.*\}", re.DOTALL)
 _ACT_NO = re.compile(r"\(\s*act\s+no\.?[^)]*\)", re.IGNORECASE)
 
 
@@ -109,11 +110,16 @@ def messages(question: str) -> list[dict[str, str]]:
 
 
 def parse(raw: str, question: str, catalog: Mapping[str, Act] | None = None) -> Rewrite:
-    """English then Hindi query (+ matched official titles); bad or copied values are dropped."""
+    """English then Hindi query (+ matched official titles); bad or copied values are dropped.
+    Free models sometimes wrap the JSON in prose or code fences: the outermost {...} is used."""
     try:
         data = json.loads(raw)
     except ValueError:
-        return Rewrite()
+        m = _JSON_OBJECT.search(raw)
+        try:
+            data = json.loads(m.group()) if m else None
+        except ValueError:
+            data = None
     if not isinstance(data, dict):
         return Rewrite()
     rw = Rewrite()

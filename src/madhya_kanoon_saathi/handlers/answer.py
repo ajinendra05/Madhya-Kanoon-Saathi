@@ -150,6 +150,38 @@ class AnswerService:
         return outcome
 
 
+def free_rewriter(costs: list[dict[str, Any]]) -> Callable[[list[dict[str, str]]], str] | None:
+    """DEC-092: query rewriting on a free hosted model (Groq by default); None (no rewriting) when
+    no key is configured. Cost rows record ₹0 and the call time."""
+    from madhya_kanoon_saathi.generation.free_llm import FreeLLM
+
+    try:
+        llm = FreeLLM.from_env()
+    except RuntimeError:
+        log("rewrite_disabled", reason="no GROQ_API_KEY")
+        return None
+
+    def run(messages: list[dict[str, str]]) -> str:
+        t0 = time.perf_counter()
+        try:
+            return llm(messages)
+        finally:
+            costs.append(
+                {
+                    "step": "rewrite",
+                    "provider": "free:" + llm.base_url.split("//")[-1].split("/")[0],
+                    "model": llm.model,
+                    "units": 1,
+                    "unit_type": "request",
+                    "cost_inr": 0.0,
+                    "latency_ms": round((time.perf_counter() - t0) * 1000),
+                    "limits": dict(llm.last_limits),
+                }
+            )
+
+    return run
+
+
 def main() -> None:
     from madhya_kanoon_saathi.bot.telegram import TelegramClient
     from madhya_kanoon_saathi.common.env import secret
@@ -201,7 +233,7 @@ def main() -> None:
     answer_one = responder(
         rt,
         call("generate", 1200),
-        rewrite_call=call("rewrite", 200),
+        rewrite_call=free_rewriter(costs),
         on_rewrite_error=lambda e: log("rewrite_failed", error=type(e).__name__),
     )
 

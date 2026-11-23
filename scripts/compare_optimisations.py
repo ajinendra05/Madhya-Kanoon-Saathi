@@ -11,6 +11,8 @@ Configurations (same questions, interleaved per question so machine load affects
   local DEC-078 ledger cap).
 - ``r2_p40``: rewriting with prompt r2 + corpus Act-name filter (DEC-091), pool 40.
 - ``r2_p20_a3``: r2 + A2 (rerank pool 20) + A3 (one language version per provision).
+- ``groq_p20_a3``: as ``r2_p20_a3`` but the rewrite runs on the free hosted model (DEC-092,
+  ``GROQ_API_KEY``); skipped when no key is set.
 
 Questions: golden v1.0 rows whose expected provisions are all indexed, taken round-robin by
 language (hi, hinglish, en) up to ``--rows``. Strict matching (DEC-065).
@@ -37,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from eval_retrieval import GOLDEN, load_rows, uid
 from madhya_kanoon_saathi.eval.retrieval_metrics import MATCHERS, score_row
 from madhya_kanoon_saathi.generation import rewrite
+from madhya_kanoon_saathi.generation.free_llm import FreeLLM
 from madhya_kanoon_saathi.generation.llm import complete, request_body
 from madhya_kanoon_saathi.generation.local import (
     LocalRuntime,
@@ -53,13 +56,14 @@ from madhya_kanoon_saathi.retrieval.reranker import Reranker
 
 OUT = Path("reports/retrieval/opt_2026-11-23")
 BASE = Path("data/baseline/2026-11-23")
-CONFIGS = ("baseline", "optimised_no_rw", "optimised", "r2_p40", "r2_p20_a3")
+CONFIGS = ("baseline", "optimised_no_rw", "optimised", "r2_p40", "r2_p20_a3", "groq_p20_a3")
 # per-config settings on top of the shared optimised config (DEC-090 runs kept as they were)
 OVERRIDES: dict[str, dict[str, Any]] = {
     "optimised_no_rw": {"one_version": False},
     "optimised": {"one_version": False},
     "r2_p40": {"one_version": False, "pool": 40},  # prompt r2 + corpus act filter (DEC-091)
     "r2_p20_a3": {"one_version": True, "pool": 20},  # + A2 pool 20 + A3 (DEC-091)
+    "groq_p20_a3": {"one_version": True, "pool": 20},  # r2 prompt on the free model (DEC-092)
 }
 R2 = ("r2_p40", "r2_p20_a3")
 LANGS = ("hi", "hinglish", "en")
@@ -172,6 +176,11 @@ def main() -> int:
         man, json.loads(Path("data/instrument_aliases.json").read_text("utf-8"))
     )
 
+    try:
+        free: FreeLLM | None = FreeLLM.from_env()
+    except RuntimeError:
+        free = None
+
     def rewrite_call(messages: list[dict[str, str]]) -> str:
         body = request_body(messages, "json_object", reasoning_effort="low", max_tokens=200)
         return complete(body, purpose="eval_rewrite_dec090").content
@@ -191,7 +200,7 @@ def main() -> int:
                 if (r["id"], name) in done:
                     continue
                 rw: list[str] = []
-                acts: dict[str, list[str]] = {}
+                acts: dict[str, Any] = {}
                 t0 = time.perf_counter()
                 if name == "baseline":
                     vec = rt.embedder.encode([q])[0]  # same model file as the baseline index
@@ -211,6 +220,16 @@ def main() -> int:
                             failure_logger(log, rid),
                         )
                         rewrites_seen[rid] = rw
+                    elif name == "groq_p20_a3":
+                        if free is None:
+                            continue  # no GROQ_API_KEY: measured on a later run
+                        full = rewrite.rewrite_full(q, free, catalog, failure_logger(log, rid))
+                        rw = full.queries
+                        acts = {
+                            "matched": [x.instrument_id for x in full.acts],
+                            "dropped": full.dropped_acts,
+                            "limits": dict(free.last_limits),
+                        }
                     elif name in R2:
                         if rid in rewrites_r2:
                             rw = rewrites_r2[rid]
