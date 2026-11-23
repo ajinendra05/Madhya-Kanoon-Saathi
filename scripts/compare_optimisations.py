@@ -67,6 +67,16 @@ def pick(rows: list[dict[str, Any]], n: int) -> list[dict[str, Any]]:
     return out
 
 
+def failure_logger(log: Any, rid: str) -> Any:
+    """Write a rewrite failure (error type only) to the progress log."""
+
+    def write(e: Exception) -> None:
+        log.write(f"rewrite_failed {rid} {type(e).__name__}\n")
+        log.flush()
+
+    return write
+
+
 def metrics(top: list[str], expected: list[str]) -> dict[str, float]:
     s10 = score_row(top, expected, MATCHERS["strict"], 10)
     s6 = score_row(top, expected, MATCHERS["strict"], 6)
@@ -178,7 +188,12 @@ def main() -> int:
                     top = [uid(h.chunk_id) for h in rerank_hits(old_rr, q, pool, old_passages, 10)]
                 else:
                     if name == "optimised":
-                        rw = rewrites_seen.get(r["id"]) or rewrite.rewrite(q, rewrite_call)
+                        rid = r["id"]
+                        rw = rewrites_seen.get(rid) or rewrite.rewrite(
+                            q,
+                            rewrite_call,
+                            failure_logger(log, rid),
+                        )
                         rewrites_seen[r["id"]] = rw
                     rt.config = RetrievalConfig(**{**vars(cfg), "final": 10})
                     hits = rt.retrieve(q, rt.vector(q), on, rewrites=rw)

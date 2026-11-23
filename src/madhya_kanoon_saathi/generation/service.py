@@ -35,6 +35,7 @@ def responder(
     generate: Generator,
     *,
     rewrite_call: rewrite.Call | None = None,
+    on_rewrite_error: Callable[[Exception], None] | None = None,
     data: Path = DATA,
     today: Callable[[], date] = date.today,
 ) -> Callable[[str], Reply]:
@@ -51,7 +52,7 @@ def responder(
         on = today()
 
         def retrieve(q: str) -> list[Retrieved]:
-            rewrites = rewrite.rewrite(q, rewrite_call) if rewrite_call else []
+            rewrites = rewrite.rewrite(q, rewrite_call, on_rewrite_error) if rewrite_call else []
             return rt.retrieve(q, vec, on, rewrites=rewrites)
 
         reply = answer(

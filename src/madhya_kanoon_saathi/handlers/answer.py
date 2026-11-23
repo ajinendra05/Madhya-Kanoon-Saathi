@@ -198,7 +198,12 @@ def main() -> None:
 
         return run
 
-    answer_one = responder(rt, call("generate", 1200), rewrite_call=call("rewrite", 200))
+    answer_one = responder(
+        rt,
+        call("generate", 1200),
+        rewrite_call=call("rewrite", 200),
+        on_rewrite_error=lambda e: log("rewrite_failed", error=type(e).__name__),
+    )
 
     def respond(question: str) -> tuple[Reply, list[dict[str, Any]]]:
         costs.clear()  # one request at a time per instance (Cloud Run concurrency 1)

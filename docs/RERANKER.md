@@ -173,7 +173,7 @@ on golden v1.0 (Recall@6, MRR@10, per language) before it ships (DEC-021 margin,
 | B4 | **Better int8 kernels**: per-channel weights, S8S8 vs U8S8, check CPU has AVX-512 VNNI | maybe 1.2–1.5× (*not verified*) | small; re-check | medium |
 | B5 | **OpenVINO execution provider** (Intel CPUs) | sometimes 1.5–3× on Intel (*not verified*; depends on Cloud Run CPU type) | parity check | new dependency (decision) |
 | B6 | **More vCPUs** (4 or 8 per container) | ~1.7–1.9× per doubling (*estimate*) | none | config; uses free CPU-seconds faster |
-| B7 | **Length-bucketed batching** (batch pairs of similar length) | small; batch 1 was fastest on the laptop | none | small |
+| B7 | **Length-bucketed batching** (batch pairs of similar length) | **measured 2026-11-23 (10 questions, window 256, int8-opt, 4 threads): 8.75 s at batch 1, 8.96 at 2, 9.35 at 4, 10.09 at 8** → batch 1 kept | batching changed int8 scores by up to ~1 logit vs batch 1 (likely because dynamic quantisation scales activations per batch; not verified) — batch 1 is also deterministic | done (configurable) |
 
 ### C. Use a smaller model
 | # | Change | Speed-up | Quality risk | Effort |
@@ -205,3 +205,30 @@ on golden v1.0 (Recall@6, MRR@10, per language) before it ships (DEC-021 margin,
 6. **B2** graph optimisation + re-quantise: parity test + golden.
 7. **D1** typing indicator (small UX win).
 8. Decisions: **E1** query rewriting, **C1** smaller model bake-off, **B5/B6** OpenVINO or more vCPUs, **D2** warm instance.
+
+---
+
+## 8. Results of the DEC-090 changes (measured 2026-11-23)
+
+50 golden v1.0 questions (indexed rows, round-robin hi / hinglish / en: 21 / 9 / 20), strict matching,
+laptop i5-1155G7. Full table and per-question rows: [`reports/retrieval/opt_2026-11-23/`](../reports/retrieval/opt_2026-11-23/summary.md).
+
+| Config | R@6 | R@10 | MRR@10 | time mean / p95 (s) |
+| --- | --- | --- | --- | --- |
+| baseline (old index, window 1024) | 0.583 | 0.603 | 0.490 | 12.73 / 20.52 |
+| optimised, no rewriting (E2, A4, A5, B1, B3, B7) | 0.603 | 0.623 | 0.470 | **10.24 / 17.73** |
+| optimised + query rewriting (E1) | **0.713** | **0.740** | **0.503** | 15.31 / 27.74 |
+
+By language (R@6, baseline → optimised + rewriting): Hindi 0.460 → 0.627, **Hinglish 0.444 → 0.722**,
+English 0.775 → 0.800. Per question: R@6 better on 9, worse on 1, same on 40.
+
+Reading:
+- The speed changes alone cut ~20% of retrieval time with a small R@6 gain (E2 removed the junk hit).
+- Query rewriting is the large quality gain (+0.13 R@6 overall, +0.28 Hinglish) but adds ~5 s on the laptop
+  (one Sarvam call plus a longer reranker query); not yet split between the two.
+- The warm-latency goal (DEC-020, 8 s on Cloud Run's 2 vCPU) is still far off: the next levers are a smaller
+  pool (A2, now safer because rewriting improves the pool) and graph fusion (B2), or a smaller reranker (C1).
+- First run lost 20 rewrites to a transient Sarvam/network failure that the fallback hid; failures are now
+  logged (`rewrite_failed`) and those 20 were re-run (first run kept in `rows_first_run.jsonl`).
+- The model sometimes adds Act names the user did not mention (e.g. "Legal Services Authorities Act, 1987"),
+  against prompt r1; open for a decision.

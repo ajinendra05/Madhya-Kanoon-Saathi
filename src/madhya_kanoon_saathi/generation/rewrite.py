@@ -53,9 +53,14 @@ def parse(raw: str, question: str) -> list[str]:
     return out
 
 
-def rewrite(question: str, call: Call) -> list[str]:
-    """Search rewrites for ``question``; [] if the call fails for any reason."""
+def rewrite(
+    question: str, call: Call, on_error: Callable[[Exception], None] | None = None
+) -> list[str]:
+    """Search rewrites for ``question``; [] if the call fails for any reason. ``on_error`` sees
+    the failure (log its type), so a run of silent fallbacks cannot hide an outage."""
     try:
         return parse(call(messages(question)), question)
-    except Exception:
+    except Exception as e:
+        if on_error is not None:
+            on_error(e)
         return []
