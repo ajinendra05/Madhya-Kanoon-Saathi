@@ -26,6 +26,7 @@ data/raw/
 data/parsed/
 data/ocr/
 data/index/
+data/baseline/
 *.pdf
 
 # --- Models and large artifacts ---

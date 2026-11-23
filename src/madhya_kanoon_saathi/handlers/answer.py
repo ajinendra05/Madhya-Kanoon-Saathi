@@ -19,8 +19,10 @@ from __future__ import annotations
 import base64
 import json
 import re
+import threading
 import time
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Iterator, Mapping
+from contextlib import AbstractContextManager, contextmanager, nullcontext
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any
@@ -47,6 +49,33 @@ def decode_push(body: bytes) -> dict[str, Any]:
     return msg
 
 
+TYPING_EVERY_S = 4.0  # Telegram shows a chat action for about 5 s (core.telegram.org/bots/api)
+
+
+@contextmanager
+def typing_indicator(
+    action: Callable[[int], None], chat: int, every: float = TYPING_EVERY_S
+) -> Iterator[None]:
+    """D1: show "typing…" in the chat until the block ends; failures are ignored (cosmetic)."""
+    stop = threading.Event()
+
+    def loop() -> None:
+        while not stop.is_set():
+            try:
+                action(chat)
+            except Exception:
+                return
+            stop.wait(every)
+
+    t = threading.Thread(target=loop, daemon=True)
+    t.start()
+    try:
+        yield
+    finally:
+        stop.set()
+        t.join(timeout=1)
+
+
 def fill(template: str, numbers: Mapping[str, str]) -> str:
     """Put contact numbers from contacts.yaml into wording; a missing id raises, never blank."""
     return re.sub(r"\{([a-z0-9_]+)\}", lambda m: numbers[m.group(1)], template)
@@ -61,6 +90,7 @@ class AnswerService:
     hash_key: str
     limit: int = DAILY_QUESTIONS
     clock: Callable[[], datetime] = field(default=lambda: datetime.now(UTC))
+    typing: Callable[[int], AbstractContextManager[None]] | None = None  # D1
 
     def __call__(self, headers: Mapping[str, str], body: bytes) -> tuple[int, bytes]:
         try:
@@ -88,7 +118,8 @@ class AnswerService:
         t0 = time.perf_counter()
         costs: list[dict[str, Any]] = []
         try:
-            reply, costs = self.respond(text)
+            with self.typing(chat) if self.typing else nullcontext():
+                reply, costs = self.respond(text)
             outcome, out_text = "answered", reply.text
             record: dict[str, Any] = dict(reply.log)
         except BudgetExceededError:
@@ -142,26 +173,32 @@ def main() -> None:
     }
     log("loading")
     rt = LocalRuntime.load()  # models + indexes, before the port opens (startup probe)
+    log("config", **{k: v for k, v in vars(rt.config).items()})
     costs: list[dict[str, Any]] = []
 
-    def generate(messages: list[dict[str, str]]) -> str:
-        body = request_body(messages, "json_object", reasoning_effort="low", max_tokens=1200)
-        t0 = time.perf_counter()
-        comp = complete(body, purpose="telegram_cloud", guard=guard)
-        costs.append(
-            {
-                "step": "generate",
-                "provider": "sarvam",
-                "model": comp.model,
-                "units": comp.prompt_tokens + comp.completion_tokens,
-                "unit_type": "tokens",
-                "cost_inr": round(cost_inr(comp.prompt_tokens, comp.completion_tokens), 6),
-                "latency_ms": round((time.perf_counter() - t0) * 1000),
-            }
-        )
-        return comp.content
+    def call(step: str, max_tokens: int) -> Callable[[list[dict[str, str]]], str]:
+        def run(messages: list[dict[str, str]]) -> str:
+            body = request_body(
+                messages, "json_object", reasoning_effort="low", max_tokens=max_tokens
+            )
+            t0 = time.perf_counter()
+            comp = complete(body, purpose=f"telegram_cloud_{step}", guard=guard)
+            costs.append(
+                {
+                    "step": step,
+                    "provider": "sarvam",
+                    "model": comp.model,
+                    "units": comp.prompt_tokens + comp.completion_tokens,
+                    "unit_type": "tokens",
+                    "cost_inr": round(cost_inr(comp.prompt_tokens, comp.completion_tokens), 6),
+                    "latency_ms": round((time.perf_counter() - t0) * 1000),
+                }
+            )
+            return comp.content
 
-    answer_one = responder(rt, generate)
+        return run
+
+    answer_one = responder(rt, call("generate", 1200), rewrite_call=call("rewrite", 200))
 
     def respond(question: str) -> tuple[Reply, list[dict[str, Any]]]:
         costs.clear()  # one request at a time per instance (Cloud Run concurrency 1)
@@ -169,7 +206,14 @@ def main() -> None:
         return reply, list(costs)
 
     client = TelegramClient(secret("TELEGRAM_BOT_TOKEN"), timeout=30)
-    app = AnswerService(store, client.send_message, respond, texts, secret("MKS_CHAT_HASH_KEY"))
+    app = AnswerService(
+        store,
+        client.send_message,
+        respond,
+        texts,
+        secret("MKS_CHAT_HASH_KEY"),
+        typing=lambda chat: typing_indicator(client.send_typing, chat),
+    )
     log("ready")
     serve(app)
 

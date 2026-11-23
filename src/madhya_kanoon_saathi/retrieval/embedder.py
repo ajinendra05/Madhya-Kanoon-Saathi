@@ -87,11 +87,10 @@ class Embedder:
             for f in entry["files"]:
                 if _sha256(folder / f["file"]) != f["sha256"]:
                     raise RuntimeError(f"{variant}: checksum mismatch for {f['file']} (DEC-022)")
-        opts = ort.SessionOptions()
-        if threads:
-            opts.intra_op_num_threads = threads
+        from madhya_kanoon_saathi.retrieval.reranker import session_options
+
         session = ort.InferenceSession(
-            str(folder / model_file), opts, providers=["CPUExecutionProvider"]
+            str(folder / model_file), session_options(threads), providers=["CPUExecutionProvider"]
         )
         tok = Tokenizer.from_file(str(folder / tok_file))
         tok.no_padding()

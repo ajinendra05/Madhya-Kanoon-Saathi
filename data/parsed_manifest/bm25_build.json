@@ -1,10 +1,10 @@
 {
-  "built_at": "2026-11-17T14:18:06+00:00",
-  "git_commit": "74af9a10405a52ddfa1ba8373dddf2a31dfbaf05",
+  "built_at": "2026-11-23T10:58:05+00:00",
+  "git_commit": "680e95b7d078e895e38e90b5d2ad972b04894dc4",
   "git_dirty": true,
   "input": {
     "path": "data/parsed/chunks.jsonl",
-    "sha256": "c677ee2c52ecf35c612e2d061dbb0f443ef6adb5991798ce33f995b54fbdd8a2",
+    "sha256": "d83259668ded2db41353fedcb767b21678ba6ae4106d41cfaf40cbfca5014bbd",
     "chunks": 3410
   },
   "params": {

@@ -27,8 +27,22 @@ from tokenizers import Tokenizer
 
 RECORD = Path("data/parsed_manifest/models.json")
 VARIANTS = {"fp32": ("bge-reranker-v2-m3-fp32", "model.onnx"),
-            "int8": ("bge-reranker-v2-m3-int8", "model.int8.onnx")}  # fmt: skip
+            "int8": ("bge-reranker-v2-m3-int8", "model.int8.onnx"),
+            # B3 (docs/RERANKER.md): the int8 graph after ONNX Runtime's extended optimisations,
+            # saved once by scripts/optimize_reranker.py so each container start skips that work
+            "int8-opt": ("bge-reranker-v2-m3-int8-opt", "model.int8.opt.onnx")}  # fmt: skip
 MAX_LENGTH = 1024  # question + passage tokens; longer passages lose their tail (counted in stats)
+
+
+def session_options(threads: int | None) -> ort.SessionOptions:
+    """B1: ``threads`` = the CPUs the process may use (Cloud Run: the vCPU limit). One op at a
+    time (sequential, 1 inter-op thread) so the two thread pools never oversubscribe a container."""
+    opts = ort.SessionOptions()
+    if threads:
+        opts.intra_op_num_threads = threads
+        opts.inter_op_num_threads = 1
+        opts.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+    return opts
 
 
 def _sha256(path: Path) -> str:
@@ -57,6 +71,7 @@ class Reranker:
         self.variant = variant
         self.max_length = max_length
         self.pad_id = pad
+        self.batch_size = 1  # B7: pairs per model run; set by load()
         self.last_stats = RerankStats(0, 0)
 
     @classmethod
@@ -67,6 +82,7 @@ class Reranker:
         verify: bool = True,
         max_length: int = MAX_LENGTH,
         threads: int | None = None,
+        batch_size: int = 1,
     ) -> Reranker:
         key, model_file = VARIANTS[variant]
         entry = json.loads(RECORD.read_text(encoding="utf-8"))[key]
@@ -75,18 +91,19 @@ class Reranker:
             for f in entry["files"]:
                 if _sha256(folder / f["file"]) != f["sha256"]:
                     raise RuntimeError(f"{variant}: checksum mismatch for {f['file']}")
-        opts = ort.SessionOptions()
-        if threads:
-            opts.intra_op_num_threads = threads
         session = ort.InferenceSession(
-            str(folder / model_file), opts, providers=["CPUExecutionProvider"]
+            str(folder / model_file), session_options(threads), providers=["CPUExecutionProvider"]
         )
         tok = Tokenizer.from_file(str(folder / "tokenizer.json"))
         tok.no_padding()
         tok.no_truncation()
-        return cls(session, tok, variant, max_length)
+        r = cls(session, tok, variant, max_length)
+        r.batch_size = batch_size
+        return r
 
-    def score(self, query: str, passages: Sequence[str], batch_size: int = 1) -> np.ndarray:
+    def score(
+        self, query: str, passages: Sequence[str], batch_size: int | None = None
+    ) -> np.ndarray:
         """One logit per passage, in input order.
 
         batch_size 1 is fastest on CPU (measured 2026-11-13, i5-1155G7, 20 passages: 5.4 s at 1,
@@ -94,6 +111,7 @@ class Reranker:
         """
         if not passages:
             return np.zeros(0, dtype=np.float32)
+        batch_size = batch_size or self.batch_size
         q_ids = self.tokenizer.encode(query).ids  # <s> q </s>
         p_encs = self.tokenizer.encode_batch(list(passages))  # <s> p </s> each
         room = self.max_length - len(q_ids) - 1  # pair = <s> q </s> + </s> p </s>

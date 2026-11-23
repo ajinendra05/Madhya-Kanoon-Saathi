@@ -80,6 +80,10 @@ class TelegramClient:
         result: list[dict[str, Any]] = self.call("getUpdates", params)
         return result
 
+    def send_typing(self, chat_id: int) -> None:
+        """Show "typing…" for about 5 s (sendChatAction)."""
+        self.call("sendChatAction", {"chat_id": chat_id, "action": "typing"})
+
     def send_message(self, chat_id: int, text: str) -> None:
         for part in split_text(text):
             self.call("sendMessage", {"chat_id": chat_id, "text": part})

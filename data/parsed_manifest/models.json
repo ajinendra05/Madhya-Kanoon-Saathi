@@ -179,5 +179,34 @@
         "bytes": 688
       }
     ]
+  },
+  "bge-reranker-v2-m3-int8-opt": {
+    "from": "bge-reranker-v2-m3-int8",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "method": "onnxruntime SessionOptions.optimized_model_filepath, ORT_ENABLE_EXTENDED",
+    "onnxruntime": "1.31.1",
+    "dir": "data/models/bge-reranker-v2-m3-int8-opt/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "files": [
+      {
+        "file": "model.int8.opt.onnx",
+        "bytes": 569235870,
+        "sha256": "5a27159e802323c1c8279219a51c1904da64a5b85a1bd101c4be3dd05ff5cc45"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 17098338,
+        "sha256": "45885ab5cd9f8d0becc7075cecb177574d1cf4d086a891cac2b745f681d2b3c3"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 409,
+        "sha256": "9dc74fea52f2666f23d5f5d52d9e2983adc82c00c9a35dadc39346ecbc9aa53a"
+      }
+    ],
+    "check": {
+      "pairs": 4,
+      "max_abs_diff_vs_int8": 0.0,
+      "same_order": true
+    }
   }
 }

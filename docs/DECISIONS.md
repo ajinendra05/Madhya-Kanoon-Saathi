@@ -996,6 +996,23 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: 4 GiB leaves headroom for loading ~1.2 GB of models (a failed load means no answers); 2 containers bound parallel Sarvam calls, on top of the ₹20/day cap and 20/chat/day quota.
 - Effects: ~90K busy seconds/month in the free allowance ≈ 9–18K questions (estimate; P13 unverified for asia-south1) · ₹0 idle (min 0) · cold start ~20–40 s (not measured).
 
+## DEC-090 — Reranker and retrieval optimisation set; query rewriting
+- Date: 2026-11-23 | Status: accepted (Malik: "apply … A1, A5, A4, A7, B1, B3, B7, D1, E1, E2 then compare … on 50 questions") | Approved by: Malik | Amends DEC-021 (window), DEC-067 note GS-075 (query rewriting); options in `docs/RERANKER.md` §6
+- Context: first Cloud Run test (2026-11-23): 30–70 s per answer, almost all in reranking 40 candidates on 2 vCPU; colloquial Hinglish consumer questions retrieved no consumer-law candidates; one OCR chunk of 24,272 dashes was a top hit for unrelated questions.
+- Decision (each configurable; defaults below):
+  1. **E2** filler cleanup in the chunker + QA error below 25% letters/marks/digits (CHUNKER_VERSION 4; 3 chunks changed; index rebuilt).
+  2. **A1** retrieval runs lazily, only when the reply needs law text (topic lists, other-state replies skip it).
+  3. **A4** before reranking, drop mostly-filler candidates and candidates whose passage text duplicates an earlier one.
+  4. **A5** reranker window **256 tokens** (was 1,024; measured −19% time, R@6 −0.016, MRR −0.023 on golden v1.0, 2026-11-23). Malik chose to apply it; the 50-question comparison re-checks it with the other changes.
+  5. **A7** in-process cache of the last 256 retrievals (key: normalised question, date, rewrites).
+  6. **B1** ONNX Runtime threads = `MKS_ORT_THREADS` (Cloud Run: 2), one inter-op thread, sequential execution.
+  7. **B3** pre-optimised reranker graph (`int8-opt`, ORT_ENABLE_EXTENDED; scores identical to int8 on the check pairs) recorded in `models.json`; used when `MKS_RERANK_VARIANT=int8-opt`.
+  8. **B7** reranker batch size configurable (`MKS_RERANK_BATCH`), set from a measurement.
+  9. **D1** Telegram "typing…" indicator (`sendChatAction`, every 4 s) while an answer is prepared.
+  10. **E1 query rewriting:** before retrieval, one Sarvam call (`generation/rewrite.py`, prompt `r1`, JSON `{en, hi}`, max 200 tokens) turns the question into a formal English and a formal Hindi search query. BM25 + dense run for the question and both rewrites; all lists are fused by RRF; the reranker judges against the question plus the English rewrite. The rewrite is internal: never shown, never cited, not used by the crisis router, dispute detector or jurisdiction guard; any failure falls back to the original question. Cost inside the DEC-078 local cap and the DEC-088 daily cap.
+- Why: the measured bottleneck is reranking work and weak Hinglish candidates; each change is small, reversible by configuration, and measured before deployment.
+- Effects: estimated ~₹0.003–0.005 and ~1 s more per question for E1 · speed and quality measured on 50 golden questions before the image is rebuilt · E1's rewrite prompt is internal wording (no user-facing change).
+
 ---
 
 ## Pending decisions (not yet made)

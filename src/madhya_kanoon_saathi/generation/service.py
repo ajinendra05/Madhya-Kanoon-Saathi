@@ -1,8 +1,13 @@
 """One question → one Reply, wired the same way for the local bot and the cloud answer service.
 
 Loads the approved wording (answer texts, crisis replies, help topics, contact numbers) once and
-returns a callable that embeds, retrieves and runs the answer pipeline for a question. The caller
-supplies ``generate`` (which decides the spend guard: local ledger or the production daily cap).
+returns a callable that embeds the question and runs the answer pipeline. The caller supplies
+``generate`` (which decides the spend guard: local ledger or the production daily cap) and,
+optionally, ``rewrite_call`` for query rewriting (E1, DEC-090).
+
+Retrieval is lazy (A1, DEC-090): the pipeline calls it only when the reply needs law text, so topic
+lists and other-state replies skip the reranker. The question vector is computed once and shared
+with the crisis router and dispute detector.
 """
 
 from __future__ import annotations
@@ -14,8 +19,9 @@ from pathlib import Path
 from typing import Any
 
 from madhya_kanoon_saathi.common.contacts import load as load_contacts
+from madhya_kanoon_saathi.generation import rewrite
 from madhya_kanoon_saathi.generation.local import LocalRuntime
-from madhya_kanoon_saathi.generation.pipeline import Generator, Reply, answer
+from madhya_kanoon_saathi.generation.pipeline import Generator, Reply, Retrieved, answer
 
 DATA = Path("data")
 
@@ -28,6 +34,7 @@ def responder(
     rt: LocalRuntime,
     generate: Generator,
     *,
+    rewrite_call: rewrite.Call | None = None,
     data: Path = DATA,
     today: Callable[[], date] = date.today,
 ) -> Callable[[str], Reply]:
@@ -42,10 +49,14 @@ def responder(
     def respond(question: str) -> Reply:
         vec = rt.vector(question)
         on = today()
-        chunks = rt.retrieve(question, vec, on)
-        return answer(
+
+        def retrieve(q: str) -> list[Retrieved]:
+            rewrites = rewrite.rewrite(q, rewrite_call) if rewrite_call else []
+            return rt.retrieve(q, vec, on, rewrites=rewrites)
+
+        reply = answer(
             question,
-            retrieve=lambda _q: chunks,
+            retrieve=retrieve,
             generate=generate,
             texts=answer_texts,
             crisis_replies=replies,
@@ -57,5 +68,6 @@ def responder(
             versions=rt.versions,
             topics=topics,
         )
+        return reply
 
     return respond
