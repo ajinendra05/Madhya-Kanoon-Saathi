@@ -1,0 +1,47 @@
+{
+ "date": "2026-11-24",
+ "questions": 31,
+ "outcomes": {
+  "answered_unsent": 22,
+  "answered": 9
+ },
+ "abstained": 8,
+ "topic_lists": 0,
+ "crisis": {
+  "full": 0,
+  "note": 12
+ },
+ "languages": {
+  "hi": 11,
+  "hinglish": 12,
+  "en": 8
+ },
+ "inr_total": 0.8111,
+ "inr_per_question": 0.0262,
+ "steps": {
+  "generate": {
+   "calls": 43,
+   "inr": 0.8111,
+   "latency_ms_p50": 502.0
+  },
+  "rewrite": {
+   "calls": 31,
+   "inr": 0.0,
+   "latency_ms_p50": 217.0
+  }
+ },
+ "providers": {
+  "free:api.groq.com": 31,
+  "sarvam": 43
+ },
+ "time_s": {
+  "mean": 8.13,
+  "p50": 7.28,
+  "p95": 12.11
+ },
+ "spend_counter": {
+  "inr": 0.8111,
+  "calls": 43
+ },
+ "generated_at": "2026-11-24T07:54:50Z"
+}
