@@ -1058,6 +1058,15 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: only setting that met the 8 s warm target in the measurement; trial credit covers usage until 20 Feb 2027.
 - Effects: ~27% more vCPU-seconds per answer (fewer free answers per month) · ~36% fewer GiB-seconds · answer quality unchanged · cold start not yet measured.
 
+## DEC-095 — Week-3 operations: cost dashboard and law-watch on GitHub Actions; eval report shows known failures
+- Date: 2026-11-24 | Status: accepted ("1 A, 2 B (weekly), 3 YES") | Approved by: Malik | Amends DEC-012 (where the nightly summary runs) and DEC-013 (where law-watch runs; stays weekly)
+- Decision:
+  1. **W3.2 cost summary (A):** a nightly GitHub Actions job reads the previous Indian day's `queries` records and `spend` counter from Firestore through Workload Identity Federation as a new **read-only** service account `mks-cost-reader` (Firestore viewer only), aggregates them (questions, answered/abstained, ₹ per question, ₹ by step and provider, call counts, p50/p95 time), and commits a JSON file to the `gh-pages` branch; a static GitHub Pages dashboard draws the charts. Aggregates only: no question text, no chat hashes.
+  2. **W3.3 law-watch (B, weekly):** a weekly GitHub Actions job re-fetches every watched source (manifest documents with a `source_url`, `contacts.yaml` source pages), compares sha256 with the manifest and opens a GitHub issue on a change, using the workflow's own `GITHUB_TOKEN` (no stored token); unreachable sources are listed separately. Runners are outside India: if government sites block them (DEC-013's concern, not verified), move to Cloud Scheduler + Cloud Run job in Mumbai. No rebuild without Malik's approval (DEC-013 unchanged).
+  3. **Eval report (W3.4)** is public and states known failures and limits openly (e.g. GS-005, S33).
+- Why: ₹0, no GitHub write credentials stored in the cloud, fewer moving parts; honesty about failures is part of the deliverable.
+- Effects: one more service account (read-only) in bootstrap · GitHub Pages on the public repo · law-watch may need to move if sites block foreign IPs.
+
 ---
 
 ## Pending decisions (not yet made)

@@ -46,6 +46,9 @@ OUT = Path("reports/retrieval")
 K = 10
 GATES = {"recall@10": 0.85, "mrr@10": 0.6}  # plan §7; reported, not enforced (DEC-065)
 ALL_CONFIGS = "bm25,dense,dense-fp32,rrf,rerank-int8,rerank-fp32"
+# "deployed" (opt-in): retrieval exactly as the cloud answer service (DEC-090..094): Groq rewrite
+# (free; any failure = question only), RetrievalConfig defaults (pool 20, one version per provision,
+# window 256, int8-opt), top 10 kept for scoring.
 SLICES = ("language", "domain", "answerability")
 
 
@@ -105,6 +108,15 @@ def main() -> int:
     if "dense-fp32" in configs:  # DEC-021 int8 acceptance: same queries, fp32 model + index
         fp32 = (DenseIndex.load(Path("data/index/dense-fp32")), Embedder.load("fp32"))
     rerankers = {v: Reranker.load(v) for v in ("int8", "fp32") if f"rerank-{v}" in configs}
+    deployed = None
+    if "deployed" in configs:
+        from madhya_kanoon_saathi.generation import rewrite
+        from madhya_kanoon_saathi.generation.free_llm import FreeLLM
+        from madhya_kanoon_saathi.generation.local import LocalRuntime, RetrievalConfig
+
+        rt = LocalRuntime.load(config=RetrievalConfig(final=K, cache_size=0))
+        deployed = (rt, FreeLLM.from_env(), rewrite)
+    rewrite_failures = 0
 
     ranked: dict[str, dict[str, list[str]]] = defaultdict(dict)  # config -> row id -> uids
     seconds: dict[str, float] = defaultdict(float)
@@ -130,6 +142,15 @@ def main() -> int:
             best = rerank_hits(rr, q, [*pool], passages, K)
             seconds[f"rerank-{v}"] += base + time.perf_counter() - t1
             ranked[f"rerank-{v}"][rid] = [uid(h.chunk_id) for h in best]
+        if deployed is not None:
+            rt, free, rw_mod = deployed
+            t1 = time.perf_counter()
+            errors: list[Exception] = []
+            rws = rw_mod.rewrite(q, free, errors.append)
+            rewrite_failures += bool(errors)
+            hits = rt.retrieve(q, rt.vector(q), date.today(), rewrites=rws)
+            seconds["deployed"] += time.perf_counter() - t1
+            ranked["deployed"][rid] = [uid(h.chunk_id) for h in hits]
         print(f"{i}/{len(rows)} {rid}", flush=True)
     del hybrid
 
@@ -145,14 +166,27 @@ def main() -> int:
     lines = [
         f"# Retrieval eval: golden {name}, {today}",
         "",
-        "**Seed set: synthetic, unverified (`draft_unverified`). Gates are reported, not enforced"
-        " (DEC-065).** Strict = DEC-040 match (chunk equals or contains the expected provision);"
-        " lenient = also a part of it. Recall@6 = what the generator sees.",
+        (
+            "**Seed set: synthetic, unverified (`draft_unverified`)."
+            if name.startswith("v0.")
+            else "**Golden set verified by Malik (DEC-081), synthetic questions."
+        )
+        + " Gates are reported, not enforced (DEC-065).** Strict = DEC-040 match (chunk equals"
+        " or contains the expected provision); lenient = also a part of it. Recall@6 = what the"
+        " generator sees.",
         "",
         f"- git: {head}{dirty}"
         f" · chunks: {len(chunks)} · query date: {today} · dense/embedder: int8 · RRF pool {POOL}",
         f"- rows with expected clauses: {len(rows)} · indexed: {len(sets['indexed'])}",
         f"- gates (plan §7): Recall@10 ≥ {GATES['recall@10']}, MRR@10 ≥ {GATES['mrr@10']}",
+        *(
+            [
+                "- `deployed` = as the cloud answer service (Groq rewrite, pool 20, one version per"
+                f" provision, window 256, int8-opt); rewrite failures: {rewrite_failures}"
+            ]
+            if "deployed" in configs
+            else []
+        ),
         "",
     ]
     result: dict[str, Any] = {"date": today, "golden": str(a.golden), "configs": {}}

@@ -1,0 +1,4377 @@
+{
+ "date": "2026-11-24",
+ "golden": "data\\golden\\v1.0\\golden_set_v1.0.jsonl",
+ "configs": {
+  "dense": {
+   "indexed/strict": {
+    "recall@10": 0.5268817204301075,
+    "recall@6": 0.47580645161290325,
+    "mrr@10": 0.340994623655914,
+    "ndcg@10": 0.37791075792204093,
+    "rows": 62
+   },
+   "indexed/lenient": {
+    "recall@10": 0.5994623655913978,
+    "recall@6": 0.532258064516129,
+    "mrr@10": 0.3857974910394265,
+    "ndcg@10": 0.43014516672233394,
+    "rows": 62
+   },
+   "all/strict": {
+    "recall@10": 0.3415841584158416,
+    "recall@6": 0.30528052805280526,
+    "mrr@10": 0.22775027502750272,
+    "ndcg@10": 0.24571435677669953,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.4042904290429043,
+    "recall@6": 0.3580858085808581,
+    "mrr@10": 0.28743124312431245,
+    "ndcg@10": 0.2983971217708221,
+    "rows": 101
+   }
+  },
+  "rerank-int8": {
+   "indexed/strict": {
+    "recall@10": 0.6155913978494624,
+    "recall@6": 0.5833333333333333,
+    "mrr@10": 0.4702956989247312,
+    "ndcg@10": 0.4911184465365312,
+    "rows": 62
+   },
+   "indexed/lenient": {
+    "recall@10": 0.6720430107526881,
+    "recall@6": 0.6397849462365591,
+    "mrr@10": 0.505241935483871,
+    "ndcg@10": 0.5325447869159771,
+    "rows": 62
+   },
+   "all/strict": {
+    "recall@10": 0.400990099009901,
+    "recall@6": 0.3811881188118812,
+    "mrr@10": 0.30915841584158416,
+    "ndcg@10": 0.31776611461487625,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.4488448844884489,
+    "recall@6": 0.4290429042904291,
+    "mrr@10": 0.3583333333333334,
+    "ndcg@10": 0.3599839979324932,
+    "rows": 101
+   }
+  },
+  "deployed": {
+   "indexed/strict": {
+    "recall@10": 0.6666666666666667,
+    "recall@6": 0.6424731182795699,
+    "mrr@10": 0.5270353302611367,
+    "ndcg@10": 0.5416254731656508,
+    "rows": 62
+   },
+   "indexed/lenient": {
+    "recall@10": 0.7231182795698925,
+    "recall@6": 0.6989247311827957,
+    "mrr@10": 0.5807987711213517,
+    "ndcg@10": 0.5962521313468531,
+    "rows": 62
+   },
+   "all/strict": {
+    "recall@10": 0.4323432343234323,
+    "recall@6": 0.4174917491749175,
+    "mrr@10": 0.346958981612447,
+    "ndcg@10": 0.35025216159973427,
+    "rows": 101
+   },
+   "all/lenient": {
+    "recall@10": 0.48514851485148514,
+    "recall@6": 0.46534653465346537,
+    "mrr@10": 0.4086751532296087,
+    "ndcg@10": 0.40232805472421207,
+    "rows": 101
+   }
+  }
+ },
+ "rows": {
+  "GS-001": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.SSC2020:s129:ss5",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s24:ss1"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s129:ss2",
+    "IN.CPECR2020:r7:ss4",
+    "IN.CPECR2020:r6:ss3",
+    "IN.SSC2020:s129:ss5",
+    "IN.COW2019:s45:ss3",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "IN.RTIR2012:r10:ss3",
+    "MP.MWVDAOCT2026:sch_a_ba"
+   ],
+   "deployed": [
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s131:ss3:cl_f",
+    "IN.CPECR2020:r7:ss4",
+    "IN.CPECR2020:r6:ss3",
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s14:ss1"
+   ]
+  },
+  "GS-002": {
+   "expected": [
+    "MP.ACA1961:s12:ss1"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s26:ss1"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "IN.RTI2005:sch1",
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.MTA2021:s21:ss2:cl_g"
+   ],
+   "deployed": [
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss2:cl_c",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s21:ss2:cl_e"
+   ]
+  },
+  "GS-003": {
+   "expected": [
+    "MP.ACA1961:s12:ss1:cl_a",
+    "MP.ACA1961:s13"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s21:ss2:cl_a"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_ii",
+    "IN.RTIR2012:r11",
+    "IN.CPJR2021:r5",
+    "IN.CPJR2021:r4",
+    "IN.CPECR2020:r7:ss4",
+    "IN.RTIR2012:r10:ss1",
+    "IN.CPECR2020:r6:ss3",
+    "IN.RTIR2012:r10:ss2",
+    "IN.CPECR2020:r5:ss3",
+    "IN.CPJR2021:r2:ss2"
+   ],
+   "deployed": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s21:ss2:cl_h"
+   ]
+  },
+  "GS-004": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s36:ss4",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s41:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s27:ss1",
+    "IN.MTA2021:s36:ss8",
+    "IN.MTA2021:s14:ss1"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s2:cl_zm",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s19:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s41:ss2",
+    "IN.MTA2021:s27:ss2"
+   ],
+   "deployed": [
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s19:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1"
+   ]
+  },
+  "GS-005": {
+   "expected": [
+    "IN.RA1908:s17:ss1:cl_d"
+   ],
+   "indexed": true,
+   "dense": [
+    "MP.WCR2026:form_ix",
+    "MP.WCR2026:r8:ss1:prov3",
+    "MP.WCR2026:r8:ss1:prov4",
+    "MP.WCR2026:r18",
+    "MP.WCR2026:r15",
+    "MP.WCR2026:r8:ss1:prov2",
+    "MP.WCR2026:r43",
+    "IN.RA1908:s17:ss1",
+    "MP.WCR2026:r8:ss1:cl_c",
+    "MP.WCR2026:form_iv"
+   ],
+   "rerank-int8": [
+    "IN.RA1908:s17:ss1",
+    "IN.TPA1882:s107",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r2:ss2",
+    "MP.LRCDR2018:r11",
+    "IN.ESHRAMFAQ2026:para53",
+    "MP.WCR2026:form_ix",
+    "MP.WCR2026:r15",
+    "MP.WCR2026:r18"
+   ],
+   "deployed": [
+    "IN.RA1908:s17:ss1",
+    "IN.RA1908:s17:ss1A",
+    "MP.WCR2026:r43",
+    "MP.WCR2026:r15",
+    "MP.WCR2026:r18",
+    "MP.WCR2026:form_ix",
+    "MP.WCR2026:form_iv",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s4:ss2"
+   ]
+  },
+  "GS-006": {
+   "expected": [
+    "IN.RA1908:s17:ss1:cl_d"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.TPA1882:s107",
+    "IN.RA1908:s17:ss1",
+    "IN.OSHC2020:s3:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.RA1908:s17:ss1A",
+    "IN.IRC2020:s8:ss2",
+    "IN.OSHC2020:s3:ss4",
+    "IN.SSC2020:s3:ss1",
+    "IN.TPA1882:s106:ss1",
+    "IN.OSHC2020:s3:ss5"
+   ],
+   "rerank-int8": [
+    "IN.RA1908:s17:ss1",
+    "IN.RA1908:s17:ss2:clr_ix",
+    "IN.RA1908:s17:ss1A",
+    "IN.TPA1882:s107",
+    "IN.SVANLOG2025:sch1",
+    "IN.SSC2020:s3:ss1",
+    "IN.IRC2020:s8:ss2",
+    "IN.OSHC2020:s3:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.OSHC2020:s3:ss6"
+   ],
+   "deployed": [
+    "IN.RA1908:s17:ss1",
+    "IN.RA1908:s17:ss2:clr_xi",
+    "IN.RA1908:s17:ss2:expl1",
+    "IN.RA1908:s17:ss1A",
+    "IN.RA1908:s17:ss2:clr_ix",
+    "IN.RA1908:s17:ss2:clr_iii",
+    "IN.RA1908:s17:ss3",
+    "IN.OSHC2020:s3:ss8",
+    "IN.TPA1882:s107",
+    "IN.SSC2020:s3:ss1"
+   ]
+  },
+  "GS-007": {
+   "expected": [
+    "IN.TPA1882:s106:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rerank-int8": [
+    "IN.TPA1882:s106:ss1",
+    "IN.SSC2020:s83:ss6",
+    "IN.SSC2020:s65:ss3",
+    "IN.SSC2020:s76:ss6",
+    "IN.ESHRAMFAQ2026:para40",
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s17:ss1"
+   ],
+   "deployed": [
+    "IN.TPA1882:s106:ss1",
+    "IN.MTA2021:s29",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s21:ss3"
+   ]
+  },
+  "GS-008": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s19:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s26:ss1"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s43:ss5",
+    "MP.LRCDR2018:sch1",
+    "IN.SSC2020:s100:ss1",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r4:ss3",
+    "IN.CPECRA2021:r2",
+    "MP.LRCDR2018:r11",
+    "MP.LRCDR2018:r9",
+    "MP.LRCDR2018:r10",
+    "IN.CPECR2020:r7:ss1"
+   ],
+   "deployed": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s34",
+    "IN.MTA2021:s35:ss6"
+   ]
+  },
+  "GS-009": {
+   "expected": [
+    "IN.MTA2021",
+    "MP.ACA1961:s1"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s5:ss1",
+    "IN.MTA2021:s1:ss3",
+    "IN.MTA2021:s3:ss1",
+    "IN.MTA2021:s42",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s1:ss1",
+    "IN.MTA2021:s47:ss2",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s4:ss1"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s3:ss1",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s1:ss3",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:sch1",
+    "IN.MTA2021:s28"
+   ],
+   "deployed": [
+    "IN.MTA2021:s1:ss3",
+    "IN.MTA2021:s13:ss1",
+    "IN.MTA2021:s5:ss1",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s47:ss1",
+    "IN.MTA2021:s1:ss2",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s21:ss2:cl_c"
+   ]
+  },
+  "GS-010": {
+   "expected": [
+    "IN.MTA2021",
+    "MP.ACA1961:s1"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.SSC2020:s1:ss3",
+    "IN.MTA2021:s5:ss1",
+    "MP.MWVDAOCT2026:sch_da",
+    "IN.MTA2021:s1:ss1",
+    "IN.SSC2020:s43:ss5",
+    "IN.SSC2020:s2:ss59",
+    "IN.MTA2021:s13:ss1",
+    "IN.SSC2020:s113:ss4",
+    "IN.MTA2021:s26:ss1",
+    "IN.SSC2020:s1:ss2"
+   ],
+   "rerank-int8": [
+    "MP.MWVDAOCT2026:sch_da",
+    "MP.MWVDAOCT2026:sch_epha",
+    "IN.SVANSG2025:para1",
+    "IN.SSC2020:s43:ss5",
+    "IN.CPECR2020:r7:ss1",
+    "IN.SSC2020:s160:ss1",
+    "IN.SSC2020:s2:ss59",
+    "IN.SSC2020:s1:ss2",
+    "IN.SSC2020:s44",
+    "IN.SSC2020:s161:ss1"
+   ],
+   "deployed": [
+    "MP.MWVDAOCT2026:sch_da",
+    "MP.MWVDAOCT2026:sch_epha",
+    "IN.CPECR2020:r7:ss1",
+    "IN.CPECR2020:r6:ss5:cl_b",
+    "IN.IRC2020:s76:ss1",
+    "IN.CPJR2021:r5",
+    "IN.CPECR2020:r2:ss2",
+    "IN.CPECR2020:r7:ss4",
+    "IN.CPECR2020:r6:ss5:cl_c",
+    "IN.MTA2021:s4:ss1"
+   ]
+  },
+  "GS-011": {
+   "expected": [
+    "IN.TPA1882:s108:cl_c"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s36:ss3",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s37:ss3"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s41",
+    "IN.OSHC2020:s35:ss1:clr_x",
+    "IN.OSHC2020:s35:ss1:clr_i",
+    "MP.LRCDR2018:form_i",
+    "IN.RTI2005:sch1",
+    "IN.ESHRAMFAQ2026:para15",
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.IRC2020:s9:ss3"
+   ],
+   "deployed": [
+    "IN.MTA2021:s17:ss1",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s36:ss3",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s21:ss2:cl_h"
+   ]
+  },
+  "GS-012": {
+   "expected": [
+    "MP.ACA1961:s12:ss1:cl_e"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s26:ss3",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s4:ss6",
+    "IN.MTA2021:s26:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s14:ss1"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s125:ss5",
+    "IN.TPA1882:s111",
+    "IN.TPA1882:s108:cl_i",
+    "IN.OSHC2020:s74:ss5",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s17:ss2",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s21:ss2:cl_e"
+   ],
+   "deployed": [
+    "IN.MTA2021:s21:ss1",
+    "IN.MTA2021:s28",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s26:ss3"
+   ]
+  },
+  "GS-013": {
+   "expected": [
+    "IN.TPA1882:s107",
+    "MP.ACA1961:s2"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s40:ss2",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s35:ss1",
+    "IN.MTA2021:s36:ss1",
+    "IN.MTA2021:s35:ss3",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s41:ss3",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:sch1"
+   ],
+   "rerank-int8": [
+    "IN.TPA1882:s106:ss1",
+    "MP.LRCDR2018:form_i",
+    "IN.TPA1882:s109",
+    "IN.RTIR2012:r10:ss1",
+    "IN.RTIR2012:r5",
+    "IN.CPECR2020:r4:ss11",
+    "IN.RTIR2012:r2",
+    "IN.RTIR2012:r8",
+    "IN.CPECR2020:r5:ss3",
+    "IN.CPECR2020:r7:ss4"
+   ],
+   "deployed": [
+    "IN.TPA1882:s106:ss4",
+    "IN.TPA1882:s106:ss1",
+    "IN.TPA1882:s108",
+    "IN.TPA1882:s108:cl_j",
+    "IN.TPA1882:s109",
+    "IN.TPA1882:s108:cl_c",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s7:ss1"
+   ]
+  },
+  "GS-014": {
+   "expected": [
+    "MP.ACA1961:s12:ss1:cl_a"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss5",
+    "IN.MTA2021:s24:ss2",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s35:ss2"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para28",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s24:ss2"
+   ],
+   "deployed": [
+    "IN.MTA2021:s21:ss2:cl_b",
+    "IN.MTA2021:s21:ss4",
+    "IN.MTA2021:s21:ss2:cl_a",
+    "IN.MTA2021:s25",
+    "IN.MTA2021:s24:ss1",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s21:ss2:cl_h",
+    "IN.MTA2021:s21:ss2:cl_g",
+    "IN.MTA2021:s21:ss2:cl_e",
+    "IN.MTA2021:s28"
+   ]
+  },
+  "GS-017": {
+   "expected": [
+    "MP.ACA1961:s2",
+    "MP.ACA1961:s12:ss1:cl_f"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s15:ss1",
+    "IN.MTA2021:s15:ss2",
+    "IN.TPA1882:s106:ss1",
+    "IN.TPA1882:s105",
+    "IN.MTA2021:s38:ss2",
+    "IN.MTA2021:s3:ss2",
+    "IN.CPECR2020:r2:ss2",
+    "IN.OSHC2020:s80",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s20:ss1"
+   ],
+   "rerank-int8": [
+    "IN.TPA1882:s105",
+    "IN.TPA1882:s106:ss1",
+    "IN.CPECR2020:r2:ss2",
+    "IN.TPA1882:s109",
+    "IN.TPA1882:s110",
+    "IN.CPECR2020:r2:ss1",
+    "IN.CPECR2020:r7:ss1",
+    "IN.CPJR2021:r2:ss1",
+    "IN.OSHC2020:s80",
+    "IN.CPECR2020:r6:ss3"
+   ],
+   "deployed": [
+    "IN.TPA1882:s106:ss1",
+    "IN.CPECR2020:r2:ss2",
+    "IN.CPECR2020:r2:ss1",
+    "IN.CPECR2020:r6:ss5:cl_b",
+    "IN.CPECR2020:r6:ss5:cl_i",
+    "IN.CPECR2020:r6:ss5:cl_c",
+    "IN.CPECR2020:r8",
+    "IN.MTA2021:s3:ss2",
+    "IN.MTA2021:s3:ss1",
+    "IN.MTA2021:s2:cl_n"
+   ]
+  },
+  "GS-018": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s36:ss2",
+    "IN.MTA2021:s36:ss7",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s36:ss4",
+    "IN.MTA2021:s39",
+    "IN.MTA2021:s36:ss6",
+    "IN.MTA2021:s36:ss9",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s36:ss1",
+    "MP.WCR2026:r2:ss1:cl_c"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.SSC2020:s98",
+    "IN.ESHRAMFAQ2026:para39",
+    "IN.ESHRAMFAQ2026:para22",
+    "IN.ESHRAMFAQ2026:para4",
+    "IN.ESHRAMFAQ2026:para18",
+    "IN.ESHRAMFAQ2026:para43",
+    "IN.ESHRAMFAQ2026:para6",
+    "IN.ESHRAMFAQ2026:para46"
+   ],
+   "deployed": [
+    "IN.MTA2021:s32:ss1",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s31",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s39",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s37:ss5",
+    "IN.MTA2021:s33",
+    "MP.WCR2026:r42:ss3",
+    "IN.MTA2021:s40:ss2"
+   ]
+  },
+  "GS-021": {
+   "expected": [
+    "IN.TPA1882",
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s15:ss4",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para42",
+    "IN.ESHRAMFAQ2026:para14",
+    "IN.ESHRAMFAQ2026:para27",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s4:ss1"
+   ],
+   "deployed": [
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s5:ss3",
+    "IN.MTA2021:s23",
+    "IN.MTA2021:s9:ss1",
+    "IN.MTA2021:s4:ss2",
+    "IN.MTA2021:s5:ss2",
+    "IN.MTA2021:s4:ss1",
+    "IN.MTA2021:s7:ss2",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s13:ss2"
+   ]
+  },
+  "GS-023": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s35:ss6",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s9:ss2",
+    "IN.MTA2021:s17:ss1"
+   ],
+   "rerank-int8": [
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s21:ss3",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s11:ss2"
+   ],
+   "deployed": [
+    "IN.MTA2021:s11:ss1",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s11:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s14:ss2",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s14:ss3",
+    "IN.MTA2021:s44:ss2",
+    "IN.MTA2021:s21:ss3"
+   ]
+  },
+  "GS-024": {
+   "expected": [
+    "MP.ACA1961"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s20:ss4",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s20:ss2",
+    "IN.MTA2021:s20:ss3",
+    "IN.MTA2021:s35:ss3",
+    "IN.MTA2021:s27:ss2"
+   ],
+   "rerank-int8": [
+    "IN.TPA1882:s105",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s2:cl_a",
+    "IN.MTA2021:s13:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s21:ss2:cl_d",
+    "IN.MTA2021:s8"
+   ],
+   "deployed": [
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s14:ss1",
+    "IN.MTA2021:s19:ss1",
+    "IN.MTA2021:s13:ss1",
+    "IN.MTA2021:s14:ss4",
+    "IN.MTA2021:s20:ss1",
+    "IN.MTA2021:s27:ss2",
+    "IN.MTA2021:s15:ss6",
+    "IN.MTA2021:s8",
+    "IN.MTA2021:s9:ss1"
+   ]
+  },
+  "GS-025": {
+   "expected": [
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s45:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s45:ss3",
+    "IN.IRC2020:s4:ss8",
+    "IN.IRC2020:s69",
+    "IN.COW2019:s17:ss2",
+    "IN.COW2019:s49:ss1",
+    "MP.WCR2026:r40:ss2",
+    "IN.SSC2020:s89:ss1",
+    "IN.MTA2021:s20:ss4",
+    "IN.COW2019:s59",
+    "IN.COW2019:s45:ss2"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s49:ss1",
+    "IN.COW2019:s45:ss3",
+    "IN.COW2019:s59",
+    "IN.COW2019:s45:ss2",
+    "IN.SSC2020:s82:ss1",
+    "IN.IRC2020:s32",
+    "IN.IRC2020:s4:ss8",
+    "IN.IRC2020:s38:ss1",
+    "IN.OSHC2020:s55:ss3",
+    "IN.SSC2020:s89:ss1"
+   ],
+   "deployed": [
+    "IN.COW2019:s59",
+    "IN.COW2019:s49:ss1",
+    "IN.COW2019:s45:ss3",
+    "IN.COW2019:s45:ss4",
+    "IN.OSHC2020:s55:ss3",
+    "IN.IRC2020:s56",
+    "IN.COW2019:s48:ss1",
+    "IN.COW2019:s48:ss3",
+    "IN.COW2019:s47:ss2",
+    "IN.SSC2020:s89:ss1"
+   ]
+  },
+  "GS-026": {
+   "expected": [
+    "IN.COW2019:s17:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s17:ss1",
+    "IN.SSC2020:s78",
+    "IN.COW2019:s39:ss2",
+    "IN.COW2019:s16",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s39:ss1",
+    "IN.COW2019:s17:ss2",
+    "IN.COW2019:s15",
+    "IN.OSHC2020:s55:ss1",
+    "IN.COW2019:s17:ss3"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s2:cl_d",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s16",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "IN.SSC2020:s29:ss4",
+    "MP.MWVDAOCT2026:sch_da",
+    "IN.COW2019:s39:ss2",
+    "MP.MWVDAOCT2026:sch_sa"
+   ],
+   "deployed": [
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s17:ss2",
+    "IN.COW2019:s16",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "IN.SSC2020:s76:ss4",
+    "MP.MWVDAOCT2026:sch_da",
+    "MP.MWVDAOCT2026:sch_sa",
+    "IN.COW2019:s17:ss3",
+    "IN.COW2019:s39:ss2",
+    "IN.SSC2020:s78"
+   ]
+  },
+  "GS-027": {
+   "expected": [
+    "IN.COW2019:s17:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s83:ss3",
+    "IN.IRC2020:s59:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.IRC2020:s38:ss3",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s19:ss6",
+    "IN.IRC2020:s83:ss2",
+    "IN.IRC2020:s79:ss9",
+    "IN.COW2019:s39:ss1"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s79:ss9",
+    "IN.IRC2020:s83:ss3",
+    "IN.IRC2020:s70",
+    "IN.IRC2020:s67",
+    "IN.OSHC2020:s32:ss1:clr_vi",
+    "IN.SSC2020:s76:ss4",
+    "IN.COW2019:s19:ss6",
+    "IN.IRC2020:s83:ss2",
+    "IN.IRC2020:s59:ss2"
+   ],
+   "deployed": [
+    "IN.COW2019:s17:ss2",
+    "IN.IRC2020:s79:ss9",
+    "IN.COW2019:s17:ss1",
+    "IN.SSC2020:s76:ss4",
+    "IN.IRC2020:s83:ss3",
+    "IN.IRC2020:s38:ss1",
+    "IN.IRC2020:s83:ss2",
+    "IN.COW2019:s13:ss1",
+    "IN.IRC2020:s67",
+    "IN.SSC2020:s53:ss2"
+   ]
+  },
+  "GS-028": {
+   "expected": [
+    "MP.MWVDAOCT2026:sch_a_ba"
+   ],
+   "indexed": true,
+   "dense": [
+    "MP.WCR2026:r3:ss1",
+    "MP.WCR2026:r4:ss2",
+    "MP.WCR2026:r4:ss1",
+    "MP.WCR2026:r4:ss3",
+    "MP.WCR2026:r8:ss1:prov4",
+    "MP.WCR2026:sch1",
+    "MP.WCR2026:r7:ss1",
+    "MP.WCR2026:r10",
+    "MP.WCR2026:sch1",
+    "MP.WCR2026:r4:ss4"
+   ],
+   "rerank-int8": [
+    "MP.MWVDAOCT2026:sch_ka",
+    "IN.COW2019:s6:ss6",
+    "IN.COW2019:s9:ss1",
+    "IN.COW2019:s2:cl_k",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para5",
+    "IN.COW2019:s60",
+    "IN.ESHRAMFAQ2026:para43",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para56"
+   ],
+   "deployed": [
+    "MP.MWVDAOCT2026:sch_ka",
+    "MP.WCR2026:r3:ss1",
+    "MP.WCR2026:r4:ss1",
+    "MP.WCR2026:r7:ss5",
+    "MP.WCR2026:r4:ss3",
+    "MP.WCR2026:r4:ss2",
+    "MP.WCR2026:r2:ss1:cl_z",
+    "MP.WCR2026:r7:ss1",
+    "MP.WCR2026:r3:ss2",
+    "MP.WCR2026:r8:ss1:prov4"
+   ]
+  },
+  "GS-029": {
+   "expected": [
+    "IN.COW2019:s14"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s14",
+    "IN.OSHC2020:s27",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "MP.WCR2026:form_i",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "MP.WCR2026:r9",
+    "MP.WCR2026:r8:ss1:expl2",
+    "IN.OSHC2020:s20:ss3"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s14",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.OSHC2020:s133:ss2:cl_q",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "IN.SSC2020:s2:ss88:cl_c",
+    "IN.OSHC2020:s20:ss3"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s14",
+    "IN.SSC2020:s53:ss2",
+    "IN.COW2019:s2:cl_y:scla_h",
+    "IN.COW2019:s13:ss1",
+    "IN.IRC2020:s2:cl_zq:scla_h",
+    "MP.MWVDAOCT2026:sch_ii",
+    "MP.MWVDAOCT2026:sch_sa",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_h",
+    "MP.MWVDAOCT2026:sch_da"
+   ]
+  },
+  "GS-030": {
+   "expected": [
+    "IN.COW2019:s3:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s11",
+    "IN.COW2019:s3:ss1",
+    "IN.COW2019:s10",
+    "IN.COW2019:s14",
+    "IN.COW2019:s12",
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s5",
+    "IN.COW2019:s2:cl_y:expl1",
+    "IN.OSHC2020:s2:ss1:cl_zzj:expl1"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s3:ss1",
+    "IN.COW2019:s5",
+    "IN.COW2019:s54:ss1",
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s78",
+    "IN.SSC2020:s71",
+    "IN.COW2019:s42:ss8",
+    "IN.IRC2020:s4:ss4",
+    "IN.SSC2020:s85:ss1"
+   ],
+   "deployed": [
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s3:ss1",
+    "IN.COW2019:s5",
+    "IN.COW2019:s2:cl_v",
+    "IN.OSHC2020:s43",
+    "IN.OSHC2020:s2:ss1:cl_zzj:prov2",
+    "MP.MWVDAOCT2026:sch_a_ba",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "MP.MWVDAOCT2026:sch_cha",
+    "IN.COW2019:s4"
+   ]
+  },
+  "GS-031": {
+   "expected": [
+    "IN.OSHC2020:s6:ss1:cl_f"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s89:ss3",
+    "IN.SSC2020:s89:ss1",
+    "IN.TPA1882:s106:ss4",
+    "IN.IRC2020:s73",
+    "IN.MTA2021:s13:ss2",
+    "IN.MTA2021:s20:ss5",
+    "IN.MTA2021:s9:ss2",
+    "IN.CPA2019:s65:ss4",
+    "IN.SSC2020:s88:ss2",
+    "IN.MTA2021:s20:ss4"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s82:ss4",
+    "IN.TPA1882:s106:ss4",
+    "IN.CPA2019:s65:ss4",
+    "IN.IRC2020:s81",
+    "IN.SSC2020:s82:ss2",
+    "IN.TPA1882:s108:cl_a",
+    "IN.IRC2020:s68",
+    "IN.IRC2020:s56",
+    "IN.IRC2020:s79:ss6",
+    "IN.SSC2020:s88:ss2"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s133:ss2:cl_g",
+    "IN.OSHC2020:s6:ss1",
+    "IN.SSC2020:s55:ss7",
+    "IN.SSC2020:s82:ss4",
+    "IN.IRC2020:s68",
+    "IN.IRC2020:s81",
+    "IN.OSHC2020:s12:ss1",
+    "IN.SSC2020:s74:ss5",
+    "IN.SSC2020:s31:ss1",
+    "IN.OSHC2020:s130"
+   ]
+  },
+  "GS-032": {
+   "expected": [
+    "IN.OSHC2020:s25:ss1:cl_a"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.OSHC2020:s25:ss2",
+    "IN.COW2019:s13:ss1",
+    "MP.WCR2026:r7:ss1",
+    "IN.OSHC2020:s25:ss1",
+    "MP.WCR2026:r7:ss3",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "MP.WCR2026:r7:ss5",
+    "IN.OSHC2020:s30",
+    "MP.WCR2026:r7:ss2"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s25:ss2",
+    "IN.OSHC2020:s26:ss1",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s27",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s25:ss3"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s25:ss2",
+    "IN.OSHC2020:s25:ss1:cl_a",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s25:ss4",
+    "IN.OSHC2020:s25:ss3",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s27"
+   ]
+  },
+  "GS-033": {
+   "expected": [
+    "MP.SSS2026:s1:ss3",
+    "MP.SEA1958"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.WCR2026:r7:ss1",
+    "MP.WCR2026:r7:ss5",
+    "MP.WCR2026:r7:ss3",
+    "MP.WCR2026:r2:ss1:cl_h",
+    "MP.WCR2026:r8:ss1:expl2",
+    "MP.WCR2026:r7:ss6",
+    "IN.OSHC2020:s28",
+    "MP.WCR2026:r7:ss2",
+    "MP.WCR2026:r9",
+    "MP.WCR2026:r7:ss4"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "IN.OSHC2020:s25:ss1",
+    "MP.LRCDR2018:form_i",
+    "IN.CPA2019:s24",
+    "IN.OSHC2020:s2:ss1:cl_zzc",
+    "IN.COW2019:s13:ss1",
+    "IN.OSHC2020:sch1:para24",
+    "IN.OSHC2020:s2:ss1:cl_zzi",
+    "IN.CPECR2020:r5:ss5"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "MP.WCR2026:r2:ss1:cl_h",
+    "MP.WCR2026:r7:ss1",
+    "MP.WCR2026:r7:ss5",
+    "MP.WCR2026:r2:ss1:cl_z",
+    "MP.WCR2026:r7:ss4",
+    "MP.WCR2026:r7:ss3",
+    "MP.WCR2026:r7:ss6",
+    "MP.WCR2026:r7:ss2"
+   ]
+  },
+  "GS-034": {
+   "expected": [
+    "IN.SSC2020:s53:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s56:ss3",
+    "IN.SSC2020:s53:ss5",
+    "IN.SSC2020:s56:ss4",
+    "IN.COW2019:s2:cl_y:scla_j",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_j",
+    "IN.SSC2020:s57:ss5",
+    "IN.SSC2020:s53:ss6"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s54:cl_a",
+    "IN.SSC2020:s53:ss5",
+    "IN.COW2019:s2:cl_y:scla_j",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_j",
+    "IN.SSC2020:s56:ss4",
+    "IN.IRC2020:s2:cl_zq:scla_j",
+    "IN.SSC2020:s56:ss1"
+   ],
+   "deployed": [
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s56:ss1",
+    "IN.SSC2020:s53:ss5",
+    "IN.SSC2020:s56:ss4",
+    "IN.SSC2020:s56:ss5",
+    "IN.SSC2020:s56:ss2",
+    "IN.SSC2020:s53:ss3",
+    "IN.SSC2020:s56:ss3"
+   ]
+  },
+  "GS-035": {
+   "expected": [
+    "IN.SSC2020:s53:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s66",
+    "IN.SSC2020:s91:ss1",
+    "IN.OSHC2020:s70:ss3",
+    "IN.SSC2020:s2:ss82",
+    "IN.IRC2020:s14:ss6",
+    "IN.COW2019:s26:ss7",
+    "IN.COW2019:s26:ss6",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s55:ss1"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s2:ss82",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:sch6",
+    "IN.SSC2020:s107:ss2",
+    "IN.COW2019:s26:ss6",
+    "IN.SSC2020:s2:ss17",
+    "IN.IRC2020:s70"
+   ],
+   "deployed": [
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s54:cl_b",
+    "IN.SSC2020:s54:cl_a",
+    "IN.SSC2020:s53:ss2",
+    "IN.IRC2020:s2:cl_o",
+    "IN.SSC2020:s54",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s2:ss17",
+    "IN.SSC2020:s55:ss1",
+    "IN.IRC2020:s70"
+   ]
+  },
+  "GS-036": {
+   "expected": [
+    "IN.SSC2020:s60:ss3"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s66",
+    "IN.SSC2020:s60:ss1",
+    "IN.SSC2020:s65:ss3",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s60:ss4"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s59:ss4",
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s60:ss4",
+    "IN.SSC2020:s62:ss2"
+   ],
+   "deployed": [
+    "IN.SSC2020:s60:ss3",
+    "IN.SSC2020:s65:ss1",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s54:expl1",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s65:ss2",
+    "IN.SSC2020:s60:ss2",
+    "IN.SSC2020:s59:ss4",
+    "IN.SSC2020:s60:ss4",
+    "IN.SSC2020:s62:ss2"
+   ]
+  },
+  "GS-037": {
+   "expected": [
+    "IN.COW2019:s26:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s31:ss1",
+    "IN.COW2019:s31:ss2",
+    "IN.COW2019:s37",
+    "IN.COW2019:s26:ss4",
+    "IN.COW2019:s26:ss1",
+    "IN.COW2019:s36:ss1",
+    "IN.COW2019:s39:ss1",
+    "IN.COW2019:s26:ss5",
+    "IN.COW2019:s26:ss3",
+    "IN.COW2019:s36:ss2"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s41:ss1",
+    "IN.COW2019:s26:ss1",
+    "IN.SSC2020:s68:ss2",
+    "IN.COW2019:s37",
+    "IN.COW2019:s2:cl_y:scla_a",
+    "IN.IRC2020:s2:cl_zq:scla_a",
+    "IN.COW2019:s26:ss2",
+    "IN.OSHC2020:s2:ss1:cl_zzj:scla_a",
+    "IN.COW2019:s36:ss1",
+    "IN.SSC2020:s64"
+   ],
+   "deployed": [
+    "IN.COW2019:s26:ss1",
+    "IN.COW2019:s26:ss2",
+    "IN.COW2019:s26:ss5",
+    "IN.COW2019:s26:ss6",
+    "IN.COW2019:s26:ss3",
+    "IN.COW2019:s26:ss4",
+    "IN.COW2019:s26:ss9",
+    "IN.COW2019:s37",
+    "IN.COW2019:s36:ss1",
+    "IN.COW2019:s39:ss1"
+   ]
+  },
+  "GS-038": {
+   "expected": [
+    "IN.IRC2020"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s42:ss1",
+    "IN.IRC2020:s93:ss2",
+    "IN.IRC2020:s79:ss7",
+    "IN.SSC2020:s164:ss1",
+    "IN.OSHC2020:s108",
+    "IN.OSHC2020:s69:ss1",
+    "IN.IRC2020:s93:ss1",
+    "IN.IRC2020:s70",
+    "IN.OSHC2020:s54",
+    "IN.OSHC2020:s100:ss2"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s79:ss7",
+    "IN.IRC2020:s70",
+    "IN.SSC2020:s82:ss1",
+    "IN.SSC2020:s164:ss1",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "IN.IRC2020:s76:ss1",
+    "IN.IRC2020:s99:ss2:cl_zo",
+    "IN.IRC2020:s62:ss1",
+    "IN.OSHC2020:s110:ss1",
+    "IN.OSHC2020:s66:ss4"
+   ],
+   "deployed": [
+    "IN.IRC2020:s79:ss7",
+    "IN.SSC2020:s74:ss5",
+    "IN.IRC2020:s99:ss2:cl_zo",
+    "IN.SSC2020:s87:ss3",
+    "IN.SSC2020:s164:ss1",
+    "IN.IRC2020:s76:ss1",
+    "IN.OSHC2020:s128",
+    "IN.OSHC2020:s127:ss1",
+    "IN.OSHC2020:s69:ss1",
+    "IN.OSHC2020:s136:cl_y"
+   ]
+  },
+  "GS-039": {
+   "expected": [
+    "IN.IRC2020",
+    "MP.SSS2026:s40"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s34",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s30:ss7",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s30:ss2",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss4"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s37",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s35:ss2",
+    "IN.IRC2020:s30:ss2",
+    "IN.IRC2020:s35:ss1"
+   ],
+   "deployed": [
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s30:ss3",
+    "IN.IRC2020:s35:ss1",
+    "IN.IRC2020:s30:ss6",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss11",
+    "IN.IRC2020:s35:ss2",
+    "IN.OSHC2020:s22:ss2",
+    "IN.IRC2020:s30:ss9"
+   ]
+  },
+  "GS-040": {
+   "expected": [
+    "IN.OSHC2020:s55:ss3"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s54",
+    "IN.OSHC2020:s53",
+    "IN.MTA2021:s20:ss1",
+    "IN.COW2019:s2:cl_l",
+    "IN.IRC2020:s2:cl_m",
+    "IN.SSC2020:s85:ss1",
+    "IN.SSC2020:s2:ss27",
+    "IN.OSHC2020:s47:ss1"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s54",
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.OSHC2020:s53",
+    "IN.OSHC2020:s47:ss1",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.SSC2020:s85:ss1",
+    "IN.IRC2020:s2:cl_m",
+    "IN.SSC2020:s2:ss26",
+    "IN.SSC2020:s2:ss27"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s55:ss3",
+    "IN.OSHC2020:s53",
+    "IN.OSHC2020:s55:ss4",
+    "IN.OSHC2020:s54",
+    "IN.OSHC2020:s55:ss2",
+    "IN.OSHC2020:s55:ss1",
+    "IN.OSHC2020:s2:ss1:cl_zz",
+    "IN.SSC2020:s85:ss1",
+    "IN.SSC2020:s85:ss2",
+    "IN.OSHC2020:s65"
+   ]
+  },
+  "GS-041": {
+   "expected": [
+    "IN.SSC2020:s113:ss1",
+    "IN.SSC2020:s113:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para8",
+    "IN.ESHRAMFAQ2026:para17",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para13",
+    "IN.ESHRAMFAQ2026:para55"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para2",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para56",
+    "IN.ESHRAMFAQ2026:para53",
+    "IN.ESHRAMFAQ2026:para57"
+   ],
+   "deployed": [
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para43",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para6",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para42"
+   ]
+  },
+  "GS-042": {
+   "expected": [
+    "IN.COW2019:s18:ss1",
+    "IN.COW2019:s18:ss2:cl_a",
+    "IN.COW2019:s19:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s19:ss4",
+    "IN.SSC2020:s53:ss6",
+    "IN.COW2019:s38",
+    "IN.COW2019:s19:ss1",
+    "IN.COW2019:s67:ss2",
+    "IN.COW2019:s18:ss1",
+    "IN.COW2019:s29",
+    "IN.COW2019:s63",
+    "IN.COW2019:s18:ss2:cl_c"
+   ],
+   "rerank-int8": [
+    "IN.COW2019:s18:ss2:cl_a",
+    "IN.COW2019:s67:ss2",
+    "IN.COW2019:s19:ss1",
+    "IN.COW2019:s19:ss6",
+    "IN.COW2019:s54:ss1",
+    "IN.COW2019:s19:ss4",
+    "IN.COW2019:s57",
+    "IN.COW2019:s63",
+    "IN.COW2019:s54:ss2",
+    "IN.COW2019:s38"
+   ],
+   "deployed": [
+    "IN.COW2019:s21:ss2",
+    "IN.COW2019:s54:ss1",
+    "IN.IRC2020:s86:ss1",
+    "IN.COW2019:s18:ss1",
+    "IN.IRC2020:s86:ss3",
+    "IN.COW2019:s38",
+    "IN.COW2019:s37",
+    "IN.COW2019:s18:ss2:cl_c",
+    "IN.COW2019:s54:ss3",
+    "IN.COW2019:s20:ss2"
+   ]
+  },
+  "GS-043": {
+   "expected": [
+    "IN.OSHC2020:s43"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.OSHC2020:s43",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s29:ss1",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s59:ss2",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s24:ss2",
+    "IN.OSHC2020:s25:ss1:cl_b:prov1",
+    "IN.OSHC2020:s44",
+    "IN.OSHC2020:s29:ss2"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s24:ss2",
+    "IN.SSC2020:s59:ss1",
+    "IN.SSC2020:s59:ss4",
+    "IN.COW2019:s3:ss2",
+    "IN.COW2019:s42:ss8",
+    "IN.COW2019:s42:ss3",
+    "IN.SSC2020:s60:ss5"
+   ],
+   "deployed": [
+    "IN.SSC2020:s59:ss1",
+    "IN.OSHC2020:s43",
+    "IN.SSC2020:s59:ss3",
+    "IN.OSHC2020:s135:ss2:cl_u",
+    "IN.OSHC2020:s136:cl_j",
+    "IN.SSC2020:s59:ss2",
+    "IN.OSHC2020:s29:ss2",
+    "IN.SSC2020:s59:ss4",
+    "IN.OSHC2020:s29:ss1",
+    "IN.OSHC2020:s44"
+   ]
+  },
+  "GS-044": {
+   "expected": [
+    "IN.OSHC2020:s26:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.COW2019:s13:ss3",
+    "IN.IRC2020:s68",
+    "MP.WCR2026:sch1",
+    "IN.IRC2020:s81",
+    "IN.OSHC2020:s2:ss1:cl_zl",
+    "IN.SVANSG2025:para7",
+    "IN.OSHC2020:s136:cl_za",
+    "MP.WCR2026:sch1",
+    "IN.OSHC2020:s2:ss1:cl_r",
+    "IN.SVANSG2025:para5:sp1:sp3"
+   ],
+   "rerank-int8": [
+    "IN.SVANLOG2025:para8",
+    "IN.SVANLOG2025:para9",
+    "IN.OSHC2020:s2:ss1:cl_zl",
+    "IN.SVANSG2025:sch5",
+    "IN.OSHC2020:s2:ss1:cl_r",
+    "IN.OSHC2020:s24:ss2",
+    "IN.OSHC2020:s73",
+    "IN.OSHC2020:s2:ss1:cl_zw",
+    "IN.SVANLOG2025:para7",
+    "IN.OSHC2020:s113:ss2"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s26:ss1",
+    "IN.OSHC2020:s26:ss3",
+    "IN.OSHC2020:s28",
+    "IN.OSHC2020:s133:ss2:cl_p",
+    "IN.OSHC2020:s26:ss2",
+    "IN.OSHC2020:s25:ss1",
+    "IN.OSHC2020:s25:ss1:cl_b",
+    "IN.OSHC2020:s32:ss1:clr_iv",
+    "IN.OSHC2020:s32:ss1:clr_ix",
+    "IN.OSHC2020:s25:ss2"
+   ]
+  },
+  "GS-045": {
+   "expected": [
+    "IN.SSC2020"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s133:cl_k",
+    "IN.COW2019:s45:ss3",
+    "IN.SSC2020:s77:ss2",
+    "MP.WCR2026:r39:ss1",
+    "IN.SSC2020:s131:ss3:cl_j",
+    "MP.WCR2026:r40:ss4",
+    "MP.WCR2026:r40:ss1",
+    "IN.COW2019:s19:ss6",
+    "IN.SSC2020:s21:ss3",
+    "MP.WCR2026:r38:ss2"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "IN.SSC2020:s131:ss3:cl_f",
+    "IN.SSC2020:s131:ss3:cl_a",
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s143:ss8",
+    "IN.SSC2020:s21:ss3",
+    "IN.COW2019:s45:ss3",
+    "IN.SSC2020:s133:cl_k",
+    "IN.SSC2020:s151:ss2",
+    "IN.SSC2020:s77:ss2"
+   ],
+   "deployed": [
+    "IN.SSC2020:s94:ss2",
+    "IN.SSC2020:s21:ss3",
+    "IN.SSC2020:s21:ss2",
+    "IN.SSC2020:s21:ss1",
+    "IN.SSC2020:s94:ss1",
+    "IN.SSC2020:s16:ss1:cl_a",
+    "IN.SSC2020:s131:ss3:cl_j",
+    "IN.SSC2020:s131:ss3:cl_f",
+    "IN.SSC2020:s151:ss2",
+    "IN.SSC2020:s57:ss5"
+   ]
+  },
+  "GS-047": {
+   "expected": [
+    "MP.MWVDAAPR2026"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.MWVDAOCT2026:sch_ka",
+    "MP.MWVDAOCT2026:sch_da",
+    "MP.MWVDAOCT2026:sch_cha",
+    "MP.MWVDAOCT2026:sch_sa",
+    "MP.MWVDAOCT2026:sch_a_ba",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "MP.MWVDAOCT2026:sch_ii",
+    "MP.MWVDAOCT2026:sch_sa",
+    "MP.MWVDAOCT2026:sch_epha",
+    "MP.MWVDAOCT2026:sch_a_a"
+   ],
+   "rerank-int8": [
+    "MP.MWVDAOCT2026:sch_ka",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "MP.MWVDAOCT2026:sch_da",
+    "MP.MWVDAOCT2026:sch_a_ba",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "MP.MWVDAOCT2026:sch_sa",
+    "MP.MWVDAOCT2026:sch_ii",
+    "MP.MWVDAOCT2026:sch_cha",
+    "MP.MWVDAOCT2026:sch_sa",
+    "MP.MWVDAOCT2026:sch_epha"
+   ],
+   "deployed": [
+    "MP.MWVDAOCT2026:sch_ka",
+    "MP.MWVDAOCT2026:sch_sa",
+    "MP.MWVDAOCT2026:sch_a_ba",
+    "MP.MWVDAOCT2026:sch_a_a",
+    "MP.MWVDAOCT2026:sch_sa",
+    "MP.MWVDAOCT2026:sch_ii",
+    "MP.MWVDAOCT2026:sch_da",
+    "MP.MWVDAOCT2026:sch_cha",
+    "MP.MWVDAOCT2026:sch_epha",
+    "MP.MWVDAOCT2026:sch_a_a"
+   ]
+  },
+  "GS-048": {
+   "expected": [
+    "IN.SSC2020:s114:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s113:ss4",
+    "IN.SSC2020:s114:ss1",
+    "IN.SSC2020:s114:ss3",
+    "IN.SSC2020:sch7",
+    "IN.SSC2020:s109:ss3",
+    "IN.SSC2020:s110:ss1",
+    "IN.SSC2020:s113:ss3",
+    "IN.SSC2020:s114:ss4",
+    "IN.SSC2020:s2:ss78",
+    "IN.SSC2020:s113:ss2"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:sch7",
+    "IN.SSC2020:s2:ss78",
+    "IN.SSC2020:s114:ss1",
+    "IN.SSC2020:sch1",
+    "IN.SSC2020:s114:ss7",
+    "IN.SSC2020:s141:ss1",
+    "IN.SSC2020:s20:ss1",
+    "IN.SSC2020:s110:ss1",
+    "IN.SSC2020:s114:ss3",
+    "IN.SSC2020:s2:ss23"
+   ],
+   "deployed": [
+    "IN.SSC2020:sch7",
+    "IN.SSC2020:s2:ss78",
+    "IN.SSC2020:s141:ss1",
+    "IN.SSC2020:s114:ss1",
+    "IN.SSC2020:s114:ss2",
+    "IN.SSC2020:s113:ss3",
+    "IN.SSC2020:s114:ss7",
+    "IN.SSC2020:s109:ss3",
+    "IN.SSC2020:s114:ss3",
+    "IN.SSC2020:s109:ss1"
+   ]
+  },
+  "GS-049": {
+   "expected": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s2:ss11"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s17",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPECR2020:r6:ss5:cl_e"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s62",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s48",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s67"
+   ],
+   "deployed": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s73:ss1"
+   ]
+  },
+  "GS-050": {
+   "expected": [
+    "IN.CPA2019:s69:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPECR2020:r4:ss5",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s67"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPECR2020:r4:ss5",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPECR2020:r4:ss5",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s73:ss3"
+   ],
+   "deployed": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_a",
+    "IN.CPECR2020:r4:ss5",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s36:ss2",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s35:ss1"
+   ]
+  },
+  "GS-051": {
+   "expected": [
+    "IN.CPCDRCR2020:r7"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPJR2021:r4",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s51:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPJR2021:r4",
+    "IN.CPJR2021:r5",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s51:ss1"
+   ],
+   "deployed": [
+    "IN.CPA2019:s35:ss2",
+    "IN.CPJR2021:r5",
+    "IN.RTIR2012:r3",
+    "IN.CPJR2021:r4",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s58:ss1"
+   ]
+  },
+  "GS-052": {
+   "expected": [
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s34"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s38:ss2:cl_d",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPJR2021:r4",
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s39:ss1:cl_c"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s47:ss1",
+    "IN.CPJR2021:r5",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPJR2021:r4",
+    "IN.CPJR2021:r3",
+    "IN.CPJR2021:r3",
+    "IN.CPJR2021:r4",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s35:ss1"
+   ],
+   "deployed": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPJR2021:r5",
+    "IN.CPJR2021:r4",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s101:ss2:cl_x",
+    "IN.CPJR2021:r1:ss1",
+    "IN.CPA2019:s39:ss1:cl_e",
+    "IN.CPA2019:s39:ss1:cl_k"
+   ]
+  },
+  "GS-053": {
+   "expected": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s38:ss6"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s59:ss2",
+    "IN.CPA2019:s53:ss1",
+    "IN.CPA2019:s64",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s71",
+    "IN.CPECR2020:r4:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s51:ss4",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s51:ss2",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s101:ss2:cl_r",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1"
+   ],
+   "deployed": [
+    "IN.CPA2019:s2:ss5",
+    "IN.CPA2019:s77",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s67",
+    "IN.SSC2020:s88:ss5",
+    "IN.CPA2019:s74:ss4",
+    "IN.CPA2019:s38:ss5",
+    "IN.CPA2019:s81:ss3"
+   ]
+  },
+  "GS-054": {
+   "expected": [
+    "IN.CPA2019:s34:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s10:ss3",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s53:ss2",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s16",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s62"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s10:ss3",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPECR2020:r7:ss1",
+    "IN.CPA2019:s38:ss2",
+    "IN.CPECRA2021:r2",
+    "IN.CPECR2020:r4:ss1"
+   ],
+   "deployed": [
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s16",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPA2019:s38:ss1",
+    "IN.CPA2019:s38:ss2",
+    "IN.CPA2019:s17"
+   ]
+  },
+  "GS-055": {
+   "expected": [
+    "IN.CPA2019:s35:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s47:ss4",
+    "IN.CPA2019:s38:ss2:cl_f",
+    "IN.CPA2019:s34:ss2"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPECR2020:r4:ss5",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPECR2020:r5:ss3"
+   ],
+   "deployed": [
+    "IN.CPA2019:s101:ss2:cl_p",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s101:ss2:cl_q",
+    "IN.CPECR2020:r4:ss5",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s38:ss11"
+   ]
+  },
+  "GS-056": {
+   "expected": [
+    "IN.CPA2019:s2:ss42"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.MTA2021:s37:ss2",
+    "IN.MTA2021:s35:ss2",
+    "IN.MTA2021:s15:ss3",
+    "IN.MTA2021:s37:ss1",
+    "IN.MTA2021:s21:ss4",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s69:ss2",
+    "IN.MTA2021:s10",
+    "IN.MTA2021:s38:ss2",
+    "IN.MTA2021:s35:ss6"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPJR2021:r2:ss1",
+    "IN.RTIR2012:r12:ss3",
+    "IN.RTIR2012:r10:ss1",
+    "IN.CPJR2021:r1:ss1",
+    "IN.RTIR2012:r10:ss2",
+    "IN.RTIR2012:r12:ss2"
+   ],
+   "deployed": [
+    "IN.CPA2019:s69:ss2",
+    "IN.CPJR2021:r4",
+    "IN.CPJR2021:r3",
+    "IN.CPJR2021:r5",
+    "IN.CPJR2021:r1:ss1",
+    "IN.CPJR2021:r2:ss1",
+    "IN.RTIR2012:r12:ss3",
+    "IN.RTIR2012:r12:ss2",
+    "IN.IRC2020:s4:ss8",
+    "IN.COW2019:s45:ss3"
+   ]
+  },
+  "GS-057": {
+   "expected": [
+    "IN.CPA2019:s2:ss11",
+    "IN.CPA2019:s2:ss42"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s43:ss1",
+    "IN.SSC2020:s40:ss4",
+    "IN.SSC2020:s84:ss6",
+    "IN.CPA2019:s2:ss22",
+    "IN.SSC2020:s40:ss8",
+    "IN.CPA2019:s90:ss3",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s44",
+    "IN.SSC2020:s40:ss9",
+    "IN.SSC2020:s40:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s2:ss11",
+    "IN.CPA2019:s2:ss6",
+    "IN.SSC2020:s44",
+    "IN.CPA2019:s2:ss22",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s40:ss9",
+    "IN.CPA2019:s84:ss2",
+    "IN.SSC2020:s39:ss2",
+    "IN.SSC2020:s40:ss8"
+   ],
+   "deployed": [
+    "IN.CPA2019:s2:ss11",
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s2:ss22",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s1:ss1",
+    "IN.CPA2019:s2:ss47:clr_ix",
+    "IN.CPA2019:s90:ss1",
+    "IN.SSC2020:s41:ss3",
+    "IN.SSC2020:s44"
+   ]
+  },
+  "GS-058": {
+   "expected": [
+    "IN.CPA2019:s2:ss6"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s90:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s34:ss1",
+    "MP.WCR2026:r11",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPA2019:s21:ss2",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s21:ss4"
+   ],
+   "rerank-int8": [
+    "MP.MWVDAOCT2026:sch_a_a",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s96:ss5",
+    "IN.CPA2019:s90:ss1",
+    "MP.MWVDAOCT2026:sch_ii"
+   ],
+   "deployed": [
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.CPA2019:s96:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss2",
+    "IN.CPJR2021:r4",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s34:ss1"
+   ]
+  },
+  "GS-059": {
+   "expected": [
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s86"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s87:ss3",
+    "IN.CPA2019:s82"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s87:ss3"
+   ],
+   "deployed": [
+    "IN.CPA2019:s2:ss34",
+    "IN.CPA2019:s86",
+    "IN.CPA2019:s84:ss2",
+    "IN.CPA2019:s84:ss1",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s85",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s2:ss22",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s87:ss2"
+   ]
+  },
+  "GS-060": {
+   "expected": [
+    "IN.CPA2019:s2:ss11"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s20",
+    "IN.CPA2019:s59:ss2",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s52",
+    "IN.CPA2019:s73:ss1",
+    "IN.CPA2019:s51:ss5"
+   ],
+   "rerank-int8": [
+    "IN.CPECR2020:r7:ss1",
+    "IN.CPECR2020:r5:ss3",
+    "IN.CPA2019:s38:ss10",
+    "IN.CPECR2020:r4:ss10",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s92",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPECR2020:r6:ss3",
+    "IN.CPECR2020:r7:ss4",
+    "IN.CPA2019:s51:ss1"
+   ],
+   "deployed": [
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s73:ss2",
+    "IN.CPA2019:s73:ss1",
+    "IN.CPA2019:s12",
+    "IN.CPA2019:s20"
+   ]
+  },
+  "GS-061": {
+   "expected": [
+    "IN.CPA2019:s41"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s69:ss1",
+    "IN.RTI2005:s19:ss1",
+    "IN.CPA2019:s24",
+    "IN.IRC2020:s4:ss8",
+    "IN.CPA2019:s52",
+    "IN.RTI2005:s19:ss3"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s73:ss3",
+    "IN.CPA2019:s36:ss2",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.CPA2019:s38:ss3",
+    "IN.RTI2005:s19:ss6",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s52"
+   ],
+   "deployed": [
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s73:ss3",
+    "IN.RTI2005:s19:ss3",
+    "IN.CPA2019:s69:ss1",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss6",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s24",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s52"
+   ]
+  },
+  "GS-062": {
+   "expected": [
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s79:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s74:ss2",
+    "IN.CPA2019:s76",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s79:ss3"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s77",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s80:ss2",
+    "IN.CPA2019:s37:ss2",
+    "IN.CPA2019:s37:ss1"
+   ],
+   "deployed": [
+    "IN.CPA2019:s2:ss25",
+    "IN.CPA2019:s80:ss1",
+    "IN.CPA2019:s79:ss2",
+    "IN.CPA2019:s79:ss1",
+    "IN.CPA2019:s75:ss1",
+    "IN.CPA2019:s74:ss1",
+    "IN.CPA2019:s37:ss1",
+    "IN.CPA2019:s74:ss3",
+    "IN.CPA2019:s37:ss2",
+    "IN.CPA2019:s79:ss3"
+   ]
+  },
+  "GS-063": {
+   "expected": [
+    "IN.CPA2019:s2:ss7"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPECR2020:r2:ss1",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPECR2020:r3:ss1",
+    "IN.CPECR2020:r3:ss1:cl_l",
+    "IN.CPECR2020:r2:ss1",
+    "IN.CPA2019:s2:ss36",
+    "IN.CPA2019:s2:ss24",
+    "IN.CPA2019:s87:ss2",
+    "IN.CPA2019:s2:ss47:clr_iv"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPECR2020:r6:ss2",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPECR2020:r3:ss1",
+    "IN.CPECR2020:r7:ss2",
+    "IN.CPECR2020:r3:ss1:cl_l",
+    "IN.CPECR2020:r5:ss3",
+    "IN.CPA2019:s2:ss37",
+    "IN.CPECR2020:r6:ss4",
+    "IN.CPA2019:s87:ss2"
+   ],
+   "deployed": [
+    "IN.CPA2019:s2:ss7",
+    "IN.CPECR2020:r3:ss1:cl_l",
+    "IN.CPECR2020:r6:ss2",
+    "IN.CPA2019:s2:ss47:clr_iv",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPECR2020:r7:ss2",
+    "IN.CPA2019:s2:ss24",
+    "IN.CPECR2020:r3:ss1:cl_b",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s46:ss3"
+   ]
+  },
+  "GS-064": {
+   "expected": [
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s69:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s90:ss3",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s91:ss3",
+    "IN.CPA2019:s35:ss1"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPA2019:s87:ss2"
+   ],
+   "deployed": [
+    "IN.CPA2019:s69:ss2",
+    "IN.CPA2019:s69:ss1",
+    "IN.CPA2019:s38:ss7",
+    "IN.CPA2019:s38:ss2:cl_c",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss47:clr_viii",
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s38:ss3",
+    "IN.CPA2019:s39:ss1"
+   ]
+  },
+  "GS-067": {
+   "expected": [
+    "IN.CPA2019:s2:ss47"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s82",
+    "IN.CPA2019:s89",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s38:ss2:cl_f",
+    "IN.CPA2019:s91:ss1",
+    "IN.CPA2019:s17",
+    "IN.CPECR2020:r7:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s2:ss47:clr_i:scla_f",
+    "IN.CPA2019:s21:ss4"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s17",
+    "IN.CPECR2020:r6:ss2",
+    "IN.CPECR2020:r7:ss2",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s21:ss3",
+    "IN.CPA2019:s21:ss5",
+    "IN.CPA2019:s2:ss28",
+    "IN.CPA2019:s2:ss35",
+    "IN.CPA2019:s2:ss37"
+   ],
+   "deployed": [
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s2:ss6",
+    "IN.CPA2019:s35:ss2",
+    "IN.CPA2019:s38:ss2",
+    "IN.CPA2019:s83",
+    "IN.CPA2019:s39:ss1",
+    "IN.CPECR2020:r7:ss2",
+    "IN.CPA2019:s2:ss8",
+    "IN.CPECR2020:r6:ss2"
+   ]
+  },
+  "GS-068": {
+   "expected": [
+    "IN.CPA2019:s2:ss42"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s26:ss2",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPJR2021:r3",
+    "IN.CPA2019:s65:ss3",
+    "IN.CPA2019:s17",
+    "IN.CPA2019:s38:ss2:cl_d"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss5",
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s65:ss3",
+    "IN.CPA2019:s35:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s39:ss1:cl_k",
+    "IN.CPJR2021:r5"
+   ],
+   "deployed": [
+    "IN.CPA2019:s58:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s39:ss1:cl_d",
+    "IN.CPA2019:s59:ss2",
+    "IN.CPJR2021:r5",
+    "IN.CPA2019:s72:ss2",
+    "IN.CPJR2021:r2:ss1",
+    "IN.CPJR2021:r3"
+   ]
+  },
+  "GS-069": {
+   "expected": [
+    "MP.RTIFAR2005:r3:ss1",
+    "MP.RTIFAR2005:r9"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r3",
+    "MP.MWVDAOCT2026:sch_ka",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s7:ss3",
+    "MP.WCR2026:r4:ss4",
+    "MP.WCR2026:r44"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r4",
+    "MP.MWVDAOCT2026:sch_ka",
+    "IN.RTIR2012:r3",
+    "MP.LRCDR2018:form_i",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTIR2012:r5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTIR2012:r4",
+    "MP.LRCDR2018:r4:ss4"
+   ],
+   "deployed": [
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTIR2012:r6",
+    "MP.LRCDR2018:form_i",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s7:ss1"
+   ]
+  },
+  "GS-070": {
+   "expected": [
+    "IN.RTI2005:s7:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.IRC2020:s4:ss6",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.IRC2020:s53:ss5",
+    "IN.MTA2021:s37:ss2",
+    "IN.RTI2005:s5:ss2",
+    "IN.RTIR2012:r12:ss1",
+    "IN.MTA2021:s35:ss2",
+    "IN.RTI2005:s19:ss1"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s5:ss2",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s4:ss1:cl_b",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTIR2012:r12:ss1",
+    "IN.RTI2005:s5:ss1",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss6"
+   ],
+   "deployed": [
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s5:ss2",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTI2005:s5:ss1",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s20:ss1"
+   ]
+  },
+  "GS-071": {
+   "expected": [
+    "IN.RTI2005:s19:ss1",
+    "MP.RTIFAR2005:r7:ss1"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.RTI2005:s19:ss1",
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:s19:ss3",
+    "IN.MTA2021:s37:ss2",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTIR2012:r10:ss3",
+    "IN.RTIR2012:r10:ss3",
+    "IN.RTI2005:s19:ss2",
+    "IN.IRC2020:s4:ss8",
+    "IN.MTA2021:s35:ss2"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r10:ss3",
+    "IN.RTIR2012:r10:ss3",
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTIR2012:form_appendix",
+    "IN.IRC2020:s4:ss10",
+    "IN.RTIR2012:r8"
+   ],
+   "deployed": [
+    "IN.RTIR2012:r10:ss3",
+    "IN.RTI2005:s19:ss6",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTIR2012:r8",
+    "IN.CPA2019:s51:ss1",
+    "IN.RTIR2012:r12:ss1",
+    "IN.RTIR2012:r10:ss2",
+    "IN.IRC2020:s4:ss10"
+   ]
+  },
+  "GS-072": {
+   "expected": [
+    "MP.RTIFAR2005:r8:ss2",
+    "IN.RTI2005:s19:ss3"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTIR2012:r4",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s19:ss1"
+   ],
+   "deployed": [
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s19:ss8",
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s19:ss9",
+    "IN.RTI2005:s18:ss1"
+   ]
+  },
+  "GS-073": {
+   "expected": [
+    "IN.RTI2005:s6:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTI2005:s9",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:s14:ss4",
+    "IN.RTI2005:s8:ss3",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTIR2012:r14"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r14",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s7:ss9",
+    "IN.RTI2005:s19:ss10",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s14:ss4"
+   ],
+   "deployed": [
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s9",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s19:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s7:ss6",
+    "IN.RTI2005:s3"
+   ]
+  },
+  "GS-074": {
+   "expected": [
+    "IN.RTIR2012:r3"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTIR2012:r6",
+    "IN.RTIR2012:r6",
+    "IN.RTIR2012:r5",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTIR2012:r5"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r6",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r5",
+    "IN.RTIR2012:r5",
+    "IN.RTIR2012:r4",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTIR2012:r6",
+    "IN.RTI2005:s7:ss3"
+   ],
+   "deployed": [
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r5",
+    "IN.RTIR2012:r6",
+    "IN.RTIR2012:form_appendix",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s28:ss2",
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s27:ss2"
+   ]
+  },
+  "GS-075": {
+   "expected": [
+    "IN.RTI2005:s8:ss1:cl_j",
+    "IN.RTI2005:s8:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.IRC2020:s86:ss19",
+    "IN.IRC2020:s59:ss2",
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s26:ss3",
+    "IN.IRC2020:s59:ss5",
+    "IN.IRC2020:s59:ss1",
+    "IN.RTIR2012:r4",
+    "IN.RTI2005:s10:ss2",
+    "IN.IRC2020:s59:ss3",
+    "IN.MTA2021:sch1"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r6",
+    "IN.IRC2020:s61",
+    "IN.RTI2005:s6:ss2",
+    "IN.IRC2020:s86:ss19",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTIR2012:r5",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s4:ss1:cl_b:scl_x"
+   ],
+   "deployed": [
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s10:ss1",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s6:ss3",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xii",
+    "IN.RTI2005:s2:cl_j",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s27:ss2"
+   ]
+  },
+  "GS-076": {
+   "expected": [
+    "MP.RTIFAR2005:r5:ss1"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r3",
+    "MP.WCR2026:r44",
+    "MP.MWVDAOCT2026:sch_ka",
+    "MP.WCR2026:r43",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.WCR2026:r8:ss1:prov5",
+    "IN.IRC2020:s86:ss9"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s27:ss2",
+    "IN.RTIR2012:r3",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s7:ss5",
+    "MP.MWVDAOCT2026:sch_ka",
+    "IN.SVANLOG2025:sch1",
+    "MP.SLSALAGUIDE2025:para1:sp3"
+   ],
+   "deployed": [
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "MP.LRCDR2018:form_i",
+    "IN.RTIR2012:r6",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:r4:ss2",
+    "IN.RTI2005:s27:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp3"
+   ]
+  },
+  "GS-077": {
+   "expected": [
+    "IN.RTI2005:s2:cl_h",
+    "IN.RTI2005:s2:cl_f"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTI2005:s11:ss1",
+    "IN.IRC2020:s8:ss1",
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s12",
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:s19:ss2",
+    "IN.IRC2020:s8:ss3",
+    "IN.RTI2005:s11:ss2",
+    "IN.IRC2020:s10:ss1",
+    "IN.IRC2020:s8:ss4"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s61",
+    "IN.IRC2020:s10:ss2",
+    "IN.IRC2020:s10:ss1",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s19:ss8",
+    "IN.IRC2020:s12",
+    "IN.RTIR2012:r8",
+    "IN.RTIR2012:r13",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s17:ss4"
+   ],
+   "deployed": [
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s2:cl_f",
+    "IN.RTI2005:s4:ss3",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTI2005:s17:ss4",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s4:ss1:cl_b:scl_i",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv",
+    "IN.RTI2005:s4:ss1:cl_b:scl_x"
+   ]
+  },
+  "GS-078": {
+   "expected": [
+    "IN.RTI2005:s6:ss3"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTI2005:s20:ss2",
+    "IN.IRC2020:s31:ss2",
+    "IN.RTI2005:s7:ss8",
+    "IN.IRC2020:s86:ss8",
+    "IN.RTIR2012:r9",
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTIR2012:r8",
+    "IN.MTA2021:s36:ss5",
+    "IN.RTI2005:s25:ss2"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s86:ss8",
+    "IN.RTI2005:s20:ss2",
+    "IN.IRC2020:s86:ss7",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s31:ss2",
+    "IN.RTI2005:s25:ss4",
+    "IN.RTIR2012:r9",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s25:ss2",
+    "IN.RTI2005:s29:ss1"
+   ],
+   "deployed": [
+    "IN.RTI2005:s20:ss2",
+    "IN.IRC2020:s86:ss8",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s86:ss7",
+    "IN.RTI2005:s25:ss2",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s24:ss5",
+    "IN.RTIR2012:r9",
+    "IN.RTIR2012:r8"
+   ]
+  },
+  "GS-079": {
+   "expected": [
+    "IN.RTI2005:s20:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.IRC2020:s85:ss3",
+    "IN.RTI2005:s20:ss1",
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s86:ss10",
+    "IN.RTI2005:s20:ss2",
+    "IN.CPA2019:s72:ss1",
+    "IN.IRC2020:s38:ss1",
+    "IN.CPA2019:s88",
+    "IN.IRC2020:s86:ss17",
+    "IN.IRC2020:s89:ss7"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.OSHC2020:s99",
+    "IN.RTI2005:s19:ss1",
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss3",
+    "IN.SSC2020:s133:cl_e",
+    "IN.CPA2019:s88",
+    "IN.OSHC2020:s114:ss3",
+    "IN.SSC2020:s104"
+   ],
+   "deployed": [
+    "IN.RTI2005:s20:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTI2005:s7:ss1",
+    "IN.OSHC2020:s99",
+    "IN.OSHC2020:s111:ss5",
+    "IN.SSC2020:s104",
+    "IN.RTI2005:s18:ss1"
+   ]
+  },
+  "GS-080": {
+   "expected": [
+    "IN.RTI2005:s7:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s12:ss3",
+    "IN.SSC2020:s56:ss8",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vii",
+    "IN.LSA1987:s22:ss1",
+    "IN.SSC2020:s56:ss9",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s2:cl_e",
+    "IN.IRC2020:s95:ss2"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s1:ss2",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:s12:ss3",
+    "IN.RTI2005:sch2",
+    "IN.CPA2019:s2:ss6",
+    "IN.RTI2005:s12:ss5",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s15:ss5"
+   ],
+   "deployed": [
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s19:ss3",
+    "IN.RTI2005:s7:ss6",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iv",
+    "IN.RTI2005:s3",
+    "IN.RTI2005:s4:ss1:cl_b:scl_vii",
+    "IN.RTI2005:s4:ss1:cl_b",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiii",
+    "IN.RTI2005:s4:ss1:cl_b:scl_iii"
+   ]
+  },
+  "GS-082": {
+   "expected": [
+    "IN.RTI2005:s7:ss5",
+    "MP.RTIFAR2005:r9"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.RTIR2012:r5",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r6",
+    "IN.SVANLOG2025:sch1",
+    "IN.RTI2005:s7:ss3",
+    "IN.MTA2021:s20:ss5"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r4",
+    "IN.RTIR2012:r6",
+    "IN.RTIR2012:r3",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.RTIR2012:r5",
+    "IN.RTI2005:s28:ss2"
+   ],
+   "deployed": [
+    "IN.RTIR2012:r5",
+    "IN.RTIR2012:r3",
+    "IN.RTI2005:s7:ss5",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTIR2012:r4",
+    "IN.SSC2020:s143:ss9",
+    "IN.RTI2005:s28:ss2",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.SVANLOG2025:sch1",
+    "IN.ESHRAMFAQ2026:para36"
+   ]
+  },
+  "GS-083": {
+   "expected": [
+    "IN.RTI2005:s8:ss1:cl_h"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTIR2012:r8",
+    "IN.IRC2020:s34",
+    "IN.RTI2005:s6:ss1",
+    "IN.IRC2020:s10:ss2",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTIR2012:r8",
+    "IN.MTA2021:s37:ss1",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s18:ss3",
+    "IN.RTI2005:s10:ss2"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r8",
+    "IN.RTIR2012:r9",
+    "IN.IRC2020:s86:ss9",
+    "IN.RTI2005:s25:ss4",
+    "IN.RTIR2012:r8",
+    "IN.IRC2020:s10:ss2",
+    "IN.CPA2019:s65:ss1",
+    "IN.RTI2005:s4:ss1:cl_d",
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s2"
+   ],
+   "deployed": [
+    "IN.RTI2005:s3",
+    "IN.RTI2005:s2:cl_j",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s11:ss2",
+    "IN.RTI2005:s6:ss2",
+    "IN.RTI2005:s1:ss1",
+    "IN.RTI2005:s26:ss3",
+    "IN.RTI2005:s19:ss8"
+   ]
+  },
+  "GS-084": {
+   "expected": [
+    "IN.RTI2005:s2:cl_f",
+    "IN.RTI2005:s4:ss1:cl_d"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTI2005:s19:ss1",
+    "IN.RTIR2012:r11",
+    "IN.RTI2005:s19:ss2",
+    "IN.RTIR2012:r8",
+    "IN.OSHC2020:s111:ss3",
+    "IN.RTIR2012:r2",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s5:ss4"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s7:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s5:ss4",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s19:ss5"
+   ],
+   "deployed": [
+    "IN.RTI2005:s4:ss1:cl_d",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s10:ss2",
+    "IN.RTI2005:s19:ss1",
+    "IN.RTI2005:s7:ss7",
+    "IN.RTI2005:s11:ss3",
+    "IN.RTI2005:s7:ss2",
+    "IN.RTI2005:s6:ss1",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s7:ss3"
+   ]
+  },
+  "GS-085": {
+   "expected": [
+    "IN.RTI2005:s8:ss1:cl_j"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.IRC2020:s13",
+    "IN.CPA2019:s71",
+    "IN.RTI2005:s29:ss1",
+    "IN.RTI2005:sch2",
+    "IN.RA1908:s17:ss1A",
+    "IN.IRC2020:s76:ss2",
+    "IN.IRC2020:s25:ss1",
+    "MP.WCR2026:r2:ss1:cl_t",
+    "IN.IRC2020:s6:ss3",
+    "IN.IRC2020:s67"
+   ],
+   "rerank-int8": [
+    "IN.IRC2020:s104:ss1",
+    "IN.IRC2020:s13",
+    "IN.IRC2020:s104:ss1A",
+    "IN.RTI2005:sch2",
+    "IN.RTIR2012:r2",
+    "IN.RTIR2012:form_appendix",
+    "IN.IRC2020:s6:ss3",
+    "IN.RTIR2012:r8",
+    "IN.IRC2020:s51:ss1",
+    "IN.RTI2005:s31"
+   ],
+   "deployed": [
+    "IN.RTI2005:s31",
+    "IN.RTI2005:s8:ss1",
+    "IN.RTI2005:s7:ss1",
+    "IN.RTI2005:s11:ss1",
+    "IN.RTIR2012:r2",
+    "IN.RTI2005:s8:ss3",
+    "IN.RTI2005:s4:ss1:cl_b:scl_xiv",
+    "IN.RTI2005:s3",
+    "IN.RTI2005:s7:ss8",
+    "IN.RTI2005:s19:ss7"
+   ]
+  },
+  "GS-086": {
+   "expected": [
+    "IN.RTI2005:s24:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTIR2012:r8",
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:s12:ss1",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTI2005:s12:ss7",
+    "IN.RTI2005:s18:ss3"
+   ],
+   "rerank-int8": [
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTIR2012:r3",
+    "IN.RTIR2012:r8",
+    "IN.RTI2005:sch1",
+    "IN.RTI2005:s19:ss4",
+    "IN.RTI2005:s19:ss2"
+   ],
+   "deployed": [
+    "IN.RTI2005:sch2",
+    "IN.RTI2005:s24:ss1",
+    "IN.RTI2005:s24:ss4",
+    "IN.RTI2005:s24:ss2",
+    "IN.RTI2005:s3",
+    "IN.RTI2005:s2:cl_j",
+    "IN.RTI2005:s18:ss1",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ix",
+    "IN.RTI2005:s4:ss1:cl_b:scl_ii",
+    "IN.RTI2005:s4:ss3"
+   ]
+  },
+  "GS-087": {
+   "expected": [
+    "IN.LSA1987:s12",
+    "IN.LSA1987:s13:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.LSA1987:s12",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s56:ss6",
+    "IN.LSA1987:s13:ss1",
+    "IN.LSA1987:s13:ss2",
+    "IN.SSC2020:s56:ss8",
+    "IN.RTIR2012:r5"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s13:ss1",
+    "IN.SSC2020:s56:ss8",
+    "IN.SSC2020:s56:ss9",
+    "IN.SSC2020:s56:ss1",
+    "IN.SSC2020:s56:ss5",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s55:ss2"
+   ],
+   "deployed": [
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s12",
+    "IN.LSA1987:s13:ss1",
+    "IN.LSA1987:s13:ss2",
+    "IN.SSC2020:s56:ss8",
+    "IN.SSC2020:s56:ss5",
+    "IN.SSC2020:s56:ss1",
+    "IN.SSC2020:s56:ss6"
+   ]
+  },
+  "GS-088": {
+   "expected": [
+    "IN.LSA1987:s12:cl_h",
+    "MP.SLSAR1996:r20",
+    "MP.SLSALAGUIDE2025"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.SVANSG2025:para5:sp1",
+    "MP.WCR2026:r30:ss2",
+    "IN.RTIR2012:r5",
+    "IN.SVANLOG2025:para5:sp1",
+    "IN.SVANLOG2025:sch2",
+    "IN.LSA1987:s13:ss2"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s13:ss2",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s12",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:sch2",
+    "IN.SVANLOG2025:sch1",
+    "IN.LSA1987:s13:ss1",
+    "IN.SVANLOG2025:para5:sp1"
+   ],
+   "deployed": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.LSA1987:s13:ss2",
+    "IN.LSA1987:s12",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SVANLOG2025:sch2",
+    "IN.LSA1987:s13:ss1",
+    "IN.LSA1987:s21:ss1",
+    "MP.WCR2026:r41:ss1"
+   ]
+  },
+  "GS-089": {
+   "expected": [
+    "IN.LSA1987:s12:cl_c"
+   ],
+   "indexed": true,
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.LSA1987:s12",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.RTIR2012:r5",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s69",
+    "IN.RTIR2012:r5",
+    "IN.SSC2020:s32:ss1:cl_b",
+    "IN.SSC2020:s60:ss1"
+   ],
+   "rerank-int8": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s64",
+    "IN.LSA1987:s13:ss2",
+    "IN.SSC2020:s142:ss1",
+    "IN.SSC2020:s60:ss2",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s53:ss1"
+   ],
+   "deployed": [
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.LSA1987:s13:ss2",
+    "IN.LSA1987:s13:ss1",
+    "IN.LSA1987:s12",
+    "IN.SSC2020:s56:ss6",
+    "IN.COW2019:s42:ss4",
+    "IN.OSHC2020:s63",
+    "IN.SSC2020:s142:ss1"
+   ]
+  },
+  "GS-090": {
+   "expected": [
+    "IN.LSA1987:s19:ss1",
+    "IN.LSA1987:s21:ss2"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s20:ss3",
+    "IN.LSA1987:s22:ss2"
+   ],
+   "rerank-int8": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s20:ss2",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss3",
+    "IN.LSA1987:s22:ss1"
+   ],
+   "deployed": [
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s22:ss3",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss3"
+   ]
+  },
+  "GS-091": {
+   "expected": [
+    "IN.LSA1987:s12:cl_g"
+   ],
+   "indexed": true,
+   "dense": [
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.SVANSG2025:para9",
+    "IN.SSC2020:s53:ss2",
+    "IN.SSC2020:s56:ss7",
+    "IN.SSC2020:s56:ss8",
+    "IN.SVANSG2025:para5:sp1",
+    "MP.WCR2026:r46:ss2",
+    "MP.WCR2026:r6:ss2",
+    "IN.SVANSG2025:para4",
+    "MP.WCR2026:r8:ss1:cl_a"
+   ],
+   "rerank-int8": [
+    "IN.CPA2019:s39:ss1:cl_b",
+    "IN.CPA2019:s2:ss47:clr_iii",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.OSHC2020:s8:ss6",
+    "IN.OSHC2020:s18:ss2",
+    "IN.SVANSG2025:para5:sp1",
+    "IN.SSC2020:s53:ss1",
+    "IN.SSC2020:s56:ss7",
+    "IN.OSHC2020:s133:ss2:cl_zv",
+    "IN.OSHC2020:s63"
+   ],
+   "deployed": [
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "MP.SLSALAGUIDE2025:para1:sp1",
+    "IN.SSC2020:s56:ss7",
+    "IN.LSA1987:s13:ss1",
+    "IN.OSHC2020:s133:ss2:cl_zv",
+    "IN.SSC2020:s56:ss8",
+    "IN.RTI2005:s7:ss6",
+    "IN.SSC2020:s154:ss2:cl_d",
+    "IN.LSA1987:s13:ss2"
+   ]
+  },
+  "GS-092": {
+   "expected": [
+    "IN.LSA1987:s21:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.MTA2021:s41:ss2",
+    "IN.LSA1987:s21:ss1",
+    "IN.MTA2021:s41:ss3",
+    "IN.LSA1987:s20:ss5",
+    "IN.IRC2020:s49:ss7",
+    "IN.RTIR2012:r3",
+    "IN.CPA2019:s39:ss1:cl_c",
+    "IN.MTA2021:s41:ss1",
+    "IN.IRC2020:s59:ss2",
+    "IN.IRC2020:s56"
+   ],
+   "rerank-int8": [
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "MP.SLSALAGUIDE2025:para1:sp2",
+    "IN.IRC2020:s56",
+    "IN.IRC2020:s59:ss4",
+    "IN.IRC2020:s49:ss7",
+    "IN.SSC2020:s99:ss1",
+    "MP.LRCDR2018:r4:ss4",
+    "IN.RTIR2012:r6",
+    "IN.RTI2005:s7:ss3"
+   ],
+   "deployed": [
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss5",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss7",
+    "IN.LSA1987:s21:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.RTIR2012:r6",
+    "IN.IRC2020:s59:ss4",
+    "IN.CPA2019:s39:ss1:cl_c"
+   ]
+  },
+  "GS-094": {
+   "expected": [
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s22B:ss1"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.SSC2020:s23:ss1",
+    "IN.CPA2019:s81:ss3",
+    "IN.LSA1987:s22:ss1",
+    "IN.MTA2021:s32:ss1",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s22B:ss2",
+    "IN.CPA2019:s47:ss4",
+    "IN.SSC2020:s99:ss1",
+    "IN.LSA1987:s22B:ss1",
+    "IN.CPA2019:s81:ss2"
+   ],
+   "rerank-int8": [
+    "IN.LSA1987:s22B:ss1",
+    "IN.LSA1987:s22A",
+    "IN.LSA1987:s22B:ss2",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s22:ss3",
+    "IN.CPA2019:s81:ss3",
+    "IN.CPA2019:s81:ss2",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s47:ss4",
+    "IN.SSC2020:s99:ss1"
+   ],
+   "deployed": [
+    "IN.LSA1987:s22:ss2",
+    "IN.LSA1987:s22B:ss1",
+    "IN.LSA1987:s22:ss3",
+    "IN.LSA1987:s19:ss5",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s22B:ss2",
+    "IN.LSA1987:s22A",
+    "IN.CPA2019:s34:ss1",
+    "IN.CPA2019:s47:ss1",
+    "IN.CPA2019:s58:ss1"
+   ]
+  },
+  "GS-095": {
+   "expected": [
+    "MP.LSG2010:s3"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss4",
+    "IN.IRC2020:s30:ss8",
+    "IN.IRC2020:s26:ss2",
+    "IN.ESHRAMFAQ2026:para44",
+    "IN.IRC2020:s55:ss3",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s30:ss5",
+    "MP.WCR2026:r49:ss4",
+    "IN.IRC2020:s80:ss3"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s3:ss5",
+    "IN.IRC2020:s30:ss8",
+    "IN.SSC2020:s56:ss8",
+    "IN.IRC2020:s26:ss2",
+    "IN.IRC2020:s55:ss3",
+    "MP.MWVDAOCT2026:sch_sa",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s30:ss1",
+    "IN.IRC2020:s30:ss5",
+    "MP.MWVDAOCT2026:sch_cha"
+   ],
+   "deployed": [
+    "IN.SSC2020:s56:ss8",
+    "IN.IRC2020:s55:ss5",
+    "IN.IRC2020:s38:ss1",
+    "IN.IRC2020:s55:ss3",
+    "IN.IRC2020:s30:ss1",
+    "IN.SSC2020:s52:ss3",
+    "IN.SSC2020:s99:ss2",
+    "IN.COW2019:s17:ss1",
+    "IN.COW2019:s39:ss1",
+    "IN.IRC2020:s80:ss3"
+   ]
+  },
+  "GS-096": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.WCR2026:form_iv",
+    "MP.WCR2026:form_vii",
+    "IN.SVANLOG2025:para4",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "MP.WCR2026:r42:ss1",
+    "MP.LRCDR2018:form_i",
+    "MP.WCR2026:form_vi",
+    "MP.WCR2026:r50",
+    "MP.WCR2026:r41:ss3"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "IN.SVANSG2025:sch1:para2",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r3",
+    "IN.SVANLOG2025:para4",
+    "MP.LRCDR2018:sch1",
+    "MP.LRCDR2018:r1:ss1",
+    "MP.LRCDR2018:sch1:para3",
+    "MP.LRCDR2018:r1:ss2"
+   ],
+   "deployed": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r3",
+    "IN.SVANSG2025:sch1:para2",
+    "MP.LRCDR2018:r1:ss1",
+    "MP.LRCDR2018:r1:ss2",
+    "IN.SVANLOG2025:para4",
+    "MP.WCR2026:r41:ss1",
+    "MP.WCR2026:r41:ss4",
+    "MP.WCR2026:form_vi"
+   ]
+  },
+  "GS-097": {
+   "expected": [
+    "MP.LSG2010:s6",
+    "MP.LSGR2010:r8"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.IRC2020:s30:ss5",
+    "IN.SSC2020:s130:ss4",
+    "IN.SSC2020:s130:ss2",
+    "IN.IRC2020:s30:ss8",
+    "IN.OSHC2020:s50:ss2",
+    "IN.OSHC2020:s3:ss3",
+    "IN.RTI2005:s19:ss1",
+    "IN.SSC2020:s130:ss5",
+    "IN.SSC2020:s84:ss3",
+    "IN.SSC2020:s129:ss3"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss1",
+    "IN.OSHC2020:s3:ss3",
+    "IN.CPA2019:s80:ss3",
+    "IN.IRC2020:s30:ss5",
+    "IN.SSC2020:s130:ss4",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss6",
+    "IN.IRC2020:s30:ss1",
+    "IN.OSHC2020:s139:ss2",
+    "IN.SSC2020:s130:ss5"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s130:ss4",
+    "IN.CPA2019:s80:ss3",
+    "IN.SSC2020:s83:ss6",
+    "IN.SSC2020:s130:ss6",
+    "IN.SSC2020:s130:ss2",
+    "IN.OSHC2020:s117:ss2",
+    "IN.SSC2020:s130:ss7",
+    "IN.IRC2020:s10:ss2",
+    "IN.SSC2020:s129:ss3"
+   ]
+  },
+  "GS-098": {
+   "expected": [
+    "MP.LSG2010:s7"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.OSHC2020:s111:ss5",
+    "IN.CPA2019:s72:ss1",
+    "IN.SSC2020:s138:ss7",
+    "IN.OSHC2020:s114:ss3",
+    "IN.IRC2020:s86:ss10",
+    "IN.OSHC2020:s102:ss2",
+    "IN.OSHC2020:s102:ss1",
+    "IN.SSC2020:s133:prov1",
+    "IN.OSHC2020:s111:ss3",
+    "IN.SSC2020:s133:cl_q"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss3",
+    "IN.OSHC2020:s114:ss3",
+    "IN.COW2019:s56:ss7",
+    "IN.RTI2005:s20:ss1",
+    "IN.IRC2020:s89:ss7",
+    "IN.SSC2020:s138:ss7",
+    "IN.OSHC2020:s95:ss1",
+    "IN.OSHC2020:s102:ss1",
+    "IN.OSHC2020:s95:ss2"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss3",
+    "IN.OSHC2020:s114:ss3",
+    "IN.SSC2020:s138:ss7",
+    "IN.OSHC2020:s102:ss2",
+    "IN.OSHC2020:s111:ss3",
+    "IN.COW2019:s53:ss1",
+    "IN.RTI2005:s20:ss2",
+    "IN.RTI2005:s20:ss1",
+    "IN.OSHC2020:s99"
+   ]
+  },
+  "GS-099": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.SVANLOG2025:para4",
+    "IN.OSHC2020:s56",
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.OSHC2020:s117:ss2",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s136:cl_h",
+    "IN.ESHRAMFAQ2026:para44"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.SVANLOG2025:para4",
+    "IN.IRC2020:s26:ss3",
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.OSHC2020:s117:ss2",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s136:cl_h",
+    "MP.SLSALAGUIDE2025:para1:sp3",
+    "IN.RA1908:s17:ss2:clr_vii"
+   ],
+   "deployed": [
+    "IN.ESHRAMFAQ2026:para46",
+    "IN.RA1908:s17:ss2:clr_xii",
+    "IN.IRC2020:s26:ss3",
+    "IN.SVANLOG2025:para4",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.RTIR2012:r5",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s117:ss2",
+    "IN.RA1908:s17:ss2:clr_vii",
+    "IN.RA1908:s17:ss2:clr_i"
+   ]
+  },
+  "GS-101": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.OSHC2020:s56",
+    "IN.SVANLOG2025:sch4",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para9",
+    "IN.OSHC2020:s133:ss2:cl_zr",
+    "IN.OSHC2020:s47:ss2",
+    "IN.OSHC2020:s117:ss2",
+    "IN.OSHC2020:s37:ss1",
+    "IN.ESHRAMFAQ2026:para24",
+    "IN.OSHC2020:s134:ss2:cl_d"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s133:ss2:cl_zr",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.SSC2020:s130:ss1",
+    "IN.OSHC2020:s56",
+    "IN.OSHC2020:s3:ss3",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s129:ss3",
+    "IN.OSHC2020:s37:ss2",
+    "IN.OSHC2020:s37:ss1",
+    "IN.SSC2020:s130:ss7"
+   ],
+   "deployed": [
+    "IN.SSC2020:s129:ss3",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.SSC2020:s130:ss1",
+    "IN.OSHC2020:s133:ss2:cl_zr",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss3",
+    "IN.OSHC2020:s56",
+    "IN.OSHC2020:s3:ss3",
+    "IN.OSHC2020:s134:ss2:cl_e",
+    "IN.OSHC2020:s136:cl_f"
+   ]
+  },
+  "GS-102": {
+   "expected": [
+    "MP.LSGSERVICES2026"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.OSHC2020:s117:ss2",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss3",
+    "IN.SVANLOG2025:para6:sp1",
+    "IN.IRC2020:s31:ss2",
+    "IN.IRC2020:s30:ss5",
+    "IN.IRC2020:s34",
+    "IN.OSHC2020:s134:ss2:cl_e",
+    "IN.OSHC2020:s48:ss1",
+    "IN.SVANLOG2025:para6:sp1"
+   ],
+   "rerank-int8": [
+    "IN.SSC2020:sch4",
+    "IN.OSHC2020:s134:ss2:cl_e",
+    "IN.SSC2020:s130:ss7",
+    "IN.SVANSG2025:para7",
+    "IN.SSC2020:s130:ss1",
+    "MP.LRCDR2018:form_i",
+    "IN.SSC2020:s130:ss6",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss3",
+    "IN.SVANSG2025:para5:sp3"
+   ],
+   "deployed": [
+    "IN.SSC2020:s130:ss6",
+    "IN.SSC2020:s130:ss1",
+    "IN.SSC2020:s130:ss7",
+    "IN.SSC2020:s130:ss3",
+    "IN.SSC2020:s130:ss4",
+    "IN.SSC2020:s130:ss2",
+    "IN.SSC2020:s130:ss5",
+    "IN.OSHC2020:s134:ss2:cl_e",
+    "IN.OSHC2020:s134:ss2:cl_d",
+    "IN.CPA2019:s2:ss47:clr_i:scla_c"
+   ]
+  },
+  "GS-105": {
+   "expected": [
+    "MP.LSG2010:s6"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.LSA1987:s21:ss1",
+    "IN.LSA1987:s20:ss1",
+    "IN.SVANLOG2025:para7",
+    "MP.WCR2026:r2:ss1:cl_a",
+    "IN.OSHC2020:s75",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s20:ss2",
+    "MP.WCR2026:form_ii",
+    "MP.WCR2026:r42:ss1",
+    "IN.LSA1987:s19:ss3"
+   ],
+   "rerank-int8": [
+    "IN.RTI2005:s19:ss3",
+    "IN.SSC2020:s154:ss2:cl_b",
+    "IN.LSA1987:s21:ss2",
+    "IN.SSC2020:s37:ss7",
+    "IN.SVANSG2025:para5:sp2",
+    "IN.SVANLOG2025:para7",
+    "IN.CPA2019:s102:ss2:cl_k",
+    "IN.LSA1987:s20:ss1",
+    "IN.SVANSG2025:para5:sp1:sp3",
+    "IN.LSA1987:s21:ss1"
+   ],
+   "deployed": [
+    "IN.RTI2005:s19:ss3",
+    "IN.SSC2020:s154:ss2:cl_b",
+    "IN.LSA1987:s21:ss2",
+    "IN.CPA2019:s102:ss2:cl_k",
+    "IN.LSA1987:s20:ss1",
+    "IN.LSA1987:s20:ss6",
+    "IN.LSA1987:s20:ss2",
+    "IN.OSHC2020:s75",
+    "IN.LSA1987:s22:ss1",
+    "IN.LSA1987:s21:ss1"
+   ]
+  },
+  "GS-110": {
+   "expected": [
+    "IN.SSC2020:s113:ss1",
+    "IN.ESHRAMFAQ2026:para30"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para12",
+    "IN.ESHRAMFAQ2026:para2",
+    "IN.ESHRAMFAQ2026:para34",
+    "IN.ESHRAMFAQ2026:para32"
+   ],
+   "rerank-int8": [
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para31",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para57",
+    "IN.ESHRAMFAQ2026:para10",
+    "IN.ESHRAMFAQ2026:para12"
+   ],
+   "deployed": [
+    "IN.ESHRAMFAQ2026:para30",
+    "IN.ESHRAMFAQ2026:para33",
+    "IN.ESHRAMFAQ2026:para32",
+    "IN.ESHRAMFAQ2026:para1",
+    "IN.ESHRAMFAQ2026:para29",
+    "IN.ESHRAMFAQ2026:para45",
+    "IN.ESHRAMFAQ2026:para55",
+    "IN.ESHRAMFAQ2026:para54",
+    "IN.ESHRAMFAQ2026:para3",
+    "IN.ESHRAMFAQ2026:para31"
+   ]
+  },
+  "GS-118": {
+   "expected": [
+    "IN.LSA1987:s12:cl_g"
+   ],
+   "indexed": true,
+   "dense": [
+    "IN.MTA2021:s38:ss2",
+    "IN.SVANSG2025:para7",
+    "IN.OSHC2020:s111:ss3",
+    "IN.OSHC2020:s111:ss2",
+    "IN.OSHC2020:s111:ss5",
+    "IN.OSHC2020:s113:ss1",
+    "IN.SSC2020:s97",
+    "IN.SVANLOG2025:sch3:para3",
+    "IN.COW2019:s53:ss2",
+    "IN.SVANSG2025:sch1:para3"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s111:ss2",
+    "IN.COW2019:s53:ss2",
+    "IN.OSHC2020:s111:ss5",
+    "IN.IRC2020:s85:ss2",
+    "IN.OSHC2020:s111:ss3",
+    "IN.OSHC2020:s95:ss2",
+    "IN.OSHC2020:s111:ss4",
+    "IN.LSA1987:s12",
+    "IN.OSHC2020:s113:ss1",
+    "IN.OSHC2020:s4:ss1"
+   ],
+   "deployed": [
+    "IN.RTIR2012:r10:ss3",
+    "IN.RTIR2012:r10:ss1",
+    "IN.RTIR2012:r11",
+    "IN.OSHC2020:s35:ss3",
+    "IN.OSHC2020:s111:ss2",
+    "IN.COW2019:s53:ss2",
+    "IN.RTIR2012:form_appendix",
+    "IN.IRC2020:s85:ss2",
+    "IN.SSC2020:s122:ss8",
+    "IN.CPA2019:s22:ss1"
+   ]
+  },
+  "GS-121": {
+   "expected": [
+    "MP.LRC1959:s110"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.TPA1882:s106:ss1",
+    "IN.SSC2020:s2:ss59",
+    "IN.SSC2020:s75",
+    "IN.TPA1882:s108:cl_i",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.CPA2019:s81:ss1",
+    "IN.OSHC2020:s3:ss4",
+    "IN.SSC2020:s60:ss4",
+    "IN.TPA1882:s105",
+    "IN.MTA2021:s28"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_ii",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s106:ss1",
+    "IN.SSC2020:s75",
+    "IN.SSC2020:s2:ss59",
+    "IN.RTI2005:s29:ss1",
+    "IN.CPA2019:s81:ss1",
+    "IN.OSHC2020:s10:ss2",
+    "MP.LRCDR2018:form_iii"
+   ],
+   "deployed": [
+    "IN.TPA1882:s106:ss1",
+    "IN.TPA1882:s110",
+    "IN.SSC2020:s2:ss59",
+    "IN.TPA1882:s108:cl_p",
+    "IN.IRC2020:s24:ss5",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.TPA1882:s108:cl_i",
+    "IN.RA1908:s17:ss3",
+    "IN.RA1908:s17:ss1A",
+    "IN.OSHC2020:s3:ss4"
+   ]
+  },
+  "GS-122": {
+   "expected": [
+    "MP.LRC1959:s109"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.SSC2020:s2:ss59",
+    "IN.OSHC2020:s2:ss1:cl_zx",
+    "IN.SVANSG2025:sch1:para3",
+    "IN.SVANSG2025:para3",
+    "IN.TPA1882:s108:cl_i",
+    "MP.LRCDR2018:form_iii",
+    "IN.TPA1882:s106:ss1",
+    "IN.SVANLOG2025:sch3:para3",
+    "IN.TPA1882:s106:ss4",
+    "IN.SVANSG2025:para4"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:form_ii",
+    "IN.OSHC2020:s84:ss5",
+    "IN.RTI2005:s6:ss3",
+    "IN.TPA1882:s106:ss4",
+    "IN.RTI2005:s11:ss1",
+    "IN.TPA1882:s108:cl_p",
+    "IN.TPA1882:s106:ss1",
+    "IN.RTI2005:s10:ss2",
+    "IN.OSHC2020:s67:ss3"
+   ],
+   "deployed": [
+    "IN.RTI2005:s6:ss3",
+    "IN.TPA1882:s106:ss4",
+    "IN.OSHC2020:s84:ss5",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:sch1:para4",
+    "IN.TPA1882:s108:cl_p",
+    "IN.TPA1882:s108:cl_i",
+    "IN.TPA1882:s106:ss1"
+   ]
+  },
+  "GS-123": {
+   "expected": [
+    "MP.LRC1959:s110"
+   ],
+   "indexed": false,
+   "dense": [
+    "IN.IRC2020:s36",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s61",
+    "IN.CPA2019:s73:ss1",
+    "IN.CPA2019:s103:ss1",
+    "IN.IRC2020:s90:ss5",
+    "IN.CPA2019:s51:ss1",
+    "IN.CPA2019:s72:ss1",
+    "IN.CPA2019:s68",
+    "IN.CPA2019:s106"
+   ],
+   "rerank-int8": [
+    "IN.OSHC2020:s38:ss1:prov1",
+    "IN.CPA2019:s38:ss2:cl_g",
+    "IN.OSHC2020:s139:ss6",
+    "IN.OSHC2020:s139:ss5",
+    "IN.OSHC2020:s38:ss1:prov3",
+    "IN.CPA2019:s68",
+    "IN.OSHC2020:s38:ss1:prov2",
+    "IN.OSHC2020:s132:ss2",
+    "IN.CPA2019:s73:ss2",
+    "IN.SSC2020:s130:ss1"
+   ],
+   "deployed": [
+    "IN.OSHC2020:s139:ss6",
+    "IN.IRC2020:s33:ss1",
+    "IN.CPA2019:s67",
+    "IN.OSHC2020:s139:ss5",
+    "IN.IRC2020:s35:ss1",
+    "IN.CPA2019:s38:ss2:cl_g",
+    "IN.IRC2020:s38:ss1",
+    "IN.SSC2020:s99:ss2",
+    "IN.CPA2019:s41",
+    "IN.IRC2020:s90:ss5"
+   ]
+  },
+  "GS-124": {
+   "expected": [
+    "MP.LRC1959:s129",
+    "MP.LRCDR2018:r3"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r3",
+    "MP.LRCDR2018:form_ii"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r3",
+    "MP.LRCDR2018:r3",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_i"
+   ],
+   "deployed": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r3",
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:r5",
+    "MP.LRCDR2018:r4:ss3",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:r7:ss2",
+    "MP.LRCDR2018:r7:ss3",
+    "MP.LRCDR2018:r10",
+    "MP.LRCDR2018:form_ii"
+   ]
+  },
+  "GS-125": {
+   "expected": [
+    "MP.LRCDR2018:r4"
+   ],
+   "indexed": true,
+   "dense": [
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:r4:ss3",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:r4:ss4",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r4:ss4",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:r4:ss3"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r4:ss3",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:r4:ss4",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r4:ss3",
+    "MP.LRCDR2018:r4:ss4",
+    "MP.LRCDR2018:r4:ss2"
+   ],
+   "deployed": [
+    "MP.LRCDR2018:r4:ss3",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:r4:ss4",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:sch1:para4",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:r10",
+    "MP.LRCDR2018:r7:ss1"
+   ]
+  },
+  "GS-126": {
+   "expected": [
+    "MP.LRC1959:s129:ss5",
+    "MP.LRC1959:s129:ss8"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.LRCDR2018:form_i",
+    "IN.OSHC2020:s75",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_iii",
+    "IN.SSC2020:s105:ss1",
+    "IN.IRC2020:s32",
+    "IN.CPA2019:s41",
+    "IN.CPA2019:s67",
+    "IN.CPA2019:s51:ss1",
+    "IN.OSHC2020:s79:ss3"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_ii",
+    "IN.OSHC2020:s52:ss1",
+    "IN.IRC2020:s32",
+    "MP.LRCDR2018:form_i",
+    "IN.CPA2019:s41",
+    "MP.LRCDR2018:sch1"
+   ],
+   "deployed": [
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r3",
+    "IN.RTIR2012:r9",
+    "IN.OSHC2020:s52:ss1",
+    "IN.RTIR2012:r10:ss1",
+    "IN.COW2019:s49:ss1",
+    "IN.CPA2019:s51:ss1"
+   ]
+  },
+  "GS-127": {
+   "expected": [
+    "MP.LRC1959:s129",
+    "MP.LRCDR2018:r3"
+   ],
+   "indexed": false,
+   "dense": [
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:r8:ss2",
+    "MP.LRCDR2018:r7:ss3",
+    "MP.LRCDR2018:r10"
+   ],
+   "rerank-int8": [
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:r10",
+    "MP.LRCDR2018:r7:ss2",
+    "MP.LRCDR2018:r7:ss3",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r8:ss2",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:form_i",
+    "MP.LRCDR2018:form_i"
+   ],
+   "deployed": [
+    "MP.LRCDR2018:r10",
+    "MP.LRCDR2018:r7:ss3",
+    "MP.LRCDR2018:r7:ss1",
+    "MP.LRCDR2018:r7:ss2",
+    "MP.LRCDR2018:r8:ss2",
+    "MP.LRCDR2018:form_ii",
+    "MP.LRCDR2018:form_iii",
+    "MP.LRCDR2018:r4:ss2",
+    "MP.LRCDR2018:r4:ss1",
+    "MP.LRCDR2018:form_i"
+   ]
+  }
+ }
+}
