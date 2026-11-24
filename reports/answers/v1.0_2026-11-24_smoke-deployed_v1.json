@@ -1,0 +1,52 @@
+[
+ {
+  "id": "GS-058",
+  "lang": "hi",
+  "domain": "consumer",
+  "expected": "answer_with_caveat",
+  "abstained": true,
+  "top_rerank": -1.4435,
+  "reason": "no claim could be verified against the retrieved law",
+  "behaviour_ok": false,
+  "cited": [],
+  "cited_expected": null,
+  "missing_must_include": [
+   "1915"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 2,
+  "seconds": 6.8,
+  "rewrites": [
+   "consumer complaint against shopkeeper for charging more than maximum retail price",
+   "अधिकतम खुदरा मूल्य से अधिक मूल्य लेने के लिए दुकानदार के खिलाफ उपभोक्ता शिकायत"
+  ]
+ },
+ {
+  "id": "GS-070",
+  "lang": "en",
+  "domain": "rti",
+  "expected": "answer",
+  "abstained": false,
+  "top_rerank": 1.7295,
+  "reason": null,
+  "behaviour_ok": true,
+  "cited": [
+   "IN.RTI2005:s7:ss1",
+   "IN.RTI2005:s5:ss2"
+  ],
+  "cited_expected": true,
+  "missing_must_include": [
+   "30",
+   "48"
+  ],
+  "found_must_not_include": [],
+  "merits_dropped": 0,
+  "attempts": 1,
+  "seconds": 6.1,
+  "rewrites": [
+   "time limit for Public Information Officer to provide information under Right to Information Act",
+   "सूचना अधिकार अधिनियम के तहत जन सूचना अधिकारी द्वारा सूचना प्रदान करने की समय सीमा"
+  ]
+ }
+]

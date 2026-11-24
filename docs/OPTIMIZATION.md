@@ -99,6 +99,40 @@ Free monthly allowance (180,000 vCPU-s, 360,000 GiB-s; asia-south1 eligibility u
 26 GiB-s → ~6,900 questions/month (vCPU-bound, −22%). Until 20 Feb 2027 usage is paid from the trial
 credit either way.
 
+### 3.5 Answer-level eval as deployed (2026-11-24)
+`scripts/eval_answers.py --sample indexed --deployed`: 84 golden v1.0 rows, retrieval exactly as the
+cloud (Groq Qwen rewrite → pool 20 + A3 → int8-opt, window 256), Sarvam answers with prompt v1,
+deterministic scores (no judge). 106 paid calls (~₹2.06), rewrite failures 0, mean 7.6 s per row on the
+laptop. Report: `reports/answers/v1.0_2026-11-24_deployed_v1.md`; rows: `…_indexed_deployed_rows.jsonl`.
+Previous full run: `reports/answers/v0.1-seed_2026-11-18_indexed_v1.md` (unverified seed labels, old
+retrieval, 80 rows), so the overall comparison is indicative, the per-row one (59 rows with the same
+label in both) is the fair one.
+
+| Expected behaviour | 2026-11-18 (old retrieval) | 2026-11-24 (as deployed) |
+| --- | --- | --- |
+| answer: answered | 32/41 | 32/41 |
+| answer: cited an expected provision | 25/32 | **28/32** |
+| answer_with_caveat: answered | 9/18 | **13/19** |
+| abstain_refer: referred / abstained | 15/16 | 18/19 |
+| crisis_route: full crisis reply | 5/5 | 5/5 |
+| must_not_include respected (answer rows) | 41/41 | **40/41** (GS-005, see below) |
+
+Per row (59 answerable rows with the same label): **10 now answered that were not** (GS-011, 031, 055,
+057, 059, 060, 067, 068, 084, 110), **7 now abstain that answered before** (GS-025, 037, 048, 056, 063,
+078, 125); cited an expected provision: +7, −1. By language (answered): en 19/27 → 24/28, hinglish
+5/9 → 6/9, hi 17/23 → 15/23. By domain: consumer 8/17 → 12/17.
+
+Main abstention cause on answerable rows: "no claim could be verified against the retrieved law" (11):
+the model's quotes did not match the excerpt text exactly, so the validator dropped every claim
+(correct behaviour; a quote-copying issue, not retrieval).
+
+**Accuracy finding (GS-005, S33):** "Does an 11-month rent agreement have to be registered?" was
+answered "must be registered", quoting Registration Act s.17(1)(b). The quote is genuine, so the
+validator passed it, but the claim is wrong: leases are governed by s.17(1)(d) (year to year or more
+than a year), so an 11-month lease is not compulsorily registrable. This is the known faithfulness gap
+(the validator proves a quote exists, not that it supports the claim; OPEN_QUESTIONS S33). A claim-support
+check (free judge model, DEC-081) is the planned fix; until then this row is a known wrong answer.
+
 ---
 
 ## 4. Problems found on the way (and fixed)

@@ -4,6 +4,13 @@
 Usage:
     uv run python scripts/eval_answers.py --sample smoke   # 20 stratified rows (~Rs1, DEC-078 cap)
     uv run python scripts/eval_answers.py --ids GS-074,GS-129
+    uv run python scripts/eval_answers.py --sample indexed --deployed   # as deployed (DEC-090..094)
+
+``--deployed`` retrieves exactly as the cloud answer service does: query rewriting on the free model
+(Groq, DEC-093; any failure = original question, logged), then the deployed RetrievalConfig (pool
+20, one version per provision, window 256, int8-opt). Without it, retrieval uses the question only.
+Each scored row is also appended to ``reports/answers/<...>_rows.jsonl`` as soon as it is computed;
+a paid call refused by the spend cap stops the run cleanly and the report covers the rows done.
 
 Every LLM answer is cached in data/eval/llm_cache.jsonl, keyed by the sha256 of the request, so
 re-scoring is free and repeatable; only cache misses are paid calls (each through the spend cap).
@@ -31,6 +38,9 @@ from typing import Any
 
 from madhya_kanoon_saathi.common.contacts import load as load_contacts
 from madhya_kanoon_saathi.common.section_uid import covers
+from madhya_kanoon_saathi.generation import rewrite
+from madhya_kanoon_saathi.generation.budget import BudgetExceededError
+from madhya_kanoon_saathi.generation.free_llm import FreeLLM
 from madhya_kanoon_saathi.generation.llm import complete, request_body
 from madhya_kanoon_saathi.generation.local import LocalRuntime
 from madhya_kanoon_saathi.generation.pipeline import answer
@@ -167,6 +177,9 @@ def main() -> int:
     ap.add_argument("--sample", default="smoke")
     ap.add_argument("--ids", default="")
     ap.add_argument("--tag", default="")
+    ap.add_argument(
+        "--deployed", action="store_true", help="retrieve with Groq rewriting (DEC-093)"
+    )
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
     rows = [json.loads(x) for x in GOLDEN.read_text("utf-8").splitlines()]
@@ -178,19 +191,38 @@ def main() -> int:
     numbers = {c.id: c.number for c in load_contacts(Path("data/contacts.yaml"))}
     cache, stats = load_cache(), {"paid_calls": 0, "cache_hits": 0}
     gen = cached_generator(cache, stats)
+    free = FreeLLM.from_env() if a.deployed else None
+    rewrite_failures: list[str] = []
+    OUT.mkdir(parents=True, exist_ok=True)
+    tag = f"_{a.tag}" if a.tag else ""
+    rows_path = OUT / f"{GOLDEN.parent.name}_{date.today().isoformat()}_{a.sample}{tag}_rows.jsonl"
     results, samples = [], []
+    stopped = ""
     for r in chosen:
         q = r["raw_question_redacted"]
         t0 = time.perf_counter()
         vec = rt.vector(q)
-        chunks = rt.retrieve(q, vec, date.today())
-        reply = answer(q, retrieve=lambda _q, c=chunks: c, generate=gen, texts=texts, crisis_replies=replies,
-                       numbers=numbers, today=date.today(), query_vec=vec, crisis_examples=rt.crisis_index,
-                       dispute_examples=rt.dispute_index, versions=rt.versions, allow_draft=True)  # fmt: skip
+        rws: list[str] = []
+        if free is not None:
+            errors: list[Exception] = []
+            rws = rewrite.rewrite(q, free, errors.append)
+            rewrite_failures += [f"{r['id']} {e}" for e in errors]
+        chunks = rt.retrieve(q, vec, date.today(), rewrites=rws)
+        try:
+            reply = answer(q, retrieve=lambda _q, c=chunks: c, generate=gen, texts=texts, crisis_replies=replies,
+                           numbers=numbers, today=date.today(), query_vec=vec, crisis_examples=rt.crisis_index,
+                           dispute_examples=rt.dispute_index, versions=rt.versions, allow_draft=True)  # fmt: skip
+        except BudgetExceededError as e:
+            stopped = f"stopped at {r['id']}: {e}"
+            print(stopped)
+            break
         scores = [float(c.extra["rerank"]) for c in chunks if c.extra.get("rerank")]
         s = score(r, reply, max(scores) if scores else None)
         s["seconds"] = round(time.perf_counter() - t0, 1)
+        s["rewrites"] = rws
         results.append(s)
+        with rows_path.open("a", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(s, ensure_ascii=False) + "\n")
         samples.append({"id": r["id"], "question": q, "reply": reply.text})
         print(
             f"{r['id']} {s['expected']:18s} ok={s['behaviour_ok']} cited_exp={s['cited_expected']} {s['seconds']}s"
@@ -202,7 +234,11 @@ def main() -> int:
 
     L = [f"# Answer eval ({a.sample}): {GOLDEN.parent.name}, {date.today().isoformat()}", "",
          f"**Seed golden set (unverified); wording approved (DEC-079), prompt {PROMPT_VERSION}.** Deterministic scores, no judge.", "",
-         f"- rows: {len(results)} · paid calls: {stats['paid_calls']} · cache hits: {stats['cache_hits']}", "",
+         f"- rows: {len(results)} · paid calls: {stats['paid_calls']} · cache hits: {stats['cache_hits']}",
+         f"- retrieval: {'as deployed (Groq rewriting, DEC-093)' if a.deployed else 'question only'} · "
+         f"pool {rt.config.pool} · window {rt.config.rerank_window} · reranker {rt.config.rerank_variant}"
+         + (f" · rewrite failures: {len(rewrite_failures)}" if a.deployed else ""),
+         *([f"- **{stopped}**"] if stopped else []), "",
          "| expected | rows | behaviour ok | cited an expected provision | must_include all | must_not_include none |",
          "| --- | --- | --- | --- | --- | --- |"]  # fmt: skip
     for exp in dict.fromkeys(x["expected"] for x in results):
