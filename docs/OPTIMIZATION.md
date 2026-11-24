@@ -5,7 +5,7 @@ What changed in retrieval and the answer service after the first Cloud Run deplo
 did on the golden set. Commits `35e5c94` … `50913c4`. Decisions DEC-090 to DEC-093. Technical
 background: [RERANKER.md](RERANKER.md). Raw results: [`reports/retrieval/opt_2026-11-23/`](../reports/retrieval/opt_2026-11-23/summary.md).
 
-**Status: none of this is deployed yet.** The cloud still runs the first image.
+**Status: deployed 2026-11-24** (image `bot:m5dd9a6afe7fb-2658fd5`, artifacts `v2026.11.23`); measured on Cloud Run in §3.4.
 
 ---
 
@@ -73,11 +73,31 @@ Timings in 3.2 are not comparable across rows: the Sarvam row reused saved rewri
 the Groq rows include their call and ran at a different time. Retrieval code is identical; the real
 difference is the call itself (Qwen ~0.5–0.6 s, Sarvam ~1 s, measured separately).
 
-### 3.3 What to expect on Cloud Run (estimate, not measured)
+### 3.3 What we expected on Cloud Run (estimate before deploying; see §3.4 for the measurement)
 Laptop retrieval with the chosen setup is ~7 s mean (8 threads). Cloud Run has 2 vCPU, so expect
 roughly 2–3× that before B1's effect is known, plus ~0.5 s for Groq and ~1 s for the Sarvam answer.
 That is a large improvement on 30–70 s, but likely still above the 8 s warm target (DEC-020). Next
 levers: graph fusion before quantisation (B2), a smaller reranker (C1), more vCPUs (B6).
+
+### 3.4 Measured on Cloud Run (2026-11-24)
+`scripts/cloud_timing.py`: 1 warm-up + 10 golden questions (5 hi, 3 hinglish, 3 en … round-robin),
+published one at a time to Pub/Sub, timed by the answer service's own record (`timings_ms.total`:
+quota check → rewrite → retrieval → Sarvam answer). Raw rows: `reports/cloud/timing_cpu2.jsonl`,
+`timing_cpu4.jsonl`. Containers were warm (the deploy had just started them); cold start not measured.
+
+| Answer service | Warm mean | p50 | Max of 10 | Groq rewrite | Sarvam answer |
+| --- | --- | --- | --- | --- | --- |
+| First deployment (before this log) | 30–70 s | | | — | 0.65–1.05 s |
+| Optimised, **2 vCPU**, 2 threads | 10.2 s | 10.5 s | 12.8 s | 0.17–0.38 s | 0.36–0.66 s |
+| Optimised, **4 vCPU**, 4 threads | **6.5 s** | **6.5 s** | **8.1 s** | 0.14–0.43 s | 0.29–0.93 s |
+
+Retrieval (mostly reranking) is the rest: ~9 s on 2 vCPU, ~5.5 s on 4 vCPU (1.6× faster). With 4 vCPU
+the warm replies sit at the 8 s target (DEC-020) for 10 of 10 questions in this sample.
+
+Free monthly allowance (180,000 vCPU-s, 360,000 GiB-s; asia-south1 eligibility unverified, P13):
+2 vCPU ≈ 20 vCPU-s and 41 GiB-s per question → ~8,800 questions/month; 4 vCPU ≈ 26 vCPU-s and
+26 GiB-s → ~6,900 questions/month (vCPU-bound, −22%). Until 20 Feb 2027 usage is paid from the trial
+credit either way.
 
 ---
 
@@ -107,7 +127,8 @@ levers: graph fusion before quantisation (B2), a smaller reranker (C1), more vCP
 ---
 
 ## 6. Open items
-- Measure the chosen setup on Cloud Run (warm and cold) and B1's effect.
+- Measure cold start on Cloud Run (warm replies measured in §3.4).
+- Decide 2 vs 4 vCPU (§3.4).
 - Re-check on the full golden set before the public demo (30–50-question samples; 1–2 question
   differences are noise).
 - B2 graph fusion, C1 smaller reranker, B6 more vCPUs if Cloud Run is still above 8 s.

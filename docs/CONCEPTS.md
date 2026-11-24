@@ -601,3 +601,22 @@ Read top to bottom: it follows the order the pieces were built. Names are the re
   uses `drop_pending_updates` so the cloud bot does not answer a backlog.
 - The cloud bot has **no allow-list** (the laptop bot had `MKS_BOT_ALLOWED_CHATS`): anyone who finds it can ask,
   bounded by the 20/day quota and the ₹20/day cap.
+
+### 10.9 Second deployment: optimised retrieval (2026-11-24)
+- **What changed:** see [OPTIMIZATION.md](OPTIMIZATION.md): cleaner index, query rewriting on a free
+  model, a smaller de-duplicated rerank pool, a pre-optimised reranker, thread settings, a typing
+  indicator. New image `bot:m5dd9a6afe7fb-2658fd5` built from release `v2026.11.23` in `mks-artifacts`.
+- **New secret:** `GROQ_API_KEY` (bootstrap creates the box, only `mks-answer` can read it; Malik filled
+  it with `scripts/set_app_secrets.py`, which skips secrets that already have a value).
+- **Configuration as code:** the answer service's vCPU is a Terraform variable `answer_cpu`, and the
+  same value is passed as `MKS_ORT_THREADS`, so ONNX Runtime always uses exactly the cores Cloud Run
+  gives the container (B1). Changing it is an in-place update: Cloud Run starts a new revision and
+  moves traffic, with no downtime.
+- **Measuring a deployed service without users:** `scripts/cloud_timing.py` publishes golden questions
+  straight to the queue with made-up chat ids, then reads the answer service's own Firestore record
+  for its timings. Telegram cannot deliver to a made-up chat (records end `answered_unsent`), so no one
+  receives a message, and each fake chat has its own daily quota.
+- **Result:** warm replies 30–70 s → 10.2 s (2 vCPU) → 6.5 s (4 vCPU). Retrieval dominates; the Groq
+  rewrite (~0.2–0.4 s) and the Sarvam answer (~0.3–0.9 s) are small.
+- **vCPU trade-off:** doubling cores made answers 1.6× faster, not 2×, so each answer uses ~27% more
+  vCPU-seconds (fewer free answers per month) but far fewer GiB-seconds.
