@@ -21,7 +21,7 @@ variable "image_tag" {
 }
 
 variable "answer_cpu" {
-  description = "vCPU for the answer service; also sets MKS_ORT_THREADS (B1). DEC-089: 2."
+  description = "vCPU for the answer service; also sets MKS_ORT_THREADS (B1). DEC-094: 4."
   type        = string
-  default     = "2"
+  default     = "4"
 }

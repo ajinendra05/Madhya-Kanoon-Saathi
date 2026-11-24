@@ -1050,6 +1050,14 @@ official docs before code depends on it. Each one is also listed in OPEN_QUESTIO
 - Why: Qwen keeps most of the rewriting gain at ₹0 and ~0.5–0.6 s per call; the smaller pool roughly halves retrieval time with a small R@6 cost versus pool 40.
 - Effects: ₹0 for rewriting · Groq free-plan instability observed (32 of 60 calls failed in one window, 1 of 60 in the re-run) → those questions retrieve without rewriting · 30-question sample: differences of 1–2 questions are within noise; re-check on the full golden set before the public demo.
 
+## DEC-094 — Answer service on 4 vCPU (4 ONNX Runtime threads)
+- Date: 2026-11-24 | Status: accepted ("okay we will use 4 vCPU so set the terraform code to 4 also") | Approved by: Malik | Amends DEC-089 item 1 (2 vCPU)
+- Context: second deployment measured on Cloud Run (`reports/cloud/timing_cpu{2,4}.jsonl`, 10 warm golden questions each): 2 vCPU mean 10.2 s / max 12.8 s; 4 vCPU mean 6.5 s / max 8.1 s (warm-reply target 8 s, DEC-020).
+- Options: A) stay on 2 vCPU (~8,800 answers/month in the free allowance) · **B) 4 vCPU (~6,900/month; meets the target)** · C) more (not measured).
+- Decision: **B.** `answer_cpu = "4"` in `infra/terraform/app`; `MKS_ORT_THREADS` follows it; memory stays 4 GiB (4 vCPU allows 2–16 GiB); max 2 containers, concurrency 1 unchanged.
+- Why: only setting that met the 8 s warm target in the measurement; trial credit covers usage until 20 Feb 2027.
+- Effects: ~27% more vCPU-seconds per answer (fewer free answers per month) · ~36% fewer GiB-seconds · answer quality unchanged · cold start not yet measured.
+
 ---
 
 ## Pending decisions (not yet made)

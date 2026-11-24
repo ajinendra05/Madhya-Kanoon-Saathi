@@ -128,7 +128,7 @@ credit either way.
 
 ## 6. Open items
 - Measure cold start on Cloud Run (warm replies measured in §3.4).
-- Decide 2 vs 4 vCPU (§3.4).
+- ~~Decide 2 vs 4 vCPU~~: **4 vCPU** (DEC-094, 2026-11-24).
 - Re-check on the full golden set before the public demo (30–50-question samples; 1–2 question
   differences are noise).
 - B2 graph fusion, C1 smaller reranker, B6 more vCPUs if Cloud Run is still above 8 s.

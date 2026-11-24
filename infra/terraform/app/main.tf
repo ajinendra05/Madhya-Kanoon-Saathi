@@ -59,7 +59,7 @@ resource "google_pubsub_subscription" "answer_push" {
   }
 }
 
-# ---------------- Answer service (DEC-089: 4 GiB, 2 vCPU, max 2) ----------------
+# ---------------- Answer service (DEC-089/094: 4 GiB, 4 vCPU, max 2) ----------------
 resource "google_cloud_run_v2_service" "answer" {
   name     = "mks-answer"
   location = var.region
@@ -80,7 +80,7 @@ resource "google_cloud_run_v2_service" "answer" {
 
       resources {
         limits = {
-          cpu    = var.answer_cpu # DEC-089: 2; 4 is being measured (OPTIMIZATION.md)
+          cpu    = var.answer_cpu # DEC-094: 4 (measured: 6.5 s vs 10.2 s warm mean on 2)
           memory = "4Gi"
         }
         cpu_idle          = true # billed only while handling a request
