@@ -620,3 +620,24 @@ Read top to bottom: it follows the order the pieces were built. Names are the re
   rewrite (~0.2–0.4 s) and the Sarvam answer (~0.3–0.9 s) are small.
 - **vCPU trade-off:** doubling cores made answers 1.6× faster, not 2×, so each answer uses ~27% more
   vCPU-seconds (fewer free answers per month) but far fewer GiB-seconds.
+
+### 10.10 Nightly cost summary and public dashboard (W3.2, DEC-012, DEC-095)
+- **Why a nightly batch:** Firestore has no GROUP BY; adding up a day's records once a night is cheap,
+  and a static page needs no server.
+- **Who reads the data:** a new service account `mks-cost-reader` with **Firestore viewer** only (no
+  writes, no deletes). GitHub Actions becomes it through the same keyless login as the build (Workload
+  Identity Federation, repo + `main` only); no key file exists.
+- **What runs:** `.github/workflows/cost-summary.yml` at 02:00 IST (and on demand). It calls
+  `scripts/cost_summary.py` (standard library only), which asks Firestore's REST API for the previous
+  Indian day's `queries` records (`documents:runQuery` with a range filter on `at`) and the `spend`
+  counter, then writes **aggregates only**: question count, outcomes, abstentions, languages, crisis
+  tiers, ₹ total and per question, ₹ and calls per step and provider, p50/p95 reply time.
+- **Privacy by construction:** question and reply text, chat hashes and update ids never leave
+  Firestore; a unit test checks that none of them appear in the summary.
+- **Publishing:** the job commits `data/summary-<date>.json`, the merged `data/history.json` and the
+  page `index.html` to the `gh-pages` branch; GitHub Pages serves it. The page draws charts with Chart.js
+  (pinned version) from `history.json`.
+- **Cross-check:** for 2026-11-24 the summed per-answer costs (₹0.8111) equal the separate `spend`
+  counter used by the ₹20/day cap.
+- **Caveat:** GitHub may pause scheduled workflows in a repository with no activity for 60 days (not
+  verified for this repo's plan); a manual run re-enables it.

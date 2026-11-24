@@ -1,0 +1,73 @@
+# Nightly cost summary → public dashboard on GitHub Pages (W3.2, DEC-012, DEC-095).
+# Reads yesterday's (India time) Firestore records as the read-only mks-cost-reader account and
+# commits aggregates only (no question text, no user identifiers) to the gh-pages branch.
+name: Cost summary
+
+on:
+  schedule:
+    - cron: "30 20 * * *" # 20:30 UTC = 02:00 IST: summarises the Indian day that just ended
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Indian date YYYY-MM-DD (default: yesterday in India)"
+        required: false
+
+permissions:
+  contents: write # push the gh-pages branch
+  id-token: write # keyless Google login
+
+concurrency:
+  group: cost-summary
+  cancel-in-progress: false
+
+env:
+  WIF_PROVIDER: projects/164560503250/locations/global/workloadIdentityPools/mks-github/providers/github-oidc
+  READER_SA: mks-cost-reader@mks-prod-515410.iam.gserviceaccount.com
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # actions/checkout v7.0.1 (pinned commit)
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      # google-github-actions/auth v3 (pinned commit): read-only Firestore account
+      - name: Google Cloud login (read-only)
+        id: auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093
+        with:
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.READER_SA }}
+          token_format: access_token
+          create_credentials_file: false
+
+      - name: Prepare the gh-pages working tree
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git fetch --depth 1 origin gh-pages
+            git worktree add pages FETCH_HEAD
+            git -C pages switch -c pages-work
+          else
+            git worktree add --detach pages
+            git -C pages switch --orphan pages-work
+          fi
+
+      - name: Summarise and publish
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+          DAY: ${{ github.event.inputs.date }}
+        run: |
+          set -euo pipefail
+          python3 scripts/cost_summary.py --pages pages ${DAY:+--date "$DAY"}
+          cd pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No change to publish"
+          else
+            git commit -q -m "cost summary $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push origin HEAD:gh-pages
+          fi

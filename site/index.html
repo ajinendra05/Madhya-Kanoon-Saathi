@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanoon Saathi costs</title>
+<style>
+  :root { --bg:#fbfaf7; --fg:#1f2328; --muted:#5d6670; --card:#ffffff; --line:#e3e0d8; --accent:#2f6f8f; --accent2:#b0662b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16181b; --fg:#e7e5e0; --muted:#a3a9b0; --card:#1f2226; --line:#33373c; --accent:#6fb3d2; --accent2:#e0a06b; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:1000px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 20px; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px; margin-bottom:20px; }
+  .tile { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .tile .k { color:var(--muted); font-size:13px; }
+  .tile .v { font-size:24px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px; margin-bottom:16px; }
+  .card h2 { font-size:15px; margin:0 0 8px; }
+  canvas { width:100% !important; max-height:260px; }
+  table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; font-size:14px; }
+  th, td { text-align:right; padding:6px 8px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; }
+  .wrap { overflow-x:auto; }
+  footer { color:var(--muted); font-size:13px; margin-top:24px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Madhya Kanoon Saathi: daily usage and cost</h1>
+  <p class="sub">Aggregates of the live bot, one row per Indian calendar day. No questions, replies or user identifiers are published. Updated nightly.</p>
+  <div class="tiles" id="tiles"></div>
+  <div class="card"><h2>Questions per day</h2><canvas id="q"></canvas></div>
+  <div class="card"><h2>Model cost per day (₹, GST incl.)</h2><canvas id="c"></canvas></div>
+  <div class="card"><h2>Reply time (seconds, p50 and p95)</h2><canvas id="t"></canvas></div>
+  <div class="card"><h2>Daily detail</h2><div class="wrap"><table id="tbl"></table></div></div>
+  <footer>Legal information, not legal advice. Source: Firestore records of the answer service, read with a read-only account (DEC-095). Rewriting on a free model costs ₹0; answers by Sarvam-105B.</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(async function () {
+  const css = getComputedStyle(document.documentElement);
+  const col = (n) => css.getPropertyValue(n).trim();
+  let hist = [];
+  try { hist = await (await fetch("data/history.json", { cache: "no-store" })).json(); } catch (e) { hist = []; }
+  const days = hist.map((h) => h.date);
+  const sum = (f) => hist.reduce((a, h) => a + (f(h) || 0), 0);
+  const q = sum((h) => h.questions), inr = sum((h) => h.inr_total);
+  const tiles = [
+    ["Days", hist.length],
+    ["Questions", q],
+    ["Model cost", "₹" + inr.toFixed(2)],
+    ["₹ per question", q ? "₹" + (inr / q).toFixed(3) : "–"],
+    ["Latest p95", hist.length && hist[hist.length - 1].time_s.p95 != null ? hist[hist.length - 1].time_s.p95 + " s" : "–"],
+  ];
+  document.getElementById("tiles").innerHTML = tiles
+    .map(([k, v]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
+  if (window.Chart) {
+    Chart.defaults.color = col("--muted");
+    Chart.defaults.borderColor = col("--line");
+    const line = (id, sets) => new Chart(document.getElementById(id), {
+      type: "line", data: { labels: days, datasets: sets },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: sets.length > 1 } }, scales: { y: { beginAtZero: true } } },
+    });
+    new Chart(document.getElementById("q"), {
+      type: "bar",
+      data: { labels: days, datasets: [
+        { label: "answered", data: hist.map((h) => h.questions - h.abstained), backgroundColor: col("--accent") },
+        { label: "abstained", data: hist.map((h) => h.abstained), backgroundColor: col("--accent2") },
+      ] },
+      options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } } },
+    });
+    line("c", [{ label: "₹", data: hist.map((h) => h.inr_total), borderColor: col("--accent"), tension: 0.2 }]);
+    line("t", [
+      { label: "p50", data: hist.map((h) => h.time_s.p50), borderColor: col("--accent"), tension: 0.2 },
+      { label: "p95", data: hist.map((h) => h.time_s.p95), borderColor: col("--accent2"), tension: 0.2 },
+    ]);
+  }
+  const head = "<tr><th>Date</th><th>Questions</th><th>Abstained</th><th>Crisis (full / note)</th><th>₹ total</th><th>₹ / question</th><th>p50 s</th><th>p95 s</th></tr>";
+  const rows = hist.slice().reverse().map((h) => `<tr><td>${h.date}</td><td>${h.questions}</td><td>${h.abstained}</td><td>${h.crisis.full} / ${h.crisis.note}</td><td>${h.inr_total.toFixed(3)}</td><td>${h.inr_per_question == null ? "–" : h.inr_per_question.toFixed(4)}</td><td>${h.time_s.p50 ?? "–"}</td><td>${h.time_s.p95 ?? "–"}</td></tr>`).join("");
+  document.getElementById("tbl").innerHTML = head + (rows || '<tr><td colspan="8">No data yet.</td></tr>');
+})();
+</script>
+</body>
+</html>
