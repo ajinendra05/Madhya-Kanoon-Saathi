@@ -50,7 +50,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 | W0.3 | `section_uid` scheme + manifest schema | done | DEC-040; `docs/specs/`; `common/section_uid.py`, `ingestion/manifest.py`; 98 tests pass |
 | W0.4 | Corpus download (CORPUS.md Phase 0 per DEC-037: index/gated/archive/guide modes) + `corpus_manifest.json` | **done 2026-11-10; gap closed 2026-11-13:** CORPUS item 9 MP Accommodation Control Act 1961 fetched from code.mp.gov.in (EN + HI, both gated L1; EN consolidation references nothing after 1985, HI text layer corrupt). Before that (53 instruments, 69 documents; 20 index, 17 gated, 30 archive, 2 guide; validator 0 errors). Remaining gated items wait on others or on OCR: L7 (advocate), G13 (Malik), G12/G8a/S2 (OCR, W0.5), G4/G14/G6 (commencement or notifications), G8d-f (parked post-MVP); law-watch LW1 continues. History: steps 1-3, DEC-041 to DEC-052, docs/W0.4_FINDINGS.md (frozen) | All files with sha256 + status + mode; start with the current MP wage notification (L4) and G4/G6/G12/G13/G14 checks |
 | W0.5 | OCR bake-off: Bodhan vs Tesseract vs Sarvam, 20 pages (DEC-014/015, DEC-053) | **done 2026-11-17**: 20 pages hand-corrected by Malik (corrected text below a `--corrected--` line; the scorer reads only that part). `docs/eval/ocr_bakeoff.md`: mean CER norm **Bodhan 13.6% vs Tesseract 17.7%** (WER 21.2% vs 32.8%); Hindi Act text 2.5% vs 6.1%, degraded scans 3.3% vs 34.9%, gazette notices 6.2% vs 10.0%, English scans 7.2% vs 3.7%. Wage-table pages (5) ~40% for both: CER there mostly measures table reading order (p12: Bodhan output 1.7x the truth, cells in another order), not recognition; the indexed wage notification is protected by the 31/31 arithmetic gate and Malik's spot-check. DEC-001 (Bodhan) stands. Sarvam (third engine, DEC-053 item 5, ~Rs10) not run | CER table per tool |
-| W0.6 | Terraform skeleton (DEC-028: stays in W0) | todo | `terraform plan` shows no resources yet / backend chosen |
+| W0.6 | Terraform skeleton (DEC-028: stays in W0) | **done 2026-11-21** (DEC-086): `infra/terraform/bootstrap` (APIs, identities, IAM, Firestore, secrets, image store) + `infra/terraform/app` (queue, services); state in GCS | `terraform plan` shows no resources yet / backend chosen |
 
 ## W1 — 10–16 Nov: parsing + retrieval
 | # | Item | Status | Definition of done |
@@ -80,7 +80,7 @@ improvements). CORPUS.md and OPEN_QUESTIONS (new group I) are updated.
 ## W3 — 24 Nov–~5 Dec: deploy + publish (demo target moved from 30 Nov to ~3–5 Dec, DEC-038)
 | # | Item | Status | Definition of done |
 | --- | --- | --- | --- |
-| W3.1 | GCP deploy (DEC-086): ingress + answer Cloud Run services, Pub/Sub + dead-letter, Firestore, Scheduler, Secret Manager, Artifact Registry; Terraform + Workload Identity Federation | todo | Bot answers live |
+| W3.1 | GCP deploy (DEC-086): ingress + answer Cloud Run services, Pub/Sub + dead-letter, Firestore, Scheduler, Secret Manager, Artifact Registry; Terraform + Workload Identity Federation | **done 2026-11-21, redeployed 2026-11-24**: live on Cloud Run (ingress + answer, Pub/Sub + dead-letter, Firestore, Secret Manager, Artifact Registry, WIF deploys); second deployment = DEC-090..094 optimisations, warm replies 30–70 s → 6.5 s on 4 vCPU (OPTIMIZATION.md) | Bot answers live |
 | W3.2 | cost_log + nightly summary + Pages dashboard (DEC-012) | todo | Dashboard URL |
 | W3.3 | Law-watch job → GitHub issue (DEC-013, on Cloud Scheduler per DEC-086) | todo | |
 | W3.4 | README, ARCHITECTURE, eval report, 3-min demo video | todo | |
@@ -112,6 +112,15 @@ Same answer pipeline and cloud design; only a new ingress path and a new reply s
 
 ## Session log
 <!-- Newest first. Format: ### YYYY-MM-DD — done · decisions · problems · next step -->
+### 2026-11-24 (sessions 2026-11-21 to 24)
+- Done:
+  - **Cloud:** AWS sign-up blocked → Google Cloud (DEC-086). Bootstrap + app Terraform stacks, Firestore layout (DEC-087), handlers with stdlib HTTP, 20/day quota, ₹20/day spend cap (DEC-088), Cloud Run sizing (DEC-089), image build workflow (keyless WIF), private artifacts release, Telegram webhook to the cloud. First deployment 2026-11-21.
+  - **Optimisation after the first live test (30–70 s replies, Hinglish misses):** DEC-090..094 — filler cleanup (E2), lazy retrieval, candidate filter, window 256, cache, threads = vCPUs, pre-optimised reranker, typing indicator, query rewriting (prompt r1; r2 + Act filter measured worse), rerank pool 20 + one version per provision, rewriting on Groq `qwen/qwen3.8-27b` (free; llama-3.3-70b withdrawn), 4 vCPU. Golden: R@6 0.583 → 0.697 (50 q), Hinglish 0.444 → 0.722 (pool 40). Cloud Run warm replies 10.2 s (2 vCPU) → **6.5 s (4 vCPU)**. Write-up: `docs/OPTIMIZATION.md`, `docs/RERANKER.md`, CONCEPTS §10.
+  - WhatsApp channel added to the roadmap (W4, P17).
+- Decisions: DEC-086 … DEC-094.
+- Problems: Windows PowerShell pipe sent nothing to gcloud (scripts use stdin from Python); `shutil.which("gcloud")` found the bash script (use gcloud.cmd); registry attestation index vs keep-newest-1 cleanup (build with --provenance=false); Groq Cloudflare 403 for Python-urllib (project User-Agent); silent rewrite failures (now logged); pre-commit rollback reverted 102 spend-ledger lines during a background job (recovered; no commits while jobs write into the repo).
+- Next step: measure cold start; full golden-set answer eval on the deployed setup; then W3.2 cost dashboard, W3.3 law-watch, W3.4 eval report.
+
 ### 2026-11-21
 - Done: AWS sign-up blocked (error 83740); Google Cloud Free Trial opened by Malik (₹1,000 prepayment, welcome credit ₹28,569, ends 20 Feb 2027). DEC-086 recorded; ARCHITECTURE, TOOLS, OPEN_QUESTIONS (P13–P15; AWS P1–P4, P6–P8 moot) and roadmap rows W0.2/W3.1/W3.3 updated. Docs only, no code.
 - Decisions: DEC-086 (hosting on Google Cloud asia-south1).
