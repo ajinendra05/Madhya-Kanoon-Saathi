@@ -1,0 +1,54 @@
+# Weekly law-watch (W3.3, DEC-013, DEC-095): re-fetch watched sources, compare with the manifest, and
+# open (or comment on) one "law-watch" issue when something changed. Never edits the corpus.
+name: Law-watch
+
+on:
+  schedule:
+    - cron: "30 0 * * 1" # Mondays 00:30 UTC = 06:00 IST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write # the workflow's own GITHUB_TOKEN opens or comments on the issue; no stored token
+
+concurrency:
+  group: law-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # actions/checkout v7.0.1 (pinned commit)
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Check sources
+        run: |
+          set -euo pipefail
+          python3 scripts/law_watch.py --out out
+          cat out/law_watch.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update the law-watch issue (only when something changed)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          changed=$(python3 -c "import json; print(len(json.load(open('out/law_watch.json'))['changed']))")
+          if [ "$changed" = "0" ]; then
+            echo "No changes: no issue opened."
+            exit 0
+          fi
+          gh label create law-watch -R "$REPO" --color B60205 \
+            --description "Source changed: review before any rebuild (DEC-013)" --force
+          open=$(gh issue list -R "$REPO" --label law-watch --state open --json number -q '.[0].number')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" -R "$REPO" --body-file out/law_watch.md
+          else
+            gh issue create -R "$REPO" --label law-watch \
+              --title "Law-watch: $changed source(s) changed ($(date -u +%Y-%m-%d))" \
+              --body-file out/law_watch.md
+          fi

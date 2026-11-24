@@ -641,3 +641,27 @@ Read top to bottom: it follows the order the pieces were built. Names are the re
   counter used by the ₹20/day cap.
 - **Caveat:** GitHub may pause scheduled workflows in a repository with no activity for 60 days (not
   verified for this repo's plan); a manual run re-enables it.
+
+### 10.11 Weekly law-watch (W3.3, DEC-013, DEC-095)
+- **Goal:** notice when a law, notification or helpline page the bot relies on changes, without ever
+  changing the corpus automatically (a rebuild needs Malik's approval, DEC-013).
+- **What runs:** `.github/workflows/law-watch.yml` every Monday 06:00 IST (and on demand) runs
+  `scripts/law_watch.py` (standard library only):
+  - **PDFs** of documents marked `index`, `guide` or `gated`: downloaded again, sha256 compared with the
+    manifest. A different hash = changed.
+  - **Internet Archive snapshots** cannot change: listed, not fetched.
+  - **HTML pages** change on every load: listed for a manual check.
+  - **Helpline contacts:** the source page's visible text (tags removed, entities decoded) must still
+    contain the recorded quote; quote moved but number still present = check by hand; number gone =
+    changed.
+  - **Unreachable** sources, and "PDF" links that return a web page instead, are listed separately and
+    never counted as changes.
+- **Issues:** only when something changed, the workflow opens one issue labelled `law-watch`, or comments
+  on the open one, using its own short-lived `GITHUB_TOKEN` (`issues: write`); nothing is stored.
+- **False alarms caught before going live (2026-11-24):** the MP labour portal answers scripts with a
+  ~2 KB web page instead of the PDF (it needs a browser session), and two contact pages hide the quote
+  behind tags. The first version reported 6 "changes"; all were false. After the fixes: 0 changes, 14
+  PDFs unchanged, 8 contact quotes found, 7 sources unreachable.
+- **Known limits:** the MP labour portal (incl. the wage notification) cannot be watched by a script;
+  India Code and MP Vidhan Sabha sometimes time out; GitHub's runners are outside India, so some
+  government sites may refuse them (DEC-013's concern; then move the job to Cloud Run in Mumbai).
