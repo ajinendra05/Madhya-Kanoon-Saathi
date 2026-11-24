@@ -167,7 +167,7 @@ on golden v1.0 (Recall@6, MRR@10, per language) before it ships (DEC-021 margin,
 ### B. Do the same work faster
 | # | Change | Speed-up | Quality risk | Effort |
 | --- | --- | --- | --- | --- |
-| B1 | **Set threads to the vCPU count** (`intra_op_num_threads=2`, `inter_op=1`) | avoids oversubscription; unknown, could be large in containers | none | config |
+| B1 | **Set threads to the vCPU count** (`intra_op_num_threads` = `MKS_ORT_THREADS` = Terraform `answer_cpu`, now 4 per DEC-094; `inter_op=1`, sequential) | avoids oversubscription; with 4 vCPU + 4 threads warm replies 10.2 s → 6.5 s vs 2 + 2 (Cloud Run, 2026-11-24) | none | done |
 | B2 | **Transformer graph optimisation before quantisation** (`onnxruntime.transformers.optimizer`: fused attention, LayerNorm, GELU), then re-quantise | commonly 1.3–2× on CPU (*not verified for this model*) | tiny numeric change; re-check parity + golden | medium (one script) |
 | B3 | **Save the optimised graph** (`SessionOptions.optimized_model_filepath`) | faster load (cold start), not per-query | none | small |
 | B4 | **Better int8 kernels**: per-channel weights, S8S8 vs U8S8, check CPU has AVX-512 VNNI | maybe 1.2–1.5× (*not verified*) | small; re-check | medium |
