@@ -1,0 +1,23 @@
+{
+ "date": "2026-11-25",
+ "questions": 0,
+ "outcomes": {},
+ "abstained": 0,
+ "topic_lists": 0,
+ "crisis": {
+  "full": 0,
+  "note": 0
+ },
+ "languages": {},
+ "inr_total": 0.0,
+ "inr_per_question": null,
+ "steps": {},
+ "providers": {},
+ "time_s": {
+  "mean": null,
+  "p50": null,
+  "p95": null
+ },
+ "spend_counter": null,
+ "generated_at": "2026-11-26T03:00:03Z"
+}
